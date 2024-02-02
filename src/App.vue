@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
-let world = ref('World')
+let world = ref("World");
 </script>
 
 <template>
@@ -14,18 +14,18 @@ let world = ref('World')
 <style scoped>
 @keyframes WorldEmoji {
   0% {
-    content: '\01F30D';
+    content: "\01F30D";
   }
   33% {
-    content: '\01F30E';
+    content: "\01F30E";
   }
   66% {
-    content: '\01F30F';
+    content: "\01F30F";
   }
 }
 
 .world::before {
-  content: '\01F30D';
+  content: "\01F30D";
 }
 
 .world::before {
