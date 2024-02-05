@@ -15,7 +15,8 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "vue": "^3.4.15"
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.41.2",
