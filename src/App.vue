@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { RouterView } from "vue-router";
 
 let world = ref("World");
 </script>
@@ -8,6 +9,7 @@ let world = ref("World");
   <div>
     <h1><div class="world" /></h1>
     <h2>Hello {{ world }}</h2>
+    <RouterView />
   </div>
 </template>
 
