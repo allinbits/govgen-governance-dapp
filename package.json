@@ -33,6 +33,8 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-vue": "^9.21.1",
+    "mobx": "^6.12.0",
+    "mobx-vue-lite": "^0.4.2",
     "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "tailwindcss": "^3.4.1",
