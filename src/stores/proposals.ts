@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
 export class ProposalsStore {
-  proposals = [];
+  proposals: unknown[] = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -9,10 +9,10 @@ export class ProposalsStore {
 
   async fetchProposals() {
     //Fetch proposals
-    const props = [];
+    const props: unknown[] = [];
     this.setProposals(props);
   }
-  setProposals(proposals) {
+  setProposals(proposals: unknown[]) {
     this.proposals = proposals;
   }
 }

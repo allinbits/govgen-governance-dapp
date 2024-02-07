@@ -15,6 +15,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@vitest/coverage-istanbul": "^1.2.2",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },
