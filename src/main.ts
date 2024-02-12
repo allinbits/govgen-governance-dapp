@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import Giscus from "@giscus/vue";
 import "./style.css";
 import App from "./App.vue";
 import router from "./router";
@@ -9,4 +10,5 @@ const app = createApp(App);
 app.use(router);
 app.component("MainNav", MainNavComponent);
 app.component("WalletSelector", WalletSelectorComponent);
+app.component("GiscusWidget", Giscus);
 app.mount("#app");
