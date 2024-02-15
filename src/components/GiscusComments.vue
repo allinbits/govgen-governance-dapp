@@ -1,26 +1,28 @@
 <script lang="ts" setup>
+import GiscusWidget, { GiscusProps } from "@giscus/vue";
+
 const props = defineProps<{ path: string }>();
 
 // These are temporary parameters, will be updated later
-const GiscusParams = {
+const GiscusParams: GiscusProps = {
   host: "http://localhost:3000",
   repo: "stuyk/giscus-test",
-  repoid: "R_kgDOLP4O2A",
+  repoId: "R_kgDOLP4O2A",
   category: "Proposals",
-  categoryid: "DIC_kwDOLP4O2M4CdE02",
+  categoryId: "DIC_kwDOLP4O2M4CdE02",
   mapping: "specific",
 };
 </script>
 
 <template>
   <div>
-    <giscus-widget
+    <GiscusWidget
       id="comments"
       :host="GiscusParams.host"
       :repo="GiscusParams.repo"
-      :repoid="GiscusParams.repoid"
+      :repo-id="GiscusParams.repoId"
       :category="GiscusParams.category"
-      :categoryid="GiscusParams.categoryid"
+      :category-id="GiscusParams.categoryId"
       :mapping="GiscusParams.mapping"
       :term="props.path"
       reactionsenabled="1"
@@ -29,6 +31,6 @@ const GiscusParams = {
       theme="light"
       lang="en"
       loading="lazy"
-    ></giscus-widget>
+    />
   </div>
 </template>

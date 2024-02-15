@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { RouterView } from "vue-router";
+import MainNav from "./components/MainNav.vue";
+import WalletSelector from "./components/WalletSelector.vue";
 
 const isConnectingWallet = ref(false);
 </script>
