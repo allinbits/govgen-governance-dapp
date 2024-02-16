@@ -1,15 +1,21 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { RouterView } from "vue-router";
+import MainNav from "./components/MainNav.vue";
+import WalletSelector from "./components/WalletSelector.vue";
 
-let world = ref("World");
+const isConnectingWallet = ref(false);
 </script>
 
 <template>
   <div>
-    <h1><div class="world" /></h1>
-    <h2>Hello {{ world }}</h2>
-    <RouterView />
+    <header class="fixed w-full z-100">
+      <MainNav @open="isConnectingWallet = true" />
+    </header>
+    <WalletSelector v-if="isConnectingWallet" @close="isConnectingWallet = false" />
+    <div class="pt-28 pl-4 pr-4">
+      <RouterView />
+    </div>
   </div>
 </template>
 
