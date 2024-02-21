@@ -49,6 +49,8 @@ const getComments = computed(() => {
   }
 
   const comments = discussion.value.comments.nodes.map((x) => {
+    const upvote = x.reactionGroups.find((x) => x.content == "THUMBS_UP");
+
     return {
       body: x.bodyHTML,
       createdAt: x.createdAt,
@@ -62,6 +64,8 @@ const getComments = computed(() => {
       }),
       editedAt: x.lastEditedAt,
       author: x.author,
+      upvotes: upvote ? upvote.users.totalCount : 0,
+      url: x.url,
     };
   });
 
@@ -125,7 +129,10 @@ onMounted(async () => {
               <span class="text-gray-600">{{ comment.author.login }}</span>
             </a>
             <p class="text-gray-800 mt-6" v-html="comment.body" />
-            <div class="text-xs text-gray-500 mt-2">{{ comment.createdAtHuman }}</div>
+            <div class="flex flex-row gap-4">
+              <div class="text-xs text-gray-500 mt-2">{{ comment.createdAtHuman }}</div>
+              <a class="text-xs text-gray-500 mt-2" :href="comment.url" target="_blank">View on GitHub</a>
+            </div>
           </div>
           <!-- Upvote -->
           <div class="flex flex-col items-center justify-start">
@@ -142,7 +149,7 @@ onMounted(async () => {
             >
               <path d="M12 19V6M5 12l7-7 7 7" />
             </svg>
-            <div class="text-center text-sm">5</div>
+            <div class="text-center text-sm">{{ comment.upvotes }}</div>
           </div>
         </div>
       </div>
