@@ -2,6 +2,7 @@
 import { inject, onMounted, ref, computed } from "vue";
 import * as Keys from "../providers/keys";
 import * as GithubTypes from "../types/github/index";
+import DOMPurify from "dompurify";
 
 const props = defineProps<{ term: string }>();
 
@@ -128,7 +129,9 @@ onMounted(async () => {
               <img class="w-10 h-10 rounded-full" :src="comment.author.avatarUrl" alt="User Avatar" />
               <span class="text-gray-600">{{ comment.author.login }}</span>
             </a>
-            <p class="text-gray-800 mt-6" v-html="comment.body" />
+            <!-- eslint-disable vue/no-v-html -->
+            <p class="text-gray-800 mt-6" v-html="DOMPurify.sanitize(comment.body)" />
+            <!--eslint-enable-->
             <div class="flex flex-row gap-4">
               <div class="text-xs text-gray-500 mt-2">{{ comment.createdAtHuman }}</div>
               <a class="text-xs text-gray-500 mt-2" :href="comment.url" target="_blank">View on GitHub</a>
