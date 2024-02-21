@@ -57,3 +57,19 @@ export type CategoryRequest = {
    */
   name: string;
 };
+
+export type PostRequest = {
+  /**
+   * The message to send
+   *
+   * @type {string}
+   */
+  message: string;
+
+  /**
+   * The discussion id where we should post
+   *
+   * @type {string}
+   */
+  discussion: string;
+};

@@ -185,7 +185,37 @@ async function getCategory(data: GithubTypes.CategoryRequest): Promise<string | 
   return filteredCategories.length <= 0 ? undefined : filteredCategories[0].id;
 }
 
-provide(Keys.GithubOAuth, { logout, setup, isLoggedIn, getLoginUri, getDiscussion, getCategory, getRepo });
+/**
+ * Post a message to a given discussion, requires user to be authenticated
+ *
+ * @param {GithubTypes.PostRequest} data
+ */
+async function post(data: GithubTypes.PostRequest): Promise<GithubTypes.CommentResponse | undefined> {
+  const jwt = localStorage.getItem(CONFIG.STORAGE_KEY);
+  if (!jwt) {
+    return undefined;
+  }
+
+  const result = await fetch("http://localhost:3000/api/discussion/post", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: jwt,
+    },
+    body: JSON.stringify(data),
+  }).catch((err) => {
+    console.error(err);
+    return undefined;
+  });
+
+  if (!result || !result.ok || result.status !== 200) {
+    return undefined;
+  }
+
+  return await result.json();
+}
+
+provide(Keys.GithubOAuth, { logout, setup, isLoggedIn, getLoginUri, getDiscussion, getCategory, getRepo, post });
 provide(Keys.GithubUsername, readonly(username));
 provide(Keys.GithubAvatar, readonly(avatar));
 </script>
