@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import { RouterView } from "vue-router";
 import MainNav from "./components/MainNav.vue";
 import WalletSelector from "./components/WalletSelector.vue";
-import GithubAuthState from "./providers/GithubAuthState.vue";
+import GithubDiscussionsApi from "./providers/GithubDiscussionsApi.vue";
 
 const isConnectingWallet = ref(false);
 
@@ -34,7 +34,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <GithubAuthState>
+    <GithubDiscussionsApi>
       <header class="fixed w-full z-100">
         <MainNav @open="isConnectingWallet = true" />
       </header>
@@ -42,7 +42,7 @@ onMounted(() => {
       <div class="pt-28 pl-4 pr-4">
         <RouterView />
       </div>
-    </GithubAuthState>
+    </GithubDiscussionsApi>
   </div>
 </template>
 
