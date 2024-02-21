@@ -48,14 +48,28 @@ const getComments = computed(() => {
     return [];
   }
 
-  return discussion.value.comments.nodes.map((x) => {
+  const comments = discussion.value.comments.nodes.map((x) => {
     return {
       body: x.bodyHTML,
       createdAt: x.createdAt,
+      createdAtHuman: new Date(x.createdAt).toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      }),
       editedAt: x.lastEditedAt,
       author: x.author,
     };
   });
+
+  comments.sort((a, b) => {
+    return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+  });
+
+  return comments;
 });
 
 const getInputPlaceholderText = computed(() => {
@@ -76,9 +90,9 @@ onMounted(async () => {
 
 <template>
   <div>
-    <div class="flex flex-col gap-2 w-full max-w-md">
+    <div class="flex flex-col gap-2 w-full mb-4">
       <label for="markdown" class="font-medium text-gray-700">Leave a Comment</label>
-      <div class="mt-4">
+      <div class="mt-4 w-full">
         <textarea
           id="markdown"
           v-model="commentInput"
@@ -102,8 +116,35 @@ onMounted(async () => {
         <button class="p-2 w-32 bg-green-500 text-white rounded-md text-sm" @click="post">Comment</button>
       </div>
       <div class="font-medium text-gray-700">Comment(s)</div>
-      <div v-for="(comment, index) in getComments" :key="index">
-        <div v-html="comment.body" />
+      <div class="flex flex-col gap-6">
+        <div v-for="(comment, index) in getComments" :key="index" class="flex flex-row shadow-md p-6 rounded">
+          <!-- Avatar, Name, Comment, Time -->
+          <div class="flex flex-col items-start w-full">
+            <a class="flex flex-row flex-grow items-center gap-4" :href="comment.author.url" target="_blank">
+              <img class="w-10 h-10 rounded-full" :src="comment.author.avatarUrl" alt="User Avatar" />
+              <span class="text-gray-600">{{ comment.author.login }}</span>
+            </a>
+            <p class="text-gray-800 mt-6" v-html="comment.body" />
+            <div class="text-xs text-gray-500 mt-2">{{ comment.createdAtHuman }}</div>
+          </div>
+          <!-- Upvote -->
+          <div class="flex flex-col items-center justify-start">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 19V6M5 12l7-7 7 7" />
+            </svg>
+            <div class="text-center text-sm">5</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
