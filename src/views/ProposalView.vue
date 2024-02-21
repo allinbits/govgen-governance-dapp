@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
-import GiscusComments from "../components/GiscusComments.vue";
+import GithubComments from "../components/GithubComments.vue";
 
 const route = useRoute();
 const commentPath = `Proposal #${route.params.id}`;
@@ -8,7 +8,7 @@ const commentPath = `Proposal #${route.params.id}`;
 
 <template>
   <div>
-    <GiscusComments :path="commentPath" />
+    <GithubComments :path="commentPath" />
     {{ route.params.id }}
   </div>
 </template>
