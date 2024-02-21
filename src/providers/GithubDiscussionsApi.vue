@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { provide, readonly, ref } from "vue";
 import * as Keys from "./keys";
-import { UserResponse } from "../types/comments";
+import * as GithubTypes from "../types/github/index";
 
 const CONFIG = {
   ENDPOINT: `http://localhost:3000`,
   STORAGE_KEY: `github-comment-jwt`,
+  REPO: `stuyk/giscus-test`,
 };
 
 let username = ref<string>();
@@ -34,7 +35,7 @@ async function updateUser() {
     return;
   }
 
-  const data: UserResponse = await res.json();
+  const data: GithubTypes.UserResponse = await res.json();
   username.value = data.login;
   avatar.value = data.avatar_url;
 }
@@ -107,7 +108,57 @@ function getLoginUri() {
   return CONFIG.ENDPOINT + "/api/login";
 }
 
-provide(Keys.GithubOAuth, { logout, setup, isLoggedIn, getLoginUri });
+function getRepo() {
+  return CONFIG.REPO;
+}
+
+async function getDiscussion(data: GithubTypes.DiscussionRequest): Promise<GithubTypes.DiscussionResponse | undefined> {
+  const result = await fetch("http://localhost:3000/api/discussion", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).catch((err) => {
+    console.error(err);
+    return undefined;
+  });
+
+  if (!result || !result.ok || result.status !== 200) {
+    return undefined;
+  }
+
+  return await result.json();
+}
+
+async function getCategory(data: GithubTypes.CategoryRequest): Promise<string | undefined> {
+  const result = await fetch("http://localhost:3000/api/repo/categories", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).catch((err) => {
+    console.error(err);
+    return undefined;
+  });
+
+  if (!result || !result.ok || result.status !== 200) {
+    return undefined;
+  }
+
+  const results: GithubTypes.CategoriesResponse = await result.json();
+
+  const { discussionCategories } = results.data.search.nodes[0];
+  if (!discussionCategories) {
+    return undefined;
+  }
+
+  const filteredCategories = discussionCategories.nodes.filter((x) => x.name.toLowerCase().includes(data.name));
+  return filteredCategories.length <= 0 ? undefined : filteredCategories[0].id;
+}
+
+provide(Keys.GithubOAuth, { logout, setup, isLoggedIn, getLoginUri, getDiscussion, getCategory, getRepo });
 provide(Keys.GithubUsername, readonly(username));
 provide(Keys.GithubAvatar, readonly(avatar));
 </script>

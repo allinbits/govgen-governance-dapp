@@ -1,4 +1,4 @@
-import { UserResponse } from "../types/comments";
+import * as GithubTypes from "../types/github/index";
 
 export const GithubOAuth = Symbol("GITHUB_OAUTH_PROVIDER");
 export const GithubUsername = Symbol("GITHUB_USERNAME");
@@ -9,5 +9,7 @@ export type IGithubOAuth = {
   logout(): void;
   isLoggedIn(): boolean;
   getLoginUri(): string;
-  state: UserResponse | undefined;
+  getRepo(): string;
+  getDiscussion(data: GithubTypes.DiscussionRequest): Promise<GithubTypes.DiscussionResponse>;
+  getCategory(data: GithubTypes.CategoryRequest): Promise<string>;
 };

@@ -1,12 +1,20 @@
 <script lang="ts" setup>
 import { inject, onMounted, ref, computed } from "vue";
 import * as Keys from "../providers/keys";
+import * as GithubTypes from "../types/github/index";
 
-const { setup, logout, isLoggedIn, getLoginUri } = inject(Keys.GithubOAuth) as Keys.IGithubOAuth;
+const props = defineProps<{ term: string }>();
+
+const { setup, logout, isLoggedIn, getLoginUri, getRepo, getDiscussion, getCategory } = inject(
+  Keys.GithubOAuth,
+) as Keys.IGithubOAuth;
+
 const username = ref(inject<string>(Keys.GithubUsername));
+const category = ref<string>();
 // const avatar = inject<string>(Keys.GithubAvatar);
 
 const commentInput = ref<string>("");
+const discussion = ref<GithubTypes.DiscussionResponse>();
 
 function handleLogin() {
   localStorage.setItem("previous-link", `${window.location.origin}${window.location.pathname}`);
@@ -21,6 +29,35 @@ function post() {
   console.log(commentInput.value);
 }
 
+async function refreshDiscussion() {
+  if (!category.value) {
+    return;
+  }
+
+  discussion.value = await getDiscussion({
+    repo: getRepo(),
+    count: 100,
+    term: props.term,
+    category: category.value,
+    upsert: true,
+  });
+}
+
+const getComments = computed(() => {
+  if (!discussion.value) {
+    return [];
+  }
+
+  return discussion.value.comments.nodes.map((x) => {
+    return {
+      body: x.bodyHTML,
+      createdAt: x.createdAt,
+      editedAt: x.lastEditedAt,
+      author: x.author,
+    };
+  });
+});
+
 const getInputPlaceholderText = computed(() => {
   if (!isLoggedIn()) {
     return "Login to reply...";
@@ -29,15 +66,18 @@ const getInputPlaceholderText = computed(() => {
   return `Posting as ${username.value}...`;
 });
 
-onMounted(() => {
+onMounted(async () => {
   setup();
+
+  category.value = await getCategory({ repo: getRepo(), name: "proposal" });
+  refreshDiscussion();
 });
 </script>
 
 <template>
   <div>
-    <div class="w-full max-w-md">
-      <label for="markdown" class="font-medium text-gray-700">Comment(s)</label>
+    <div class="flex flex-col gap-2 w-full max-w-md">
+      <label for="markdown" class="font-medium text-gray-700">Leave a Comment</label>
       <div class="mt-4">
         <textarea
           id="markdown"
@@ -60,6 +100,10 @@ onMounted(() => {
           Logout {{ username }}
         </button>
         <button class="p-2 w-32 bg-green-500 text-white rounded-md text-sm" @click="post">Comment</button>
+      </div>
+      <div class="font-medium text-gray-700">Comment(s)</div>
+      <div v-for="(comment, index) in getComments" :key="index">
+        <div v-html="comment.body" />
       </div>
     </div>
   </div>
