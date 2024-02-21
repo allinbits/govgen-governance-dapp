@@ -81,7 +81,7 @@ const getComments = computed(() => {
     return [];
   }
 
-  const comments = discussion.value.comments.nodes.map((x) => {
+  let comments = discussion.value.comments.nodes.map((x) => {
     const upvote = x.reactionGroups.find((x) => x.content == "THUMBS_UP");
 
     return {
@@ -105,6 +105,8 @@ const getComments = computed(() => {
   comments.sort((a, b) => {
     return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
   });
+
+  comments = comments.reverse();
 
   return comments;
 });
@@ -188,7 +190,7 @@ onMounted(async () => {
           </button>
         </template>
       </div>
-      <div class="font-medium text-gray-700">Comment(s)</div>
+      <div class="font-medium text-gray-700">Latest Comment(s)</div>
       <div class="flex flex-col gap-6">
         <div v-for="(comment, index) in getComments" :key="index" class="flex flex-row shadow-md p-6 rounded">
           <!-- Avatar, Name, Comment, Time -->
