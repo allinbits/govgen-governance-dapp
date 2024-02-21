@@ -8,5 +8,6 @@ export type IGithubOAuth = {
   setup(): void;
   logout(): void;
   isLoggedIn(): boolean;
+  getLoginUri(): string;
   state: UserResponse | undefined;
 };

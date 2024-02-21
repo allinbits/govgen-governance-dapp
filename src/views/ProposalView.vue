@@ -8,7 +8,7 @@ const commentPath = `Proposal #${route.params.id}`;
 
 <template>
   <div>
+    <div class="mb-2 font-medium">Proposal {{ route.params.id }}</div>
     <GithubComments :path="commentPath" />
-    {{ route.params.id }}
   </div>
 </template>

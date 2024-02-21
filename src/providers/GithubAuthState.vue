@@ -103,7 +103,11 @@ function logout() {
   avatar.value = undefined;
 }
 
-provide(Keys.GithubOAuth, { logout, setup, isLoggedIn });
+function getLoginUri() {
+  return CONFIG.ENDPOINT + "/api/login";
+}
+
+provide(Keys.GithubOAuth, { logout, setup, isLoggedIn, getLoginUri });
 provide(Keys.GithubUsername, readonly(username));
 provide(Keys.GithubAvatar, readonly(avatar));
 </script>
