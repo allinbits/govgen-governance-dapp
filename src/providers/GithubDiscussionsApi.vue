@@ -3,6 +3,9 @@ import { provide, readonly, ref } from "vue";
 import * as Keys from "./keys";
 import * as GithubTypes from "../types/github/index";
 
+// This provider provides prop drilling to all child components
+// Any child component that needs comments can inject the providers at the bottom
+
 const CONFIG = {
   ENDPOINT: `http://localhost:3000`,
   STORAGE_KEY: `github-comment-jwt`,
@@ -97,6 +100,10 @@ async function setup(): Promise<void> {
   return;
 }
 
+/**
+ * Logs the user out, and clears local storage keys
+ *
+ */
 function logout() {
   localStorage.removeItem("previous-link");
   localStorage.removeItem(CONFIG.STORAGE_KEY);
@@ -104,15 +111,30 @@ function logout() {
   avatar.value = undefined;
 }
 
+/**
+ * Returns the endpoint necessary to forward a user to login with GitHub
+ */
 function getLoginUri() {
   return CONFIG.ENDPOINT + "/api/login";
 }
 
+/**
+ * Returns the repository used for this configuration.
+ */
 function getRepo() {
   return CONFIG.REPO;
 }
 
+/**
+ * Returns full discussion info, or creates a discussion if a `term` does not exist.
+ *
+ * A `term` is also known as a `title`.
+ *
+ * @param {GithubTypes.DiscussionRequest} data
+ */
 async function getDiscussion(data: GithubTypes.DiscussionRequest): Promise<GithubTypes.DiscussionResponse | undefined> {
+  data.repo = getRepo();
+
   const result = await fetch("http://localhost:3000/api/discussion", {
     method: "POST",
     headers: {
@@ -131,6 +153,11 @@ async function getDiscussion(data: GithubTypes.DiscussionRequest): Promise<Githu
   return await result.json();
 }
 
+/**
+ * Returns a category id that matches the name provided
+ *
+ * @param {GithubTypes.CategoryRequest} data
+ */
 async function getCategory(data: GithubTypes.CategoryRequest): Promise<string | undefined> {
   const result = await fetch("http://localhost:3000/api/repo/categories", {
     method: "POST",

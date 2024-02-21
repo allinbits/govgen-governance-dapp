@@ -1,13 +1,59 @@
 export type DiscussionRequest = {
+  /**
+   * Title of the proposal we are going to create, or read from
+   *
+   * @type {string}
+   */
   term: string;
-  repo: string;
+
+  /**
+   * Number of comments we should fetch
+   *
+   * @type {number}
+   */
   count: number;
+
+  /**
+   * The repository `author/name` on GitHub
+   *
+   * @type {string}
+   */
+  repo?: string;
+
+  /**
+   * Where to begin reading comments from, leave this as `null` for first fetch
+   *
+   * @type {(string | null)}
+   */
   cursor?: string | null;
+
+  /**
+   * Create a discussion automatically on fetch with the GitHub Application
+   *
+   * @type {boolean}
+   */
   upsert?: boolean;
+
+  /**
+   * The category id where we should create discussions, or read a discussion from
+   *
+   * @type {string}
+   */
   category?: string;
 };
 
 export type CategoryRequest = {
+  /**
+   * The repository `author/name` on GitHub
+   *
+   * @type {string}
+   */
   repo: string;
+
+  /**
+   * The name of the category to find
+   *
+   * @type {string}
+   */
   name: string;
 };

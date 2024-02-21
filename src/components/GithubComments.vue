@@ -1,21 +1,52 @@
 <script lang="ts" setup>
-import { inject, onMounted, ref, computed } from "vue";
+import { inject, onMounted, ref, computed, reactive } from "vue";
 import * as Keys from "../providers/keys";
 import * as GithubTypes from "../types/github/index";
 import DOMPurify from "dompurify";
-
-const props = defineProps<{ term: string }>();
 
 const { setup, logout, isLoggedIn, getLoginUri, getRepo, getDiscussion, getCategory } = inject(
   Keys.GithubOAuth,
 ) as Keys.IGithubOAuth;
 
+const props = defineProps<{ term: string }>();
 const username = ref(inject<string>(Keys.GithubUsername));
 const category = ref<string>();
-// const avatar = inject<string>(Keys.GithubAvatar);
-
 const commentInput = ref<string>("");
 const discussion = ref<GithubTypes.DiscussionResponse>();
+const state = reactive({
+  isLoading: false,
+  failedToLoadComments: false,
+});
+
+async function refreshDiscussion() {
+  state.failedToLoadComments = false;
+  state.isLoading = true;
+
+  category.value = await getCategory({ repo: getRepo(), name: "proposal" });
+
+  if (!category.value) {
+    state.failedToLoadComments = true;
+    state.isLoading = false;
+    return;
+  }
+
+  discussion.value = await getDiscussion({
+    repo: getRepo(),
+    count: 100,
+    term: props.term,
+    category: category.value,
+    upsert: true,
+  });
+
+  if (!discussion.value) {
+    state.failedToLoadComments = true;
+    state.isLoading = false;
+    return;
+  }
+
+  state.failedToLoadComments = false;
+  state.isLoading = false;
+}
 
 function handleLogin() {
   localStorage.setItem("previous-link", `${window.location.origin}${window.location.pathname}`);
@@ -28,20 +59,6 @@ function post() {
   }
 
   console.log(commentInput.value);
-}
-
-async function refreshDiscussion() {
-  if (!category.value) {
-    return;
-  }
-
-  discussion.value = await getDiscussion({
-    repo: getRepo(),
-    count: 100,
-    term: props.term,
-    category: category.value,
-    upsert: true,
-  });
 }
 
 const getComments = computed(() => {
@@ -87,15 +104,13 @@ const getInputPlaceholderText = computed(() => {
 
 onMounted(async () => {
   setup();
-
-  category.value = await getCategory({ repo: getRepo(), name: "proposal" });
   refreshDiscussion();
 });
 </script>
 
 <template>
   <div>
-    <div class="flex flex-col gap-2 w-full mb-4">
+    <div class="flex flex-col gap-2 w-full mb-4" v-if="!state.isLoading && !state.failedToLoadComments">
       <label for="markdown" class="font-medium text-gray-700">Leave a Comment</label>
       <div class="mt-4 w-full">
         <textarea
@@ -157,5 +172,48 @@ onMounted(async () => {
         </div>
       </div>
     </div>
+    <div
+      v-if="!state.isLoading && state.failedToLoadComments"
+      class="flex flex-col items-center text-center text-medium font-bold"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M19 6L6 19M6 6l13 13"
+          stroke="#FF0000"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>Failed to Load Comments</span>
+      <button class="p-2 w-32 bg-green-600 text-white rounded-md text-sm mt-2" @click="refreshDiscussion">
+        Retry?
+      </button>
+    </div>
+    <div v-if="state.isLoading" class="flex flex-col text-center text-medium font-bold">
+      <div class="loader" />
+      <span>Loading Comments...</span>
+    </div>
   </div>
 </template>
+
+<style>
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto; /* Center the spinner */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
