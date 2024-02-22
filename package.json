@@ -16,7 +16,6 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@giscus/vue": "^2.4.0",
     "@vitest/coverage-istanbul": "^1.2.2",
     "@vueuse/core": "^10.8.0",
     "dompurify": "^3.0.9",
