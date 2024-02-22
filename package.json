@@ -23,6 +23,7 @@
     "@keplr-wallet/types": "^0.12.69",
     "@vitest/coverage-istanbul": "^1.2.2",
     "@vueuse/core": "^10.8.0",
+    "vite-plugin-node-polyfills": "^0.21.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },
