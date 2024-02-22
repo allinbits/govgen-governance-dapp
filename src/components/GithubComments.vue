@@ -144,7 +144,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <div class="flex flex-col gap-2 w-full mb-4" v-if="!state.isLoading && !state.failedToLoadComments">
+    <div v-if="!state.isLoading && !state.failedToLoadComments" class="flex flex-col gap-2 w-full mb-4">
       <label for="markdown" class="font-medium text-gray-700">Leave a Comment</label>
       <div class="mt-4 w-full">
         <textarea
