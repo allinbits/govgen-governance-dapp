@@ -21,11 +21,11 @@
       "coinDecimals": 6
     }
   ],
-	"stakeCurrency": {
-      "coinDenom": "GovGen",
-      "coinMinimalDenom": "ugovgen",
-      "coinDecimals": 6
-  }, 
+  "stakeCurrency": {
+    "coinDenom": "GovGen",
+    "coinMinimalDenom": "ugovgen",
+    "coinDecimals": 6
+  },
   "feeCurrencies": [
     {
       "coinDenom": "GovGen",
