@@ -135,11 +135,16 @@ function getRepo() {
 async function getDiscussion(data: GithubTypes.DiscussionRequest): Promise<GithubTypes.DiscussionResponse | undefined> {
   data.repo = getRepo();
 
-  const result = await fetch("http://localhost:3000/api/discussion", {
+  const jwt = localStorage.getItem(CONFIG.STORAGE_KEY);
+
+  const result = await fetch(CONFIG.ENDPOINT + "/api/discussion", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: jwt
+      ? {
+          "Content-Type": "application/json",
+          Authorization: jwt,
+        }
+      : { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   }).catch((err) => {
     console.error(err);
@@ -159,7 +164,7 @@ async function getDiscussion(data: GithubTypes.DiscussionRequest): Promise<Githu
  * @param {GithubTypes.CategoryRequest} data
  */
 async function getCategory(data: GithubTypes.CategoryRequest): Promise<string | undefined> {
-  const result = await fetch("http://localhost:3000/api/repo/categories", {
+  const result = await fetch(CONFIG.ENDPOINT + "/api/repo/categories", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -196,7 +201,7 @@ async function post(data: GithubTypes.PostRequest): Promise<GithubTypes.CommentR
     return undefined;
   }
 
-  const result = await fetch("http://localhost:3000/api/discussion/post", {
+  const result = await fetch(CONFIG.ENDPOINT + "/api/discussion/post", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -215,9 +220,50 @@ async function post(data: GithubTypes.PostRequest): Promise<GithubTypes.CommentR
   return await result.json();
 }
 
-provide(Keys.GithubOAuth, { logout, setup, isLoggedIn, getLoginUri, getDiscussion, getCategory, getRepo, post });
+/**
+ * Upvote a message
+ *
+ * @param {GithubTypes.UpvoteRequest} data
+ */
+async function toggleUpvote(data: GithubTypes.UpvoteRequest): Promise<void | undefined> {
+  const jwt = localStorage.getItem(CONFIG.STORAGE_KEY);
+  if (!jwt) {
+    return undefined;
+  }
+
+  const apiPath = data.didUpvote ? "/api/discussion/downvote" : "/api/discussion/upvote";
+  const result = await fetch(CONFIG.ENDPOINT + apiPath, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: jwt,
+    },
+    body: JSON.stringify({ subjectId: data.subjectId }),
+  }).catch((err) => {
+    console.error(err);
+    return undefined;
+  });
+
+  if (!result || !result.ok || result.status !== 200) {
+    return undefined;
+  }
+
+  return await result.json();
+}
+
 provide(Keys.GithubUsername, readonly(username));
 provide(Keys.GithubAvatar, readonly(avatar));
+provide(Keys.GithubOAuth, {
+  logout,
+  setup,
+  isLoggedIn,
+  getLoginUri,
+  getDiscussion,
+  getCategory,
+  getRepo,
+  post,
+  toggleUpvote,
+});
 </script>
 
 <template>

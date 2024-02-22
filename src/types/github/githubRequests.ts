@@ -73,3 +73,19 @@ export type PostRequest = {
    */
   discussion: string;
 };
+
+export type UpvoteRequest = {
+  /**
+   * The ID of the message to upvote
+   *
+   * @type {string}
+   */
+  subjectId: string;
+
+  /**
+   * Has the user already upvoted?
+   *
+   * @type {boolean}
+   */
+  didUpvote: boolean;
+};

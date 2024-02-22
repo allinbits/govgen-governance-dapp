@@ -15,4 +15,5 @@ export type IGithubOAuth = {
   getDiscussion(data: GithubTypes.DiscussionRequest): Promise<OrUndefined<GithubTypes.DiscussionResponse>>;
   getCategory(data: GithubTypes.CategoryRequest): Promise<OrUndefined<string>>;
   post(data: GithubTypes.PostRequest): Promise<OrUndefined<GithubTypes.CommentResponse>>;
+  toggleUpvote(data: GithubTypes.UpvoteRequest): Promise<OrUndefined<GithubTypes.UpvoteResponse>>;
 };

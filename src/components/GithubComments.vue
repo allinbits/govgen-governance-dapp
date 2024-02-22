@@ -4,7 +4,7 @@ import * as Keys from "../providers/keys";
 import * as GithubTypes from "../types/github/index";
 import DOMPurify from "dompurify";
 
-const { setup, logout, isLoggedIn, getLoginUri, getRepo, getDiscussion, getCategory, post } = inject(
+const { setup, logout, isLoggedIn, getLoginUri, getRepo, getDiscussion, getCategory, post, toggleUpvote } = inject(
   Keys.GithubOAuth,
 ) as Keys.IGithubOAuth;
 
@@ -54,7 +54,7 @@ function handleLogin() {
   window.open(getLoginUri(), "_self");
 }
 
-async function makePost() {
+async function createPost() {
   if (!isLoggedIn()) {
     return;
   }
@@ -76,6 +76,21 @@ async function makePost() {
   state.isPosting = false;
 }
 
+async function createUpvote(id: string, hasReacted: boolean) {
+  if (!isLoggedIn()) {
+    return;
+  }
+
+  const response = await toggleUpvote({ subjectId: id, didUpvote: hasReacted });
+  if (!response) {
+    window.alert("Failed to upvote");
+    state.isPosting = false;
+    return;
+  }
+
+  await refreshDiscussion();
+}
+
 const getComments = computed(() => {
   if (!discussion.value) {
     return [];
@@ -85,6 +100,7 @@ const getComments = computed(() => {
     const upvote = x.reactionGroups.find((x) => x.content == "THUMBS_UP");
 
     return {
+      id: x.id,
       body: x.bodyHTML,
       createdAt: x.createdAt,
       createdAtHuman: new Date(x.createdAt).toLocaleDateString(undefined, {
@@ -98,6 +114,7 @@ const getComments = computed(() => {
       editedAt: x.lastEditedAt,
       author: x.author,
       upvotes: upvote ? upvote.users.totalCount : 0,
+      didUpvote: upvote?.viewerHasReacted ? true : false,
       url: x.url,
     };
   });
@@ -184,7 +201,7 @@ onMounted(async () => {
         <template v-else>
           <button
             class="flex p-2 w-32 bg-green-500 text-white rounded-md text-sm items-center justify-center"
-            @click="makePost"
+            @click="createPost"
           >
             Post Comment
           </button>
@@ -193,36 +210,50 @@ onMounted(async () => {
       <div class="font-medium text-gray-700">Latest Comment(s)</div>
       <div class="flex flex-col gap-6">
         <div v-for="(comment, index) in getComments" :key="index" class="flex flex-row shadow-md p-6 rounded">
-          <!-- Avatar, Name, Comment, Time -->
           <div class="flex flex-col items-start w-full">
-            <a class="flex flex-row flex-grow items-center gap-4" :href="comment.author.url" target="_blank">
-              <img class="w-10 h-10 rounded-full" :src="comment.author.avatarUrl" alt="User Avatar" />
-              <span class="text-gray-600">{{ comment.author.login }}</span>
-            </a>
-            <!-- eslint-disable vue/no-v-html -->
-            <p class="text-gray-800 mt-6" v-html="DOMPurify.sanitize(comment.body)" />
-            <!--eslint-enable-->
-            <div class="flex flex-row gap-4">
-              <div class="text-xs text-gray-500 mt-2">{{ comment.createdAtHuman }}</div>
-              <a class="text-xs text-gray-500 mt-2" :href="comment.url" target="_blank">View on GitHub</a>
+            <!-- Header -->
+            <div class="flex flex-row flex-grow items-center gap-4 w-full">
+              <!-- Author -->
+              <a
+                :href="comment.author.url"
+                target="_blank"
+                class="flex items-center gap-4 text-gray-600 hover:opacity-50"
+              >
+                <img class="w-10 h-10 rounded-full" :src="comment.author.avatarUrl" alt="User Avatar" />
+                <div>
+                  {{ comment.author.login }}
+                </div>
+              </a>
+              <!-- Upvote -->
+              <div
+                :class="isLoggedIn() ? ['cursor-pointer'] : []"
+                class="flex flex-col items-center ml-auto hover:opacity-50"
+                @click="createUpvote(comment.id, comment.didUpvote)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 19V6M5 12l7-7 7 7" />
+                </svg>
+                <div class="text-center text-sm">{{ comment.upvotes }}</div>
+              </div>
             </div>
-          </div>
-          <!-- Upvote -->
-          <div class="flex flex-col items-center justify-start">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M12 19V6M5 12l7-7 7 7" />
-            </svg>
-            <div class="text-center text-sm">{{ comment.upvotes }}</div>
+            <!-- eslint-disable vue/no-v-html -->
+            <div class="text-gray-800 mt-6 w-full" v-html="DOMPurify.sanitize(comment.body)" />
+            <!--eslint-enable-->
+            <div class="flex flex-row gap-2 text-xs text-gray-500">
+              <div>{{ comment.createdAtHuman }}</div>
+              <span>&#8212;</span>
+              <a :href="comment.url" target="_blank" class="hover:opacity-50">View on GitHub</a>
+            </div>
           </div>
         </div>
       </div>
