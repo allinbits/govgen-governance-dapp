@@ -74,7 +74,7 @@ const useWalletInstance = () => {
           walletState.address.value = (
             await (window.cosmostation as any).cosmos.request({
               method: "cos_requestAccount",
-              params: { chainName: "cosmoshub-4" },
+              params: { chainName: chainInfo.chainId },
             })
           ).address;
           walletState.loggedIn.value = true;
