@@ -3,8 +3,9 @@ import { ref, onMounted } from "vue";
 import { RouterView } from "vue-router";
 import MainNav from "./components/MainNav.vue";
 import WalletSelector from "./components/WalletSelector.vue";
-import GithubDiscussionsProvider from "./providers/GithubDiscussionsProvider.vue";
+import { useGithubDiscussions } from "./composables/useGithubDiscussions";
 
+const { goToPreviousPath } = useGithubDiscussions();
 const isConnectingWallet = ref(false);
 
 /**
@@ -17,14 +18,7 @@ function handleReroute() {
     return;
   }
 
-  const previousLink = localStorage.getItem("previous-link");
-  if (!previousLink) {
-    return;
-  }
-
-  const newLink = `${previousLink}?${urlParams.toString()}`;
-  localStorage.removeItem("previous-link");
-  window.location.href = newLink;
+  goToPreviousPath(urlParams.get("token"));
 }
 
 onMounted(() => {
@@ -34,15 +28,13 @@ onMounted(() => {
 
 <template>
   <div>
-    <GithubDiscussionsProvider>
-      <header class="fixed w-full z-100">
-        <MainNav @open="isConnectingWallet = true" />
-      </header>
-      <WalletSelector v-if="isConnectingWallet" @close="isConnectingWallet = false" />
-      <div class="pt-28 pl-4 pr-4">
-        <RouterView />
-      </div>
-    </GithubDiscussionsProvider>
+    <header class="fixed w-full z-100">
+      <MainNav @open="isConnectingWallet = true" />
+    </header>
+    <WalletSelector v-if="isConnectingWallet" @close="isConnectingWallet = false" />
+    <div class="pt-28 pl-4 pr-4">
+      <RouterView />
+    </div>
   </div>
 </template>
 

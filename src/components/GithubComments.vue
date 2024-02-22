@@ -1,15 +1,14 @@
 <script lang="ts" setup>
-import { inject, onMounted, ref, computed, reactive } from "vue";
-import * as Keys from "../providers/keys";
-import * as GithubTypes from "../types/github/index";
+import { onMounted, ref, computed, reactive } from "vue";
 import DOMPurify from "dompurify";
+import { useGithubDiscussions } from "../composables/useGithubDiscussions";
+import * as GithubTypes from "../types/github/index";
+import * as Time from "../utility/time";
 
-const { setup, logout, isLoggedIn, getLoginUri, getRepo, getDiscussion, getCategory, post, toggleUpvote } = inject(
-  Keys.GithubOAuth,
-) as Keys.IGithubOAuth;
+const { setup, logout, isLoggedIn, login, getRepo, getDiscussion, getCategory, post, toggleUpvote, username } =
+  useGithubDiscussions();
 
 const props = defineProps<{ term: string }>();
-const username = ref(inject<string>(Keys.GithubUsername));
 const category = ref<string>();
 const commentInput = ref<string>("");
 const discussion = ref<GithubTypes.DiscussionResponse>();
@@ -47,11 +46,6 @@ async function refreshDiscussion() {
 
   state.failedToLoadComments = false;
   state.isLoading = false;
-}
-
-function handleLogin() {
-  localStorage.setItem("previous-link", `${window.location.origin}${window.location.pathname}`);
-  window.open(getLoginUri(), "_self");
 }
 
 async function createPost() {
@@ -103,14 +97,7 @@ const getComments = computed(() => {
       id: x.id,
       body: x.bodyHTML,
       createdAt: x.createdAt,
-      createdAtHuman: new Date(x.createdAt).toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      }),
+      createdAtHuman: Time.formatHuman(x.createdAt),
       editedAt: x.lastEditedAt,
       author: x.author,
       upvotes: upvote ? upvote.users.totalCount : 0,
@@ -120,10 +107,8 @@ const getComments = computed(() => {
   });
 
   comments.sort((a, b) => {
-    return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
-
-  comments = comments.reverse();
 
   return comments;
 });
@@ -159,7 +144,7 @@ onMounted(async () => {
         ></textarea>
       </div>
       <div v-if="!isLoggedIn()" class="flex flex-row justify-between mt-2 gap-4">
-        <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded-md text-sm" @click="handleLogin">
+        <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded-md text-sm" @click="login">
           Login with GitHub
         </button>
       </div>
