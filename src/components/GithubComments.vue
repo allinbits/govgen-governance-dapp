@@ -4,10 +4,11 @@ import DOMPurify from "dompurify";
 import { useGithubDiscussions } from "../composables/useGithubDiscussions";
 import * as GithubTypes from "../types/github/index";
 import * as Time from "../utility/time";
+import { useConfig } from "../composables/useConfig";
 
-const { logout, isLoggedIn, login, getRepo, getDiscussion, getCategory, post, toggleUpvote, username } =
-  useGithubDiscussions();
+const Config = useConfig();
 
+const { logout, isLoggedIn, login, getDiscussion, getCategory, post, toggleUpvote, username } = useGithubDiscussions();
 const props = defineProps<{ term: string }>();
 const category = ref<string>();
 const commentInput = ref<string>("");
@@ -22,7 +23,7 @@ async function refreshDiscussion() {
   state.failedToLoadComments = false;
   state.isLoading = true;
 
-  category.value = await getCategory({ repo: getRepo(), name: "proposal" });
+  category.value = await getCategory({ repo: Config.REPO, name: "proposal" });
 
   if (!category.value) {
     state.failedToLoadComments = true;
@@ -31,7 +32,7 @@ async function refreshDiscussion() {
   }
 
   discussion.value = await getDiscussion({
-    repo: getRepo(),
+    repo: Config.REPO,
     count: 100,
     term: props.term,
     category: category.value,
@@ -49,7 +50,7 @@ async function refreshDiscussion() {
 }
 
 async function createPost() {
-  if (!isLoggedIn()) {
+  if (!isLoggedIn) {
     return;
   }
 
@@ -71,7 +72,7 @@ async function createPost() {
 }
 
 async function createUpvote(id: string, hasReacted: boolean) {
-  if (!isLoggedIn()) {
+  if (!isLoggedIn) {
     return;
   }
 
@@ -114,7 +115,7 @@ const getComments = computed(() => {
 });
 
 const getInputPlaceholderText = computed(() => {
-  if (!isLoggedIn()) {
+  if (!isLoggedIn) {
     return "Login to reply...";
   }
 
@@ -136,11 +137,11 @@ onMounted(refreshDiscussion);
           name="markdown"
           rows="6"
           maxlength="65536"
-          :disabled="!isLoggedIn()"
+          :disabled="!isLoggedIn"
           class="shadow-sm outline-none block w-full sm:text-sm border-gray-300 rounded-md p-4"
         ></textarea>
       </div>
-      <div v-if="!isLoggedIn()" class="flex flex-row justify-between mt-2 gap-4">
+      <div v-if="!isLoggedIn" class="flex flex-row justify-between mt-2 gap-4">
         <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded-md text-sm" @click="login">
           Login with GitHub
         </button>
@@ -208,7 +209,7 @@ onMounted(refreshDiscussion);
               </a>
               <!-- Upvote -->
               <div
-                :class="isLoggedIn() ? ['cursor-pointer'] : []"
+                :class="isLoggedIn ? ['cursor-pointer'] : []"
                 class="flex flex-col items-center ml-auto hover:opacity-50"
                 @click="createUpvote(comment.id, comment.didUpvote)"
               >

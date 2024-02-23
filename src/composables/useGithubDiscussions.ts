@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useStorage } from "@vueuse/core";
 import { useConfig } from "./useConfig";
 import * as GithubTypes from "../types/github/index";
@@ -7,6 +7,7 @@ import { useRoute, useRouter } from "vue-router";
 const config = useConfig();
 const username = ref<string>();
 const avatar = ref<string>();
+const isLoggedIn = computed(() => typeof username.value !== "undefined");
 const storedJwtToken = useStorage<string>(config.STORAGE_KEY, null);
 const storedPreviousPath = useStorage<string>(config.PREVIOUS_LINK_KEY, null);
 
@@ -98,22 +99,6 @@ export const useGithubDiscussions = () => {
   };
 
   /**
-   * Returns whether the user is logged in with a GitHub account or not
-   *
-   * @return {boolean}
-   */
-  const isLoggedIn = (): boolean => {
-    return typeof username.value === "string";
-  };
-
-  /**
-   * Returns the repository used for this configuration.
-   */
-  const getRepo = (): string => {
-    return config.REPO;
-  };
-
-  /**
    * Returns full discussion info, or creates a discussion if a `term` does not exist.
    *
    * A `term` is also known as a `title`.
@@ -123,7 +108,7 @@ export const useGithubDiscussions = () => {
   const getDiscussion = async (
     data: GithubTypes.DiscussionRequest,
   ): Promise<GithubTypes.DiscussionResponse | undefined> => {
-    data.repo = getRepo();
+    data.repo = config.REPO;
 
     const result = await fetch(config.ENDPOINT + "/api/discussion", {
       method: "POST",
@@ -260,7 +245,6 @@ export const useGithubDiscussions = () => {
     getCategory,
     getDiscussion,
     goToPreviousPath,
-    getRepo,
     login,
     logout,
     post,
