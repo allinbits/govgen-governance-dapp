@@ -233,7 +233,6 @@ export const useGithubDiscussions = () => {
       return;
     }
 
-    // Can't use 'useRouter' here because it is not a functional component, nor a
     router.replace(storedPreviousPath.value);
     storedPreviousPath.value = null;
   };
