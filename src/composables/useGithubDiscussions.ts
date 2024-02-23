@@ -15,12 +15,10 @@ const storedPreviousPath = useStorage<string>(config.PREVIOUS_LINK_KEY, null);
  * Propogate the username, and verify the token is valid.
  */
 const updateUser = async () => {
-  // Check if token already exists
   if (!storedJwtToken.value) {
     return;
   }
 
-  // Verify token
   const res = await fetch(config.ENDPOINT + `/api/user`, {
     headers: { Authorization: storedJwtToken.value },
     method: "GET",
@@ -84,7 +82,6 @@ export const useGithubDiscussions = () => {
 
   /**
    * Logs the user out, and clears local storage keys
-   *
    */
   const logout = () => {
     storedPreviousPath.value = null;
@@ -93,6 +90,9 @@ export const useGithubDiscussions = () => {
     avatar.value = undefined;
   };
 
+  /**
+   * Forces the user to login through GitHub oAuth Provider
+   */
   const login = () => {
     storedPreviousPath.value = `${route.path}`;
     window.open(config.ENDPOINT + "/api/login", "_self");
