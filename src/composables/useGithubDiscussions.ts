@@ -2,7 +2,7 @@ import { ref } from "vue";
 import { useStorage } from "@vueuse/core";
 import { useConfig } from "./useConfig";
 import * as GithubTypes from "../types/github/index";
-import router from "../router/index";
+import { useRoute, useRouter } from "vue-router";
 
 const config = useConfig();
 const username = ref<string>();
@@ -39,6 +39,9 @@ const updateUser = async () => {
 };
 
 export const useGithubDiscussions = () => {
+  const router = useRouter();
+  const route = useRoute();
+
   /**
    * If a temporary token is passed via the URL Search Params we do the following
    * 1. Exchange the temporary token for a jwt token
@@ -49,8 +52,7 @@ export const useGithubDiscussions = () => {
    * If there is not a token passed, we check local storage, and verify
    */
   const setup = async (): Promise<void> => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
+    const token = route.query.token as string | null;
 
     // Check the URL Params for `token` and exchange temporary token for JWT for storage
     if (token) {
@@ -68,23 +70,11 @@ export const useGithubDiscussions = () => {
 
       storedJwtToken.value = await res.text();
 
-      // Rewrite URL in bar, and remove temporary token
-      urlParams.delete("token");
-      if (urlParams.size >= 2) {
-        window.history.replaceState(
-          {},
-          "",
-          `${window.location.origin}${window.location.pathname}?${urlParams.toString()}${window.location.hash}`,
-        );
-      } else {
-        window.history.replaceState(
-          {},
-          "",
-          `${window.location.origin}${window.location.pathname}${window.location.hash}`,
-        );
-      }
+      const currentQuery = { ...route.query };
+      delete currentQuery.token;
 
       updateUser();
+      goToPreviousPath();
       return;
     }
 
@@ -103,7 +93,7 @@ export const useGithubDiscussions = () => {
   };
 
   const login = () => {
-    storedPreviousPath.value = `${window.location.pathname}`;
+    storedPreviousPath.value = `${route.path}`;
     window.open(config.ENDPOINT + "/api/login", "_self");
   };
 
@@ -253,17 +243,13 @@ export const useGithubDiscussions = () => {
    * @param {(string | null)} token
    * @return
    */
-  const goToPreviousPath = (token: string | null) => {
+  const goToPreviousPath = async () => {
     if (!storedPreviousPath.value) {
       return;
     }
 
-    if (!token) {
-      storedPreviousPath.value = null;
-      return;
-    }
-
-    router.replace(storedPreviousPath.value + `?token=${token}`);
+    // Can't use 'useRouter' here because it is not a functional component, nor a
+    router.replace(storedPreviousPath.value);
     storedPreviousPath.value = null;
   };
 

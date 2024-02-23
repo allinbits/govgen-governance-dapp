@@ -5,7 +5,7 @@ import { useGithubDiscussions } from "../composables/useGithubDiscussions";
 import * as GithubTypes from "../types/github/index";
 import * as Time from "../utility/time";
 
-const { setup, logout, isLoggedIn, login, getRepo, getDiscussion, getCategory, post, toggleUpvote, username } =
+const { logout, isLoggedIn, login, getRepo, getDiscussion, getCategory, post, toggleUpvote, username } =
   useGithubDiscussions();
 
 const props = defineProps<{ term: string }>();
@@ -121,10 +121,7 @@ const getInputPlaceholderText = computed(() => {
   return `Posting as ${username.value}...`;
 });
 
-onMounted(async () => {
-  setup();
-  refreshDiscussion();
-});
+onMounted(refreshDiscussion);
 </script>
 
 <template>
