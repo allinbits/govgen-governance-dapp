@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "lint": "eslint -c .eslintrc.cjs \"./{tests,src}/**/*.{ts,js,tsx,vue}\" --no-error-on-unmatched-pattern --ignore-path .gitignore",
-    "lint:fix": "eslint -c .eslintrc.cjs \"./{tests,src}/**/*.{ts,js,tsx,vue}\" --fix --no-error-on-unmatched-pattern --ignore-path .gitignore",
+    "lint": "eslint -c .eslintrc.cjs \"./{tests,src}/**/*.{ts,js,tsx,vue,json}\" --no-error-on-unmatched-pattern --ignore-path .gitignore",
+    "lint:fix": "eslint -c .eslintrc.cjs \"./{tests,src}/**/*.{ts,js,tsx,vue,json}\" --fix --no-error-on-unmatched-pattern --ignore-path .gitignore",
     "preview": "vite preview",
     "test:e2e:serve": "serve -s dist -l 8080",
     "test:e2e": "npx playwright install && playwright test",
@@ -16,8 +16,14 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@cosmjs/proto-signing": "^0.32.2",
+    "@cosmjs/stargate": "^0.32.2",
+    "@cosmostation/cosmos-client": "^0.0.5",
     "@giscus/vue": "^2.4.0",
+    "@keplr-wallet/types": "^0.12.69",
     "@vitest/coverage-istanbul": "^1.2.2",
+    "@vueuse/core": "^10.8.0",
+    "vite-plugin-node-polyfills": "^0.21.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },

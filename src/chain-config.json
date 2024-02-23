@@ -1,0 +1,36 @@
+{
+  "rpc": "http://167.99.249.42:26657/",
+  "rest": "http://167.99.249.42:1317/",
+  "chainId": "govgen-devnet-1",
+  "chainName": "GovGen DevNet",
+  "bip44": {
+    "coinType": 118
+  },
+  "bech32Config": {
+    "bech32PrefixAccAddr": "govgen",
+    "bech32PrefixAccPub": "govgenpub",
+    "bech32PrefixValAddr": "govgenvaloper",
+    "bech32PrefixValPub": "govgenvaloperpub",
+    "bech32PrefixConsAddr": "govgenvalcons",
+    "bech32PrefixConsPub": "govgenvalconspub"
+  },
+  "currencies": [
+    {
+      "coinDenom": "GovGen",
+      "coinMinimalDenom": "ugovgen",
+      "coinDecimals": 6
+    }
+  ],
+  "stakeCurrency": {
+    "coinDenom": "GovGen",
+    "coinMinimalDenom": "ugovgen",
+    "coinDecimals": 6
+  },
+  "feeCurrencies": [
+    {
+      "coinDenom": "GovGen",
+      "coinMinimalDenom": "ugovgen",
+      "coinDecimals": 6
+    }
+  ]
+}
