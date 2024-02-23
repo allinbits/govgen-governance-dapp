@@ -1,4 +1,9 @@
 export type UserResponse = {
+  /**
+   * Username
+   *
+   * @type {string}
+   */
   login: string;
   id: number;
   node_id: string;

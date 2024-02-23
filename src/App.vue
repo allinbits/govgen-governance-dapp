@@ -1,34 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { RouterView } from "vue-router";
 import MainNav from "./components/MainNav.vue";
 import WalletSelector from "./components/WalletSelector.vue";
+import { useGithubDiscussions } from "./composables/useGithubDiscussions";
 
 const isConnectingWallet = ref(false);
 
-/**
- * When the user is redirected to the main site, we use a 'previous-link' to restore their session
- * and pass the token into the GitHub comment component which stores our session.
- */
-function handleOAuth2Token() {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (!urlParams.has("token")) {
-    return;
-  }
-
-  const previousLink = localStorage.getItem("previous-link");
-  if (!previousLink) {
-    return;
-  }
-
-  const newLink = `${previousLink}?${urlParams.toString()}`;
-  localStorage.removeItem("previous-link");
-  window.location.href = newLink;
-}
-
-onMounted(() => {
-  handleOAuth2Token();
-});
+useGithubDiscussions().setup();
 </script>
 
 <template>

@@ -3,12 +3,12 @@ import { useRoute } from "vue-router";
 import GithubComments from "../components/GithubComments.vue";
 
 const route = useRoute();
-const commentPath = `Proposal #${route.params.id}`;
+const term = `Proposal #${route.params.id}`;
 </script>
 
 <template>
   <div>
-    <GithubComments :path="commentPath" />
-    {{ route.params.id }}
+    <div class="mb-2 font-medium">Proposal {{ route.params.id }}</div>
+    <GithubComments :term="term" />
   </div>
 </template>
