@@ -1,0 +1,5 @@
+query Balance($address: String!) {
+  action_account_balance(address: $address) {
+    coins
+	}	
+}
