@@ -32,6 +32,9 @@ dependencies:
   '@vueuse/core':
     specifier: ^10.8.0
     version: 10.8.0(vue@3.4.15)
+  cosmjs-types:
+    specifier: ^0.9.0
+    version: 0.9.0
   graphql:
     specifier: ^16.8.1
     version: 16.8.1
@@ -4181,6 +4184,7 @@ packages:
       react: 16.14.0
       scheduler: 0.19.1
     dev: false
+    bundledDependencies: false
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -4197,6 +4201,7 @@ packages:
       object-assign: 4.1.1
       prop-types: 15.8.1
     dev: false
+    bundledDependencies: false
 
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}

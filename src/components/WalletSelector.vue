@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { Wallets, useWallet } from "../composables/useWallet";
 import AddressBalance from "./AddressBalance.vue";
+import { useProposals } from "../composables/useProposals";
 
 const emits = defineEmits<{ (e: "close"): void }>();
 const { connect, signOut, address, used, loggedIn } = useWallet();
+const { createProposal } = useProposals();
 </script>
 <template>
   <div class="flex mt-24 justify-center fixed top-0 w-full">
@@ -18,6 +20,9 @@ const { connect, signOut, address, used, loggedIn } = useWallet();
       <button @click="connect(Wallets.keplr)">Keplr</button>
       <button @click="connect(Wallets.leap)">Leap</button>
       <button @click="connect(Wallets.cosmostation)">cosmostation</button>
+      <button @click="createProposal({ title: 'A test proposal', descr: 'Test proposal description' })">
+        Create proposal
+      </button>
       <button @click="signOut()">SignOut</button>
       <button @click="emits('close')">Close</button>
     </div>
