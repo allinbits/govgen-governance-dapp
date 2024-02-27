@@ -212,8 +212,8 @@ onMounted(refreshLinks);
         ></textarea>
         <button
           class="px-4 py-2 bg-green-600 text-white rounded-md text-sm"
-          @click="createPost"
           :disabled="state.isPosting"
+          @click="createPost"
         >
           Post
         </button>
@@ -249,7 +249,7 @@ onMounted(refreshLinks);
             <!-- eslint-disable vue/no-v-html -->
             <div class="text-gray-800 mt-6 w-full flex-grow" v-html="DOMPurify.sanitize(comment.body)" />
             <!--eslint-enable-->
-            <div class="flex flex-row justify-between gap-2 text-xs text-gray-500 w-full">
+            <div class="flex flex-row justify-between gap-2 text-xs text-gray-500 w-full mt-4">
               <a :href="comment.author.url" target="_blank" class="text-gray-600 hover:opacity-50">
                 {{ comment.author.login }}
               </a>

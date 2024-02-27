@@ -16,7 +16,7 @@ useGithubDiscussions().setup();
     <header class="fixed w-full z-100">
       <MainNav @open="isConnectingWallet = true" />
     </header>
-    <ModalWrap @back="isConnectingWallet = false" :visible="isConnectingWallet">
+    <ModalWrap :visible="isConnectingWallet" @back="isConnectingWallet = false">
       <WalletSelector />
     </ModalWrap>
     <div class="pt-28 pl-4 pr-4">
