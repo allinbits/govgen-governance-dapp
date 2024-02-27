@@ -115,7 +115,7 @@ const getComments = computed(() => {
 });
 
 const getInputPlaceholderText = computed(() => {
-  if (!isLoggedIn) {
+  if (!isLoggedIn.value) {
     return "Login to reply...";
   }
 

@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import GithubComments from "../components/GithubComments.vue";
+import GithubLinks from "../components/GithubLinks.vue";
 
 const route = useRoute();
-const term = `Proposal #${route.params.id}`;
+const proposalTerm = `Proposal #${route.params.id}`;
+const linksTerm = `Links #${route.params.id}`;
 </script>
 
 <template>
   <div>
-    <div class="mb-2 font-medium">Proposal {{ route.params.id }}</div>
-    <GithubComments :term="term" />
+    <div class="mb-2 font-medium text-3xl">Proposal {{ route.params.id }}</div>
+    <GithubLinks :term="linksTerm" />
+    <GithubComments :term="proposalTerm" />
   </div>
 </template>

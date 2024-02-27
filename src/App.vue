@@ -4,6 +4,7 @@ import { RouterView } from "vue-router";
 import MainNav from "./components/MainNav.vue";
 import WalletSelector from "./components/WalletSelector.vue";
 import { useGithubDiscussions } from "./composables/useGithubDiscussions";
+import ModalWrap from "./components/ModalWrap.vue";
 
 const isConnectingWallet = ref(false);
 
@@ -15,7 +16,9 @@ useGithubDiscussions().setup();
     <header class="fixed w-full z-100">
       <MainNav @open="isConnectingWallet = true" />
     </header>
-    <WalletSelector v-if="isConnectingWallet" @close="isConnectingWallet = false" />
+    <ModalWrap @back="isConnectingWallet = false" :visible="isConnectingWallet">
+      <WalletSelector />
+    </ModalWrap>
     <div class="pt-28 pl-4 pr-4">
       <RouterView />
     </div>
