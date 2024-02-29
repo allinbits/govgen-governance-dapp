@@ -52,6 +52,9 @@ dependencies:
     version: 4.2.5(vue@3.4.15)
 
 devDependencies:
+  '@atomone/govgen-types':
+    specifier: ^0.1.0
+    version: 0.1.0
   '@playwright/test':
     specifier: ^1.41.2
     version: 1.41.2
@@ -181,6 +184,10 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
     dev: false
+
+  /@atomone/govgen-types@0.1.0:
+    resolution: {integrity: sha512-mio1IlUIFGl4yEF6GcXKgVgR5eR+MGL57kcm2kUcLUuER4IeIoTRebltKEUFcvzB6eyXwQAYWDFjcfGWljp0xw==}
+    dev: true
 
   /@babel/code-frame@7.23.5:
     resolution: {integrity: sha512-CgH3s1a96LipHCmSUmYFPwY7MNx8C3avkq7i4Wl3cfa662ldtUe4VM1TPXX70pfmrlWTb6jLqTYrZyT2ZTJBgA==}
