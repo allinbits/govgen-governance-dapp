@@ -60,7 +60,7 @@ export const useProposals = () => {
       value: {
         proposalId: voteWeighted.proposalId,
         voter: address.value,
-        option: voteWeighted.options,
+        options: voteWeighted.options,
       },
     };
     const result = await sendTx([VoteWeighted]);
