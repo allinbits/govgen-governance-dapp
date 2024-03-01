@@ -3,6 +3,7 @@ import proposalsQuery from "../graphql/proposals.graphql";
 import proposalQuery from "../graphql/proposal.graphql";
 import balanceQuery from "../graphql/balance.graphql";
 import voteHistoryQuery from "../graphql/voteHistory.graphql";
+import proposalTalliesQuery from "../graphql/proposalTallies.graphql";
 
 export const useChainData = () => {
   const getBalance = (address: string) => {
@@ -21,5 +22,9 @@ export const useChainData = () => {
     const { result } = useQuery(voteHistoryQuery, { variables: { address } });
     return result;
   };
-  return { getBalance, getProposals, getProposal, getVoteHistory };
+  const getProposalTallies = (proposal_id: number) => {
+    const { result } = useQuery(proposalTalliesQuery, { variables: { id: proposal_id } }, { pollInterval: 5000 });
+    return result;
+  };
+  return { getBalance, getProposals, getProposal, getVoteHistory, getProposalTallies };
 };
