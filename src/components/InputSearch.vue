@@ -1,21 +1,30 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, useSlots } from "vue";
 
-const props = defineProps<{ text: string }>();
-const emits = defineEmits<{ (e: "submit", content: string): void; (e: "onUpdate", content: string): void }>();
+const text = defineModel({ required: true });
+const slots = useSlots();
+const input = ref();
+const focused = ref(false);
 
-const text = ref<string>(props.text);
+function focus() {
+  input.value.focus();
+  focused.value = true;
+}
+
+function unfocus() {
+  focused.value = false;
+}
 </script>
 
 <template>
-  <div class="flex flex-row gap-3">
-    <div>Icon</div>
-    <input
-      type="text"
-      placeholder="Search Proposal"
-      v-model="text"
-      @keyup.enter="emits('submit', props.text)"
-      @input="emits('onUpdate', text)"
-    />
+  <div
+    @click="focus"
+    class="flex flex-row gap-3 p-4 items-center border border-transparent"
+    :class="focused ? ['border-gray-600'] : ['']"
+  >
+    <div class="pr-2" v-if="slots.default">
+      <slot></slot>
+    </div>
+    <input ref="input" type="text" placeholder="Search Proposal" v-model="text" class="outline-none" @blur="unfocus" />
   </div>
 </template>
