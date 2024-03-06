@@ -13,7 +13,7 @@ import IconTwitter from "./icons/IconTwitter.vue";
       <!-- Text -->
       <span>Be a part of the conversation</span>
       <!-- Footer Social Links-->
-      <div class="flex flex-row gap-4 fill-grey-100">
+      <div class="flex flex-row gap-4 [&>*]:text-grey-100 [&>*]:fill-current">
         <a href="#" class="hover:fill-grey-50"><IconTwitter /></a>
         <a href="#" class="hover:fill-grey-50"><IconDiscord /></a>
         <a href="#" class="hover:fill-grey-50"><IconTelegram /></a>

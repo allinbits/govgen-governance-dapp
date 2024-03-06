@@ -19,7 +19,7 @@ import ProposalCard from "../components/ProposalCard.vue";
       </div>
     </div>
     <div class="grid grid-cols-4 gap-6 mt-[72px]">
-      <ProposalCard v-for="(proposal, index) in 12" :key="index">
+      <ProposalCard v-for="(proposal, index) in 12" :key="index" link="#">
         <template v-slot:header>Header</template>
         <template v-slot:number>#{{ index }}</template>
         <div>Development Approval Request for the AtomOne Alignment Treasury</div>
