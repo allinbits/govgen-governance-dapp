@@ -19,12 +19,19 @@ function unfocus() {
 <template>
   <div
     @click="focus"
-    class="flex flex-row gap-3 p-4 items-center border border-transparent"
-    :class="focused ? ['border-gray-600'] : ['']"
+    class="flex flex-row gap-2 p-4 items-center border border-grey-200 bg-grey-300 rounded hover:border-grey-100"
+    :class="focused ? ['!border-grey-50'] : ['']"
   >
-    <div class="pr-2" v-if="slots.default">
+    <div class="flex w-4 h-4 text-grey-100" v-if="slots.default">
       <slot></slot>
     </div>
-    <input ref="input" type="text" placeholder="Search Proposal" v-model="text" class="outline-none" @blur="unfocus" />
+    <input
+      ref="input"
+      type="text"
+      placeholder="Search Proposal"
+      v-model="text"
+      class="outline-none bg-transparent placeholder:text-grey-100 items-center text-200"
+      @blur="unfocus"
+    />
   </div>
 </template>
