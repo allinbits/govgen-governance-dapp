@@ -19,7 +19,7 @@ function unfocus() {
 <template>
   <div
     @click="focus"
-    class="flex flex-row gap-2 p-4 items-center border border-grey-200 bg-grey-300 rounded hover:border-grey-100"
+    class="flex flex-row gap-2 p-4 items-center border border-grey-200 bg-grey-300 rounded hover:border-grey-100 cursor-text"
     :class="focused ? ['!border-grey-50'] : ['']"
   >
     <div class="flex w-4 h-4 text-grey-100" v-if="slots.default">
