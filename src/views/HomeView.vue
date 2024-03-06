@@ -1,9 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ChainSection from "../components/ChainSection.vue";
+</script>
 
 <template>
   <div>
-    <header>
-      <div class="text-lg font-bold">Content</div>
-    </header>
+    <ChainSection />
   </div>
 </template>

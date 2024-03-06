@@ -1,3 +1,31 @@
 <script lang="ts" setup></script>
 
-<template></template>
+<template>
+  <div class="flex flex-row gap-4 items-center py-[72px] border-b border-grey-300">
+    <img loading="lazy" src="/images/chain-icon.svg" class="self-start mt-3 w-14 aspect-square" />
+    <div class="flex flex-col gap-8">
+      <!-- Chain Title -->
+      <div class="font-termina text-[72px] font-semibold leading-[80px]">GovGen</div>
+      <!-- Chain Links -->
+      <div class="flex flex-row gap-6 text-grey-100">
+        <a href="https://govgen.io" target="_blank" class="hover:text-grey-50">
+          <span class="pr-3">Icon</span>Official Website
+        </a>
+        <span>|</span>
+        <div class="flex flex-row gap-4">
+          <a href="#" class="hover:text-grey-50">Twitter</a>
+          <a href="#" class="hover:text-grey-50">Discord</a>
+          <a href="#" class="hover:text-grey-50">Telegram</a>
+          <a href="#" class="hover:text-grey-50">Github</a>
+          <a href="#" class="hover:text-grey-50">LinkedIn</a>
+        </div>
+      </div>
+      <!-- Chain Description -->
+      <div class="text-grey-100 text-300 w-[656px] font-interVar font-normal text-left">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut ultrices mauris, et sollicitudin enim.
+        Vestibulum eget viverra elit. Mauris at turpis luctus, malesuada sapien ultricies, molestie nisi. Ut viverra
+        volutpat nibh vitae porttitor.
+      </div>
+    </div>
+  </div>
+</template>
