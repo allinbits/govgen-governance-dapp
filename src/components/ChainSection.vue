@@ -12,6 +12,7 @@
           <span class="pr-3">Icon</span>Official Website
         </a>
         <span>|</span>
+        <!-- Chain Socials -->
         <div class="flex flex-row gap-4">
           <a href="#" class="hover:text-grey-50">Twitter</a>
           <a href="#" class="hover:text-grey-50">Discord</a>
