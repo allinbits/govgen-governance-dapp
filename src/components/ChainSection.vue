@@ -1,8 +1,15 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import IconChainLogo from "./icons/IconChainLogo.vue";
+import IconDiscord from "./icons/IconDiscord.vue";
+import IconGithub from "./icons/IconGithub.vue";
+import IconLinkedIn from "./icons/IconLinkedIn.vue";
+import IconTelegram from "./icons/IconTelegram.vue";
+import IconTwitter from "./icons/IconTwitter.vue";
+</script>
 
 <template>
   <div class="flex flex-row gap-4 items-center py-[72px] border-b border-grey-300">
-    <img loading="lazy" src="/images/chain-icon.svg" class="self-start mt-3 w-14 aspect-square" />
+    <IconChainLogo class="self-start mt-3 w-14 aspect-square" />
     <div class="flex flex-col gap-8">
       <!-- Chain Title -->
       <div class="font-termina text-[72px] font-semibold leading-[80px]">GovGen</div>
@@ -13,12 +20,12 @@
         </a>
         <span>|</span>
         <!-- Chain Socials -->
-        <div class="flex flex-row gap-4">
-          <a href="#" class="hover:text-grey-50">Twitter</a>
-          <a href="#" class="hover:text-grey-50">Discord</a>
-          <a href="#" class="hover:text-grey-50">Telegram</a>
-          <a href="#" class="hover:text-grey-50">Github</a>
-          <a href="#" class="hover:text-grey-50">LinkedIn</a>
+        <div class="flex flex-row gap-4 fill-grey-100">
+          <a href="#" class="hover:fill-grey-50"><IconTwitter /></a>
+          <a href="#" class="hover:fill-grey-50"><IconDiscord /></a>
+          <a href="#" class="hover:fill-grey-50"><IconTelegram /></a>
+          <a href="#" class="hover:fill-grey-50"><IconGithub /></a>
+          <a href="#" class="hover:fill-grey-50"><IconLinkedIn /></a>
         </div>
       </div>
       <!-- Chain Description -->
