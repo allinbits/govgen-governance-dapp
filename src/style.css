@@ -29,8 +29,8 @@
   font-weight: 600;
   font-display: swap;
   src:
-    url("../fonts/inter/Inter-Medium.woff2?v=3.19") format("woff2"),
-    url("../fonts/inter/Inter-Medium.woff?v=3.19") format("woff");
+    url("./assets/fonts/inter/Inter-Medium.woff2?v=3.19") format("woff2"),
+    url("./assets/fonts/inter/Inter-Medium.woff?v=3.19") format("woff");
 }
 
 @font-face {
@@ -39,8 +39,8 @@
   font-weight: 700;
   font-display: swap;
   src:
-    url("../fonts/inter/Inter-Bold.woff2?v=3.19") format("woff2"),
-    url("../fonts/inter/Inter-Bold.woff?v=3.19") format("woff");
+    url("./assets/fonts/inter/Inter-Bold.woff2?v=3.19") format("woff2"),
+    url("./assets/fonts/inter/Inter-Bold.woff?v=3.19") format("woff");
 }
 
 @font-face {
@@ -49,8 +49,8 @@
   font-weight: 900;
   font-display: swap;
   src:
-    url("../fonts/inter/Inter-Black.woff2?v=3.19") format("woff2"),
-    url("../fonts/inter/Inter-Black.woff?v=3.19") format("woff");
+    url("./assets/fonts/inter/Inter-Black.woff2?v=3.19") format("woff2"),
+    url("./assets/fonts/inter/Inter-Black.woff?v=3.19") format("woff");
 }
 
 /* Inter var */
@@ -59,15 +59,15 @@
   font-weight: 100 900;
   font-display: swap;
   font-style: oblique 0deg 10deg;
-  src: url("../fonts/intervar/Inter.var.woff2?v=3.19") format("woff2");
+  src: url("./assets/fonts/intervar/Inter.var.woff2?v=3.19") format("woff2");
 }
 
 /* Roboto */
 @font-face {
   font-family: "Roboto";
   src:
-    url("../fonts/roboto/roboto-mono-normal.woff2") format("woff2"),
-    url("../fonts/roboto/roboto-mono-normal.woff") format("woff");
+    url("./assets/fonts/roboto/roboto-mono-normal.woff2") format("woff2"),
+    url("./assets/fonts/roboto/roboto-mono-normal.woff") format("woff");
   font-style: normal;
   font-weight: 400;
   font-stretch: normal;
@@ -78,8 +78,8 @@
 @font-face {
   font-family: "Termina";
   src:
-    url("../fonts/termina/Termina-Medium.woff2") format("woff2"),
-    url("../fonts/termina/Termina-Medium.woff") format("woff");
+    url("./assets/fonts/termina/Termina-Medium.woff2") format("woff2"),
+    url("./assets/fonts/termina/Termina-Medium.woff") format("woff");
   font-style: normal;
   font-weight: 500;
   font-stretch: normal;
@@ -88,8 +88,8 @@
 @font-face {
   font-family: "Termina";
   src:
-    url("../fonts/termina/Termina-Demi.woff2") format("woff2"),
-    url("../fonts/termina/Termina-Demi.woff") format("woff");
+    url("./assets/fonts/termina/Termina-Demi.woff2") format("woff2"),
+    url("./assets/fonts/termina/Termina-Demi.woff") format("woff");
   font-style: normal;
   font-weight: 600;
   font-stretch: normal;
@@ -98,8 +98,8 @@
 @font-face {
   font-family: "Termina";
   src:
-    url("../fonts/termina/Termina-Bold.woff2") format("woff2"),
-    url("../fonts/termina/Termina-Bold.woff") format("woff");
+    url("./assets/fonts/termina/Termina-Bold.woff2") format("woff2"),
+    url("./assets/fonts/termina/Termina-Bold.woff") format("woff");
   font-style: normal;
   font-weight: 700;
   font-stretch: normal;
