@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { RouterView } from "vue-router";
-import MainNav from "./components/MainNav.vue";
+
+import HeaderSection from "./components/layout/HeaderSection.vue";
+import FooterSection from "./components/layout/FooterSection.vue";
+
 import WalletSelector from "./components/WalletSelector.vue";
 import { useGithubDiscussions } from "./composables/useGithubDiscussions";
-import ModalWrap from "./components/ModalWrap.vue";
-import FooterSection from "./components/FooterSection.vue";
+import ModalWrap from "./components/common/ModalWrap.vue";
 
 const isConnectingWallet = ref(false);
 
@@ -14,7 +16,7 @@ useGithubDiscussions().setup();
 
 <template>
   <div class="w-full max-w-[90rem] px-6 md:px-14 lg:px-20 mx-auto">
-    <MainNav @open="isConnectingWallet = true" />
+    <HeaderSection @open="isConnectingWallet = true" />
     <ModalWrap :visible="isConnectingWallet" @back="isConnectingWallet = false">
       <WalletSelector />
     </ModalWrap>

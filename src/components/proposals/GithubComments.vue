@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { onMounted, ref, computed, reactive } from "vue";
 import DOMPurify from "dompurify";
-import { useGithubDiscussions } from "../composables/useGithubDiscussions";
-import * as GithubTypes from "../types/github/index";
-import * as Time from "../utility/time";
-import { useConfig } from "../composables/useConfig";
+import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
+import { useConfig } from "@/composables/useConfig";
+import * as GithubTypes from "@/types/github/index";
+import * as Time from "@/utility/time";
 
 const Config = useConfig();
 
