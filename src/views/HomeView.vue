@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ChainSection from "../components/ChainSection.vue";
 import ProposalCard from "../components/ProposalCard.vue";
+import InputSearch from "../components/InputSearch.vue";
 </script>
 
 <template>
@@ -10,7 +11,9 @@ import ProposalCard from "../components/ProposalCard.vue";
       <!-- Search Box -->
       <div class="flex flex-row gap-10 items-center">
         <div class="font-termina text-700">All Proposals</div>
-        <input placeholder="Search proposal" />
+        <InputSearch v-model="searchText" @input="handleSearchInput">
+          <Icon icon="search" />
+        </InputSearch>
       </div>
       <!-- Filters -->
       <div class="flex flex-row gap-4 items-center">
