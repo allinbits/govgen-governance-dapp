@@ -11,10 +11,8 @@ useGithubDiscussions().setup();
 </script>
 
 <template>
-  <div>
-    <header class="fixed w-full z-100">
-      <MainNav @open="isConnectingWallet = true" />
-    </header>
+  <div class="w-full max-w-[90rem] px-6 md:px-14 lg:px-20 mx-auto">
+    <MainNav @open="isConnectingWallet = true" />
     <WalletSelector v-if="isConnectingWallet" @close="isConnectingWallet = false" />
     <div class="pt-28 pl-4 pr-4">
       <RouterView />

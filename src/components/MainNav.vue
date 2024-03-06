@@ -3,18 +3,12 @@ const emits = defineEmits<{ (e: "open"): void }>();
 </script>
 
 <template>
-  <nav class="h-24 p-4">
-    <div class="relative flex items-center justify-between">
-      <div class="flex">
-        <router-link to="/" class="font-bold text-3xl">GovGen</router-link>
-        <div class="flex flex-row gap-8 items-center pl-20">
-          <router-link to="/">Proposals</router-link>
-          <router-link to="/">Guides</router-link>
-        </div>
+  <header>
+    <nav class="flex flex-row justify-between items-center py-4 w-full select-none">
+      <router-link to="/" class="text-400 font-termina">GovGen</router-link>
+      <div @click="emits('open')" class="justify-center px-6 py-4 rounded bg-grey-400 text-300 cursor-pointer">
+        Connect Wallet
       </div>
-      <div>
-        <button @click="emits('open')">Connect</button>
-      </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 </template>
