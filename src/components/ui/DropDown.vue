@@ -28,10 +28,10 @@ const currentValues = computed(() => {
 
 <template>
   <div
-    class="flex flex-col px-5 py-4 relative bg-grey-300 min-w-56 max-w-56 select-none"
+    class="flex flex-col relative bg-grey-300 min-w-56 max-w-56 select-none"
     :class="open ? ['rounded-t'] : ['rounded']"
   >
-    <div @click="open = !open" class="flex flex-row justify-between cursor-pointer gap-3 text-200">
+    <div @click="open = !open" class="flex flex-row justify-between cursor-pointer gap-3 text-200 px-5 py-4">
       <div>{{ props.values[model] }}</div>
       <Icon icon="CaretDown" />
     </div>
