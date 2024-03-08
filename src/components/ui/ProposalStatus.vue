@@ -20,7 +20,7 @@ const iconClasses = computed(() => {
     return ["fill-neg-200", "w-2", "h-2"];
   }
 
-  const classes = [colors[status]];
+  const classes: string[] = [...colors[status]];
 
   if (status === "voting") {
     classes.push("w-4");
