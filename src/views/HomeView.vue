@@ -19,14 +19,17 @@ const links = ref([
 ]);
 
 function setActivityFilterIndex(idx: number) {
+  // Needs integration to filter proposals
   activityFilterIndex.value = idx;
 }
 
 function setTypeFilterIndex(idx: number) {
+  // Needs integration to filter proposals
   typeFilterIndex.value = idx;
 }
 
 function onSearchInput() {
+  // Needs integration to filter proposals
   console.log(searchText.value);
 }
 </script>
@@ -86,6 +89,7 @@ function onSearchInput() {
         />
       </div>
     </div>
+    <!-- Proposal View -->
     <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-[72px]">
       <ProposalCard v-for="(proposal, index) in 12" :key="index" link="#">
         <template v-slot:header><ProposalStatus status="voting" /></template>
