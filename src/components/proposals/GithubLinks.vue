@@ -4,8 +4,6 @@ import DOMPurify from "dompurify";
 import * as Utility from "@/utility/index";
 import CommonButton from "@/components/ui/CommonButton.vue";
 
-import ModalWrap from "@/components/common/ModalWrap.vue";
-
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
 import { useGithubDiscusser } from "@/composables/useGithubDiscusser";
 
@@ -18,7 +16,7 @@ const linkInput = ref<string>("");
 const contextInput = ref<string>("");
 
 const state = reactive({
-  showLinkModal: false,
+  isAddingLink: false,
   isLinkValid: false,
   isContextValid: false,
 });
@@ -43,6 +41,7 @@ async function createPost() {
   }
 
   linkInput.value = "";
+  state.isAddingLink = false;
 }
 
 function verifyLinkInput() {
@@ -52,6 +51,10 @@ function verifyLinkInput() {
 function verifyContextInput() {
   state.isContextValid = contextInput.value.length >= 32;
 }
+
+const isInputValid = computed(() => {
+  return state.isLinkValid && state.isContextValid;
+});
 
 const inputLinkText = computed(() => {
   return `Adding link as ${username.value}...`;
@@ -66,40 +69,6 @@ onMounted(refresh);
 
 <template>
   <div>
-    <ModalWrap :visible="state.showLinkModal" @back="state.showLinkModal = false">
-      <div class="flex flex-col gap-6">
-        <label for="link">Link</label>
-        <label v-if="!state.isLinkValid" for="link" class="text-red-500">Link is not valid, must be https</label>
-        <input
-          id="link"
-          v-model="linkInput"
-          name="link"
-          maxlength="512"
-          class="shadow-sm outline-none block w-full sm:text-sm border-gray-300 rounded-md p-4"
-          type="text"
-          :placeholder="inputLinkText"
-          @input="verifyLinkInput()"
-        />
-        <label for="context">Context</label>
-        <label v-if="!state.isContextValid" for="link" class="text-red-500"
-          >Context must be at least 32 characters</label
-        >
-        <textarea
-          id="context"
-          v-model="contextInput"
-          name="context"
-          maxlength="512"
-          rows="6"
-          class="shadow-sm outline-none block w-full sm:text-sm border-gray-300 rounded-md p-4"
-          type="text"
-          :placeholder="textInputLinkText"
-          @input="verifyContextInput()"
-        ></textarea>
-        <button class="px-4 py-2 bg-green-600 text-light rounded-md text-sm" :disabled="isPosting" @click="createPost">
-          Post
-        </button>
-      </div>
-    </ModalWrap>
     <!-- Login, or Add Link -->
     <div class="flex flex-col justify-between items-center gap-3 md:flex-row md:gap-6 w-full">
       <div class="text-light text-500 font-medium text-left w-full">Community Links</div>
@@ -107,16 +76,51 @@ onMounted(refresh);
         <CommonButton v-if="!isLoggedIn" @click="login"> Login with GitHub </CommonButton>
         <template v-else>
           <CommonButton @click="logout"> Logout {{ username }} </CommonButton>
-          <CommonButton @click="state.showLinkModal = true"> Add Link </CommonButton>
+          <CommonButton @click="state.isAddingLink = true"> Add Link </CommonButton>
         </template>
       </div>
     </div>
+    <!-- Input Link Section -->
+    <div class="flex flex-col gap-6 pt-6 w-full" v-if="state.isAddingLink">
+      <!-- Link Input -->
+      <label for="link">Link</label>
+      <input
+        id="link"
+        v-model="linkInput"
+        name="link"
+        maxlength="512"
+        class="outline-none gap-2 p-4 border border-grey-200 bg-grey-300 rounded hover:border-grey-100 cursor-text bg-transparent placeholder:text-grey-100 items-center text-200 w-full"
+        type="text"
+        :placeholder="inputLinkText"
+        @input="verifyLinkInput()"
+      />
+      <div v-if="!state.isLinkValid" class="text-neg-200 text-100">Link is not valid, must be https</div>
+      <!-- Context Input -->
+      <label for="link">Context</label>
+      <textarea
+        id="context"
+        v-model="contextInput"
+        name="context"
+        maxlength="512"
+        rows="6"
+        class="outline-none gap-2 p-4 border border-grey-200 bg-grey-300 rounded hover:border-grey-100 cursor-text bg-transparent placeholder:text-grey-100 items-center text-200 w-full"
+        type="text"
+        :placeholder="textInputLinkText"
+        @input="verifyContextInput()"
+      ></textarea>
+      <div v-if="!state.isContextValid" class="text-neg-200 text-100">Context must be at least 32 characters</div>
+      <div class="flex flex-row w-full justify-end gap-6">
+        <CommonButton :disabled="!isInputValid" @click="state.isAddingLink = false">Cancel</CommonButton>
+        <CommonButton :disabled="!isInputValid" @click="isInputValid ? createPost() : () => {}">Post</CommonButton>
+      </div>
+    </div>
+    <!-- Rendered Links -->
     <div v-if="isLoaded && !isFailing" class="flex flex-col gap-2 w-full mb-4 pt-8">
       <div class="grid gap-6 w-full flex-wrap grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="(comment, index) in links"
           :key="index"
-          class="flex flex-row pt-8 pl-8 pr-8 pb-6 rounded-2xl shadow-md w-full bg-grey-400 rounded-md"
+          class="flex flex-row pt-8 pl-8 pr-8 pb-6 rounded-2xl w-full bg-grey-400 rounded-md"
         >
           <div class="flex flex-col items-start w-full gap-4">
             <a
@@ -147,43 +151,15 @@ onMounted(refresh);
         </div>
       </div>
     </div>
-    <div v-if="isLoaded && isFailing" class="flex flex-col items-center text-center text-medium font-bold">
-      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M19 6L6 19M6 6l13 13"
-          stroke="#FF0000"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-      <span>Failed to Load Comments</span>
-      <button class="p-2 w-32 bg-green-600 text-light rounded-md text-sm mt-2" @click="refresh">Retry?</button>
-    </div>
-    <div v-if="!isLoaded" class="flex flex-col text-center text-medium font-bold">
-      <div class="loader" />
-      <span>Loading Links...</span>
+    <div
+      v-if="!isLoaded || isFailing"
+      class="grid gap-6 w-full flex-wrap grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-8"
+    >
+      <div
+        v-for="index in 6"
+        :key="index"
+        class="flex flex-row pt-8 pl-8 pr-8 pb-6 rounded-2xl w-full bg-grey-400 rounded-md animate-pulse h-24"
+      ></div>
     </div>
   </div>
 </template>
-
-<style>
-.loader {
-  border: 4px solid #f3f3f3; /* Light grey */
-  border-top: 4px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-  margin: 20px auto; /* Center the spinner */
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-</style>

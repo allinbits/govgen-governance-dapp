@@ -27,6 +27,7 @@ export function useGithubDiscusser(threadTitle: string) {
     if (!category.value) {
       isRefreshing.value = false;
       didCommentsFailToLoad.value = true;
+      setTimeout(refresh, Config.DISCUSSION_REFRESH_TIME);
       return;
     }
 
@@ -40,6 +41,7 @@ export function useGithubDiscusser(threadTitle: string) {
 
     if (!discussion.value) {
       didCommentsFailToLoad.value = true;
+      setTimeout(refresh, Config.DISCUSSION_REFRESH_TIME);
     }
 
     isRefreshing.value = false;
@@ -152,7 +154,7 @@ export function useGithubDiscusser(threadTitle: string) {
   });
 
   const isLoaded = computed(() => {
-    return !isRefreshing.value && !didCommentsFailToLoad.value;
+    return !isRefreshing.value;
   });
 
   const isFailing = computed(() => {
