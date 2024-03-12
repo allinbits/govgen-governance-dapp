@@ -41,7 +41,9 @@ export default <Config>{
         200: "#272727",
         300: "#181818",
         400: "#151515",
+        500: "#0D0D0D",
       },
+      button: "rgba(255,255,255,0.05)",
       accent: {
         100: "#6BEFFF",
         200: "#F4AFFF",
@@ -60,6 +62,8 @@ export default <Config>{
       none: "0",
       xs: `${pxToRem(4)}rem`,
       sm: `${pxToRem(8)}rem`,
+      md: `${pxToRem(12)}rem`,
+      lg: `${pxToRem(16)}rem`,
       DEFAULT: `${pxToRem(16)}rem`,
       circle: "100%",
       full: "9999px",
