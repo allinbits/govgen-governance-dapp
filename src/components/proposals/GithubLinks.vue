@@ -2,6 +2,7 @@
 import { onMounted, ref, computed, reactive } from "vue";
 import DOMPurify from "dompurify";
 import * as Utility from "@/utility/index";
+import CommonButton from "@/components/ui/CommonButton.vue";
 
 import ModalWrap from "@/components/common/ModalWrap.vue";
 
@@ -94,25 +95,19 @@ onMounted(refresh);
           :placeholder="textInputLinkText"
           @input="verifyContextInput()"
         ></textarea>
-        <button class="px-4 py-2 bg-green-600 text-white rounded-md text-sm" :disabled="isPosting" @click="createPost">
+        <button class="px-4 py-2 bg-green-600 text-light rounded-md text-sm" :disabled="isPosting" @click="createPost">
           Post
         </button>
       </div>
     </ModalWrap>
     <!-- Login, or Add Link -->
     <div class="flex flex-row justify-between items-center">
-      <div class="font-bold text-lg text-gray-700">Community Links</div>
+      <div class="text-light text-500 font-medium">Community Links</div>
       <div class="flex gap-6 flex-row">
-        <button v-if="!isLoggedIn" class="px-4 py-2 bg-green-600 text-white rounded-md text-sm" @click="login">
-          Login with GitHub
-        </button>
+        <CommonButton v-if="!isLoggedIn" @click="login"> Login with GitHub </CommonButton>
         <template v-else>
-          <button class="px-4 py-2 bg-gray-400 text-white rounded-md text-sm" @click="logout">
-            Logout {{ username }}
-          </button>
-          <button class="px-4 py-2 bg-gray-600 text-white rounded-md text-sm" @click="state.showLinkModal = true">
-            Add Link
-          </button>
+          <CommonButton @click="logout"> Logout {{ username }} </CommonButton>
+          <CommonButton @click="state.showLinkModal = true"> Add Link </CommonButton>
         </template>
       </div>
     </div>
@@ -163,7 +158,7 @@ onMounted(refresh);
         />
       </svg>
       <span>Failed to Load Comments</span>
-      <button class="p-2 w-32 bg-green-600 text-white rounded-md text-sm mt-2" @click="refresh">Retry?</button>
+      <button class="p-2 w-32 bg-green-600 text-light rounded-md text-sm mt-2" @click="refresh">Retry?</button>
     </div>
     <div v-if="!isLoaded" class="flex flex-col text-center text-medium font-bold">
       <div class="loader" />

@@ -142,17 +142,17 @@ onMounted(refreshDiscussion);
         ></textarea>
       </div>
       <div v-if="!isLoggedIn" class="flex flex-row justify-between mt-2 gap-4">
-        <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded-md text-sm" @click="login">
+        <button class="mt-2 px-4 py-2 bg-green-600 text-light rounded-md text-sm" @click="login">
           Login with GitHub
         </button>
       </div>
       <div v-else class="flex flex-row justify-between mt-2 gap-4">
-        <button class="p-2 w-32 bg-gray-400 text-white rounded-md text-sm" @click="logout">
+        <button class="p-2 w-32 bg-gray-400 text-light rounded-md text-sm" @click="logout">
           Logout {{ username }}
         </button>
         <template v-if="state.isPosting">
           <button
-            class="flex p-2 w-32 bg-green-500 text-white rounded-md text-sm items-center justify-center"
+            class="flex p-2 w-32 bg-green-500 text-light rounded-md text-sm items-center justify-center"
             :disabled="state.isPosting"
           >
             <svg
@@ -183,7 +183,7 @@ onMounted(refreshDiscussion);
         </template>
         <template v-else>
           <button
-            class="flex p-2 w-32 bg-green-500 text-white rounded-md text-sm items-center justify-center"
+            class="flex p-2 w-32 bg-green-500 text-light rounded-md text-sm items-center justify-center"
             @click="createPost"
           >
             Post Comment
@@ -255,7 +255,7 @@ onMounted(refreshDiscussion);
         />
       </svg>
       <span>Failed to Load Comments</span>
-      <button class="p-2 w-32 bg-green-600 text-white rounded-md text-sm mt-2" @click="refreshDiscussion">
+      <button class="p-2 w-32 bg-green-600 text-light rounded-md text-sm mt-2" @click="refreshDiscussion">
         Retry?
       </button>
     </div>
