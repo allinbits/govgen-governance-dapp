@@ -1,3 +1,135 @@
+/*
+   FONT FAMILY GROUPS
+*/
+
+/* Inter */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("./assets/fonts/inter/Inter-Regular.woff2?v=3.19") format("woff2"),
+    url("./assets/fonts/inter/Inter-Regular.woff?v=3.19") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    url("./assets/fonts/inter/Inter-Medium.woff2?v=3.19") format("woff2"),
+    url("./assets/fonts/inter/Inter-Medium.woff?v=3.19") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src:
+    url("./assets/fonts/inter/Inter-Medium.woff2?v=3.19") format("woff2"),
+    url("./assets/fonts/inter/Inter-Medium.woff?v=3.19") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("./assets/fonts/inter/Inter-Bold.woff2?v=3.19") format("woff2"),
+    url("./assets/fonts/inter/Inter-Bold.woff?v=3.19") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src:
+    url("./assets/fonts/inter/Inter-Black.woff2?v=3.19") format("woff2"),
+    url("./assets/fonts/inter/Inter-Black.woff?v=3.19") format("woff");
+}
+
+/* Inter var */
+@font-face {
+  font-family: "Inter var";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: oblique 0deg 10deg;
+  src: url("./assets/fonts/intervar/Inter.var.woff2?v=3.19") format("woff2");
+}
+
+/* Roboto */
+@font-face {
+  font-family: "Roboto";
+  src:
+    url("./assets/fonts/roboto/roboto-mono-normal.woff2") format("woff2"),
+    url("./assets/fonts/roboto/roboto-mono-normal.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+/* Termina */
+@font-face {
+  font-family: "Termina";
+  src:
+    url("./assets/fonts/termina/Termina-Medium.woff2") format("woff2"),
+    url("./assets/fonts/termina/Termina-Medium.woff") format("woff");
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Termina";
+  src:
+    url("./assets/fonts/termina/Termina-Demi.woff2") format("woff2"),
+    url("./assets/fonts/termina/Termina-Demi.woff") format("woff");
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Termina";
+  src:
+    url("./assets/fonts/termina/Termina-Bold.woff2") format("woff2"),
+    url("./assets/fonts/termina/Termina-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  @apply font-interNormal text-light bg-dark text-300;
+  font-feature-settings:
+    "kern" on,
+    "liga" on,
+    "calt" on,
+    "zero" on;
+  -webkit-font-feature-settings:
+    "kern" on,
+    "liga" on,
+    "calt" on,
+    "zero" on;
+  text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  font-variant-ligatures: contextual common-ligatures;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+
+  @supports (font-variation-settings: normal) {
+    @apply font-interVar;
+  }
+}

@@ -6,10 +6,20 @@ import { getSigningGovgenClient } from "@atomone/govgen-types/govgen/client";
 import { getOfflineSigner } from "@cosmostation/cosmos-client";
 
 export enum Wallets {
-  keplr = "KEPLR",
-  leap = "LEAP",
-  cosmostation = "COSMOSTATION",
+  keplr = "Keplr",
+  leap = "Leap",
+  cosmostation = "Cosmostation",
 }
+export const getWalletHelp = (wallet: Wallets) => {
+  switch (wallet) {
+    case Wallets.keplr:
+      return "https://help.keplr.app/articles/advanced-troubleshooting-guidelines";
+    case Wallets.leap:
+      return "https://leapwallet.notion.site/Leap-Cosmos-Wallet-Support-ba1da3c05d3341eaa44a1850ed3260ee";
+    case Wallets.cosmostation:
+      return "https://guide.cosmostation.io/web_wallet_en.html";
+  }
+};
 const useWalletInstance = () => {
   const walletState = {
     keplr: computed(() => !!window.keplr),
@@ -25,7 +35,17 @@ const useWalletInstance = () => {
     walletState.loggedIn.value = false;
   };
   const signer: Ref<OfflineSigner | null> = ref(null);
-  const connect = async (walletType: Wallets) => {
+
+  const connect = async (walletType: Wallets, signal?: AbortSignal) => {
+    if (signal?.aborted) {
+      return Promise.reject(new DOMException("Aborted", "AbortError"));
+    }
+    const abortHandler = () => {
+      walletState.address.value = "";
+      walletState.used.value = null;
+      walletState.loggedIn.value = false;
+    };
+    signal?.addEventListener("abort", abortHandler);
     switch (walletType) {
       case Wallets.keplr:
         try {
@@ -36,11 +56,16 @@ const useWalletInstance = () => {
             walletState.loggedIn.value = true;
             walletState.used.value = Wallets.keplr;
             signer.value = window.getOfflineSigner(chainInfo.chainId);
+            if (signal?.aborted) {
+              abortHandler();
+            }
           } else {
             throw new Error("Could not connect to Keplr: getOfflineSigner method does not exist");
           }
         } catch (e) {
           throw new Error("Could not connect to Keplr: " + e);
+        } finally {
+          signal?.removeEventListener("abort", abortHandler);
         }
         break;
       case Wallets.leap:
@@ -51,8 +76,13 @@ const useWalletInstance = () => {
           walletState.loggedIn.value = true;
           walletState.used.value = Wallets.leap;
           signer.value = window.leap.getOfflineSigner(chainInfo.chainId);
+          if (signal?.aborted) {
+            abortHandler();
+          }
         } catch (e) {
           throw new Error("Could not connect to Leap Wallet: " + e);
+        } finally {
+          signal?.removeEventListener("abort", abortHandler);
         }
         break;
       case Wallets.cosmostation:
@@ -80,8 +110,13 @@ const useWalletInstance = () => {
           walletState.loggedIn.value = true;
           walletState.used.value = Wallets.cosmostation;
           signer.value = (await getOfflineSigner(chainInfo.chainId)) as OfflineSigner; // Appears to be a re-declaration of OfflineSigner and TS cannot figure out they're the same.
+          if (signal?.aborted) {
+            abortHandler();
+          }
         } catch (e) {
           throw new Error("Could not connect to Cosmostation: " + e);
+        } finally {
+          signal?.removeEventListener("abort", abortHandler);
         }
         break;
     }

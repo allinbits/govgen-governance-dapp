@@ -4,6 +4,7 @@ import "./style.css";
 import App from "./App.vue";
 import router from "./router";
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client/core";
+import IconVue from "./components/ui/Icon.vue";
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
@@ -27,4 +28,5 @@ const app = createApp({
   render: () => h(App),
 });
 app.use(router);
-app.mount("#app");
+app.component("Icon", IconVue);
+router.isReady().then(() => app.mount("#app"));
