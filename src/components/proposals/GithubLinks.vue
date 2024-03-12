@@ -101,9 +101,9 @@ onMounted(refresh);
       </div>
     </ModalWrap>
     <!-- Login, or Add Link -->
-    <div class="flex flex-row justify-between items-center">
-      <div class="text-light text-500 font-medium">Community Links</div>
-      <div class="flex gap-6 flex-row">
+    <div class="flex flex-col justify-between items-center gap-3 md:flex-row md:gap-6 w-full">
+      <div class="text-light text-500 font-medium text-left w-full">Community Links</div>
+      <div class="flex flex-col gap-3 md:flex-row md:gap-6 w-full justify-end">
         <CommonButton v-if="!isLoggedIn" @click="login"> Login with GitHub </CommonButton>
         <template v-else>
           <CommonButton @click="logout"> Logout {{ username }} </CommonButton>
@@ -111,8 +111,8 @@ onMounted(refresh);
         </template>
       </div>
     </div>
-    <div v-if="isLoaded && !isFailing" class="flex flex-col gap-2 w-full mb-4">
-      <div class="grid gap-6 w-full flex-wrap grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-6">
+    <div v-if="isLoaded && !isFailing" class="flex flex-col gap-2 w-full mb-4 pt-8">
+      <div class="grid gap-6 w-full flex-wrap grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="(comment, index) in links"
           :key="index"
