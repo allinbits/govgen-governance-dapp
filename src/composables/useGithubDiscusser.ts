@@ -4,7 +4,7 @@ import { useConfig } from "@/composables/useConfig";
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
 import * as Utility from "@/utility/index";
 
-const { logout, isLoggedIn, login, getDiscussion, getCategory, post, toggleUpvote, username } = useGithubDiscussions();
+const { getDiscussion, getCategory, post, toggleUpvote } = useGithubDiscussions();
 const Config = useConfig();
 
 export function useGithubDiscusser(threadTitle: string) {
@@ -96,7 +96,7 @@ export function useGithubDiscusser(threadTitle: string) {
       return [];
     }
 
-    let comments = discussion.value.comments.nodes.map((x) => {
+    const comments = discussion.value.comments.nodes.map((x) => {
       const upvote = x.reactionGroups.find((x) => x.content == "THUMBS_UP");
 
       return {
@@ -124,7 +124,7 @@ export function useGithubDiscusser(threadTitle: string) {
       return [];
     }
 
-    let comments = discussion.value.comments.nodes.map((x) => {
+    const comments = discussion.value.comments.nodes.map((x) => {
       const upvote = x.reactionGroups.find((x) => x.content == "THUMBS_UP");
       const links = Utility.getLinks(x.bodyHTML);
       const bodyText = x.bodyHTML.replace(/(<([^>]+)>)/gi, "");
