@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "queries": "npx graphql-code-generator -c codegen.ts",
     "build": "vue-tsc && vite build",
     "lint": "eslint -c .eslintrc.cjs \"./{tests,src}/**/*.{ts,js,tsx,vue,json}\" --no-error-on-unmatched-pattern --ignore-path .gitignore",
     "lint:fix": "eslint -c .eslintrc.cjs \"./{tests,src}/**/*.{ts,js,tsx,vue,json}\" --fix --no-error-on-unmatched-pattern --ignore-path .gitignore",

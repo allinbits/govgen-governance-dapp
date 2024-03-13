@@ -4,8 +4,7 @@ import {
   useProposalTalliesQuery,
   useProposalsQuery,
   useVoteHistoryQuery,
-} from "@/gql/graphql";
-import { useQuery } from "@vue/apollo-composable";
+} from "./queries";
 
 export const useChainData = () => {
   const getBalance = (address: string) => {
