@@ -1,15 +1,13 @@
 <script lang="ts" setup>
-import { onMounted, ref, computed, reactive } from "vue";
+import { onMounted, ref } from "vue";
 import DOMPurify from "dompurify";
+
+import { useGithubDiscusser } from "@/composables/useGithubDiscusser";
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
-import { useConfig } from "@/composables/useConfig";
-import * as Time from "@/utility/time";
 
 import CommonButton from "@/components/ui/CommonButton.vue";
-import { useGithubDiscusser } from "@/composables/useGithubDiscusser";
 import DropDown from "@/components/ui/DropDown.vue";
 
-const Config = useConfig();
 const props = defineProps<{ term: string }>();
 const sortingType = ref(0);
 
@@ -17,55 +15,34 @@ const { logout, isLoggedIn, login, username, avatar } = useGithubDiscussions();
 const { comments, refresh, postMessage, postUpvote, isPosting, isFailing, isLoaded } = useGithubDiscusser(props.term);
 
 const commentInput = ref<string>("");
-const state = reactive({
-  isLoading: false,
-  failedToLoadComments: false,
-  isPosting: false,
-});
 
 function handleSortingChange(index: number) {
   sortingType.value = index;
 }
 
-// async function createPost() {
-//   if (!isLoggedIn) {
-//     return;
-//   }
+async function createPost() {
+  if (isPosting.value) {
+    return;
+  }
 
-//   if (!discussion.value) {
-//     return;
-//   }
+  if (!isLoggedIn) {
+    return;
+  }
 
-//   state.isPosting = true;
-//   const response = await post({ discussion: discussion.value.id, message: commentInput.value });
-//   if (!response) {
-//     window.alert("Failed to post comment");
-//     state.isPosting = false;
-//     return;
-//   }
+  const didPost = await postMessage(commentInput.value);
+  if (!didPost) {
+    window.alert("Failed to post comment");
+    return;
+  }
 
-//   commentInput.value = "";
-//   state.isPosting = false;
-// }
-
-// async function createUpvote(id: string, hasReacted: boolean) {
-//   if (!isLoggedIn) {
-//     return;
-//   }
-
-//   const response = await toggleUpvote({ subjectId: id, didUpvote: hasReacted });
-//   if (!response) {
-//     window.alert("Failed to upvote");
-//     state.isPosting = false;
-//     return;
-//   }
-// }
+  commentInput.value = "";
+}
 
 onMounted(refresh);
 </script>
 
 <template>
-  <div class="flex flex-col w-full gap-[72px]">
+  <div class="flex flex-col w-full gap-[72px] pt-[72px]">
     <!-- Login & Comment Post Section -->
     <div
       v-if="!isLoggedIn"
@@ -95,6 +72,7 @@ onMounted(refresh);
         ></textarea>
         <CommonButton
           class="absolute right-6 bottom-6 bg-gradient from-gradient-100 to-gradient-900 !text-dark hover:opacity-75"
+          @click="createPost"
         >
           Post Comment
         </CommonButton>
@@ -102,60 +80,7 @@ onMounted(refresh);
     </div>
 
     <!-- Comments -->
-    <div v-if="!state.isLoading && !state.failedToLoadComments" class="flex flex-col w-full">
-      <!-- <label for="markdown" class="font-medium text-gray-700">Leave a Comment</label>
-      <div class="mt-4 w-full">
-        
-      </div>
-      <div v-if="!isLoggedIn" class="flex flex-row justify-between mt-2 gap-4">
-        <button class="mt-2 px-4 py-2 bg-green-600 text-light rounded-md text-sm" @click="login">
-          Login with GitHub
-        </button>
-      </div>
-      <div v-else class="flex flex-row justify-between mt-2 gap-4">
-        <button class="p-2 w-32 bg-gray-400 text-light rounded-md text-sm" @click="logout">
-          Logout {{ username }}
-        </button>
-        <template v-if="state.isPosting">
-          <button
-            class="flex p-2 w-32 bg-green-500 text-light rounded-md text-sm items-center justify-center"
-            :disabled="state.isPosting"
-          >
-            <svg
-              class="text-gray-300 animate-spin"
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-            >
-              <path
-                d="M32 3C35.8083 3 39.5794 3.75011 43.0978 5.20749C46.6163 6.66488 49.8132 8.80101 52.5061 11.4939C55.199 14.1868 57.3351 17.3837 58.7925 20.9022C60.2499 24.4206 61 28.1917 61 32C61 35.8083 60.2499 39.5794 58.7925 43.0978C57.3351 46.6163 55.199 49.8132 52.5061 52.5061C49.8132 55.199 46.6163 57.3351 43.0978 58.7925C39.5794 60.2499 35.8083 61 32 61C28.1917 61 24.4206 60.2499 20.9022 58.7925C17.3837 57.3351 14.1868 55.199 11.4939 52.5061C8.801 49.8132 6.66487 46.6163 5.20749 43.0978C3.7501 39.5794 3 35.8083 3 32C3 28.1917 3.75011 24.4206 5.2075 20.9022C6.66489 17.3837 8.80101 14.1868 11.4939 11.4939C14.1868 8.80099 17.3838 6.66487 20.9022 5.20749C24.4206 3.7501 28.1917 3 32 3L32 3Z"
-                stroke="currentColor"
-                stroke-width="5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
-              <path
-                d="M32 3C36.5778 3 41.0906 4.08374 45.1692 6.16256C49.2477 8.24138 52.7762 11.2562 55.466 14.9605C58.1558 18.6647 59.9304 22.9531 60.6448 27.4748C61.3591 31.9965 60.9928 36.6232 59.5759 40.9762"
-                stroke="currentColor"
-                stroke-width="5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="text-gray-900"
-              ></path>
-            </svg>
-          </button>
-        </template>
-        <template v-else>
-          <button
-            class="flex p-2 w-32 bg-green-500 text-light rounded-md text-sm items-center justify-center"
-            @click="createPost"
-          >
-            Post Comment
-          </button>
-        </template> -->
-      <!-- </div> -->
+    <div v-if="isLoaded" class="flex flex-col w-full">
       <div class="flex flex-row w-full justify-between items-center mb-8">
         <div class="text-500 font-medium">Proposal Discussions</div>
         <DropDown :values="['Popular', 'Oldest', 'Latest']" v-model="sortingType" @select="handleSortingChange" />
@@ -204,25 +129,21 @@ onMounted(refresh);
         </div>
       </div>
     </div>
-    <div
-      v-if="!state.isLoading && state.failedToLoadComments"
-      class="flex flex-col items-center text-center text-medium font-bold"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M19 6L6 19M6 6l13 13"
-          stroke="#FF0000"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-      <span>Failed to Load Comments</span>
-      <button class="p-2 w-32 bg-green-600 text-light rounded-md text-sm mt-2" @click="refresh">Retry?</button>
-    </div>
-    <div v-if="state.isLoading" class="flex flex-col text-center text-medium font-bold">
-      <div class="loader" />
-      <span>Loading Comments...</span>
+    <div v-if="!isLoaded || isFailing" class="flex flex-col gap-6 w-full flex-wrap pt-8">
+      <div
+        v-for="index in 6"
+        :key="index"
+        class="flex flex-col py-10 px-8 rounded-2xl w-full bg-grey-400 rounded-md animate-pulse gap-8"
+      >
+        <!-- Unloaded Avatar -->
+        <div class="rounded-circle w-10 h-10 bg-grey-200" />
+        <!-- Unloaded Content -->
+        <div class="flex flex-col gap-4 w-full">
+          <div v-for="index in 3" :key="index" class="bg-grey-200 rounded-sm w-full h-4" />
+        </div>
+        <!-- Unloaded Footer -->
+        <div :key="index" class="bg-grey-200 rounded-sm w-1/4 h-4" />
+      </div>
     </div>
   </div>
 </template>
