@@ -81,7 +81,7 @@ onMounted(refresh);
       </div>
     </div>
     <!-- Input Link Section -->
-    <div class="flex flex-col gap-6 pt-6 w-full" v-if="state.isAddingLink">
+    <div v-if="state.isAddingLink" class="flex flex-col gap-6 pt-6 w-full">
       <!-- Link Input -->
       <label for="link">Link</label>
       <input

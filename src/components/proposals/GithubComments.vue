@@ -83,7 +83,7 @@ onMounted(refresh);
     <div v-if="isLoaded" class="flex flex-col w-full">
       <div class="flex flex-row w-full justify-between items-center mb-8">
         <div class="text-500 font-medium">Proposal Discussions</div>
-        <DropDown :values="['Popular', 'Oldest', 'Latest']" v-model="sortingType" @select="handleSortingChange" />
+        <DropDown v-model="sortingType" :values="['Popular', 'Oldest', 'Latest']" @select="handleSortingChange" />
       </div>
       <div class="flex flex-col gap-6">
         <!-- Comments -->
@@ -139,7 +139,7 @@ onMounted(refresh);
         <div class="rounded-circle w-10 h-10 bg-grey-200" />
         <!-- Unloaded Content -->
         <div class="flex flex-col gap-4 w-full">
-          <div v-for="index in 3" :key="index" class="bg-grey-200 rounded-sm w-full h-4" />
+          <div v-for="refIndex in 3" :key="refIndex" class="bg-grey-200 rounded-sm w-full h-4" />
         </div>
         <!-- Unloaded Footer -->
         <div :key="index" class="bg-grey-200 rounded-sm w-1/4 h-4" />
