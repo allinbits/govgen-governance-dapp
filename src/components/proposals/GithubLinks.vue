@@ -89,7 +89,7 @@ onMounted(refresh);
         v-model="linkInput"
         name="link"
         maxlength="512"
-        class="outline-none gap-2 p-4 border border-grey-200 bg-grey-300 rounded hover:border-grey-100 cursor-text bg-transparent placeholder:text-grey-100 items-center text-200 w-full"
+        class="outline-none gap-2 p-4 border border-grey-200 bg-grey-300 rounded hover:border-grey-100 focus:border-light cursor-text placeholder:text-grey-100 items-center text-200 w-full"
         type="text"
         :placeholder="inputLinkText"
         @input="verifyLinkInput()"
@@ -103,14 +103,14 @@ onMounted(refresh);
         name="context"
         maxlength="512"
         rows="6"
-        class="outline-none gap-2 p-4 border border-grey-200 bg-grey-300 rounded hover:border-grey-100 cursor-text bg-transparent placeholder:text-grey-100 items-center text-200 w-full"
+        class="outline-none gap-2 p-4 border border-grey-200 bg-grey-300 rounded hover:border-grey-100 focus:border-light cursor-text placeholder:text-grey-100 items-center text-200 w-full"
         type="text"
         :placeholder="textInputLinkText"
         @input="verifyContextInput()"
       ></textarea>
       <div v-if="!state.isContextValid" class="text-neg-200 text-100">Context must be at least 32 characters</div>
       <div class="flex flex-row w-full justify-end gap-6">
-        <CommonButton :disabled="!isInputValid" @click="state.isAddingLink = false">Cancel</CommonButton>
+        <CommonButton @click="state.isAddingLink = false">Cancel</CommonButton>
         <CommonButton :disabled="!isInputValid" @click="isInputValid ? createPost() : () => {}">Post</CommonButton>
       </div>
     </div>
