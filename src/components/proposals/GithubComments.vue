@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import DOMPurify from "dompurify";
 
 import { useGithubDiscusser } from "@/composables/useGithubDiscusser";
@@ -9,10 +9,12 @@ import CommonButton from "@/components/ui/CommonButton.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 
 const props = defineProps<{ term: string }>();
-const sortingType = ref(0);
 
 const { logout, isLoggedIn, login, username, avatar } = useGithubDiscussions();
 const { comments, refresh, postMessage, postUpvote, isPosting, isFailing, isLoaded } = useGithubDiscusser(props.term);
+
+const sortingList = ["Popular", "Oldest", "Latest"];
+const sortingType = ref(0);
 
 const commentInput = ref<string>("");
 
@@ -37,6 +39,28 @@ async function createPost() {
 
   commentInput.value = "";
 }
+
+const sortedComments = computed(() => {
+  let commentList = [...comments.value];
+
+  switch (sortingType.value) {
+    // Popular
+    case 0:
+      commentList.sort((a, b) => b.upvotes - a.upvotes);
+      break;
+    // Oldest
+    case 1:
+      commentList.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+
+      break;
+    // Latest
+    case 2:
+      commentList.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      break;
+  }
+
+  return commentList;
+});
 
 onMounted(refresh);
 </script>
@@ -83,12 +107,12 @@ onMounted(refresh);
     <div v-if="isLoaded" class="flex flex-col w-full">
       <div class="flex flex-row w-full justify-between items-center mb-8">
         <div class="text-500 font-medium">Proposal Discussions</div>
-        <DropDown v-model="sortingType" :values="['Popular', 'Oldest', 'Latest']" @select="handleSortingChange" />
+        <DropDown v-model="sortingType" :values="sortingList" @select="handleSortingChange" />
       </div>
       <div class="flex flex-col gap-6">
         <!-- Comments -->
         <div
-          v-for="(comment, index) in comments"
+          v-for="(comment, index) in sortedComments"
           :key="index"
           class="flex flex-col bg-grey-400 px-8 py-10 rounded-md gap-8"
         >
