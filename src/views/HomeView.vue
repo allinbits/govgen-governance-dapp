@@ -5,6 +5,7 @@ import ProposalCard from "@/components/home/ProposalCard.vue";
 import Search from "@/components/ui/Search.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
+import { PropStatus } from "@/types/proposals";
 
 import { useChainData } from "@/composables/useChainData";
 
@@ -96,18 +97,21 @@ function onSearchInput() {
     </div>
     <!-- Proposal View -->
     <div v-if="proposals" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-[72px]">
-      <ProposalCard v-for="(proposal, index) in proposals.all_proposals" :key="index" link="#">
-        <template #header><ProposalStatus status="voting" /></template>
+      <ProposalCard v-for="proposal in proposals.all_proposals" :key="proposal.id" link="#">
+        <template #header
+          ><ProposalStatus
+            :status="PropStatus[(proposal.status ?? 'PROPOSAL_STATUS_UNSPECIFIED') as keyof typeof PropStatus]"
+        /></template>
         <template #number>#{{ proposal.id }}</template>
-        <div>{{ proposal.description }}</div>
+        <div>{{ proposal.title }}</div>
         <template #footer>
           <div class="flex flex-row text-200 text-grey-100 font-medium items-center justify-between w-full">
-            <span>Type</span>
+            <span></span>
             <div class="flex flex-row gap-4">
               <!-- Vote Count-->
               <div class="flex flex-row items-center gap-1">
                 <Icon icon="voters" />
-                <span>500</span>
+                <span>{{ proposal.proposal_votes_aggregate.aggregate?.count ?? 0 }}</span>
               </div>
               <!-- Comment Count -->
               <div class="flex flex-row items-center gap-1">

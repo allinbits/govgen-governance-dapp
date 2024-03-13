@@ -9,7 +9,17 @@ query Proposals {
       amount
       depositor_address
     }
+    proposal_votes_aggregate(distinct_on: voter_address) {
+      aggregate {
+        count
+      }
+    }
     proposer_address
+    status
+    submit_time
+    title
+    voting_end_time
+    voting_start_time
   }
   voting_proposals: proposal(where: { status: { _eq: "PROPOSAL_STATUS_VOTING_PERIOD" } }) {
     content
@@ -21,7 +31,17 @@ query Proposals {
       amount
       depositor_address
     }
+    proposal_votes_aggregate(distinct_on: voter_address) {
+      aggregate {
+        count
+      }
+    }
     proposer_address
+    status
+    submit_time
+    title
+    voting_end_time
+    voting_start_time
   }
   all_proposals: proposal {
     content
@@ -33,6 +53,16 @@ query Proposals {
       amount
       depositor_address
     }
+    proposal_votes_aggregate(distinct_on: voter_address) {
+      aggregate {
+        count
+      }
+    }
     proposer_address
+    status
+    submit_time
+    title
+    voting_end_time
+    voting_start_time
   }
 }

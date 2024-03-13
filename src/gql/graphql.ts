@@ -152,6 +152,8 @@ export type Account = {
   proposal_deposits: Array<Proposal_Deposit>;
   /** An array relationship */
   proposal_votes: Array<Proposal_Vote>;
+  /** An aggregate relationship */
+  proposal_votes_aggregate: Proposal_Vote_Aggregate;
   /** An array relationship */
   proposals: Array<Proposal>;
   /** An aggregate relationship */
@@ -177,6 +179,16 @@ export type AccountProposal_DepositsArgs = {
 
 /** columns and relationships of "account" */
 export type AccountProposal_VotesArgs = {
+  distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Proposal_Vote_Order_By>>;
+  where?: InputMaybe<Proposal_Vote_Bool_Exp>;
+};
+
+
+/** columns and relationships of "account" */
+export type AccountProposal_Votes_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -232,6 +244,7 @@ export type Account_Bool_Exp = {
   address?: InputMaybe<String_Comparison_Exp>;
   proposal_deposits?: InputMaybe<Proposal_Deposit_Bool_Exp>;
   proposal_votes?: InputMaybe<Proposal_Vote_Bool_Exp>;
+  proposal_votes_aggregate?: InputMaybe<Proposal_Vote_Aggregate_Bool_Exp>;
   proposals?: InputMaybe<Proposal_Bool_Exp>;
   proposals_aggregate?: InputMaybe<Proposal_Aggregate_Bool_Exp>;
   validator_infos?: InputMaybe<Validator_Info_Bool_Exp>;
@@ -472,6 +485,8 @@ export type Block = {
   proposal_deposits: Array<Proposal_Deposit>;
   /** An array relationship */
   proposal_votes: Array<Proposal_Vote>;
+  /** An aggregate relationship */
+  proposal_votes_aggregate: Proposal_Vote_Aggregate;
   proposer_address?: Maybe<Scalars['String']['output']>;
   timestamp: Scalars['timestamp']['output'];
   total_gas?: Maybe<Scalars['bigint']['output']>;
@@ -518,6 +533,16 @@ export type BlockProposal_DepositsArgs = {
 
 /** columns and relationships of "block" */
 export type BlockProposal_VotesArgs = {
+  distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Proposal_Vote_Order_By>>;
+  where?: InputMaybe<Proposal_Vote_Bool_Exp>;
+};
+
+
+/** columns and relationships of "block" */
+export type BlockProposal_Votes_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -589,6 +614,7 @@ export type Block_Bool_Exp = {
   pre_commits_aggregate?: InputMaybe<Pre_Commit_Aggregate_Bool_Exp>;
   proposal_deposits?: InputMaybe<Proposal_Deposit_Bool_Exp>;
   proposal_votes?: InputMaybe<Proposal_Vote_Bool_Exp>;
+  proposal_votes_aggregate?: InputMaybe<Proposal_Vote_Aggregate_Bool_Exp>;
   proposer_address?: InputMaybe<String_Comparison_Exp>;
   timestamp?: InputMaybe<Timestamp_Comparison_Exp>;
   total_gas?: InputMaybe<Bigint_Comparison_Exp>;
@@ -2697,9 +2723,13 @@ export type Proposal = {
   proposal_tally_result?: Maybe<Proposal_Tally_Result>;
   /** An array relationship */
   proposal_tally_results: Array<Proposal_Tally_Result>;
+  /** An aggregate relationship */
+  proposal_tally_results_aggregate: Proposal_Tally_Result_Aggregate;
   proposal_type: Scalars['String']['output'];
   /** An array relationship */
   proposal_votes: Array<Proposal_Vote>;
+  /** An aggregate relationship */
+  proposal_votes_aggregate: Proposal_Vote_Aggregate;
   /** An object relationship */
   proposer: Account;
   proposer_address: Scalars['String']['output'];
@@ -2742,7 +2772,27 @@ export type ProposalProposal_Tally_ResultsArgs = {
 
 
 /** columns and relationships of "proposal" */
+export type ProposalProposal_Tally_Results_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Proposal_Tally_Result_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Proposal_Tally_Result_Order_By>>;
+  where?: InputMaybe<Proposal_Tally_Result_Bool_Exp>;
+};
+
+
+/** columns and relationships of "proposal" */
 export type ProposalProposal_VotesArgs = {
+  distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Proposal_Vote_Order_By>>;
+  where?: InputMaybe<Proposal_Vote_Bool_Exp>;
+};
+
+
+/** columns and relationships of "proposal" */
+export type ProposalProposal_Votes_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -2840,8 +2890,10 @@ export type Proposal_Bool_Exp = {
   proposal_route?: InputMaybe<String_Comparison_Exp>;
   proposal_tally_result?: InputMaybe<Proposal_Tally_Result_Bool_Exp>;
   proposal_tally_results?: InputMaybe<Proposal_Tally_Result_Bool_Exp>;
+  proposal_tally_results_aggregate?: InputMaybe<Proposal_Tally_Result_Aggregate_Bool_Exp>;
   proposal_type?: InputMaybe<String_Comparison_Exp>;
   proposal_votes?: InputMaybe<Proposal_Vote_Bool_Exp>;
+  proposal_votes_aggregate?: InputMaybe<Proposal_Vote_Aggregate_Bool_Exp>;
   proposer?: InputMaybe<Account_Bool_Exp>;
   proposer_address?: InputMaybe<String_Comparison_Exp>;
   staking_pool_snapshot?: InputMaybe<Proposal_Staking_Pool_Snapshot_Bool_Exp>;
@@ -3262,6 +3314,47 @@ export type Proposal_Tally_Result = {
   yes: Scalars['String']['output'];
 };
 
+/** aggregated selection of "proposal_tally_result" */
+export type Proposal_Tally_Result_Aggregate = {
+  __typename?: 'proposal_tally_result_aggregate';
+  aggregate?: Maybe<Proposal_Tally_Result_Aggregate_Fields>;
+  nodes: Array<Proposal_Tally_Result>;
+};
+
+export type Proposal_Tally_Result_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Proposal_Tally_Result_Aggregate_Bool_Exp_Count>;
+};
+
+export type Proposal_Tally_Result_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Proposal_Tally_Result_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Proposal_Tally_Result_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "proposal_tally_result" */
+export type Proposal_Tally_Result_Aggregate_Fields = {
+  __typename?: 'proposal_tally_result_aggregate_fields';
+  avg?: Maybe<Proposal_Tally_Result_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Proposal_Tally_Result_Max_Fields>;
+  min?: Maybe<Proposal_Tally_Result_Min_Fields>;
+  stddev?: Maybe<Proposal_Tally_Result_Stddev_Fields>;
+  stddev_pop?: Maybe<Proposal_Tally_Result_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Proposal_Tally_Result_Stddev_Samp_Fields>;
+  sum?: Maybe<Proposal_Tally_Result_Sum_Fields>;
+  var_pop?: Maybe<Proposal_Tally_Result_Var_Pop_Fields>;
+  var_samp?: Maybe<Proposal_Tally_Result_Var_Samp_Fields>;
+  variance?: Maybe<Proposal_Tally_Result_Variance_Fields>;
+};
+
+
+/** aggregate fields of "proposal_tally_result" */
+export type Proposal_Tally_Result_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Proposal_Tally_Result_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 /** order by aggregate values of table "proposal_tally_result" */
 export type Proposal_Tally_Result_Aggregate_Order_By = {
   avg?: InputMaybe<Proposal_Tally_Result_Avg_Order_By>;
@@ -3275,6 +3368,13 @@ export type Proposal_Tally_Result_Aggregate_Order_By = {
   var_pop?: InputMaybe<Proposal_Tally_Result_Var_Pop_Order_By>;
   var_samp?: InputMaybe<Proposal_Tally_Result_Var_Samp_Order_By>;
   variance?: InputMaybe<Proposal_Tally_Result_Variance_Order_By>;
+};
+
+/** aggregate avg on columns */
+export type Proposal_Tally_Result_Avg_Fields = {
+  __typename?: 'proposal_tally_result_avg_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by avg() on columns of table "proposal_tally_result" */
@@ -3297,6 +3397,17 @@ export type Proposal_Tally_Result_Bool_Exp = {
   yes?: InputMaybe<String_Comparison_Exp>;
 };
 
+/** aggregate max on columns */
+export type Proposal_Tally_Result_Max_Fields = {
+  __typename?: 'proposal_tally_result_max_fields';
+  abstain?: Maybe<Scalars['String']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+  no?: Maybe<Scalars['String']['output']>;
+  no_with_veto?: Maybe<Scalars['String']['output']>;
+  proposal_id?: Maybe<Scalars['Int']['output']>;
+  yes?: Maybe<Scalars['String']['output']>;
+};
+
 /** order by max() on columns of table "proposal_tally_result" */
 export type Proposal_Tally_Result_Max_Order_By = {
   abstain?: InputMaybe<Order_By>;
@@ -3305,6 +3416,17 @@ export type Proposal_Tally_Result_Max_Order_By = {
   no_with_veto?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
   yes?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Proposal_Tally_Result_Min_Fields = {
+  __typename?: 'proposal_tally_result_min_fields';
+  abstain?: Maybe<Scalars['String']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+  no?: Maybe<Scalars['String']['output']>;
+  no_with_veto?: Maybe<Scalars['String']['output']>;
+  proposal_id?: Maybe<Scalars['Int']['output']>;
+  yes?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "proposal_tally_result" */
@@ -3344,16 +3466,37 @@ export enum Proposal_Tally_Result_Select_Column {
   Yes = 'yes'
 }
 
+/** aggregate stddev on columns */
+export type Proposal_Tally_Result_Stddev_Fields = {
+  __typename?: 'proposal_tally_result_stddev_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
+};
+
 /** order by stddev() on columns of table "proposal_tally_result" */
 export type Proposal_Tally_Result_Stddev_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
 };
 
+/** aggregate stddev_pop on columns */
+export type Proposal_Tally_Result_Stddev_Pop_Fields = {
+  __typename?: 'proposal_tally_result_stddev_pop_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
+};
+
 /** order by stddev_pop() on columns of table "proposal_tally_result" */
 export type Proposal_Tally_Result_Stddev_Pop_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Proposal_Tally_Result_Stddev_Samp_Fields = {
+  __typename?: 'proposal_tally_result_stddev_samp_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by stddev_samp() on columns of table "proposal_tally_result" */
@@ -3380,10 +3523,24 @@ export type Proposal_Tally_Result_Stream_Cursor_Value_Input = {
   yes?: InputMaybe<Scalars['String']['input']>;
 };
 
+/** aggregate sum on columns */
+export type Proposal_Tally_Result_Sum_Fields = {
+  __typename?: 'proposal_tally_result_sum_fields';
+  height?: Maybe<Scalars['bigint']['output']>;
+  proposal_id?: Maybe<Scalars['Int']['output']>;
+};
+
 /** order by sum() on columns of table "proposal_tally_result" */
 export type Proposal_Tally_Result_Sum_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate var_pop on columns */
+export type Proposal_Tally_Result_Var_Pop_Fields = {
+  __typename?: 'proposal_tally_result_var_pop_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by var_pop() on columns of table "proposal_tally_result" */
@@ -3392,10 +3549,24 @@ export type Proposal_Tally_Result_Var_Pop_Order_By = {
   proposal_id?: InputMaybe<Order_By>;
 };
 
+/** aggregate var_samp on columns */
+export type Proposal_Tally_Result_Var_Samp_Fields = {
+  __typename?: 'proposal_tally_result_var_samp_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
+};
+
 /** order by var_samp() on columns of table "proposal_tally_result" */
 export type Proposal_Tally_Result_Var_Samp_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Proposal_Tally_Result_Variance_Fields = {
+  __typename?: 'proposal_tally_result_variance_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by variance() on columns of table "proposal_tally_result" */
@@ -3624,6 +3795,48 @@ export type Proposal_Vote = {
   proposal_id: Scalars['Int']['output'];
   timestamp?: Maybe<Scalars['timestamp']['output']>;
   voter_address: Scalars['String']['output'];
+  weight: Scalars['String']['output'];
+};
+
+/** aggregated selection of "proposal_vote" */
+export type Proposal_Vote_Aggregate = {
+  __typename?: 'proposal_vote_aggregate';
+  aggregate?: Maybe<Proposal_Vote_Aggregate_Fields>;
+  nodes: Array<Proposal_Vote>;
+};
+
+export type Proposal_Vote_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Proposal_Vote_Aggregate_Bool_Exp_Count>;
+};
+
+export type Proposal_Vote_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<Proposal_Vote_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
+/** aggregate fields of "proposal_vote" */
+export type Proposal_Vote_Aggregate_Fields = {
+  __typename?: 'proposal_vote_aggregate_fields';
+  avg?: Maybe<Proposal_Vote_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Proposal_Vote_Max_Fields>;
+  min?: Maybe<Proposal_Vote_Min_Fields>;
+  stddev?: Maybe<Proposal_Vote_Stddev_Fields>;
+  stddev_pop?: Maybe<Proposal_Vote_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Proposal_Vote_Stddev_Samp_Fields>;
+  sum?: Maybe<Proposal_Vote_Sum_Fields>;
+  var_pop?: Maybe<Proposal_Vote_Var_Pop_Fields>;
+  var_samp?: Maybe<Proposal_Vote_Var_Samp_Fields>;
+  variance?: Maybe<Proposal_Vote_Variance_Fields>;
+};
+
+
+/** aggregate fields of "proposal_vote" */
+export type Proposal_Vote_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 /** order by aggregate values of table "proposal_vote" */
@@ -3639,6 +3852,13 @@ export type Proposal_Vote_Aggregate_Order_By = {
   var_pop?: InputMaybe<Proposal_Vote_Var_Pop_Order_By>;
   var_samp?: InputMaybe<Proposal_Vote_Var_Samp_Order_By>;
   variance?: InputMaybe<Proposal_Vote_Variance_Order_By>;
+};
+
+/** aggregate avg on columns */
+export type Proposal_Vote_Avg_Fields = {
+  __typename?: 'proposal_vote_avg_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by avg() on columns of table "proposal_vote" */
@@ -3660,6 +3880,18 @@ export type Proposal_Vote_Bool_Exp = {
   proposal_id?: InputMaybe<Int_Comparison_Exp>;
   timestamp?: InputMaybe<Timestamp_Comparison_Exp>;
   voter_address?: InputMaybe<String_Comparison_Exp>;
+  weight?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Proposal_Vote_Max_Fields = {
+  __typename?: 'proposal_vote_max_fields';
+  height?: Maybe<Scalars['bigint']['output']>;
+  option?: Maybe<Scalars['String']['output']>;
+  proposal_id?: Maybe<Scalars['Int']['output']>;
+  timestamp?: Maybe<Scalars['timestamp']['output']>;
+  voter_address?: Maybe<Scalars['String']['output']>;
+  weight?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "proposal_vote" */
@@ -3669,6 +3901,18 @@ export type Proposal_Vote_Max_Order_By = {
   proposal_id?: InputMaybe<Order_By>;
   timestamp?: InputMaybe<Order_By>;
   voter_address?: InputMaybe<Order_By>;
+  weight?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Proposal_Vote_Min_Fields = {
+  __typename?: 'proposal_vote_min_fields';
+  height?: Maybe<Scalars['bigint']['output']>;
+  option?: Maybe<Scalars['String']['output']>;
+  proposal_id?: Maybe<Scalars['Int']['output']>;
+  timestamp?: Maybe<Scalars['timestamp']['output']>;
+  voter_address?: Maybe<Scalars['String']['output']>;
+  weight?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "proposal_vote" */
@@ -3678,6 +3922,7 @@ export type Proposal_Vote_Min_Order_By = {
   proposal_id?: InputMaybe<Order_By>;
   timestamp?: InputMaybe<Order_By>;
   voter_address?: InputMaybe<Order_By>;
+  weight?: InputMaybe<Order_By>;
 };
 
 /** Ordering options when selecting data from "proposal_vote". */
@@ -3690,6 +3935,7 @@ export type Proposal_Vote_Order_By = {
   proposal_id?: InputMaybe<Order_By>;
   timestamp?: InputMaybe<Order_By>;
   voter_address?: InputMaybe<Order_By>;
+  weight?: InputMaybe<Order_By>;
 };
 
 /** select columns of table "proposal_vote" */
@@ -3703,8 +3949,17 @@ export enum Proposal_Vote_Select_Column {
   /** column name */
   Timestamp = 'timestamp',
   /** column name */
-  VoterAddress = 'voter_address'
+  VoterAddress = 'voter_address',
+  /** column name */
+  Weight = 'weight'
 }
+
+/** aggregate stddev on columns */
+export type Proposal_Vote_Stddev_Fields = {
+  __typename?: 'proposal_vote_stddev_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
+};
 
 /** order by stddev() on columns of table "proposal_vote" */
 export type Proposal_Vote_Stddev_Order_By = {
@@ -3712,10 +3967,24 @@ export type Proposal_Vote_Stddev_Order_By = {
   proposal_id?: InputMaybe<Order_By>;
 };
 
+/** aggregate stddev_pop on columns */
+export type Proposal_Vote_Stddev_Pop_Fields = {
+  __typename?: 'proposal_vote_stddev_pop_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
+};
+
 /** order by stddev_pop() on columns of table "proposal_vote" */
 export type Proposal_Vote_Stddev_Pop_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Proposal_Vote_Stddev_Samp_Fields = {
+  __typename?: 'proposal_vote_stddev_samp_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by stddev_samp() on columns of table "proposal_vote" */
@@ -3739,6 +4008,14 @@ export type Proposal_Vote_Stream_Cursor_Value_Input = {
   proposal_id?: InputMaybe<Scalars['Int']['input']>;
   timestamp?: InputMaybe<Scalars['timestamp']['input']>;
   voter_address?: InputMaybe<Scalars['String']['input']>;
+  weight?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Proposal_Vote_Sum_Fields = {
+  __typename?: 'proposal_vote_sum_fields';
+  height?: Maybe<Scalars['bigint']['output']>;
+  proposal_id?: Maybe<Scalars['Int']['output']>;
 };
 
 /** order by sum() on columns of table "proposal_vote" */
@@ -3747,16 +4024,37 @@ export type Proposal_Vote_Sum_Order_By = {
   proposal_id?: InputMaybe<Order_By>;
 };
 
+/** aggregate var_pop on columns */
+export type Proposal_Vote_Var_Pop_Fields = {
+  __typename?: 'proposal_vote_var_pop_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
+};
+
 /** order by var_pop() on columns of table "proposal_vote" */
 export type Proposal_Vote_Var_Pop_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
 };
 
+/** aggregate var_samp on columns */
+export type Proposal_Vote_Var_Samp_Fields = {
+  __typename?: 'proposal_vote_var_samp_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
+};
+
 /** order by var_samp() on columns of table "proposal_vote" */
 export type Proposal_Vote_Var_Samp_Order_By = {
   height?: InputMaybe<Order_By>;
   proposal_id?: InputMaybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Proposal_Vote_Variance_Fields = {
+  __typename?: 'proposal_vote_variance_fields';
+  height?: Maybe<Scalars['Float']['output']>;
+  proposal_id?: Maybe<Scalars['Float']['output']>;
 };
 
 /** order by variance() on columns of table "proposal_vote" */
@@ -3857,10 +4155,14 @@ export type Query_Root = {
   proposal_staking_pool_snapshot: Array<Proposal_Staking_Pool_Snapshot>;
   /** fetch data from the table: "proposal_tally_result" */
   proposal_tally_result: Array<Proposal_Tally_Result>;
+  /** fetch aggregated fields from the table: "proposal_tally_result" */
+  proposal_tally_result_aggregate: Proposal_Tally_Result_Aggregate;
   /** fetch data from the table: "proposal_validator_status_snapshot" */
   proposal_validator_status_snapshot: Array<Proposal_Validator_Status_Snapshot>;
   /** fetch data from the table: "proposal_vote" */
   proposal_vote: Array<Proposal_Vote>;
+  /** fetch aggregated fields from the table: "proposal_vote" */
+  proposal_vote_aggregate: Proposal_Vote_Aggregate;
   /** fetch data from the table: "slashing_params" */
   slashing_params: Array<Slashing_Params>;
   /** fetch data from the table: "software_upgrade_plan" */
@@ -4336,6 +4638,15 @@ export type Query_RootProposal_Tally_ResultArgs = {
 };
 
 
+export type Query_RootProposal_Tally_Result_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Proposal_Tally_Result_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Proposal_Tally_Result_Order_By>>;
+  where?: InputMaybe<Proposal_Tally_Result_Bool_Exp>;
+};
+
+
 export type Query_RootProposal_Validator_Status_SnapshotArgs = {
   distinct_on?: InputMaybe<Array<Proposal_Validator_Status_Snapshot_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -4346,6 +4657,15 @@ export type Query_RootProposal_Validator_Status_SnapshotArgs = {
 
 
 export type Query_RootProposal_VoteArgs = {
+  distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Proposal_Vote_Order_By>>;
+  where?: InputMaybe<Proposal_Vote_Bool_Exp>;
+};
+
+
+export type Query_RootProposal_Vote_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -5071,6 +5391,8 @@ export type Subscription_Root = {
   proposal_stream: Array<Proposal>;
   /** fetch data from the table: "proposal_tally_result" */
   proposal_tally_result: Array<Proposal_Tally_Result>;
+  /** fetch aggregated fields from the table: "proposal_tally_result" */
+  proposal_tally_result_aggregate: Proposal_Tally_Result_Aggregate;
   /** fetch data from the table in a streaming manner: "proposal_tally_result" */
   proposal_tally_result_stream: Array<Proposal_Tally_Result>;
   /** fetch data from the table: "proposal_validator_status_snapshot" */
@@ -5079,6 +5401,8 @@ export type Subscription_Root = {
   proposal_validator_status_snapshot_stream: Array<Proposal_Validator_Status_Snapshot>;
   /** fetch data from the table: "proposal_vote" */
   proposal_vote: Array<Proposal_Vote>;
+  /** fetch aggregated fields from the table: "proposal_vote" */
+  proposal_vote_aggregate: Proposal_Vote_Aggregate;
   /** fetch data from the table in a streaming manner: "proposal_vote" */
   proposal_vote_stream: Array<Proposal_Vote>;
   /** fetch data from the table: "slashing_params" */
@@ -5683,6 +6007,15 @@ export type Subscription_RootProposal_Tally_ResultArgs = {
 };
 
 
+export type Subscription_RootProposal_Tally_Result_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Proposal_Tally_Result_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Proposal_Tally_Result_Order_By>>;
+  where?: InputMaybe<Proposal_Tally_Result_Bool_Exp>;
+};
+
+
 export type Subscription_RootProposal_Tally_Result_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Proposal_Tally_Result_Stream_Cursor_Input>>;
@@ -5707,6 +6040,15 @@ export type Subscription_RootProposal_Validator_Status_Snapshot_StreamArgs = {
 
 
 export type Subscription_RootProposal_VoteArgs = {
+  distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Proposal_Vote_Order_By>>;
+  where?: InputMaybe<Proposal_Vote_Bool_Exp>;
+};
+
+
+export type Subscription_RootProposal_Vote_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Proposal_Vote_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
@@ -8465,7 +8807,7 @@ export type ProposalTalliesQuery = { __typename?: 'query_root', proposal_tally_r
 export type ProposalsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ProposalsQuery = { __typename?: 'query_root', deposit_proposals: Array<{ __typename?: 'proposal', content: any, deposit_end_time?: any | null, description: string, id: number, proposal_type: string, proposer_address: string, proposal_deposits: Array<{ __typename?: 'proposal_deposit', amount?: Array<any> | null, depositor_address?: string | null }> }>, voting_proposals: Array<{ __typename?: 'proposal', content: any, deposit_end_time?: any | null, description: string, id: number, proposal_type: string, proposer_address: string, proposal_deposits: Array<{ __typename?: 'proposal_deposit', amount?: Array<any> | null, depositor_address?: string | null }> }>, all_proposals: Array<{ __typename?: 'proposal', content: any, deposit_end_time?: any | null, description: string, id: number, proposal_type: string, proposer_address: string, proposal_deposits: Array<{ __typename?: 'proposal_deposit', amount?: Array<any> | null, depositor_address?: string | null }> }> };
+export type ProposalsQuery = { __typename?: 'query_root', deposit_proposals: Array<{ __typename?: 'proposal', content: any, deposit_end_time?: any | null, description: string, id: number, proposal_type: string, proposer_address: string, status?: string | null, submit_time: any, title: string, voting_end_time?: any | null, voting_start_time?: any | null, proposal_deposits: Array<{ __typename?: 'proposal_deposit', amount?: Array<any> | null, depositor_address?: string | null }>, proposal_votes_aggregate: { __typename?: 'proposal_vote_aggregate', aggregate?: { __typename?: 'proposal_vote_aggregate_fields', count: number } | null } }>, voting_proposals: Array<{ __typename?: 'proposal', content: any, deposit_end_time?: any | null, description: string, id: number, proposal_type: string, proposer_address: string, status?: string | null, submit_time: any, title: string, voting_end_time?: any | null, voting_start_time?: any | null, proposal_deposits: Array<{ __typename?: 'proposal_deposit', amount?: Array<any> | null, depositor_address?: string | null }>, proposal_votes_aggregate: { __typename?: 'proposal_vote_aggregate', aggregate?: { __typename?: 'proposal_vote_aggregate_fields', count: number } | null } }>, all_proposals: Array<{ __typename?: 'proposal', content: any, deposit_end_time?: any | null, description: string, id: number, proposal_type: string, proposer_address: string, status?: string | null, submit_time: any, title: string, voting_end_time?: any | null, voting_start_time?: any | null, proposal_deposits: Array<{ __typename?: 'proposal_deposit', amount?: Array<any> | null, depositor_address?: string | null }>, proposal_votes_aggregate: { __typename?: 'proposal_vote_aggregate', aggregate?: { __typename?: 'proposal_vote_aggregate_fields', count: number } | null } }> };
 
 export type VoteHistoryQueryVariables = Exact<{
   address: Scalars['String']['input'];
@@ -8478,5 +8820,5 @@ export type VoteHistoryQuery = { __typename?: 'query_root', proposal_vote: Array
 export const BalanceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Balance"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"address"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"action_account_balance"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"address"},"value":{"kind":"Variable","name":{"kind":"Name","value":"address"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"coins"}}]}}]}}]} as unknown as DocumentNode<BalanceQuery, BalanceQueryVariables>;
 export const ProposalDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Proposal"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"proposal"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"deposit_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_route"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_type"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_votes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"voter_address"}},{"kind":"Field","name":{"kind":"Name","value":"option"}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposer_address"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"submit_time"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"voting_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"voting_start_time"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_tally_results"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"yes"}},{"kind":"Field","name":{"kind":"Name","value":"no_with_veto"}},{"kind":"Field","name":{"kind":"Name","value":"no"}},{"kind":"Field","name":{"kind":"Name","value":"abstain"}}]}}]}}]}}]} as unknown as DocumentNode<ProposalQuery, ProposalQueryVariables>;
 export const ProposalTalliesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProposalTallies"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"proposal_tally_result"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"proposal_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"no"}},{"kind":"Field","name":{"kind":"Name","value":"no_with_veto"}},{"kind":"Field","name":{"kind":"Name","value":"abstain"}},{"kind":"Field","name":{"kind":"Name","value":"yes"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_id"}}]}}]}}]} as unknown as DocumentNode<ProposalTalliesQuery, ProposalTalliesQueryVariables>;
-export const ProposalsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Proposals"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"deposit_proposals"},"name":{"kind":"Name","value":"proposal"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"status"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"StringValue","value":"PROPOSAL_STATUS_DEPOSIT_PERIOD","block":false}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"proposal_deposits"},"value":{"kind":"ObjectValue","fields":[]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"deposit_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_type"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_deposits"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"depositor_address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposer_address"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"voting_proposals"},"name":{"kind":"Name","value":"proposal"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"status"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"StringValue","value":"PROPOSAL_STATUS_VOTING_PERIOD","block":false}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"deposit_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_type"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_deposits"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"depositor_address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposer_address"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"all_proposals"},"name":{"kind":"Name","value":"proposal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"deposit_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_type"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_deposits"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"depositor_address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposer_address"}}]}}]}}]} as unknown as DocumentNode<ProposalsQuery, ProposalsQueryVariables>;
+export const ProposalsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Proposals"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"deposit_proposals"},"name":{"kind":"Name","value":"proposal"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"status"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"StringValue","value":"PROPOSAL_STATUS_DEPOSIT_PERIOD","block":false}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"proposal_deposits"},"value":{"kind":"ObjectValue","fields":[]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"deposit_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_type"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_deposits"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"depositor_address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposal_votes_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"distinct_on"},"value":{"kind":"EnumValue","value":"voter_address"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregate"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposer_address"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"submit_time"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"voting_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"voting_start_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"voting_proposals"},"name":{"kind":"Name","value":"proposal"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"status"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"StringValue","value":"PROPOSAL_STATUS_VOTING_PERIOD","block":false}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"deposit_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_type"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_deposits"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"depositor_address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposal_votes_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"distinct_on"},"value":{"kind":"EnumValue","value":"voter_address"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregate"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposer_address"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"submit_time"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"voting_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"voting_start_time"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"all_proposals"},"name":{"kind":"Name","value":"proposal"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"deposit_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_type"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_deposits"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}},{"kind":"Field","name":{"kind":"Name","value":"depositor_address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposal_votes_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"distinct_on"},"value":{"kind":"EnumValue","value":"voter_address"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregate"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposer_address"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"submit_time"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"voting_end_time"}},{"kind":"Field","name":{"kind":"Name","value":"voting_start_time"}}]}}]}}]} as unknown as DocumentNode<ProposalsQuery, ProposalsQueryVariables>;
 export const VoteHistoryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"VoteHistory"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"address"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"proposal_vote"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"voter_address"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"address"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"option"}},{"kind":"Field","name":{"kind":"Name","value":"voter_address"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_id"}}]}}]}}]} as unknown as DocumentNode<VoteHistoryQuery, VoteHistoryQueryVariables>;
