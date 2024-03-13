@@ -75,7 +75,7 @@ onMounted(refresh);
       <div class="flex flex-col gap-3 md:flex-row md:gap-6 w-full justify-end">
         <CommonButton v-if="!isLoggedIn" @click="login"> Login with GitHub </CommonButton>
         <template v-else>
-          <CommonButton @click="logout"> Logout {{ username }} </CommonButton>
+          <CommonButton @click="logout"> Sign Out </CommonButton>
           <CommonButton @click="state.isAddingLink = true"> Add Link </CommonButton>
         </template>
       </div>
