@@ -1,29 +1,31 @@
+import {
+  useBalanceQuery,
+  useProposalQuery,
+  useProposalTalliesQuery,
+  useProposalsQuery,
+  useVoteHistoryQuery,
+} from "@/gql/graphql";
 import { useQuery } from "@vue/apollo-composable";
-import proposalsQuery from "../graphql/proposals.graphql";
-import proposalQuery from "../graphql/proposal.graphql";
-import balanceQuery from "../graphql/balance.graphql";
-import voteHistoryQuery from "../graphql/voteHistory.graphql";
-import proposalTalliesQuery from "../graphql/proposalTallies.graphql";
 
 export const useChainData = () => {
   const getBalance = (address: string) => {
-    const { result } = useQuery(balanceQuery, { variables: { address } });
+    const { result } = useBalanceQuery({ address });
     return result;
   };
   const getProposals = () => {
-    const { result } = useQuery(proposalsQuery, null, { pollInterval: 5000 });
+    const { result } = useProposalsQuery({ pollInterval: 5000 });
     return result;
   };
   const getProposal = (proposal_id: number) => {
-    const { result } = useQuery(proposalQuery, { variables: { id: proposal_id } }, { pollInterval: 5000 });
+    const { result } = useProposalQuery({ id: proposal_id }, { pollInterval: 5000 });
     return result;
   };
   const getVoteHistory = (address: string) => {
-    const { result } = useQuery(voteHistoryQuery, { variables: { address } });
+    const { result } = useVoteHistoryQuery({ address });
     return result;
   };
   const getProposalTallies = (proposal_id: number) => {
-    const { result } = useQuery(proposalTalliesQuery, { variables: { id: proposal_id } }, { pollInterval: 5000 });
+    const { result } = useProposalTalliesQuery({ id: proposal_id }, { pollInterval: 5000 });
     return result;
   };
   return { getBalance, getProposals, getProposal, getVoteHistory, getProposalTallies };

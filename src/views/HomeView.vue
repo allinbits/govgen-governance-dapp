@@ -6,9 +6,14 @@ import Search from "@/components/ui/Search.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
 
+import { useChainData } from "@/composables/useChainData";
+
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
 const searchText = ref("");
+const { getProposals } = useChainData();
+
+const proposals = getProposals();
 
 const links = ref([
   { title: "Twitter", url: "#", icon: "twitter" },
@@ -91,10 +96,10 @@ function onSearchInput() {
     </div>
     <!-- Proposal View -->
     <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-[72px]">
-      <ProposalCard v-for="index in 12" :key="index" link="#">
+      <ProposalCard v-for="proposal in proposals.all_proposals" :key="index" link="#">
         <template v-slot:header><ProposalStatus status="voting" /></template>
-        <template v-slot:number>#{{ index }}</template>
-        <div>Development Approval Request for the AtomOne Alignment Treasury</div>
+        <template v-slot:number>#{{ proposal.id }}</template>
+        <div>{{ proposal.description }}</div>
         <template v-slot:footer>
           <div class="flex flex-row text-200 text-grey-100 font-medium items-center justify-between w-full">
             <span>Type</span>
