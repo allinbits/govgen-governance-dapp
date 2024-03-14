@@ -51,7 +51,6 @@ const sortedComments = computed(() => {
     // Oldest
     case 1:
       commentList.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
-
       break;
     // Latest
     case 2:
@@ -66,7 +65,7 @@ onMounted(refresh);
 </script>
 
 <template>
-  <div class="flex flex-col w-full gap-[72px] pt-[72px]">
+  <div class="flex flex-col w-full pt-[72px]">
     <!-- Login & Comment Post Section -->
     <div
       v-if="!isLoggedIn"
@@ -103,12 +102,12 @@ onMounted(refresh);
       </div>
     </div>
 
+    <div class="flex flex-row w-full justify-between items-center mt-[72px] mb-[72px]">
+      <div class="text-500 font-medium">Proposal Discussions</div>
+      <DropDown v-model="sortingType" :values="sortingList" @select="handleSortingChange" />
+    </div>
     <!-- Comments -->
     <div v-if="isLoaded" class="flex flex-col w-full">
-      <div class="flex flex-row w-full justify-between items-center mb-8">
-        <div class="text-500 font-medium">Proposal Discussions</div>
-        <DropDown v-model="sortingType" :values="sortingList" @select="handleSortingChange" />
-      </div>
       <div class="flex flex-col gap-6">
         <!-- Comments -->
         <div
@@ -153,7 +152,7 @@ onMounted(refresh);
         </div>
       </div>
     </div>
-    <div v-if="!isLoaded || isFailing" class="flex flex-col gap-6 w-full flex-wrap pt-8">
+    <div v-if="!isLoaded || isFailing" class="flex flex-col gap-6 w-full flex-wrap">
       <div
         v-for="index in 6"
         :key="index"
