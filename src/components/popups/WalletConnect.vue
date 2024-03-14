@@ -2,7 +2,7 @@
 import { Wallets, useWallet, getWalletHelp } from "../../composables/useWallet";
 import UiButton from "../ui/UiButton.vue";
 import { Ref, computed, ref } from "vue";
-import { formatAmount, shorten } from "../../utility";
+import { shorten } from "../../utility";
 import UserBalance from "../helper/UserBalance.vue";
 
 const isOpen = ref(false);

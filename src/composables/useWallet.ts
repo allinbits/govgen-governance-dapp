@@ -4,7 +4,6 @@ import chainInfo from "../chain-config.json";
 import { EncodeObject, OfflineSigner } from "@cosmjs/proto-signing";
 import { getSigningGovgenClient } from "@atomone/govgen-types/govgen/client";
 import { getOfflineSigner } from "@cosmostation/cosmos-client";
-import { useChainData } from "./useChainData";
 
 export enum Wallets {
   keplr = "Keplr",
@@ -147,8 +146,6 @@ const useWalletInstance = () => {
   window.addEventListener("keplr_keystorechange", refreshAddress);
   window.addEventListener("leap_keystorechange", refreshAddress);
 
-  const { getBalance } = useChainData();
-  
   return { ...walletState, signOut, connect, sendTx };
 };
 
