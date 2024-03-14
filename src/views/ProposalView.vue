@@ -69,8 +69,6 @@ const proposalTallies = getProposalTallies(parseInt(route.params.id as string));
         </div>
       </div>
     </SimpleCard>
-    {{ proposal }}
-    {{ proposalTallies }}
     <div class="mb-2 font-medium text-3xl">Proposal {{ route.params.id }}</div>
     <GithubLinks :term="linksTerm" />
     <GithubComments :term="proposalTerm" />
