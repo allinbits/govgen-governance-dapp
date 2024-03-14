@@ -10,7 +10,7 @@ import { useGithubDiscusser } from "@/composables/useGithubDiscusser";
 const props = defineProps<{ term: string }>();
 
 const { logout, isLoggedIn, login, username } = useGithubDiscussions();
-const { links, refresh, postMessage, postUpvote, isPosting, isFailing, isLoaded } = useGithubDiscusser(props.term);
+const { links, refresh, postMessage, postUpvote, isPosting, isFailing, isLoading } = useGithubDiscusser(props.term);
 
 const linkInput = ref<string>("");
 const contextInput = ref<string>("");
@@ -115,7 +115,7 @@ onMounted(refresh);
       </div>
     </div>
     <!-- Rendered Links -->
-    <div v-if="isLoaded && !isFailing" class="flex flex-col gap-2 w-full mb-4 pt-8">
+    <div v-if="!isLoading && !isFailing" class="flex flex-col gap-2 w-full mb-4 pt-8">
       <div class="grid gap-6 w-full flex-wrap grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="(comment, index) in links"
@@ -152,7 +152,7 @@ onMounted(refresh);
       </div>
     </div>
     <div
-      v-if="!isLoaded || isFailing"
+      v-if="isLoading || isFailing"
       class="grid gap-6 w-full flex-wrap grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-8"
     >
       <div

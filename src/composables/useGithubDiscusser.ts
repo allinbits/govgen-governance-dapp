@@ -13,6 +13,7 @@ export function useGithubDiscusser(threadTitle: string) {
   const discussion = ref<GithubTypes.DiscussionResponse>();
   const isPosting = ref(false);
   const isRefreshing = ref(false);
+  const isLoading = ref(true);
   const didCommentsFailToLoad = ref(false);
 
   /**
@@ -42,6 +43,8 @@ export function useGithubDiscusser(threadTitle: string) {
     if (!discussion.value) {
       didCommentsFailToLoad.value = true;
       setTimeout(refresh, Config.DISCUSSION_REFRESH_TIME);
+    } else {
+      isLoading.value = false;
     }
 
     isRefreshing.value = false;
@@ -153,10 +156,6 @@ export function useGithubDiscusser(threadTitle: string) {
     return comments;
   });
 
-  const isLoaded = computed(() => {
-    return !isRefreshing.value;
-  });
-
   const isFailing = computed(() => {
     return didCommentsFailToLoad.value && !discussion.value;
   });
@@ -169,7 +168,7 @@ export function useGithubDiscusser(threadTitle: string) {
     postUpvote,
     isPosting,
     isRefreshing,
-    isLoaded,
+    isLoading,
     isFailing,
   };
 }

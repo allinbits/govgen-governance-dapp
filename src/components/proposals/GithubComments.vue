@@ -11,7 +11,7 @@ import DropDown from "@/components/ui/DropDown.vue";
 const props = defineProps<{ term: string }>();
 
 const { logout, isLoggedIn, login, username, avatar } = useGithubDiscussions();
-const { comments, refresh, postMessage, postUpvote, isPosting, isFailing, isLoaded } = useGithubDiscusser(props.term);
+const { comments, refresh, postMessage, postUpvote, isPosting, isFailing, isLoading } = useGithubDiscusser(props.term);
 
 const sortingList = ["Popular", "Oldest", "Latest"];
 const sortingType = ref(0);
@@ -107,7 +107,7 @@ onMounted(refresh);
       <DropDown v-model="sortingType" :values="sortingList" @select="handleSortingChange" />
     </div>
     <!-- Comments -->
-    <div v-if="isLoaded" class="flex flex-col w-full">
+    <div v-if="!isLoading" class="flex flex-col w-full">
       <div class="flex flex-col gap-6">
         <!-- Comments -->
         <div
@@ -152,7 +152,7 @@ onMounted(refresh);
         </div>
       </div>
     </div>
-    <div v-if="!isLoaded || isFailing" class="flex flex-col gap-6 w-full flex-wrap">
+    <div v-if="isLoading || isFailing" class="flex flex-col gap-6 w-full flex-wrap">
       <div
         v-for="index in 6"
         :key="index"
