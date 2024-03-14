@@ -13,7 +13,7 @@ const route = useRoute();
 const proposalTerm = `Proposal #${route.params.id}`;
 const linksTerm = `Links #${route.params.id}`;
 const proposal = getProposal(parseInt(route.params.id as string));
-const proposalTallies = getProposalTallies(parseInt(route.params.id as string));
+const _proposalTallies = getProposalTallies(parseInt(route.params.id as string));
 </script>
 
 <template>
