@@ -2,7 +2,8 @@
 import { Wallets, useWallet, getWalletHelp } from "../../composables/useWallet";
 import ConnectButton from "../ui/ConnectButton.vue";
 import { Ref, computed, ref } from "vue";
-import { formatAmount, shorten } from "../../utility";
+import { shorten } from "../../utility";
+import UserBalance from "../helper/UserBalance.vue";
 
 const isOpen = ref(false);
 const isConnecting = ref(false);
@@ -103,7 +104,7 @@ const cancelConnect = () => {
         <div class="bg-gradient w-10 h-10 rounded-full mr-3"></div>
         <div class="flex flex-col justify-around">
           <div class="text-light text-200">{{ shorten(address) }}</div>
-          <div class="text-100 text-grey-100">6,000,000 govgen</div>
+          <div class="text-100 text-grey-100"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
         </div>
       </div>
     </template>
@@ -120,7 +121,7 @@ const cancelConnect = () => {
             </div>
           </div>
           <div class="text-200 text-grey-100 pt-6 pb-2">Balance</div>
-          <div class="text-300 text-light">{{ formatAmount("123456789", 6) }} govgen</div>
+          <div class="text-300 text-light"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
           <div class="buttons">
             <ConnectButton
               class="my-4 justify-center"

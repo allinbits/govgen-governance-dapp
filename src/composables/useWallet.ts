@@ -2,7 +2,7 @@
 import { ref, computed, Ref } from "vue";
 import chainInfo from "../chain-config.json";
 import { EncodeObject, OfflineSigner } from "@cosmjs/proto-signing";
-import { SigningStargateClient } from "@cosmjs/stargate";
+import { getSigningGovgenClient } from "@atomone/govgen-types/govgen/client";
 import { getOfflineSigner } from "@cosmostation/cosmos-client";
 
 export enum Wallets {
@@ -124,7 +124,7 @@ const useWalletInstance = () => {
   const sendTx = async (msgs: EncodeObject[]) => {
     if (signer.value) {
       try {
-        const client = await SigningStargateClient.connectWithSigner(chainInfo.rpc, signer.value);
+        const client = await getSigningGovgenClient({ rpcEndpoint: chainInfo.rpc, signer: signer.value });
         const result = await client.signAndBroadcast(walletState.address.value, msgs, {
           amount: [{ amount: "0", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }],
           gas: "200000",

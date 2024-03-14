@@ -1,0 +1,10 @@
+query ProposalTallies($id: Int!) {
+  proposal_tally_result(where: { proposal_id: { _eq: $id } }) {
+    height
+    no
+    no_with_veto
+    abstain
+    yes
+    proposal_id
+  }
+}

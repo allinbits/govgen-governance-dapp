@@ -1,7 +1,7 @@
 {
   "rpc": "http://167.99.249.42:26657/",
   "rest": "http://167.99.249.42:1317/",
-  "chainId": "govgen-devnet-1",
+  "chainId": "govgen-devnet-3",
   "chainName": "GovGen DevNet",
   "bip44": {
     "coinType": 118
