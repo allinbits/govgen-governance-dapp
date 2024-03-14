@@ -9,6 +9,7 @@ query Proposal($id: Int!) {
       voter_address
       option
     }
+    id
     proposer_address
     status
     submit_time

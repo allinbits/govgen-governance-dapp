@@ -44,6 +44,10 @@ export default <Config>{
         500: "#0D0D0D",
       },
       button: "rgba(255,255,255,0.05)",
+      badge: {
+        info: "rgba(107, 239, 255, 0.10)",
+        plain: "rgba(255, 255, 255, 0.10)",
+      },
       accent: {
         100: "#6BEFFF",
         200: "#F4AFFF",
