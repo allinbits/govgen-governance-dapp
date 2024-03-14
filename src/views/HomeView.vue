@@ -5,10 +5,16 @@ import ProposalCard from "@/components/home/ProposalCard.vue";
 import Search from "@/components/ui/Search.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
+import { PropStatus } from "@/types/proposals";
+
+import { useChainData } from "@/composables/useChainData";
 
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
 const searchText = ref("");
+const { getProposals } = useChainData();
+
+const proposals = getProposals();
 
 const links = ref([
   { title: "Twitter", url: "#", icon: "twitter" },
@@ -52,7 +58,7 @@ function onSearchInput() {
           <span>|</span>
           <!-- Chain Socials -->
           <div class="flex flex-row gap-4 items-center justify-center">
-            <a class="flex items-center" v-for="(linkData, index) in links" :key="index" :href="linkData.url">
+            <a v-for="(linkData, index) in links" :key="index" class="flex items-center" :href="linkData.url">
               <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
             </a>
           </div>
@@ -77,32 +83,35 @@ function onSearchInput() {
       <div class="flex flex-col gap-6 w-full justify-start lg:flex-row lg:items-center lg:justify-end">
         <!-- Select Type -->
         <DropDown
-          :values="['All Proposals', 'Voting', 'Passed', 'Rejected', 'Failed']"
           v-model="typeFilterIndex"
+          :values="['All Proposals', 'Voting', 'Passed', 'Rejected', 'Failed']"
           @select="setTypeFilterIndex"
         />
         <!-- Show 'x' First -->
         <DropDown
-          :values="['Active First', 'Passed First', 'Rejected First', 'Failed First']"
           v-model="activityFilterIndex"
+          :values="['Active First', 'Passed First', 'Rejected First', 'Failed First']"
           @select="setActivityFilterIndex"
         />
       </div>
     </div>
     <!-- Proposal View -->
-    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-[72px]">
-      <ProposalCard v-for="index in 12" :key="index" link="#">
-        <template v-slot:header><ProposalStatus status="voting" /></template>
-        <template v-slot:number>#{{ index }}</template>
-        <div>Development Approval Request for the AtomOne Alignment Treasury</div>
-        <template v-slot:footer>
+    <div v-if="proposals" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-[72px]">
+      <ProposalCard v-for="proposal in proposals.all_proposals" :key="proposal.id" link="#">
+        <template #header
+          ><ProposalStatus
+            :status="PropStatus[(proposal.status ?? 'PROPOSAL_STATUS_UNSPECIFIED') as keyof typeof PropStatus]"
+        /></template>
+        <template #number>#{{ proposal.id }}</template>
+        <div>{{ proposal.title }}</div>
+        <template #footer>
           <div class="flex flex-row text-200 text-grey-100 font-medium items-center justify-between w-full">
-            <span>Type</span>
+            <span></span>
             <div class="flex flex-row gap-4">
               <!-- Vote Count-->
               <div class="flex flex-row items-center gap-1">
                 <Icon icon="voters" />
-                <span>500</span>
+                <span>{{ proposal.proposal_votes_aggregate.aggregate?.count ?? 0 }}</span>
               </div>
               <!-- Comment Count -->
               <div class="flex flex-row items-center gap-1">
