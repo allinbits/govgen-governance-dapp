@@ -7,13 +7,12 @@ import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
 import { ContextTypes } from "@/types/ui";
 
-const { getProposal, getProposalTallies } = useChainData();
+const { getProposal } = useChainData();
 
 const route = useRoute();
 const proposalTerm = `Proposal #${route.params.id}`;
 const linksTerm = `Links #${route.params.id}`;
 const proposal = getProposal(parseInt(route.params.id as string));
-const _proposalTallies = getProposalTallies(parseInt(route.params.id as string));
 </script>
 
 <template>
