@@ -6,13 +6,23 @@ import GithubLinks from "../components/proposals/GithubLinks.vue";
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
 import { ContextTypes } from "@/types/ui";
+import * as dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
 
+dayjs.extend(duration);
 const { getProposal } = useChainData();
 
 const route = useRoute();
 const proposalTerm = `Proposal #${route.params.id}`;
 const linksTerm = `Links #${route.params.id}`;
 const proposal = getProposal(parseInt(route.params.id as string));
+
+const timeTo = (dateString: string) => {
+  const now = dayjs();
+  const to = dayjs(dateString);
+  const diff = dayjs.duration(to.diff(now));
+  return diff.format("D [d] : H [hr] : m [m] [left]");
+};
 </script>
 
 <template>
@@ -39,7 +49,7 @@ const proposal = getProposal(parseInt(route.params.id as string));
       </div>
       <div class="cta w-96">
         <SimpleCard class="p-10">
-          <div class="text-center text-light text-500">6d : 5 hr : 32 m left</div>
+          <div class="text-center text-light text-500">{{ timeTo(proposal?.proposal[0].deposit_end_time) }}</div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
