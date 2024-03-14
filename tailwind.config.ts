@@ -97,6 +97,11 @@ export default <Config>{
       900: [`${pxToRem(56)}rem`, { lineHeight: `${pxToRem(64)}rem` }],
     },
   },
+  safelist: [
+    {
+      pattern: /w-+/,
+    },
+  ],
   plugins: [
     plugin(function ({ addUtilities, addComponents }) {
       addUtilities({
