@@ -9,7 +9,7 @@ import IconVue from "./components/ui/Icon.vue";
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here
-  uri: "http://164.92.143.81:8080/v1/graphql",
+  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT ?? "http://164.92.143.81:8080/v1/graphql",
 });
 
 // Cache implementation
