@@ -56,8 +56,7 @@ const timeTo = (dateString: string) => {
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
-          <!-- Replace with button from other PR -->
-          <div class="button w-full bg-gradient rounded text-dark text-300 text-center px-6 py-4">Vote</div>
+          <ProposalVote :proposal-id="proposal?.proposal[0].id" class="w-full" />
         </SimpleCard>
       </div>
     </div>
@@ -82,7 +81,6 @@ const timeTo = (dateString: string) => {
       </div>
     </SimpleCard>
     <div class="mb-2 font-medium text-3xl">Proposal {{ route.params.id }}</div>
-    <ProposalVote />
     <GithubLinks :term="linksTerm" />
     <GithubComments :term="proposalTerm" />
   </div>

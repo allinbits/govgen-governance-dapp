@@ -39,7 +39,7 @@ import Icon from "./Icon.vue";
 
 interface Props {
   type: "checkbox" | "radio";
-  modelValue?: boolean | boolean[] | string;
+  modelValue?: boolean | boolean[] | string | number | null;
   value?: number | string;
   label?: string;
 }

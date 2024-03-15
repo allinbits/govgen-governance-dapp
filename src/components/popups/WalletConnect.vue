@@ -72,7 +72,7 @@ const cancelConnect = () => {
 
     <!-- Wallet Selection -->
     <template v-if="selectState">
-      <div class="absolute right-0 top-4">
+      <div class="absolute right-0 top-4 z-10">
         <div class="flex flex-col gap-6 px-8 py-6 bg-grey-300 rounded w-80 relative">
           <Icon class="absolute top-3 right-4 cursor-pointer text-light" icon="close" @click="isOpen = false" />
           <div class="flex flex-col text-[white] text-500 font-semibold text-center">Connect your wallet</div>

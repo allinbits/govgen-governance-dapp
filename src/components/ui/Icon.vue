@@ -14,7 +14,6 @@
           </linearGradient>
         </defs>
       </svg>
-
       <Suspense>
         <component
           :is="ico"
