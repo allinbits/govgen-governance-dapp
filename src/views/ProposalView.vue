@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { markRaw, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { useChainData } from "@/composables/useChainData";
-import GithubComments from "../components/proposals/GithubComments.vue";
-import GithubLinks from "../components/proposals/GithubLinks.vue";
+
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
+import UiTabs from "@/components/ui/UiTabs.vue";
+import TabInfo from "@/components/proposals/TabInfo.vue";
+import TabVoting from "@/components/proposals/TabVoting.vue";
+import TabDiscussion from "@/components/proposals/TabDiscussion.vue";
+
 import { ContextTypes } from "@/types/ui";
 import * as dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
@@ -13,9 +18,10 @@ dayjs.extend(duration);
 const { getProposal } = useChainData();
 
 const route = useRoute();
-const proposalTerm = `Proposal #${route.params.id}`;
-const linksTerm = `Links #${route.params.id}`;
 const proposal = getProposal(parseInt(route.params.id as string));
+
+const tabOptions = reactive(["Info", "Voters", "Discussions"]);
+const tabComponents = [markRaw(TabInfo), markRaw(TabVoting), markRaw(TabDiscussion)];
 
 const timeTo = (dateString: string) => {
   const now = dayjs();
@@ -78,8 +84,6 @@ const timeTo = (dateString: string) => {
         </div>
       </div>
     </SimpleCard>
-    <div class="mb-2 font-medium text-3xl">Proposal {{ route.params.id }}</div>
-    <GithubLinks :term="linksTerm" />
-    <GithubComments :term="proposalTerm" />
+    <UiTabs id="voteType" :options="tabOptions" :components="tabComponents" />
   </div>
 </template>
