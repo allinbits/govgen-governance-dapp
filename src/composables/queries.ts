@@ -14,6 +14,9 @@ import {
   ProposalsDocument,
   ProposalsQuery,
   ProposalsQueryVariables,
+  StakingDocument,
+  StakingQuery,
+  StakingQueryVariables,
   VoteHistoryDocument,
   VoteHistoryQuery,
   VoteHistoryQueryVariables,
@@ -41,6 +44,10 @@ export const useProposalsQuery = (options?: UseQueryOptions<ProposalsQuery, Prop
 
 export const useParamsQuery = (options?: UseQueryOptions<ParamsQuery, ParamsQueryVariables>) => {
   return useQuery<ParamsQuery, ParamsQueryVariables>(ParamsDocument, {}, options ?? {});
+};
+
+export const useStakingQuery = (options?: UseQueryOptions<StakingQuery, StakingQueryVariables>) => {
+  return useQuery<StakingQuery, StakingQueryVariables>(StakingDocument, {}, options ?? {});
 };
 
 export const useVoteHistoryQuery = (

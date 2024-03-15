@@ -15,6 +15,9 @@ export function formatAmount(amount: string, precision: number) {
   return n.toLocaleString(undefined, { maximumFractionDigits: 6 });
 }
 
+export function decToPerc(dec: string, prec: number) {
+  return (parseFloat(dec) * 100).toFixed(prec);
+}
 /**
  * Verify input is a link
  *

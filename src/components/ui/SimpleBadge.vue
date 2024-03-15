@@ -12,7 +12,7 @@ const colorClasses = computed(() => {
     case ContextTypes.SUCCESS:
       return "";
     case ContextTypes.FAIL:
-      return "";
+      return "bg-badge-fail text-neg-200";
     case ContextTypes.PLAIN:
     default:
       return "bg-badge-plain text-light";

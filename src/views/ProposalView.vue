@@ -8,15 +8,58 @@ import SimpleCard from "@/components/ui/SimpleCard.vue";
 import { ContextTypes } from "@/types/ui";
 import * as dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
+import { computed } from "vue";
+import { decToPerc } from "@/utility";
 
 dayjs.extend(duration);
-const { getProposal } = useChainData();
+const { getProposal, getParams, getProposalTallies, getStakingStatus } = useChainData();
 
 const route = useRoute();
 const proposalTerm = `Proposal #${route.params.id}`;
 const linksTerm = `Links #${route.params.id}`;
 const proposal = getProposal(parseInt(route.params.id as string));
+const proposalTallies = getProposalTallies(parseInt(route.params.id as string));
+const params = getParams();
 
+const voted = computed(() => {
+  return proposalTallies.value?.proposal_tally_result[0].
+})
+const tally_params = computed(() => {
+  try {
+    return params.value?.gov_params[0].tally_params;
+  } catch (e) {
+    return {};
+  }
+});
+
+const quorum = computed(() => {
+  return decToPerc(tally_params.value?.quorum ?? "0", 1);
+});
+
+const threshold = computed(() => {
+  return decToPerc(tally_params.value?.threshold ?? "0", 1);
+});
+
+const veto_threshold = computed(() => {
+  return decToPerc(tally_params.value?.veto_threshold ?? "0", 1);
+});
+
+/*
+const voting_params = computed(() => {
+  try {
+    return JSON.parse(params.value?.gov_params[0].voting_params);
+  } catch (e) {
+    return {};
+  }
+});
+const deposit_params = computed(() => {
+  try {
+    return JSON.parse(params.value?.gov_params[0].deposit_params);
+  } catch (e) {
+    return {};
+  }
+});
+*/
 const timeTo = (dateString: string) => {
   const now = dayjs();
   const to = dayjs(dateString);
@@ -28,7 +71,39 @@ const timeTo = (dateString: string) => {
 <template>
   <div>
     <div class="badges my-12">
-      <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">Deposit Period </SimpleBadge>
+      <SimpleBadge
+        v-if="proposal?.proposal[0].status === 'PROPOSAL_STATUS_DEPOSIT_PERIOD'"
+        :type="ContextTypes.INFO"
+        icon="progress"
+        class="mr-3"
+        >Deposit Period
+      </SimpleBadge>
+      <SimpleBadge
+        v-if="proposal?.proposal[0].status === 'PROPOSAL_STATUS_VOTING_PERIOD'"
+        :type="ContextTypes.INFO"
+        icon="progress"
+        class="mr-3"
+        >Voting Period
+      </SimpleBadge>
+      <SimpleBadge
+        v-if="proposal?.proposal[0].status === 'PROPOSAL_STATUS_FAILED'"
+        :type="ContextTypes.FAIL"
+        class="mr-3"
+        >Deposit Not Reached
+      </SimpleBadge>
+      <SimpleBadge
+        v-if="proposal?.proposal[0].status === 'PROPOSAL_STATUS_REJECTED'"
+        icon="close"
+        :type="ContextTypes.FAIL"
+        class="mr-3"
+        >Rejected
+      </SimpleBadge>
+      <SimpleBadge
+        v-if="proposal?.proposal[0].status === 'PROPOSAL_STATUS_PASSED'"
+        :type="ContextTypes.SUCCESS"
+        class="mr-3"
+        >Passed</SimpleBadge
+      >
       <SimpleBadge :type="ContextTypes.PLAIN" icon="warning">Quorum not reached</SimpleBadge>
     </div>
     <div class="flex mb-12">
@@ -39,7 +114,7 @@ const timeTo = (dateString: string) => {
         <div class="basic-stats flex">
           <div class="quorum mr-16">
             <div class="text-100 text-grey-100 mb-4">Turn out | Quorum</div>
-            <div class="text-500 text-light">58.5% | 40%</div>
+            <div class="text-500 text-light">58.5% | {{ quorum }}%</div>
           </div>
           <div class="result">
             <div class="text-100 text-grey-100 mb-4">Expected proposal result</div>
