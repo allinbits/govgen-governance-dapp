@@ -7,5 +7,7 @@ const term = `Links #${route.params.id}`;
 </script>
 
 <template>
-  <div><GithubLinks :term="term" /></div>
+  <div class="flex flex-col gap-6">
+    <GithubLinks :term="term" />
+  </div>
 </template>
