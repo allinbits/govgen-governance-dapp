@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
   >
     <div class="bg-white p-12 w-full lg:w-1/2 drop-shadow-md block m-0 lg:m-4 rounded-md">
       <div v-if="!isEmpty" class="flex pb-6">
-        <button class="px-4 py-2 bg-gray-600 text-white rounded" variant="empty" @click="emits('back')">
+        <button class="px-4 py-2 bg-gray-600 text-white rounded" @click="emits('back')">
           {{ props.text ? props.text : "Back" }}
         </button>
       </div>

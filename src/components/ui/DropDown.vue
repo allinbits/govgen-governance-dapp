@@ -31,20 +31,20 @@ const currentValues = computed(() => {
     class="flex flex-col relative bg-grey-300 min-w-56 max-w-56 select-none"
     :class="open ? ['rounded-t'] : ['rounded']"
   >
-    <div @click="open = !open" class="flex flex-row justify-between cursor-pointer gap-3 text-200 px-5 py-4">
+    <div class="flex flex-row justify-between cursor-pointer gap-3 text-200 px-5 py-4" @click="open = !open">
       <div>{{ props.values[model] }}</div>
       <Icon icon="CaretDown" />
     </div>
     <div
-      class="flex flex-col absolute top-[52px] min-w-56 left-0 z-50 text-left px-5 pb-2 bg-grey-200 rounded-b"
       v-if="open"
+      class="flex flex-col absolute top-[52px] min-w-56 left-0 z-50 text-left px-5 pb-2 bg-grey-200 rounded-b"
     >
       <div
         v-for="(data, index) in currentValues"
         :key="index"
         :class="model === index ? ['selected'] : []"
-        @click="handleSelect(data.index)"
         class="cursor-pointer py-3 hover:text-grey-50 text-200"
+        @click="handleSelect(data.index)"
       >
         {{ data.name }}
       </div>

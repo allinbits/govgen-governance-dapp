@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Wallets, useWallet, getWalletHelp } from "../../composables/useWallet";
-import UiButton from "../ui/UiButton.vue";
+import ConnectButton from "../ui/ConnectButton.vue";
 import { Ref, computed, ref } from "vue";
 import { shorten } from "../../utility";
 import UserBalance from "../helper/UserBalance.vue";
@@ -80,18 +80,18 @@ const cancelConnect = () => {
             You need to connect your wallet first to vote on proposals.
           </div>
           <div class="buttons">
-            <UiButton class="my-4" :disabled="!keplr" @click="connectWallet(Wallets.keplr)">
+            <ConnectButton class="my-4" :disabled="!keplr" @click="connectWallet(Wallets.keplr)">
               <template #icon>
                 <Icon icon="keplr" :size="1.4" class="mr-2" />
               </template>
-              Keplr Wallet</UiButton
+              Keplr Wallet</ConnectButton
             >
-            <UiButton class="my-4" :disabled="!leap" @click="connectWallet(Wallets.leap)"
-              ><Icon icon="leap" :size="1.1" class="mr-2 bg-dark p-1 rounded-sm" />Leap Wallet</UiButton
+            <ConnectButton class="my-4" :disabled="!leap" @click="connectWallet(Wallets.leap)"
+              ><Icon icon="leap" :size="1.1" class="mr-2 bg-dark p-1 rounded-sm" />Leap Wallet</ConnectButton
             >
-            <UiButton class="my-4" :disabled="!cosmostation" @click="connectWallet(Wallets.cosmostation)">
+            <ConnectButton class="my-4" :disabled="!cosmostation" @click="connectWallet(Wallets.cosmostation)">
               <template #icon> <Icon icon="cosmostation" :size="1.1" class="mr-2 bg-dark p-1 rounded-sm" /> </template
-              >Cosmostation Wallet</UiButton
+              >Cosmostation Wallet</ConnectButton
             >
           </div>
         </div>
@@ -123,14 +123,14 @@ const cancelConnect = () => {
           <div class="text-200 text-grey-100 pt-6 pb-2">Balance</div>
           <div class="text-300 text-light"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
           <div class="buttons">
-            <UiButton
+            <ConnectButton
               class="my-4 justify-center"
               @click="
                 signOut();
                 isOpen = false;
               "
             >
-              Disconnect Wallet</UiButton
+              Disconnect Wallet</ConnectButton
             >
           </div>
         </div>
@@ -146,7 +146,7 @@ const cancelConnect = () => {
           <div class="flex flex-col text-[white] text-400 font-semibold text-center mt-4">Connecting Wallet</div>
           <div class="text-200 text-grey-100 my-4">Please wait...</div>
           <div class="buttons">
-            <UiButton
+            <ConnectButton
               class="my-4 justify-center"
               @click="
                 () => {
@@ -154,7 +154,7 @@ const cancelConnect = () => {
                 }
               "
             >
-              Cancel</UiButton
+              Cancel</ConnectButton
             >
           </div>
 
@@ -179,7 +179,7 @@ const cancelConnect = () => {
           <div class="flex flex-col text-[white] text-400 font-semibold text-center mt-4">Connection Failed</div>
           <div class="text-200 text-grey-100 my-4 text-center">Wasn't able to connect to your wallet</div>
           <div class="buttons">
-            <UiButton
+            <ConnectButton
               class="my-4 justify-center"
               @click="
                 () => {
@@ -187,9 +187,9 @@ const cancelConnect = () => {
                 }
               "
             >
-              Try again</UiButton
+              Try again</ConnectButton
             >
-            <UiButton
+            <ConnectButton
               class="my-4 justify-center"
               @click="
                 () => {
@@ -197,7 +197,7 @@ const cancelConnect = () => {
                 }
               "
             >
-              Done</UiButton
+              Done</ConnectButton
             >
           </div>
 
