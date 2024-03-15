@@ -2,6 +2,9 @@ import {
   BalanceDocument,
   BalanceQuery,
   BalanceQueryVariables,
+  ParamsDocument,
+  ParamsQuery,
+  ParamsQueryVariables,
   ProposalDocument,
   ProposalQuery,
   ProposalQueryVariables,
@@ -34,6 +37,10 @@ export const useProposalQuery = (
 
 export const useProposalsQuery = (options?: UseQueryOptions<ProposalsQuery, ProposalsQueryVariables>) => {
   return useQuery<ProposalsQuery, ProposalsQueryVariables>(ProposalsDocument, {}, options ?? {});
+};
+
+export const useParamsQuery = (options?: UseQueryOptions<ParamsQuery, ParamsQueryVariables>) => {
+  return useQuery<ParamsQuery, ParamsQueryVariables>(ParamsDocument, {}, options ?? {});
 };
 
 export const useVoteHistoryQuery = (

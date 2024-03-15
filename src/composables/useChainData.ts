@@ -1,5 +1,6 @@
 import {
   useBalanceQuery,
+  useParamsQuery,
   useProposalQuery,
   useProposalTalliesQuery,
   useProposalsQuery,
@@ -19,6 +20,10 @@ export const useChainData = () => {
     const { result } = useProposalQuery({ id: proposal_id }, { pollInterval: 5000 });
     return result;
   };
+  const getParams = () => {
+    const { result } = useParamsQuery();
+    return result;
+  };
   const getVoteHistory = (address: string) => {
     const { result } = useVoteHistoryQuery({ address });
     return result;
@@ -27,5 +32,5 @@ export const useChainData = () => {
     const { result } = useProposalTalliesQuery({ id: proposal_id }, { pollInterval: 5000 });
     return result;
   };
-  return { getBalance, getProposals, getProposal, getVoteHistory, getProposalTallies };
+  return { getBalance, getProposals, getProposal, getParams, getVoteHistory, getProposalTallies };
 };
