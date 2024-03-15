@@ -2,6 +2,7 @@
 import { useRoute } from "vue-router";
 import GithubComments from "../components/proposals/GithubComments.vue";
 import GithubLinks from "../components/proposals/GithubLinks.vue";
+import ProposalVote from "../components/popups/ProposalVote.vue";
 
 const route = useRoute();
 const proposalTerm = `Proposal #${route.params.id}`;
@@ -11,6 +12,7 @@ const linksTerm = `Links #${route.params.id}`;
 <template>
   <div>
     <div class="mb-2 font-medium text-3xl">Proposal {{ route.params.id }}</div>
+    <ProposalVote />
     <GithubLinks :term="linksTerm" />
     <GithubComments :term="proposalTerm" />
   </div>
