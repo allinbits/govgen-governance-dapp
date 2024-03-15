@@ -16,7 +16,7 @@ const links = [
       <span>Be a part of the conversation</span>
       <!-- Footer Social Links-->
       <div class="flex flex-row gap-4 justify-end">
-        <a class="flex items-center" v-for="(linkData, index) in links" :key="index" :href="linkData.url">
+        <a v-for="(linkData, index) in links" :key="index" class="flex items-center" :href="linkData.url">
           <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
         </a>
       </div>

@@ -20,6 +20,7 @@ module.exports = {
   plugins: ["@typescript-eslint", "prettier"],
   rules: {
     "prettier/prettier": "error",
+    "vue/multi-word-component-names": 0,
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
       "error", // or "error"
