@@ -1,0 +1,8 @@
+export enum PropStatus {
+  PROPOSAL_STATUS_DEPOSIT_PERIOD = "deposit",
+  PROPOSAL_STATUS_VOTING_PERIOD = "voting",
+  PROPOSAL_STATUS_UNSPECIFIED = "unspecified",
+  PROPOSAL_STATUS_PASSED = "passed",
+  PROPOSAL_STATUS_REJECTED = "rejected",
+  PROPOSAL_STATUS_FAILED = "failed",
+}
