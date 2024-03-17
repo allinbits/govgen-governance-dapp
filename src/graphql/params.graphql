@@ -1,0 +1,7 @@
+query Params {
+  gov_params {
+    tally_params
+    deposit_params
+    voting_params
+  }
+}

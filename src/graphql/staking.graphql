@@ -1,0 +1,9 @@
+query Staking {
+  staking_pool {
+    bonded_tokens
+    height
+    not_bonded_tokens
+    staked_not_bonded_tokens
+    unbonding_tokens
+  }
+}

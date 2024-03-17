@@ -47,6 +47,7 @@ export default <Config>{
       badge: {
         info: "rgba(107, 239, 255, 0.10)",
         plain: "rgba(255, 255, 255, 0.10)",
+        fail: "rgba(255, 139, 139, 0.10)",
       },
       accent: {
         100: "#6BEFFF",
