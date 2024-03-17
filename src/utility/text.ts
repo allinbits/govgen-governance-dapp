@@ -10,13 +10,13 @@ export function shorten(text: string) {
   }
 }
 
-export function formatAmount(amount: string, precision: number) {
-  const n = parseInt(amount) / 10 ** precision;
+export function formatAmount(amount: string | number, precision: number) {
+  const n = parseInt(amount.toString()) / 10 ** precision;
   return n.toLocaleString(undefined, { maximumFractionDigits: 6 });
 }
 
-export function decToPerc(dec: string, prec: number) {
-  return (parseFloat(dec) * 100).toFixed(prec);
+export function decToPerc(dec: string | number, prec: number) {
+  return (parseFloat(dec.toString()) * 100).toFixed(prec);
 }
 /**
  * Verify input is a link
