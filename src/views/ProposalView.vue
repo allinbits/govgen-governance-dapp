@@ -148,7 +148,7 @@ const timeTo = (dateString: string) => {
         <div class="basic-stats flex">
           <div class="quorum mr-16">
             <div class="text-100 text-grey-100 mb-4">Turn out | Quorum</div>
-            <div class="text-500 text-light">{{ decToPerc(turnout, 1) }} | {{ decToPerc(quorum, 1) }}%</div>
+            <div class="text-500 text-light">{{ decToPerc(turnout, 1) }}% | {{ decToPerc(quorum, 1) }}%</div>
           </div>
           <div class="result">
             <template v-if="inDeposit">
