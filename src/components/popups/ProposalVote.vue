@@ -22,14 +22,12 @@ const props = defineProps<Props>();
 const isOpen = ref(false);
 const isVoted = ref(false);
 
-// const straightState = computed(() => isStraight.value && isOpen.value && !isWeighted.value && !isVoted.value);
-const votedState = computed(() => isVoted.value && isOpen.value);
+// const votedState = computed(() => isVoted.value && isOpen.value);
 
 const tabOptions = reactive(["Straight", "Weighted"]);
 const tab = ref(tabOptions[0]);
 
-const voteStraight = ref<VoteOption | null>();
-
+// Votes info
 const voteList: Partial<Record<VoteOption, { label: string; color: string }>> = {
   [VoteOption.VOTE_OPTION_YES]: { label: "Yes", color: "text-accent-100" },
   [VoteOption.VOTE_OPTION_NO]: { label: "No", color: "text-neg-200" },
@@ -37,23 +35,21 @@ const voteList: Partial<Record<VoteOption, { label: string; color: string }>> = 
   [VoteOption.VOTE_OPTION_ABSTAIN]: { label: "Abstain", color: "text-grey-100" },
 };
 
-// type VoteType = keyof typeof VoteOption;
-// const voteStraight = ref<VoteType | null>();
-
-// const voteList: Partial<Record<VoteType, { label: string; color: string }>> = {
-//   [VoteOption.VOTE_OPTION_YES]: { label: "Yes", color: "text-accent-100" },
-//   VOTE_OPTION_NO: { label: "No", color: "text-neg-200" },
-//   VOTE_OPTION_NO_WITH_VETO: { label: "No with Veto", color: "text-neg-200" },
-//   VOTE_OPTION_ABSTAIN: { label: "Abstain", color: "text-grey-100" },
-// };
-
-const voteWeightedYes = ref<number | null>(null);
-const voteWeightedNo = ref<number | null>(null);
+// Vote records
+const voteStraight = ref<VoteOption | null>();
+const voteWeighted = reactive<Partial<Record<VoteOption, { value: number | null }>>>({
+  [VoteOption.VOTE_OPTION_YES]: { value: null },
+  [VoteOption.VOTE_OPTION_NO]: { value: null },
+  [VoteOption.VOTE_OPTION_NO_WITH_VETO]: { value: null },
+  [VoteOption.VOTE_OPTION_ABSTAIN]: { value: null },
+});
 
 const resetVote = () => {
+  // Reset Straight vote
   voteStraight.value = undefined;
-  voteWeightedNo.value = null;
-  voteWeightedYes.value = null;
+
+  // Reset Weighted votes
+  Object.entries(voteWeighted).forEach((el) => (el[1].value = null));
 };
 
 const toogleModal = (dir: boolean) => {
@@ -64,30 +60,40 @@ const toogleModal = (dir: boolean) => {
 
 const getVoteWeightedPercent = (data: number) => data * 100;
 const checkVoteWeighted = computed(
-  () =>
-    voteWeightedNo.value !== null &&
-    voteWeightedYes.value !== null &&
-    voteWeightedNo.value + voteWeightedYes.value === 1,
+  () => Object.entries(voteWeighted).reduce((acc, curr) => acc + (curr[1].value ?? 2), 0) === 1,
 );
 
 const { voteProposal, voteWeightedProposal } = useProposals();
 const { address } = useWallet();
 
-const isWeighted = computed(() => tab.value === "Weighted");
 const signVote = async () => {
   if (!props.proposalId) return;
 
   let voteOptions: MsgVote | MsgVoteWeighted | null = null;
 
-  if (isWeighted.value) {
+  if (checkVoteWeighted.value) {
     if (!checkVoteWeighted.value) return;
 
     voteOptions = {
       proposalId: BigInt(props.proposalId),
       voter: address.value,
       options: [
-        { option: VoteOption.VOTE_OPTION_YES, weight: (voteWeightedYes.value as number).toString() },
-        { option: VoteOption.VOTE_OPTION_NO, weight: (voteWeightedNo.value as number).toString() },
+        {
+          option: VoteOption.VOTE_OPTION_YES,
+          weight: ((voteWeighted[VoteOption.VOTE_OPTION_YES]?.value ?? -1) as number).toString(),
+        },
+        {
+          option: VoteOption.VOTE_OPTION_NO,
+          weight: ((voteWeighted[VoteOption.VOTE_OPTION_NO]?.value ?? -1) as number).toString(),
+        },
+        {
+          option: VoteOption.VOTE_OPTION_NO_WITH_VETO,
+          weight: ((voteWeighted[VoteOption.VOTE_OPTION_NO_WITH_VETO]?.value ?? -1) as number).toString(),
+        },
+        {
+          option: VoteOption.VOTE_OPTION_ABSTAIN,
+          weight: ((voteWeighted[VoteOption.VOTE_OPTION_ABSTAIN]?.value ?? -1) as number).toString(),
+        },
       ],
     };
   } else {
@@ -99,9 +105,9 @@ const signVote = async () => {
     };
   }
 
-  const voteProposalFunc = isWeighted.value ? voteProposal : voteWeightedProposal;
+  const voteProposalFunc = checkVoteWeighted.value ? voteWeightedProposal : voteProposal;
   await (voteOptions && voteProposalFunc(voteOptions));
-  //TODO: error and get result from chain
+  //TODO: handle error and get result from chain
 
   isVoted.value = true;
 };
@@ -109,7 +115,6 @@ const signVote = async () => {
 
 <template>
   <div class="relative">
-    <!-- Normal signed out button -->
     <div>
       <div
         class="justify-center px-6 py-4 rounded bg-gradient text-dark text-300 text-center cursor-pointer"
@@ -121,7 +126,7 @@ const signVote = async () => {
 
     <ModalWrap :visible="isOpen" :is-empty="true" @back="isOpen = false">
       <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
-        <div v-if="!votedState" class="flex flex-col gap-6 relative">
+        <div v-if="!isVoted" class="flex flex-col gap-6 relative">
           <span class="text-gradient font-termina text-700 text-center">Vote</span>
           <UiSwitch id="voteType" v-model="tab" :options="tabOptions" class="flex w-2/3 mx-auto" @click="resetVote()" />
           <div class="flex flex-col gap-10">
@@ -145,27 +150,20 @@ const signVote = async () => {
                     Define weight for each of the voting options. The sum of weights must be equal to 1.
                   </p>
 
-                  <form class="flex flex-col items-center gap-4">
-                    <UiInput
-                      v-model="voteWeightedYes"
-                      type="number"
-                      placeholder="e.g. 0.2"
-                      label="Vote “YES”"
-                      variant="row"
-                      :min="0"
-                      :max="1"
-                      class="w-full justify-center"
-                    />
-                    <UiInput
-                      v-model="voteWeightedNo"
-                      type="number"
-                      placeholder="e.g. 0.8"
-                      label="Vote “NO”"
-                      variant="row"
-                      :min="0"
-                      :max="1"
-                      class="w-full justify-center"
-                    />
+                  <form class="flex flex-col items-center gap-2">
+                    <span v-for="(vote, key, id) in voteWeighted" :key="id" class="w-full">
+                      <UiInput
+                        v-if="vote"
+                        v-model="vote.value"
+                        type="number"
+                        placeholder="e.g. 0.25"
+                        :label="`Votes “${voteList[key]?.label}”`"
+                        variant="row"
+                        :min="0"
+                        :max="1"
+                        class="w-full justify-end"
+                      />
+                    </span>
                   </form>
                 </div>
               </Transition>
@@ -194,7 +192,7 @@ const signVote = async () => {
           </div>
         </div>
 
-        <div v-show="votedState">
+        <div v-show="isVoted">
           <UiInfo title="You voted">
             <div class="text-500 text-center font-semibold mb-8 w-full">
               <div v-if="voteStraight" :class="voteList && voteList[voteStraight]?.color">
@@ -202,8 +200,9 @@ const signVote = async () => {
               </div>
 
               <div v-if="checkVoteWeighted" class="flex flex-col">
-                <span class="text-accent-100">Yes {{ getVoteWeightedPercent(voteWeightedYes ?? 0) }}%</span>
-                <span class="text-neg-200">No {{ getVoteWeightedPercent(voteWeightedNo ?? 0) }}%</span>
+                <span v-for="(vote, key, id) in voteList" :key="id" :class="vote?.color">
+                  {{ vote?.label.toLocaleUpperCase() }} {{ getVoteWeightedPercent(voteWeighted[key]?.value ?? 0) }}%
+                </span>
               </div>
             </div>
           </UiInfo>
