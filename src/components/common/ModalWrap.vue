@@ -1,20 +1,33 @@
 <script lang="ts" setup>
-const emits = defineEmits<{ (e: "back"): void }>();
-const props = defineProps<{ text?: string; visible: boolean }>();
+interface Props {
+  visible: boolean;
+}
+const props = withDefaults(defineProps<Props>(), {
+  visible: false,
+});
 </script>
 
 <template>
-  <div
-    v-if="props.visible"
-    class="fixed top-0 left-0 w-full z-50 overflow-y-auto overflow-x-hidden flex justify-center h-full lg:h-auto"
-  >
-    <div class="bg-white p-12 w-full lg:w-1/2 drop-shadow-md block m-0 lg:m-4 rounded-md bg-grey-400">
-      <div class="flex pb-6">
-        <button class="px-4 py-2 bg-gray-600 text-light rounded" @click="emits('back')">
-          {{ props.text ? props.text : "Back" }}
-        </button>
+  <Transition>
+    <div v-if="props.visible" class="fixed top-0 left-0 right-0 bottom-0 bg-darkblur backdrop-blur-md"></div>
+  </Transition>
+  <Transition>
+    <div v-if="props.visible" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-max">
+      <div class="bg-white w-full rounded-md max-h-screen overflow-auto">
+        <slot></slot>
       </div>
-      <slot></slot>
     </div>
-  </div>
+  </Transition>
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
