@@ -25,24 +25,19 @@
     <div class="flex flex-row w-full mt-4 border-b-2 border-grey-300">
       <div ref="line" class="h-1 w-1 bg-light rounded-t transition-all ease-in-out"></div>
     </div>
-    <!-- Components -->
-    <div class="mt-[72px] w-full">
-      <component :is="props.components[componentIndex]" />
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, Raw } from "vue";
+import { ref, onMounted } from "vue";
 
 type Props = {
   modelValue?: string | number;
   id: string;
   options: string[];
-  components: Raw<unknown>[];
 };
 
-const componentIndex = ref<number>(0);
+const tabSelected = defineModel<string>();
 const toggler = ref<HTMLElement | null>(null);
 const tabRefs = ref<HTMLElement[]>([]);
 const line = ref<HTMLElement | null>(null);
@@ -50,7 +45,7 @@ const line = ref<HTMLElement | null>(null);
 const props = withDefaults(defineProps<Props>(), { modelValue: undefined });
 
 function changeTab(idx: number = 0) {
-  componentIndex.value = idx;
+  tabSelected.value = props.options[idx];
   const el = tabRefs.value[idx] as HTMLElement;
   if (!el || !line.value) {
     return;

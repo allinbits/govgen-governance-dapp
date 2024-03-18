@@ -35,6 +35,7 @@ export default <Config>{
       light: "#FFFFFF",
       dark: "#0C0C0C",
       night: "#000000",
+      darkblur: "##0009",
       grey: {
         50: "#9F9F9F",
         100: "#686868",
@@ -47,6 +48,7 @@ export default <Config>{
       badge: {
         info: "rgba(107, 239, 255, 0.10)",
         plain: "rgba(255, 255, 255, 0.10)",
+        fail: "rgba(255, 139, 139, 0.10)",
       },
       accent: {
         100: "#6BEFFF",
@@ -121,7 +123,7 @@ export default <Config>{
             "background-size": "300% 100%",
             "background-position": "0% 0%",
           },
-          ".cta-gradient:hover": {
+          ".link-gradient:hover": {
             "background-position": "66.66% 0%",
           },
         });
