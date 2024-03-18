@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { markRaw, reactive } from "vue";
+import { reactive, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useChainData } from "@/composables/useChainData";
 
+import GithubComments from "@/components/proposals/GithubComments.vue";
+import GithubLinks from "@/components/proposals/GithubLinks.vue";
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
 import UiTabs from "@/components/ui/UiTabs.vue";
-import TabInfo from "@/components/proposals/TabInfo.vue";
-import TabVoting from "@/components/proposals/TabVoting.vue";
-import TabDiscussion from "@/components/proposals/TabDiscussion.vue";
-
 import { ContextTypes } from "@/types/ui";
 import * as dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
+
+type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 
 dayjs.extend(duration);
 const { getProposal } = useChainData();
@@ -20,8 +20,11 @@ const { getProposal } = useChainData();
 const route = useRoute();
 const proposal = getProposal(parseInt(route.params.id as string));
 
-const tabOptions = reactive(["Info", "Voters", "Discussions"]);
-const tabComponents = [markRaw(TabInfo), markRaw(TabVoting), markRaw(TabDiscussion)];
+const termLink = computed(() => `Link #${route.params.id}`);
+const termDiscussion = computed(() => `Proposal #${route.params.id}`);
+
+const tabSelected = ref<TabNames>("Info");
+const tabOptions = reactive<TabNames[]>(["Info", "Voters", "Discussions", "Links"]);
 
 const timeTo = (dateString: string) => {
   const now = dayjs();
@@ -29,6 +32,10 @@ const timeTo = (dateString: string) => {
   const diff = dayjs.duration(to.diff(now));
   return diff.format("D [d] : H [hr] : m [m] [left]");
 };
+
+function isTabSelected(tabName: TabNames) {
+  return tabSelected.value.toLowerCase() == tabName.toLowerCase();
+}
 </script>
 
 <template>
@@ -84,6 +91,16 @@ const timeTo = (dateString: string) => {
         </div>
       </div>
     </SimpleCard>
-    <UiTabs id="voteType" :options="tabOptions" :components="tabComponents" />
+    <UiTabs id="proposal-tab" v-model="tabSelected" :options="tabOptions" />
+    <div class="flex flex-col pt-[72px]">
+      <div v-if="isTabSelected('Info')" class="w-full">info</div>
+      <div v-if="isTabSelected('Voters')" class="w-full">voters</div>
+      <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
+        <GithubComments :term="termDiscussion" />
+      </div>
+      <div v-if="isTabSelected('Links')" class="w-full">
+        <GithubLinks :term="termLink" />
+      </div>
+    </div>
   </div>
 </template>
