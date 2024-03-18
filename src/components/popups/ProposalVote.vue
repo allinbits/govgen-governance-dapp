@@ -175,6 +175,7 @@ const signVote = async () => {
                   Confirm & Sign
                 </button>
 
+                <!-- TODO: get CLI cmd-->
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                 >
