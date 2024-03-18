@@ -3,6 +3,9 @@ import { useRoute } from "vue-router";
 import { useChainData } from "@/composables/useChainData";
 import GithubComments from "../components/proposals/GithubComments.vue";
 import GithubLinks from "../components/proposals/GithubLinks.vue";
+
+import ProposalVote from "../components/popups/ProposalVote.vue";
+
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
 import { ContextTypes } from "@/types/ui";
@@ -181,8 +184,7 @@ const timeTo = (dateString: string) => {
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
-          <!-- Replace with button from other PR -->
-          <div class="button w-full bg-gradient rounded text-dark text-300 text-center px-6 py-4">Vote</div>
+          <ProposalVote :proposal-id="proposal?.proposal[0].id" class="w-full" />
         </SimpleCard>
         <SimpleCard v-if="inDeposit" class="p-10">
           <div class="text-center text-light text-500">{{ timeTo(proposal?.proposal[0].deposit_end_time) }}</div>
