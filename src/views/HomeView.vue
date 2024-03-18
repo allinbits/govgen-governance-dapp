@@ -181,7 +181,7 @@ function onSearchInput() {
     </div>
     <!-- Proposal View -->
     <div v-if="proposals" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-[72px]">
-      <ProposalCard v-for="proposal in orderedProposals" :key="proposal.id" link="#">
+      <ProposalCard v-for="proposal in orderedProposals" :key="proposal.id" :link="'/proposals/' + proposal.id">
         <template #header
           ><ProposalStatus
             :status="PropStatus[(proposal.status ?? 'PROPOSAL_STATUS_UNSPECIFIED') as keyof typeof PropStatus]"
