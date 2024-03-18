@@ -66,7 +66,7 @@ const cancelConnect = () => {
         class="justify-center px-6 py-4 rounded bg-grey-400 text-300 text-center cursor-pointer w-64"
         @click="isOpen = true"
       >
-        Connect Wallet
+        {{ $t("components.WalletConnect.button") }}
       </div>
     </template>
 

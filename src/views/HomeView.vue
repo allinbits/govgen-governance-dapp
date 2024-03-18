@@ -65,16 +65,14 @@ function onSearchInput() {
         </div>
         <!-- Chain Description -->
         <div class="text-grey-100 text-300 lg:w-[656px] font-interVar font-normal text-left text-pretty">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut ultrices mauris, et sollicitudin enim.
-          Vestibulum eget viverra elit. Mauris at turpis luctus, malesuada sapien ultricies, molestie nisi. Ut viverra
-          volutpat nibh vitae porttitor.
+          {{ $t("homepage.intro") }}
         </div>
       </div>
     </div>
     <!-- Search Box, and Filters -->
     <div class="flex flex-col w-full justify-start items-center pt-[104px] lg:flex-row gap-6 lg:justify-between">
       <div class="flex flex-col gap-6 w-full lg:flex-row lg:items-center">
-        <div class="font-termina text-700">All Proposals</div>
+        <div class="font-termina text-700">{{ $t("homepage.proposalsHeader") }}</div>
         <Search v-model="searchText" @input="onSearchInput">
           <Icon icon="search" />
         </Search>
