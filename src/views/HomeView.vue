@@ -2,6 +2,7 @@
 import { ref } from "vue";
 
 import ProposalCard from "@/components/home/ProposalCard.vue";
+import CommentCount from "@/components/home/CommentCount.vue";
 import Search from "@/components/ui/Search.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
@@ -97,7 +98,7 @@ function onSearchInput() {
     </div>
     <!-- Proposal View -->
     <div v-if="proposals" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-[72px]">
-      <ProposalCard v-for="proposal in proposals.all_proposals" :key="proposal.id" link="#">
+      <ProposalCard v-for="proposal in proposals.all_proposals" :key="proposal.id" :link="`/proposals/${proposal.id}`">
         <template #header
           ><ProposalStatus
             :status="PropStatus[(proposal.status ?? 'PROPOSAL_STATUS_UNSPECIFIED') as keyof typeof PropStatus]"
@@ -116,7 +117,7 @@ function onSearchInput() {
               <!-- Comment Count -->
               <div class="flex flex-row items-center gap-1">
                 <Icon icon="comments" />
-                <span>500</span>
+                <CommentCount :proposal="proposal.id" />
               </div>
             </div>
           </div>
