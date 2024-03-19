@@ -2,14 +2,16 @@
 import { reactive, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useChainData } from "@/composables/useChainData";
-import GithubComments from "../components/proposals/GithubComments.vue";
-import GithubLinks from "../components/proposals/GithubLinks.vue";
-import { Deposit } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
-import ProposalVote from "../components/popups/ProposalVote.vue";
 
+import GithubComments from "@/components/proposals/GithubComments.vue";
+import GithubLinks from "@/components/proposals/GithubLinks.vue";
+import ProposalVote from "@/components/popups/ProposalVote.vue";
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
 import UiTabs from "@/components/ui/UiTabs.vue";
+import VotePanel from "@/components/proposals/VotePanel.vue";
+
+import { Deposit } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
 import { ContextTypes } from "@/types/ui";
 import * as dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
@@ -32,32 +34,27 @@ const termDiscussion = computed(() => `Proposal #${route.params.id}`);
 const tabSelected = ref<TabNames>("Info");
 const tabOptions = reactive<TabNames[]>(["Info", "Voters", "Discussions", "Links"]);
 
-const inDeposit = computed(() => {
-  return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD";
-});
-const inVoting = computed(() => {
-  return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_VOTING_PERIOD";
-});
-const failed = computed(() => {
-  return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_FAILED";
-});
-const rejected = computed(() => {
-  return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_REJECTED";
-});
-const passed = computed(() => {
-  return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_PASSED";
-});
+const inDeposit = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD");
+const inVoting = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_VOTING_PERIOD");
+const failed = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_FAILED");
+const rejected = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_REJECTED");
+const passed = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_PASSED");
+
 const depositReducer = (sum: number, deposit: Partial<{ amount: Deposit["amount"] | null }>) => {
   return sum + (deposit.amount?.reduce((sum: number, amount) => sum + parseInt(amount?.amount ?? ""), 0) ?? 0);
 };
+
 const initialDeposit = computed(() => {
   return proposal.value?.proposal[0].proposal_deposits
     .filter((x) => x.depositor_address == proposal.value?.proposal[0].proposer_address)
     .reduce(depositReducer, 0);
 });
+
 const totalDeposit = computed(() => {
+  console.log(JSON.stringify(proposal.value, null, "\t"));
   return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0);
 });
+
 const tally_params = computed(() => {
   try {
     return params.value?.gov_params[0].tally_params;
@@ -65,9 +62,11 @@ const tally_params = computed(() => {
     return {};
   }
 });
+
 const shouldTrim = computed(() => {
   return (proposal.value?.proposal[0].description?.length ?? 0) > 650;
 });
+
 const showAll = ref(false);
 const description = computed(() => {
   if (shouldTrim.value && !showAll.value) {
@@ -76,6 +75,7 @@ const description = computed(() => {
     return proposal.value?.proposal[0].description;
   }
 });
+
 const quorum = computed(() => {
   return parseFloat(tally_params.value?.quorum ?? "0");
 });
@@ -91,12 +91,15 @@ const veto_threshold = computed(() => {
 const yesVotes = computed(() => {
   return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.yes ?? "0");
 });
+
 const noVotes = computed(() => {
   return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.no ?? "0");
 });
+
 const nwvVotes = computed(() => {
   return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.no_with_veto ?? "0");
 });
+
 const abstainVotes = computed(() => {
   return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.abstain ?? "0");
 });
@@ -104,12 +107,15 @@ const abstainVotes = computed(() => {
 const yes = computed(() => {
   return yesVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
+
 const no = computed(() => {
   return noVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
+
 const abstain = computed(() => {
   return abstainVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
+
 const nwv = computed(() => {
   return nwvVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
@@ -117,6 +123,25 @@ const nwv = computed(() => {
 const turnout = computed(() => {
   return nwv.value + no.value + yes.value + abstain.value;
 });
+
+const tokenTallies = computed(() => {
+  return {
+    yes: formatAmount(yesVotes.value, 6),
+    no: formatAmount(noVotes.value, 6),
+    veto: formatAmount(nwvVotes.value, 6),
+    abstain: formatAmount(abstainVotes.value, 6),
+  };
+});
+
+const pctTallies = computed(() => {
+  return {
+    yes: decToPerc(yes.value, 2),
+    no: decToPerc(no.value, 2),
+    veto: decToPerc(nwv.value, 2),
+    abstain: decToPerc(abstain.value, 2),
+  };
+});
+
 const expectedResult = computed(() => {
   if (turnout.value < quorum.value) {
     return false;
@@ -390,28 +415,15 @@ function isTabSelected(tabName: TabNames) {
           </div>
         </div>
       </div>
-      <div v-if="isTabSelected('Voters')" class="w-full">
-        <div class="flex flex-col gap-12 rounded-md bg-grey-400 p-10 w-full">
-          <!-- Upper Section -->
-          <div class="flex flex-row">
-            <div class="flex flex-col flex-grow">
-              <span class="text-500 text-light">All Voters</span>
-              <span class="text-300 text-grey-100">X accounts voted</span>
-            </div>
-            <CommonButton class="!bg-grey-200">Voters breakdown</CommonButton>
-          </div>
-          <!-- Lower Section -->
-          <div class="flex flex-row gap-12 w-full justify-between">
-            <div>pi chart</div>
-            <div class="flex flex-col gap-6">
-              <span>yes</span>
-              <span>vote</span>
-            </div>
-            <div class="flex flex-col gap-6">
-              <span>no</span>
-              <span>abstain</span>
-            </div>
-          </div>
+      <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
+        <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
+          <VotePanel
+            title="All Voters"
+            :voters="proposal.proposal[0].proposal_votes"
+            :tallies="tokenTallies"
+            :pcts="pctTallies"
+          />
+          <!-- <VotePanel title="Validators" :max="5" /> -->
         </div>
       </div>
       <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">

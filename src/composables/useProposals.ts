@@ -36,7 +36,7 @@ export const useProposals = () => {
         plan: proposal.plan,
       }).finish(),
     };
-  }
+  };
   const createProposal = async (proposalMeta: Partial<MsgSubmitProposal>, proposal: EncodeObject) => {
     const SubmitProposal: EncodeObject = {
       typeUrl: "/govgen.gov.v1beta1.MsgSubmitProposal",
