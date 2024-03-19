@@ -350,7 +350,7 @@ function isTabSelected(tabName: TabNames) {
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">Changes</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200">
                     <code>
                       <pre>{{ proposal?.proposal[0].content.changes }}</pre>
                     </code>
@@ -379,7 +379,7 @@ function isTabSelected(tabName: TabNames) {
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">Upgrade Plan</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200">
                     <code>
                       <pre>{{ proposal?.proposal[0].content.plan }}</pre>
                     </code>
