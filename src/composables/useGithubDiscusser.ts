@@ -23,7 +23,7 @@ export function useGithubDiscusser(threadTitle: string) {
    */
   async function refresh() {
     isRefreshing.value = true;
-    category.value = await getCategory({ repo: Config.REPO, name: "proposal" });
+    category.value = await getCategory({ repo: Config.REPO, name: "Proposals" });
 
     if (!category.value) {
       isRefreshing.value = false;

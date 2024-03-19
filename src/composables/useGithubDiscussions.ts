@@ -131,6 +131,32 @@ export const useGithubDiscussions = () => {
     return await result.json();
   };
 
+  const getDiscussionCommentCount = async (
+    data: GithubTypes.DiscussionCommentRequest,
+  ): Promise<GithubTypes.DiscussionCommentCountResponse> => {
+    data.repo = config.REPO;
+
+    const result = await fetch(config.ENDPOINT + "/api/discussion/comment/count", {
+      method: "POST",
+      headers: storedJwtToken.value
+        ? {
+            "Content-Type": "application/json",
+            Authorization: storedJwtToken.value,
+          }
+        : { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).catch((err) => {
+      console.error(err);
+      return undefined;
+    });
+
+    if (!result || !result.ok || result.status !== 200) {
+      return { count: 0 };
+    }
+
+    return await result.json();
+  };
+
   /**
    * Returns a category id that matches the name provided
    *
@@ -153,13 +179,21 @@ export const useGithubDiscussions = () => {
     }
 
     const results: GithubTypes.CategoriesResponse = await result.json();
-
-    const { discussionCategories } = results.data.search.nodes[0];
-    if (!discussionCategories) {
+    if (results.data.search.nodes.length <= 0) {
+      console.error(`Failed to find category with name ${data.name}`);
       return undefined;
     }
 
-    const filteredCategories = discussionCategories.nodes.filter((x) => x.name.toLowerCase().includes(data.name));
+    const { discussionCategories } = results.data.search.nodes[0];
+    if (!discussionCategories) {
+      console.error(`Found categories, but could not find discussion category`);
+      return undefined;
+    }
+
+    const filteredCategories = discussionCategories.nodes.filter((x) =>
+      x.name.toLowerCase().includes(data.name.toLowerCase()),
+    );
+
     return filteredCategories.length <= 0 ? undefined : filteredCategories[0].id;
   };
 
@@ -243,6 +277,7 @@ export const useGithubDiscussions = () => {
     isLoggedIn,
     getCategory,
     getDiscussion,
+    getDiscussionCommentCount,
     goToPreviousPath,
     login,
     logout,
