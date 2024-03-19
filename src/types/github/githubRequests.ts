@@ -42,6 +42,22 @@ export type DiscussionRequest = {
   category?: string;
 };
 
+export type DiscussionCommentRequest = {
+  /**
+   * Title of the proposal we are going to create, or read from
+   *
+   * @type {string}
+   */
+  term: string;
+
+  /**
+   * The repository `author/name` on GitHub
+   *
+   * @type {string}
+   */
+  repo?: string;
+};
+
 export type CategoryRequest = {
   /**
    * The repository `author/name` on GitHub
