@@ -61,29 +61,29 @@ const veto_threshold = computed(() => {
 });
 
 const yesVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0].yes ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.yes ?? "0");
 });
 const noVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0].no ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.no ?? "0");
 });
 const nwvVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0].no_with_veto ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.no_with_veto ?? "0");
 });
 const abstainVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0].abstain ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.abstain ?? "0");
 });
 
 const yes = computed(() => {
-  return yesVotes.value / parseFloat(staking.value?.staking_pool[0].bonded_tokens ?? "0");
+  return yesVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
 const no = computed(() => {
-  return noVotes.value / parseFloat(staking.value?.staking_pool[0].bonded_tokens ?? "0");
+  return noVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
 const abstain = computed(() => {
-  return abstainVotes.value / parseFloat(staking.value?.staking_pool[0].bonded_tokens ?? "0");
+  return abstainVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
 const nwv = computed(() => {
-  return nwvVotes.value / parseFloat(staking.value?.staking_pool[0].bonded_tokens ?? "0");
+  return nwvVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
 
 const turnout = computed(() => {
