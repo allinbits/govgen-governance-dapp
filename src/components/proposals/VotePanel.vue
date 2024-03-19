@@ -6,7 +6,6 @@ import CommonButton from "@/components/ui/CommonButton.vue";
 type VoteType = "VOTE_OPTION_YES" | "VOTE_OPTION_NO" | "VOTE_OPTION_ABSTAIN" | "VOTE_OPTION_VETO";
 
 type Props = {
-  title: string;
   max?: number;
   voters: Array<{
     __typename?: "proposal_vote" | undefined;
@@ -47,10 +46,10 @@ function calculateVotes() {
 
 const totalVoteText = computed(() => {
   if (typeof props.max === "number") {
-    return `${votes.total} / ${props.max} voted`;
+    return `${votes.total} / ${props.max}`;
   }
 
-  return `${votes.total} accounts voted`;
+  return `${votes.total}`;
 });
 
 onMounted(() => {
@@ -63,8 +62,8 @@ onMounted(() => {
     <!-- Upper Section -->
     <div class="flex flex-row">
       <div class="flex flex-col flex-grow">
-        <span class="text-500 text-light">{{ props.title }}</span>
-        <span class="text-300 text-grey-100">{{ totalVoteText }}</span>
+        <span class="text-500 text-light"><slot name="header"></slot></span>
+        <span class="text-300 text-grey-100">{{ totalVoteText }} <slot name="type"></slot></span>
       </div>
       <CommonButton class="!bg-grey-200" @click="emits('onBreakdown')">Breakdown</CommonButton>
     </div>

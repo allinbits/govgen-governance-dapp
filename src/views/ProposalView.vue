@@ -416,12 +416,10 @@ function isTabSelected(tabName: TabNames) {
       </div>
       <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
         <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
-          <VotePanel
-            title="All Voters"
-            :voters="proposal.proposal[0].proposal_votes"
-            :tallies="tokenTallies"
-            :pcts="pctTallies"
-          />
+          <VotePanel :voters="proposal.proposal[0].proposal_votes" :tallies="tokenTallies" :pcts="pctTallies">
+            <template #header>All Voters</template>
+            <template #type>Accounts Voted</template>
+          </VotePanel>
           <!-- <VotePanel title="Validators" :max="5" /> -->
         </div>
       </div>
