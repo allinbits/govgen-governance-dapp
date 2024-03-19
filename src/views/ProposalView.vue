@@ -6,6 +6,7 @@ import GithubComments from "../components/proposals/GithubComments.vue";
 import GithubLinks from "../components/proposals/GithubLinks.vue";
 import { Deposit } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
 import ProposalVote from "../components/popups/ProposalVote.vue";
+import ProposalDeposit from "../components/popups/ProposalDeposit.vue";
 
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
@@ -56,8 +57,15 @@ const initialDeposit = computed(() => {
     .reduce(depositReducer, 0);
 });
 const totalDeposit = computed(() => {
-  return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0);
+  return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0) ?? 0;
 });
+const minDeposit = computed(() => {
+  return params.value?.gov_params[0].deposit_params.min_deposit[0].amount;
+});
+const depositDenom = computed(() => {
+  return params.value?.gov_params[0].deposit_params.min_deposit[0].denom;
+});
+
 const tally_params = computed(() => {
   try {
     return params.value?.gov_params[0].tally_params;
@@ -223,8 +231,12 @@ function isTabSelected(tabName: TabNames) {
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
-          <!-- Replace with button from other PR -->
-          <div class="button w-full bg-gradient rounded text-dark text-300 text-center px-6 py-4">Deposit</div>
+          <ProposalDeposit
+            :proposal-id="proposal?.proposal[0].id"
+            :min-deposit="minDeposit"
+            :total-deposit="totalDeposit"
+            :deposit-denom="depositDenom"
+          />
         </SimpleCard>
       </div>
     </div>
