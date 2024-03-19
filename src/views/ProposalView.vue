@@ -47,9 +47,17 @@ const rejected = computed(() => {
 const passed = computed(() => {
   return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_PASSED";
 });
+const depositReducer = (sum, deposit) => {
+  return sum + deposit.amount.reduce((sum, amount) => sum + parseInt(amount.amount), 0);
+};
 const initialDeposit = computed(() => {
-  return proposal.value?.proposal[0].proposal_deposits.filter( x => x.depositor_address==proposal.value?.proposal[0].proposer_address).reduce( (sum, amount)=> sum+pa)
-})
+  return proposal.value?.proposal[0].proposal_deposits
+    .filter((x) => x.depositor_address == proposal.value?.proposal[0].proposer_address)
+    .reduce(depositReducer, 0);
+});
+const totalDeposit = computed(() => {
+  return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0);
+});
 const tally_params = computed(() => {
   try {
     return params.value?.gov_params[0].tally_params;
@@ -259,7 +267,7 @@ function isTabSelected(tabName: TabNames) {
               <div class="flex w-full flex-wrap">
                 <div class="w-full flex-2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">Proposer</div>
-                  <div class="text-light text-300">govgen23e732hf728237h24734h2387h4374243</div>
+                  <div class="text-light text-300">{{ proposal?.proposal[0].proposer_address }}</div>
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">Voting start</div>
@@ -287,17 +295,98 @@ function isTabSelected(tabName: TabNames) {
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">Initial deposit</div>
-                  <div class="text-light text-300"></div>
+                  <div class="text-light text-300">{{ initialDeposit }}</div>
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">Total deposit</div>
-                  <div class="text-light text-300"></div>
+                  <div class="text-light text-300">{{ totalDeposit }}</div>
                 </div>
               </div>
             </SimpleCard>
           </div>
           <div class="flex">
-            <SimpleCard class="w-full p-10">Messages</SimpleCard>
+            <SimpleCard class="w-full p-10">
+              <div class="text-light text-500 text-left mb-8">Messages</div>
+              <div
+                v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
+                class="flex w-full flex-wrap"
+              >
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Proposal type</div>
+                  <div class="text-light text-300">Text proposal</div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Title</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.title }}
+                  </div>
+                </div>
+                <div class="w-full flex-2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Description</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.description }}
+                  </div>
+                </div>
+              </div>
+              <div
+                v-if="proposal?.proposal[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
+                class="flex w-full flex-wrap"
+              >
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Proposal type</div>
+                  <div class="text-light text-300">Parameter Change proposal</div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Title</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.title }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Description</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.description }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Changes</div>
+                  <div class="text-light text-300">
+                    <code>
+                      <pre>{{ proposal?.proposal[0].content.changes }}</pre>
+                    </code>
+                  </div>
+                </div>
+              </div>
+              <div
+                v-if="proposal?.proposal[0].content['@type'] == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
+                class="flex w-full flex-wrap"
+              >
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Proposal type</div>
+                  <div class="text-light text-300">Software Upgrade proposal</div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Title</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.title }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Description</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.description }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Upgrade Plan</div>
+                  <div class="text-light text-300">
+                    <code>
+                      <pre>{{ proposal?.proposal[0].content.plan }}</pre>
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </SimpleCard>
           </div>
         </div>
       </div>
