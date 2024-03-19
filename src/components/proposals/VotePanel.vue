@@ -68,7 +68,7 @@ onMounted(() => {
       <CommonButton class="!bg-grey-200" @click="emits('onBreakdown')">Breakdown</CommonButton>
     </div>
     <!-- Lower Section -->
-    <div class="flex flex-row gap-12 w-full items-center">
+    <div class="flex flex-row gap-12 w-full items-center" v-if="votes.total >= 1">
       <div class="flex items-center w-28 h-28 pb-1">
         <VoteChart :yes="votes.yes" :no="votes.no" :abstain="votes.abstain" :veto="votes.veto" />
       </div>
@@ -92,6 +92,9 @@ onMounted(() => {
           <span class="text-grey-100 text-100">{{ props.tallies.abstain }} TOKEN | {{ props.pcts.abstain }}%</span>
         </div>
       </div>
+    </div>
+    <div>
+      <span class="text-grey-100 text-300">No votes have been counted</span>
     </div>
   </div>
 </template>
