@@ -421,7 +421,7 @@ function isTabSelected(tabName: TabNames) {
             :voters="proposal.proposal[0].proposal_votes"
             :tallies="tokenTallies"
             :pcts="pctTallies"
-            @onBreakdown="() => {}"
+            @on-breakdown="() => {}"
           >
             <template #header>All Voters</template>
             <template #type>Accounts Voted</template>
@@ -433,7 +433,7 @@ function isTabSelected(tabName: TabNames) {
             :voters="proposal.proposal[0].proposal_votes"
             :tallies="tokenTallies"
             :pcts="pctTallies"
-            @onBreakdown="() => {}"
+            @on-breakdown="() => {}"
           >
             <template #header>Validators</template>
             <template #type>Validators Voted</template>
