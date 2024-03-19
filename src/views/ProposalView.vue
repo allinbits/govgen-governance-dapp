@@ -4,7 +4,7 @@ import { useRoute } from "vue-router";
 import { useChainData } from "@/composables/useChainData";
 import GithubComments from "../components/proposals/GithubComments.vue";
 import GithubLinks from "../components/proposals/GithubLinks.vue";
-
+import { Deposit } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
 import ProposalVote from "../components/popups/ProposalVote.vue";
 
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
@@ -47,8 +47,8 @@ const rejected = computed(() => {
 const passed = computed(() => {
   return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_PASSED";
 });
-const depositReducer = (sum, deposit) => {
-  return sum + deposit.amount.reduce((sum, amount) => sum + parseInt(amount.amount), 0);
+const depositReducer = (sum: number, deposit: Partial<{ amount: Deposit["amount"] | null }>) => {
+  return sum + (deposit.amount?.reduce((sum: number, amount) => sum + parseInt(amount?.amount ?? ""), 0) ?? 0);
 };
 const initialDeposit = computed(() => {
   return proposal.value?.proposal[0].proposal_deposits
