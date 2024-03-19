@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { reactive, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useChainData } from "@/composables/useChainData";
 import GithubComments from "../components/proposals/GithubComments.vue";
@@ -8,22 +9,28 @@ import ProposalVote from "../components/popups/ProposalVote.vue";
 
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
+import UiTabs from "@/components/ui/UiTabs.vue";
 import { ContextTypes } from "@/types/ui";
 import * as dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import { computed } from "vue";
 import { decToPerc, formatAmount } from "@/utility";
+
+type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 
 dayjs.extend(duration);
 const { getProposal, getParams, getProposalTallies, getStakingStatus } = useChainData();
 
 const route = useRoute();
-const proposalTerm = `Proposal #${route.params.id}`;
-const linksTerm = `Links #${route.params.id}`;
 const proposal = getProposal(parseInt(route.params.id as string));
 const proposalTallies = getProposalTallies(parseInt(route.params.id as string));
 const params = getParams();
 const staking = getStakingStatus();
+
+const termLink = computed(() => `Link #${route.params.id}`);
+const termDiscussion = computed(() => `Proposal #${route.params.id}`);
+
+const tabSelected = ref<TabNames>("Info");
+const tabOptions = reactive<TabNames[]>(["Info", "Voters", "Discussions", "Links"]);
 
 const inDeposit = computed(() => {
   return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD";
@@ -126,6 +133,10 @@ const timeTo = (dateString: string) => {
   const diff = dayjs.duration(to.diff(now));
   return diff.format("D [d] : H [hr] : m [m] [left]");
 };
+
+function isTabSelected(tabName: TabNames) {
+  return tabSelected.value.toLowerCase() == tabName.toLowerCase();
+}
 </script>
 
 <template>
@@ -216,8 +227,16 @@ const timeTo = (dateString: string) => {
         </div>
       </div>
     </SimpleCard>
-    <div class="mb-2 font-medium text-3xl">Proposal {{ route.params.id }}</div>
-    <GithubLinks :term="linksTerm" />
-    <GithubComments :term="proposalTerm" />
+    <UiTabs id="proposal-tab" v-model="tabSelected" :options="tabOptions" />
+    <div class="flex flex-col pt-[72px]">
+      <div v-if="isTabSelected('Info')" class="w-full">info</div>
+      <div v-if="isTabSelected('Voters')" class="w-full">voters</div>
+      <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
+        <GithubComments :term="termDiscussion" />
+      </div>
+      <div v-if="isTabSelected('Links')" class="w-full">
+        <GithubLinks :term="termLink" />
+      </div>
+    </div>
   </div>
 </template>
