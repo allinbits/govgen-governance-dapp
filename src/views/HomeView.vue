@@ -2,6 +2,7 @@
 import { computed, ref } from "vue";
 
 import ProposalCard from "@/components/home/ProposalCard.vue";
+import CommentCount from "@/components/home/CommentCount.vue";
 import Search from "@/components/ui/Search.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
@@ -200,7 +201,7 @@ function onSearchInput() {
               <!-- Comment Count -->
               <div class="flex flex-row items-center gap-1">
                 <Icon icon="comments" />
-                <span>500</span>
+                <CommentCount :proposal="proposal.id" />
               </div>
             </div>
           </div>
