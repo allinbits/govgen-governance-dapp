@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import ProposalCard from "@/components/home/ProposalCard.vue";
+import CommentCount from "@/components/home/CommentCount.vue";
 import Search from "@/components/ui/Search.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
@@ -15,7 +16,91 @@ const searchText = ref("");
 const { getProposals } = useChainData();
 
 const proposals = getProposals();
-
+const filterToStatus = computed(() => {
+  switch (typeFilterIndex.value) {
+    default:
+    case 0:
+      return null;
+    case 1:
+      return "PROPOSAL_STATUS_DEPOSIT_PERIOD";
+    case 2:
+      return "PROPOSAL_STATUS_VOTING_PERIOD";
+    case 3:
+      return "PROPOSAL_STATUS_PASSED";
+    case 4:
+      return "PROPOSAL_STATUS_REJECTED";
+    case 5:
+      return "PROPOSAL_STATUS_FAILED";
+  }
+});
+const statusShort = computed(() => {
+  switch (activityFilterIndex.value) {
+    default:
+    case 0:
+      return new Map([
+        ["PROPOSAL_STATUS_DEPOSIT_PERIOD", 1],
+        ["PROPOSAL_STATUS_VOTING_PERIOD", 2],
+        ["PROPOSAL_STATUS_PASSED", 3],
+        ["PROPOSAL_STATUS_REJECTED", 4],
+        ["PROPOSAL_STATUS_FAILED", 5],
+        ["PROPOSAL_STATUS_UNSPECIFIED", 6],
+      ]);
+    case 1:
+      return new Map([
+        ["PROPOSAL_STATUS_DEPOSIT_PERIOD", 2],
+        ["PROPOSAL_STATUS_VOTING_PERIOD", 3],
+        ["PROPOSAL_STATUS_PASSED", 1],
+        ["PROPOSAL_STATUS_REJECTED", 4],
+        ["PROPOSAL_STATUS_FAILED", 5],
+        ["PROPOSAL_STATUS_UNSPECIFIED", 6],
+      ]);
+    case 2:
+      return new Map([
+        ["PROPOSAL_STATUS_DEPOSIT_PERIOD", 2],
+        ["PROPOSAL_STATUS_VOTING_PERIOD", 3],
+        ["PROPOSAL_STATUS_PASSED", 4],
+        ["PROPOSAL_STATUS_REJECTED", 1],
+        ["PROPOSAL_STATUS_FAILED", 5],
+        ["PROPOSAL_STATUS_UNSPECIFIED", 6],
+      ]);
+    case 3:
+      return new Map([
+        ["PROPOSAL_STATUS_DEPOSIT_PERIOD", 2],
+        ["PROPOSAL_STATUS_VOTING_PERIOD", 3],
+        ["PROPOSAL_STATUS_PASSED", 4],
+        ["PROPOSAL_STATUS_REJECTED", 5],
+        ["PROPOSAL_STATUS_FAILED", 1],
+        ["PROPOSAL_STATUS_UNSPECIFIED", 6],
+      ]);
+  }
+});
+const searchedProposals = computed(() => {
+  if (searchText.value == "") {
+    return proposals.value?.all_proposals;
+  } else {
+    return proposals.value?.all_proposals.filter(
+      (x) =>
+        x.title.toLowerCase().includes(searchText.value.toLowerCase()) ||
+        x.description.toLowerCase().includes(searchText.value.toLowerCase()) ||
+        x.proposer_address.toLowerCase().includes(searchText.value.toLowerCase()),
+    );
+  }
+});
+const filteredProposals = computed(() => {
+  if (filterToStatus.value) {
+    return searchedProposals.value?.filter((x) => x.status == filterToStatus.value);
+  } else {
+    return searchedProposals.value;
+  }
+});
+const orderedProposals = computed(() => {
+  return filteredProposals.value?.slice().sort((a, b) => {
+    return (
+      (statusShort.value.get(a.status ?? "PROPOSAL_STATUS_UNSPECIFIED") ?? 0) -
+      (statusShort.value.get(b.status ?? "PROPOSAL_STATUS_UNSPECIFIED") ?? 0)
+    );
+  });
+});
 const links = ref([
   { title: "Twitter", url: "#", icon: "twitter" },
   { title: "Discord", url: "#", icon: "discord" },
@@ -82,7 +167,7 @@ function onSearchInput() {
         <!-- Select Type -->
         <DropDown
           v-model="typeFilterIndex"
-          :values="['All Proposals', 'Voting', 'Passed', 'Rejected', 'Failed']"
+          :values="['All Proposals', 'Deposit', 'Voting', 'Passed', 'Rejected', 'Failed']"
           @select="setTypeFilterIndex"
         />
         <!-- Show 'x' First -->
@@ -95,7 +180,7 @@ function onSearchInput() {
     </div>
     <!-- Proposal View -->
     <div v-if="proposals" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-[72px]">
-      <ProposalCard v-for="proposal in proposals.all_proposals" :key="proposal.id" link="#">
+      <ProposalCard v-for="proposal in orderedProposals" :key="proposal.id" :link="'/proposals/' + proposal.id">
         <template #header
           ><ProposalStatus
             :status="PropStatus[(proposal.status ?? 'PROPOSAL_STATUS_UNSPECIFIED') as keyof typeof PropStatus]"
@@ -114,7 +199,7 @@ function onSearchInput() {
               <!-- Comment Count -->
               <div class="flex flex-row items-center gap-1">
                 <Icon icon="comments" />
-                <span>500</span>
+                <CommentCount :proposal="proposal.id" />
               </div>
             </div>
           </div>

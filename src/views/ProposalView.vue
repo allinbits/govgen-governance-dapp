@@ -1,26 +1,37 @@
 <script setup lang="ts">
+import { reactive, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useChainData } from "@/composables/useChainData";
 import GithubComments from "../components/proposals/GithubComments.vue";
 import GithubLinks from "../components/proposals/GithubLinks.vue";
+import { Deposit } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
+import ProposalVote from "../components/popups/ProposalVote.vue";
+import ProposalDeposit from "../components/popups/ProposalDeposit.vue";
+
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
+import UiTabs from "@/components/ui/UiTabs.vue";
 import { ContextTypes } from "@/types/ui";
 import * as dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import { computed } from "vue";
 import { decToPerc, formatAmount } from "@/utility";
+
+type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 
 dayjs.extend(duration);
 const { getProposal, getParams, getProposalTallies, getStakingStatus } = useChainData();
 
 const route = useRoute();
-const proposalTerm = `Proposal #${route.params.id}`;
-const linksTerm = `Links #${route.params.id}`;
 const proposal = getProposal(parseInt(route.params.id as string));
 const proposalTallies = getProposalTallies(parseInt(route.params.id as string));
 const params = getParams();
 const staking = getStakingStatus();
+
+const termLink = computed(() => `Link #${route.params.id}`);
+const termDiscussion = computed(() => `Proposal #${route.params.id}`);
+
+const tabSelected = ref<TabNames>("Info");
+const tabOptions = reactive<TabNames[]>(["Info", "Voters", "Discussions", "Links"]);
 
 const inDeposit = computed(() => {
   return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD";
@@ -37,6 +48,24 @@ const rejected = computed(() => {
 const passed = computed(() => {
   return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_PASSED";
 });
+const depositReducer = (sum: number, deposit: Partial<{ amount: Deposit["amount"] | null }>) => {
+  return sum + (deposit.amount?.reduce((sum: number, amount) => sum + parseInt(amount?.amount ?? ""), 0) ?? 0);
+};
+const initialDeposit = computed(() => {
+  return proposal.value?.proposal[0].proposal_deposits
+    .filter((x) => x.depositor_address == proposal.value?.proposal[0].proposer_address)
+    .reduce(depositReducer, 0);
+});
+const totalDeposit = computed(() => {
+  return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0) ?? 0;
+});
+const minDeposit = computed(() => {
+  return params.value?.gov_params[0].deposit_params.min_deposit[0].amount;
+});
+const depositDenom = computed(() => {
+  return params.value?.gov_params[0].deposit_params.min_deposit[0].denom;
+});
+
 const tally_params = computed(() => {
   try {
     return params.value?.gov_params[0].tally_params;
@@ -44,7 +73,17 @@ const tally_params = computed(() => {
     return {};
   }
 });
-
+const shouldTrim = computed(() => {
+  return (proposal.value?.proposal[0].description?.length ?? 0) > 650;
+});
+const showAll = ref(false);
+const description = computed(() => {
+  if (shouldTrim.value && !showAll.value) {
+    return proposal.value?.proposal[0].description.slice(0, 650);
+  } else {
+    return proposal.value?.proposal[0].description;
+  }
+});
 const quorum = computed(() => {
   return parseFloat(tally_params.value?.quorum ?? "0");
 });
@@ -58,29 +97,29 @@ const veto_threshold = computed(() => {
 });
 
 const yesVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0].yes ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.yes ?? "0");
 });
 const noVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0].no ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.no ?? "0");
 });
 const nwvVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0].no_with_veto ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.no_with_veto ?? "0");
 });
 const abstainVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0].abstain ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.abstain ?? "0");
 });
 
 const yes = computed(() => {
-  return yesVotes.value / parseFloat(staking.value?.staking_pool[0].bonded_tokens ?? "0");
+  return yesVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
 const no = computed(() => {
-  return noVotes.value / parseFloat(staking.value?.staking_pool[0].bonded_tokens ?? "0");
+  return noVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
 const abstain = computed(() => {
-  return abstainVotes.value / parseFloat(staking.value?.staking_pool[0].bonded_tokens ?? "0");
+  return abstainVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
 const nwv = computed(() => {
-  return nwvVotes.value / parseFloat(staking.value?.staking_pool[0].bonded_tokens ?? "0");
+  return nwvVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
 });
 
 const turnout = computed(() => {
@@ -123,6 +162,10 @@ const timeTo = (dateString: string) => {
   const diff = dayjs.duration(to.diff(now));
   return diff.format("D [d] : H [hr] : m [m] [left]");
 };
+
+function isTabSelected(tabName: TabNames) {
+  return tabSelected.value.toLowerCase() == tabName.toLowerCase();
+}
 </script>
 
 <template>
@@ -181,16 +224,19 @@ const timeTo = (dateString: string) => {
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
-          <!-- Replace with button from other PR -->
-          <div class="button w-full bg-gradient rounded text-dark text-300 text-center px-6 py-4">Vote</div>
+          <ProposalVote :proposal-id="proposal?.proposal[0].id" class="w-full" />
         </SimpleCard>
         <SimpleCard v-if="inDeposit" class="p-10">
           <div class="text-center text-light text-500">{{ timeTo(proposal?.proposal[0].deposit_end_time) }}</div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
-          <!-- Replace with button from other PR -->
-          <div class="button w-full bg-gradient rounded text-dark text-300 text-center px-6 py-4">Deposit</div>
+          <ProposalDeposit
+            :proposal-id="proposal?.proposal[0].id"
+            :min-deposit="minDeposit"
+            :total-deposit="totalDeposit"
+            :deposit-denom="depositDenom"
+          />
         </SimpleCard>
       </div>
     </div>
@@ -214,8 +260,155 @@ const timeTo = (dateString: string) => {
         </div>
       </div>
     </SimpleCard>
-    <div class="mb-2 font-medium text-3xl">Proposal {{ route.params.id }}</div>
-    <GithubLinks :term="linksTerm" />
-    <GithubComments :term="proposalTerm" />
+    <UiTabs id="proposal-tab" v-model="tabSelected" :options="tabOptions" />
+    <div class="flex flex-col pt-[72px]">
+      <div v-if="isTabSelected('Info')" class="w-full">
+        <div class="flex flex-col gap-6">
+          <div class="flex gap-6">
+            <SimpleCard class="w-1/2 flex-grow p-10">
+              <div class="text-light text-500 text-left mb-8">Proposal Description</div>
+              <div class="text-grey-100">
+                {{ description }}...
+                <template v-if="shouldTrim">
+                  <span v-if="!showAll" class="text-light cursor-pointer" @click="showAll = true">read more</span>
+                  <span v-if="showAll" class="text-light cursor-pointer" @click="showAll = false">read less</span>
+                </template>
+              </div>
+            </SimpleCard>
+            <SimpleCard class="w-1/2 flex-grow p-10">
+              <div class="flex w-full flex-wrap">
+                <div class="w-full flex-2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Proposer</div>
+                  <div class="text-light text-300">{{ proposal?.proposal[0].proposer_address }}</div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Voting start</div>
+                  <div class="text-light text-300">
+                    {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_start_time).format("MMMM D, YYYY h:mm A") }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Voting end</div>
+                  <div class="text-light text-300">
+                    {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_end_time).format("MMMM D, YYYY h:mm A") }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Submit time</div>
+                  <div class="text-light text-300">
+                    {{ dayjs(proposal?.proposal[0].submit_time).format("MMMM D, YYYY h:mm A") }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Deposit end</div>
+                  <div class="text-light text-300">
+                    {{ inDeposit ? dayjs(proposal?.proposal[0].deposit_end_time).format("MMMM D, YYYY h:mm A") : "-" }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Initial deposit</div>
+                  <div class="text-light text-300">{{ initialDeposit }}</div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Total deposit</div>
+                  <div class="text-light text-300">{{ totalDeposit }}</div>
+                </div>
+              </div>
+            </SimpleCard>
+          </div>
+          <div class="flex">
+            <SimpleCard class="w-full p-10">
+              <div class="text-light text-500 text-left mb-8">Messages</div>
+              <div
+                v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
+                class="flex w-full flex-wrap"
+              >
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Proposal type</div>
+                  <div class="text-light text-300">Text proposal</div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Title</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.title }}
+                  </div>
+                </div>
+                <div class="w-full flex-2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Description</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.description }}
+                  </div>
+                </div>
+              </div>
+              <div
+                v-if="proposal?.proposal[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
+                class="flex w-full flex-wrap"
+              >
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Proposal type</div>
+                  <div class="text-light text-300">Parameter Change proposal</div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Title</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.title }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Description</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.description }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Changes</div>
+                  <div class="text-light text-200">
+                    <code>
+                      <pre>{{ proposal?.proposal[0].content.changes }}</pre>
+                    </code>
+                  </div>
+                </div>
+              </div>
+              <div
+                v-if="proposal?.proposal[0].content['@type'] == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
+                class="flex w-full flex-wrap"
+              >
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Proposal type</div>
+                  <div class="text-light text-300">Software Upgrade proposal</div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Title</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.title }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Description</div>
+                  <div class="text-light text-300">
+                    {{ proposal?.proposal[0].content.description }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Upgrade Plan</div>
+                  <div class="text-light text-200">
+                    <code>
+                      <pre>{{ proposal?.proposal[0].content.plan }}</pre>
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </SimpleCard>
+          </div>
+        </div>
+      </div>
+      <div v-if="isTabSelected('Voters')" class="w-full">voters</div>
+      <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
+        <GithubComments :term="termDiscussion" />
+      </div>
+      <div v-if="isTabSelected('Links')" class="w-full">
+        <GithubLinks :term="termLink" />
+      </div>
+    </div>
   </div>
 </template>

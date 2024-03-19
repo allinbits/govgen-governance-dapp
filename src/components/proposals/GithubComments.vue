@@ -65,7 +65,7 @@ onMounted(refresh);
 </script>
 
 <template>
-  <div class="flex flex-col w-full pt-[72px]">
+  <div class="flex flex-col w-full">
     <!-- Login & Comment Post Section -->
     <div
       v-if="!isLoggedIn"
