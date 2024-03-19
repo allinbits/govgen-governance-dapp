@@ -14,6 +14,8 @@ import { useProposals } from "@/composables/useProposals";
 
 interface Props {
   proposalId?: number;
+  minDeposit: number;
+  totalDeposit: number
 }
 const props = defineProps<Props>();
 
@@ -23,8 +25,7 @@ const depositAmount = ref<number | null>(null);
 
 //TODO: dynamic data
 const depositDenom = ref(chainConfig.currencies[0].coinDenom);
-const totalDeposit = ref(500);
-const pastDeposit = ref(50);
+
 //TODO: end
 
 const resetDeposit = () => (depositAmount.value = null);
@@ -78,7 +79,7 @@ const signDeposit = async () => {
           <div class="flex flex-col gap-10">
             <div>
               <div class="flex flex-col gap-10">
-                <p class="text-grey-100 text-center text-200">{{ pastDeposit }} / {{ totalDeposit }} deposited</p>
+                <p class="text-grey-100 text-center text-200">{{ totalDeposit }} / {{ minDeposit }} deposited</p>
 
                 <form class="flex flex-col items-center gap-2">
                   <UiInput
