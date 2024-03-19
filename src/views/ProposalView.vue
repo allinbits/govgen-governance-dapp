@@ -172,16 +172,30 @@ function isTabSelected(tabName: TabNames) {
   <div>
     <div class="badges my-12">
       <template v-if="inVoting">
-        <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">Voting Period </SimpleBadge>
-        <SimpleBadge v-if="turnout < quorum" :type="ContextTypes.PLAIN" icon="warning">Quorum not reached</SimpleBadge>
+        <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
+          >{{ $t("proposalpage.badges.votingPeriod") }}
+        </SimpleBadge>
+        <SimpleBadge v-if="turnout < quorum" :type="ContextTypes.PLAIN" icon="warning">
+          {{ $t("proposalpage.badges.quorumPending") }}</SimpleBadge
+        >
       </template>
       <template v-if="inDeposit">
-        <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">Deposit Period </SimpleBadge>
-        <SimpleBadge :type="ContextTypes.PLAIN" icon="warning">Deposit not reached</SimpleBadge>
+        <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">{{
+          $t("proposalpage.badges.depositPeriod")
+        }}</SimpleBadge>
+        <SimpleBadge :type="ContextTypes.PLAIN" icon="warning">{{
+          $t("proposalpage.badges.depositPending")
+        }}</SimpleBadge>
       </template>
-      <SimpleBadge v-if="failed" :type="ContextTypes.FAIL" class="mr-3">Deposit Not Met </SimpleBadge>
-      <SimpleBadge v-if="rejected" icon="close" :type="ContextTypes.FAIL" class="mr-3">Rejected </SimpleBadge>
-      <SimpleBadge v-if="passed" :type="ContextTypes.SUCCESS" class="mr-3">Passed</SimpleBadge>
+      <SimpleBadge v-if="failed" :type="ContextTypes.FAIL" class="mr-3">{{
+        $t("proposalpage.badges.depositFailed")
+      }}</SimpleBadge>
+      <SimpleBadge v-if="rejected" icon="close" :type="ContextTypes.FAIL" class="mr-3"
+        >{{ $t("proposalpage.badges.rejected") }}
+      </SimpleBadge>
+      <SimpleBadge v-if="passed" :type="ContextTypes.SUCCESS" class="mr-3">{{
+        $t("proposalpage.badges.passed")
+      }}</SimpleBadge>
     </div>
     <div class="flex mb-12">
       <div class="basic-details flex-grow">
