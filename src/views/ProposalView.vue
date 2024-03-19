@@ -51,7 +51,6 @@ const initialDeposit = computed(() => {
 });
 
 const totalDeposit = computed(() => {
-  console.log(JSON.stringify(proposal.value, null, "\t"));
   return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0);
 });
 
