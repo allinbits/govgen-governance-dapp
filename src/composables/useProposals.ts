@@ -1,7 +1,9 @@
 import { TextProposal } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
+import { ParameterChangeProposal } from "@atomone/govgen-types/cosmos/params/v1beta1/params";
 import { useWallet } from "./useWallet";
 import { MsgDeposit, MsgSubmitProposal, MsgVote, MsgVoteWeighted } from "@atomone/govgen-types/govgen/gov/v1beta1/tx";
 import { EncodeObject } from "@cosmjs/proto-signing";
+import { SoftwareUpgradeProposal } from "@atomone/govgen-types/cosmos/upgrade/v1beta1/upgrade";
 
 export const useProposals = () => {
   const { sendTx, address } = useWallet();
@@ -14,6 +16,27 @@ export const useProposals = () => {
       }).finish(),
     };
   };
+
+  const createParamChangeProposalContent = (proposal: ParameterChangeProposal): EncodeObject => {
+    return {
+      typeUrl: "/cosmos.params.v1beta1.ParameterChangeProposal",
+      value: ParameterChangeProposal.encode({
+        description: proposal.description,
+        title: proposal.title,
+        changes: proposal.changes,
+      }).finish(),
+    };
+  };
+  const createUpgradePlanProposalContent = (proposal: SoftwareUpgradeProposal): EncodeObject => {
+    return {
+      typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
+      value: SoftwareUpgradeProposal.encode({
+        description: proposal.description,
+        title: proposal.title,
+        plan: proposal.plan,
+      }).finish(),
+    };
+  }
   const createProposal = async (proposalMeta: Partial<MsgSubmitProposal>, proposal: EncodeObject) => {
     const SubmitProposal: EncodeObject = {
       typeUrl: "/govgen.gov.v1beta1.MsgSubmitProposal",
@@ -67,5 +90,13 @@ export const useProposals = () => {
     console.log(result);
     return result;
   };
-  return { createProposal, depositProposal, createTextProposalContent, voteProposal, voteWeightedProposal };
+  return {
+    createProposal,
+    depositProposal,
+    createTextProposalContent,
+    voteProposal,
+    voteWeightedProposal,
+    createParamChangeProposalContent,
+    createUpgradePlanProposalContent,
+  };
 };
