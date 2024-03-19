@@ -22,5 +22,11 @@ query Proposal($id: Int!) {
       no
       abstain
     }
+    proposal_deposits {
+      amount
+      depositor_address
+      proposal_id
+      timestamp
+    }
   }
 }

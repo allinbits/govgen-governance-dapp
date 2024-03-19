@@ -47,6 +47,9 @@ const rejected = computed(() => {
 const passed = computed(() => {
   return proposal.value?.proposal[0].status === "PROPOSAL_STATUS_PASSED";
 });
+const initialDeposit = computed(() => {
+  return proposal.value?.proposal[0].proposal_deposits.filter( x => x.depositor_address==proposal.value?.proposal[0].proposer_address).reduce( (sum, amount)=> sum+pa)
+})
 const tally_params = computed(() => {
   try {
     return params.value?.gov_params[0].tally_params;
@@ -54,7 +57,17 @@ const tally_params = computed(() => {
     return {};
   }
 });
-
+const shouldTrim = computed(() => {
+  return (proposal.value?.proposal[0].description?.length ?? 0) > 650;
+});
+const showAll = ref(false);
+const description = computed(() => {
+  if (shouldTrim.value && !showAll.value) {
+    return proposal.value?.proposal[0].description.slice(0, 650);
+  } else {
+    return proposal.value?.proposal[0].description;
+  }
+});
 const quorum = computed(() => {
   return parseFloat(tally_params.value?.quorum ?? "0");
 });
@@ -229,7 +242,65 @@ function isTabSelected(tabName: TabNames) {
     </SimpleCard>
     <UiTabs id="proposal-tab" v-model="tabSelected" :options="tabOptions" />
     <div class="flex flex-col pt-[72px]">
-      <div v-if="isTabSelected('Info')" class="w-full">info</div>
+      <div v-if="isTabSelected('Info')" class="w-full">
+        <div class="flex flex-col gap-6">
+          <div class="flex gap-6">
+            <SimpleCard class="w-1/2 flex-grow p-10">
+              <div class="text-light text-500 text-left mb-8">Proposal Description</div>
+              <div class="text-grey-100">
+                {{ description }}...
+                <template v-if="shouldTrim">
+                  <span v-if="!showAll" class="text-light cursor-pointer" @click="showAll = true">read more</span>
+                  <span v-if="showAll" class="text-light cursor-pointer" @click="showAll = false">read less</span>
+                </template>
+              </div>
+            </SimpleCard>
+            <SimpleCard class="w-1/2 flex-grow p-10">
+              <div class="flex w-full flex-wrap">
+                <div class="w-full flex-2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Proposer</div>
+                  <div class="text-light text-300">govgen23e732hf728237h24734h2387h4374243</div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Voting start</div>
+                  <div class="text-light text-300">
+                    {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_start_time).format("MMMM D, YYYY h:mm A") }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Voting end</div>
+                  <div class="text-light text-300">
+                    {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_end_time).format("MMMM D, YYYY h:mm A") }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Submit time</div>
+                  <div class="text-light text-300">
+                    {{ dayjs(proposal?.proposal[0].submit_time).format("MMMM D, YYYY h:mm A") }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Deposit end</div>
+                  <div class="text-light text-300">
+                    {{ inDeposit ? dayjs(proposal?.proposal[0].deposit_end_time).format("MMMM D, YYYY h:mm A") : "-" }}
+                  </div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Initial deposit</div>
+                  <div class="text-light text-300"></div>
+                </div>
+                <div class="grow w-1/2 mb-10">
+                  <div class="text-grey-100 text-200 mb-2">Total deposit</div>
+                  <div class="text-light text-300"></div>
+                </div>
+              </div>
+            </SimpleCard>
+          </div>
+          <div class="flex">
+            <SimpleCard class="w-full p-10">Messages</SimpleCard>
+          </div>
+        </div>
+      </div>
       <div v-if="isTabSelected('Voters')" class="w-full">voters</div>
       <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
         <GithubComments :term="termDiscussion" />
