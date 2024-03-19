@@ -57,10 +57,13 @@ const initialDeposit = computed(() => {
     .reduce(depositReducer, 0);
 });
 const totalDeposit = computed(() => {
-  return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0);
+  return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0) ?? 0;
 });
 const minDeposit = computed(() => {
   return params.value?.gov_params[0].deposit_params.min_deposit[0].amount;
+});
+const depositDenom = computed(() => {
+  return params.value?.gov_params[0].deposit_params.min_deposit[0].denom;
 });
 
 const tally_params = computed(() => {
@@ -232,6 +235,7 @@ function isTabSelected(tabName: TabNames) {
             :proposal-id="proposal?.proposal[0].id"
             :min-deposit="minDeposit"
             :total-deposit="totalDeposit"
+            :deposit-denom="depositDenom"
           />
         </SimpleCard>
       </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import { MsgDeposit } from "@atomone/govgen-types/govgen/gov/v1beta1/tx";
 
@@ -11,11 +11,13 @@ import UiInfo from "../ui/UiInfo.vue";
 
 import { useWallet } from "../../composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
+import { formatAmount } from "@/utility";
 
 interface Props {
   proposalId?: number;
   minDeposit: number;
-  totalDeposit: number
+  totalDeposit: number;
+  depositDenom: string;
 }
 const props = defineProps<Props>();
 
@@ -24,8 +26,15 @@ const isDeposit = ref(false);
 const depositAmount = ref<number | null>(null);
 
 //TODO: dynamic data
-const depositDenom = ref(chainConfig.currencies[0].coinDenom);
+const depositDenomDecimals = computed(() => {
+  return chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom)[0].coinDecimals ?? 0;
+});
 
+const depositDenomDisplay = computed(() => {
+  return (
+    chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom)[0].coinDenom ?? props.depositDenom
+  );
+});
 //TODO: end
 
 const resetDeposit = () => (depositAmount.value = null);
@@ -48,8 +57,8 @@ const signDeposit = async () => {
     depositor: address.value,
     amount: [
       {
-        denom: depositDenom.value,
-        amount: depositAmount.value?.toString() ?? "",
+        denom: props.depositDenom,
+        amount: (depositAmount.value * Math.pow(10, depositDenomDecimals.value))?.toString() ?? "",
       },
     ],
   };
@@ -79,7 +88,10 @@ const signDeposit = async () => {
           <div class="flex flex-col gap-10">
             <div>
               <div class="flex flex-col gap-10">
-                <p class="text-grey-100 text-center text-200">{{ totalDeposit }} / {{ minDeposit }} deposited</p>
+                <p class="text-grey-100 text-center text-200">
+                  {{ formatAmount(totalDeposit, depositDenomDecimals) }} /
+                  {{ formatAmount(minDeposit, depositDenomDecimals) }} deposited
+                </p>
 
                 <form class="flex flex-col items-center gap-2">
                   <UiInput
@@ -114,8 +126,10 @@ const signDeposit = async () => {
           </div>
         </div>
         <div v-show="isDeposit">
-          <UiInfo title="You depostied">
-            <div class="text-500 text-center font-semibold mb-8 w-full">{{ depositAmount }} {{ depositDenom }}</div>
+          <UiInfo title="You deposited">
+            <div class="text-500 text-center font-semibold mb-8 w-full">
+              {{ depositAmount }} {{ depositDenomDisplay }}
+            </div>
           </UiInfo>
 
           <button
