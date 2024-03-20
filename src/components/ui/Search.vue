@@ -29,7 +29,7 @@ function unfocus() {
       ref="input"
       v-model="text"
       type="text"
-      placeholder="Search Proposal"
+      :placeholder="$t('components.Search.placeholder')"
       class="outline-none bg-transparent placeholder:text-grey-100 items-center text-200"
       @blur="unfocus"
     />

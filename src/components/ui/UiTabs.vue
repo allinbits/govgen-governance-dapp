@@ -17,7 +17,7 @@
           :for="id + option"
           class="flex text-grey-50 py-1.5 text-500 cursor-pointer peer-checked:text-light ease-in-out duration-300"
         >
-          {{ option }}
+          {{ $t('ui.tabs.'+option) }}
         </label>
       </div>
     </div>

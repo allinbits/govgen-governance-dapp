@@ -1,10 +1,8 @@
 <script lang="ts" setup>
 const links = [
-  { title: "Twitter", url: "#", icon: "twitter" },
-  { title: "Discord", url: "#", icon: "discord" },
-  { title: "Telegram", url: "#", icon: "telegram" },
-  { title: "Github", url: "#", icon: "github" },
-  { title: "LinkedIn", url: "#", icon: "LinkedIn" },
+  { title: "Twitter", url: "https://twitter.com/_govgen", icon: "twitter" },
+  { title: "Discord", url: "https://discord.com/invite/atomone", icon: "discord" },
+  { title: "Github", url: "https://github.com/atomone-hub", icon: "github" },
 ];
 </script>
 
@@ -13,7 +11,7 @@ const links = [
     <span>&copy; All in Bits 2024</span>
     <div class="flex flex-col gap-4">
       <!-- Text -->
-      <span>Be a part of the conversation</span>
+      <span>{{ $t("components.FooterSection.cta") }}</span>
       <!-- Footer Social Links-->
       <div class="flex flex-row gap-4 justify-end">
         <a v-for="(linkData, index) in links" :key="index" class="flex items-center" :href="linkData.url">
