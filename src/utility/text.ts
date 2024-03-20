@@ -10,7 +10,7 @@ export function shorten(text: string) {
   }
 }
 
-export function formatAmount(amount: string | number, precision: number) {
+export function formatAmount(amount: string | number | undefined, precision: number) {
   const n = parseInt(amount?.toString() ?? "0") / 10 ** precision;
   return n.toLocaleString(undefined, { maximumFractionDigits: 6 });
 }
