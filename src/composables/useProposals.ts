@@ -1,6 +1,6 @@
 import { TextProposal } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
 import { ParameterChangeProposal } from "@atomone/govgen-types/cosmos/params/v1beta1/params";
-import { useWallet } from "./useWallet";
+import { useWallet } from "@/composables/useWallet";
 import { MsgDeposit, MsgSubmitProposal, MsgVote, MsgVoteWeighted } from "@atomone/govgen-types/govgen/gov/v1beta1/tx";
 import { EncodeObject } from "@cosmjs/proto-signing";
 import { SoftwareUpgradeProposal } from "@atomone/govgen-types/cosmos/upgrade/v1beta1/upgrade";
