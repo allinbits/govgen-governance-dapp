@@ -13,7 +13,7 @@ import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
 import UiTabs from "@/components/ui/UiTabs.vue";
 import { ContextTypes } from "@/types/ui";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { decToPerc, formatAmount } from "@/utility";
 
