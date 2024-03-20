@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import WalletConnect from "../popups/WalletConnect.vue";
+import WalletConnect from "@/components/popups/WalletConnect.vue";
 </script>
 
 <template>

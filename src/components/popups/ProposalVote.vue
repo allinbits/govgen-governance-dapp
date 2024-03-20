@@ -4,15 +4,15 @@ import { computed, ref, reactive } from "vue";
 import { MsgVote, MsgVoteWeighted } from "@atomone/govgen-types/govgen/gov/v1beta1/tx";
 import { VoteOption } from "cosmjs-types/cosmos/gov/v1beta1/gov";
 
-import ModalWrap from "../common/ModalWrap.vue";
+import ModalWrap from "@/components/common/ModalWrap.vue";
 
 import { useI18n } from "vue-i18n";
-import UiSwitch from "../ui/UiSwitch.vue";
-import UiState from "../ui/UiState.vue";
-import UiInput from "../ui/UiInput.vue";
-import UiInfo from "../ui/UiInfo.vue";
+import UiSwitch from "@/components/ui/UiSwitch.vue";
+import UiState from "@/components/ui/UiState.vue";
+import UiInput from "@/components/ui/UiInput.vue";
+import UiInfo from "@/components/ui/UiInfo.vue";
 
-import { useWallet } from "../../composables/useWallet";
+import { useWallet } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
 
 interface Props {

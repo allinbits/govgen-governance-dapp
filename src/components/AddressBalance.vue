@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useChainData } from "../composables/useChainData";
+import { useChainData } from "@/composables/useChainData";
 const props = defineProps<{
   address: string;
 }>();

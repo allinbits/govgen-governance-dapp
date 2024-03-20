@@ -1,7 +1,7 @@
 import { ref, computed } from "vue";
 import { useStorage } from "@vueuse/core";
-import { useConfig } from "./useConfig";
-import * as GithubTypes from "../types/github/index";
+import { useConfig } from "@/composables/useConfig";
+import * as GithubTypes from "@/types/github/index";
 import { useRoute, useRouter } from "vue-router";
 
 const config = useConfig();

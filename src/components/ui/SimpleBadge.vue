@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ContextTypes } from "@/types/ui";
 import { computed } from "vue";
-import Icon from "./Icon.vue";
+import Icon from "@/components/ui/Icon.vue";
 
 const { type, icon } = defineProps<{ type: ContextTypes; icon?: string }>();
 

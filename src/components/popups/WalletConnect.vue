@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { Wallets, useWallet, getWalletHelp } from "../../composables/useWallet";
-import ConnectButton from "../ui/ConnectButton.vue";
+import { Wallets, useWallet, getWalletHelp } from "@/composables/useWallet";
+import ConnectButton from "@/components/ui/ConnectButton.vue";
 import { Ref, computed, ref } from "vue";
-import { shorten } from "../../utility";
-import UserBalance from "../helper/UserBalance.vue";
+import { shorten } from "@/utility";
+import UserBalance from "@/components/helper/UserBalance.vue";
 import { bus } from "@/bus";
 
 const isOpen = ref(false);

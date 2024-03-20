@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ref, computed, Ref } from "vue";
-import chainInfo from "../chain-config.json";
+import chainInfo from "@/chain-config.json";
 import { EncodeObject, OfflineSigner } from "@cosmjs/proto-signing";
 import { getSigningGovgenClient } from "@atomone/govgen-types/govgen/client";
 import { getOfflineSigner } from "@cosmostation/cosmos-client";

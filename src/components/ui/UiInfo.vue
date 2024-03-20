@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 
-import UiIcon from "./Icon.vue";
+import UiIcon from "@/components/ui/Icon.vue";
 
 interface Props {
   type?: "info" | "warning" | "danger" | "success" | "content";

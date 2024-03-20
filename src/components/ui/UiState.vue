@@ -35,7 +35,7 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import Icon from "./Icon.vue";
+import Icon from "@/components/ui/Icon.vue";
 
 interface Props {
   type: "checkbox" | "radio";

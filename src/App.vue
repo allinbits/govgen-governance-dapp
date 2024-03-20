@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 
-import HeaderSection from "./components/layout/HeaderSection.vue";
-import FooterSection from "./components/layout/FooterSection.vue";
+import HeaderSection from "@/components/layout/HeaderSection.vue";
+import FooterSection from "@/components/layout/FooterSection.vue";
 
-import { useGithubDiscussions } from "./composables/useGithubDiscussions";
+import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
 
 useGithubDiscussions().setup();
 </script>

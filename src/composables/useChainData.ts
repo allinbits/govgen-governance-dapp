@@ -6,7 +6,7 @@ import {
   useProposalsQuery,
   useStakingQuery,
   useVoteHistoryQuery,
-} from "./queries";
+} from "@/composables/queries";
 
 export const useChainData = () => {
   const getBalance = (address: string) => {
