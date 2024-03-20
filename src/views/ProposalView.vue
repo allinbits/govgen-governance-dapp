@@ -14,6 +14,7 @@ import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
 import UiTabs from "@/components/ui/UiTabs.vue";
 import VotePanel from "@/components/proposals/VotePanel.vue";
+import Treemap from "@/components/proposals/Treemap.vue";
 
 import { ContextTypes } from "@/types/ui";
 import dayjs from "dayjs";
@@ -496,6 +497,7 @@ function isTabSelected(tabName: TabNames) {
         </div>
       </div>
       <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
+        <Treemap />
         <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
           <!-- All Account Votes -->
           <VotePanel

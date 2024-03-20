@@ -38,6 +38,9 @@ dependencies:
   chart.js:
     specifier: ^4.4.2
     version: 4.4.2
+  chartjs-chart-treemap:
+    specifier: ^2.3.0
+    version: 2.3.0(chart.js@4.4.2)
   cosmjs-types:
     specifier: ^0.9.0
     version: 0.9.0
@@ -3640,6 +3643,14 @@ packages:
     engines: {pnpm: '>=8'}
     dependencies:
       '@kurkle/color': 0.3.2
+    dev: false
+
+  /chartjs-chart-treemap@2.3.0(chart.js@4.4.2):
+    resolution: {integrity: sha512-Q7jyqSXSg1OfmaOUOKtk7+JCu/gsb1AIXhW+JgKnmuYvu0runzgne77HVSVjb+LN93wSKylmR2J4HL2flgEHEw==}
+    peerDependencies:
+      chart.js: '>=3.0.0'
+    dependencies:
+      chart.js: 4.4.2
     dev: false
 
   /check-error@1.0.3:
