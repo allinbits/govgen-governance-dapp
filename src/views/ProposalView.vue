@@ -54,7 +54,10 @@ const initialDeposit = computed(() => {
     .filter((x) => x.depositor_address == proposal.value?.proposal[0].proposer_address)
     .reduce(depositReducer, 0);
 });
-
+const distinctVoters = computed(() => {
+  let votes = proposal.value?.proposal[0].proposal_votes ?? [];
+  return new Set(votes.map((x) => x.voter_address)).size;
+});
 const totalDeposit = computed(() => {
   return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0) ?? 0;
 });
@@ -136,10 +139,10 @@ const turnout = computed(() => {
 
 const tokenTallies = computed(() => {
   return {
-    yes: formatAmount(yesVotes.value, 6),
-    no: formatAmount(noVotes.value, 6),
-    veto: formatAmount(nwvVotes.value, 6),
-    abstain: formatAmount(abstainVotes.value, 6),
+    yes: yesVotes.value,
+    no: noVotes.value,
+    veto: nwvVotes.value,
+    abstain: abstainVotes.value,
   };
 });
 
@@ -500,12 +503,7 @@ function isTabSelected(tabName: TabNames) {
         <Treemap />
         <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
           <!-- All Account Votes -->
-          <VotePanel
-            :voters="proposal.proposal[0].proposal_votes"
-            :tallies="tokenTallies"
-            :pcts="pctTallies"
-            @on-breakdown="() => {}"
-          >
+          <VotePanel :voters="distinctVoters" :tallies="tokenTallies" :pcts="pctTallies" @on-breakdown="() => {}">
             <template #header>All Voters</template>
             <template #type>Accounts Voted</template>
           </VotePanel>
@@ -513,7 +511,7 @@ function isTabSelected(tabName: TabNames) {
           <VotePanel
             title="Validators"
             :max="5"
-            :voters="proposal.proposal[0].proposal_votes"
+            :voters="distinctVoters"
             :tallies="tokenTallies"
             :pcts="pctTallies"
             @on-breakdown="() => {}"
