@@ -77,20 +77,22 @@ const signDeposit = async () => {
         class="justify-center px-6 py-4 rounded bg-gradient text-dark text-300 text-center cursor-pointer"
         @click="toogleModal(true)"
       >
-        Deposit
+        {{ $t("components.ProposalDeposit.cta") }}
       </div>
     </div>
 
     <ModalWrap :visible="isOpen" :is-empty="true" @back="isOpen = false">
       <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
         <div v-if="!isDeposit" class="flex flex-col gap-6 relative">
-          <span class="text-gradient font-termina text-700 text-center">Deposit</span>
+          <span class="text-gradient font-termina text-700 text-center">{{
+            $t("components.ProposalDeposit.cta")
+          }}</span>
           <div class="flex flex-col gap-10">
             <div>
               <div class="flex flex-col gap-10">
                 <p class="text-grey-100 text-center text-200">
                   {{ formatAmount(totalDeposit, depositDenomDecimals) }} /
-                  {{ formatAmount(minDeposit, depositDenomDecimals) }} deposited
+                  {{ formatAmount(minDeposit, depositDenomDecimals) }} {{ $t("components.ProposalDeposit.act") }}
                 </p>
 
                 <form class="flex flex-col items-center gap-2">
@@ -98,7 +100,7 @@ const signDeposit = async () => {
                     v-model="depositAmount"
                     type="number"
                     placeholder="e.g. 50"
-                    label="Enter deposit amount"
+                    :label="$t('components.ProposalDeposit.instructions')"
                     :min="0"
                     class="w-full justify-end"
                   />
@@ -112,7 +114,14 @@ const signDeposit = async () => {
                   class="px-6 py-4 rounded bg-gradient text-dark text-300 text-center w-full"
                   @click="signDeposit()"
                 >
-                  Confirm & Sign
+                  {{ $t("ui.actions.confirm") }}
+                </button>
+
+                <!-- TODO: get CLI cmd-->
+                <button
+                  class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
+                >
+                  {{ $t("ui.actions.cli") }}
                 </button>
               </div>
 

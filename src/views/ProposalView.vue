@@ -24,7 +24,6 @@ dayjs.extend(duration);
 const { getProposal, getParams, getProposalTallies, getStakingStatus } = useChainData();
 
 const { loggedIn } = useWallet();
-
 const route = useRoute();
 const proposal = getProposal(parseInt(route.params.id as string));
 const proposalTallies = getProposalTallies(parseInt(route.params.id as string));
@@ -264,7 +263,7 @@ function isTabSelected(tabName: TabNames) {
               }
             "
           >
-            Connect Wallet
+            {{ $t("components.WalletConnect.button") }}
           </div>
         </SimpleCard>
         <SimpleCard v-if="inDeposit" class="p-10">
@@ -288,7 +287,7 @@ function isTabSelected(tabName: TabNames) {
               }
             "
           >
-            Connect Wallet
+            {{ $t("components.WalletConnect.button") }}
           </div>
         </SimpleCard>
       </div>
