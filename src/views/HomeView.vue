@@ -102,11 +102,9 @@ const orderedProposals = computed(() => {
   });
 });
 const links = ref([
-  { title: "Twitter", url: "#", icon: "twitter" },
-  { title: "Discord", url: "#", icon: "discord" },
-  { title: "Telegram", url: "#", icon: "telegram" },
-  { title: "Github", url: "#", icon: "github" },
-  { title: "LinkedIn", url: "#", icon: "LinkedIn" },
+  { title: "Twitter", url: "https://twitter.com/_govgen", icon: "twitter" },
+  { title: "Discord", url: "https://discord.com/invite/atomone", icon: "discord" },
+  { title: "Github", url: "https://github.com/atomone-hub", icon: "github" },
 ]);
 
 function setActivityFilterIndex(idx: number) {

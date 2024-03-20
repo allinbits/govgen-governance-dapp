@@ -7,6 +7,7 @@ import GithubLinks from "../components/proposals/GithubLinks.vue";
 import { Deposit } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
 import ProposalVote from "../components/popups/ProposalVote.vue";
 import ProposalDeposit from "../components/popups/ProposalDeposit.vue";
+import chainConfig from "@/chain-config.json";
 
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
@@ -140,6 +141,14 @@ const expectedResult = computed(() => {
     }
   }
 });
+const stakingDenomDisplay = computed(() => {
+  return (
+    chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value)[0]?.coinDenom ?? depositDenom.value
+  );
+});
+const stakingDenomDecimals = computed(() => {
+  return chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value)[0]?.coinDecimals ?? 0;
+});
 /*
 const voting_params = computed(() => {
   try {
@@ -261,20 +270,28 @@ function isTabSelected(tabName: TabNames) {
     <SimpleCard v-if="!inDeposit" class="items-stretch my-6">
       <div class="flex">
         <div class="w-25 py-8 text-center flex-1">
-          <div class="text-500 text-accent-100 mb-1">Yes: {{ decToPerc(yes, 2) }}%</div>
-          <div class="text-100 text-grey-100">{{ formatAmount(yesVotes, 6) }} TOKEN</div>
+          <div class="text-500 text-accent-100 mb-1">{{ $t("voteOptions.yes") }}: {{ decToPerc(yes, 2) }}%</div>
+          <div class="text-100 text-grey-100">
+            {{ formatAmount(yesVotes, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
+          </div>
         </div>
         <div class="w-25 py-8 text-center flex-1">
-          <div class="text-500 text-neg-200 mb-1">No: {{ decToPerc(no, 2) }}%</div>
-          <div class="text-100 text-grey-100">{{ formatAmount(noVotes, 6) }} TOKEN</div>
+          <div class="text-500 text-neg-200 mb-1">{{ $t("voteOptions.no") }}: {{ decToPerc(no, 2) }}%</div>
+          <div class="text-100 text-grey-100">
+            {{ formatAmount(noVotes, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
+          </div>
         </div>
         <div class="w-25 py-8 text-center flex-1">
-          <div class="text-500 text-accent-200 mb-1">Veto: {{ decToPerc(nwv, 2) }}%</div>
-          <div class="text-100 text-grey-100">{{ formatAmount(nwvVotes, 6) }} TOKEN</div>
+          <div class="text-500 text-accent-200 mb-1">{{ $t("voteOptions.nwvShort") }}: {{ decToPerc(nwv, 2) }}%</div>
+          <div class="text-100 text-grey-100">
+            {{ formatAmount(nwvVotes, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
+          </div>
         </div>
         <div class="w-25 py-8 text-center flex-1">
-          <div class="text-500 text-grey-100 mb-1">Abstain: {{ decToPerc(abstain, 2) }}%</div>
-          <div class="text-100 text-grey-100">{{ formatAmount(abstainVotes, 6) }} TOKEN</div>
+          <div class="text-500 text-grey-100 mb-1">{{ $t("voteOptions.abstain") }}: {{ decToPerc(abstain, 2) }}%</div>
+          <div class="text-100 text-grey-100">
+            {{ formatAmount(abstainVotes, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
+          </div>
         </div>
       </div>
     </SimpleCard>
@@ -288,8 +305,12 @@ function isTabSelected(tabName: TabNames) {
               <div class="text-grey-100">
                 {{ description }}...
                 <template v-if="shouldTrim">
-                  <span v-if="!showAll" class="text-light cursor-pointer" @click="showAll = true">read more</span>
-                  <span v-if="showAll" class="text-light cursor-pointer" @click="showAll = false">read less</span>
+                  <span v-if="!showAll" class="text-light cursor-pointer" @click="showAll = true">{{
+                    $t("ui.readMore")
+                  }}</span>
+                  <span v-if="showAll" class="text-light cursor-pointer" @click="showAll = false">{{
+                    $t("ui.readLess")
+                  }}</span>
                 </template>
               </div>
             </SimpleCard>
@@ -325,11 +346,17 @@ function isTabSelected(tabName: TabNames) {
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.initialDeposit") }}</div>
-                  <div class="text-light text-300">{{ initialDeposit }}</div>
+                  <div class="text-light text-300">
+                    {{ formatAmount(initialDeposit, stakingDenomDecimals) }} /
+                    {{ formatAmount(minDeposit, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
+                  </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.totalDeposit") }}</div>
-                  <div class="text-light text-300">{{ totalDeposit }}</div>
+                  <div class="text-light text-300">
+                    {{ formatAmount(totalDeposit, stakingDenomDecimals) }} /
+                    {{ formatAmount(minDeposit, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
+                  </div>
                 </div>
               </div>
             </SimpleCard>

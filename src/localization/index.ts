@@ -9,6 +9,7 @@ export const messages = {
       yes: "Yes",
       no: "No",
       nwv: "No with veto",
+      nwvShort: "Veto",
       abstain: "Abstain",
     },
     proposalpage: {
@@ -16,7 +17,7 @@ export const messages = {
         votingPeriod: "Voting Period",
         depositPeriod: "Deposit Period",
         quorumPending: "Quorum not reached",
-        depositPending: "Deposit not reahed",
+        depositPending: "Deposit not reached",
         depositFailed: "Deposit not met",
         passed: "Passed",
         rejected: "Rejected",
@@ -58,6 +59,22 @@ export const messages = {
     components: {
       WalletConnect: {
         button: "Connect Wallet",
+      },
+      FooterSection: {
+        cta: "Be a part of the conversation",
+      },
+      Search: {
+        placeholder: "Search Proposal",
+      },
+    },
+    ui: {
+      readMore: "Read More",
+      readLess: "Read Less",
+      tabs: {
+        Info: "Info",
+        Voters: "Voters",
+        Discussions: "Discussions",
+        Links: "Links",
       },
     },
   },
