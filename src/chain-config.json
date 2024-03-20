@@ -1,6 +1,6 @@
 {
-  "rpc": "http://167.99.249.42:26657/",
-  "rest": "http://167.99.249.42:1317/",
+  "rpc": "https://rpc.govgen.dev/",
+  "rest": "https://api.govgen.dev/",
   "chainId": "govgen-devnet-4",
   "chainName": "GovGen DevNet",
   "bip44": {
