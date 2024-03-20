@@ -204,30 +204,34 @@ function isTabSelected(tabName: TabNames) {
         </h1>
         <div class="basic-stats flex">
           <div class="quorum mr-16">
-            <div class="text-100 text-grey-100 mb-4">Turn out | Quorum</div>
+            <div class="text-100 text-grey-100 mb-4">
+              {{ $t("proposalpage.labels.turnOut") }} | {{ $t("proposalpage.labels.quorum") }}
+            </div>
             <div class="text-500 text-light">{{ decToPerc(turnout, 1) }}% | {{ decToPerc(quorum, 1) }}%</div>
           </div>
           <div class="result">
             <template v-if="inDeposit">
-              <div class="text-100 text-grey-100 mb-4">Expected proposal result</div>
-              <div class="text-500 text-neg-200">Will Fail</div>
+              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.expectedResult") }}</div>
+              <div class="text-500 text-neg-200">{{ $t("proposalpage.results.willFail") }}</div>
             </template>
             <template v-if="inVoting">
-              <div class="text-100 text-grey-100 mb-4">Expected proposal result</div>
-              <div v-if="expectedResult" class="text-500 text-accent-100">Will Pass</div>
-              <div v-else class="text-500 text-neg-200">Will Be Rejected</div>
+              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.expectedResult") }}</div>
+              <div v-if="expectedResult" class="text-500 text-accent-100">
+                {{ $t("proposalpage.results.willPass") }}
+              </div>
+              <div v-else class="text-500 text-neg-200">{{ $t("proposalpage.results.willReject") }}</div>
             </template>
             <template v-if="passed">
-              <div class="text-100 text-grey-100 mb-4">Proposal result</div>
-              <div class="text-500 text-accent-100">Passed</div>
+              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.result") }}</div>
+              <div class="text-500 text-accent-100">{{ $t("proposalpage.results.passed") }}</div>
             </template>
             <template v-if="rejected">
-              <div class="text-100 text-grey-100 mb-4">Proposal result</div>
-              <div class="text-500 text-neg-200">Rejected</div>
+              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.result") }}</div>
+              <div class="text-500 text-neg-200">{{ $t("proposalpage.results.rejected") }}</div>
             </template>
             <template v-if="failed">
-              <div class="text-100 text-grey-100 mb-4">Proposal result</div>
-              <div class="text-500 text-neg-200">Failed</div>
+              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.result") }}</div>
+              <div class="text-500 text-neg-200">{{ $t("proposalpage.results.failed") }}</div>
             </template>
           </div>
         </div>
@@ -280,7 +284,7 @@ function isTabSelected(tabName: TabNames) {
         <div class="flex flex-col gap-6">
           <div class="flex gap-6">
             <SimpleCard class="w-1/2 flex-grow p-10">
-              <div class="text-light text-500 text-left mb-8">Proposal Description</div>
+              <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.proposalDescription") }}</div>
               <div class="text-grey-100">
                 {{ description }}...
                 <template v-if="shouldTrim">
@@ -292,39 +296,39 @@ function isTabSelected(tabName: TabNames) {
             <SimpleCard class="w-1/2 flex-grow p-10">
               <div class="flex w-full flex-wrap">
                 <div class="w-full flex-2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Proposer</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposer") }}</div>
                   <div class="text-light text-300">{{ proposal?.proposal[0].proposer_address }}</div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Voting start</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingStart") }}</div>
                   <div class="text-light text-300">
                     {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_start_time).format("MMMM D, YYYY h:mm A") }}
                   </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Voting end</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingEnd") }}</div>
                   <div class="text-light text-300">
                     {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_end_time).format("MMMM D, YYYY h:mm A") }}
                   </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Submit time</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.submitTime") }}</div>
                   <div class="text-light text-300">
                     {{ dayjs(proposal?.proposal[0].submit_time).format("MMMM D, YYYY h:mm A") }}
                   </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Deposit end</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.depositEnd") }}</div>
                   <div class="text-light text-300">
                     {{ inDeposit ? dayjs(proposal?.proposal[0].deposit_end_time).format("MMMM D, YYYY h:mm A") : "-" }}
                   </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Initial deposit</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.initialDeposit") }}</div>
                   <div class="text-light text-300">{{ initialDeposit }}</div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Total deposit</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.totalDeposit") }}</div>
                   <div class="text-light text-300">{{ totalDeposit }}</div>
                 </div>
               </div>
@@ -332,23 +336,23 @@ function isTabSelected(tabName: TabNames) {
           </div>
           <div class="flex">
             <SimpleCard class="w-full p-10">
-              <div class="text-light text-500 text-left mb-8">Messages</div>
+              <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.messages") }}</div>
               <div
                 v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
                 class="flex w-full flex-wrap"
               >
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Proposal type</div>
-                  <div class="text-light text-300">Text proposal</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
+                  <div class="text-light text-300">{{ $t("proposalpage.types.text") }}</div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Title</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
                   <div class="text-light text-300">
                     {{ proposal?.proposal[0].content.title }}
                   </div>
                 </div>
                 <div class="w-full flex-2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Description</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
                   <div class="text-light text-300">
                     {{ proposal?.proposal[0].content.description }}
                   </div>
@@ -359,23 +363,23 @@ function isTabSelected(tabName: TabNames) {
                 class="flex w-full flex-wrap"
               >
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Proposal type</div>
-                  <div class="text-light text-300">Parameter Change proposal</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
+                  <div class="text-light text-300">{{ $t("proposalpage.types.paramChange") }}</div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Title</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
                   <div class="text-light text-300">
                     {{ proposal?.proposal[0].content.title }}
                   </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Description</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
                   <div class="text-light text-300">
                     {{ proposal?.proposal[0].content.description }}
                   </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Changes</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.changes") }}</div>
                   <div class="text-light text-200">
                     <code>
                       <pre>{{ proposal?.proposal[0].content.changes }}</pre>
@@ -388,23 +392,23 @@ function isTabSelected(tabName: TabNames) {
                 class="flex w-full flex-wrap"
               >
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Proposal type</div>
-                  <div class="text-light text-300">Software Upgrade proposal</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
+                  <div class="text-light text-300">{{ $t("proposalpage.types.text") }}</div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Title</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
                   <div class="text-light text-300">
                     {{ proposal?.proposal[0].content.title }}
                   </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Description</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
                   <div class="text-light text-300">
                     {{ proposal?.proposal[0].content.description }}
                   </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">Upgrade Plan</div>
+                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.upgradePlan") }}</div>
                   <div class="text-light text-200">
                     <code>
                       <pre>{{ proposal?.proposal[0].content.plan }}</pre>
