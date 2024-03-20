@@ -4,14 +4,15 @@ import { computed, ref, reactive } from "vue";
 import { MsgVote, MsgVoteWeighted } from "@atomone/govgen-types/govgen/gov/v1beta1/tx";
 import { VoteOption } from "cosmjs-types/cosmos/gov/v1beta1/gov";
 
-import ModalWrap from "../common/ModalWrap.vue";
+import ModalWrap from "@/components/common/ModalWrap.vue";
 
-import UiSwitch from "../ui/UiSwitch.vue";
-import UiState from "../ui/UiState.vue";
-import UiInput from "../ui/UiInput.vue";
-import UiInfo from "../ui/UiInfo.vue";
+import { useI18n } from "vue-i18n";
+import UiSwitch from "@/components/ui/UiSwitch.vue";
+import UiState from "@/components/ui/UiState.vue";
+import UiInput from "@/components/ui/UiInput.vue";
+import UiInfo from "@/components/ui/UiInfo.vue";
 
-import { useWallet } from "../../composables/useWallet";
+import { useWallet } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
 
 interface Props {
@@ -19,6 +20,7 @@ interface Props {
 }
 const props = defineProps<Props>();
 
+const { t } = useI18n();
 const isOpen = ref(false);
 const isVoted = ref(false);
 
@@ -29,10 +31,10 @@ const tab = ref(tabOptions[0]);
 
 // Votes info
 const voteList: Partial<Record<VoteOption, { label: string; color: string }>> = {
-  [VoteOption.VOTE_OPTION_YES]: { label: "Yes", color: "text-accent-100" },
-  [VoteOption.VOTE_OPTION_NO]: { label: "No", color: "text-neg-200" },
-  [VoteOption.VOTE_OPTION_NO_WITH_VETO]: { label: "No with Veto", color: "text-neg-200" },
-  [VoteOption.VOTE_OPTION_ABSTAIN]: { label: "Abstain", color: "text-grey-100" },
+  [VoteOption.VOTE_OPTION_YES]: { label: t("voteOptions.yes"), color: "text-accent-100" },
+  [VoteOption.VOTE_OPTION_NO]: { label: t("voteOptions.no"), color: "text-neg-200" },
+  [VoteOption.VOTE_OPTION_NO_WITH_VETO]: { label: t("voteOptions.nwv"), color: "text-neg-200" },
+  [VoteOption.VOTE_OPTION_ABSTAIN]: { label: t("voteOptions.abstain"), color: "text-grey-100" },
 };
 
 // Vote records
@@ -120,14 +122,14 @@ const signVote = async () => {
         class="justify-center px-6 py-4 rounded bg-gradient text-dark text-300 text-center cursor-pointer"
         @click="toogleModal(true)"
       >
-        Vote
+        {{ $t("components.ProposalVote.cta") }}
       </div>
     </div>
 
     <ModalWrap :visible="isOpen" :is-empty="true" @back="isOpen = false">
       <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
         <div v-if="!isVoted" class="flex flex-col gap-6 relative">
-          <span class="text-gradient font-termina text-700 text-center">Vote</span>
+          <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
           <UiSwitch id="voteType" v-model="tab" :options="tabOptions" class="flex w-2/3 mx-auto" @click="resetVote()" />
           <div class="flex flex-col gap-10">
             <div>
@@ -147,7 +149,7 @@ const signVote = async () => {
 
                 <div v-else-if="tab === 'Weighted'" class="flex flex-col gap-10">
                   <p class="text-grey-100 text-center text-200">
-                    Define weight for each of the voting options. The sum of weights must be equal to 1.
+                    {{ $t("components.ProposalVote.weightedInstructions") }}
                   </p>
 
                   <form class="flex flex-col items-center gap-2">
@@ -172,14 +174,14 @@ const signVote = async () => {
             <div class="flex flex-col gap-4">
               <div v-show="voteStraight || checkVoteWeighted" class="flex flex-col gap-4">
                 <button class="px-6 py-4 rounded bg-gradient text-dark text-300 text-center w-full" @click="signVote()">
-                  Confirm & Sign
+                  {{ $t("ui.actions.confirm") }}
                 </button>
 
                 <!-- TODO: get CLI cmd-->
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                 >
-                  or Copy CLI Command
+                  {{ $t("ui.actions.cli") }}
                 </button>
               </div>
 
@@ -187,7 +189,7 @@ const signVote = async () => {
                 class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                 @click="toogleModal(false)"
               >
-                Cancel
+                {{ $t("ui.actions.cancel") }}
               </button>
             </div>
           </div>

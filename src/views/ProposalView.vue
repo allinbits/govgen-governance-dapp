@@ -2,13 +2,14 @@
 import { reactive, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useChainData } from "@/composables/useChainData";
-import GithubComments from "../components/proposals/GithubComments.vue";
-import GithubLinks from "../components/proposals/GithubLinks.vue";
+import { useWallet } from "@/composables/useWallet";
+import GithubComments from "@/components/proposals/GithubComments.vue";
+import GithubLinks from "@/components/proposals/GithubLinks.vue";
 import { Deposit } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
-import ProposalVote from "../components/popups/ProposalVote.vue";
-import ProposalDeposit from "../components/popups/ProposalDeposit.vue";
+import ProposalVote from "@/components/popups/ProposalVote.vue";
+import ProposalDeposit from "@/components/popups/ProposalDeposit.vue";
 import chainConfig from "@/chain-config.json";
-
+import { bus } from "@/bus";
 import SimpleBadge from "@/components/ui/SimpleBadge.vue";
 import SimpleCard from "@/components/ui/SimpleCard.vue";
 import UiTabs from "@/components/ui/UiTabs.vue";
@@ -22,6 +23,7 @@ type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 dayjs.extend(duration);
 const { getProposal, getParams, getProposalTallies, getStakingStatus } = useChainData();
 
+const { loggedIn } = useWallet();
 const route = useRoute();
 const proposal = getProposal(parseInt(route.params.id as string));
 const proposalTallies = getProposalTallies(parseInt(route.params.id as string));
@@ -251,7 +253,18 @@ function isTabSelected(tabName: TabNames) {
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
-          <ProposalVote :proposal-id="proposal?.proposal[0].id" class="w-full" />
+          <ProposalVote v-if="loggedIn" :proposal-id="proposal?.proposal[0].id" class="w-full" />
+          <div
+            v-else
+            class="justify-center px-6 py-4 rounded bg-gradient text-dark text-300 text-center cursor-pointer w-full"
+            @click="
+              () => {
+                bus.emit('open');
+              }
+            "
+          >
+            {{ $t("components.WalletConnect.button") }}
+          </div>
         </SimpleCard>
         <SimpleCard v-if="inDeposit" class="p-10">
           <div class="text-center text-light text-500">{{ timeTo(proposal?.proposal[0].deposit_end_time) }}</div>
@@ -259,11 +272,23 @@ function isTabSelected(tabName: TabNames) {
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
           <ProposalDeposit
+            v-if="loggedIn"
             :proposal-id="proposal?.proposal[0].id"
             :min-deposit="minDeposit"
             :total-deposit="totalDeposit"
             :deposit-denom="depositDenom"
           />
+          <div
+            v-else
+            class="justify-center px-6 py-4 rounded bg-gradient text-dark text-300 text-center cursor-pointer w-full"
+            @click="
+              () => {
+                bus.emit('open');
+              }
+            "
+          >
+            {{ $t("components.WalletConnect.button") }}
+          </div>
         </SimpleCard>
       </div>
     </div>

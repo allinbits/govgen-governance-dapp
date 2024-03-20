@@ -66,10 +66,24 @@ export const messages = {
       Search: {
         placeholder: "Search Proposal",
       },
+      ProposalVote: {
+        cta: "Vote",
+        weightedInstructions: "Define weight for each of the voting options. The sum of weights must be equal to 1.",
+      },
+      ProposalDeposit: {
+        cta: "Deposit",
+        act: "deposited",
+        instructions: "Enter deposit amount",
+      },
     },
     ui: {
       readMore: "Read More",
       readLess: "Read Less",
+      actions: {
+        confirm: "Confirm & Sign",
+        cli: "or Copy CLI Command",
+        cancel: "Cancel",
+      },
       tabs: {
         Info: "Info",
         Voters: "Voters",

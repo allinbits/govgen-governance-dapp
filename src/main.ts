@@ -1,12 +1,12 @@
 import { createApp, provide, h } from "vue";
 import { DefaultApolloClient } from "@vue/apollo-composable";
-import "./style.css";
-import App from "./App.vue";
-import router from "./router";
+import "@/style.css";
+import App from "@/App.vue";
+import router from "@/router";
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client/core";
-import IconVue from "./components/ui/Icon.vue";
+import IconVue from "@/components/ui/Icon.vue";
 import { createI18n } from "vue-i18n";
-import { messages } from "./localization";
+import { messages } from "@/localization";
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
