@@ -56,6 +56,9 @@ dependencies:
   vue:
     specifier: ^3.4.15
     version: 3.4.15(typescript@5.3.3)
+  vue-i18n:
+    specifier: '9'
+    version: 9.10.2(vue@3.4.15)
   vue-router:
     specifier: ^4.2.5
     version: 4.2.5(vue@3.4.15)
@@ -1970,6 +1973,27 @@ packages:
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
+
+  /@intlify/core-base@9.10.2:
+    resolution: {integrity: sha512-HGStVnKobsJL0DoYIyRCGXBH63DMQqEZxDUGrkNI05FuTcruYUtOAxyL3zoAZu/uDGO6mcUvm3VXBaHG2GdZCg==}
+    engines: {node: '>= 16'}
+    dependencies:
+      '@intlify/message-compiler': 9.10.2
+      '@intlify/shared': 9.10.2
+    dev: false
+
+  /@intlify/message-compiler@9.10.2:
+    resolution: {integrity: sha512-ntY/kfBwQRtX5Zh6wL8cSATujPzWW2ZQd1QwKyWwAy5fMqJyyixHMeovN4fmEyCqSu+hFfYOE63nU94evsy4YA==}
+    engines: {node: '>= 16'}
+    dependencies:
+      '@intlify/shared': 9.10.2
+      source-map-js: 1.0.2
+    dev: false
+
+  /@intlify/shared@9.10.2:
+    resolution: {integrity: sha512-ttHCAJkRy7R5W2S9RVnN9KYQYPIpV2+GiS79T4EE37nrPyH6/1SrOh3bmdCRC1T3ocL8qCDx7x2lBJ0xaITU7Q==}
+    engines: {node: '>= 16'}
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -7304,6 +7328,18 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-i18n@9.10.2(vue@3.4.15):
+    resolution: {integrity: sha512-ECJ8RIFd+3c1d3m1pctQ6ywG5Yj8Efy1oYoAKQ9neRdkLbuKLVeW4gaY5HPkD/9ssf1pOnUrmIFjx2/gkGxmEw==}
+    engines: {node: '>= 16'}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@intlify/core-base': 9.10.2
+      '@intlify/shared': 9.10.2
+      '@vue/devtools-api': 6.5.1
+      vue: 3.4.15(typescript@5.3.3)
+    dev: false
 
   /vue-router@4.2.5(vue@3.4.15):
     resolution: {integrity: sha512-DIUpKcyg4+PTQKfFPX88UWhlagBEBEfJ5A8XDXRJLUnZOvcpMF8o/dnL90vpVkGaPbjvXazV/rC1qBKrZlFugw==}
