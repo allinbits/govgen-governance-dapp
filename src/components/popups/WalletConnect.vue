@@ -4,6 +4,7 @@ import ConnectButton from "../ui/ConnectButton.vue";
 import { Ref, computed, ref } from "vue";
 import { shorten } from "../../utility";
 import UserBalance from "../helper/UserBalance.vue";
+import { bus } from "@/bus";
 
 const isOpen = ref(false);
 const isConnecting = ref(false);
@@ -56,6 +57,9 @@ const cancelConnect = () => {
   isOpen.value = false;
   isError.value = false;
 };
+bus.on("open", () => {
+  isOpen.value = true;
+});
 </script>
 
 <template>
