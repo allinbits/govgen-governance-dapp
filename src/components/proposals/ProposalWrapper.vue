@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, computed, watch, Ref } from "vue";
+import { reactive, ref, computed, watch } from "vue";
 import { useChainData } from "@/composables/useChainData";
 import { useWallet } from "@/composables/useWallet";
 import GithubComments from "@/components/proposals/GithubComments.vue";
@@ -19,8 +19,7 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import { decToPerc, formatAmount } from "@/utility";
 import { useValidators } from "@/composables/useValidators";
-import { ValSetQuery, ValidatorsQuery } from "@/gql/graphql";
-import { ComputedRef } from "vue";
+import { ValSetQuery, ValidatorsQuery, VotesQuery } from "@/gql/graphql";
 
 type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 
@@ -30,26 +29,36 @@ const props = defineProps<{
   proposalId: number;
   height: number;
 }>();
-const { getProposal, getParams, getProposalTallies, getStakingStatus } = useChainData();
+const { getProposal, getParams, getProposalTallies, getStakingStatus, getVotesAsync } = useChainData();
 const { validators, getVotingPower } = useValidators(
   props.proposalId,
   props.height != 0 ? props.height.toString() : undefined,
 );
-const validatorsWithStake = ref<
+const validatorsWithStakeAndVotes = ref<
   Array<
     (ValidatorsQuery["validator_status"][0] | ValSetQuery["proposal_validator_status_snapshot"][0]) & {
-      voting_power: Ref<number> | ComputedRef<number>;
+      voting_power: number;
+      votes: VotesQuery["proposal_vote"];
     }
   >
 >([]);
 watch(validators, async (valSet, _old) => {
-  validatorsWithStake.value = await Promise.all(
+  validatorsWithStakeAndVotes.value = await Promise.all(
     valSet.map(async (val) => {
       if (val.validator.validator_info && val.validator.validator_info.self_delegate_address) {
         const vp = await getVotingPower(val.validator.validator_info.self_delegate_address);
-        return { ...val, voting_power: vp };
+        const votes = await getVotesAsync(val.validator.validator_info.self_delegate_address, props.proposalId);
+        if (votes && votes.proposal_vote.length > 0) {
+          return {
+            ...val,
+            voting_power: vp,
+            votes: votes.proposal_vote.filter((x) => x.height == votes.proposal_vote[0].height),
+          };
+        } else {
+          return { ...val, voting_power: vp, votes: [] };
+        }
       } else {
-        return { ...val, voting_power: 0 };
+        return { ...val, voting_power: 0, votes: [] };
       }
     }),
   );
@@ -236,7 +245,7 @@ function isTabSelected(tabName: TabNames) {
 
 <template>
   <div>
-    {{ validatorsWithStake }}
+    {{ validatorsWithStakeAndVotes }}
     <div class="badges my-12">
       <template v-if="inVoting">
         <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"

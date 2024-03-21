@@ -32,6 +32,9 @@ import {
   VoteHistoryDocument,
   VoteHistoryQuery,
   VoteHistoryQueryVariables,
+  VotesDocument,
+  VotesQuery,
+  VotesQueryVariables,
 } from "@/gql/graphql";
 import { useLazyQuery, useQuery } from "@vue/apollo-composable";
 import { UseQueryOptions } from "@vue/apollo-composable/dist/useQuery.js";
@@ -100,6 +103,12 @@ export const useProposalTalliesQuery = (
     options ?? {},
   );
 };
+export const useVotesQuery = (
+  variables: VotesQueryVariables,
+  options?: UseQueryOptions<VotesQuery, VotesQueryVariables>,
+) => {
+  return useQuery<VotesQuery, VotesQueryVariables>(VotesDocument, variables, options ?? {});
+};
 export const useLazyBalanceQuery = (
   variables: BalanceQueryVariables,
   options?: UseQueryOptions<BalanceQuery, BalanceQueryVariables>,
@@ -163,4 +172,11 @@ export const useLazyProposalTalliesQuery = (
     variables,
     options ?? {},
   );
+};
+
+export const useLazyVotesQuery = (
+  variables: VotesQueryVariables,
+  options?: UseQueryOptions<VotesQuery, VotesQueryVariables>,
+) => {
+  return useLazyQuery<VotesQuery, VotesQueryVariables>(VotesDocument, variables, options ?? {});
 };

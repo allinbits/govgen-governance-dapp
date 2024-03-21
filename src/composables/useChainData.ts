@@ -13,6 +13,7 @@ import {
   useLazyValidatorsQuery,
   useLazyValsetQuery,
   useLazyVoteHistoryQuery,
+  useLazyVotesQuery,
   useParamsQuery,
   useProposalQuery,
   useProposalTalliesQuery,
@@ -21,6 +22,7 @@ import {
   useValidatorsQuery,
   useValsetQuery,
   useVoteHistoryQuery,
+  useVotesQuery,
 } from "@/composables/queries";
 
 export const useChainData = () => {
@@ -32,8 +34,8 @@ export const useChainData = () => {
     const { result } = useProposalsQuery({ pollInterval: 5000 });
     return result;
   };
-  const getProposal = (proposal_id: number) => {
-    const { result } = useProposalQuery({ id: proposal_id }, { pollInterval: 5000 });
+  const getProposal = (id: number) => {
+    const { result } = useProposalQuery({ id }, { pollInterval: 5000 });
     return result;
   };
   const getParams = () => {
@@ -48,8 +50,8 @@ export const useChainData = () => {
     const { result } = useVoteHistoryQuery({ address });
     return result;
   };
-  const getProposalTallies = (proposal_id: number) => {
-    const { result } = useProposalTalliesQuery({ id: proposal_id }, { pollInterval: 5000 });
+  const getProposalTallies = (id: number) => {
+    const { result } = useProposalTalliesQuery({ id }, { pollInterval: 5000 });
     return result;
   };
   const getBlockHeight = (timestamp: string) => {
@@ -60,12 +62,16 @@ export const useChainData = () => {
     const { result } = useDelegatedQuery({ address, height });
     return result;
   };
-  const getValset = (proposal_id: number, height: string) => {
-    const { result } = useValsetQuery({ proposalId: proposal_id, height });
+  const getValset = (proposalId: number, height: string) => {
+    const { result } = useValsetQuery({ proposalId, height });
     return result;
   };
   const getValidators = () => {
     const { result } = useValidatorsQuery();
+    return result;
+  };
+  const getVotes = (address: string, proposalId: number) => {
+    const { result } = useVotesQuery({ address, proposalId });
     return result;
   };
   const getBalanceAsync = async (address: string) => {
@@ -76,8 +82,8 @@ export const useChainData = () => {
     const result = await useLazyProposalsQuery({ pollInterval: 5000 }).load();
     return result;
   };
-  const getProposalAsync = async (proposal_id: number) => {
-    const result = await useLazyProposalQuery({ id: proposal_id }, { pollInterval: 5000 }).load();
+  const getProposalAsync = async (id: number) => {
+    const result = await useLazyProposalQuery({ id }, { pollInterval: 5000 }).load();
     return result;
   };
   const getParamsAsync = async () => {
@@ -92,8 +98,8 @@ export const useChainData = () => {
     const result = await useLazyVoteHistoryQuery({ address }).load();
     return result;
   };
-  const getProposalTalliesAsync = async (proposal_id: number) => {
-    const result = await useLazyProposalTalliesQuery({ id: proposal_id }, { pollInterval: 5000 }).load();
+  const getProposalTalliesAsync = async (id: number) => {
+    const result = await useLazyProposalTalliesQuery({ id }, { pollInterval: 5000 }).load();
     return result;
   };
   const getBlockHeightAsync = async (timestamp: string) => {
@@ -104,12 +110,16 @@ export const useChainData = () => {
     const result = await useLazyDelegatedQuery({ address, height }).load();
     return result;
   };
-  const getValsetAsync = async (proposal_id: number, height: string) => {
-    const result = await useLazyValsetQuery({ proposalId: proposal_id, height }).load();
+  const getValsetAsync = async (proposalId: number, height: string) => {
+    const result = await useLazyValsetQuery({ proposalId, height }).load();
     return result;
   };
   const getValidatorsAsync = async () => {
     const result = await useLazyValidatorsQuery().load();
+    return result;
+  };
+  const getVotesAsync = (address: string, proposalId: number) => {
+    const result = useLazyVotesQuery({ address, proposalId }).load();
     return result;
   };
   return {
@@ -124,6 +134,7 @@ export const useChainData = () => {
     getDelegated,
     getValset,
     getValidators,
+    getVotes,
     getBalanceAsync,
     getProposalsAsync,
     getProposalAsync,
@@ -135,5 +146,6 @@ export const useChainData = () => {
     getDelegatedAsync,
     getValsetAsync,
     getValidatorsAsync,
+    getVotesAsync,
   };
 };
