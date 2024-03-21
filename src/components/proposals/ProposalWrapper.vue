@@ -22,6 +22,7 @@ import { useValidators } from "@/composables/useValidators";
 import { ValSetQuery, ValidatorsQuery, VotesQuery } from "@/gql/graphql";
 
 type TabNames = "Info" | "Voters" | "Discussions" | "Links";
+type VoteTabNames = "Yes" | "No" | "Abstain" | "Veto";
 
 dayjs.extend(duration);
 
@@ -111,6 +112,9 @@ const termDiscussion = computed(() => `Proposal #${props.proposalId}`);
 
 const tabSelected = ref<TabNames>("Info");
 const tabOptions = reactive<TabNames[]>(["Info", "Voters", "Discussions", "Links"]);
+
+const voteTabSelected = ref<VoteTabNames>("Yes");
+const voteTabOptions = reactive<VoteTabNames[]>(["Yes", "No", "Veto", "Abstain"]);
 
 const inDeposit = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD");
 const inVoting = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_VOTING_PERIOD");
@@ -575,7 +579,6 @@ function isTabSelected(tabName: TabNames) {
         </div>
       </div>
       <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
-        <Treemap />
         <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
           <!-- All Account Votes -->
           <VotePanel :voters="distinctVoters" :tallies="tokenTallies" :pcts="pctTallies" @on-breakdown="() => {}">
@@ -594,6 +597,12 @@ function isTabSelected(tabName: TabNames) {
             <template #header>Validators</template>
             <template #type>Validators Voted</template>
           </VotePanel>
+        </div>
+
+        <!-- Treemap Panel-->
+        <UiTabs id="vote-tab" v-model="voteTabSelected" :options="voteTabOptions" />
+        <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
+          <Treemap :data="[{ name: 'test ', value: 5 }]" :type="voteTabSelected" />
         </div>
       </div>
       <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
