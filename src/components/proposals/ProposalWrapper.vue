@@ -42,6 +42,7 @@ const validatorsWithStakeAndVotes = ref<
     }
   >
 >([]);
+
 watch(validators, async (valSet, _old) => {
   validatorsWithStakeAndVotes.value = await Promise.all(
     valSet.map(async (val) => {
@@ -63,7 +64,42 @@ watch(validators, async (valSet, _old) => {
     }),
   );
 });
-
+const maxValidators = computed(() => {
+  return validatorsWithStakeAndVotes.value.length;
+});
+const votedValidators = computed(() => {
+  return validatorsWithStakeAndVotes.value.filter((x) => x.votes.length > 0).length;
+});
+const validatorTallies = computed(() => {
+  const tally = {
+    yes: 0,
+    no: 0,
+    veto: 0,
+    abstain: 0,
+  };
+  for (let i = 0; i < validatorsWithStakeAndVotes.value.length; i++) {
+    const vp = validatorsWithStakeAndVotes.value[i].voting_power;
+    const votes = validatorsWithStakeAndVotes.value[i].votes;
+    for (let j = 0; j < votes.length; j++) {
+      const optionTally = vp * parseFloat(votes[j].weight);
+      switch (votes[j].option) {
+        case "VOTE_OPTION_YES":
+          tally.yes = tally.yes + optionTally;
+          break;
+        case "VOTE_OPTION_NO":
+          tally.no = tally.no + optionTally;
+          break;
+        case "VOTE_OPTION_NO_WITH_VETO":
+          tally.veto = tally.veto + optionTally;
+          break;
+        case "VOTE_OPTION_ABSTAIN":
+          tally.abstain = tally.abstain + optionTally;
+          break;
+      }
+    }
+  }
+  return tally;
+});
 const { loggedIn } = useWallet();
 const proposal = getProposal(props.proposalId);
 const proposalTallies = getProposalTallies(props.proposalId);
@@ -246,6 +282,7 @@ function isTabSelected(tabName: TabNames) {
 <template>
   <div>
     {{ validatorsWithStakeAndVotes }}
+    {{ validatorTallies }}
     <div class="badges my-12">
       <template v-if="inVoting">
         <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
@@ -548,8 +585,8 @@ function isTabSelected(tabName: TabNames) {
           <!-- All Validator Votes -->
           <VotePanel
             title="Validators"
-            :max="5"
-            :voters="distinctVoters"
+            :max="maxValidators"
+            :voters="votedValidators"
             :tallies="tokenTallies"
             :pcts="pctTallies"
             @on-breakdown="() => {}"
