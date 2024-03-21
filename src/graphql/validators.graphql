@@ -1,0 +1,16 @@
+query Validators {
+  validator {
+    validator_descriptions {
+      validator_address
+      website
+      security_contact
+      moniker
+      identity
+      details
+      avatar_url
+    }
+    validator_info {
+      self_delegate_address
+    }
+  }
+}

@@ -2,6 +2,12 @@ import {
   BalanceDocument,
   BalanceQuery,
   BalanceQueryVariables,
+  BlockHeightDocument,
+  BlockHeightQuery,
+  BlockHeightQueryVariables,
+  DelegatedDocument,
+  DelegatedQuery,
+  DelegatedQueryVariables,
   ParamsDocument,
   ParamsQuery,
   ParamsQueryVariables,
@@ -17,6 +23,9 @@ import {
   StakingDocument,
   StakingQuery,
   StakingQueryVariables,
+  ValidatorsDocument,
+  ValidatorsQuery,
+  ValidatorsQueryVariables,
   VoteHistoryDocument,
   VoteHistoryQuery,
   VoteHistoryQueryVariables,
@@ -30,7 +39,18 @@ export const useBalanceQuery = (
 ) => {
   return useQuery<BalanceQuery, BalanceQueryVariables>(BalanceDocument, variables, options ?? {});
 };
-
+export const useBlockHeightQuery = (
+  variables: BlockHeightQueryVariables,
+  options?: UseQueryOptions<BlockHeightQuery, BlockHeightQueryVariables>,
+) => {
+  return useQuery<BlockHeightQuery, BlockHeightQueryVariables>(BlockHeightDocument, variables, options ?? {});
+};
+export const useDelegatedQuery = (
+  variables: DelegatedQueryVariables,
+  options?: UseQueryOptions<DelegatedQuery, DelegatedQueryVariables>,
+) => {
+  return useQuery<DelegatedQuery, DelegatedQueryVariables>(DelegatedDocument, variables, options ?? {});
+};
 export const useProposalQuery = (
   variables: ProposalQueryVariables,
   options?: UseQueryOptions<ProposalQuery, ProposalQueryVariables>,
@@ -46,6 +66,9 @@ export const useParamsQuery = (options?: UseQueryOptions<ParamsQuery, ParamsQuer
   return useQuery<ParamsQuery, ParamsQueryVariables>(ParamsDocument, {}, options ?? {});
 };
 
+export const useValidatorsQuery = (options?: UseQueryOptions<ValidatorsQuery, ValidatorsQueryVariables>) => {
+  return useQuery<ValidatorsQuery, ValidatorsQueryVariables>(ValidatorsDocument, {}, options ?? {});
+};
 export const useStakingQuery = (options?: UseQueryOptions<StakingQuery, StakingQueryVariables>) => {
   return useQuery<StakingQuery, StakingQueryVariables>(StakingDocument, {}, options ?? {});
 };
