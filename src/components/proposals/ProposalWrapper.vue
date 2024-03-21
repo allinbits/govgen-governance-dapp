@@ -101,6 +101,34 @@ const validatorTallies = computed(() => {
   }
   return tally;
 });
+const validatorVoteCounts = computed(() => {
+  const tally = {
+    yes: 0,
+    no: 0,
+    veto: 0,
+    abstain: 0,
+  };
+  for (let i = 0; i < validatorsWithStakeAndVotes.value.length; i++) {
+    const votes = validatorsWithStakeAndVotes.value[i].votes;
+    for (let j = 0; j < votes.length; j++) {
+      switch (votes[j].option) {
+        case "VOTE_OPTION_YES":
+          tally.yes = tally.yes + 1;
+          break;
+        case "VOTE_OPTION_NO":
+          tally.no = tally.no + 1;
+          break;
+        case "VOTE_OPTION_NO_WITH_VETO":
+          tally.veto = tally.veto + 1;
+          break;
+        case "VOTE_OPTION_ABSTAIN":
+          tally.abstain = tally.abstain + 1;
+          break;
+      }
+    }
+  }
+  return tally;
+});
 const { loggedIn } = useWallet();
 const proposal = getProposal(props.proposalId);
 const proposalTallies = getProposalTallies(props.proposalId);
@@ -287,6 +315,7 @@ function isTabSelected(tabName: TabNames) {
   <div>
     {{ validatorsWithStakeAndVotes }}
     {{ validatorTallies }}
+    {{ validatorVoteCounts }}
     <div class="badges my-12">
       <template v-if="inVoting">
         <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
