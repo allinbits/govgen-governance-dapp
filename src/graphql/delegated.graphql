@@ -1,0 +1,5 @@
+query Delegated($address: String!, $height: Int) {
+  action_delegation_total(address: $address, height: $height) {
+    coins
+  }
+}

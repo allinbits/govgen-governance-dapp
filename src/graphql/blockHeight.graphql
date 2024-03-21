@@ -1,0 +1,6 @@
+query BlockHeight($timestamp: timestamp!) {
+  block(where: { timestamp: { _gte: $timestamp } }, order_by: { height: asc }, limit: 1) {
+    timestamp
+    height
+  }
+}

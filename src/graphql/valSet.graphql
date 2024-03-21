@@ -1,0 +1,24 @@
+query ValSet($proposalId: Int!, $height: bigint!) {
+  proposal_validator_status_snapshot(
+    where: { proposal_id: { _eq: $proposalId }, height: { _eq: $height } }
+    order_by: { height: desc }
+  ) {
+    height
+    jailed
+    proposal_id
+    status
+    validator_address
+    validator {
+      validator_descriptions {
+        identity
+        avatar_url
+        details
+        moniker
+        website
+      }
+      validator_info {
+        self_delegate_address
+      }
+    }
+  }
+}
