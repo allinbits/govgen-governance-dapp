@@ -23,6 +23,8 @@ import {
   useValsetQuery,
   useVoteHistoryQuery,
   useVotesQuery,
+  useProposalTallyProgressQuery,
+  useLazyProposalTallyProgressQuery,
 } from "@/composables/queries";
 
 export const useChainData = () => {
@@ -52,6 +54,10 @@ export const useChainData = () => {
   };
   const getProposalTallies = (id: number) => {
     const { result } = useProposalTalliesQuery({ id }, { pollInterval: 5000 });
+    return result;
+  };
+  const getProposalTallyProgress = (id: number) => {
+    const { result } = useProposalTallyProgressQuery({ id }, { pollInterval: 5000 });
     return result;
   };
   const getBlockHeight = (timestamp: string) => {
@@ -102,6 +108,10 @@ export const useChainData = () => {
     const result = await useLazyProposalTalliesQuery({ id }, { pollInterval: 5000 }).load();
     return result;
   };
+  const getProposalTallyProgressAsync = async (id: number) => {
+    const result = await useLazyProposalTallyProgressQuery({ id }, { pollInterval: 5000 }).load();
+    return result;
+  };
   const getBlockHeightAsync = async (timestamp: string) => {
     const result = await useLazyBlockHeightQuery({ timestamp }).load();
     return result;
@@ -118,8 +128,8 @@ export const useChainData = () => {
     const result = await useLazyValidatorsQuery().load();
     return result;
   };
-  const getVotesAsync = (address: string, proposalId: number) => {
-    const result = useLazyVotesQuery({ address, proposalId }).load();
+  const getVotesAsync = async (address: string, proposalId: number) => {
+    const result = await useLazyVotesQuery({ address, proposalId }).load();
     return result;
   };
   return {
@@ -135,6 +145,7 @@ export const useChainData = () => {
     getValset,
     getValidators,
     getVotes,
+    getProposalTallyProgress,
     getBalanceAsync,
     getProposalsAsync,
     getProposalAsync,
@@ -147,5 +158,6 @@ export const useChainData = () => {
     getValsetAsync,
     getValidatorsAsync,
     getVotesAsync,
+    getProposalTallyProgressAsync,
   };
 };

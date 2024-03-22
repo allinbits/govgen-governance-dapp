@@ -21,6 +21,7 @@ import utc from "dayjs/plugin/utc";
 import { decToPerc, formatAmount } from "@/utility";
 import { useValidators } from "@/composables/useValidators";
 import { ValSetQuery, ValidatorsQuery, VotesQuery } from "@/gql/graphql";
+import TallyProgress from "./TallyProgress.vue";
 
 type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 const voteTypes = ["yes", "no", "veto", "abstain"] as const;
@@ -683,7 +684,7 @@ function isTabSelected(tabName: TabNames) {
             <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
           </VotePanel>
         </div>
-
+        <TallyProgress :proposal-id="proposalId" />
         <!-- Treemap Panel-->
         <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
           <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.validatorQuota") }}</div>

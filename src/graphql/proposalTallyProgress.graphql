@@ -1,0 +1,10 @@
+query ProposalTallyProgress($id: Int!) {
+  proposal_tally_result(where: {proposal_id: {_eq: $id}}, order_by: {height: asc}) {
+    proposal_id
+    yes
+    no_with_veto
+    no
+    height
+    abstain
+  }
+}

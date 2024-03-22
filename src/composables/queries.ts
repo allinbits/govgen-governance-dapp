@@ -17,6 +17,9 @@ import {
   ProposalTalliesDocument,
   ProposalTalliesQuery,
   ProposalTalliesQueryVariables,
+  ProposalTallyProgressDocument,
+  ProposalTallyProgressQuery,
+  ProposalTallyProgressQueryVariables,
   ProposalsDocument,
   ProposalsQuery,
   ProposalsQueryVariables,
@@ -103,6 +106,16 @@ export const useProposalTalliesQuery = (
     options ?? {},
   );
 };
+export const useProposalTallyProgressQuery = (
+  variables: ProposalTallyProgressQueryVariables,
+  options?: UseQueryOptions<ProposalTallyProgressQuery, ProposalTallyProgressQueryVariables>,
+) => {
+  return useQuery<ProposalTallyProgressQuery, ProposalTallyProgressQueryVariables>(
+    ProposalTallyProgressDocument,
+    variables,
+    options ?? {},
+  );
+};
 export const useVotesQuery = (
   variables: VotesQueryVariables,
   options?: UseQueryOptions<VotesQuery, VotesQueryVariables>,
@@ -174,6 +187,16 @@ export const useLazyProposalTalliesQuery = (
   );
 };
 
+export const useLazyProposalTallyProgressQuery = (
+  variables: ProposalTallyProgressQueryVariables,
+  options?: UseQueryOptions<ProposalTallyProgressQuery, ProposalTallyProgressQueryVariables>,
+) => {
+  return useLazyQuery<ProposalTallyProgressQuery, ProposalTallyProgressQueryVariables>(
+    ProposalTallyProgressDocument,
+    variables,
+    options ?? {},
+  );
+};
 export const useLazyVotesQuery = (
   variables: VotesQueryVariables,
   options?: UseQueryOptions<VotesQuery, VotesQueryVariables>,
