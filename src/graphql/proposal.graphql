@@ -8,6 +8,8 @@ query Proposal($id: Int!) {
     proposal_votes {
       voter_address
       option
+      weight
+      height
     }
     id
     proposer_address
@@ -16,11 +18,12 @@ query Proposal($id: Int!) {
     title
     voting_end_time
     voting_start_time
-    proposal_tally_results {
-      yes
-      no_with_veto
-      no
+    proposal_tally_results(order_by: {height: desc}, limit: 1) {
       abstain
+      height
+      no
+      no_with_veto
+      yes
     }
     proposal_deposits {
       amount

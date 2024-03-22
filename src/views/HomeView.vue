@@ -90,7 +90,7 @@ const filteredProposals = computed(() => {
   if (filterToStatus.value) {
     return searchedProposals.value?.filter((x) => x.status == filterToStatus.value);
   } else {
-    return searchedProposals.value;
+    return searchedProposals.value?.filter((x) => x.status != "PROPOSAL_STATUS_INVALID");
   }
 });
 const orderedProposals = computed(() => {

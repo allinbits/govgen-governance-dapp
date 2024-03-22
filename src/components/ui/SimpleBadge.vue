@@ -10,7 +10,7 @@ const colorClasses = computed(() => {
     case ContextTypes.INFO:
       return "bg-badge-info text-accent-100";
     case ContextTypes.SUCCESS:
-      return "";
+      return "bg-badge-info text-accent-100";
     case ContextTypes.FAIL:
       return "bg-badge-fail text-neg-200";
     case ContextTypes.PLAIN:

@@ -1,6 +1,8 @@
 query VoteHistory($address: String!) {
   proposal_vote(where: { voter_address: { _eq: $address} }) {
     option
+    weight
+    height
     voter_address
     proposal_id
   }

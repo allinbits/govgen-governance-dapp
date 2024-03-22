@@ -1,0 +1,10 @@
+query Votes($address: String!, $proposalId: Int!) {
+  proposal_vote(where: { proposal_id: { _eq: $proposalId }, voter_address: { _eq: $address } }, order_by: { height: desc }) {
+    voter_address
+    option
+    height
+    proposal_id
+    timestamp
+    weight
+  }
+}

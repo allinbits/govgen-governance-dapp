@@ -82,19 +82,23 @@ const signVote = async () => {
       options: [
         {
           option: VoteOption.VOTE_OPTION_YES,
-          weight: ((voteWeighted[VoteOption.VOTE_OPTION_YES]?.value ?? -1) as number).toString(),
+          weight: (((voteWeighted[VoteOption.VOTE_OPTION_YES]?.value ?? -1) as number) * Math.pow(10, 18)).toString(),
         },
         {
           option: VoteOption.VOTE_OPTION_NO,
-          weight: ((voteWeighted[VoteOption.VOTE_OPTION_NO]?.value ?? -1) as number).toString(),
+          weight: (((voteWeighted[VoteOption.VOTE_OPTION_NO]?.value ?? -1) as number) * Math.pow(10, 18)).toString(),
         },
         {
           option: VoteOption.VOTE_OPTION_NO_WITH_VETO,
-          weight: ((voteWeighted[VoteOption.VOTE_OPTION_NO_WITH_VETO]?.value ?? -1) as number).toString(),
+          weight: (
+            ((voteWeighted[VoteOption.VOTE_OPTION_NO_WITH_VETO]?.value ?? -1) as number) * Math.pow(10, 18)
+          ).toString(),
         },
         {
           option: VoteOption.VOTE_OPTION_ABSTAIN,
-          weight: ((voteWeighted[VoteOption.VOTE_OPTION_ABSTAIN]?.value ?? -1) as number).toString(),
+          weight: (
+            ((voteWeighted[VoteOption.VOTE_OPTION_ABSTAIN]?.value ?? -1) as number) * Math.pow(10, 18)
+          ).toString(),
         },
       ],
     };
