@@ -1,0 +1,7 @@
+[context.production.environment]
+  VITE_ENDPOINT = "http://167.99.249.42:3000"
+  VITE_REPO = "allinbits/govgen-governance-discussions-test"
+
+[context.deploy-preview.environment]
+  VITE_ENDPOINT = "http://167.99.249.42:3000"
+  VITE_REPO = "allinbits/govgen-governance-discussions-test"
