@@ -1,2 +1,2 @@
 [context.production]
-  VITE_ENDPOINT = http://167.99.249.42:3000
+  VITE_ENDPOINT = "http://167.99.249.42:3000"
