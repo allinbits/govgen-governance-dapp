@@ -22,7 +22,8 @@ import { useValidators } from "@/composables/useValidators";
 import { ValSetQuery, ValidatorsQuery, VotesQuery } from "@/gql/graphql";
 
 type TabNames = "Info" | "Voters" | "Discussions" | "Links";
-type VoteTabNames = "Yes" | "No" | "Abstain" | "Veto";
+const voteTypes = ["yes", "no", "veto", "abstain"] as const;
+type VoteTypes = (typeof voteTypes)[number];
 
 dayjs.extend(duration);
 
@@ -71,13 +72,14 @@ const maxValidators = computed(() => {
 const votedValidators = computed(() => {
   return validatorsWithStakeAndVotes.value.filter((x) => x.votes.length > 0).length;
 });
-const validatorTallies = computed(() => {
+const validatorTallies = computed<{ [key in VoteTypes]: number }>(() => {
   const tally = {
     yes: 0,
     no: 0,
     veto: 0,
     abstain: 0,
   };
+
   for (let i = 0; i < validatorsWithStakeAndVotes.value.length; i++) {
     const vp = validatorsWithStakeAndVotes.value[i].voting_power;
     const votes = validatorsWithStakeAndVotes.value[i].votes;
@@ -99,8 +101,10 @@ const validatorTallies = computed(() => {
       }
     }
   }
+
   return tally;
 });
+
 const validatorVoteCounts = computed(() => {
   const tally = {
     yes: 0,
@@ -108,6 +112,7 @@ const validatorVoteCounts = computed(() => {
     veto: 0,
     abstain: 0,
   };
+
   for (let i = 0; i < validatorsWithStakeAndVotes.value.length; i++) {
     const votes = validatorsWithStakeAndVotes.value[i].votes;
     for (let j = 0; j < votes.length; j++) {
@@ -129,6 +134,46 @@ const validatorVoteCounts = computed(() => {
   }
   return tally;
 });
+
+const validatorVoteSum = computed(() => {
+  return Object.values(validatorVoteCounts).reduce((att, val) => att + val);
+});
+
+function getValidatorVotes(voteType: VoteTypes) {
+  const data: { name: string; value: number }[] = [];
+
+  for (let i = 0; i < validatorsWithStakeAndVotes.value.length; i++) {
+    const votes = validatorsWithStakeAndVotes.value[i].votes;
+    const tally = {
+      yes: 0,
+      no: 0,
+      veto: 0,
+      abstain: 0,
+    };
+
+    for (let j = 0; j < votes.length; j++) {
+      switch (votes[j].option) {
+        case "VOTE_OPTION_YES":
+          tally.yes = tally.yes + 1;
+          break;
+        case "VOTE_OPTION_NO":
+          tally.no = tally.no + 1;
+          break;
+        case "VOTE_OPTION_NO_WITH_VETO":
+          tally.veto = tally.veto + 1;
+          break;
+        case "VOTE_OPTION_ABSTAIN":
+          tally.abstain = tally.abstain + 1;
+          break;
+      }
+    }
+
+    data.push({ name: validatorsWithStakeAndVotes.value[i].validator_address, value: tally[voteType] });
+  }
+
+  return data;
+}
+
 const { loggedIn } = useWallet();
 const proposal = getProposal(props.proposalId);
 const proposalTallies = getProposalTallies(props.proposalId);
@@ -140,9 +185,6 @@ const termDiscussion = computed(() => `Proposal #${props.proposalId}`);
 
 const tabSelected = ref<TabNames>("Info");
 const tabOptions = reactive<TabNames[]>(["Info", "Voters", "Discussions", "Links"]);
-
-const voteTabSelected = ref<VoteTabNames>("Yes");
-const voteTabOptions = reactive<VoteTabNames[]>(["Yes", "No", "Veto", "Abstain"]);
 
 const inDeposit = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD");
 const inVoting = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_VOTING_PERIOD");
@@ -275,14 +317,25 @@ const expectedResult = computed(() => {
     }
   }
 });
+
 const stakingDenomDisplay = computed(() => {
   return (
     chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value)[0]?.coinDenom ?? depositDenom.value
   );
 });
+
 const stakingDenomDecimals = computed(() => {
   return chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value)[0]?.coinDecimals ?? 0;
 });
+
+function calculateWidthForTree(key: VoteTypes) {
+  const sum = Object.values(validatorTallies.value).reduce((acc, val) => acc + val);
+  if (sum <= 0) {
+    return 25;
+  }
+
+  return Math.floor((validatorTallies.value[key] / sum) * 100);
+}
 /*
 const voting_params = computed(() => {
   try {
@@ -611,27 +664,35 @@ function isTabSelected(tabName: TabNames) {
         <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
           <!-- All Account Votes -->
           <VotePanel :voters="distinctVoters" :tallies="tokenTallies" :pcts="pctTallies" @on-breakdown="() => {}">
-            <template #header>All Voters</template>
-            <template #type>Accounts Voted</template>
+            <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
+            <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
           </VotePanel>
           <!-- All Validator Votes -->
           <VotePanel
-            title="Validators"
             :max="maxValidators"
             :voters="votedValidators"
             :tallies="tokenTallies"
             :pcts="pctTallies"
             @on-breakdown="() => {}"
           >
-            <template #header>Validators</template>
-            <template #type>Validators Voted</template>
+            <template #header>{{ $t("proposalpage.labels.validators") }}</template>
+            <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
           </VotePanel>
         </div>
 
         <!-- Treemap Panel-->
-        <UiTabs id="vote-tab" v-model="voteTabSelected" :options="voteTabOptions" />
-        <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
-          <Treemap :data="[{ name: 'test ', value: 5 }]" :type="voteTabSelected" />
+        <div class="flex flex-row bg-grey-300 rounded-md w-full p-10 object-contain">
+          <div
+            v-for="voteType in voteTypes"
+            class="flex flex-row h-96 relative"
+            :style="[`width: ${calculateWidthForTree(voteType)}%`]"
+            v-if="validatorVoteSum >= 1"
+          >
+            <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+          </div>
+          <div class="text-grey-100 text-300" v-else>
+            {{ $t("proposalpage.labels.noValidatorVotes") }}
+          </div>
         </div>
       </div>
       <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">

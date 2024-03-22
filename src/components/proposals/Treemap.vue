@@ -10,10 +10,10 @@ Chart.register(...registerables, TreemapElement);
 type TokenInfo = { name: string; value: number };
 
 const ColorMap = {
-  Yes: "#8eeefe",
-  No: "#f08c8d",
-  Veto: "#ecb0fe",
-  Abstain: "#686868",
+  yes: "#8eeefe",
+  no: "#f08c8d",
+  veto: "#ecb0fe",
+  abstain: "#686868",
 };
 
 const props = defineProps<{
@@ -43,7 +43,16 @@ const dataset = computed(() => {
     ],
   };
 });
+
+const options = {
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
+};
 </script>
 <template>
-  <TreeMap :data="dataset" :options="{ plugins: { legend: { display: false } } }" />
+  <TreeMap :data="dataset" :options="options" />
 </template>

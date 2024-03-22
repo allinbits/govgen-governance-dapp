@@ -41,6 +41,11 @@ export const messages = {
         changes: "Changes",
         proposalType: "Proposal type",
         upgradePlan: "Upgrade plan",
+        noValidatorVotes: "No validators have voted yet...",
+        validators: "Validators",
+        validatorsVoted: "Validators Voted",
+        accountsAll: "All Voters",
+        accountsVoted: "Accounts Voted",
       },
       types: {
         text: "Text proposal",
