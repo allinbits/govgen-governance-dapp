@@ -17,6 +17,7 @@ import Treemap from "@/components/proposals/Treemap.vue";
 import { ContextTypes } from "@/types/ui";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
+import utc from "dayjs/plugin/utc";
 import { decToPerc, formatAmount } from "@/utility";
 import { useValidators } from "@/composables/useValidators";
 import { ValSetQuery, ValidatorsQuery, VotesQuery } from "@/gql/graphql";
@@ -26,6 +27,7 @@ const voteTypes = ["yes", "no", "veto", "abstain"] as const;
 type VoteTypes = (typeof voteTypes)[number];
 
 dayjs.extend(duration);
+dayjs.extend(utc);
 
 const props = defineProps<{
   proposalId: number;
@@ -136,7 +138,7 @@ const validatorVoteCounts = computed(() => {
 });
 
 const validatorVoteSum = computed(() => {
-  return Object.values(validatorVoteCounts).reduce((att, val) => att + val);
+  return Object.values(validatorVoteCounts.value).reduce((att, val) => att + val);
 });
 
 function getValidatorVotes(voteType: VoteTypes) {
@@ -293,15 +295,6 @@ const tokenTallies = computed(() => {
   };
 });
 
-const pctTallies = computed(() => {
-  return {
-    yes: decToPerc(yes.value, 2),
-    no: decToPerc(no.value, 2),
-    veto: decToPerc(nwv.value, 2),
-    abstain: decToPerc(abstain.value, 2),
-  };
-});
-
 const expectedResult = computed(() => {
   if (turnout.value < quorum.value) {
     return false;
@@ -353,8 +346,8 @@ const deposit_params = computed(() => {
 });
 */
 const timeTo = (dateString: string) => {
-  const now = dayjs();
-  const to = dayjs(dateString);
+  const now = dayjs.utc();
+  const to = dayjs.utc(dateString);
   const diff = dayjs.duration(to.diff(now));
   return diff.format("D [d] : H [hr] : m [m] [left]");
 };
@@ -620,9 +613,9 @@ function isTabSelected(tabName: TabNames) {
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.changes") }}</div>
-                  <div class="text-light text-200">
+                  <div class="text-light text-100">
                     <code>
-                      <pre>{{ proposal?.proposal[0].content.changes }}</pre>
+                      <pre class="text-pretty">{{ proposal?.proposal[0].content.changes }}</pre>
                     </code>
                   </div>
                 </div>
@@ -649,9 +642,9 @@ function isTabSelected(tabName: TabNames) {
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.upgradePlan") }}</div>
-                  <div class="text-light text-200">
+                  <div class="text-light text-100">
                     <code>
-                      <pre>{{ proposal?.proposal[0].content.plan }}</pre>
+                      <pre class="text-pretty">{{ proposal?.proposal[0].content.plan }}</pre>
                     </code>
                   </div>
                 </div>
@@ -663,7 +656,14 @@ function isTabSelected(tabName: TabNames) {
       <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
         <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
           <!-- All Account Votes -->
-          <VotePanel :voters="distinctVoters" :tallies="tokenTallies" :pcts="pctTallies" @on-breakdown="() => {}">
+          <VotePanel
+            :voters="distinctVoters"
+            :denom="stakingDenomDisplay"
+            :precision="stakingDenomDecimals"
+            :vote-tallies="validatorVoteCounts"
+            :token-tallies="tokenTallies"
+            @on-breakdown="() => {}"
+          >
             <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
             <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
           </VotePanel>
@@ -671,8 +671,10 @@ function isTabSelected(tabName: TabNames) {
           <VotePanel
             :max="maxValidators"
             :voters="votedValidators"
-            :tallies="tokenTallies"
-            :pcts="pctTallies"
+            :denom="stakingDenomDisplay"
+            :precision="stakingDenomDecimals"
+            :vote-tallies="validatorVoteCounts"
+            :token-tallies="validatorTallies"
             @on-breakdown="() => {}"
           >
             <template #header>{{ $t("proposalpage.labels.validators") }}</template>
@@ -682,15 +684,17 @@ function isTabSelected(tabName: TabNames) {
 
         <!-- Treemap Panel-->
         <div class="flex flex-row bg-grey-300 rounded-md w-full p-10 object-contain">
-          <div
-            v-for="voteType in voteTypes"
-            class="flex flex-row h-96 relative"
-            :style="[`width: ${calculateWidthForTree(voteType)}%`]"
-            v-if="validatorVoteSum >= 1"
-          >
-            <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
-          </div>
-          <div class="text-grey-100 text-300" v-else>
+          <template v-if="validatorVoteSum >= 1">
+            <div
+              v-for="voteType in voteTypes"
+              :key="voteType"
+              class="flex flex-row h-96 relative"
+              :style="[`width: ${calculateWidthForTree(voteType)}%`]"
+            >
+              <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+            </div>
+          </template>
+          <div v-else class="text-grey-100 text-300">
             {{ $t("proposalpage.labels.noValidatorVotes") }}
           </div>
         </div>

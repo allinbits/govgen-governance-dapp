@@ -1,5 +1,8 @@
 query Proposals {
-  deposit_proposals: proposal(where: { status: { _eq: "PROPOSAL_STATUS_DEPOSIT_PERIOD" }, proposal_deposits: {} }) {
+  deposit_proposals: proposal(
+    where: { status: { _eq: "PROPOSAL_STATUS_DEPOSIT_PERIOD" }, proposal_deposits: {} }
+    order_by: { id: desc }
+  ) {
     content
     deposit_end_time
     description
@@ -21,7 +24,7 @@ query Proposals {
     voting_end_time
     voting_start_time
   }
-  voting_proposals: proposal(where: { status: { _eq: "PROPOSAL_STATUS_VOTING_PERIOD" } }) {
+  voting_proposals: proposal(where: { status: { _eq: "PROPOSAL_STATUS_VOTING_PERIOD" } }, order_by: { id: desc }) {
     content
     deposit_end_time
     description
@@ -43,7 +46,7 @@ query Proposals {
     voting_end_time
     voting_start_time
   }
-  all_proposals: proposal {
+  all_proposals: proposal(order_by: { id: desc }) {
     content
     deposit_end_time
     description

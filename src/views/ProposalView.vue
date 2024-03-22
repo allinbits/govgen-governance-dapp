@@ -42,7 +42,7 @@ watch(proposal, async (newProp, _oldProp) => {
   <div>
     <ProposalWrapper
       v-if="proposal?.proposal[0].id && height !== null"
-      :proposal-id="proposal?.proposal[0].id"
+      :proposal-id="parseInt(route.params.id as string)"
       :height="height"
     />
   </div>
