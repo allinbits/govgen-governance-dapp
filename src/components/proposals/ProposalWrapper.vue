@@ -170,7 +170,12 @@ function getValidatorVotes(voteType: VoteTypes) {
       }
     }
 
-    data.push({ name: validatorsWithStakeAndVotes.value[i].validator_address, value: tally[voteType] });
+    data.push({
+      name:
+        validatorsWithStakeAndVotes.value[i].validator.validator_descriptions[0].moniker ??
+        validatorsWithStakeAndVotes.value[i].validator_address,
+      value: tally[voteType],
+    });
   }
 
   return data;
@@ -359,9 +364,6 @@ function isTabSelected(tabName: TabNames) {
 
 <template>
   <div>
-    {{ validatorsWithStakeAndVotes }}
-    {{ validatorTallies }}
-    {{ validatorVoteCounts }}
     <div class="badges my-12">
       <template v-if="inVoting">
         <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
@@ -683,19 +685,22 @@ function isTabSelected(tabName: TabNames) {
         </div>
 
         <!-- Treemap Panel-->
-        <div class="flex flex-row bg-grey-300 rounded-md w-full p-10 object-contain">
-          <template v-if="validatorVoteSum >= 1">
-            <div
-              v-for="voteType in voteTypes"
-              :key="voteType"
-              class="flex flex-row h-96 relative"
-              :style="[`width: ${calculateWidthForTree(voteType)}%`]"
-            >
-              <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+        <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
+          <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.validatorQuota") }}</div>
+          <div class="flex flex-row object-contain">
+            <template v-if="validatorVoteSum >= 1">
+              <div
+                v-for="voteType in voteTypes"
+                :key="voteType"
+                class="flex flex-row h-96 relative"
+                :style="[`width: ${calculateWidthForTree(voteType)}%`]"
+              >
+                <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+              </div>
+            </template>
+            <div v-else class="text-grey-100 text-300">
+              {{ $t("proposalpage.labels.noValidatorVotes") }}
             </div>
-          </template>
-          <div v-else class="text-grey-100 text-300">
-            {{ $t("proposalpage.labels.noValidatorVotes") }}
           </div>
         </div>
       </div>

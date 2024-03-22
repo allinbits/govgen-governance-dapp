@@ -28,6 +28,7 @@ export const messages = {
         result: "Proposal result",
         expectedResult: "Expected proposal result",
         proposalDescription: "Proposal Description",
+        validatorQuota: "Validator Quota",
         title: "Title",
         description: "Description",
         proposer: "Proposer",
