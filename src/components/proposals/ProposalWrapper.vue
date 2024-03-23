@@ -431,8 +431,6 @@ function isTabSelected(tabName: TabNames) {
         </div>
       </div>
       <div class="cta w-96">
-        <ProposalVote :proposal-id="proposal?.proposal[0].id" class="w-full" />
-
         <SimpleCard v-if="inVoting" class="p-10">
           <div class="text-center text-light text-500">{{ timeTo(proposal?.proposal[0].voting_end_time) }}</div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
