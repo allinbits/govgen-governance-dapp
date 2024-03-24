@@ -1,7 +1,9 @@
 import {
+  useAllVotesQuery,
   useBalanceQuery,
   useBlockHeightQuery,
   useDelegatedQuery,
+  useLazyAllVotesQuery,
   useLazyBalanceQuery,
   useLazyBlockHeightQuery,
   useLazyDelegatedQuery,
@@ -76,6 +78,10 @@ export const useChainData = () => {
     const { result } = useVotesQuery({ address, proposalId });
     return result;
   };
+  const getAllVotes = (proposalId: number, limit: number, offset: number) => {
+    const { result } = useAllVotesQuery({ limit, offset, proposalId });
+    return result;
+  };
   const getVoteOption = (proposalId: number, option: string) => {
     const { result } = useVoteOptionQuery({ proposalId, option });
     return result;
@@ -128,6 +134,11 @@ export const useChainData = () => {
     const result = await useLazyVotesQuery({ address, proposalId }).load();
     return result;
   };
+
+  const getAllVotesAsync = async (proposalId: number, limit: number, offset: number) => {
+    const result = useLazyAllVotesQuery({ limit, offset, proposalId }).load();
+    return result;
+  };
   const getVoteOptionAsync = async (proposalId: number, option: string) => {
     const result = await useLazyVoteOptionQuery({ proposalId, option }).load();
     return result;
@@ -145,6 +156,7 @@ export const useChainData = () => {
     getValset,
     getValidators,
     getVotes,
+    getAllVotes,
     getVoteOption,
     getBalanceAsync,
     getProposalsAsync,
@@ -158,6 +170,7 @@ export const useChainData = () => {
     getValsetAsync,
     getValidatorsAsync,
     getVotesAsync,
+    getAllVotesAsync,
     getVoteOptionAsync,
   };
 };

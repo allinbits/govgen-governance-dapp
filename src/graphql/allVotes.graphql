@@ -1,0 +1,16 @@
+query AllVotes($proposalId: Int!, $limit: Int!, $offset: Int!) {
+  proposal_vote(limit: $limit, offset: $offset, where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}, order_by: {height: desc, voter_address: desc}) {
+    height
+    is_valid
+    option
+    proposal_id
+    timestamp
+    voter_address
+    weight
+  }
+  proposal_vote_aggregate(where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}) {
+    aggregate {
+      count
+    }
+  }
+}

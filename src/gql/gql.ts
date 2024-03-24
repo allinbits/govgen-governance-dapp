@@ -13,6 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "query AllVotes($proposalId: Int!, $limit: Int!, $offset: Int!) {\n  proposal_vote(\n    limit: $limit\n    offset: $offset\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n    order_by: {height: desc, voter_address: desc}\n  ) {\n    height\n    is_valid\n    option\n    proposal_id\n    timestamp\n    voter_address\n    weight\n  }\n  proposal_vote_aggregate(\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n  ) {\n    aggregate {\n      count\n    }\n  }\n}": types.AllVotesDocument,
     "query Balance($address: String!) {\n  action_account_balance(address: $address) {\n    coins\n  }\n}": types.BalanceDocument,
     "query BlockHeight($timestamp: timestamp!) {\n  block(where: {timestamp: {_gte: $timestamp}}, order_by: {height: asc}, limit: 1) {\n    timestamp\n    height\n  }\n}": types.BlockHeightDocument,
     "query Delegated($address: String!, $height: Int) {\n  action_delegation_total(address: $address, height: $height) {\n    coins\n  }\n}": types.DelegatedDocument,
@@ -42,6 +43,10 @@ const documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query AllVotes($proposalId: Int!, $limit: Int!, $offset: Int!) {\n  proposal_vote(\n    limit: $limit\n    offset: $offset\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n    order_by: {height: desc, voter_address: desc}\n  ) {\n    height\n    is_valid\n    option\n    proposal_id\n    timestamp\n    voter_address\n    weight\n  }\n  proposal_vote_aggregate(\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n  ) {\n    aggregate {\n      count\n    }\n  }\n}"): (typeof documents)["query AllVotes($proposalId: Int!, $limit: Int!, $offset: Int!) {\n  proposal_vote(\n    limit: $limit\n    offset: $offset\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n    order_by: {height: desc, voter_address: desc}\n  ) {\n    height\n    is_valid\n    option\n    proposal_id\n    timestamp\n    voter_address\n    weight\n  }\n  proposal_vote_aggregate(\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n  ) {\n    aggregate {\n      count\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
