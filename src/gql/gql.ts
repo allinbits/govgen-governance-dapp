@@ -24,6 +24,7 @@ const documents = {
     "query ValSet($proposalId: Int!, $height: bigint!) {\n  proposal_validator_status_snapshot(\n    where: {proposal_id: {_eq: $proposalId}, height: {_eq: $height}}\n    order_by: {height: desc}\n  ) {\n    height\n    jailed\n    proposal_id\n    status\n    validator_address\n    validator {\n      validator_descriptions {\n        identity\n        avatar_url\n        details\n        moniker\n        website\n      }\n      validator_info {\n        self_delegate_address\n      }\n    }\n  }\n}": types.ValSetDocument,
     "query Validators {\n  validator_status {\n    height\n    jailed\n    status\n    validator_address\n    validator {\n      validator_descriptions {\n        identity\n        avatar_url\n        details\n        moniker\n        website\n      }\n      validator_info {\n        self_delegate_address\n      }\n    }\n  }\n}": types.ValidatorsDocument,
     "query VoteHistory($address: String!) {\n  proposal_vote(where: {voter_address: {_eq: $address}}) {\n    option\n    weight\n    height\n    voter_address\n    proposal_id\n  }\n}": types.VoteHistoryDocument,
+    "query VoteOption($proposalId: Int!, $option: String!) {\n  proposal_vote_aggregate(\n    where: {_and: {is_valid: {_eq: true}, proposal_id: {_eq: $proposalId}, option: {_eq: $option}}}\n  ) {\n    aggregate {\n      count\n    }\n  }\n}": types.VoteOptionDocument,
     "query Votes($address: String!, $proposalId: Int!) {\n  proposal_vote(\n    where: {proposal_id: {_eq: $proposalId}, voter_address: {_eq: $address}}\n    order_by: {height: desc}\n  ) {\n    voter_address\n    option\n    height\n    proposal_id\n    timestamp\n    weight\n  }\n}": types.VotesDocument,
 };
 
@@ -85,6 +86,10 @@ export function graphql(source: "query Validators {\n  validator_status {\n    h
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "query VoteHistory($address: String!) {\n  proposal_vote(where: {voter_address: {_eq: $address}}) {\n    option\n    weight\n    height\n    voter_address\n    proposal_id\n  }\n}"): (typeof documents)["query VoteHistory($address: String!) {\n  proposal_vote(where: {voter_address: {_eq: $address}}) {\n    option\n    weight\n    height\n    voter_address\n    proposal_id\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query VoteOption($proposalId: Int!, $option: String!) {\n  proposal_vote_aggregate(\n    where: {_and: {is_valid: {_eq: true}, proposal_id: {_eq: $proposalId}, option: {_eq: $option}}}\n  ) {\n    aggregate {\n      count\n    }\n  }\n}"): (typeof documents)["query VoteOption($proposalId: Int!, $option: String!) {\n  proposal_vote_aggregate(\n    where: {_and: {is_valid: {_eq: true}, proposal_id: {_eq: $proposalId}, option: {_eq: $option}}}\n  ) {\n    aggregate {\n      count\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

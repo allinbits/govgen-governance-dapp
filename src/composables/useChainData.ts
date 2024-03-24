@@ -13,6 +13,7 @@ import {
   useLazyValidatorsQuery,
   useLazyValsetQuery,
   useLazyVoteHistoryQuery,
+  useLazyVoteOptionQuery,
   useLazyVotesQuery,
   useParamsQuery,
   useProposalQuery,
@@ -22,6 +23,7 @@ import {
   useValidatorsQuery,
   useValsetQuery,
   useVoteHistoryQuery,
+  useVoteOptionQuery,
   useVotesQuery,
 } from "@/composables/queries";
 
@@ -74,6 +76,10 @@ export const useChainData = () => {
     const { result } = useVotesQuery({ address, proposalId });
     return result;
   };
+  const getVoteOption = (proposalId: number, option: string) => {
+    const { result } = useVoteOptionQuery({ proposalId, option });
+    return result;
+  };
   const getBalanceAsync = async (address: string) => {
     const result = await useLazyBalanceQuery({ address }).load();
     return result;
@@ -118,8 +124,12 @@ export const useChainData = () => {
     const result = await useLazyValidatorsQuery().load();
     return result;
   };
-  const getVotesAsync = (address: string, proposalId: number) => {
-    const result = useLazyVotesQuery({ address, proposalId }).load();
+  const getVotesAsync = async (address: string, proposalId: number) => {
+    const result = await useLazyVotesQuery({ address, proposalId }).load();
+    return result;
+  };
+  const getVoteOptionAsync = async (proposalId: number, option: string) => {
+    const result = await useLazyVoteOptionQuery({ proposalId, option }).load();
     return result;
   };
   return {
@@ -135,6 +145,7 @@ export const useChainData = () => {
     getValset,
     getValidators,
     getVotes,
+    getVoteOption,
     getBalanceAsync,
     getProposalsAsync,
     getProposalAsync,
@@ -147,5 +158,6 @@ export const useChainData = () => {
     getValsetAsync,
     getValidatorsAsync,
     getVotesAsync,
+    getVoteOptionAsync,
   };
 };

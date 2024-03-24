@@ -33,7 +33,7 @@ const props = defineProps<{
   proposalId: number;
   height: number;
 }>();
-const { getProposal, getParams, getProposalTallies, getStakingStatus, getVotesAsync } = useChainData();
+const { getProposal, getParams, getProposalTallies, getStakingStatus, getVotesAsync, getVoteOption } = useChainData();
 const { validators, getVotingPower } = useValidators(
   props.proposalId,
   props.height != 0 ? props.height.toString() : undefined,
@@ -254,7 +254,18 @@ const threshold = computed(() => {
 const veto_threshold = computed(() => {
   return parseFloat(tally_params.value?.veto_threshold ?? "0");
 });
-
+const yesCount = getVoteOption(props.proposalId, "VOTE_OPTION_YES");
+const noCount = getVoteOption(props.proposalId, "VOTE_OPTION_NO");
+const nwvCount = getVoteOption(props.proposalId, "VOTE_OPTION_NO_WITH_VETO");
+const abstainCount = getVoteOption(props.proposalId, "VOTE_OPTION_ABSTAIN");
+const allVoteCounts = computed(() => {
+  return {
+    yes: yesCount.value?.proposal_vote_aggregate.aggregate?.count ?? 0,
+    no: noCount.value?.proposal_vote_aggregate.aggregate?.count ?? 0,
+    veto: nwvCount.value?.proposal_vote_aggregate.aggregate?.count ?? 0,
+    abstain: abstainCount.value?.proposal_vote_aggregate.aggregate?.count ?? 0,
+  };
+});
 const yesVotes = computed(() => {
   return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.yes ?? "0");
 });
@@ -662,7 +673,7 @@ function isTabSelected(tabName: TabNames) {
             :voters="distinctVoters"
             :denom="stakingDenomDisplay"
             :precision="stakingDenomDecimals"
-            :vote-tallies="validatorVoteCounts"
+            :vote-tallies="allVoteCounts"
             :token-tallies="tokenTallies"
             @on-breakdown="() => {}"
           >
