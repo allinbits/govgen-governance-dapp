@@ -8,6 +8,6 @@ const { createProposal, createTextProposalContent } = useProposals();
 
 const test = () => {
   const prop = createTextProposalContent({ title: "Test proposal", description: "test description" });
-  createProposal({ initialDeposit: [{ amount: "5000000", denom: "ugovgen" }] }, prop);
+  createProposal({ initialDeposit: [{ amount: "100000", denom: "ugovgen" }] }, prop);
 };
 </script>
