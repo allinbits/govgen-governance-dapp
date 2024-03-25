@@ -1,4 +1,6 @@
 import {
+  AllVotesQuery,
+  AllVotesQueryVariables,
   BalanceDocument,
   BalanceQuery,
   BalanceQueryVariables,
@@ -32,6 +34,9 @@ import {
   VoteHistoryDocument,
   VoteHistoryQuery,
   VoteHistoryQueryVariables,
+  VoteOptionDocument,
+  VoteOptionQuery,
+  VoteOptionQueryVariables,
   VotesDocument,
   VotesQuery,
   VotesQueryVariables,
@@ -109,6 +114,18 @@ export const useVotesQuery = (
 ) => {
   return useQuery<VotesQuery, VotesQueryVariables>(VotesDocument, variables, options ?? {});
 };
+export const useAllVotesQuery = (
+  variables: AllVotesQueryVariables,
+  options?: UseQueryOptions<AllVotesQuery, AllVotesQueryVariables>,
+) => {
+  return useQuery<AllVotesQuery, AllVotesQueryVariables>(VotesDocument, variables, options ?? {});
+};
+export const useVoteOptionQuery = (
+  variables: VoteOptionQueryVariables,
+  options?: UseQueryOptions<VoteOptionQuery, VoteOptionQueryVariables>,
+) => {
+  return useQuery<VoteOptionQuery, VoteOptionQueryVariables>(VoteOptionDocument, variables, options ?? {});
+};
 export const useLazyBalanceQuery = (
   variables: BalanceQueryVariables,
   options?: UseQueryOptions<BalanceQuery, BalanceQueryVariables>,
@@ -179,4 +196,17 @@ export const useLazyVotesQuery = (
   options?: UseQueryOptions<VotesQuery, VotesQueryVariables>,
 ) => {
   return useLazyQuery<VotesQuery, VotesQueryVariables>(VotesDocument, variables, options ?? {});
+};
+
+export const useLazyAllVotesQuery = (
+  variables: AllVotesQueryVariables,
+  options?: UseQueryOptions<AllVotesQuery, AllVotesQueryVariables>,
+) => {
+  return useLazyQuery<AllVotesQuery, AllVotesQueryVariables>(VotesDocument, variables, options ?? {});
+};
+export const useLazyVoteOptionQuery = (
+  variables: VoteOptionQueryVariables,
+  options?: UseQueryOptions<VoteOptionQuery, VoteOptionQueryVariables>,
+) => {
+  return useLazyQuery<VoteOptionQuery, VoteOptionQueryVariables>(VoteOptionDocument, variables, options ?? {});
 };
