@@ -81,6 +81,7 @@ const getTxHash = (vote: AllVotesQuery["proposal_vote"][0]) => {
       <span>{{ Utility.decToPerc(vote.weight, 0) }}%</span>
       <span class="text-right">{{ Utility.formatHuman(new Date(vote.timestamp)) }}</span>
     </div>
+
     <div class="flex flex-row justify-end pt-12 gap-4">
       <Icon
         icon="Arrowleftend"
