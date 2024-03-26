@@ -1,6 +1,8 @@
 <template>
-  <div class="flex flex-col w-full pt-12 relative">
-    <div ref="toggler" class="flex flex-row w-full gap-12 relative" role="radiogroup" aria-label="Switch">
+  <DropDown v-model="tabIdx" :values="options" @select="changeTab" class="md:hidden" v-bind="$attrs" />
+
+  <div class="hidden md:flex flex-col w-full pt-12 relative" v-bind="$attrs">
+    <div ref="toggler" class="flex flex-row w-full gap-6 md:gap-12 relative" role="radiogroup" aria-label="Switch">
       <!-- Tabs -->
       <div v-for="(option, index) in options" :key="option" :ref="(el) => tabRefs.push(el as any)" class="z-2">
         <input
@@ -17,7 +19,7 @@
           :for="id + option"
           class="flex text-grey-50 py-1.5 text-500 cursor-pointer peer-checked:text-light ease-in-out duration-300"
         >
-          {{ $t('ui.tabs.'+option) }}
+          {{ $t("ui.tabs." + option) }}
         </label>
       </div>
     </div>
@@ -30,6 +32,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import DropDown from "./DropDown.vue";
 
 type Props = {
   modelValue?: string | number;
@@ -41,12 +44,13 @@ const tabSelected = defineModel<string>();
 const toggler = ref<HTMLElement | null>(null);
 const tabRefs = ref<HTMLElement[]>([]);
 const line = ref<HTMLElement | null>(null);
+const tabIdx = ref<number>(0);
 
 const props = withDefaults(defineProps<Props>(), { modelValue: undefined });
-
 function changeTab(idx: number = 0) {
-  tabSelected.value = props.options[idx];
-  const el = tabRefs.value[idx] as HTMLElement;
+  tabIdx.value = idx;
+  tabSelected.value = props.options[tabIdx.value];
+  const el = tabRefs.value[tabIdx.value] as HTMLElement;
   if (!el || !line.value) {
     return;
   }

@@ -67,7 +67,7 @@ bus.on("open", () => {
     <!-- Normal signed out button -->
     <template v-if="connectState">
       <div
-        class="justify-center px-6 py-4 rounded bg-grey-400 text-300 text-center cursor-pointer w-64"
+        class="justify-center px-6 py-4 rounded bg-grey-400 text-300 text-center cursor-pointer"
         @click="isOpen = true"
       >
         {{ $t("components.WalletConnect.button") }}
