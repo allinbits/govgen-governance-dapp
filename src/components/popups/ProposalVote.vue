@@ -102,6 +102,7 @@ const signVote = async () => {
         },
       ],
     };
+    voteOptions.options = voteOptions.options.filter((opt) => opt.weight !== "0");
   } else {
     if (!voteStraight.value) return;
     voteOptions = {

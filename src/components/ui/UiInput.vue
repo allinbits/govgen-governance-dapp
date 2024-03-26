@@ -15,6 +15,7 @@
       :max="type === 'number' ? max : undefined"
       @focus="focusHandler(true)"
       @blur="focusHandler(false)"
+      @input="typeof model === 'number' ? (model = MaxValue(MinValue(model))) : model"
     />
   </label>
   <Transition
@@ -55,6 +56,9 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const focused = ref(false);
+
+const MinValue = (val: number) => Math.min(props.max, val);
+const MaxValue = (val: number) => Math.max(props.min, val);
 
 const emit = defineEmits(["update:modelValue", "focus"]);
 const model = computed({

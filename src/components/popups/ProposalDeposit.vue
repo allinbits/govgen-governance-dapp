@@ -102,6 +102,7 @@ const signDeposit = async () => {
                     placeholder="e.g. 50"
                     :label="$t('components.ProposalDeposit.instructions')"
                     :min="0"
+                    :max="Infinity"
                     class="w-full justify-end"
                   />
                 </form>
