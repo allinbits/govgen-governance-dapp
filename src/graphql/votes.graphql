@@ -1,5 +1,8 @@
-query Votes($address: String!, $proposalId: Int!, $propId: String!) {
-  proposal_vote(where: { proposal_id: { _eq: $proposalId }, voter_address: { _eq: $address } }, order_by: { height: desc }) {
+query Votes($address: String!, $proposalId: Int!) {
+  proposal_vote(
+    where: { proposal_id: { _eq: $proposalId }, voter_address: { _eq: $address } }
+    order_by: { height: desc }
+  ) {
     voter_address
     option
     height
@@ -7,9 +10,7 @@ query Votes($address: String!, $proposalId: Int!, $propId: String!) {
     timestamp
     weight
     block {
-      transactions(where: {messages: {
-        _contains: [{proposal_id: $propId, voter: $address}]
-      }}) {
+      transactions(where: { messages: { _contains: [{ proposal_id: $proposalId, voter: $address }] } }) {
         height
         hash
         memo

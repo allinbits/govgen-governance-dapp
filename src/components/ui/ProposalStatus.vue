@@ -6,11 +6,11 @@ import { PropStatus } from "@/types/proposals";
 const { status } = defineProps<{ status: PropStatus }>();
 
 const colors = {
-  deposit: ["fill-accent-100", "text-accent-100"],
+  deposit: ["fill-accent-200", "text-accent-200"],
   voting: ["fill-accent-100", "text-accent-100"],
-  passed: ["fill-accent-100", "text-accent-100"],
-  rejected: ["fill-neg-200", "text-neg-200"],
-  failed: ["fill-neg-200", "text-neg-200"],
+  passed: ["fill-accent-100"],
+  rejected: ["fill-neg-200"],
+  failed: ["fill-neg-200"],
   unspecified: ["fill-neg-200", "text-neg-200"],
 };
 

@@ -46,16 +46,16 @@ const totalVoteText = computed(() => {
 <template>
   <div class="flex flex-col gap-12 rounded-md bg-grey-400 p-10 pb-14 w-full">
     <!-- Upper Section -->
-    <div class="flex flex-row">
+    <div class="flex flex-row items-center">
       <div class="flex flex-col flex-grow">
-        <span class="text-500 text-light"><slot name="header"></slot></span>
-        <span class="text-300 text-grey-100">{{ totalVoteText }} <slot name="type"></slot></span>
+        <span class="text-300 md:text-500 text-light mb-1"><slot name="header"></slot></span>
+        <span class="text-200 md:text-300 text-grey-100">{{ totalVoteText }} <slot name="type"></slot></span>
       </div>
-      <CommonButton class="!bg-grey-200" @click="emits('onBreakdown')">Breakdown</CommonButton>
+      <CommonButton class="!bg-grey-200 hidden md:flex" @click="emits('onBreakdown')">Breakdown</CommonButton>
     </div>
     <!-- Lower Section -->
-    <div v-if="voters >= 1" class="flex flex-row gap-12 w-full items-center">
-      <div class="flex items-center w-28 h-28 pb-1">
+    <div v-if="voters >= 1" class="flex flex-col sm:flex-row gap-6 md:gap-12 w-full sm:items-center">
+      <div class="flex items-center w-28 h-28 pb-1 mr-6">
         <VoteChart
           :yes="voteTallies.yes"
           :no="voteTallies.no"
@@ -67,13 +67,17 @@ const totalVoteText = computed(() => {
         <div class="flex flex-col gap-1">
           <span class="text-accent-100 text-300 start-6">Yes: {{ voteTallies.yes }}</span>
           <span class="text-grey-100 text-100"
-            >{{ formatAmount(tokenTallies.yes, precision) }} {{ denom }} | {{ decToPerc(pcts.yes, 2) }}%</span
+            ><span class="sm:block md:inline-block">{{ formatAmount(tokenTallies.yes, precision) }} {{ denom }} </span>
+            <span class="sm:hidden md:inline-block">&nbsp;|&nbsp;</span
+            ><span> {{ decToPerc(pcts.yes, 2) }}%</span></span
           >
         </div>
         <div class="flex flex-col gap-1">
           <span class="text-accent-200 text-300 start-6">Veto: {{ voteTallies.veto }}</span>
           <span class="text-grey-100 text-100"
-            >{{ formatAmount(tokenTallies.veto, precision) }} {{ denom }} | {{ decToPerc(pcts.veto, 2) }}%</span
+            ><span class="sm:block md:inline-block">{{ formatAmount(tokenTallies.veto, precision) }} {{ denom }}</span>
+            <span class="sm:hidden md:inline-block">&nbsp;|&nbsp;</span
+            ><span> {{ decToPerc(pcts.veto, 2) }}%</span></span
           >
         </div>
       </div>
@@ -81,13 +85,18 @@ const totalVoteText = computed(() => {
         <div class="flex flex-col gap-1">
           <span class="text-neg-200 text-300 start-6">No: {{ voteTallies.no }}</span>
           <span class="text-grey-100 text-100"
-            >{{ formatAmount(tokenTallies.no, precision) }} {{ denom }} | {{ decToPerc(pcts.no, 2) }}%</span
+            ><span class="sm:block md:inline-block">{{ formatAmount(tokenTallies.no, precision) }} {{ denom }}</span>
+            <span class="sm:hidden md:inline-block">&nbsp;|&nbsp;</span><span> {{ decToPerc(pcts.no, 2) }}%</span></span
           >
         </div>
         <div class="flex flex-col gap-1">
           <span class="text-grey-100 text-300 start-6">Abstain: {{ voteTallies.abstain }}</span>
           <span class="text-grey-100 text-100"
-            >{{ formatAmount(tokenTallies.abstain, precision) }} {{ denom }} | {{ decToPerc(pcts.abstain, 2) }}%</span
+            ><span class="sm:block md:inline-block"
+              >{{ formatAmount(tokenTallies.abstain, precision) }} {{ denom }}</span
+            >
+            <span class="sm:hidden md:inline-block">&nbsp;|&nbsp;</span
+            ><span> {{ decToPerc(pcts.abstain, 2) }}%</span></span
           >
         </div>
       </div>
