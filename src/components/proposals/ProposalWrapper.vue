@@ -21,9 +21,13 @@ import utc from "dayjs/plugin/utc";
 import { decToPerc, formatAmount } from "@/utility";
 import { useValidators } from "@/composables/useValidators";
 import { ValSetQuery, ValidatorsQuery, VotesQuery } from "@/gql/graphql";
+import * as Utility from "@/utility/index";
+import CommonButton from "../ui/CommonButton.vue";
+import Breakdown from "@/components/proposals/Breakdown.vue";
 
-type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 const voteTypes = ["yes", "no", "veto", "abstain"] as const;
+type BreakdownType = "voters" | "validators" | null;
+type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 type VoteTypes = (typeof voteTypes)[number];
 
 dayjs.extend(duration);
@@ -68,6 +72,7 @@ watch(validators, async (valSet, _old) => {
     }),
   );
 });
+
 const maxValidators = computed(() => {
   return validatorsWithStakeAndVotes.value.length;
 });
@@ -193,6 +198,9 @@ const termDiscussion = computed(() => `Proposal #${props.proposalId}`);
 const tabSelected = ref<TabNames>("Info");
 const tabOptions = reactive<TabNames[]>(["Info", "Voters", "Discussions", "Links"]);
 
+const breakdownType = ref<("validators" | "voters") | null>(null);
+const breakdownOffset = ref(0);
+
 const inDeposit = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD");
 const inVoting = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_VOTING_PERIOD");
 const failed = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_FAILED");
@@ -254,6 +262,7 @@ const threshold = computed(() => {
 const veto_threshold = computed(() => {
   return parseFloat(tally_params.value?.veto_threshold ?? "0");
 });
+
 const yesCount = getVoteOption(props.proposalId, "VOTE_OPTION_YES");
 const noCount = getVoteOption(props.proposalId, "VOTE_OPTION_NO");
 const nwvCount = getVoteOption(props.proposalId, "VOTE_OPTION_NO_WITH_VETO");
@@ -370,6 +379,11 @@ const timeTo = (dateString: string) => {
 
 function isTabSelected(tabName: TabNames) {
   return tabSelected.value.toLowerCase() == tabName.toLowerCase();
+}
+
+function showBreakdown(type: BreakdownType) {
+  breakdownType.value = type;
+  breakdownOffset.value = 0;
 }
 </script>
 
@@ -667,53 +681,71 @@ function isTabSelected(tabName: TabNames) {
         </div>
       </div>
       <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
-        <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
-          <!-- All Account Votes -->
-          <VotePanel
-            :voters="distinctVoters"
-            :denom="stakingDenomDisplay"
-            :precision="stakingDenomDecimals"
-            :vote-tallies="allVoteCounts"
-            :token-tallies="tokenTallies"
-            @on-breakdown="() => {}"
-          >
-            <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
-            <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
-          </VotePanel>
-          <!-- All Validator Votes -->
-          <VotePanel
-            :max="maxValidators"
-            :voters="votedValidators"
-            :denom="stakingDenomDisplay"
-            :precision="stakingDenomDecimals"
-            :vote-tallies="validatorVoteCounts"
-            :token-tallies="validatorTallies"
-            @on-breakdown="() => {}"
-          >
-            <template #header>{{ $t("proposalpage.labels.validators") }}</template>
-            <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
-          </VotePanel>
-        </div>
+        <template v-if="!breakdownType">
+          <!-- Voters Panel -->
+          <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
+            <!-- All Account Votes -->
+            <VotePanel
+              :voters="distinctVoters"
+              :denom="stakingDenomDisplay"
+              :precision="stakingDenomDecimals"
+              :vote-tallies="allVoteCounts"
+              :token-tallies="tokenTallies"
+              @on-breakdown="showBreakdown('voters')"
+            >
+              <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
+              <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
+            </VotePanel>
+            <!-- All Validator Votes -->
+            <VotePanel
+              :max="maxValidators"
+              :voters="votedValidators"
+              :denom="stakingDenomDisplay"
+              :precision="stakingDenomDecimals"
+              :vote-tallies="validatorVoteCounts"
+              :token-tallies="validatorTallies"
+              @on-breakdown="showBreakdown('validators')"
+            >
+              <template #header>{{ $t("proposalpage.labels.validators") }}</template>
+              <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
+            </VotePanel>
+          </div>
 
-        <!-- Treemap Panel-->
-        <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
-          <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.validatorQuota") }}</div>
-          <div class="flex flex-row object-contain">
-            <template v-if="validatorVoteSum >= 1">
-              <div
-                v-for="voteType in voteTypes"
-                :key="voteType"
-                class="flex flex-row h-96 relative"
-                :style="[`width: ${calculateWidthForTree(voteType)}%`]"
-              >
-                <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+          <!-- Treemap Panel-->
+          <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
+            <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.validatorQuota") }}</div>
+            <div class="flex flex-row object-contain">
+              <template v-if="validatorVoteSum >= 1">
+                <div
+                  v-for="voteType in voteTypes"
+                  :key="voteType"
+                  class="flex flex-row h-96 relative"
+                  :style="[`width: ${calculateWidthForTree(voteType)}%`]"
+                >
+                  <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+                </div>
+              </template>
+              <div v-else class="text-grey-100 text-300">
+                {{ $t("proposalpage.labels.noValidatorVotes") }}
               </div>
-            </template>
-            <div v-else class="text-grey-100 text-300">
-              {{ $t("proposalpage.labels.noValidatorVotes") }}
             </div>
           </div>
-        </div>
+        </template>
+        <template v-else>
+          <CommonButton class="flex justify-between items-center gap-6 w-36" @click="showBreakdown(null)">
+            <Icon icon="arrowLeft" /><span>{{ $t("ui.buttons.back") }}</span>
+          </CommonButton>
+          <div class="font-termina text-800 font-semibold text-light pt-12">
+            {{ Utility.capitalizeFirstLetter(breakdownType) }}
+          </div>
+          <div class="flex flex-row gap-4">
+            <span>filter</span>
+            <span>filter</span>
+            <span>filter</span>
+            <span>filter</span>
+          </div>
+          <Breakdown v-if="proposal" :proposal-id="proposal.proposal[0].id" />
+        </template>
       </div>
       <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
         <GithubComments :term="termDiscussion" />

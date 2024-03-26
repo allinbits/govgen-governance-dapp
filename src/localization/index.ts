@@ -90,6 +90,9 @@ export const messages = {
         cli: "or Copy CLI Command",
         cancel: "Cancel",
       },
+      buttons: {
+        back: "Back",
+      },
       tabs: {
         Info: "Info",
         Voters: "Voters",
