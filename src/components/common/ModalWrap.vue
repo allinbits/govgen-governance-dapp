@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <Transition>
-    <div v-if="props.visible" class="fixed top-0 left-0 right-0 bottom-0 bg-darkblur backdrop-blur-md"></div>
+    <div v-if="props.visible" class="fixed top-0 left-0 right-0 bottom-0 bg-darkblur backdrop-blur-md z-max"></div>
   </Transition>
   <Transition>
     <div v-if="props.visible" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-max">
