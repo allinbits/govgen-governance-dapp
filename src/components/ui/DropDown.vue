@@ -28,7 +28,7 @@ const currentValues = computed(() => {
 
 <template>
   <div class="flex flex-col relative bg-grey-300 min-w-56 select-none" :class="open ? ['rounded-t'] : ['rounded']">
-    <div class="flex flex-row justify-between cursor-pointer gap-3 text-200 px-5 py-4" @click="open = !open">
+    <div class="flex flex-row justify-between cursor-pointer gap-3 px-5 py-4" @click="open = !open">
       <div>{{ props.values[model] }}</div>
       <Icon icon="CaretDown" />
     </div>

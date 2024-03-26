@@ -17,7 +17,7 @@ export default <Config>{
       },
     },
     screens: {
-      sm: `${pxToRem(480)}rem`,
+      sm: `${pxToRem(520)}rem`,
       md: `${pxToRem(780)}rem`,
       lg: `${pxToRem(1160)}rem`,
       xl: `${pxToRem(1440)}rem`,
