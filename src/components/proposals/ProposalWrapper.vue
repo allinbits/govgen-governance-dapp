@@ -24,6 +24,7 @@ import { ValSetQuery, ValidatorsQuery, VotesQuery } from "@/gql/graphql";
 import * as Utility from "@/utility/index";
 import CommonButton from "../ui/CommonButton.vue";
 import Breakdown from "@/components/proposals/Breakdown.vue";
+import ValidatorBreakdown from "./ValidatorBreakdown.vue";
 
 const voteTypes = ["yes", "no", "veto", "abstain"] as const;
 type BreakdownType = "voters" | "validators" | null;
@@ -738,13 +739,16 @@ function showBreakdown(type: BreakdownType) {
           <div class="font-termina text-800 font-semibold text-light pt-12">
             {{ Utility.capitalizeFirstLetter(breakdownType) }}
           </div>
+          <!--
           <div class="flex flex-row gap-4">
             <span>filter</span>
             <span>filter</span>
             <span>filter</span>
             <span>filter</span>
           </div>
-          <Breakdown v-if="proposal" :proposal-id="proposal.proposal[0].id" />
+          //-->
+          <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
+          <ValidatorBreakdown :validator-data="validatorsWithStakeAndVotes" v-if="breakdownType == 'validators'" />
         </template>
       </div>
       <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
