@@ -111,7 +111,7 @@
 @tailwind utilities;
 
 html {
-  @apply font-interNormal text-light bg-dark text-300;
+  @apply font-interNormal text-light bg-dark;
   font-feature-settings:
     "kern" on,
     "liga" on,

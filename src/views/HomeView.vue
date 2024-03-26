@@ -126,16 +126,16 @@ function onSearchInput() {
 <template>
   <div class="flex flex-col w-full pb-[72px]">
     <!-- Chain Section -->
-    <div class="flex flex-col gap-4 py-[72px] border-b border-grey-300 md:flex-row">
-      <div class="flex flex-col">
-        <Icon icon="chain" class="mt-3 aspect-square w-14 h-14 text-800" />
+    <div class="flex flex-col gap-8 pt-8 md:pt-[72px]">
+      <div class="flex gap-4">
+        <Icon icon="chain" class="aspect-square text-900" />
+        <div class="font-termina text-700 md:text-1000 font-semibold leading-[80px]">GovGen</div>
       </div>
       <div class="flex flex-col gap-8">
         <!-- Chain Title -->
-        <div class="font-termina text-600 md:text-[72px] font-semibold leading-[80px]">GovGen</div>
         <!-- Chain Links -->
         <div class="flex flex-row gap-6 text-grey-100 flex-wrap">
-          <a href="https://govgen.io" target="_blank" class="flex flex-row gap-3 hover:text-grey-50">
+          <a href="https://govgen.io" target="_blank" class="flex flex-row gap-2 hover:text-grey-50">
             <Icon icon="link" /><span>Website</span>
           </a>
           <span>|</span>
@@ -147,37 +147,46 @@ function onSearchInput() {
           </div>
         </div>
         <!-- Chain Description -->
-        <div class="text-grey-100 text-300 lg:w-[656px] font-interVar font-normal text-left text-pretty">
-          {{ $t("homepage.intro") }}
-        </div>
+        <p
+          class="text-grey-100 text-300 lg:w-[656px] font-normal text-left text-pretty after:absolute after:block after:left-0 after:w-full after:bg-grey-300 after:h-px"
+        >
+          <span class="block pb-8 lg:pb-[72px]"> {{ $t("homepage.intro") }} </span>
+        </p>
       </div>
     </div>
     <!-- Search Box, and Filters -->
-    <div class="flex flex-col w-full justify-start items-center pt-[104px] lg:flex-row gap-6 lg:justify-between">
-      <div class="flex flex-col gap-6 w-full lg:flex-row lg:items-center">
-        <div class="font-termina text-700">{{ $t("homepage.proposalsHeader") }}</div>
+    <div
+      class="flex flex-col w-full justify-start items-center pt-12 lg:pt-[104px] lg:flex-row gap-4 lg:gap-6 lg:justify-between"
+    >
+      <div class="flex flex-col gap-10 w-full lg:flex-row lg:items-center">
+        <div class="font-termina text-500 lg:text-600 xl:text-700">{{ $t("homepage.proposalsHeader") }}</div>
         <Search v-model="searchText" @input="onSearchInput">
           <Icon icon="search" />
         </Search>
       </div>
       <!-- Filters -->
-      <div class="flex flex-col gap-6 w-full justify-start lg:flex-row lg:items-center lg:justify-end">
+      <div class="flex flex-col gap-4 w-full justify-start md:flex-row lg:items-center lg:justify-end">
         <!-- Select Type -->
         <DropDown
           v-model="typeFilterIndex"
           :values="['All Proposals', 'Deposit', 'Voting', 'Passed', 'Rejected', 'Failed']"
           @select="setTypeFilterIndex"
+          class="w-full lg:w-fit"
         />
         <!-- Show 'x' First -->
         <DropDown
           v-model="activityFilterIndex"
           :values="['Active First', 'Passed First', 'Rejected First', 'Failed First']"
           @select="setActivityFilterIndex"
+          class="w-full lg:w-fit"
         />
       </div>
     </div>
     <!-- Proposal View -->
-    <div v-if="proposals" class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-[72px]">
+    <div
+      v-if="proposals"
+      class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6 mt-[72px]"
+    >
       <ProposalCard v-for="proposal in orderedProposals" :key="proposal.id" :link="'/proposals/' + proposal.id">
         <template #header
           ><ProposalStatus

@@ -19,7 +19,7 @@ export default <Config>{
     screens: {
       sm: `${pxToRem(480)}rem`,
       md: `${pxToRem(780)}rem`,
-      lg: `${pxToRem(1120)}rem`,
+      lg: `${pxToRem(1160)}rem`,
       xl: `${pxToRem(1440)}rem`,
     },
     container: {
@@ -97,6 +97,7 @@ export default <Config>{
       700: [`${pxToRem(40)}rem`, { lineHeight: `${pxToRem(48)}rem` }],
       800: [`${pxToRem(48)}rem`, { lineHeight: `${pxToRem(56)}rem` }],
       900: [`${pxToRem(56)}rem`, { lineHeight: `${pxToRem(64)}rem` }],
+      1000: [`${pxToRem(72)}rem`, { lineHeight: `${pxToRem(80)}rem` }],
     },
   },
   safelist: [

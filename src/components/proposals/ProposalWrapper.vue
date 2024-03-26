@@ -402,8 +402,8 @@ function isTabSelected(tabName: TabNames) {
         $t("proposalpage.badges.passed")
       }}</SimpleBadge>
     </div>
-    <div class="flex mb-12">
-      <div class="basic-details flex-grow">
+    <div class="flex mb-12 flex-col md:flex-row">
+      <div class="basic-details flex-grow pr-10">
         <h1 class="font-termina text-800 text-light mb-16 pb-2">
           #{{ proposal?.proposal[0].id }}: {{ proposal?.proposal[0].title }}
         </h1>
@@ -441,9 +441,11 @@ function isTabSelected(tabName: TabNames) {
           </div>
         </div>
       </div>
-      <div class="cta w-96">
-        <SimpleCard v-if="inVoting" class="p-10">
-          <div class="text-center text-light text-500">{{ timeTo(proposal?.proposal[0].voting_end_time) }}</div>
+      <div class="cta w-full md:w-96 mt-8 md:mt-0">
+        <SimpleCard v-if="inVoting">
+          <div class="text-center text-light text-300 md:text-500">
+            {{ timeTo(proposal?.proposal[0].voting_end_time) }}
+          </div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
@@ -460,8 +462,10 @@ function isTabSelected(tabName: TabNames) {
             {{ $t("components.WalletConnect.button") }}
           </div>
         </SimpleCard>
-        <SimpleCard v-if="inDeposit" class="p-10">
-          <div class="text-center text-light text-500">{{ timeTo(proposal?.proposal[0].deposit_end_time) }}</div>
+        <SimpleCard v-if="inDeposit">
+          <div class="text-center text-light text-300 md:text-500">
+            {{ timeTo(proposal?.proposal[0].deposit_end_time) }}
+          </div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
@@ -517,9 +521,9 @@ function isTabSelected(tabName: TabNames) {
     <UiTabs id="proposal-tab" v-model="tabSelected" :options="tabOptions" />
     <div class="flex flex-col pt-[72px]">
       <div v-if="isTabSelected('Info')" class="w-full">
-        <div class="flex flex-col gap-6">
-          <div class="flex gap-6">
-            <SimpleCard class="w-1/2 flex-grow p-10">
+        <div class="flex flex-col gap-4 md:gap-6">
+          <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+            <SimpleCard class="w-full md:w-1/2 flex-grow">
               <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.proposalDescription") }}</div>
               <div class="text-grey-100">
                 {{ description }}...
@@ -533,7 +537,7 @@ function isTabSelected(tabName: TabNames) {
                 </template>
               </div>
             </SimpleCard>
-            <SimpleCard class="w-1/2 flex-grow p-10">
+            <SimpleCard class="w-full md:w-1/2 flex-grow">
               <div class="flex w-full flex-wrap">
                 <div class="w-full flex-2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposer") }}</div>
@@ -581,7 +585,7 @@ function isTabSelected(tabName: TabNames) {
             </SimpleCard>
           </div>
           <div class="flex">
-            <SimpleCard class="w-full p-10">
+            <SimpleCard class="w-full">
               <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.messages") }}</div>
               <div
                 v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
@@ -666,8 +670,8 @@ function isTabSelected(tabName: TabNames) {
           </div>
         </div>
       </div>
-      <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
-        <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
+      <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-4 md:gap-6">
+        <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-4 md:gap-6">
           <!-- All Account Votes -->
           <VotePanel
             :voters="distinctVoters"

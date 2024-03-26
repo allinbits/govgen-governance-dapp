@@ -9,11 +9,11 @@ const { link } = defineProps<{ link: string }>();
     </div>
     <div class="flex flex-col text-grey-100 text-300 font-medium">
       <slot name="number"></slot>
-      <div class="flex flex-col text-[white] text-500 font-semibold text-left">
+      <div class="flex flex-col text-[white] text-400 xl:text-500 font-semibold text-left mt-1">
         <slot></slot>
       </div>
     </div>
-    <div class="flex flex-row">
+    <div class="flex flex-row mt-auto">
       <slot name="footer"></slot>
     </div>
   </router-link>
