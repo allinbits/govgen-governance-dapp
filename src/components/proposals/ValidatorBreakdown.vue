@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { ValSetQuery, ValidatorsQuery, VotesQuery } from "@/gql/graphql";
 import * as Utility from "@/utility/index";
-import { computed } from "vue";
 
 const props = defineProps<{
   validatorData: Array<
