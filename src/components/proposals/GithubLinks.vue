@@ -143,7 +143,7 @@ onMounted(refresh);
                 <div
                   :class="isLoggedIn ? ['cursor-pointer', 'hover:opacity-50'] : []"
                   class="flex flex-row items-center gap-2 text-grey-100 text-100"
-                  @click="postVote('upvote', linkInfo.id, linkInfo.didUpvote)"
+                  @click="isLoggedIn ? postVote('upvote', linkInfo.id, linkInfo.didUpvote) : () => {}"
                 >
                   <Icon icon="thumbsup" />
                   <div class="text-center text-sm">{{ linkInfo.upvotes }}</div>
@@ -152,7 +152,7 @@ onMounted(refresh);
                 <div
                   :class="isLoggedIn ? ['cursor-pointer', 'hover:opacity-50'] : []"
                   class="flex flex-row items-center gap-2 text-grey-100 text-100"
-                  @click="postVote('downvote', linkInfo.id, linkInfo.didDownvote)"
+                  @click="isLoggedIn ? postVote('downvote', linkInfo.id, linkInfo.didDownvote) : () => {}"
                 >
                   <Icon icon="thumbsup" class="rotate-180" />
                   <div class="text-center text-sm">{{ linkInfo.downvotes }}</div>
