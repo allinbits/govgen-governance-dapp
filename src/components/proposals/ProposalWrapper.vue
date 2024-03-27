@@ -408,7 +408,7 @@ function isTabSelected(tabName: TabNames) {
           #{{ proposal?.proposal[0].id }}: {{ proposal?.proposal[0].title }}
         </h1>
         <div class="basic-stats flex flex-col sm:flex-row gap-y-6">
-          <div class="quorum mr-16">
+          <div class="quorum mr-[72px]">
             <div class="text-100 text-grey-100 mb-2 sm:mb-4">
               {{ $t("proposalpage.labels.turnOut") }} | {{ $t("proposalpage.labels.quorum") }}
             </div>
