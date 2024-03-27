@@ -195,8 +195,6 @@ const copyCLI = async () => {
                 <button class="px-6 py-4 rounded bg-gradient text-dark text-300 text-center w-full" @click="signVote()">
                   {{ $t("ui.actions.confirm") }}
                 </button>
-
-                <!-- TODO: get CLI cmd-->
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                   @click="signVote(true)"
@@ -222,14 +220,17 @@ const copyCLI = async () => {
           </div>
 
           <div class="relative">
-            <button class="absolute top-4 right-4 text-200 flex gap-1" @click="copyCLI()">
+            <button
+              class="absolute top-4 right-4 text-200 flex gap-1 hover:text-grey-50 duration-200"
+              @click="copyCLI()"
+            >
               <span><Icon icon="copy" /></span>{{ copyBtnLabel }}
             </button>
             <textarea
               ref="CLIVote"
               readonly
               v-model="cliVoteInput"
-              class="w-full h-80 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
+              class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
             ></textarea>
           </div>
 
