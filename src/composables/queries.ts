@@ -99,7 +99,7 @@ export const useProposalsFailedQuery = (
   variables: ProposalsFailedQueryVariables,
   options?: UseQueryOptions<ProposalsFailedQuery, ProposalsFailedQueryVariables>,
 ) => {
-  return useQuery<ProposalsFailedQueryVariables, ProposalsFailedQueryVariables>(
+  return useQuery<ProposalsFailedQuery, ProposalsFailedQueryVariables>(
     ProposalsFailedDocument,
     variables,
     options ?? {},

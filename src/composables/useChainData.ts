@@ -40,11 +40,7 @@ export const useChainData = () => {
     const { result } = useBalanceQuery({ address });
     return result;
   };
-  const getProposals = (
-    order: "active" | "passed" | "rejected" | "failed" = "active",
-    limit: number,
-    offset: number,
-  ) => {
+  const getProposals = (order: "active" | "passed" | "rejected" | "failed", limit: number, offset: number) => {
     switch (order) {
       case "passed":
         return useProposalsPassedQuery({ limit, offset }, { pollInterval: 5000 }).result;

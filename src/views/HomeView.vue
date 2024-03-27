@@ -15,7 +15,7 @@ const activityFilterIndex = ref(0);
 const searchText = ref("");
 const { getProposals } = useChainData();
 
-const proposals = getProposals();
+const proposals = getProposals("active", 16, 0);
 const filterToStatus = computed(() => {
   switch (typeFilterIndex.value) {
     default:
@@ -170,15 +170,15 @@ function onSearchInput() {
         <DropDown
           v-model="typeFilterIndex"
           :values="['All Proposals', 'Deposit', 'Voting', 'Passed', 'Rejected', 'Failed']"
-          @select="setTypeFilterIndex"
           class="w-full lg:w-fit"
+          @select="setTypeFilterIndex"
         />
         <!-- Show 'x' First -->
         <DropDown
           v-model="activityFilterIndex"
           :values="['Active First', 'Passed First', 'Rejected First', 'Failed First']"
-          @select="setActivityFilterIndex"
           class="w-full lg:w-fit"
+          @select="setActivityFilterIndex"
         />
       </div>
     </div>
