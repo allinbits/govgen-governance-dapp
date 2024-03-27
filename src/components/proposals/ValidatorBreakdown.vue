@@ -34,9 +34,6 @@ const getTxHash = (vote: VotesQuery["proposal_vote"][0]) => {
     return "-";
   }
 };
-const filteredVotes = computed(() => {
-  return props.validatorData.map((x) => x.votes).flat();
-});
 const getValidatorInfo = (address: string) => {
   return props.validatorData.filter((x) => x.validator.validator_info?.self_delegate_address == address)[0].validator
     .validator_descriptions[0];
@@ -52,16 +49,29 @@ const getValidatorInfo = (address: string) => {
       <span>Weight</span>
       <span class="text-right">Time</span>
     </div>
-    <div
-      v-for="vote in filteredVotes"
-      :key="vote.voter_address + vote.option"
-      class="grid grid-cols-5 py-4 w-full text-200 text-grey-50"
-    >
-      <span>{{ getValidatorInfo(vote.voter_address).moniker }}</span>
-      <span>{{ getTxHash(vote) }}</span>
-      <span>{{ vote.option.replace("VOTE_OPTION_", "") }}</span>
-      <span>{{ Utility.decToPerc(vote.weight, 0) }}%</span>
-      <span class="text-right">{{ Utility.formatHuman(new Date(vote.timestamp)) }}</span>
-    </div>
+    <template v-for="validator in validatorData">
+      <template v-if="validator.votes.length > 0">
+        <div
+          v-for="vote in validator.votes"
+          :key="vote.voter_address + vote.option"
+          class="grid grid-cols-5 py-4 w-full text-200 text-grey-50"
+        >
+          <span>{{ getValidatorInfo(vote.voter_address).moniker }}</span>
+          <span>{{ getTxHash(vote) }}</span>
+          <span>{{ vote.option.replace("VOTE_OPTION_", "") }}</span>
+          <span>{{ Utility.decToPerc(vote.weight, 0) }}%</span>
+          <span class="text-right">{{ Utility.formatHuman(new Date(vote.timestamp)) }}</span>
+        </div>
+      </template>
+      <template v-else>
+        <div :key="validator.validator_address" class="grid grid-cols-5 py-4 w-full text-200 text-grey-50">
+          <span>{{ getValidatorInfo(validator.validator.validator_info?.self_delegate_address ?? "").moniker }}</span>
+          <span> - </span>
+          <span>HAS NOT VOTED</span>
+          <span>-</span>
+          <span class="text-right">-</span>
+        </div>
+      </template>
+    </template>
   </div>
 </template>
