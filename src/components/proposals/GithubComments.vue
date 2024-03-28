@@ -11,7 +11,7 @@ import DropDown from "@/components/ui/DropDown.vue";
 const props = defineProps<{ term: string }>();
 
 const { logout, isLoggedIn, login, username, avatar } = useGithubDiscussions();
-const { comments, refresh, postMessage, postUpvote, isPosting, isFailing, isLoading } = useGithubDiscusser(props.term);
+const { comments, refresh, postMessage, postVote, isPosting, isFailing, isLoading } = useGithubDiscusser(props.term);
 
 const sortingList = ["Popular", "Oldest", "Latest"];
 const sortingType = ref(0);
@@ -47,6 +47,7 @@ const sortedComments = computed(() => {
     // Popular
     case 0:
       commentList.sort((a, b) => b.upvotes - a.upvotes);
+      console.log(commentList);
       break;
     // Oldest
     case 1:
@@ -142,10 +143,19 @@ onMounted(refresh);
               <div
                 :class="isLoggedIn ? ['cursor-pointer'] : []"
                 class="flex flex-row items-center ml-auto hover:opacity-50 gap-1"
-                @click="postUpvote(comment.id, comment.didUpvote)"
+                @click="isLoggedIn ? postVote('upvote', comment.id, comment.didUpvote) : () => {}"
               >
                 <Icon icon="thumbsup" />
                 <div class="text-center text-sm">{{ comment.upvotes }}</div>
+              </div>
+              <!-- Downvote -->
+              <div
+                :class="isLoggedIn ? ['cursor-pointer'] : []"
+                class="flex flex-row items-center ml-auto hover:opacity-50 gap-1"
+                @click="isLoggedIn ? postVote('downvote', comment.id, comment.didDownvote) : () => {}"
+              >
+                <Icon icon="thumbsup" class="rotate-180" />
+                <div class="text-center text-sm">{{ comment.downvotes }}</div>
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@ import { useConfig } from "@/composables/useConfig";
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
 import * as Utility from "@/utility/index";
 
-const { getDiscussion, getCategory, post, toggleUpvote } = useGithubDiscussions();
+const { getDiscussion, getCategory, post, toggleVote } = useGithubDiscussions();
 const Config = useConfig();
 
 export function useGithubDiscusser(threadTitle: string) {
@@ -77,14 +77,14 @@ export function useGithubDiscusser(threadTitle: string) {
     return true;
   }
 
-  async function postUpvote(subjectId: string, didUpvote: boolean): Promise<boolean> {
+  async function postVote(type: "upvote" | "downvote", subjectId: string, isToggled: boolean): Promise<boolean> {
     if (isPosting.value) {
       return false;
     }
 
     isPosting.value = true;
 
-    const response = await toggleUpvote({ subjectId, didUpvote });
+    const response = await toggleVote({ type, subjectId, isToggled });
     if (!response) {
       isPosting.value = false;
       alert("Failed to upvote");
@@ -103,6 +103,7 @@ export function useGithubDiscusser(threadTitle: string) {
 
     const comments = discussion.value.comments.nodes.map((x) => {
       const upvote = x.reactionGroups.find((x) => x.content == "THUMBS_UP");
+      const downvote = x.reactionGroups.find((x) => x.content == "THUMBS_DOWN");
 
       return {
         id: x.id,
@@ -112,7 +113,9 @@ export function useGithubDiscusser(threadTitle: string) {
         editedAt: x.lastEditedAt,
         author: x.author,
         upvotes: upvote ? upvote.users.totalCount : 0,
+        downvotes: downvote ? downvote.users.totalCount : 0,
         didUpvote: upvote?.viewerHasReacted ? true : false,
+        didDownvote: downvote?.viewerHasReacted ? true : false,
         url: x.url,
       };
     });
@@ -131,6 +134,7 @@ export function useGithubDiscusser(threadTitle: string) {
 
     const comments = discussion.value.comments.nodes.map((x) => {
       const upvote = x.reactionGroups.find((x) => x.content == "THUMBS_UP");
+      const downvote = x.reactionGroups.find((x) => x.content == "THUMBS_DOWN");
       const links = Utility.getLinks(x.bodyHTML);
       const bodyText = x.bodyHTML.replace(/(<([^>]+)>)/gi, "");
       const isBodyExceeded = bodyText.length >= 128 ? true : false;
@@ -143,7 +147,9 @@ export function useGithubDiscusser(threadTitle: string) {
         editedAt: x.lastEditedAt,
         author: x.author,
         upvotes: upvote ? upvote.users.totalCount : 0,
+        downvotes: downvote ? downvote.users.totalCount : 0,
         didUpvote: upvote?.viewerHasReacted ? true : false,
+        didDownvote: downvote?.viewerHasReacted ? true : false,
         url: x.url,
         link: links[0] ? links[0] : "#",
       };
@@ -165,7 +171,7 @@ export function useGithubDiscusser(threadTitle: string) {
     links,
     refresh,
     postMessage,
-    postUpvote,
+    postVote,
     isPosting,
     isRefreshing,
     isLoading,

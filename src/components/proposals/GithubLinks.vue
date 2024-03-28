@@ -10,7 +10,7 @@ import { useGithubDiscusser } from "@/composables/useGithubDiscusser";
 const props = defineProps<{ term: string }>();
 
 const { logout, isLoggedIn, login, username } = useGithubDiscussions();
-const { links, refresh, postMessage, postUpvote, isPosting, isFailing, isLoading } = useGithubDiscusser(props.term);
+const { links, refresh, postMessage, postVote, isPosting, isFailing, isLoading } = useGithubDiscusser(props.term);
 
 const linkInput = ref<string>("");
 const contextInput = ref<string>("");
@@ -118,13 +118,13 @@ onMounted(refresh);
     <div v-if="!isLoading && !isFailing" class="flex flex-col gap-2 w-full mb-4 pt-8">
       <div class="grid gap-6 w-full flex-wrap grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div
-          v-for="(comment, index) in links"
+          v-for="(linkInfo, index) in links"
           :key="index"
           class="flex flex-row pt-8 pl-8 pr-8 pb-6 rounded-2xl w-full bg-grey-400 rounded-md"
         >
           <div class="flex flex-col items-start w-full gap-4">
             <a
-              :href="comment.link"
+              :href="linkInfo.link"
               target="_blank"
               class="flex items-center text-400 start-8 font-normal hover:opacity-50"
             >
@@ -132,19 +132,31 @@ onMounted(refresh);
             </a>
 
             <!-- eslint-disable vue/no-v-html -->
-            <div class="w-full flex-grow text-grey-100 text-300 h-20" v-html="DOMPurify.sanitize(comment.body)" />
+            <div class="w-full flex-grow text-grey-100 text-300 h-20" v-html="DOMPurify.sanitize(linkInfo.body)" />
             <!-- eslint-enable -->
             <div class="flex flex-row justify-between gap-2 text-xs text-gray-500 w-full mt-4">
-              <a :href="comment.author.url" target="_blank" class="text-grey-100 text-100 hover:opacity-50">
-                by {{ comment.author.login }}
+              <a :href="linkInfo.author.url" target="_blank" class="text-grey-100 text-100 hover:opacity-50">
+                by {{ linkInfo.author.login }}
               </a>
-              <div
-                :class="isLoggedIn ? ['cursor-pointer', 'hover:opacity-50'] : []"
-                class="flex flex-row items-center gap-2 text-grey-100 text-100"
-                @click="postUpvote(comment.id, comment.didUpvote)"
-              >
-                <Icon icon="thumbsup" />
-                <div class="text-center text-sm">{{ comment.upvotes }}</div>
+              <div class="flex flex-row gap-2">
+                <!-- Upvote -->
+                <div
+                  :class="isLoggedIn ? ['cursor-pointer', 'hover:opacity-50'] : []"
+                  class="flex flex-row items-center gap-2 text-grey-100 text-100"
+                  @click="isLoggedIn ? postVote('upvote', linkInfo.id, linkInfo.didUpvote) : () => {}"
+                >
+                  <Icon icon="thumbsup" />
+                  <div class="text-center text-sm">{{ linkInfo.upvotes }}</div>
+                </div>
+                <!-- Downvote -->
+                <div
+                  :class="isLoggedIn ? ['cursor-pointer', 'hover:opacity-50'] : []"
+                  class="flex flex-row items-center gap-2 text-grey-100 text-100"
+                  @click="isLoggedIn ? postVote('downvote', linkInfo.id, linkInfo.didDownvote) : () => {}"
+                >
+                  <Icon icon="thumbsup" class="rotate-180" />
+                  <div class="text-center text-sm">{{ linkInfo.downvotes }}</div>
+                </div>
               </div>
             </div>
           </div>
