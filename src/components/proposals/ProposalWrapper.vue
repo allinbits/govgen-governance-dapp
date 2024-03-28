@@ -375,7 +375,7 @@ function isTabSelected(tabName: TabNames) {
 
 <template>
   <div>
-    <div class="badges my-12">
+    <div class="badges my-8 md:my-12">
       <template v-if="inVoting">
         <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
           >{{ $t("proposalpage.badges.votingPeriod") }}
@@ -402,48 +402,56 @@ function isTabSelected(tabName: TabNames) {
         $t("proposalpage.badges.passed")
       }}</SimpleBadge>
     </div>
-    <div class="flex mb-12">
-      <div class="basic-details flex-grow">
-        <h1 class="font-termina text-800 text-light mb-16 pb-2">
+    <div class="flex mb-12 flex-col md:flex-row">
+      <div class="basic-details flex-grow md:pr-10">
+        <h1 class="font-termina text-500 md:text-800 text-light mb-8 md:mb-16 pb-2">
           #{{ proposal?.proposal[0].id }}: {{ proposal?.proposal[0].title }}
         </h1>
-        <div class="basic-stats flex">
+        <div class="basic-stats flex flex-col sm:flex-row gap-y-6">
           <div class="quorum mr-16">
-            <div class="text-100 text-grey-100 mb-4">
+            <div class="text-100 text-grey-100 mb-2 sm:mb-4">
               {{ $t("proposalpage.labels.turnOut") }} | {{ $t("proposalpage.labels.quorum") }}
             </div>
-            <div class="text-500 text-light">{{ decToPerc(turnout, 1) }}% | {{ decToPerc(quorum, 1) }}%</div>
+            <div class="text-300 sm:text-400 md:text-500 text-light">
+              {{ decToPerc(turnout, 1) }}% | {{ decToPerc(quorum, 1) }}%
+            </div>
           </div>
           <div class="result">
             <template v-if="inDeposit">
-              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.expectedResult") }}</div>
-              <div class="text-500 text-neg-200">{{ $t("proposalpage.results.willFail") }}</div>
+              <div class="text-100 text-grey-100 mb-2 sm:mb-4">{{ $t("proposalpage.labels.expectedResult") }}</div>
+              <div class="text-300 md:text-500 text-neg-200">{{ $t("proposalpage.results.willFail") }}</div>
             </template>
             <template v-if="inVoting">
-              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.expectedResult") }}</div>
-              <div v-if="expectedResult" class="text-500 text-accent-100">
+              <div class="text-100 text-grey-100 mb-2 sm:mb-4">{{ $t("proposalpage.labels.expectedResult") }}</div>
+              <div v-if="expectedResult" class="text-300 sm:text-400 md:text-500 text-accent-100">
                 {{ $t("proposalpage.results.willPass") }}
               </div>
-              <div v-else class="text-500 text-neg-200">{{ $t("proposalpage.results.willReject") }}</div>
+              <div v-else class="text-300 sm:text-400 md:text-500 text-neg-200">
+                {{ $t("proposalpage.results.willReject") }}
+              </div>
             </template>
             <template v-if="passed">
-              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.result") }}</div>
-              <div class="text-500 text-accent-100">{{ $t("proposalpage.results.passed") }}</div>
+              <div class="text-100 text-grey-100 mb-2 sm:mb-4">{{ $t("proposalpage.labels.result") }}</div>
+              <div class="text-300 sm:text-400 md:text-500 text-accent-100">
+                {{ $t("proposalpage.results.passed") }}
+              </div>
             </template>
             <template v-if="rejected">
-              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.result") }}</div>
-              <div class="text-500 text-neg-200">{{ $t("proposalpage.results.rejected") }}</div>
+              <div class="text-100 text-grey-100 mb-2 sm:mb-4">{{ $t("proposalpage.labels.result") }}</div>
+              <div class="text-300 sm:text-400 md:text-500 text-neg-200">{{ $t("proposalpage.results.rejected") }}</div>
             </template>
             <template v-if="failed">
-              <div class="text-100 text-grey-100 mb-4">{{ $t("proposalpage.labels.result") }}</div>
-              <div class="text-500 text-neg-200">{{ $t("proposalpage.results.failed") }}</div>
+              <div class="text-100 text-grey-100 mb-2 sm:mb-4">{{ $t("proposalpage.labels.result") }}</div>
+              <div class="text-300 sm:text-400 md:text-500 text-neg-200">{{ $t("proposalpage.results.failed") }}</div>
             </template>
           </div>
         </div>
       </div>
-      <div class="cta w-96">
-        <SimpleCard v-if="inVoting" class="p-10">
-          <div class="text-center text-light text-500">{{ timeTo(proposal?.proposal[0].voting_end_time) }}</div>
+      <div class="cta w-full md:w-96 pt-6 md:pt-0">
+        <SimpleCard v-if="inVoting">
+          <div class="text-center text-light text-300 md:text-500 mt-8 md:mt-0">
+            {{ timeTo(proposal?.proposal[0].voting_end_time) }}
+          </div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
@@ -460,8 +468,10 @@ function isTabSelected(tabName: TabNames) {
             {{ $t("components.WalletConnect.button") }}
           </div>
         </SimpleCard>
-        <SimpleCard v-if="inDeposit" class="p-10">
-          <div class="text-center text-light text-500">{{ timeTo(proposal?.proposal[0].deposit_end_time) }}</div>
+        <SimpleCard v-if="inDeposit">
+          <div class="text-center text-light text-300 md:text-500 mt-8 md:mt-0">
+            {{ timeTo(proposal?.proposal[0].deposit_end_time) }}
+          </div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="bg-gradient rounded h-2 w-2/12" />
           </div>
@@ -487,40 +497,48 @@ function isTabSelected(tabName: TabNames) {
       </div>
     </div>
     <SimpleCard v-if="!inDeposit" class="items-stretch my-6">
-      <div class="flex">
-        <div class="w-25 py-8 text-center flex-1">
-          <div class="text-500 text-accent-100 mb-1">{{ $t("voteOptions.yes") }}: {{ decToPerc(yes, 2) }}%</div>
+      <div class="flex flex-col sm:flex-row gap-y-8 lg:gap-10 flex-wrap text-center">
+        <div class="w-full sm:w-1/2 lg:w-25 text-center lg:flex-1">
+          <div class="text-300 md:text-500 text-accent-100 mb-1">
+            {{ $t("voteOptions.yes") }}: {{ decToPerc(yes, 2) }}%
+          </div>
           <div class="text-100 text-grey-100">
             {{ formatAmount(yesVotes, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
           </div>
         </div>
-        <div class="w-25 py-8 text-center flex-1">
-          <div class="text-500 text-neg-200 mb-1">{{ $t("voteOptions.no") }}: {{ decToPerc(no, 2) }}%</div>
+        <div class="w-full sm:w-1/2 lg:w-25 text-center lg:flex-1">
+          <div class="text-300 md:text-500 text-neg-200 mb-1">{{ $t("voteOptions.no") }}: {{ decToPerc(no, 2) }}%</div>
           <div class="text-100 text-grey-100">
             {{ formatAmount(noVotes, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
           </div>
         </div>
-        <div class="w-25 py-8 text-center flex-1">
-          <div class="text-500 text-accent-200 mb-1">{{ $t("voteOptions.nwvShort") }}: {{ decToPerc(nwv, 2) }}%</div>
+        <div class="w-full sm:w-1/2 lg:w-25 text-center lg:flex-1">
+          <div class="text-300 md:text-500 text-accent-200 mb-1">
+            {{ $t("voteOptions.nwvShort") }}: {{ decToPerc(nwv, 2) }}%
+          </div>
           <div class="text-100 text-grey-100">
             {{ formatAmount(nwvVotes, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
           </div>
         </div>
-        <div class="w-25 py-8 text-center flex-1">
-          <div class="text-500 text-grey-100 mb-1">{{ $t("voteOptions.abstain") }}: {{ decToPerc(abstain, 2) }}%</div>
+        <div class="w-full sm:w-1/2 lg:w-25 text-center lg:flex-1">
+          <div class="text-300 md:text-500 text-grey-100 mb-1">
+            {{ $t("voteOptions.abstain") }}: {{ decToPerc(abstain, 2) }}%
+          </div>
           <div class="text-100 text-grey-100">
             {{ formatAmount(abstainVotes, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
           </div>
         </div>
       </div>
     </SimpleCard>
-    <UiTabs id="proposal-tab" v-model="tabSelected" :options="tabOptions" />
-    <div class="flex flex-col pt-[72px]">
+    <UiTabs id="proposal-tab" v-model="tabSelected" :options="tabOptions" class="text-400 font-medium mt-14 md:mt-0" />
+    <div class="flex flex-col pt-6 md:pt-[72px]">
       <div v-if="isTabSelected('Info')" class="w-full">
-        <div class="flex flex-col gap-6">
-          <div class="flex gap-6">
-            <SimpleCard class="w-1/2 flex-grow p-10">
-              <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.proposalDescription") }}</div>
+        <div class="flex flex-col gap-4 md:gap-6">
+          <div class="flex flex-col md:flex-row gap-4 lg:gap-6">
+            <SimpleCard class="w-full md:w-1/2 flex-grow">
+              <div class="text-light text-300 md:text-500 text-left mb-8 font-medium">
+                {{ $t("proposalpage.labels.proposalDescription") }}
+              </div>
               <div class="text-grey-100">
                 {{ description }}...
                 <template v-if="shouldTrim">
@@ -533,46 +551,48 @@ function isTabSelected(tabName: TabNames) {
                 </template>
               </div>
             </SimpleCard>
-            <SimpleCard class="w-1/2 flex-grow p-10">
+            <SimpleCard class="w-full md:w-1/2 flex-grow">
               <div class="flex w-full flex-wrap">
                 <div class="w-full flex-2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposer") }}</div>
-                  <div class="text-light text-300">{{ proposal?.proposal[0].proposer_address }}</div>
+                  <div class="text-light text-200 md:text-300 break-words leading-normal">
+                    {{ proposal?.proposal[0].proposer_address }}
+                  </div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full lg:w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingStart") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_start_time).format("MMMM D, YYYY h:mm A") }}
                   </div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full lg:w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingEnd") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_end_time).format("MMMM D, YYYY h:mm A") }}
                   </div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full lg:w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.submitTime") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ dayjs(proposal?.proposal[0].submit_time).format("MMMM D, YYYY h:mm A") }}
                   </div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full lg:w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.depositEnd") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ inDeposit ? dayjs(proposal?.proposal[0].deposit_end_time).format("MMMM D, YYYY h:mm A") : "-" }}
                   </div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full lg:w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.initialDeposit") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ formatAmount(initialDeposit, stakingDenomDecimals) }} /
                     {{ formatAmount(minDeposit, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
                   </div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full lg:w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.totalDeposit") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ formatAmount(totalDeposit, stakingDenomDecimals) }} /
                     {{ formatAmount(minDeposit, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
                   </div>
@@ -581,54 +601,56 @@ function isTabSelected(tabName: TabNames) {
             </SimpleCard>
           </div>
           <div class="flex">
-            <SimpleCard class="w-full p-10">
-              <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.messages") }}</div>
+            <SimpleCard class="w-full">
+              <div class="text-light text-300 md:text-500 text-left mb-8 font-medium">
+                {{ $t("proposalpage.labels.messages") }}
+              </div>
               <div
                 v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
                 class="flex w-full flex-wrap"
               >
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full md:w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
-                  <div class="text-light text-300">{{ $t("proposalpage.types.text") }}</div>
+                  <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.text") }}</div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full md:w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ proposal?.proposal[0].content.title }}
                   </div>
                 </div>
                 <div class="w-full flex-2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ proposal?.proposal[0].content.description }}
                   </div>
                 </div>
               </div>
               <div
                 v-if="proposal?.proposal[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
-                class="flex w-full flex-wrap"
+                class="flex w-full flex-wrap flex-col md:flex-row"
               >
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
-                  <div class="text-light text-300">{{ $t("proposalpage.types.paramChange") }}</div>
+                  <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.paramChange") }}</div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ proposal?.proposal[0].content.title }}
                   </div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ proposal?.proposal[0].content.description }}
                   </div>
                 </div>
-                <div class="grow w-1/2 mb-10">
+                <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.changes") }}</div>
                   <div class="text-light text-100">
                     <code>
-                      <pre class="text-pretty">{{ proposal?.proposal[0].content.changes }}</pre>
+                      <pre class="text-pretty break-words">{{ proposal?.proposal[0].content.changes }}</pre>
                     </code>
                   </div>
                 </div>
@@ -639,17 +661,17 @@ function isTabSelected(tabName: TabNames) {
               >
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
-                  <div class="text-light text-300">{{ $t("proposalpage.types.text") }}</div>
+                  <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.text") }}</div>
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ proposal?.proposal[0].content.title }}
                   </div>
                 </div>
                 <div class="grow w-1/2 mb-10">
                   <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
-                  <div class="text-light text-300">
+                  <div class="text-light text-200 md:text-300">
                     {{ proposal?.proposal[0].content.description }}
                   </div>
                 </div>
@@ -666,8 +688,8 @@ function isTabSelected(tabName: TabNames) {
           </div>
         </div>
       </div>
-      <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
-        <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
+      <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-4 md:gap-6">
+        <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-4 md:gap-6">
           <!-- All Account Votes -->
           <VotePanel
             :voters="distinctVoters"
@@ -697,7 +719,9 @@ function isTabSelected(tabName: TabNames) {
 
         <!-- Treemap Panel-->
         <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
-          <div class="text-light text-500 text-left mb-8">{{ $t("proposalpage.labels.validatorQuota") }}</div>
+          <div class="text-light text-300 md:text-500 text-left mb-8">
+            {{ $t("proposalpage.labels.validatorQuota") }}
+          </div>
           <div class="flex flex-row object-contain">
             <template v-if="validatorVoteSum >= 1">
               <div
@@ -709,7 +733,7 @@ function isTabSelected(tabName: TabNames) {
                 <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
               </div>
             </template>
-            <div v-else class="text-grey-100 text-300">
+            <div v-else class="text-grey-100 text-200 md:text-300">
               {{ $t("proposalpage.labels.noValidatorVotes") }}
             </div>
           </div>
