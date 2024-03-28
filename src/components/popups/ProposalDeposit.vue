@@ -12,6 +12,7 @@ import Icon from "@/components/ui/Icon.vue";
 import CommonButton from "@/components/ui/CommonButton.vue";
 
 import { useWallet } from "@/composables/useWallet";
+import { useClipboard } from "@vueuse/core";
 import { useProposals } from "@/composables/useProposals";
 import { formatAmount } from "@/utility";
 
@@ -73,17 +74,7 @@ const signDeposit = async (isCLI = false) => {
   displayState.value = isCLI ? "CLI" : "deposited";
 };
 
-//TODO: create a composable (vote / deposit)
-const copyBtnLabel = ref("Copy");
-const copyCLI = async () => {
-  try {
-    await navigator.clipboard.writeText(cliDepositInput.value);
-    copyBtnLabel.value = "Copied";
-  } catch (err) {
-    copyBtnLabel.value = "Error " + err;
-  }
-  setTimeout(() => (copyBtnLabel.value = "Copy"), 2000);
-};
+const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 </script>
 
 <template>
@@ -159,10 +150,12 @@ const copyCLI = async () => {
 
           <div class="relative">
             <button
-              class="absolute top-4 right-4 text-200 flex gap-1 hover:text-grey-50 duration-200"
-              @click="copyCLI()"
+              v-if="isClipboardSupported"
+              class="absolute top-4 right-4 text-200 hover:text-grey-50 duration-200"
+              @click="copy(cliDepositInput)"
             >
-              <span><Icon icon="copy" /></span>{{ copyBtnLabel }}
+              <span v-show="copied">Copied</span>
+              <span class="flex gap-1" v-show="!copied"> <Icon icon="copy" /><span>Copy</span> </span>
             </button>
             <textarea
               ref="CLIVote"
