@@ -124,7 +124,7 @@ const signVote = async () => {
   <div class="relative">
     <div>
       <div
-        class="justify-center px-6 py-4 rounded bg-gradient text-dark text-300 text-center cursor-pointer"
+        class="justify-center px-6 py-4 rounded link-gradient hover: text-dark text-300 text-center cursor-pointer"
         @click="toogleModal(true)"
       >
         {{ $t("components.ProposalVote.cta") }}
@@ -178,7 +178,10 @@ const signVote = async () => {
 
             <div class="flex flex-col gap-4">
               <div v-show="voteStraight || checkVoteWeighted" class="flex flex-col gap-4">
-                <button class="px-6 py-4 rounded bg-gradient text-dark text-300 text-center w-full" @click="signVote()">
+                <button
+                  class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
+                  @click="signVote()"
+                >
                   {{ $t("ui.actions.confirm") }}
                 </button>
 

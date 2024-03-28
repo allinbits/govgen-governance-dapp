@@ -94,7 +94,7 @@ onMounted(refresh);
           class="outline-none gap-2 h-52 p-4 border border-grey-200 bg-grey-300 rounded hover:border-grey-100 focus:border-light cursor-text placeholder:text-grey-100 items-center text-200 w-full"
         ></textarea>
         <CommonButton
-          class="absolute right-6 bottom-6 bg-gradient from-gradient-100 to-gradient-900 !text-dark hover:opacity-75"
+          class="absolute right-6 bottom-6 link-gradient from-gradient-100 to-gradient-900 !text-dark hover:opacity-75"
           @click="createPost"
         >
           Post Comment

@@ -4,7 +4,13 @@
   <div class="hidden md:flex flex-col w-full pt-12 relative" v-bind="$attrs">
     <div ref="toggler" class="flex flex-row w-full gap-6 md:gap-12 relative" role="radiogroup" aria-label="Switch">
       <!-- Tabs -->
-      <div v-for="(option, index) in options" :key="option" :ref="(el) => tabRefs.push(el as any)" class="z-2">
+      <div
+        v-for="(option, index) in options"
+        :key="option"
+        :ref="(el) => tabRefs.push(el as any)"
+        class="z-2"
+        @mouseover="changeTab(index, false)"
+      >
         <input
           v-bind="$attrs"
           :id="id + option"
@@ -25,7 +31,7 @@
     </div>
     <!-- Movable Line -->
     <div class="flex flex-row w-full mt-4 border-b-2 border-grey-300">
-      <div ref="line" class="h-1 w-1 bg-light rounded-t transition-all ease-in-out"></div>
+      <div ref="line" class="h-1 w-1 bg-light rounded-t transition-all duration-200 ease-in-out"></div>
     </div>
   </div>
 </template>
@@ -47,9 +53,9 @@ const line = ref<HTMLElement | null>(null);
 const tabIdx = ref<number>(0);
 
 const props = withDefaults(defineProps<Props>(), { modelValue: undefined });
-function changeTab(idx: number = 0) {
+function changeTab(idx: number = 0, isClicked = true) {
   tabIdx.value = idx;
-  tabSelected.value = props.options[tabIdx.value];
+  if (isClicked) tabSelected.value = props.options[tabIdx.value];
   const el = tabRefs.value[tabIdx.value] as HTMLElement;
   if (!el || !line.value) {
     return;

@@ -125,7 +125,7 @@ export default <Config>{
             "background-position": "0% 0%",
           },
           ".link-gradient:hover": {
-            "background-position": "66.66% 0%",
+            "background-position": "100% 0%",
           },
         });
     }),

@@ -453,12 +453,12 @@ function isTabSelected(tabName: TabNames) {
             {{ timeTo(proposal?.proposal[0].voting_end_time) }}
           </div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
-            <div class="bg-gradient rounded h-2 w-2/12" />
+            <div class="link-gradient rounded h-2 w-2/12" />
           </div>
           <ProposalVote v-if="loggedIn" :proposal-id="proposal?.proposal[0].id" class="w-full" />
           <div
             v-else
-            class="justify-center px-6 py-4 rounded bg-gradient text-dark text-300 text-center cursor-pointer w-full"
+            class="justify-center px-6 py-4 rounded link-gradient text-dark text-300 text-center cursor-pointer w-full"
             @click="
               () => {
                 bus.emit('open');
@@ -473,7 +473,7 @@ function isTabSelected(tabName: TabNames) {
             {{ timeTo(proposal?.proposal[0].deposit_end_time) }}
           </div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
-            <div class="bg-gradient rounded h-2 w-2/12" />
+            <div class="link-gradient rounded h-2 w-2/12" />
           </div>
           <ProposalDeposit
             v-if="loggedIn"
@@ -484,7 +484,7 @@ function isTabSelected(tabName: TabNames) {
           />
           <div
             v-else
-            class="justify-center px-6 py-4 rounded bg-gradient text-dark text-300 text-center cursor-pointer w-full"
+            class="justify-center px-6 py-4 rounded link-gradient text-dark text-300 text-center cursor-pointer w-full"
             @click="
               () => {
                 bus.emit('open');
