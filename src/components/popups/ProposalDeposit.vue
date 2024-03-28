@@ -67,7 +67,7 @@ const signDeposit = async (isCLI = false) => {
     ],
   };
 
-  const depot = await depositProposal(depositOptions);
+  const depot = await depositProposal(depositOptions, isCLI);
   //TODO: handle error and get result from chain
 
   cliDepositInput.value = (isCLI ? depot : "") as string;
