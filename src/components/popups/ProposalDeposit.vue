@@ -8,6 +8,8 @@ import chainConfig from "@/chain-config.json";
 import ModalWrap from "@/components/common/ModalWrap.vue";
 import UiInput from "@/components/ui/UiInput.vue";
 import UiInfo from "@/components/ui/UiInfo.vue";
+import Icon from "@/components/ui/Icon.vue";
+import CommonButton from "@/components/ui/CommonButton.vue";
 
 import { useWallet } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
@@ -22,10 +24,12 @@ interface Props {
 const props = defineProps<Props>();
 
 const isOpen = ref(false);
-const isDeposit = ref(false);
+const displayState = ref<"deposited" | "CLI" | "pending">("pending");
+
 const depositAmount = ref<number | null>(null);
 
-//TODO: dynamic data
+const cliDepositInput = ref("");
+
 const depositDenomDecimals = computed(() => {
   return chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom)[0].coinDecimals ?? 0;
 });
@@ -35,20 +39,19 @@ const depositDenomDisplay = computed(() => {
     chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom)[0].coinDenom ?? props.depositDenom
   );
 });
-//TODO: end
 
 const resetDeposit = () => (depositAmount.value = null);
 
 const toogleModal = (dir: boolean) => {
   isOpen.value = dir;
-  isDeposit.value = false;
+  displayState.value = "pending";
   resetDeposit();
 };
 
 const { depositProposal } = useProposals();
 const { address } = useWallet();
 
-const signDeposit = async () => {
+const signDeposit = async (isCLI = false) => {
   if (!depositAmount.value || depositAmount.value <= 0) return;
   if (!props.proposalId) return;
 
@@ -63,10 +66,23 @@ const signDeposit = async () => {
     ],
   };
 
-  await depositProposal(depositOptions);
+  const depot = await depositProposal(depositOptions);
   //TODO: handle error and get result from chain
 
-  isDeposit.value = true;
+  cliDepositInput.value = (isCLI ? depot : "") as string;
+  displayState.value = isCLI ? "CLI" : "deposited";
+};
+
+//TODO: create a composable (vote / deposit)
+const copyBtnLabel = ref("Copy");
+const copyCLI = async () => {
+  try {
+    await navigator.clipboard.writeText(cliDepositInput.value);
+    copyBtnLabel.value = "Copied";
+  } catch (err) {
+    copyBtnLabel.value = "Error " + err;
+  }
+  setTimeout(() => (copyBtnLabel.value = "Copy"), 2000);
 };
 </script>
 
@@ -83,7 +99,7 @@ const signDeposit = async () => {
 
     <ModalWrap :visible="isOpen" :is-empty="true" @back="isOpen = false">
       <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
-        <div v-if="!isDeposit" class="flex flex-col gap-6 relative">
+        <div v-show="displayState === 'pending'" class="flex flex-col gap-6 relative">
           <span class="text-gradient font-termina text-700 text-center">{{
             $t("components.ProposalDeposit.cta")
           }}</span>
@@ -118,9 +134,9 @@ const signDeposit = async () => {
                   {{ $t("ui.actions.confirm") }}
                 </button>
 
-                <!-- TODO: get CLI cmd-->
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
+                  @click="signDeposit(true)"
                 >
                   {{ $t("ui.actions.cli") }}
                 </button>
@@ -135,7 +151,38 @@ const signDeposit = async () => {
             </div>
           </div>
         </div>
-        <div v-show="isDeposit">
+        <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
+          <div class="flex flex-col items-center gap-4">
+            <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
+            <span class="text-grey-100">CLI Command</span>
+          </div>
+
+          <div class="relative">
+            <button
+              class="absolute top-4 right-4 text-200 flex gap-1 hover:text-grey-50 duration-200"
+              @click="copyCLI()"
+            >
+              <span><Icon icon="copy" /></span>{{ copyBtnLabel }}
+            </button>
+            <textarea
+              ref="CLIVote"
+              readonly
+              v-model="cliDepositInput"
+              class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
+            ></textarea>
+          </div>
+
+          <div class="flex gap-x-4 items-stretch">
+            <CommonButton class="w-full" @click="() => (displayState = 'pending')">Back</CommonButton>
+            <button
+              class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
+              @click="toogleModal(false)"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+        <div v-show="displayState === 'deposited'">
           <UiInfo title="You deposited">
             <div class="text-500 text-center font-semibold mb-8 w-full">
               {{ depositAmount }} {{ depositDenomDisplay }}
