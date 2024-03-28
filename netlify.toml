@@ -5,3 +5,8 @@
 [context.deploy-preview.environment]
   VITE_ENDPOINT = "https://gh-discuss.devnet.govgen.dev"
   VITE_REPO = "allinbits/govgen-governance-discussions-test"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

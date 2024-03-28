@@ -7,6 +7,8 @@ import { VoteOption } from "cosmjs-types/cosmos/gov/v1beta1/gov";
 import ModalWrap from "@/components/common/ModalWrap.vue";
 
 import { useI18n } from "vue-i18n";
+import Icon from "@/components/ui/Icon.vue";
+import CommonButton from "@/components/ui/CommonButton.vue";
 import UiSwitch from "@/components/ui/UiSwitch.vue";
 import UiState from "@/components/ui/UiState.vue";
 import UiInput from "@/components/ui/UiInput.vue";
@@ -14,6 +16,7 @@ import UiInfo from "@/components/ui/UiInfo.vue";
 
 import { useWallet } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
+import { useClipboard } from "@vueuse/core";
 
 interface Props {
   proposalId?: number;
@@ -22,12 +25,12 @@ const props = defineProps<Props>();
 
 const { t } = useI18n();
 const isOpen = ref(false);
-const isVoted = ref(false);
-
-// const votedState = computed(() => isVoted.value && isOpen.value);
+const displayState = ref<"voted" | "CLI" | "pending">("pending");
 
 const tabOptions = reactive(["Straight", "Weighted"]);
 const tab = ref(tabOptions[0]);
+
+const cliVoteInput = ref("");
 
 // Votes info
 const voteList: Partial<Record<VoteOption, { label: string; color: string }>> = {
@@ -56,7 +59,7 @@ const resetVote = () => {
 
 const toogleModal = (dir: boolean) => {
   isOpen.value = dir;
-  isVoted.value = false;
+  displayState.value = "pending";
   resetVote();
 };
 
@@ -68,7 +71,7 @@ const checkVoteWeighted = computed(
 const { voteProposal, voteWeightedProposal } = useProposals();
 const { address } = useWallet();
 
-const signVote = async () => {
+const signVote = async (isCLI = false) => {
   if (!props.proposalId) return;
 
   let voteOptions: MsgVote | MsgVoteWeighted | null = null;
@@ -113,11 +116,14 @@ const signVote = async () => {
   }
 
   const voteProposalFunc = checkVoteWeighted.value ? voteWeightedProposal : voteProposal;
-  await (voteOptions && voteProposalFunc(voteOptions));
+  const vote = await (voteOptions && voteProposalFunc(voteOptions, isCLI));
   //TODO: handle error and get result from chain
 
-  isVoted.value = true;
+  cliVoteInput.value = (isCLI ? vote : "") as string;
+  displayState.value = isCLI ? "CLI" : "voted";
 };
+
+const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 </script>
 
 <template>
@@ -133,7 +139,7 @@ const signVote = async () => {
 
     <ModalWrap :visible="isOpen" :is-empty="true" @back="isOpen = false">
       <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
-        <div v-if="!isVoted" class="flex flex-col gap-6 relative">
+        <div v-show="displayState === 'pending'" class="flex flex-col gap-6 relative">
           <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
           <UiSwitch id="voteType" v-model="tab" :options="tabOptions" class="flex w-2/3 mx-auto" @click="resetVote()" />
           <div class="flex flex-col gap-10">
@@ -181,10 +187,9 @@ const signVote = async () => {
                 <button class="px-6 py-4 rounded bg-gradient text-dark text-300 text-center w-full" @click="signVote()">
                   {{ $t("ui.actions.confirm") }}
                 </button>
-
-                <!-- TODO: get CLI cmd-->
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
+                  @click="signVote(true)"
                 >
                   {{ $t("ui.actions.cli") }}
                 </button>
@@ -200,7 +205,40 @@ const signVote = async () => {
           </div>
         </div>
 
-        <div v-show="isVoted">
+        <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
+          <div class="flex flex-col items-center gap-4">
+            <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
+            <span class="text-grey-100">CLI Command</span>
+          </div>
+
+          <div class="relative">
+            <button
+              v-if="isClipboardSupported"
+              class="absolute top-4 right-4 text-200 flex gap-1 hover:text-grey-50 duration-200"
+              @click="copy(cliVoteInput)"
+            >
+              <span v-show="copied">Copied</span>
+              <span class="flex gap-1" v-show="!copied"> <Icon icon="copy" /><span>Copy</span> </span>
+            </button>
+            <textarea
+              ref="CLIVote"
+              readonly
+              v-model="cliVoteInput"
+              class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
+            ></textarea>
+          </div>
+
+          <div class="flex gap-x-4 items-stretch">
+            <CommonButton class="w-full" @click="() => (displayState = 'pending')">Back</CommonButton>
+            <button
+              class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
+              @click="toogleModal(false)"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+        <div v-show="displayState === 'voted'">
           <UiInfo title="You voted">
             <div class="text-500 text-center font-semibold mb-8 w-full">
               <div v-if="voteStraight" :class="voteList && voteList[voteStraight]?.color">
