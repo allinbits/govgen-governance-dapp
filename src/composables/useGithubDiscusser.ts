@@ -4,6 +4,21 @@ import { useConfig } from "@/composables/useConfig";
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
 import * as Utility from "@/utility/index";
 
+type ParsedComment = {
+  id: string;
+  body: string;
+  createdAt: Date;
+  createdAtHuman: string;
+  editedAt: null;
+  author: GithubTypes.Author;
+  upvotes: number;
+  downvotes: number;
+  didUpvote: boolean;
+  didDownvote: boolean;
+  url: string;
+  link?: string;
+};
+
 const { getDiscussion, getCategory, post, toggleVote } = useGithubDiscussions();
 const Config = useConfig();
 
@@ -15,6 +30,7 @@ export function useGithubDiscusser(threadTitle: string) {
   const isRefreshing = ref(false);
   const isLoading = ref(true);
   const didCommentsFailToLoad = ref(false);
+  const ratio = ref(0);
 
   /**
    * Refreshes the discussion contents
@@ -101,24 +117,33 @@ export function useGithubDiscusser(threadTitle: string) {
       return [];
     }
 
-    const comments = discussion.value.comments.nodes.map((x) => {
-      const upvote = x.reactionGroups.find((x) => x.content == "THUMBS_UP");
-      const downvote = x.reactionGroups.find((x) => x.content == "THUMBS_DOWN");
+    const comments: ParsedComment[] = [];
+    for (let comment of discussion.value.comments.nodes) {
+      const upvote = comment.reactionGroups.find((comment) => comment.content == "THUMBS_UP");
+      const downvote = comment.reactionGroups.find((comment) => comment.content == "THUMBS_DOWN");
+      const totalVotes =
+        (upvote?.users.totalCount ? upvote.users.totalCount : 0) +
+        (downvote?.users.totalCount ? downvote?.users.totalCount : 0);
 
-      return {
-        id: x.id,
-        body: x.bodyHTML,
-        createdAt: x.createdAt,
-        createdAtHuman: Utility.formatHuman(x.createdAt),
-        editedAt: x.lastEditedAt,
-        author: x.author,
+      const voteRatio = totalVotes === 0 ? 0 : upvote?.users.totalCount ?? 0 / totalVotes;
+      if (voteRatio < ratio.value) {
+        continue;
+      }
+
+      comments.push({
+        id: comment.id,
+        body: comment.bodyHTML,
+        createdAt: comment.createdAt,
+        createdAtHuman: Utility.formatHuman(comment.createdAt),
+        editedAt: comment.lastEditedAt,
+        author: comment.author,
         upvotes: upvote ? upvote.users.totalCount : 0,
         downvotes: downvote ? downvote.users.totalCount : 0,
         didUpvote: upvote?.viewerHasReacted ? true : false,
         didDownvote: downvote?.viewerHasReacted ? true : false,
-        url: x.url,
-      };
-    });
+        url: comment.url,
+      });
+    }
 
     comments.sort((a, b) => {
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
@@ -132,34 +157,41 @@ export function useGithubDiscusser(threadTitle: string) {
       return [];
     }
 
-    const comments = discussion.value.comments.nodes.map((x) => {
-      const upvote = x.reactionGroups.find((x) => x.content == "THUMBS_UP");
-      const downvote = x.reactionGroups.find((x) => x.content == "THUMBS_DOWN");
-      const links = Utility.getLinks(x.bodyHTML);
-      const bodyText = x.bodyHTML.replace(/(<([^>]+)>)/gi, "");
-      const isBodyExceeded = bodyText.length >= 128 ? true : false;
+    const links: ParsedComment[] = [];
+    for (let comment of discussion.value.comments.nodes) {
+      const upvote = comment.reactionGroups.find((comment) => comment.content == "THUMBS_UP");
+      const downvote = comment.reactionGroups.find((comment) => comment.content == "THUMBS_DOWN");
+      const totalVotes =
+        (upvote?.users.totalCount ? upvote.users.totalCount : 0) +
+        (downvote?.users.totalCount ? downvote?.users.totalCount : 0);
 
-      return {
-        id: x.id,
-        body: `${bodyText.slice(0, isBodyExceeded ? 128 : bodyText.length)}${isBodyExceeded ? "..." : ""}`,
-        createdAt: x.createdAt,
-        createdAtHuman: Utility.formatHuman(x.createdAt),
-        editedAt: x.lastEditedAt,
-        author: x.author,
+      const voteRatio = totalVotes === 0 ? 0 : upvote?.users.totalCount ?? 0 / totalVotes;
+      if (voteRatio < ratio.value) {
+        continue;
+      }
+
+      const commentLinks = Utility.getLinks(comment.bodyHTML);
+      links.push({
+        id: comment.id,
+        body: comment.bodyHTML,
+        createdAt: comment.createdAt,
+        createdAtHuman: Utility.formatHuman(comment.createdAt),
+        editedAt: comment.lastEditedAt,
+        author: comment.author,
         upvotes: upvote ? upvote.users.totalCount : 0,
         downvotes: downvote ? downvote.users.totalCount : 0,
         didUpvote: upvote?.viewerHasReacted ? true : false,
         didDownvote: downvote?.viewerHasReacted ? true : false,
-        url: x.url,
-        link: links[0] ? links[0] : "#",
-      };
-    });
+        url: comment.url,
+        link: commentLinks[0] ? commentLinks[0] : "#",
+      });
+    }
 
-    comments.sort((a, b) => {
+    links.sort((a, b) => {
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
 
-    return comments;
+    return links;
   });
 
   const isFailing = computed(() => {
@@ -176,5 +208,6 @@ export function useGithubDiscusser(threadTitle: string) {
     isRefreshing,
     isLoading,
     isFailing,
+    ratio,
   };
 }

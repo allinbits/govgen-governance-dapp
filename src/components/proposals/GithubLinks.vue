@@ -10,7 +10,9 @@ import { useGithubDiscusser } from "@/composables/useGithubDiscusser";
 const props = defineProps<{ term: string }>();
 
 const { logout, isLoggedIn, login, username } = useGithubDiscussions();
-const { links, refresh, postMessage, postVote, isPosting, isFailing, isLoading } = useGithubDiscusser(props.term);
+const { links, refresh, postMessage, postVote, isPosting, isFailing, isLoading, ratio } = useGithubDiscusser(
+  props.term,
+);
 
 const linkInput = ref<string>("");
 const contextInput = ref<string>("");
@@ -78,6 +80,21 @@ onMounted(refresh);
           <CommonButton @click="logout"> Sign Out </CommonButton>
           <CommonButton @click="state.isAddingLink = true"> Add Link </CommonButton>
         </template>
+      </div>
+    </div>
+    <!-- Ratio Controller -->
+    <div class="flex flex-col gap-8 mb-8 mt-8">
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        v-model="ratio"
+        class="w-full appearance-none bg-transparent rounded-lg focus:outline-none [&::-webkit-slider-runnable-track]:bg-grey-400 [&::-webkit-slider-runnable-track]:rounded-lg cursor-pointer"
+      />
+      <div class="flex flex-row justify-between gap-8">
+        <span class="text-grey-100">Upvote Ratio: {{ ratio }}</span>
+        <div class="text-200 text-grey-100 text-right">{{ links.length }} Total Link(s)</div>
       </div>
     </div>
     <!-- Input Link Section -->
