@@ -231,19 +231,22 @@ export const useGithubDiscussions = () => {
    *
    * @param {GithubTypes.UpvoteRequest} data
    */
-  const toggleUpvote = async (data: GithubTypes.UpvoteRequest): Promise<void | undefined> => {
+  const toggleVote = async (data: GithubTypes.ReactionRequest): Promise<void | undefined> => {
     if (!storedJwtToken.value) {
       return undefined;
     }
 
-    const apiPath = data.didUpvote ? "/api/discussion/downvote" : "/api/discussion/upvote";
-    const result = await fetch(config.ENDPOINT + apiPath, {
+    const result = await fetch(config.ENDPOINT + "/api/discussion/react", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: storedJwtToken.value,
       },
-      body: JSON.stringify({ subjectId: data.subjectId }),
+      body: JSON.stringify({
+        subjectId: data.subjectId,
+        reaction: data.type === "upvote" ? "THUMBS_UP" : "THUMBS_DOWN",
+        didReact: data.isToggled, // Do not set opposite, the API handles it
+      }),
     }).catch((err) => {
       console.error(err);
       return undefined;
@@ -283,6 +286,6 @@ export const useGithubDiscussions = () => {
     logout,
     post,
     setup,
-    toggleUpvote,
+    toggleVote,
   };
 };
