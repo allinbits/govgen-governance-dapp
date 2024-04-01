@@ -40,17 +40,30 @@ export const useChainData = () => {
     const { result } = useBalanceQuery({ address });
     return result;
   };
-  const getProposals = (order: "active" | "passed" | "rejected" | "failed", limit: number, offset: number) => {
+  const getProposals = (
+    order: "active" | "passed" | "rejected" | "failed",
+    limit: number,
+    offset: number,
+    status?: string,
+  ) => {
     switch (order) {
       case "passed":
-        return useProposalsPassedQuery({ limit, offset }, { pollInterval: 5000 }).result;
+        return status
+          ? useProposalsPassedQuery({ limit, offset, where: { status: { _eq: status } } }).result
+          : useProposalsPassedQuery({ limit, offset }).result;
       case "rejected":
-        return useProposalsRejectedQuery({ limit, offset }, { pollInterval: 5000 }).result;
+        return status
+          ? useProposalsRejectedQuery({ limit, offset, where: { status: { _eq: status } } }).result
+          : useProposalsRejectedQuery({ limit, offset }).result;
       case "failed":
-        return useProposalsFailedQuery({ limit, offset }, { pollInterval: 5000 }).result;
+        return status
+          ? useProposalsFailedQuery({ limit, offset, where: { status: { _eq: status } } }).result
+          : useProposalsFailedQuery({ limit, offset }).result;
       case "active":
       default:
-        return useProposalsActiveQuery({ limit, offset }, { pollInterval: 5000 }).result;
+        return status
+          ? useProposalsActiveQuery({ limit, offset, where: { status: { _eq: status } } }).result
+          : useProposalsActiveQuery({ limit, offset }).result;
     }
   };
   const getProposal = (id: number) => {
@@ -109,17 +122,26 @@ export const useChainData = () => {
     order: "active" | "passed" | "rejected" | "failed" = "active",
     limit: number,
     offset: number,
+    status?: string,
   ) => {
     switch (order) {
       case "passed":
-        return await useLazyProposalsPassedQuery({ limit, offset }, { pollInterval: 5000 }).load();
+        return status
+          ? await useLazyProposalsPassedQuery({ limit, offset, where: { status: { _eq: status } } }).load()
+          : await useLazyProposalsPassedQuery({ limit, offset }).load();
       case "rejected":
-        return await useLazyProposalsRejectedQuery({ limit, offset }, { pollInterval: 5000 }).load();
+        return status
+          ? await useLazyProposalsRejectedQuery({ limit, offset, where: { status: { _eq: status } } }).load()
+          : await useLazyProposalsRejectedQuery({ limit, offset }).load();
       case "failed":
-        return await useLazyProposalsFailedQuery({ limit, offset }, { pollInterval: 5000 }).load();
+        return status
+          ? await useLazyProposalsFailedQuery({ limit, offset, where: { status: { _eq: status } } }).load()
+          : await useLazyProposalsFailedQuery({ limit, offset }).load();
       case "active":
       default:
-        return await useLazyProposalsActiveQuery({ limit, offset }, { pollInterval: 5000 }).load();
+        return status
+          ? await useLazyProposalsActiveQuery({ limit, offset, where: { status: { _eq: status } } }).load()
+          : await useLazyProposalsActiveQuery({ limit, offset }).load();
     }
   };
   const getProposalAsync = async (id: number) => {

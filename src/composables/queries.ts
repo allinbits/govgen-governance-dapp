@@ -217,7 +217,7 @@ export const useLazyProposalsFailedQuery = (
   variables: ProposalsFailedQueryVariables,
   options?: UseQueryOptions<ProposalsFailedQuery, ProposalsFailedQueryVariables>,
 ) => {
-  return useLazyQuery<ProposalsFailedQueryVariables, ProposalsFailedQueryVariables>(
+  return useLazyQuery<ProposalsFailedQuery, ProposalsFailedQueryVariables>(
     ProposalsFailedDocument,
     variables,
     options ?? {},

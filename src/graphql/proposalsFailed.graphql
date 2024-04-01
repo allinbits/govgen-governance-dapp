@@ -1,5 +1,5 @@
-query ProposalsFailed($limit: Int!, $offset: Int!) {
-  all_proposals: proposal(order_by: { failed_first_order: asc }, limit: $limit, offset: $offset) {
+query ProposalsFailed($limit: Int!, $offset: Int!, $where: proposal_bool_exp = {}) {
+  all_proposals: proposal(order_by: { failed_first_order: asc }, limit: $limit, offset: $offset, where: $where) {
     content
     deposit_end_time
     description
