@@ -1,5 +1,10 @@
-query AllVotes($proposalId: Int!, $limit: Int!, $offset: Int!) {
-  proposal_vote(limit: $limit, offset: $offset, where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}, order_by: {height: desc, voter_address: desc}) {
+query AllVotes($proposalId: Int!, $propId: String!, $limit: Int!, $offset: Int!) {
+  proposal_vote(
+    limit: $limit
+    offset: $offset
+    where: { _and: { proposal_id: { _eq: $proposalId }, is_valid: { _eq: true } } }
+    order_by: { height: desc, voter_address: desc }
+  ) {
     height
     is_valid
     option
@@ -7,8 +12,17 @@ query AllVotes($proposalId: Int!, $limit: Int!, $offset: Int!) {
     timestamp
     voter_address
     weight
+    block {
+      transactions(where: { messages: { _contains: [{ proposal_id: $propId }] } }) {
+        height
+        hash
+        memo
+        success
+        messages
+      }
+    }
   }
-  proposal_vote_aggregate(where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}) {
+  proposal_vote_aggregate(where: { _and: { proposal_id: { _eq: $proposalId }, is_valid: { _eq: true } } }) {
     aggregate {
       count
     }

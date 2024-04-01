@@ -103,11 +103,11 @@ export const useChainData = () => {
     return result;
   };
   const getVotes = (address: string, proposalId: number) => {
-    const { result } = useVotesQuery({ address, proposalId });
+    const { result } = useVotesQuery({ address, proposalId, propId: String(proposalId) });
     return result;
   };
   const getAllVotes = (proposalId: number, limit: number, offset: number) => {
-    const { result } = useAllVotesQuery({ limit, offset, proposalId });
+    const { result } = useAllVotesQuery({ limit, offset, proposalId, propId: String(proposalId) });
     return result;
   };
   const getVoteOption = (proposalId: number, option: string) => {
@@ -181,12 +181,12 @@ export const useChainData = () => {
     return result;
   };
   const getVotesAsync = async (address: string, proposalId: number) => {
-    const result = await useLazyVotesQuery({ address, proposalId }).load();
+    const result = await useLazyVotesQuery({ address, proposalId, propId: String(proposalId) }).load();
     return result;
   };
 
   const getAllVotesAsync = async (proposalId: number, limit: number, offset: number) => {
-    const result = useLazyAllVotesQuery({ limit, offset, proposalId }).load();
+    const result = useLazyAllVotesQuery({ limit, offset, proposalId, propId: String(proposalId) }).load();
     return result;
   };
   const getVoteOptionAsync = async (proposalId: number, option: string) => {

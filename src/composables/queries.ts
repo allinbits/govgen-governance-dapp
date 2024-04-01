@@ -1,4 +1,5 @@
 import {
+  AllVotesDocument,
   AllVotesQuery,
   AllVotesQueryVariables,
   BalanceDocument,
@@ -163,7 +164,7 @@ export const useAllVotesQuery = (
   variables: AllVotesQueryVariables,
   options?: UseQueryOptions<AllVotesQuery, AllVotesQueryVariables>,
 ) => {
-  return useQuery<AllVotesQuery, AllVotesQueryVariables>(VotesDocument, variables, options ?? {});
+  return useQuery<AllVotesQuery, AllVotesQueryVariables>(AllVotesDocument, variables, options ?? {});
 };
 export const useVoteOptionQuery = (
   variables: VoteOptionQueryVariables,
@@ -284,7 +285,7 @@ export const useLazyAllVotesQuery = (
   variables: AllVotesQueryVariables,
   options?: UseQueryOptions<AllVotesQuery, AllVotesQueryVariables>,
 ) => {
-  return useLazyQuery<AllVotesQuery, AllVotesQueryVariables>(VotesDocument, variables, options ?? {});
+  return useLazyQuery<AllVotesQuery, AllVotesQueryVariables>(AllVotesDocument, variables, options ?? {});
 };
 export const useLazyVoteOptionQuery = (
   variables: VoteOptionQueryVariables,
