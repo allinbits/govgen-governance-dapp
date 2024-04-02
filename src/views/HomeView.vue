@@ -267,7 +267,7 @@ function onSearchInput() {
         :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
         @click="
           () => {
-            offset = Math.floor((proposals?.proposal_aggregate.aggregate?.count ?? 0) / limit);
+            offset = Math.floor((proposals?.proposal_aggregate.aggregate?.count ?? 0) / limit) * limit;
           }
         "
       />
