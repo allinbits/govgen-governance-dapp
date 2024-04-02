@@ -532,219 +532,237 @@ function isTabSelected(tabName: TabNames) {
     </SimpleCard>
     <UiTabs id="proposal-tab" v-model="tabSelected" :options="tabOptions" class="text-400 font-medium mt-14 md:mt-0" />
     <div class="flex flex-col pt-6 md:pt-[72px]">
-      <div v-if="isTabSelected('Info')" class="w-full">
-        <div class="flex flex-col gap-4 md:gap-6">
-          <div class="flex flex-col md:flex-row gap-4 lg:gap-6">
-            <SimpleCard class="w-full md:w-1/2 flex-grow">
-              <div class="text-light text-300 md:text-500 text-left mb-8 font-medium">
-                {{ $t("proposalpage.labels.proposalDescription") }}
-              </div>
-              <div class="text-grey-100">
-                {{ description }}...
-                <template v-if="shouldTrim">
-                  <span v-if="!showAll" class="text-light cursor-pointer" @click="showAll = true">{{
-                    $t("ui.readMore")
-                  }}</span>
-                  <span v-if="showAll" class="text-light cursor-pointer" @click="showAll = false">{{
-                    $t("ui.readLess")
-                  }}</span>
-                </template>
-              </div>
-            </SimpleCard>
-            <SimpleCard class="w-full md:w-1/2 flex-grow">
-              <div class="flex w-full flex-wrap">
-                <div class="w-full flex-2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposer") }}</div>
-                  <div class="text-light text-200 md:text-300 break-words leading-normal">
-                    {{ proposal?.proposal[0].proposer_address }}
+      <Transition name="tab" mode="out-in">
+        <div v-if="isTabSelected('Info')" class="w-full">
+          <div class="flex flex-col gap-4 md:gap-6">
+            <div class="flex flex-col md:flex-row gap-4 lg:gap-6">
+              <SimpleCard class="w-full md:w-1/2 flex-grow">
+                <div class="text-light text-300 md:text-500 text-left mb-8 font-medium">
+                  {{ $t("proposalpage.labels.proposalDescription") }}
+                </div>
+                <div class="text-grey-100">
+                  {{ description }}...
+                  <template v-if="shouldTrim">
+                    <span v-if="!showAll" class="text-light cursor-pointer" @click="showAll = true">{{
+                      $t("ui.readMore")
+                    }}</span>
+                    <span v-if="showAll" class="text-light cursor-pointer" @click="showAll = false">{{
+                      $t("ui.readLess")
+                    }}</span>
+                  </template>
+                </div>
+              </SimpleCard>
+              <SimpleCard class="w-full md:w-1/2 flex-grow">
+                <div class="flex w-full flex-wrap">
+                  <div class="w-full flex-2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposer") }}</div>
+                    <div class="text-light text-200 md:text-300 break-words leading-normal">
+                      {{ proposal?.proposal[0].proposer_address }}
+                    </div>
+                  </div>
+                  <div class="grow w-full lg:w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingStart") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{
+                        inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_start_time).format("MMMM D, YYYY h:mm A")
+                      }}
+                    </div>
+                  </div>
+                  <div class="grow w-full lg:w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingEnd") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_end_time).format("MMMM D, YYYY h:mm A") }}
+                    </div>
+                  </div>
+                  <div class="grow w-full lg:w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.submitTime") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ dayjs(proposal?.proposal[0].submit_time).format("MMMM D, YYYY h:mm A") }}
+                    </div>
+                  </div>
+                  <div class="grow w-full lg:w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.depositEnd") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{
+                        inDeposit ? dayjs(proposal?.proposal[0].deposit_end_time).format("MMMM D, YYYY h:mm A") : "-"
+                      }}
+                    </div>
+                  </div>
+                  <div class="grow w-full lg:w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.initialDeposit") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ formatAmount(initialDeposit, stakingDenomDecimals) }} /
+                      {{ formatAmount(minDeposit, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
+                    </div>
+                  </div>
+                  <div class="grow w-full lg:w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.totalDeposit") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ formatAmount(totalDeposit, stakingDenomDecimals) }} /
+                      {{ formatAmount(minDeposit, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
+                    </div>
                   </div>
                 </div>
-                <div class="grow w-full lg:w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingStart") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_start_time).format("MMMM D, YYYY h:mm A") }}
+              </SimpleCard>
+            </div>
+            <div class="flex">
+              <SimpleCard class="w-full">
+                <div class="text-light text-300 md:text-500 text-left mb-8 font-medium">
+                  {{ $t("proposalpage.labels.messages") }}
+                </div>
+                <div
+                  v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
+                  class="flex w-full flex-wrap"
+                >
+                  <div class="grow w-full md:w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
+                    <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.text") }}</div>
+                  </div>
+                  <div class="grow w-full md:w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ proposal?.proposal[0].content.title }}
+                    </div>
+                  </div>
+                  <div class="w-full flex-2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ proposal?.proposal[0].content.description }}
+                    </div>
                   </div>
                 </div>
-                <div class="grow w-full lg:w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingEnd") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_end_time).format("MMMM D, YYYY h:mm A") }}
+                <div
+                  v-if="proposal?.proposal[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
+                  class="flex w-full flex-wrap flex-col md:flex-row"
+                >
+                  <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
+                    <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.paramChange") }}</div>
+                  </div>
+                  <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ proposal?.proposal[0].content.title }}
+                    </div>
+                  </div>
+                  <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ proposal?.proposal[0].content.description }}
+                    </div>
+                  </div>
+                  <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.changes") }}</div>
+                    <div class="text-light text-100">
+                      <code>
+                        <pre class="text-pretty break-words">{{ proposal?.proposal[0].content.changes }}</pre>
+                      </code>
+                    </div>
                   </div>
                 </div>
-                <div class="grow w-full lg:w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.submitTime") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ dayjs(proposal?.proposal[0].submit_time).format("MMMM D, YYYY h:mm A") }}
+                <div
+                  v-if="proposal?.proposal[0].content['@type'] == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
+                  class="flex w-full flex-wrap"
+                >
+                  <div class="grow w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
+                    <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.text") }}</div>
+                  </div>
+                  <div class="grow w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ proposal?.proposal[0].content.title }}
+                    </div>
+                  </div>
+                  <div class="grow w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
+                    <div class="text-light text-200 md:text-300">
+                      {{ proposal?.proposal[0].content.description }}
+                    </div>
+                  </div>
+                  <div class="grow w-1/2 mb-10">
+                    <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.upgradePlan") }}</div>
+                    <div class="text-light text-100">
+                      <code>
+                        <pre class="text-pretty">{{ proposal?.proposal[0].content.plan }}</pre>
+                      </code>
+                    </div>
                   </div>
                 </div>
-                <div class="grow w-full lg:w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.depositEnd") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ inDeposit ? dayjs(proposal?.proposal[0].deposit_end_time).format("MMMM D, YYYY h:mm A") : "-" }}
-                  </div>
-                </div>
-                <div class="grow w-full lg:w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.initialDeposit") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ formatAmount(initialDeposit, stakingDenomDecimals) }} /
-                    {{ formatAmount(minDeposit, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
-                  </div>
-                </div>
-                <div class="grow w-full lg:w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.totalDeposit") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ formatAmount(totalDeposit, stakingDenomDecimals) }} /
-                    {{ formatAmount(minDeposit, stakingDenomDecimals) }} {{ stakingDenomDisplay }}
-                  </div>
-                </div>
-              </div>
-            </SimpleCard>
-          </div>
-          <div class="flex">
-            <SimpleCard class="w-full">
-              <div class="text-light text-300 md:text-500 text-left mb-8 font-medium">
-                {{ $t("proposalpage.labels.messages") }}
-              </div>
-              <div
-                v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
-                class="flex w-full flex-wrap"
-              >
-                <div class="grow w-full md:w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
-                  <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.text") }}</div>
-                </div>
-                <div class="grow w-full md:w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ proposal?.proposal[0].content.title }}
-                  </div>
-                </div>
-                <div class="w-full flex-2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ proposal?.proposal[0].content.description }}
-                  </div>
-                </div>
-              </div>
-              <div
-                v-if="proposal?.proposal[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
-                class="flex w-full flex-wrap flex-col md:flex-row"
-              >
-                <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
-                  <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.paramChange") }}</div>
-                </div>
-                <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ proposal?.proposal[0].content.title }}
-                  </div>
-                </div>
-                <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ proposal?.proposal[0].content.description }}
-                  </div>
-                </div>
-                <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.changes") }}</div>
-                  <div class="text-light text-100">
-                    <code>
-                      <pre class="text-pretty break-words">{{ proposal?.proposal[0].content.changes }}</pre>
-                    </code>
-                  </div>
-                </div>
-              </div>
-              <div
-                v-if="proposal?.proposal[0].content['@type'] == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
-                class="flex w-full flex-wrap"
-              >
-                <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
-                  <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.text") }}</div>
-                </div>
-                <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ proposal?.proposal[0].content.title }}
-                  </div>
-                </div>
-                <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
-                  <div class="text-light text-200 md:text-300">
-                    {{ proposal?.proposal[0].content.description }}
-                  </div>
-                </div>
-                <div class="grow w-1/2 mb-10">
-                  <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.upgradePlan") }}</div>
-                  <div class="text-light text-100">
-                    <code>
-                      <pre class="text-pretty">{{ proposal?.proposal[0].content.plan }}</pre>
-                    </code>
-                  </div>
-                </div>
-              </div>
-            </SimpleCard>
-          </div>
-        </div>
-      </div>
-      <div v-if="isTabSelected('Voters')" class="flex flex-col w-full gap-4 md:gap-6">
-        <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-4 md:gap-6">
-          <!-- All Account Votes -->
-          <VotePanel
-            :voters="distinctVoters"
-            :denom="stakingDenomDisplay"
-            :precision="stakingDenomDecimals"
-            :vote-tallies="allVoteCounts"
-            :token-tallies="tokenTallies"
-            @on-breakdown="() => {}"
-          >
-            <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
-            <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
-          </VotePanel>
-          <!-- All Validator Votes -->
-          <VotePanel
-            :max="maxValidators"
-            :voters="votedValidators"
-            :denom="stakingDenomDisplay"
-            :precision="stakingDenomDecimals"
-            :vote-tallies="validatorVoteCounts"
-            :token-tallies="validatorTallies"
-            @on-breakdown="() => {}"
-          >
-            <template #header>{{ $t("proposalpage.labels.validators") }}</template>
-            <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
-          </VotePanel>
-        </div>
-
-        <!-- Treemap Panel-->
-        <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
-          <div class="text-light text-300 md:text-500 text-left mb-8">
-            {{ $t("proposalpage.labels.validatorQuota") }}
-          </div>
-          <div class="flex flex-row object-contain">
-            <template v-if="validatorVoteSum >= 1">
-              <div
-                v-for="voteType in voteTypes"
-                :key="voteType"
-                class="flex flex-row h-96 relative"
-                :style="[`width: ${calculateWidthForTree(voteType)}%`]"
-              >
-                <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
-              </div>
-            </template>
-            <div v-else class="text-grey-100 text-200 md:text-300">
-              {{ $t("proposalpage.labels.noValidatorVotes") }}
+              </SimpleCard>
             </div>
           </div>
         </div>
-      </div>
-      <div v-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
-        <GithubComments :term="termDiscussion" />
-      </div>
-      <div v-if="isTabSelected('Links')" class="w-full">
-        <GithubLinks :term="termLink" />
-      </div>
+        <div v-else-if="isTabSelected('Voters')" class="flex flex-col w-full gap-4 md:gap-6">
+          <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-4 md:gap-6">
+            <!-- All Account Votes -->
+            <VotePanel
+              :voters="distinctVoters"
+              :denom="stakingDenomDisplay"
+              :precision="stakingDenomDecimals"
+              :vote-tallies="allVoteCounts"
+              :token-tallies="tokenTallies"
+              @on-breakdown="() => {}"
+            >
+              <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
+              <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
+            </VotePanel>
+            <!-- All Validator Votes -->
+            <VotePanel
+              :max="maxValidators"
+              :voters="votedValidators"
+              :denom="stakingDenomDisplay"
+              :precision="stakingDenomDecimals"
+              :vote-tallies="validatorVoteCounts"
+              :token-tallies="validatorTallies"
+              @on-breakdown="() => {}"
+            >
+              <template #header>{{ $t("proposalpage.labels.validators") }}</template>
+              <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
+            </VotePanel>
+          </div>
+
+          <!-- Treemap Panel-->
+          <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
+            <div class="text-light text-300 md:text-500 text-left mb-8">
+              {{ $t("proposalpage.labels.validatorQuota") }}
+            </div>
+            <div class="flex flex-row object-contain">
+              <template v-if="validatorVoteSum >= 1">
+                <div
+                  v-for="voteType in voteTypes"
+                  :key="voteType"
+                  class="flex flex-row h-96 relative"
+                  :style="[`width: ${calculateWidthForTree(voteType)}%`]"
+                >
+                  <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+                </div>
+              </template>
+              <div v-else class="text-grey-100 text-200 md:text-300">
+                {{ $t("proposalpage.labels.noValidatorVotes") }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
+          <GithubComments :term="termDiscussion" />
+        </div>
+        <div v-else-if="isTabSelected('Links')" class="w-full">
+          <GithubLinks :term="termLink" />
+        </div>
+      </Transition>
     </div>
   </div>
 </template>
+
+<style scoped>
+.tab-enter-active,
+.tab-leave-active {
+  transition: all 0.4s;
+}
+.tab-enter-from,
+.tab-leave-to {
+  opacity: 0;
+  filter: blur(0.6rem);
+}
+</style>

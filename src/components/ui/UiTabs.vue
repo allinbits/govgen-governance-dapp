@@ -31,7 +31,7 @@
     </div>
     <!-- Movable Line -->
     <div class="flex flex-row w-full mt-4 border-b-2 border-grey-300">
-      <div ref="line" class="h-1 w-1 bg-light rounded-t transition-all duration-200 ease-in-out"></div>
+      <div ref="line" class="h-1 w-1 bg-light rounded-t transition-all duration-300 ease-in-out"></div>
     </div>
   </div>
 </template>
