@@ -12,11 +12,11 @@ useGithubDiscussions().setup();
 <template>
   <div class="w-full max-w-[90rem] px-6 md:px-14 lg:px-20 mx-auto">
     <HeaderSection />
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full min-h-screen">
       <router-view v-slot="{ Component }">
-        <transition name="page" mode="out-in">
+        <Transition name="page" mode="out-in">
           <component :is="Component" />
-        </transition>
+        </Transition>
       </router-view>
     </div>
     <FooterSection />
@@ -27,6 +27,7 @@ useGithubDiscussions().setup();
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;
+  transition-delay: 200ms;
 }
 .page-enter-from,
 .page-leave-to {
