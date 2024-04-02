@@ -21,4 +21,9 @@ query ProposalsPassed($limit: Int!, $offset: Int!, $where: proposal_bool_exp = {
     voting_end_time
     voting_start_time
   }
+  proposal_aggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
 }

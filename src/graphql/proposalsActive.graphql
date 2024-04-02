@@ -1,4 +1,4 @@
-query ProposalsActive($limit: Int!, $offset: Int!,$where: proposal_bool_exp = {} ) {
+query ProposalsActive($limit: Int!, $offset: Int!, $where: proposal_bool_exp = {}) {
   all_proposals: proposal(order_by: { active_first_order: asc }, limit: $limit, offset: $offset, where: $where) {
     content
     deposit_end_time
@@ -20,5 +20,10 @@ query ProposalsActive($limit: Int!, $offset: Int!,$where: proposal_bool_exp = {}
     title
     voting_end_time
     voting_start_time
+  }
+  proposal_aggregate(where: $where) {
+    aggregate {
+      count
+    }
   }
 }
