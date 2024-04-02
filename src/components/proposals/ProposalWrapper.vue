@@ -708,68 +708,68 @@ function showBreakdown(type: BreakdownType) {
             </div>
           </div>
         </div>
-      </div>
-      <div v-else-if="isTabSelected('Voters')"class="flex flex-col w-full gap-6">
-        <template v-if="!breakdownType">
-          <!-- Voters Panel -->
-          <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
-            <!-- All Account Votes -->
-            <VotePanel
-              :voters="distinctVoters"
-              :denom="stakingDenomDisplay"
-              :precision="stakingDenomDecimals"
-              :vote-tallies="allVoteCounts"
-              :token-tallies="tokenTallies"
-              @on-breakdown="showBreakdown('voters')"
-            >
-              <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
-              <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
-            </VotePanel>
-            <!-- All Validator Votes -->
-            <VotePanel
-              :max="maxValidators"
-              :voters="votedValidators"
-              :denom="stakingDenomDisplay"
-              :precision="stakingDenomDecimals"
-              :vote-tallies="validatorVoteCounts"
-              :token-tallies="validatorTallies"
-              @on-breakdown="showBreakdown('validators')"
-            >
-              <template #header>{{ $t("proposalpage.labels.validators") }}</template>
-              <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
-            </VotePanel>
-          </div>
 
-          <!-- Treemap Panel-->
-          <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
-            <div class="text-light text-300 md:text-500 text-left mb-8">
-              {{ $t("proposalpage.labels.validatorQuota") }}
+        <div v-else-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
+          <template v-if="!breakdownType">
+            <!-- Voters Panel -->
+            <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
+              <!-- All Account Votes -->
+              <VotePanel
+                :voters="distinctVoters"
+                :denom="stakingDenomDisplay"
+                :precision="stakingDenomDecimals"
+                :vote-tallies="allVoteCounts"
+                :token-tallies="tokenTallies"
+                @on-breakdown="showBreakdown('voters')"
+              >
+                <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
+                <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
+              </VotePanel>
+              <!-- All Validator Votes -->
+              <VotePanel
+                :max="maxValidators"
+                :voters="votedValidators"
+                :denom="stakingDenomDisplay"
+                :precision="stakingDenomDecimals"
+                :vote-tallies="validatorVoteCounts"
+                :token-tallies="validatorTallies"
+                @on-breakdown="showBreakdown('validators')"
+              >
+                <template #header>{{ $t("proposalpage.labels.validators") }}</template>
+                <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
+              </VotePanel>
             </div>
-            <div class="flex flex-row object-contain">
-              <template v-if="validatorVoteSum >= 1">
-                <div
-                  v-for="voteType in voteTypes"
-                  :key="voteType"
-                  class="flex flex-row h-96 relative"
-                  :style="[`width: ${calculateWidthForTree(voteType)}%`]"
-                >
-                  <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+
+            <!-- Treemap Panel-->
+            <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
+              <div class="text-light text-300 md:text-500 text-left mb-8">
+                {{ $t("proposalpage.labels.validatorQuota") }}
+              </div>
+              <div class="flex flex-row object-contain">
+                <template v-if="validatorVoteSum >= 1">
+                  <div
+                    v-for="voteType in voteTypes"
+                    :key="voteType"
+                    class="flex flex-row h-96 relative"
+                    :style="[`width: ${calculateWidthForTree(voteType)}%`]"
+                  >
+                    <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+                  </div>
+                </template>
+                <div v-else class="text-grey-100 text-200 md:text-300">
+                  {{ $t("proposalpage.labels.noValidatorVotes") }}
                 </div>
-              </template>
-              <div v-else class="text-grey-100 text-200 md:text-300">
-                {{ $t("proposalpage.labels.noValidatorVotes") }}
               </div>
             </div>
-          </div>
-        </template>
-        <template v-else>
-          <CommonButton class="flex justify-between items-center gap-6 w-36" @click="showBreakdown(null)">
-            <Icon icon="arrowLeft" /><span>{{ $t("ui.buttons.back") }}</span>
-          </CommonButton>
-          <div class="font-termina text-800 font-semibold text-light pt-12">
-            {{ Utility.capitalizeFirstLetter(breakdownType) }}
-          </div>
-          <!--
+          </template>
+          <template v-else>
+            <CommonButton class="flex justify-between items-center gap-6 w-36" @click="showBreakdown(null)">
+              <Icon icon="arrowLeft" /><span>{{ $t("ui.buttons.back") }}</span>
+            </CommonButton>
+            <div class="font-termina text-800 font-semibold text-light pt-12">
+              {{ Utility.capitalizeFirstLetter(breakdownType) }}
+            </div>
+            <!--
           <div class="flex flex-row gap-4">
             <span>filter</span>
             <span>filter</span>
@@ -777,16 +777,16 @@ function showBreakdown(type: BreakdownType) {
             <span>filter</span>
           </div>
           //-->
-          <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
-          <ValidatorBreakdown :validator-data="validatorsWithStakeAndVotes" v-if="breakdownType == 'validators'" />
-        </template>
-      </div>
-      <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
-        <GithubComments :term="termDiscussion" />
-      </div>
-      <div v-else-if="isTabSelected('Links')" class="w-full">
-        <GithubLinks :term="termLink" />
-      </div>
+            <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
+            <ValidatorBreakdown :validator-data="validatorsWithStakeAndVotes" v-if="breakdownType == 'validators'" />
+          </template>
+        </div>
+        <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
+          <GithubComments :term="termDiscussion" />
+        </div>
+        <div v-else-if="isTabSelected('Links')" class="w-full">
+          <GithubLinks :term="termLink" />
+        </div>
       </Transition>
     </div>
   </div>
