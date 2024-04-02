@@ -122,7 +122,7 @@ const getTxHash = (vote: AllVotesQuery["proposal_vote"][0]) => {
         :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
         @click="
           () => {
-            offset = Math.floor((votes?.proposal_vote_aggregate.aggregate?.count ?? 0) / limit);
+            offset = Math.floor((votes?.proposal_vote_aggregate.aggregate?.count ?? 0) / limit) * limit;
           }
         "
       />
