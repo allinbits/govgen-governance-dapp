@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 
 import ProposalCard from "@/components/home/ProposalCard.vue";
 import CommentCount from "@/components/home/CommentCount.vue";
@@ -7,15 +7,33 @@ import Search from "@/components/ui/Search.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
 import { PropStatus } from "@/types/proposals";
+import { provideApolloClient } from "@vue/apollo-composable";
+import apolloClient from "@/apolloClient";
 
 import { useChainData } from "@/composables/useChainData";
 
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
+const limit = ref(16);
+const offset = ref(0);
 const searchText = ref("");
-const { getProposals } = useChainData();
+const { getProposals, getProposalsAsync } = useChainData();
 
-const proposals = getProposals();
+const proposals = getProposals("active", limit.value, offset.value);
+
+const sortToOrder = computed(() => {
+  switch (activityFilterIndex.value) {
+    default:
+    case 0:
+      return "active";
+    case 1:
+      return "passed";
+    case 2:
+      return "rejected";
+    case 3:
+      return "failed";
+  }
+});
 const filterToStatus = computed(() => {
   switch (typeFilterIndex.value) {
     default:
@@ -33,73 +51,41 @@ const filterToStatus = computed(() => {
       return "PROPOSAL_STATUS_FAILED";
   }
 });
-const statusShort = computed(() => {
-  switch (activityFilterIndex.value) {
-    default:
-    case 0:
-      return new Map([
-        ["PROPOSAL_STATUS_DEPOSIT_PERIOD", 1],
-        ["PROPOSAL_STATUS_VOTING_PERIOD", 2],
-        ["PROPOSAL_STATUS_PASSED", 3],
-        ["PROPOSAL_STATUS_REJECTED", 4],
-        ["PROPOSAL_STATUS_FAILED", 5],
-        ["PROPOSAL_STATUS_UNSPECIFIED", 6],
-      ]);
-    case 1:
-      return new Map([
-        ["PROPOSAL_STATUS_DEPOSIT_PERIOD", 2],
-        ["PROPOSAL_STATUS_VOTING_PERIOD", 3],
-        ["PROPOSAL_STATUS_PASSED", 1],
-        ["PROPOSAL_STATUS_REJECTED", 4],
-        ["PROPOSAL_STATUS_FAILED", 5],
-        ["PROPOSAL_STATUS_UNSPECIFIED", 6],
-      ]);
-    case 2:
-      return new Map([
-        ["PROPOSAL_STATUS_DEPOSIT_PERIOD", 2],
-        ["PROPOSAL_STATUS_VOTING_PERIOD", 3],
-        ["PROPOSAL_STATUS_PASSED", 4],
-        ["PROPOSAL_STATUS_REJECTED", 1],
-        ["PROPOSAL_STATUS_FAILED", 5],
-        ["PROPOSAL_STATUS_UNSPECIFIED", 6],
-      ]);
-    case 3:
-      return new Map([
-        ["PROPOSAL_STATUS_DEPOSIT_PERIOD", 2],
-        ["PROPOSAL_STATUS_VOTING_PERIOD", 3],
-        ["PROPOSAL_STATUS_PASSED", 4],
-        ["PROPOSAL_STATUS_REJECTED", 5],
-        ["PROPOSAL_STATUS_FAILED", 1],
-        ["PROPOSAL_STATUS_UNSPECIFIED", 6],
-      ]);
+
+watch(filterToStatus, async (newType, oldType) => {
+  if (newType !== oldType) {
+    provideApolloClient(apolloClient);
+    if (newType != null) {
+      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value, newType);
+      if (res) {
+        proposals.value = res;
+      }
+    } else {
+      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value);
+      if (res) {
+        proposals.value = res;
+      }
+    }
   }
 });
-const searchedProposals = computed(() => {
-  if (searchText.value == "") {
-    return proposals.value?.all_proposals;
-  } else {
-    return proposals.value?.all_proposals.filter(
-      (x) =>
-        x.title.toLowerCase().includes(searchText.value.toLowerCase()) ||
-        x.description.toLowerCase().includes(searchText.value.toLowerCase()) ||
-        x.proposer_address.toLowerCase().includes(searchText.value.toLowerCase()),
-    );
-  }
-});
-const filteredProposals = computed(() => {
-  if (filterToStatus.value) {
-    return searchedProposals.value?.filter((x) => x.status == filterToStatus.value);
-  } else {
-    return searchedProposals.value?.filter((x) => x.status != "PROPOSAL_STATUS_INVALID");
+watch(sortToOrder, async (newOrder, oldOrder) => {
+  if (newOrder !== oldOrder) {
+    provideApolloClient(apolloClient);
+    if (filterToStatus.value != null) {
+      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value, filterToStatus.value);
+      if (res) {
+        proposals.value = res;
+      }
+    } else {
+      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value);
+      if (res) {
+        proposals.value = res;
+      }
+    }
   }
 });
 const orderedProposals = computed(() => {
-  return filteredProposals.value?.slice().sort((a, b) => {
-    return (
-      (statusShort.value.get(a.status ?? "PROPOSAL_STATUS_UNSPECIFIED") ?? 0) -
-      (statusShort.value.get(b.status ?? "PROPOSAL_STATUS_UNSPECIFIED") ?? 0)
-    );
-  });
+  return proposals.value?.all_proposals;
 });
 const links = ref([
   { title: "Twitter", url: "https://twitter.com/_govgen", icon: "twitter" },
@@ -107,6 +93,33 @@ const links = ref([
   { title: "Github", url: "https://github.com/atomone-hub", icon: "github" },
 ]);
 
+const hasMore = computed(() => {
+  return (proposals.value?.proposal_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
+});
+function next() {
+  offset.value += limit.value;
+}
+
+function prev() {
+  offset.value = offset.value <= limit.value ? 0 : offset.value - limit.value;
+}
+
+watch(offset, async (newOffset, oldOffset) => {
+  if (newOffset != oldOffset) {
+    provideApolloClient(apolloClient);
+    if (filterToStatus.value != null) {
+      const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset, filterToStatus.value);
+      if (res) {
+        proposals.value = res;
+      }
+    } else {
+      const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset);
+      if (res) {
+        proposals.value = res;
+      }
+    }
+  }
+});
 function setActivityFilterIndex(idx: number) {
   // Needs integration to filter proposals
   activityFilterIndex.value = idx;
@@ -170,15 +183,15 @@ function onSearchInput() {
         <DropDown
           v-model="typeFilterIndex"
           :values="['All Proposals', 'Deposit', 'Voting', 'Passed', 'Rejected', 'Failed']"
-          @select="setTypeFilterIndex"
           class="w-full lg:w-fit"
+          @select="setTypeFilterIndex"
         />
         <!-- Show 'x' First -->
         <DropDown
           v-model="activityFilterIndex"
           :values="['Active First', 'Passed First', 'Rejected First', 'Failed First']"
-          @select="setActivityFilterIndex"
           class="w-full lg:w-fit"
+          @select="setActivityFilterIndex"
         />
       </div>
     </div>
@@ -212,6 +225,52 @@ function onSearchInput() {
           </div>
         </template>
       </ProposalCard>
+    </div>
+
+    <div v-if="proposals" class="flex flex-row justify-end pt-12 gap-4">
+      <Icon
+        icon="Arrowleftend"
+        class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': offset > 0 }"
+        @click="
+          () => {
+            offset = 0;
+          }
+        "
+      />
+      <Icon
+        icon="Arrowleft"
+        class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': offset > 0 }"
+        @click="
+          () => {
+            if (offset > 0) {
+              prev();
+            }
+          }
+        "
+      />
+      <!-- Page Numbers -->
+      <Icon
+        icon="Arrowright"
+        class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
+        @click="
+          () => {
+            next();
+          }
+        "
+      />
+      <Icon
+        icon="Arrowrightend"
+        class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
+        @click="
+          () => {
+            offset = Math.floor((proposals?.proposal_aggregate.aggregate?.count ?? 0) / limit);
+          }
+        "
+      />
     </div>
   </div>
 </template>

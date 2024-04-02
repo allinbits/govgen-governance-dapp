@@ -1,4 +1,5 @@
 import {
+  AllVotesDocument,
   AllVotesQuery,
   AllVotesQueryVariables,
   BalanceDocument,
@@ -19,9 +20,18 @@ import {
   ProposalTalliesDocument,
   ProposalTalliesQuery,
   ProposalTalliesQueryVariables,
-  ProposalsDocument,
-  ProposalsQuery,
-  ProposalsQueryVariables,
+  ProposalsActiveDocument,
+  ProposalsActiveQuery,
+  ProposalsActiveQueryVariables,
+  ProposalsFailedDocument,
+  ProposalsFailedQuery,
+  ProposalsFailedQueryVariables,
+  ProposalsPassedDocument,
+  ProposalsPassedQuery,
+  ProposalsPassedQueryVariables,
+  ProposalsRejectedDocument,
+  ProposalsRejectedQuery,
+  ProposalsRejectedQueryVariables,
   StakingDocument,
   StakingQuery,
   StakingQueryVariables,
@@ -76,10 +86,46 @@ export const useProposalQuery = (
   return useQuery<ProposalQuery, ProposalQueryVariables>(ProposalDocument, variables, options ?? {});
 };
 
-export const useProposalsQuery = (options?: UseQueryOptions<ProposalsQuery, ProposalsQueryVariables>) => {
-  return useQuery<ProposalsQuery, ProposalsQueryVariables>(ProposalsDocument, {}, options ?? {});
+export const useProposalsActiveQuery = (
+  variables: ProposalsActiveQueryVariables,
+  options?: UseQueryOptions<ProposalsActiveQuery, ProposalsActiveQueryVariables>,
+) => {
+  return useQuery<ProposalsActiveQuery, ProposalsActiveQueryVariables>(
+    ProposalsActiveDocument,
+    variables,
+    options ?? {},
+  );
 };
-
+export const useProposalsFailedQuery = (
+  variables: ProposalsFailedQueryVariables,
+  options?: UseQueryOptions<ProposalsFailedQuery, ProposalsFailedQueryVariables>,
+) => {
+  return useQuery<ProposalsFailedQuery, ProposalsFailedQueryVariables>(
+    ProposalsFailedDocument,
+    variables,
+    options ?? {},
+  );
+};
+export const useProposalsPassedQuery = (
+  variables: ProposalsPassedQueryVariables,
+  options?: UseQueryOptions<ProposalsPassedQuery, ProposalsPassedQueryVariables>,
+) => {
+  return useQuery<ProposalsPassedQuery, ProposalsPassedQueryVariables>(
+    ProposalsPassedDocument,
+    variables,
+    options ?? {},
+  );
+};
+export const useProposalsRejectedQuery = (
+  variables: ProposalsRejectedQueryVariables,
+  options?: UseQueryOptions<ProposalsRejectedQuery, ProposalsRejectedQueryVariables>,
+) => {
+  return useQuery<ProposalsRejectedQuery, ProposalsRejectedQueryVariables>(
+    ProposalsRejectedDocument,
+    variables,
+    options ?? {},
+  );
+};
 export const useParamsQuery = (options?: UseQueryOptions<ParamsQuery, ParamsQueryVariables>) => {
   return useQuery<ParamsQuery, ParamsQueryVariables>(ParamsDocument, {}, options ?? {});
 };
@@ -118,7 +164,7 @@ export const useAllVotesQuery = (
   variables: AllVotesQueryVariables,
   options?: UseQueryOptions<AllVotesQuery, AllVotesQueryVariables>,
 ) => {
-  return useQuery<AllVotesQuery, AllVotesQueryVariables>(VotesDocument, variables, options ?? {});
+  return useQuery<AllVotesQuery, AllVotesQueryVariables>(AllVotesDocument, variables, options ?? {});
 };
 export const useVoteOptionQuery = (
   variables: VoteOptionQueryVariables,
@@ -158,8 +204,45 @@ export const useLazyProposalQuery = (
   return useLazyQuery<ProposalQuery, ProposalQueryVariables>(ProposalDocument, variables, options ?? {});
 };
 
-export const useLazyProposalsQuery = (options?: UseQueryOptions<ProposalsQuery, ProposalsQueryVariables>) => {
-  return useLazyQuery<ProposalsQuery, ProposalsQueryVariables>(ProposalsDocument, {}, options ?? {});
+export const useLazyProposalsActiveQuery = (
+  variables: ProposalsActiveQueryVariables,
+  options?: UseQueryOptions<ProposalsActiveQuery, ProposalsActiveQueryVariables>,
+) => {
+  return useLazyQuery<ProposalsActiveQuery, ProposalsActiveQueryVariables>(
+    ProposalsActiveDocument,
+    variables,
+    options ?? {},
+  );
+};
+export const useLazyProposalsFailedQuery = (
+  variables: ProposalsFailedQueryVariables,
+  options?: UseQueryOptions<ProposalsFailedQuery, ProposalsFailedQueryVariables>,
+) => {
+  return useLazyQuery<ProposalsFailedQuery, ProposalsFailedQueryVariables>(
+    ProposalsFailedDocument,
+    variables,
+    options ?? {},
+  );
+};
+export const useLazyProposalsPassedQuery = (
+  variables: ProposalsPassedQueryVariables,
+  options?: UseQueryOptions<ProposalsPassedQuery, ProposalsPassedQueryVariables>,
+) => {
+  return useLazyQuery<ProposalsPassedQuery, ProposalsPassedQueryVariables>(
+    ProposalsPassedDocument,
+    variables,
+    options ?? {},
+  );
+};
+export const useLazyProposalsRejectedQuery = (
+  variables: ProposalsRejectedQueryVariables,
+  options?: UseQueryOptions<ProposalsRejectedQuery, ProposalsRejectedQueryVariables>,
+) => {
+  return useLazyQuery<ProposalsRejectedQuery, ProposalsRejectedQueryVariables>(
+    ProposalsRejectedDocument,
+    variables,
+    options ?? {},
+  );
 };
 
 export const useLazyParamsQuery = (options?: UseQueryOptions<ParamsQuery, ParamsQueryVariables>) => {
@@ -202,7 +285,7 @@ export const useLazyAllVotesQuery = (
   variables: AllVotesQueryVariables,
   options?: UseQueryOptions<AllVotesQuery, AllVotesQueryVariables>,
 ) => {
-  return useLazyQuery<AllVotesQuery, AllVotesQueryVariables>(VotesDocument, variables, options ?? {});
+  return useLazyQuery<AllVotesQuery, AllVotesQueryVariables>(AllVotesDocument, variables, options ?? {});
 };
 export const useLazyVoteOptionQuery = (
   variables: VoteOptionQueryVariables,

@@ -11,7 +11,9 @@ import DropDown from "@/components/ui/DropDown.vue";
 const props = defineProps<{ term: string }>();
 
 const { logout, isLoggedIn, login, username, avatar } = useGithubDiscussions();
-const { comments, refresh, postMessage, postUpvote, isPosting, isFailing, isLoading } = useGithubDiscusser(props.term);
+const { comments, refresh, postMessage, postVote, isPosting, isFailing, isLoading, ratio } = useGithubDiscusser(
+  props.term,
+);
 
 const sortingList = ["Popular", "Oldest", "Latest"];
 const sortingType = ref(0);
@@ -102,9 +104,24 @@ onMounted(refresh);
       </div>
     </div>
 
-    <div class="flex flex-row w-full justify-between items-center mt-[72px] mb-[72px]">
+    <div class="flex flex-row w-full justify-between items-center mt-[72px] mb-8">
       <div class="text-500 font-medium">Proposal Discussions</div>
       <DropDown v-model="sortingType" :values="sortingList" @select="handleSortingChange" />
+    </div>
+    <!-- Ratio Controller -->
+    <div class="flex flex-col gap-8 mb-8">
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        v-model="ratio"
+        class="w-full appearance-none bg-transparent rounded-lg focus:outline-none [&::-webkit-slider-runnable-track]:bg-grey-400 [&::-webkit-slider-runnable-track]:rounded-lg cursor-pointer"
+      />
+      <div class="flex flex-row justify-between gap-8">
+        <span class="text-grey-100">Upvote Ratio: {{ ratio }}</span>
+        <div class="text-200 text-grey-100 text-right">{{ sortedComments.length }} Total Comment(s)</div>
+      </div>
     </div>
     <!-- Comments -->
     <div v-if="!isLoading" class="flex flex-col w-full">
@@ -142,10 +159,19 @@ onMounted(refresh);
               <div
                 :class="isLoggedIn ? ['cursor-pointer'] : []"
                 class="flex flex-row items-center ml-auto hover:opacity-50 gap-1"
-                @click="postUpvote(comment.id, comment.didUpvote)"
+                @click="isLoggedIn ? postVote('upvote', comment.id, comment.didUpvote) : () => {}"
               >
                 <Icon icon="thumbsup" />
                 <div class="text-center text-sm">{{ comment.upvotes }}</div>
+              </div>
+              <!-- Downvote -->
+              <div
+                :class="isLoggedIn ? ['cursor-pointer'] : []"
+                class="flex flex-row items-center ml-auto hover:opacity-50 gap-1"
+                @click="isLoggedIn ? postVote('downvote', comment.id, comment.didDownvote) : () => {}"
+              >
+                <Icon icon="thumbsup" class="rotate-180" />
+                <div class="text-center text-sm">{{ comment.downvotes }}</div>
               </div>
             </div>
           </div>

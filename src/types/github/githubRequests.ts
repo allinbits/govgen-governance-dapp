@@ -90,7 +90,14 @@ export type PostRequest = {
   discussion: string;
 };
 
-export type UpvoteRequest = {
+export type ReactionRequest = {
+  /**
+   * What type of reaction request is this?
+   *
+   * @type {('upvote' | 'downvote')}
+   */
+  type: "upvote" | "downvote";
+
   /**
    * The ID of the message to upvote
    *
@@ -99,9 +106,9 @@ export type UpvoteRequest = {
   subjectId: string;
 
   /**
-   * Has the user already upvoted?
+   * Is the value being counted?
    *
    * @type {boolean}
    */
-  didUpvote: boolean;
+  isToggled: boolean;
 };

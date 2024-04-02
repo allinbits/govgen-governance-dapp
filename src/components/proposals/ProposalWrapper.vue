@@ -21,9 +21,14 @@ import utc from "dayjs/plugin/utc";
 import { decToPerc, formatAmount } from "@/utility";
 import { useValidators } from "@/composables/useValidators";
 import { ValSetQuery, ValidatorsQuery, VotesQuery } from "@/gql/graphql";
+import * as Utility from "@/utility/index";
+import CommonButton from "../ui/CommonButton.vue";
+import Breakdown from "@/components/proposals/Breakdown.vue";
+import ValidatorBreakdown from "./ValidatorBreakdown.vue";
 
-type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 const voteTypes = ["yes", "no", "veto", "abstain"] as const;
+type BreakdownType = "voters" | "validators" | null;
+type TabNames = "Info" | "Voters" | "Discussions" | "Links";
 type VoteTypes = (typeof voteTypes)[number];
 
 dayjs.extend(duration);
@@ -68,6 +73,7 @@ watch(validators, async (valSet, _old) => {
     }),
   );
 });
+
 const maxValidators = computed(() => {
   return validatorsWithStakeAndVotes.value.length;
 });
@@ -193,6 +199,9 @@ const termDiscussion = computed(() => `Proposal #${props.proposalId}`);
 const tabSelected = ref<TabNames>("Info");
 const tabOptions = reactive<TabNames[]>(["Info", "Voters", "Discussions", "Links"]);
 
+const breakdownType = ref<("validators" | "voters") | null>(null);
+const breakdownOffset = ref(0);
+
 const inDeposit = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD");
 const inVoting = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_VOTING_PERIOD");
 const failed = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_FAILED");
@@ -254,6 +263,7 @@ const threshold = computed(() => {
 const veto_threshold = computed(() => {
   return parseFloat(tally_params.value?.veto_threshold ?? "0");
 });
+
 const yesCount = getVoteOption(props.proposalId, "VOTE_OPTION_YES");
 const noCount = getVoteOption(props.proposalId, "VOTE_OPTION_NO");
 const nwvCount = getVoteOption(props.proposalId, "VOTE_OPTION_NO_WITH_VETO");
@@ -370,6 +380,11 @@ const timeTo = (dateString: string) => {
 
 function isTabSelected(tabName: TabNames) {
   return tabSelected.value.toLowerCase() == tabName.toLowerCase();
+}
+
+function showBreakdown(type: BreakdownType) {
+  breakdownType.value = type;
+  breakdownOffset.value = 0;
 }
 </script>
 
@@ -693,8 +708,11 @@ function isTabSelected(tabName: TabNames) {
             </div>
           </div>
         </div>
-        <div v-else-if="isTabSelected('Voters')" class="flex flex-col w-full gap-4 md:gap-6">
-          <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-4 md:gap-6">
+      </div>
+      <div v-else-if="isTabSelected('Voters')"class="flex flex-col w-full gap-6">
+        <template v-if="!breakdownType">
+          <!-- Voters Panel -->
+          <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
             <!-- All Account Votes -->
             <VotePanel
               :voters="distinctVoters"
@@ -702,7 +720,7 @@ function isTabSelected(tabName: TabNames) {
               :precision="stakingDenomDecimals"
               :vote-tallies="allVoteCounts"
               :token-tallies="tokenTallies"
-              @on-breakdown="() => {}"
+              @on-breakdown="showBreakdown('voters')"
             >
               <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
               <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
@@ -715,7 +733,7 @@ function isTabSelected(tabName: TabNames) {
               :precision="stakingDenomDecimals"
               :vote-tallies="validatorVoteCounts"
               :token-tallies="validatorTallies"
-              @on-breakdown="() => {}"
+              @on-breakdown="showBreakdown('validators')"
             >
               <template #header>{{ $t("proposalpage.labels.validators") }}</template>
               <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
@@ -743,13 +761,32 @@ function isTabSelected(tabName: TabNames) {
               </div>
             </div>
           </div>
-        </div>
-        <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
-          <GithubComments :term="termDiscussion" />
-        </div>
-        <div v-else-if="isTabSelected('Links')" class="w-full">
-          <GithubLinks :term="termLink" />
-        </div>
+        </template>
+        <template v-else>
+          <CommonButton class="flex justify-between items-center gap-6 w-36" @click="showBreakdown(null)">
+            <Icon icon="arrowLeft" /><span>{{ $t("ui.buttons.back") }}</span>
+          </CommonButton>
+          <div class="font-termina text-800 font-semibold text-light pt-12">
+            {{ Utility.capitalizeFirstLetter(breakdownType) }}
+          </div>
+          <!--
+          <div class="flex flex-row gap-4">
+            <span>filter</span>
+            <span>filter</span>
+            <span>filter</span>
+            <span>filter</span>
+          </div>
+          //-->
+          <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
+          <ValidatorBreakdown :validator-data="validatorsWithStakeAndVotes" v-if="breakdownType == 'validators'" />
+        </template>
+      </div>
+      <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
+        <GithubComments :term="termDiscussion" />
+      </div>
+      <div v-else-if="isTabSelected('Links')" class="w-full">
+        <GithubLinks :term="termLink" />
+      </div>
       </Transition>
     </div>
   </div>

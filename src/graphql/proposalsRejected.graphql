@@ -1,0 +1,29 @@
+query ProposalsRejected($limit: Int!, $offset: Int!, $where: proposal_bool_exp = {}) {
+  all_proposals: proposal(order_by: { rejected_first_order: asc }, limit: $limit, offset: $offset, where: $where) {
+    content
+    deposit_end_time
+    description
+    id
+    proposal_type
+    proposal_deposits {
+      amount
+      depositor_address
+    }
+    proposal_votes_aggregate(where: { is_valid: { _eq: true } }) {
+      aggregate {
+        count
+      }
+    }
+    proposer_address
+    status
+    submit_time
+    title
+    voting_end_time
+    voting_start_time
+  }
+  proposal_aggregate(where: $where) {
+    aggregate {
+      count
+    }
+  }
+}

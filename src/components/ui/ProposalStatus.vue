@@ -12,6 +12,7 @@ const colors = {
   rejected: ["fill-neg-200"],
   failed: ["fill-neg-200"],
   unspecified: ["fill-neg-200", "text-neg-200"],
+  invalid: ["fill-neg-200", "text-neg-200"],
 };
 
 const textColor = computed(() => {
