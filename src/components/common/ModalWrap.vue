@@ -15,15 +15,15 @@ const tl = (dir = true, cb: () => void) => {
 
   const modContent = content.value.animate([{ opacity: "0" }, { opacity: "1" }], {
     fill: "both",
-    duration: 500,
+    duration: 400,
     easing: "cubic-bezier(0.42, 0, 0.58, 1)",
-    delay: dir ? 200 : 0,
+    delay: dir ? 250 : 0,
   });
   modContent.pause();
 
   const modBg = frame.value.animate([{ transform: "scaleY(0)" }, { transform: "scaleY(1)" }], {
     fill: "both",
-    duration: 200,
+    duration: 400,
     easing: "cubic-bezier(0.42, 0, 0.58, 1)",
     delay: dir ? 0 : 200,
   });
@@ -32,8 +32,9 @@ const tl = (dir = true, cb: () => void) => {
   modContent.playbackRate = dir ? 1 : -1;
   modBg.playbackRate = dir ? 1 : -1;
 
-  modContent.play();
+  if (dir) modContent.play();
   modBg.play();
+
   (dir ? modContent : modBg).onfinish = () => cb();
 };
 </script>
