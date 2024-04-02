@@ -2,7 +2,7 @@ export const messages = {
   en: {
     homepage: {
       intro:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut ultrices mauris, et sollicitudin enim. Vestibulum eget viverra elit. Mauris at turpis luctus, malesuada sapien ultricies, molestie nisi. Ut viverra volutpat nibh vitae porttitor.",
+        "Explore the Governance dApp—a seamlessly integrated interface empowering secure and efficient governance interactions with the GovGen chain. Engage in collaborative discussions and actively participate in the governance processes to shape the potential future of AtomOne.",
       proposalsHeader: "All Proposals",
     },
     voteOptions: {
