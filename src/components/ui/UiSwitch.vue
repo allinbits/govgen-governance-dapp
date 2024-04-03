@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-flex border border-grey-300 rounded-full px-0.5">
+  <div class="inline-flex px-0.5">
     <div
       ref="toggler"
       class="switcher relative inline-flex w-full justify-between"

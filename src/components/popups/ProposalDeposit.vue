@@ -81,7 +81,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
   <div class="relative">
     <div>
       <div
-        class="justify-center px-6 py-4 rounded bg-gradient text-dark text-300 text-center cursor-pointer"
+        class="justify-center px-6 py-4 rounded link-gradient text-dark text-300 text-center cursor-pointer"
         @click="toogleModal(true)"
       >
         {{ $t("components.ProposalDeposit.cta") }}
@@ -119,7 +119,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
             <div class="flex flex-col gap-4">
               <div v-show="(depositAmount ?? -1) > 0" class="flex flex-col gap-4">
                 <button
-                  class="px-6 py-4 rounded bg-gradient text-dark text-300 text-center w-full"
+                  class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
                   @click="signDeposit()"
                 >
                   {{ $t("ui.actions.confirm") }}

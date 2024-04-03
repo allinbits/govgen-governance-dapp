@@ -35,7 +35,7 @@ export default <Config>{
       light: "#FFFFFF",
       dark: "#0C0C0C",
       night: "#000000",
-      darkblur: "##0009",
+      darkblur: "#0009",
       grey: {
         50: "#9F9F9F",
         100: "#686868",
@@ -125,7 +125,7 @@ export default <Config>{
             "background-position": "0% 0%",
           },
           ".link-gradient:hover": {
-            "background-position": "66.66% 0%",
+            "background-position": "100% 0%",
           },
         });
     }),
