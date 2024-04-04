@@ -112,7 +112,7 @@ export const messages = {
       actions: {
         cli: "Copy CLI Command",
         confirm: "or Sign with Wallet",
-        signTxSecurely: "See: Why should I use the CLI?",
+        signTxSecurely: "See: Why and How should I use the CLI?",
         cancel: "Cancel",
         clicta: "CLI Command",
         copied: "Copied",
