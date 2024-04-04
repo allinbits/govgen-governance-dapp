@@ -186,15 +186,22 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
               <div v-show="voteStraight || checkVoteWeighted" class="flex flex-col gap-4">
                 <button
                   class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
-                  @click="signVote()"
-                >
-                  {{ $t("ui.actions.confirm") }}
-                </button>
-                <button
-                  class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                   @click="signVote(true)"
                 >
                   {{ $t("ui.actions.cli") }}
+                </button>
+                <a
+                  href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
+                  target="_blank"
+                  class="text-center text-100 text-grey-100 underline"
+                >
+                  {{ $t("ui.actions.signTxSecurely") }}
+                </a>
+                <button
+                  class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
+                  @click="signVote()"
+                >
+                  {{ $t("ui.actions.confirm") }}
                 </button>
               </div>
 
@@ -211,7 +218,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
         <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
           <div class="flex flex-col items-center gap-4">
             <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
-            <span class="text-grey-100">{{ $t("components.ui.actions.clicta") }}</span>
+            <span class="text-grey-100">{{ $t("ui.actions.clicta") }}</span>
           </div>
 
           <div class="relative">
@@ -220,9 +227,9 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
               class="absolute top-4 right-4 text-200 flex gap-1 hover:text-grey-50 duration-200"
               @click="copy(cliVoteInput)"
             >
-              <span v-show="copied">{{ $t("components.ui.actions.copied") }}</span>
+              <span v-show="copied">{{ $t("ui.actions.copied") }}</span>
               <span v-show="!copied" class="flex gap-1">
-                <Icon icon="copy" /><span>{{ $t("components.ui.actions.copy") }}</span>
+                <Icon icon="copy" /><span>{{ $t("ui.actions.copy") }}</span>
               </span>
             </button>
             <textarea
@@ -235,13 +242,13 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 
           <div class="flex gap-x-4 items-stretch">
             <CommonButton class="w-full" @click="() => (displayState = 'pending')">{{
-              $t("components.ui.actions.back")
+              $t("ui.actions.back")
             }}</CommonButton>
             <button
               class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
               @click="toogleModal(false)"
             >
-              {{ $t("components.ui.actions.done") }}
+              {{ $t("ui.actions.done") }}
             </button>
           </div>
         </div>
@@ -264,7 +271,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
             class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
             @click="toogleModal(false)"
           >
-            {{ $t("components.ui.actions.done") }}
+            {{ $t("ui.actions.done") }}
           </button>
         </div>
       </div>

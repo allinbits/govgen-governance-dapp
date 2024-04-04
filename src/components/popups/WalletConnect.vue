@@ -163,7 +163,7 @@ bus.on("open", () => {
                   }
                 "
               >
-                {{ $t("components.ui.actions.cancel") }}</ConnectButton
+                {{ $t("ui.actions.cancel") }}</ConnectButton
               >
             </div>
 
@@ -209,7 +209,7 @@ bus.on("open", () => {
                 }
               "
             >
-              {{ $t("components.ui.actions.done") }}</ConnectButton
+              {{ $t("ui.actions.done") }}</ConnectButton
             >
           </div>
 
