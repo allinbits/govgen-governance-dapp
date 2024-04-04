@@ -42,11 +42,11 @@ const getValidatorInfo = (address: string) => {
 <template>
   <div class="flex flex-col w-full">
     <div class="grid grid-cols-5 py-4 w-full text-grey-100 font-medium text-200">
-      <span>Moniker</span>
-      <span>TX Hash</span>
-      <span>Answer</span>
-      <span>Weight</span>
-      <span class="text-right">Time</span>
+      <span>{{ $t("components.Breakdown.moniker") }}</span>
+      <span>{{ $t("components.Breakdown.txHash") }}</span>
+      <span>{{ $t("components.Breakdown.answer") }}</span>
+      <span>{{ $t("components.Breakdown.weight") }}</span>
+      <span class="text-right">{{ $t("components.Breakdown.time") }}</span>
     </div>
     <template v-for="validator in validatorData">
       <template v-if="validator.votes.length > 0">

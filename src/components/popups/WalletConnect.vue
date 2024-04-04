@@ -80,9 +80,11 @@ bus.on("open", () => {
         <div class="absolute right-0 top-4 z-10">
           <div class="flex flex-col gap-6 px-8 py-6 bg-grey-300 rounded w-80 relative">
             <Icon class="absolute top-3 right-4 cursor-pointer text-light" icon="close" @click="isOpen = false" />
-            <div class="flex flex-col text-[white] text-500 font-semibold text-center">Connect your wallet</div>
+            <div class="flex flex-col text-[white] text-500 font-semibold text-center">
+              {{ $t("components.WalletConnect.cta") }}
+            </div>
             <div class="flex flex-col text-grey-100 text-300 font-medium text-center">
-              You need to connect your wallet first to vote on proposals.
+              {{ $t("components.WalletConnect.instruction") }}
             </div>
             <div class="buttons">
               <ConnectButton class="my-4" :disabled="!keplr" @click="connectWallet(Wallets.keplr)">
@@ -125,7 +127,7 @@ bus.on("open", () => {
                 <div class="text-light text-300">{{ shorten(address) }}</div>
               </div>
             </div>
-            <div class="text-200 text-grey-100 pt-6 pb-2">Balance</div>
+            <div class="text-200 text-grey-100 pt-6 pb-2">{{ $t("components.WalletConnect.balance") }}</div>
             <div class="text-300 text-light"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
             <div class="buttons">
               <ConnectButton
@@ -135,7 +137,7 @@ bus.on("open", () => {
                   isOpen = false;
                 "
               >
-                Disconnect Wallet</ConnectButton
+                {{ $t("components.WalletConnect.disconnect") }}</ConnectButton
               >
             </div>
           </div>
@@ -148,8 +150,10 @@ bus.on("open", () => {
           <div class="flex flex-col px-8 py-4 pt-6 bg-grey-300 rounded w-80 relative align-center items-center">
             <Icon icon="loading" :size="3" />
 
-            <div class="flex flex-col text-[white] text-400 font-semibold text-center mt-4">Connecting Wallet</div>
-            <div class="text-200 text-grey-100 my-4">Please wait...</div>
+            <div class="flex flex-col text-[white] text-400 font-semibold text-center mt-4">
+              {{ $t("components.WalletConnect.connecting") }}
+            </div>
+            <div class="text-200 text-grey-100 my-4">{{ $t("components.WalletConnect.wait") }}</div>
             <div class="buttons">
               <ConnectButton
                 class="my-4 justify-center"
@@ -159,7 +163,7 @@ bus.on("open", () => {
                   }
                 "
               >
-                Cancel</ConnectButton
+                {{ $t("components.ui.actions.cancel") }}</ConnectButton
               >
             </div>
 
@@ -168,7 +172,7 @@ bus.on("open", () => {
                 :href="getWalletHelp(chosenWallet)"
                 target="_blank"
                 class="text-100 flex my-2 justify-center items-center"
-                >{{ chosenWallet }} Troubleshooting <Icon icon="link" class="ml-2"
+                >{{ chosenWallet }} {{ $t("components.WalletConnect.trouble") }} <Icon icon="link" class="ml-2"
               /></a>
             </div>
           </div>
@@ -182,8 +186,10 @@ bus.on("open", () => {
         <div class="flex flex-col px-8 py-4 pt-6 bg-grey-300 rounded w-80 relative align-center items-center">
           <Icon icon="close" :size="3" class="text-neg-200" />
 
-          <div class="flex flex-col text-[white] text-400 font-semibold text-center mt-4">Connection Failed</div>
-          <div class="text-200 text-grey-100 my-4 text-center">Wasn't able to connect to your wallet</div>
+          <div class="flex flex-col text-[white] text-400 font-semibold text-center mt-4">
+            {{ $t("components.WalletConnect.failed") }}
+          </div>
+          <div class="text-200 text-grey-100 my-4 text-center">{{ $t("components.WalletConnect.failedSub") }}</div>
           <div class="buttons">
             <ConnectButton
               class="my-4 justify-center"
@@ -193,7 +199,7 @@ bus.on("open", () => {
                 }
               "
             >
-              Try again</ConnectButton
+              {{ $t("components.WalletConnect.retry") }}</ConnectButton
             >
             <ConnectButton
               class="my-4 justify-center"
@@ -203,7 +209,7 @@ bus.on("open", () => {
                 }
               "
             >
-              Done</ConnectButton
+              {{ $t("components.ui.actions.done") }}</ConnectButton
             >
           </div>
 
@@ -212,7 +218,7 @@ bus.on("open", () => {
               :href="getWalletHelp(chosenWallet)"
               target="_blank"
               class="text-100 flex my-2 justify-center items-center"
-              >{{ chosenWallet }} Troubleshooting <Icon icon="link" class="ml-2"
+              >{{ chosenWallet }} {{ $t("components.WalletConnect.trouble") }} <Icon icon="link" class="ml-2"
             /></a>
           </div>
         </div>
