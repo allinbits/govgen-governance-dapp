@@ -65,6 +65,24 @@ export const messages = {
     components: {
       WalletConnect: {
         button: "Connect Wallet",
+        cta: "Connect your wallet",
+        instruction: "You need to connect your wallet first to vote on proposals.",
+        balance: "Balance",
+        disconnect: "Disconnect wallet",
+        connecting: "Connecting wallet",
+        wait: "Please wait...",
+        trouble: "Troubleshooting",
+        retry: "Try again",
+        failed: "Connection Failed",
+        failedSub: "Was not able to connect to your wallet",
+      },
+      Breakdown: {
+        moniker: "Moniker",
+        voter: "Voter",
+        answer: "Answer",
+        txHash: "TX Hash",
+        weight: "Weight",
+        time: "Time",
       },
       FooterSection: {
         cta: "Be a part of the conversation",
@@ -74,12 +92,18 @@ export const messages = {
       },
       ProposalVote: {
         cta: "Vote",
+        voted: "You voted",
         weightedInstructions: "Define weight for each of the voting options. The sum of weights must be equal to 1.",
       },
       ProposalDeposit: {
         cta: "Deposit",
         act: "deposited",
+        deposited: "You deposited",
         instructions: "Enter deposit amount",
+      },
+      VotePanel: {
+        breakdown: "Breakdown",
+        noVotes: "No votes have been recorded.",
       },
     },
     ui: {
@@ -89,6 +113,11 @@ export const messages = {
         confirm: "Confirm & Sign",
         cli: "or Copy CLI Command",
         cancel: "Cancel",
+        clicta: "CLI Command",
+        copied: "Copied",
+        copy: "Copy",
+        back: "Back",
+        done: "Done",
       },
       buttons: {
         back: "Back",

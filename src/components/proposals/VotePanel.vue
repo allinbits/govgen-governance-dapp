@@ -51,7 +51,9 @@ const totalVoteText = computed(() => {
         <span class="text-300 md:text-500 text-light mb-1"><slot name="header"></slot></span>
         <span class="text-200 md:text-300 text-grey-100">{{ totalVoteText }} <slot name="type"></slot></span>
       </div>
-      <CommonButton class="!bg-grey-200 hidden md:flex" @click="emits('onBreakdown')">Breakdown</CommonButton>
+      <CommonButton class="!bg-grey-200 hidden md:flex" @click="emits('onBreakdown')">{{
+        $t("components.VotePanel.breakdown")
+      }}</CommonButton>
     </div>
     <!-- Lower Section -->
     <div v-if="voters >= 1" class="flex flex-col sm:flex-row gap-6 md:gap-12 w-full sm:items-center">
@@ -65,7 +67,7 @@ const totalVoteText = computed(() => {
       </div>
       <div class="flex flex-col gap-6">
         <div class="flex flex-col gap-1">
-          <span class="text-accent-100 text-300 start-6">Yes: {{ voteTallies.yes }}</span>
+          <span class="text-accent-100 text-300 start-6">{{ $t("voteOptions.yes") }}: {{ voteTallies.yes }}</span>
           <span class="text-grey-100 text-100"
             ><span class="sm:block md:inline-block">{{ formatAmount(tokenTallies.yes, precision) }} {{ denom }} </span>
             <span class="sm:hidden md:inline-block">&nbsp;|&nbsp;</span
@@ -73,7 +75,7 @@ const totalVoteText = computed(() => {
           >
         </div>
         <div class="flex flex-col gap-1">
-          <span class="text-accent-200 text-300 start-6">Veto: {{ voteTallies.veto }}</span>
+          <span class="text-accent-200 text-300 start-6">{{ $t("voteOptions.nwvShort") }}: {{ voteTallies.veto }}</span>
           <span class="text-grey-100 text-100"
             ><span class="sm:block md:inline-block">{{ formatAmount(tokenTallies.veto, precision) }} {{ denom }}</span>
             <span class="sm:hidden md:inline-block">&nbsp;|&nbsp;</span
@@ -83,14 +85,14 @@ const totalVoteText = computed(() => {
       </div>
       <div class="flex flex-col gap-6">
         <div class="flex flex-col gap-1">
-          <span class="text-neg-200 text-300 start-6">No: {{ voteTallies.no }}</span>
+          <span class="text-neg-200 text-300 start-6">{{ $t("voteOptions.no") }}: {{ voteTallies.no }}</span>
           <span class="text-grey-100 text-100"
             ><span class="sm:block md:inline-block">{{ formatAmount(tokenTallies.no, precision) }} {{ denom }}</span>
             <span class="sm:hidden md:inline-block">&nbsp;|&nbsp;</span><span> {{ decToPerc(pcts.no, 2) }}%</span></span
           >
         </div>
         <div class="flex flex-col gap-1">
-          <span class="text-grey-100 text-300 start-6">Abstain: {{ voteTallies.abstain }}</span>
+          <span class="text-grey-100 text-300 start-6">{{ $t("voteOptions.abstain") }}: {{ voteTallies.abstain }}</span>
           <span class="text-grey-100 text-100"
             ><span class="sm:block md:inline-block"
               >{{ formatAmount(tokenTallies.abstain, precision) }} {{ denom }}</span
@@ -102,7 +104,7 @@ const totalVoteText = computed(() => {
       </div>
     </div>
     <div v-else>
-      <span class="text-grey-100 text-300">No votes have been counted</span>
+      <span class="text-grey-100 text-300">{{ $t("components.VotePanel.noVotes") }}</span>
     </div>
   </div>
 </template>

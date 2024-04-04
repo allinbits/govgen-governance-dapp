@@ -145,7 +145,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
         <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
           <div class="flex flex-col items-center gap-4">
             <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
-            <span class="text-grey-100">CLI Command</span>
+            <span class="text-grey-100">{{ $t("components.ui.actions.clicta") }}</span>
           </div>
 
           <div class="relative">
@@ -155,28 +155,32 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
               @click="copy(cliDepositInput)"
             >
               <span v-show="copied">Copied</span>
-              <span class="flex gap-1" v-show="!copied"> <Icon icon="copy" /><span>Copy</span> </span>
+              <span v-show="!copied" class="flex gap-1">
+                <Icon icon="copy" /><span>{{ $t("components.ui.actions.copy") }}</span>
+              </span>
             </button>
             <textarea
               ref="CLIVote"
-              readonly
               v-model="cliDepositInput"
+              readonly
               class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
             ></textarea>
           </div>
 
           <div class="flex gap-x-4 items-stretch">
-            <CommonButton class="w-full" @click="() => (displayState = 'pending')">Back</CommonButton>
+            <CommonButton class="w-full" @click="() => (displayState = 'pending')">{{
+              $t("components.ui.actions.back")
+            }}</CommonButton>
             <button
               class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
               @click="toogleModal(false)"
             >
-              Done
+              {{ $t("components.ui.actions.done") }}
             </button>
           </div>
         </div>
         <div v-show="displayState === 'deposited'">
-          <UiInfo title="You deposited">
+          <UiInfo :title="$t('components.ProposalDeposit.deposited')">
             <div class="text-500 text-center font-semibold mb-8 w-full">
               {{ depositAmount }} {{ depositDenomDisplay }}
             </div>
@@ -186,7 +190,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
             class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
             @click="toogleModal(false)"
           >
-            Done
+            {{ $t("components.ui.actions.done") }}
           </button>
         </div>
       </div>
