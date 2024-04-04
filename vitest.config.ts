@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   test: {
     include: ["src/**/*.{test,spec}.ts"],
+    environment: "happy-dom",
     coverage: {
       provider: "istanbul",
       include: ["src/**/*.ts"],
