@@ -778,7 +778,7 @@ function showBreakdown(type: BreakdownType) {
           </div>
           //-->
             <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
-            <ValidatorBreakdown :validator-data="validatorsWithStakeAndVotes" v-if="breakdownType == 'validators'" />
+            <ValidatorBreakdown v-if="breakdownType == 'validators'" :validator-data="validatorsWithStakeAndVotes" />
           </template>
         </div>
         <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">

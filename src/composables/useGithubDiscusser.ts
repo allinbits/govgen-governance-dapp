@@ -118,7 +118,7 @@ export function useGithubDiscusser(threadTitle: string) {
     }
 
     const comments: ParsedComment[] = [];
-    for (let comment of discussion.value.comments.nodes) {
+    for (const comment of discussion.value.comments.nodes) {
       const upvote = comment.reactionGroups.find((comment) => comment.content == "THUMBS_UP");
       const downvote = comment.reactionGroups.find((comment) => comment.content == "THUMBS_DOWN");
       const totalVotes =
@@ -158,7 +158,7 @@ export function useGithubDiscusser(threadTitle: string) {
     }
 
     const links: ParsedComment[] = [];
-    for (let comment of discussion.value.comments.nodes) {
+    for (const comment of discussion.value.comments.nodes) {
       const upvote = comment.reactionGroups.find((comment) => comment.content == "THUMBS_UP");
       const downvote = comment.reactionGroups.find((comment) => comment.content == "THUMBS_DOWN");
       const totalVotes =

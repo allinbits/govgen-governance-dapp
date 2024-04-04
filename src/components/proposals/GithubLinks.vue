@@ -85,11 +85,11 @@ onMounted(refresh);
     <!-- Ratio Controller -->
     <div class="flex flex-col gap-8 mb-8 mt-8">
       <input
+        v-model="ratio"
         type="range"
         min="0"
         max="1"
         step="0.01"
-        v-model="ratio"
         class="w-full appearance-none bg-transparent rounded-lg focus:outline-none [&::-webkit-slider-runnable-track]:bg-grey-400 [&::-webkit-slider-runnable-track]:rounded-lg cursor-pointer"
       />
       <div class="flex flex-row justify-between gap-8">
