@@ -22,7 +22,7 @@ const errorState = computed(() => isOpen.value && isError.value);
 
 const controller: Ref<AbortController | null> = ref(null);
 const chosenWallet: Ref<Wallets> = ref(Wallets.keplr);
-const connectWallet = async (walletType: Wallets) => {
+const connectWallet = async (walletType: Wallets, address?: string) => {
   isError.value = false;
   isConnecting.value = true;
   isOpen.value = true;
@@ -32,7 +32,11 @@ const connectWallet = async (walletType: Wallets) => {
   controller.value = new AbortController();
   try {
     slow = setTimeout(() => (isSlowConnecting.value = true), 10000);
-    await connect(walletType, controller.value.signal);
+    if (walletType == Wallets.addressOnly && address) {
+      await connect(walletType, address, controller.value.signal);
+    } else {
+      await connect(walletType, undefined, controller.value.signal);
+    }
     isConnecting.value = false;
     isSlowConnecting.value = false;
     isOpen.value = false;
