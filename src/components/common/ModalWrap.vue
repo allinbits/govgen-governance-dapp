@@ -43,7 +43,7 @@ const tl = (dir = true, cb: () => void) => {
   <Transition name="bg">
     <div v-if="props.visible" class="fixed top-0 left-0 right-0 bottom-0 bg-darkblur backdrop-blur-md z-max"></div>
   </Transition>
-  <Transition @enter="(_, done) => tl(true, done)" @leave="(_, done) => tl(false, done)" :css="false">
+  <Transition :css="false" @enter="(_, done) => tl(true, done)" @leave="(_, done) => tl(false, done)">
     <div v-show="props.visible" ref="frame" class="fixed z-max origin-center w-screen h-screen top-0 left-0">
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <div class="bg-grey-400 w-full rounded-md max-h-screen overflow-auto">

@@ -62,6 +62,11 @@ export const messages = {
         willFail: "Will fail",
       },
     },
+    proposalview: {
+      labels: {
+        unavailable: "Proposal is unavailable",
+      },
+    },
     components: {
       WalletConnect: {
         button: "Connect Wallet",
