@@ -1,4 +1,9 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/experimental-ct-vue";
+import { fileURLToPath, URL } from "node:url";
+import vue from "@vitejs/plugin-vue";
+import graphql from "@rollup/plugin-graphql";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
+import { PluginOption } from 'vite';
 
 /**
  * Read environment variables from file.
@@ -10,7 +15,7 @@ import { defineConfig, devices } from "@playwright/test";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./tests/e2e",
+  testDir: "./tests/components",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -28,6 +33,29 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+    
+    ctPort: 3100,
+    ctViteConfig: {
+
+      plugins: [
+        nodePolyfills({
+          // Whether to polyfill specific globals.
+          globals: {
+            Buffer: true, // can also be 'build', 'dev', or false
+            global: true,
+            process: true,
+          },
+        }),
+        vue(),
+        graphql() as PluginOption,
+      ],
+      resolve: {
+        alias: {
+          "@": fileURLToPath(new URL("./src", import.meta.url)),
+          "~": fileURLToPath(new URL("./src", import.meta.url)),
+        },
+      },
+    },
   },
 
   /* Configure projects for major browsers */
