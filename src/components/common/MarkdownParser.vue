@@ -1,7 +1,15 @@
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
-import * as marked from "marked";
+import markdownit from "markdown-it";
+import MarkdownItMermaid from "@agoose77/markdown-it-mermaid";
+
 import DOMPurify from "dompurify";
+
+const md = markdownit({
+  html: true,
+  linkify: true,
+  typographer: true,
+}).use(MarkdownItMermaid);
 
 const props = defineProps<{ limit?: number }>();
 const content = defineModel<string>();
@@ -13,8 +21,8 @@ async function parseData() {
   }
 
   const htmlContent = props.limit
-    ? await marked.parse(content.value.slice(0, props.limit))
-    : await marked.parse(content.value);
+    ? await md.render(content.value.slice(0, props.limit))
+    : await md.render(content.value);
 
   trimmedContent.value = DOMPurify.sanitize(htmlContent);
 }
