@@ -36,7 +36,6 @@
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
     "markdown-it": "^14.1.0",
-    "marked": "^12.0.1",
     "mitt": "^3.0.1",
     "vite-plugin-node-polyfills": "^0.21.0",
     "vue": "^3.4.15",
