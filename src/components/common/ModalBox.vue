@@ -1,12 +1,9 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 
-interface Props {
-  visible: boolean;
-}
-const props = withDefaults(defineProps<Props>(), {
-  visible: false,
-});
+const props = defineProps<{ title?: string }>();
+const emits = defineEmits<{ (e: "close"): void }>();
+const visible = defineModel<boolean>();
 
 const content = ref<HTMLElement | null>(null);
 const frame = ref<HTMLElement | null>(null);
@@ -41,15 +38,21 @@ const tl = (dir = true, cb: () => void) => {
 
 <template>
   <Transition name="bg">
-    <div v-if="props.visible" class="fixed top-0 left-0 right-0 bottom-0 bg-darkblur backdrop-blur-md z-max"></div>
+    <div v-if="visible" class="fixed top-0 left-0 right-0 bottom-0 bg-darkblur backdrop-blur-md z-max"></div>
   </Transition>
   <Transition :css="false" @enter="(_, done) => tl(true, done)" @leave="(_, done) => tl(false, done)">
-    <div v-show="props.visible" ref="frame" class="fixed z-max origin-center w-screen h-screen top-0 left-0">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div class="bg-grey-400 w-full rounded-md max-h-screen overflow-auto">
-          <div ref="content" class="opacity-0">
-            <slot></slot>
-          </div>
+    <div
+      v-show="visible"
+      ref="frame"
+      class="fixed flex items-center justify-center z-max origin-center w-screen h-screen top-0 left-0"
+    >
+      <div class="bg-grey-200 w-[90vw] md:max-w-[75vw] rounded-md">
+        <div class="flex flex-row w-full bg-grey-400 p-6 rounded-tl-md rounded-tr-md justify-between items-center">
+          <span>{{ props.title ?? "Popup" }}</span>
+          <Icon icon="close" class="text-400 hover:opacity-50 cursor-pointer" @click="emits('close')" />
+        </div>
+        <div ref="content" class="max-h-[75vh] overflow-y-auto w-full overflow-x-hidden">
+          <slot></slot>
         </div>
       </div>
     </div>

@@ -133,3 +133,62 @@ html {
     @apply font-interVar;
   }
 }
+
+.markdown {
+  h1 {
+    @apply text-500 font-medium my-2;
+  }
+
+  h2 {
+    @apply text-400 font-medium my-2;
+  }
+
+  h3,
+  h4,
+  h5 {
+    @apply text-300 font-medium my-2;
+  }
+
+  ul {
+    @apply pl-6 my-4;
+    list-style-type: disc;
+  }
+
+  li {
+    @apply text-200 py-2;
+    @apply leading-6;
+  }
+
+  p {
+    @apply mb-4;
+    text-align: justify;
+    @apply leading-6;
+  }
+
+  pre {
+    @apply bg-grey-500 p-3 rounded-sm mb-4 mt-4;
+  }
+
+  table {
+    @apply w-full my-4;
+  }
+
+  table,
+  th,
+  td {
+    @apply border-2 border-grey-200;
+  }
+
+  table {
+    @apply bg-grey-300;
+  }
+
+  th {
+    @apply p-2;
+  }
+
+  td {
+    @apply p-2;
+    @apply text-center;
+  }
+}
