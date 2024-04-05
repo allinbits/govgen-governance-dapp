@@ -9,6 +9,7 @@ export enum Wallets {
   keplr = "Keplr",
   leap = "Leap",
   cosmostation = "Cosmostation",
+  addressOnly = "AddressOnly",
 }
 export const getWalletHelp = (wallet: Wallets) => {
   switch (wallet) {
@@ -36,7 +37,7 @@ const useWalletInstance = () => {
   };
   const signer: Ref<OfflineSigner | null> = ref(null);
 
-  const connect = async (walletType: Wallets, signal?: AbortSignal) => {
+  const connect = async (walletType: Wallets, address?: string, signal?: AbortSignal) => {
     if (signal?.aborted) {
       return Promise.reject(new DOMException("Aborted", "AbortError"));
     }
@@ -119,6 +120,13 @@ const useWalletInstance = () => {
           signal?.removeEventListener("abort", abortHandler);
         }
         break;
+      case Wallets.addressOnly:
+        if (address) {
+          walletState.address.value = address;
+          walletState.loggedIn.value = true;
+          walletState.used.value = Wallets.addressOnly;
+        }
+        break;
     }
   };
   const sendTx = async (msgs: EncodeObject[]) => {
@@ -139,7 +147,11 @@ const useWalletInstance = () => {
   };
   const refreshAddress = () => {
     if (walletState.used.value) {
-      connect(walletState.used.value);
+      if (walletState.used.value == Wallets.addressOnly) {
+        connect(walletState.used.value, walletState.address.value);
+      } else {
+        connect(walletState.used.value);
+      }
     }
   };
   window.addEventListener("cosmostation_keystorechange", refreshAddress);
