@@ -13,7 +13,7 @@
     "test:e2e:serve": "serve -s dist -l 8080",
     "test:e2e": "npx playwright install && playwright test",
     "test:components": "npx playwright install && playwright test -c playwright-ct.config.ts",
-    "test:unit": "vitest run",
+    "test:unit": "vitest run --reporter=verbose",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage"
   },
