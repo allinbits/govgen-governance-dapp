@@ -7,6 +7,19 @@ import IconVue from "@/components/ui/Icon.vue";
 import { createI18n } from "vue-i18n";
 import { messages } from "@/localization";
 import apolloClient from "./apolloClient";
+import { createPlausible } from "v-plausible/vue";
+
+const plausible = createPlausible({
+  init: {
+    domain: "https://govgen-governance-dapp.netlify.app",
+    trackLocalhost: true,
+  },
+  settings: {
+    enableAutoOutboundTracking: true,
+    enableAutoPageviews: true,
+  },
+  partytown: false,
+});
 
 const app = createApp({
   setup() {
@@ -23,5 +36,6 @@ const i18n = createI18n({
 });
 app.use(i18n);
 app.use(router);
+app.use(plausible);
 app.component("Icon", IconVue);
 router.isReady().then(() => app.mount("#app"));
