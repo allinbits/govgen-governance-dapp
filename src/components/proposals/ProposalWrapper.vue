@@ -26,6 +26,8 @@ import CommonButton from "../ui/CommonButton.vue";
 import Breakdown from "@/components/proposals/Breakdown.vue";
 import ValidatorBreakdown from "./ValidatorBreakdown.vue";
 import MarkdownParser from "@/components/common/MarkdownParser.vue";
+import ModalBox from "@/components/common/ModalBox.vue";
+import { VCodeBlock } from "@wdns/vue-code-block";
 
 const voteTypes = ["yes", "no", "veto", "abstain"] as const;
 type BreakdownType = "voters" | "validators" | null;
@@ -203,6 +205,8 @@ const tabOptions = reactive<TabNames[]>(["Description", "Voters", "Discussions",
 const breakdownType = ref<("validators" | "voters") | null>(null);
 const breakdownOffset = ref(0);
 
+const showJsonModal = ref(false);
+
 const inDeposit = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD");
 const inVoting = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_VOTING_PERIOD");
 const failed = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_FAILED");
@@ -378,7 +382,8 @@ function showBreakdown(type: BreakdownType) {
 
 <template>
   <div>
-    <div class="badges my-8 md:my-12">
+    <div class="flex flex-row justify-between items-center">
+      <div class="badges my-8 md:my-12">
       <template v-if="inVoting">
         <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
           >{{ $t("proposalpage.badges.votingPeriod") }}
@@ -405,6 +410,11 @@ function showBreakdown(type: BreakdownType) {
         $t("proposalpage.badges.passed")
       }}</SimpleBadge>
     </div>
+    <div class="flex items-center text-300 text-grey-100 start-7 hover:opacity-50 hover:cursor-pointer" @click="showJsonModal = true">
+      <Icon icon="Curlybrackets" />&nbsp; JSON
+    </div>
+    </div>
+
     <div class="flex mb-12 flex-col md:flex-row">
       <div class="basic-details flex-grow md:pr-10">
         <h1 class="font-termina text-500 md:text-800 text-light mb-8 md:mb-16 pb-2">
@@ -641,9 +651,7 @@ function showBreakdown(type: BreakdownType) {
                   <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.changes") }}</div>
                     <div class="text-light text-100">
-                      <code>
-                        <pre class="text-pretty break-words">{{ proposal?.proposal[0].content.changes }}</pre>
-                      </code>
+                      <VCodeBlock :code="JSON.stringify(proposal?.proposal[0].content.changes, null, '\t')" prismjs />
                     </div>
                   </div>
                 </div>
@@ -670,9 +678,7 @@ function showBreakdown(type: BreakdownType) {
                   <div class="grow w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.upgradePlan") }}</div>
                     <div class="text-light text-100">
-                      <code>
-                        <pre class="text-pretty">{{ proposal?.proposal[0].content.plan }}</pre>
-                      </code>
+                      <VCodeBlock :code="JSON.stringify(proposal?.proposal[0].content.plan, null, '\t')" prismjs />
                     </div>
                   </div>
                 </div>
@@ -770,6 +776,11 @@ function showBreakdown(type: BreakdownType) {
         </div>
       </Transition>
     </div>
+    <ModalBox title="JSON" v-model="showJsonModal" @close="showJsonModal = false">
+      <div class="p-4" v-if="proposal">
+        <VCodeBlock :code="JSON.stringify(proposal, null, '\t')" prismjs />
+      </div>
+    </ModalBox>
   </div>
 </template>
 
