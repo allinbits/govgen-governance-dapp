@@ -200,7 +200,7 @@ const termLink = computed(() => `Link #${props.proposalId}`);
 const termDiscussion = computed(() => `Proposal #${props.proposalId}`);
 
 const tabSelected = ref<TabNames>("Info");
-const tabOptions = reactive<TabNames[]>(["Description", "Voters", "Discussions", "Links", "Info"]);
+const tabOptions = reactive<TabNames[]>(["Description", "Info", "Voters", "Discussions", "Links"]);
 
 const breakdownType = ref<("validators" | "voters") | null>(null);
 const breakdownOffset = ref(0);
