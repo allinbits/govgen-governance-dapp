@@ -18,6 +18,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@agoose77/markdown-it-mermaid": "^1.1.0",
     "@apollo/client": "^3.9.5",
     "@cosmjs/proto-signing": "^0.32.2",
     "@cosmjs/stargate": "^0.32.2",
@@ -35,6 +36,7 @@
     "dompurify": "^3.0.9",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
+    "markdown-it": "^14.1.0",
     "mitt": "^3.0.1",
     "vite-plugin-node-polyfills": "^0.21.0",
     "vue": "^3.4.15",
@@ -52,6 +54,7 @@
     "@playwright/test": "1.44.0-alpha-2024-04-05",
     "@rollup/plugin-graphql": "^2.0.4",
     "@types/dompurify": "^3.0.5",
+    "@types/markdown-it": "^13.0.7",
     "@types/node": "^20.11.16",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
     "@typescript-eslint/parser": "^6.20.0",
