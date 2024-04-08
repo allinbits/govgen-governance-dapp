@@ -11,7 +11,7 @@ import { createPlausible } from "v-plausible/vue";
 
 const plausible = createPlausible({
   init: {
-    domain: "https://govgen-governance-dapp.netlify.app",
+    domain: "govgen-governance-dapp.netlify.app",
     trackLocalhost: true,
   },
   settings: {
