@@ -2,7 +2,13 @@
   <DropDown v-model="tabIdx" :values="options" class="md:hidden" v-bind="$attrs" @select="changeTab" />
 
   <div class="hidden md:flex flex-col w-full pt-12 relative" v-bind="$attrs">
-    <div ref="toggler" class="flex flex-row w-full gap-6 md:gap-12 relative" role="radiogroup" aria-label="Switch" @mouseleave="changeTab(lastTab)">
+    <div
+      ref="toggler"
+      class="flex flex-row w-full gap-6 md:gap-12 relative"
+      role="radiogroup"
+      aria-label="Switch"
+      @mouseleave="changeTab(lastTab)"
+    >
       <!-- Tabs -->
       <div
         v-for="(option, index) in options"
