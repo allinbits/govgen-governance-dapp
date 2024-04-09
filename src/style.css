@@ -133,8 +133,8 @@ html {
     @apply font-interVar;
   }
 }
-
-.markdown {
+/* 
+.markdown { 
   h1 {
     @apply text-500 font-medium my-2;
   }
@@ -191,4 +191,4 @@ html {
     @apply p-2;
     @apply text-center;
   }
-}
+} */

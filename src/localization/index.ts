@@ -110,6 +110,15 @@ export const messages = {
         breakdown: "Breakdown",
         noVotes: "No votes have been recorded.",
       },
+      GithubComments: {
+        signInLong: 'Sign in via GitHub to be able to post messages',
+        signIn: 'Github Sign In',
+        signOut: 'Sign Out',
+        proposalDiscussion: 'Proposal Discussion',
+        upvoteRatio: 'Upvote Ratio',
+        totalComments: 'Total Comment(s)',
+        viewOnGithub: 'View on GitHub',
+      }
     },
     ui: {
       readMore: "Read More",
@@ -132,6 +141,7 @@ export const messages = {
         Info: "Info",
         Voters: "Voters",
         Discussions: "Discussions",
+        Description: "Description",
         Links: "Links",
         Yes: "Yes",
         No: "No",
