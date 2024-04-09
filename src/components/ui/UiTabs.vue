@@ -2,7 +2,13 @@
   <DropDown v-model="tabIdx" :values="options" class="md:hidden" v-bind="$attrs" @select="changeTab" />
 
   <div class="hidden md:flex flex-col w-full pt-12 relative" v-bind="$attrs">
-    <div ref="toggler" class="flex flex-row w-full gap-6 md:gap-12 relative" role="radiogroup" aria-label="Switch">
+    <div
+      ref="toggler"
+      class="flex flex-row w-full gap-6 md:gap-12 relative"
+      role="radiogroup"
+      aria-label="Switch"
+      @mouseleave="changeTab(lastTab)"
+    >
       <!-- Tabs -->
       <div
         v-for="(option, index) in options"
@@ -47,6 +53,7 @@ type Props = {
 };
 
 const tabSelected = defineModel<string>();
+const lastTab = ref<number>(0);
 const toggler = ref<HTMLElement | null>(null);
 const tabRefs = ref<HTMLElement[]>([]);
 const line = ref<HTMLElement | null>(null);
@@ -55,7 +62,10 @@ const tabIdx = ref<number>(0);
 const props = withDefaults(defineProps<Props>(), { modelValue: undefined });
 function changeTab(idx: number = 0, isClicked = true) {
   tabIdx.value = idx;
-  if (isClicked) tabSelected.value = props.options[tabIdx.value];
+  if (isClicked) {
+    tabSelected.value = props.options[tabIdx.value];
+    lastTab.value = idx;
+  }
   const el = tabRefs.value[tabIdx.value] as HTMLElement;
   if (!el || !line.value) {
     return;
