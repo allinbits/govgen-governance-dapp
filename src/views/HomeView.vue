@@ -11,6 +11,7 @@ import { provideApolloClient } from "@vue/apollo-composable";
 import apolloClient from "@/apolloClient";
 
 import { useChainData } from "@/composables/useChainData";
+import { usePlausible } from "v-plausible/vue";
 
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
@@ -120,14 +121,29 @@ watch(offset, async (newOffset, oldOffset) => {
     }
   }
 });
+
+const { trackEvent } = usePlausible();
+const typeFilter = ["All Proposals", "Deposit", "Voting", "Passed", "Rejected", "Failed"];
+const activityFilter = ["Active First", "Passed First", "Rejected First", "Failed First"];
+
 function setActivityFilterIndex(idx: number) {
   // Needs integration to filter proposals
   activityFilterIndex.value = idx;
+  trackEvent("Select Prop Activity Filter", {
+    props: {
+      filterActivityOption: typeFilter[idx],
+    },
+  });
 }
 
 function setTypeFilterIndex(idx: number) {
   // Needs integration to filter proposals
   typeFilterIndex.value = idx;
+  trackEvent("Select Prop Type Filter", {
+    props: {
+      filterTypeOption: activityFilter[idx],
+    },
+  });
 }
 
 function onSearchInput() {
@@ -148,13 +164,30 @@ function onSearchInput() {
         <!-- Chain Title -->
         <!-- Chain Links -->
         <div class="flex flex-row gap-6 text-grey-100 flex-wrap">
-          <a href="https://govgen.io" target="_blank" class="flex flex-row gap-2 hover:text-grey-50">
+          <a
+            href="https://govgen.io"
+            target="_blank"
+            class="flex flex-row gap-2 hover:text-grey-50"
+            @click="trackEvent('Click Home Website')"
+          >
             <Icon icon="link" /><span>Website</span>
           </a>
           <span>|</span>
           <!-- Chain Socials -->
           <div class="flex flex-row gap-4 items-center justify-center">
-            <a v-for="(linkData, index) in links" :key="index" class="flex items-center" :href="linkData.url">
+            <a
+              v-for="(linkData, index) in links"
+              :key="index"
+              class="flex items-center"
+              :href="linkData.url"
+              @click="
+                trackEvent('Click Home Social', {
+                  props: {
+                    socialOption: linkData.title,
+                  },
+                })
+              "
+            >
               <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
             </a>
           </div>
@@ -180,16 +213,11 @@ function onSearchInput() {
       <!-- Filters -->
       <div class="flex flex-col gap-4 w-full justify-start md:flex-row lg:items-center lg:justify-end">
         <!-- Select Type -->
-        <DropDown
-          v-model="typeFilterIndex"
-          :values="['All Proposals', 'Deposit', 'Voting', 'Passed', 'Rejected', 'Failed']"
-          class="w-full lg:w-fit"
-          @select="setTypeFilterIndex"
-        />
+        <DropDown v-model="typeFilterIndex" :values="typeFilter" class="w-full lg:w-fit" @select="setTypeFilterIndex" />
         <!-- Show 'x' First -->
         <DropDown
           v-model="activityFilterIndex"
-          :values="['Active First', 'Passed First', 'Rejected First', 'Failed First']"
+          :values="activityFilter"
           class="w-full lg:w-fit"
           @select="setActivityFilterIndex"
         />

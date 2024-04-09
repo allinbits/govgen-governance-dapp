@@ -25,8 +25,7 @@ import * as Utility from "@/utility/index";
 import CommonButton from "../ui/CommonButton.vue";
 import Breakdown from "@/components/proposals/Breakdown.vue";
 import ValidatorBreakdown from "./ValidatorBreakdown.vue";
-import ProposalDescription from "@/components/popups/ProposalDescription.vue";
-import MarkdownParser from "@/components/common/MarkdownParser.vue";
+import { usePlausible } from "v-plausible/vue";
 
 const voteTypes = ["yes", "no", "veto", "abstain"] as const;
 type BreakdownType = "voters" | "validators" | null;
@@ -246,6 +245,13 @@ const shouldTrim = computed(() => {
 });
 
 const showAll = ref(false);
+const description = computed(() => {
+  if (shouldTrim.value && !showAll.value) {
+    return proposal.value?.proposal[0].description.slice(0, 650);
+  } else {
+    return proposal.value?.proposal[0].description;
+  }
+});
 
 const quorum = computed(() => {
   return parseFloat(tally_params.value?.quorum ?? "0");
@@ -377,9 +383,13 @@ function isTabSelected(tabName: TabNames) {
   return tabSelected.value.toLowerCase() == tabName.toLowerCase();
 }
 
+const { trackEvent } = usePlausible();
+
 function showBreakdown(type: BreakdownType) {
   breakdownType.value = type;
   breakdownOffset.value = 0;
+  if (type === null) return;
+  trackEvent(type === "voters" ? "Click Voters Breakdown" : "Click Validators Breakdown");
 }
 </script>
 
@@ -550,10 +560,15 @@ function showBreakdown(type: BreakdownType) {
                 <div class="text-light text-300 md:text-500 text-left mb-8 font-medium">
                   {{ $t("proposalpage.labels.proposalDescription") }}
                 </div>
-                <div v-if="proposal" class="text-grey-100">
-                  <MarkdownParser v-model="proposal.proposal[0].description" :limit="356" />
+                <div class="text-grey-100">
+                  {{ description }}...
                   <template v-if="shouldTrim">
-                    <span class="text-light cursor-pointer" @click="showAll = true">{{ $t("ui.readMore") }}</span>
+                    <span v-if="!showAll" class="text-light cursor-pointer" @click="showAll = true">{{
+                      $t("ui.readMore")
+                    }}</span>
+                    <span v-if="showAll" class="text-light cursor-pointer" @click="showAll = false">{{
+                      $t("ui.readLess")
+                    }}</span>
                   </template>
                 </div>
               </SimpleCard>
@@ -768,7 +783,7 @@ function showBreakdown(type: BreakdownType) {
           </div>
           //-->
             <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
-            <ValidatorBreakdown v-if="breakdownType == 'validators'" :validator-data="validatorsWithStakeAndVotes" />
+            <ValidatorBreakdown :validator-data="validatorsWithStakeAndVotes" v-if="breakdownType == 'validators'" />
           </template>
         </div>
         <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
@@ -779,9 +794,6 @@ function showBreakdown(type: BreakdownType) {
         </div>
       </Transition>
     </div>
-    <ProposalDescription v-if="proposal" v-model="showAll">
-      <MarkdownParser v-model="proposal.proposal[0].description" />
-    </ProposalDescription>
   </div>
 </template>
 

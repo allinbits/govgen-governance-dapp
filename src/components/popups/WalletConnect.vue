@@ -5,6 +5,7 @@ import { Ref, computed, ref } from "vue";
 import { shorten } from "@/utility";
 import UserBalance from "@/components/helper/UserBalance.vue";
 import { bus } from "@/bus";
+import { usePlausible } from "v-plausible/vue";
 
 const isOpen = ref(false);
 const isConnecting = ref(false);
@@ -64,6 +65,8 @@ const cancelConnect = () => {
 bus.on("open", () => {
   isOpen.value = true;
 });
+
+const { trackEvent } = usePlausible();
 </script>
 
 <template>
@@ -72,7 +75,12 @@ bus.on("open", () => {
     <template v-if="connectState">
       <button
         class="justify-center px-6 py-4 rounded bg-grey-400 text-300 text-center hover:bg-light hover:text-dark duration-200"
-        @click="isOpen = true"
+        @click="
+          () => {
+            isOpen = true;
+            trackEvent('Click Header ConnectWallet');
+          }
+        "
       >
         {{ $t("components.WalletConnect.button") }}
       </button>
