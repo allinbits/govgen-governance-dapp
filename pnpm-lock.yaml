@@ -38,6 +38,9 @@ dependencies:
   '@vueuse/core':
     specifier: ^10.8.0
     version: 10.8.0(vue@3.4.15)
+  '@wdns/vue-code-block':
+    specifier: ^2.3.2
+    version: 2.3.2(typescript@5.3.3)
   chart.js:
     specifier: ^4.4.2
     version: 4.4.2
@@ -3097,6 +3100,17 @@ packages:
       '@walletconnect/window-getters': 1.0.0
     dev: false
 
+  /@wdns/vue-code-block@2.3.2(typescript@5.3.3):
+    resolution: {integrity: sha512-wFqSzaB+587XbWjq+L+IYZAZsCILNZVgRZ+FAoPH5n1TQoBpxfJGUsG8GrTHHIgiuz7txL79DqvRj3oy+ziC1g==}
+    dependencies:
+      highlight.js: 11.9.0
+      prismjs: 1.29.0
+      ua-parser-js: 1.0.37
+      vue: 3.4.15(typescript@5.3.3)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /@whatwg-node/events@0.0.3:
     resolution: {integrity: sha512-IqnKIDWfXBJkvy/k6tzskWTc2NK3LcqHlb+KHGCrjOCH4jfQckRX0NAiIcC/vIqQkzLYw2r2CTSwAxcrtcD6lA==}
     dev: true
@@ -5283,6 +5297,11 @@ packages:
     resolution: {integrity: sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==}
     dev: false
 
+  /highlight.js@11.9.0:
+    resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
   /hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
     dependencies:
@@ -6757,6 +6776,11 @@ packages:
       ansi-styles: 5.2.0
       react-is: 18.2.0
 
+  /prismjs@1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+    engines: {node: '>=6'}
+    dev: false
+
   /process@0.11.10:
     resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
     engines: {node: '>= 0.6.0'}
@@ -7686,7 +7710,6 @@ packages:
 
   /ua-parser-js@1.0.37:
     resolution: {integrity: sha512-bhTyI94tZofjo+Dn8SN6Zv8nBDvyXTymAdM3LDI/0IboIUwTu1rEhW7v2TfiVsoYWgkQ4kOVqnI8APUFbIQIFQ==}
-    dev: true
 
   /uc.micro@1.0.6:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}

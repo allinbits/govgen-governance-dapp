@@ -29,6 +29,7 @@
     "@vitest/coverage-istanbul": "^1.2.2",
     "@vue/apollo-composable": "^4.0.1",
     "@vueuse/core": "^10.8.0",
+    "@wdns/vue-code-block": "^2.3.2",
     "chart.js": "^4.4.2",
     "chartjs-chart-treemap": "^2.3.0",
     "cosmjs-types": "^0.9.0",

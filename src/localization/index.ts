@@ -132,6 +132,7 @@ export const messages = {
         Info: "Info",
         Voters: "Voters",
         Discussions: "Discussions",
+        Description: "Description",
         Links: "Links",
         Yes: "Yes",
         No: "No",
