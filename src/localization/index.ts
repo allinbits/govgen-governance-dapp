@@ -118,6 +118,20 @@ export const messages = {
         upvoteRatio: 'Upvote Ratio',
         totalComments: 'Total Comment(s)',
         viewOnGithub: 'View on GitHub',
+      },
+      GithubLinks: {
+        communityLinks: 'Community Links',
+        signIn: 'GitHub Sign In',
+        signOut: 'GitHub Sign Out',
+        addLink: 'Add Link',
+        upvoteRatio: 'Upvote Ratio',
+        totalLinks: 'Total Link(s)',
+        link: 'Link',
+        invalidHttpsLink: 'Link is not valid, must be HTTPS',
+        invalidLinkContentLength: 'Content length must be at least 32 characters',
+        cancel: 'Cancel',
+        post: 'Post'
+
       }
     },
     ui: {
