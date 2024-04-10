@@ -771,8 +771,10 @@ function showBreakdown(type: BreakdownType) {
             <ValidatorBreakdown v-if="breakdownType == 'validators'" :validator-data="validatorsWithStakeAndVotes" />
           </template>
         </div>
-        <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
-          <GithubComments :term="termDiscussion" />
+        <div v-else-if="isTabSelected('Discussions')" class="flex items-center justify-center w-full" >
+          <div  class="w-full lg:w-2/3">
+            <GithubComments :term="termDiscussion" />
+          </div>
         </div>
         <div v-else-if="isTabSelected('Links')" class="w-full">
           <GithubLinks :term="termLink" />
