@@ -66,7 +66,7 @@ const getValidatorInfo = (address: string) => {
         <div :key="validator.validator_address" class="grid grid-cols-5 py-4 w-full text-200 text-grey-50">
           <span>{{ getValidatorInfo(validator.validator.validator_info?.self_delegate_address ?? "").moniker }}</span>
           <span> - </span>
-          <span>HAS NOT VOTED</span>
+          <span>{{ $t("components.Breakdown.hasNotVoted") }}</span>
           <span>-</span>
           <span class="text-right">-</span>
         </div>

@@ -1,9 +1,11 @@
 export const messages = {
   en: {
     homepage: {
+      title: "GovGen",
       intro:
         "Explore the Governance dApp—a seamlessly integrated interface empowering secure and efficient governance interactions with the GovGen chain. Engage in collaborative discussions and actively participate in the governance processes to shape the potential future of AtomOne.",
       proposalsHeader: "All Proposals",
+      website: "Website",
     },
     voteOptions: {
       yes: "Yes",
@@ -88,6 +90,7 @@ export const messages = {
         txHash: "TX Hash",
         weight: "Weight",
         time: "Time",
+        hasNotVoted: "HAS NOT VOTED",
       },
       FooterSection: {
         cta: "Be a part of the conversation",
@@ -111,14 +114,15 @@ export const messages = {
         noVotes: "No votes have been recorded.",
       },
       GithubComments: {
-        signInLong: 'Sign in via GitHub to be able to post messages',
-        signIn: 'Github Sign In',
-        signOut: 'Sign Out',
-        proposalDiscussion: 'Proposal Discussion',
-        upvoteRatio: 'Upvote Ratio',
-        totalComments: 'Total Comment(s)',
-        viewOnGithub: 'View on GitHub',
-      }
+        signInLong: "Sign in via GitHub to be able to post messages",
+        signIn: "Github Sign In",
+        signOut: "Sign Out",
+        proposalDiscussion: "Proposal Discussion",
+        upvoteRatio: "Upvote Ratio",
+        totalComments: "Total Comment(s)",
+        viewOnGithub: "View on GitHub",
+        postComment: "Post Comment",
+      },
     },
     ui: {
       readMore: "Read More",

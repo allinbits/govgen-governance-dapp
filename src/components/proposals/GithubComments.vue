@@ -73,8 +73,10 @@ onMounted(refresh);
       v-if="!isLoggedIn"
       class="flex flex-row gap-8 px-8 py-6 bg-gradient from-gradient-100 to-gradient-900 rounded-md text-dark justify-between items-center"
     >
-      <span class="text-400 font-medium">{{  $t('components.GithubComments.signInLong') }}</span>
-      <button class="bg-dark py-4 px-6 text-light rounded-md" @click="login">{{  $t('components.GithubComments.signIn') }}</button>
+      <span class="text-400 font-medium">{{ $t("components.GithubComments.signInLong") }}</span>
+      <button class="bg-dark py-4 px-6 text-light rounded-md" @click="login">
+        {{ $t("components.GithubComments.signIn") }}
+      </button>
     </div>
     <div v-else class="flex flex-col gap-8 w-full">
       <div class="flex flex-row justify-between items-center">
@@ -82,7 +84,7 @@ onMounted(refresh);
           <img :src="avatar" class="w-10 h-10 rounded-circle" />
           <span class="pt-1 font-medium text-400">{{ username }}</span>
         </div>
-        <CommonButton @click="logout">{{  $t('components.GithubComments.signOut') }}</CommonButton>
+        <CommonButton @click="logout">{{ $t("components.GithubComments.signOut") }}</CommonButton>
       </div>
       <div class="flex flex-col relative">
         <textarea
@@ -99,13 +101,13 @@ onMounted(refresh);
           class="absolute right-6 bottom-6 link-gradient from-gradient-100 to-gradient-900 !text-dark hover:opacity-75"
           @click="createPost"
         >
-          Post Comment
+          {{ $t("components.GithubCommments.postComment") }}
         </CommonButton>
       </div>
     </div>
 
     <div class="flex flex-row w-full justify-between items-center mt-[72px] mb-8">
-      <div class="text-500 font-medium">{{  $t('components.GithubComments.proposalDiscussion') }}</div>
+      <div class="text-500 font-medium">{{ $t("components.GithubComments.proposalDiscussion") }}</div>
       <DropDown v-model="sortingType" :values="sortingList" @select="handleSortingChange" />
     </div>
     <!-- Ratio Controller -->
@@ -119,8 +121,10 @@ onMounted(refresh);
         class="w-full appearance-none bg-transparent rounded-lg focus:outline-none [&::-webkit-slider-runnable-track]:bg-grey-400 [&::-webkit-slider-runnable-track]:rounded-lg cursor-pointer"
       />
       <div class="flex flex-row justify-between gap-8">
-        <span class="text-grey-100">{{  $t('components.GithubComments.upvoteRatio') }}: {{ ratio }}</span>
-        <div class="text-200 text-grey-100 text-right">{{ sortedComments.length }} {{  $t('components.GithubComments.totalComments') }}</div>
+        <span class="text-grey-100">{{ $t("components.GithubComments.upvoteRatio") }}: {{ ratio }}</span>
+        <div class="text-200 text-grey-100 text-right">
+          {{ sortedComments.length }} {{ $t("components.GithubComments.totalComments") }}
+        </div>
       </div>
     </div>
     <!-- Comments -->
@@ -154,7 +158,9 @@ onMounted(refresh);
             <div>{{ comment.createdAtHuman }}</div>
             <div class="flex flex-row gap-6">
               <!-- GithHub Link -->
-              <a :href="comment.url" target="_blank" class="hover:opacity-50">{{  $t('components.GithubComments.viewOnGithub') }}</a>
+              <a :href="comment.url" target="_blank" class="hover:opacity-50">{{
+                $t("components.GithubComments.viewOnGithub")
+              }}</a>
               <!-- Upvote -->
               <div
                 :class="isLoggedIn ? ['cursor-pointer'] : []"
