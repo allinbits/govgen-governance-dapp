@@ -384,35 +384,38 @@ function showBreakdown(type: BreakdownType) {
   <div>
     <div class="flex flex-row justify-between items-center">
       <div class="badges my-8 md:my-12">
-      <template v-if="inVoting">
-        <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
-          >{{ $t("proposalpage.badges.votingPeriod") }}
+        <template v-if="inVoting">
+          <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
+            >{{ $t("proposalpage.badges.votingPeriod") }}
+          </SimpleBadge>
+          <SimpleBadge v-if="turnout < quorum" :type="ContextTypes.PLAIN" icon="warning">
+            {{ $t("proposalpage.badges.quorumPending") }}</SimpleBadge
+          >
+        </template>
+        <template v-if="inDeposit">
+          <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">{{
+            $t("proposalpage.badges.depositPeriod")
+          }}</SimpleBadge>
+          <SimpleBadge :type="ContextTypes.PLAIN" icon="warning">{{
+            $t("proposalpage.badges.depositPending")
+          }}</SimpleBadge>
+        </template>
+        <SimpleBadge v-if="failed" :type="ContextTypes.FAIL" class="mr-3">{{
+          $t("proposalpage.badges.depositFailed")
+        }}</SimpleBadge>
+        <SimpleBadge v-if="rejected" icon="close" :type="ContextTypes.FAIL" class="mr-3"
+          >{{ $t("proposalpage.badges.rejected") }}
         </SimpleBadge>
-        <SimpleBadge v-if="turnout < quorum" :type="ContextTypes.PLAIN" icon="warning">
-          {{ $t("proposalpage.badges.quorumPending") }}</SimpleBadge
-        >
-      </template>
-      <template v-if="inDeposit">
-        <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">{{
-          $t("proposalpage.badges.depositPeriod")
+        <SimpleBadge v-if="passed" :type="ContextTypes.SUCCESS" class="mr-3">{{
+          $t("proposalpage.badges.passed")
         }}</SimpleBadge>
-        <SimpleBadge :type="ContextTypes.PLAIN" icon="warning">{{
-          $t("proposalpage.badges.depositPending")
-        }}</SimpleBadge>
-      </template>
-      <SimpleBadge v-if="failed" :type="ContextTypes.FAIL" class="mr-3">{{
-        $t("proposalpage.badges.depositFailed")
-      }}</SimpleBadge>
-      <SimpleBadge v-if="rejected" icon="close" :type="ContextTypes.FAIL" class="mr-3"
-        >{{ $t("proposalpage.badges.rejected") }}
-      </SimpleBadge>
-      <SimpleBadge v-if="passed" :type="ContextTypes.SUCCESS" class="mr-3">{{
-        $t("proposalpage.badges.passed")
-      }}</SimpleBadge>
-    </div>
-    <div class="flex items-center text-300 text-grey-100 start-7 hover:opacity-50 hover:cursor-pointer" @click="showJsonModal = true">
-      <Icon icon="Curlybrackets" />&nbsp; JSON
-    </div>
+      </div>
+      <div
+        class="flex items-center text-300 text-grey-100 start-7 hover:opacity-50 hover:cursor-pointer"
+        @click="showJsonModal = true"
+      >
+        <Icon icon="Curlybrackets" />&nbsp; JSON
+      </div>
     </div>
 
     <div class="flex mb-12 flex-col md:flex-row">
@@ -776,8 +779,8 @@ function showBreakdown(type: BreakdownType) {
         </div>
       </Transition>
     </div>
-    <ModalBox title="JSON" v-model="showJsonModal" @close="showJsonModal = false">
-      <div class="p-4" v-if="proposal">
+    <ModalBox v-model="showJsonModal" title="JSON" @close="showJsonModal = false">
+      <div v-if="proposal" class="p-4">
         <VCodeBlock :code="JSON.stringify(proposal, null, '\t')" prismjs />
       </div>
     </ModalBox>
