@@ -692,7 +692,7 @@ function showBreakdown(type: BreakdownType) {
 
         <div v-else-if="isTabSelected('Description')" class="w-full">
           <div class="flex flex-col gap-8 p-10 bg-grey-400 rounded-md">
-            <span>Proposal Description</span>
+            <span>{{ $t("proposalpage.labels.proposalDescription") }}</span>
             <div v-if="proposal" class="text-grey-50">
               <MarkdownParser v-model="proposal.proposal[0].description" />
             </div>
