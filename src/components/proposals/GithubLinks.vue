@@ -73,12 +73,14 @@ onMounted(refresh);
   <div>
     <!-- Login, or Add Link -->
     <div class="flex flex-col justify-between items-center gap-3 md:flex-row md:gap-6 w-full">
-      <div class="text-light text-500 font-medium text-left w-full">{{ $t('components.GithubLinks.communityLinks') }}</div>
+      <div class="text-light text-500 font-medium text-left w-full">
+        {{ $t("components.GithubLinks.communityLinks") }}
+      </div>
       <div class="flex flex-col gap-3 md:flex-row md:gap-6 w-full justify-end">
-        <CommonButton v-if="!isLoggedIn" @click="login">{{ $t('components.GithubLinks.signIn') }}</CommonButton>
+        <CommonButton v-if="!isLoggedIn" @click="login">{{ $t("components.GithubLinks.signIn") }}</CommonButton>
         <template v-else>
-          <CommonButton @click="logout">{{  $t('components.GithubLinks.signOut') }}</CommonButton>
-          <CommonButton @click="state.isAddingLink = true">{{  $t('components.GithubLinks.addLink') }}</CommonButton>
+          <CommonButton @click="logout">{{ $t("components.GithubLinks.signOut") }}</CommonButton>
+          <CommonButton @click="state.isAddingLink = true">{{ $t("components.GithubLinks.addLink") }}</CommonButton>
         </template>
       </div>
     </div>
@@ -93,14 +95,16 @@ onMounted(refresh);
         class="w-full appearance-none bg-transparent rounded-lg focus:outline-none [&::-webkit-slider-runnable-track]:bg-grey-400 [&::-webkit-slider-runnable-track]:rounded-lg cursor-pointer"
       />
       <div class="flex flex-row justify-between gap-8">
-        <span class="text-grey-100">{{  $t('components.GithubLinks.upvoteRatio') }}: {{ ratio }}</span>
-        <div class="text-200 text-grey-100 text-right">{{ links.length }} {{  $t('components.GithubLinks.totalLinks') }}</div>
+        <span class="text-grey-100">{{ $t("components.GithubLinks.upvoteRatio") }}: {{ ratio }}</span>
+        <div class="text-200 text-grey-100 text-right">
+          {{ links.length }} {{ $t("components.GithubLinks.totalLinks") }}
+        </div>
       </div>
     </div>
     <!-- Input Link Section -->
     <div v-if="state.isAddingLink" class="flex flex-col gap-6 pt-6 w-full">
       <!-- Link Input -->
-      <label for="link">{{  $t('components.GithubLinks.link') }}</label>
+      <label for="link">{{ $t("components.GithubLinks.link") }}</label>
       <input
         id="link"
         v-model="linkInput"
@@ -111,7 +115,9 @@ onMounted(refresh);
         :placeholder="inputLinkText"
         @input="verifyLinkInput()"
       />
-      <div v-if="!state.isLinkValid" class="text-neg-200 text-100">{{  $t('components.GithubLinks.invalidHttpsLink') }}</div>
+      <div v-if="!state.isLinkValid" class="text-neg-200 text-100">
+        {{ $t("components.GithubLinks.invalidHttpsLink") }}
+      </div>
       <!-- Context Input -->
       <label for="link">Context</label>
       <textarea
@@ -125,10 +131,14 @@ onMounted(refresh);
         :placeholder="textInputLinkText"
         @input="verifyContextInput()"
       ></textarea>
-      <div v-if="!state.isContextValid" class="text-neg-200 text-100">{{  $t('components.GithubLinks.invalidLinkContentLength') }}</div>
+      <div v-if="!state.isContextValid" class="text-neg-200 text-100">
+        {{ $t("components.GithubLinks.invalidLinkContentLength") }}
+      </div>
       <div class="flex flex-row w-full justify-end gap-6">
-        <CommonButton @click="state.isAddingLink = false">{{  $t('components.GithubLinks.cancel') }}</CommonButton>
-        <CommonButton :disabled="!isInputValid" @click="isInputValid ? createPost() : () => {}">{{  $t('components.GithubLinks.post') }}</CommonButton>
+        <CommonButton @click="state.isAddingLink = false">{{ $t("components.GithubLinks.cancel") }}</CommonButton>
+        <CommonButton :disabled="!isInputValid" @click="isInputValid ? createPost() : () => {}">{{
+          $t("components.GithubLinks.post")
+        }}</CommonButton>
       </div>
     </div>
     <!-- Rendered Links -->
@@ -145,7 +155,7 @@ onMounted(refresh);
               target="_blank"
               class="flex items-center text-400 start-8 font-normal hover:opacity-50"
             >
-              <Icon icon="link" class="text-400 mr-[6px]" />{{  $t('components.GithubLinks.link') }}
+              <Icon icon="link" class="text-400 mr-[6px]" />{{ $t("components.GithubLinks.link") }}
             </a>
 
             <!-- eslint-disable vue/no-v-html -->
