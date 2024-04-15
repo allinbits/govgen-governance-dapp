@@ -1,10 +1,9 @@
 import { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import defaultTheme from "tailwindcss/defaultTheme";
-import twTypography from '@tailwindcss/typography'
+import twTypography from "@tailwindcss/typography";
 
 const pxToRem = (dest: number) => 1 / (16 / dest);
-
 
 export default <Config>{
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],

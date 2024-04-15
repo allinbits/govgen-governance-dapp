@@ -5,7 +5,7 @@ import { Ref, computed, ref } from "vue";
 import { shorten } from "@/utility";
 import UserBalance from "@/components/helper/UserBalance.vue";
 import { bus } from "@/bus";
-import { usePlausible } from "v-plausible/vue";
+import { useTelemetry } from "@/composables/useTelemetry";
 
 const isOpen = ref(false);
 const isConnecting = ref(false);
@@ -66,7 +66,7 @@ bus.on("open", () => {
   isOpen.value = true;
 });
 
-const { trackEvent } = usePlausible();
+const { logEvent } = useTelemetry();
 </script>
 
 <template>
@@ -78,7 +78,7 @@ const { trackEvent } = usePlausible();
         @click="
           () => {
             isOpen = true;
-            trackEvent('Click Header ConnectWallet');
+            logEvent('Click Header ConnectWallet');
           }
         "
       >

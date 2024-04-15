@@ -7,11 +7,7 @@
     @select="
       (id: number) => {
         changeTab(id);
-        trackEvent('Click Tab', {
-          props: {
-            tabOption: options[id],
-          },
-        });
+        logEvent('Click Tab', { tabOption: options[id] });
       }
     "
   />
@@ -45,13 +41,7 @@
           ref="togglerOption"
           :for="id + option"
           class="flex text-grey-50 py-1.5 text-500 cursor-pointer peer-checked:text-light ease-in-out duration-300"
-          @click="
-            trackEvent('Click Tab', {
-              props: {
-                tabOption: option,
-              },
-            })
-          "
+          @click="logEvent('Click Tab', { tabOption: option })"
         >
           {{ $t("ui.tabs." + option) }}
         </label>
@@ -67,7 +57,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import DropDown from "./DropDown.vue";
-import { usePlausible } from "v-plausible/vue";
+import { useTelemetry } from "@/composables/useTelemetry";
 
 type Props = {
   modelValue?: string | number;
@@ -98,7 +88,7 @@ function changeTab(idx: number = 0, isClicked = true) {
   line.value.style.width = `${el.getBoundingClientRect().width}px`;
 }
 
-const { trackEvent } = usePlausible();
+const { logEvent } = useTelemetry();
 
 onMounted(changeTab);
 </script>

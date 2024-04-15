@@ -11,7 +11,7 @@ import { provideApolloClient } from "@vue/apollo-composable";
 import apolloClient from "@/apolloClient";
 
 import { useChainData } from "@/composables/useChainData";
-import { usePlausible } from "v-plausible/vue";
+import { useTelemetry } from "@/composables/useTelemetry";
 
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
@@ -122,28 +122,20 @@ watch(offset, async (newOffset, oldOffset) => {
   }
 });
 
-const { trackEvent } = usePlausible();
+const { logEvent } = useTelemetry();
 const typeFilter = ["All Proposals", "Deposit", "Voting", "Passed", "Rejected", "Failed"];
 const activityFilter = ["Active First", "Passed First", "Rejected First", "Failed First"];
 
 function setActivityFilterIndex(idx: number) {
   // Needs integration to filter proposals
   activityFilterIndex.value = idx;
-  trackEvent("Select Prop Activity Filter", {
-    props: {
-      filterActivityOption: typeFilter[idx],
-    },
-  });
+  logEvent("Select Prop Activity Filter", { filterActivityOption: typeFilter[idx] });
 }
 
 function setTypeFilterIndex(idx: number) {
   // Needs integration to filter proposals
   typeFilterIndex.value = idx;
-  trackEvent("Select Prop Type Filter", {
-    props: {
-      filterTypeOption: activityFilter[idx],
-    },
-  });
+  logEvent("Select Prop Type Filter", { filterTypeOption: activityFilter[idx] });
 }
 
 function onSearchInput() {
@@ -168,7 +160,7 @@ function onSearchInput() {
             href="https://govgen.io"
             target="_blank"
             class="flex flex-row gap-2 hover:text-grey-50"
-            @click="trackEvent('Click Home Website')"
+            @click="logEvent('Click Home Website')"
           >
             <Icon icon="link" /><span>Website</span>
           </a>
@@ -180,13 +172,7 @@ function onSearchInput() {
               :key="index"
               class="flex items-center"
               :href="linkData.url"
-              @click="
-                trackEvent('Click Home Social', {
-                  props: {
-                    socialOption: linkData.title,
-                  },
-                })
-              "
+              @click="logEvent('Click Home Social', { socialOption: linkData.title })"
             >
               <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
             </a>

@@ -25,7 +25,7 @@ import * as Utility from "@/utility/index";
 import CommonButton from "../ui/CommonButton.vue";
 import Breakdown from "@/components/proposals/Breakdown.vue";
 import ValidatorBreakdown from "./ValidatorBreakdown.vue";
-import { usePlausible } from "v-plausible/vue";
+import { useTelemetry } from "@/composables/useTelemetry";
 
 import MarkdownParser from "@/components/common/MarkdownParser.vue";
 import ModalBox from "@/components/common/ModalBox.vue";
@@ -376,13 +376,13 @@ function isTabSelected(tabName: TabNames) {
   return tabSelected.value.toLowerCase() == tabName.toLowerCase();
 }
 
-const { trackEvent } = usePlausible();
+const { logEvent } = useTelemetry();
 
 function showBreakdown(type: BreakdownType) {
   breakdownType.value = type;
   breakdownOffset.value = 0;
   if (type === null) return;
-  trackEvent(type === "voters" ? "Click Voters Breakdown" : "Click Validators Breakdown");
+  logEvent(type === "voters" ? "Click Voters Breakdown" : "Click Validators Breakdown");
 }
 </script>
 
@@ -390,35 +390,38 @@ function showBreakdown(type: BreakdownType) {
   <div>
     <div class="flex flex-row justify-between items-center">
       <div class="badges my-8 md:my-12">
-      <template v-if="inVoting">
-        <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
-          >{{ $t("proposalpage.badges.votingPeriod") }}
+        <template v-if="inVoting">
+          <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
+            >{{ $t("proposalpage.badges.votingPeriod") }}
+          </SimpleBadge>
+          <SimpleBadge v-if="turnout < quorum" :type="ContextTypes.PLAIN" icon="warning">
+            {{ $t("proposalpage.badges.quorumPending") }}</SimpleBadge
+          >
+        </template>
+        <template v-if="inDeposit">
+          <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">{{
+            $t("proposalpage.badges.depositPeriod")
+          }}</SimpleBadge>
+          <SimpleBadge :type="ContextTypes.PLAIN" icon="warning">{{
+            $t("proposalpage.badges.depositPending")
+          }}</SimpleBadge>
+        </template>
+        <SimpleBadge v-if="failed" :type="ContextTypes.FAIL" class="mr-3">{{
+          $t("proposalpage.badges.depositFailed")
+        }}</SimpleBadge>
+        <SimpleBadge v-if="rejected" icon="close" :type="ContextTypes.FAIL" class="mr-3"
+          >{{ $t("proposalpage.badges.rejected") }}
         </SimpleBadge>
-        <SimpleBadge v-if="turnout < quorum" :type="ContextTypes.PLAIN" icon="warning">
-          {{ $t("proposalpage.badges.quorumPending") }}</SimpleBadge
-        >
-      </template>
-      <template v-if="inDeposit">
-        <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">{{
-          $t("proposalpage.badges.depositPeriod")
+        <SimpleBadge v-if="passed" :type="ContextTypes.SUCCESS" class="mr-3">{{
+          $t("proposalpage.badges.passed")
         }}</SimpleBadge>
-        <SimpleBadge :type="ContextTypes.PLAIN" icon="warning">{{
-          $t("proposalpage.badges.depositPending")
-        }}</SimpleBadge>
-      </template>
-      <SimpleBadge v-if="failed" :type="ContextTypes.FAIL" class="mr-3">{{
-        $t("proposalpage.badges.depositFailed")
-      }}</SimpleBadge>
-      <SimpleBadge v-if="rejected" icon="close" :type="ContextTypes.FAIL" class="mr-3"
-        >{{ $t("proposalpage.badges.rejected") }}
-      </SimpleBadge>
-      <SimpleBadge v-if="passed" :type="ContextTypes.SUCCESS" class="mr-3">{{
-        $t("proposalpage.badges.passed")
-      }}</SimpleBadge>
-    </div>
-    <div class="flex items-center text-300 text-grey-100 start-7 hover:opacity-50 hover:cursor-pointer" @click="showJsonModal = true">
-      <Icon icon="Curlybrackets" />&nbsp; JSON
-    </div>
+      </div>
+      <div
+        class="flex items-center text-300 text-grey-100 start-7 hover:opacity-50 hover:cursor-pointer"
+        @click="showJsonModal = true"
+      >
+        <Icon icon="Curlybrackets" />&nbsp; JSON
+      </div>
     </div>
 
     <div class="flex mb-12 flex-col md:flex-row">
@@ -771,7 +774,7 @@ function showBreakdown(type: BreakdownType) {
           </div>
           //-->
             <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
-            <ValidatorBreakdown :validator-data="validatorsWithStakeAndVotes" v-if="breakdownType == 'validators'" />
+            <ValidatorBreakdown v-if="breakdownType == 'validators'" :validator-data="validatorsWithStakeAndVotes" />
           </template>
         </div>
         <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
@@ -783,8 +786,8 @@ function showBreakdown(type: BreakdownType) {
       </Transition>
     </div>
 
-    <ModalBox title="JSON" v-model="showJsonModal" @close="showJsonModal = false">
-      <div class="p-4" v-if="proposal">
+    <ModalBox v-model="showJsonModal" title="JSON" @close="showJsonModal = false">
+      <div v-if="proposal" class="p-4">
         <VCodeBlock :code="JSON.stringify(proposal, null, '\t')" prismjs />
       </div>
     </ModalBox>

@@ -14,7 +14,7 @@ import CommonButton from "@/components/ui/CommonButton.vue";
 import { useWallet } from "@/composables/useWallet";
 import { useClipboard } from "@vueuse/core";
 import { useProposals } from "@/composables/useProposals";
-import { usePlausible } from "v-plausible/vue";
+import { useTelemetry } from "@/composables/useTelemetry";
 
 import { formatAmount } from "@/utility";
 
@@ -51,7 +51,7 @@ const toogleModal = (dir: boolean) => {
   resetDeposit();
 };
 
-const { trackEvent } = usePlausible();
+const { logEvent } = useTelemetry();
 const { depositProposal } = useProposals();
 const { address } = useWallet();
 
@@ -76,10 +76,8 @@ const signDeposit = async (isCLI = false) => {
   cliDepositInput.value = (isCLI ? depot : "") as string;
   displayState.value = isCLI ? "CLI" : "deposited";
 
-  trackEvent("Sign Popup ProposalDeposit", {
-    props: {
-      signOption: isCLI ? "CLI" : "GUI",
-    },
+  logEvent("Sign Popup ProposalDeposit", {
+    signOption: isCLI ? "CLI" : "GUI",
   });
 };
 
@@ -91,7 +89,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
     <div>
       <div
         class="justify-center px-6 py-4 rounded link-gradient text-dark text-300 text-center cursor-pointer"
-        @click="() => (trackEvent('Click Popup ProposalDeposit'), toogleModal(true))"
+        @click="() => (logEvent('Click Popup ProposalDeposit'), toogleModal(true))"
       >
         {{ $t("components.ProposalDeposit.cta") }}
       </div>
