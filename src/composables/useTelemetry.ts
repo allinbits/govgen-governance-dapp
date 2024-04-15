@@ -2,11 +2,12 @@ import { usePlausible } from "v-plausible/vue";
 
 type Eventprops = Record<string, string>;
 
-const { trackEvent } = usePlausible();
 const useTelemetry = () => {
-  function logEvent(eventName: string, eventOptions?: Eventprops) {
-    trackEvent(eventName, eventOptions ? { props: eventOptions } : undefined);
-  }
+  const { trackEvent } = usePlausible();
+
+  const logEvent = (eventName: string, eventOptions?: Eventprops) => {
+    trackEvent(eventName, { props: eventOptions });
+  };
 
   return { logEvent };
 };
