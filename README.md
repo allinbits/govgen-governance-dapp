@@ -36,7 +36,7 @@ Under the hero component, you will find the following tabs:
 
 ### Deposit popup
 
-Gives you the ability to add to a proposal's deposit to help push it into the voting periord. Once you choose the amount you want to deposit you can either generate the CLI command required to create and then sign the TX using the CLI or use your connected wallet to authorise and broadcast.
+Gives you the ability to add to a proposal's deposit to help push it into the voting periord. Once you choose the amount you want to deposit you can either generate the CLI command required to create and then sign the TX using the CLI or use your connected wallet to authorize and broadcast.
 
 ### Voting popup
 
