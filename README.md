@@ -32,7 +32,7 @@ Under the hero component, you will find the following tabs:
 - **Info**: Contains the general proposal information such as proposer address, submission time, initial and total deposit, voting start time/end time and deposit end time (if appropriate) along with the messages contained in the proposal.
 - **Voters**: Contains an in-depth analysis of how all accounts have voted and how validators have voted including a complete breakdown of unique votes.
 - **Discussions**: Contains the discussion for this specific proposal. The discussion is backed by GitHub discussions and requires authenticating with a GitHub account before you can participate and authorizing the Discusser app.
-- **Links**: Contains useful/helpful links provided by the community that add information and context relevant to the proposal. Also contains and upvote/downvote ratio slider that you can use to filter out downvoted links to your liking.
+- **Links**: Contains useful/helpful links provided by the community that add information and context relevant to the proposal. It also contains an upvote/downvote ratio slider that you can use to filter out downvoted links to your liking.
 
 ### Deposit popup
 
