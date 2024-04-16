@@ -16,7 +16,7 @@ The default ordering is to show active proposals first (i.e. those in `VOTING` o
 
 There is also a dropdown control to filter by proposal status altogether as well as a search box to search proposals based on `Title` and `Description` content.
 
-In all the pages there is a button at the top that allows you to connect your address in order to display balances or voting history as well as enabling governance related transactions. There are 2 possible options:
+In all the pages, there is a button at the top that allows you to connect your address in order to display balances or voting history as well as enable governance-related transactions. There are 2 possible options:
 - You can either simply supply your public govgen address with which the dApp can generate the appropriate CLI commands for voting and depositing txs signable by an offline computer as described [here](https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md). **RECOMMENDED**
 - Or you can simply connect your Keplr/Leap/Cosmostation wallets and authorize and submit TXs through their familiar interface.
 
