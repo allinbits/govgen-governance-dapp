@@ -46,7 +46,7 @@ Gives you te ability to vote on a proposal either with a single vote (YES/NO/NO 
 
 If you don't want to use the deployed version you can deploy your own locally. The only requirements are `node` v18+ and `pnpm`.
 
-First clone the repo using your favourite git tool.
+First, clone the repo using your favorite git tool.
 
 Then install all packages in the repository:
 
