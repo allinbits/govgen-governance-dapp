@@ -1,6 +1,6 @@
 # GovGen Governance dApp
 
-A platform enabling a web UI to [GovGen](https://govgen.io) governance. It allows usets to view proposals and proposal statistics, participate in discussions and provide useful links for each proposal as well as perform transactions to vote or deposit on proposals.
+A platform enabling a web UI to [GovGen](https://govgen.io) governance. It allows users to view proposals and proposal statistics, participate in discussions and provide useful links for each proposal as well as perform transactions to vote or deposit on proposals.
 
 ## Usage
 
