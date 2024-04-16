@@ -24,7 +24,7 @@ In all the pages there is a button at the top that allows you to connect your ad
 
 The page for a specific proposal (URL format: `https://app.govgen.io/proposals/XXX` where XXX is the id of the proposal) provides a view of all the proposal's details in a tabbed interface.
 
-There is a hero component which includes the title, status, turnout, necessary quorum, expected result and current vote tallies. It also includes the call-to-action to Vote or Deposit (depending on proposal status).
+There is a hero component that includes the title, status, turnout, necessary quorum, expected result, and current vote tallies. It also consists of a call-to-action to Vote or Deposit (depending on the proposal status).
 
 Under the hero component, you will find the following tabs:
 
