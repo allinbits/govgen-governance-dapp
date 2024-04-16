@@ -62,6 +62,6 @@ pnpm dev
 
 ## Bugs & Feedback
 
-Please use [Github Issues](https://github.com/allinbits/govgen-governance-dapp/issues) to inform us of any bugs or issues you encounter as well as to request features & improvements.
+Please use [Github Issues](https://github.com/allinbits/govgen-governance-dapp/issues) to inform us of any bugs or issues you encounter and to request features and improvements.
 
 Thank you.
