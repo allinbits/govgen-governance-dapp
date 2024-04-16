@@ -10,7 +10,7 @@ The following is a showcase of the existing functionality.
 
 ### Homepage
 
-The home page provides a paged view of all existing governance proposals. It shows 16 proposals per page and you can navigate acrosss pages using the navigation arrows at the bottom right.
+The home page provides a paged view of all existing governance proposals. It shows 16 proposals per page and you can navigate across pages using the navigation arrows at the bottom right.
 
 The default ordering is to show active proposals first (i.e. those in `VOTING` or `DEPOSIT` state) but you can use the dropdown control to switch to `PASSED` first, `REJECTED` first or `FAILED` first.
 
