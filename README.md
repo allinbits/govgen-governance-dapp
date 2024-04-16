@@ -40,7 +40,7 @@ Gives you the ability to add to a proposal's deposit to help push it into the vo
 
 ### Voting popup
 
-Gives you teh ability to vote on a proposal either with a single vote (YES/NO/NO WITH VETO/ABSTAIN) or a weighted vote with the weights you require for those 4 options. Like the deposit popup, you can then either generate the CLI command required to create and then sign the TX using the CLI or use your connected wallet to authorise and broadcast.
+Gives you te ability to vote on a proposal either with a single vote (YES/NO/NO WITH VETO/ABSTAIN) or a weighted vote with the weights you require for those 4 options. Like the deposit popup, you can then either generate the CLI command required to create and then sign the TX using the CLI or use your connected wallet to authorize and broadcast.
 
 ## Local deployment
 
