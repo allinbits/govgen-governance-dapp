@@ -1,6 +1,10 @@
 # GovGen Governance dApp
 
-A platform enabling a web UI to [GovGen](https://govgen.io) governance. It allows users to view proposals and proposal statistics, participate in discussions and provide useful links for each proposal as well as perform transactions to vote or deposit on proposals.
+
+
+GovGen governance dApp is a simple interface, that seamlessly integrates with your existing wallets such as Keplr, Cosmostation or Leap to allow you to interact with GovGen in a secure and efficient manner. There is no need to enter mnemonics, existing as a platform enabling a web UI to [GovGen](https://govgen.io) governance, you simply connect the dApp to your preferred wallet and you gain immediate access to GovGen’s governance functionalities. These functionalties include viewing proposals and proposal statistics, participating in discussions, providing useful links for each proposal as well as performing transactions to vote or deposit on proposals. 
+
+Our goal with the GovGen governance dApp is to empower the community to effortlessly participate in these types of processes by gauging community sentiment in regards to the potential outcome of AtomOne while making it more accessible to engage, regardless of their technical expertise or background.
 
 ## Usage
 
