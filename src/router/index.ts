@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import CreateProposalView from "@/views/CreateProposalView.vue";
 import ProposalView from "@/views/ProposalView.vue";
-// import DesignView from "@/views/Design.vue";
+import { useTelemetry } from "@/composables/useTelemetry";
 
 const routerHistory = createWebHistory();
 const routes = [
@@ -24,5 +24,8 @@ const router = createRouter({
     });
   },
 });
+
+const { logPageviews } = useTelemetry();
+logPageviews();
 
 export default router;
