@@ -74,9 +74,6 @@ dependencies:
   mitt:
     specifier: ^3.0.1
     version: 3.0.1
-  plausible-tracker:
-    specifier: ^0.3.8
-    version: 0.3.8
   vite-plugin-node-polyfills:
     specifier: ^0.21.0
     version: 0.21.0(vite@5.2.8)
@@ -6640,11 +6637,6 @@ packages:
       jsonc-parser: 3.2.1
       mlly: 1.6.1
       pathe: 1.1.2
-
-  /plausible-tracker@0.3.8:
-    resolution: {integrity: sha512-lmOWYQ7s9KOUJ1R+YTOR3HrjdbxIS2Z4de0P/Jx2dQPteznJl2eX3tXxKClpvbfyGP59B5bbhW8ftN59HbbFSg==}
-    engines: {node: '>=10'}
-    dev: false
 
   /playwright-core@1.44.0-alpha-2024-04-05:
     resolution: {integrity: sha512-0581NztMm040ap01xSZBkiSgRKG2drowllk47+rtKhpuDL4o4kBxdc9PQ80k3yrADUE7UcJuGIJsLx7XT+1USw==}
