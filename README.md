@@ -58,7 +58,13 @@ Then install all packages in the repository:
 pnpm i
 ```
 
-Then spin up a local instance using:
+Then copy the `.env.prod` or `.env.dev` file to `.env` depending on whether you want to deploy for mainnet or devnet respectively.
+
+```
+cp .env.dev .env
+```
+
+Finally, spin up a local instance using:
 
 ```
 pnpm dev
