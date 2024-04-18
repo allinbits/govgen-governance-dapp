@@ -101,7 +101,7 @@ onMounted(refresh);
           class="absolute right-6 bottom-6 link-gradient from-gradient-100 to-gradient-900 !text-dark hover:opacity-75"
           @click="createPost"
         >
-          {{ $t("components.GithubCommments.postComment") }}
+          {{ $t("components.GithubComments.postComment") }}
         </CommonButton>
       </div>
     </div>
