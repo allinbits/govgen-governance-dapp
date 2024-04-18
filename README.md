@@ -1,10 +1,14 @@
 # GovGen Governance dApp
 
-A platform enabling a web UI to [GovGen](https://govgen.io) governance. It allows users to view proposals and proposal statistics, participate in discussions and provide useful links for each proposal as well as perform transactions to vote or deposit on proposals.
+GovGen governance dApp is a simple interface, that seamlessly integrates with your existing wallets, such as Keplr, Cosmostation, or Leap to allow you to interact with GovGen in a secure and efficient manner. There is no need to enter mnemonics, existing as a platform enabling a web UI to [GovGen](https://govgen.io) governance, you simply connect the dApp to your preferred wallet and gain immediate access to GovGen’s governance functionalities. These functionalities include viewing proposals and proposal statistics, participating in discussions, providing useful links for each proposal, and performing transactions related to voting.
+
+Our goal with the GovGen governance dApp is to empower the community to effortlessly participate in these types of processes by gauging community sentiment in regards to the potential outcome of AtomOne while making it more accessible to engage, regardless of their technical expertise or background.
 
 ## Usage
 
-You can visit the deployed dApp at [https://app.govgen.io/](https://app.govgen.io/).
+**NOTE: The mainnet deployment is not live yet**
+
+You can visit the deployed dApp at [https://app.govgen.io/](https://app.govgen.io/) for mainnet (pending) or [https://app.govgen.dev/](https://app.govgen.dev/) for devnet.
 
 The following is a showcase of the existing functionality.
 
@@ -22,7 +26,7 @@ In all the pages, there is a button at the top that allows you to connect your a
 
 ### Proposal page
 
-The page for a specific proposal (URL format: `https://app.govgen.io/proposals/XXX` where XXX is the id of the proposal) provides a view of all the proposal's details in a tabbed interface.
+The page for a specific proposal (URL format: `https://app.govgen.io/proposals/XXX` or `https://app.govgen.dev/proposals/XXX` for mainnet and devnet respectively, where XXX is the id of the proposal) provides a view of all the proposal's details in a tabbed interface.
 
 There is a hero component that includes the title, status, turnout, necessary quorum, expected result, and current vote tallies. It also consists of a call-to-action to Vote or Deposit (depending on the proposal status).
 
@@ -54,7 +58,13 @@ Then install all packages in the repository:
 pnpm i
 ```
 
-Then spin up a local instance using:
+Then copy the `.env.prod` or `.env.dev` file to `.env` depending on whether you want to deploy for mainnet or devnet respectively.
+
+```
+cp .env.dev .env
+```
+
+Finally, spin up a local instance using:
 
 ```
 pnpm dev
