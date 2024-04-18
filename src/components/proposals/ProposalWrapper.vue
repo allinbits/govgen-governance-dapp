@@ -698,7 +698,7 @@ function showBreakdown(type: BreakdownType) {
 
         <div v-else-if="isTabSelected('Description')" class="w-full">
           <div class="flex flex-col gap-8 p-10 bg-grey-400 rounded-md">
-            <span>Proposal Description</span>
+            <span>{{ $t("proposalpage.labels.proposalDescription") }}</span>
             <div v-if="proposal" class="text-grey-50">
               <MarkdownParser v-model="proposal.proposal[0].description" />
             </div>
@@ -777,15 +777,17 @@ function showBreakdown(type: BreakdownType) {
             <ValidatorBreakdown v-if="breakdownType == 'validators'" :validator-data="validatorsWithStakeAndVotes" />
           </template>
         </div>
-        <div v-else-if="isTabSelected('Discussions')" class="w-full lg:w-2/3">
-          <GithubComments :term="termDiscussion" />
+        <div v-else-if="isTabSelected('Discussions')" class="flex items-center justify-center w-full" >
+          <div  class="w-full lg:w-2/3">
+            <GithubComments :term="termDiscussion" />
+          </div>
         </div>
         <div v-else-if="isTabSelected('Links')" class="w-full">
           <GithubLinks :term="termLink" />
         </div>
       </Transition>
     </div>
-
+    
     <ModalBox v-model="showJsonModal" title="JSON" @close="showJsonModal = false">
       <div v-if="proposal" class="p-4">
         <VCodeBlock :code="JSON.stringify(proposal, null, '\t')" prismjs />

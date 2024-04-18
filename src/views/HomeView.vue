@@ -150,7 +150,7 @@ function onSearchInput() {
     <div class="flex flex-col gap-8 pt-8 md:pt-[72px]">
       <div class="flex gap-4">
         <Icon icon="chain" class="aspect-square text-900" />
-        <div class="font-termina text-700 md:text-1000 font-semibold leading-[80px]">GovGen</div>
+        <div class="font-termina text-700 md:text-1000 font-semibold leading-[80px]">{{ $t("homepage.title") }}</div>
       </div>
       <div class="flex flex-col gap-8">
         <!-- Chain Title -->
@@ -162,7 +162,7 @@ function onSearchInput() {
             class="flex flex-row gap-2 hover:text-grey-50"
             @click="logEvent('Click Home Website')"
           >
-            <Icon icon="link" /><span>Website</span>
+            <Icon icon="link" /><span>{{ $t("homepage.website") }}</span>
           </a>
           <span>|</span>
           <!-- Chain Socials -->
