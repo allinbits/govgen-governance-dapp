@@ -164,7 +164,7 @@ function Plausible(defaults?: PlausibleInitOptions): {
           node.addEventListener("click", trackClick);
           tracked.add(node);
         }
-      } /* istanbul ignore next */ else if ("querySelectorAll" in node) {
+      } else if ("querySelectorAll" in node) {
         node.querySelectorAll("a").forEach(addNode);
       }
     }
@@ -173,7 +173,7 @@ function Plausible(defaults?: PlausibleInitOptions): {
       if (node instanceof HTMLAnchorElement) {
         node.removeEventListener("click", trackClick);
         tracked.delete(node);
-      } /* istanbul ignore next */ else if ("querySelectorAll" in node) {
+      } else if ("querySelectorAll" in node) {
         node.querySelectorAll("a").forEach(removeNode);
       }
     }
@@ -184,7 +184,7 @@ function Plausible(defaults?: PlausibleInitOptions): {
           // Handle changed href
           removeNode(mutation.target);
           addNode(mutation.target);
-        } /* istanbul ignore next */ else if (mutation.type === "childList") {
+        } else if (mutation.type === "childList") {
           mutation.addedNodes.forEach(addNode);
           mutation.removedNodes.forEach(removeNode);
         }
