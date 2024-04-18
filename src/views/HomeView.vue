@@ -21,6 +21,13 @@ const { getProposals, getProposalsAsync } = useChainData();
 
 const proposals = getProposals("active", limit.value, offset.value);
 
+const searchString = computed(() => {
+  if (searchText.value.trim().length >= 1) {
+    return searchText.value.trim();
+  } else {
+    return undefined;
+  }
+});
 const sortToOrder = computed(() => {
   switch (activityFilterIndex.value) {
     default:
@@ -55,32 +62,46 @@ const filterToStatus = computed(() => {
 watch(filterToStatus, async (newType, oldType) => {
   if (newType !== oldType) {
     provideApolloClient(apolloClient);
-    if (newType != null) {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value, newType);
-      if (res) {
-        proposals.value = res;
-      }
-    } else {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value);
-      if (res) {
-        proposals.value = res;
-      }
+
+    const res = await getProposalsAsync(
+      sortToOrder.value,
+      limit.value,
+      offset.value,
+      newType ?? undefined,
+      searchString.value,
+    );
+    if (res) {
+      proposals.value = res;
+    }
+  }
+});
+watch(searchString, async (newSearch, oldSearch) => {
+  if (newSearch !== oldSearch) {
+    provideApolloClient(apolloClient);
+    const res = await getProposalsAsync(
+      sortToOrder.value,
+      limit.value,
+      offset.value,
+      filterToStatus.value ?? undefined,
+      searchString.value,
+    );
+    if (res) {
+      proposals.value = res;
     }
   }
 });
 watch(sortToOrder, async (newOrder, oldOrder) => {
   if (newOrder !== oldOrder) {
     provideApolloClient(apolloClient);
-    if (filterToStatus.value != null) {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value, filterToStatus.value);
-      if (res) {
-        proposals.value = res;
-      }
-    } else {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value);
-      if (res) {
-        proposals.value = res;
-      }
+    const res = await getProposalsAsync(
+      sortToOrder.value,
+      limit.value,
+      offset.value,
+      filterToStatus.value ?? undefined,
+      searchString.value,
+    );
+    if (res) {
+      proposals.value = res;
     }
   }
 });
@@ -92,7 +113,6 @@ const links = ref([
   { title: "Discord", url: "https://discord.com/invite/atomone", icon: "discord" },
   { title: "Github", url: "https://github.com/atomone-hub", icon: "github" },
 ]);
-
 const hasMore = computed(() => {
   return (proposals.value?.proposal_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
 });
@@ -108,12 +128,18 @@ watch(offset, async (newOffset, oldOffset) => {
   if (newOffset != oldOffset) {
     provideApolloClient(apolloClient);
     if (filterToStatus.value != null) {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset, filterToStatus.value);
+      const res = await getProposalsAsync(
+        sortToOrder.value,
+        limit.value,
+        newOffset,
+        filterToStatus.value,
+        searchString.value,
+      );
       if (res) {
         proposals.value = res;
       }
     } else {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset);
+      const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset, undefined, searchString.value);
       if (res) {
         proposals.value = res;
       }

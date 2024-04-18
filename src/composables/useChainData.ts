@@ -14,6 +14,7 @@ import {
   useLazyProposalsFailedQuery,
   useLazyProposalsPassedQuery,
   useLazyProposalsRejectedQuery,
+  useLazyProposalsSearchQuery,
   useLazyStakingQuery,
   useLazyValidatorsQuery,
   useLazyValsetQuery,
@@ -27,6 +28,7 @@ import {
   useProposalsFailedQuery,
   useProposalsPassedQuery,
   useProposalsRejectedQuery,
+  useProposalsSearchQuery,
   useStakingQuery,
   useValidatorsQuery,
   useValsetQuery,
@@ -40,30 +42,71 @@ export const useChainData = () => {
     const { result } = useBalanceQuery({ address });
     return result;
   };
+
+  const searchProposals = async (searchString: string, limit: number, offset: number) => {
+    return useProposalsSearchQuery({
+      limit,
+      offset,
+      searchString,
+    }).result;
+  };
   const getProposals = (
-    order: "active" | "passed" | "rejected" | "failed",
+    order: "active" | "passed" | "rejected" | "failed" = "active",
     limit: number,
     offset: number,
     status?: string,
+    searchString?: string,
   ) => {
+    let where;
+    if (status) {
+      if (searchString) {
+        where = {
+          _and: [
+            { status: { _eq: status } },
+            { _or: [{ title: { _ilike: `%${searchString}%` } }, { description: { _ilike: `%${searchString}%` } }] },
+          ],
+        };
+      } else {
+        where = { status: { _eq: status } };
+      }
+    } else {
+      if (searchString) {
+        where = {
+          _and: [
+            { status: { _neq: "PROPOSAL_STATUS_INVALID" } },
+            { _or: [{ title: { _ilike: `%${searchString}%` } }, { description: { _ilike: `%${searchString}%` } }] },
+          ],
+        };
+      } else {
+        where = { status: { _neq: "PROPOSAL_STATUS_INVALID" } };
+      }
+    }
     switch (order) {
       case "passed":
-        return status
-          ? useProposalsPassedQuery({ limit, offset, where: { status: { _eq: status } } }).result
-          : useProposalsPassedQuery({ limit, offset, where: { status: { _neq: "PROPOSAL_STATUS_INVALID" } } }).result;
+        return useProposalsPassedQuery({
+          limit,
+          offset,
+          where,
+        }).result;
       case "rejected":
-        return status
-          ? useProposalsRejectedQuery({ limit, offset, where: { status: { _eq: status } } }).result
-          : useProposalsRejectedQuery({ limit, offset, where: { status: { _neq: "PROPOSAL_STATUS_INVALID" } } }).result;
+        return useProposalsRejectedQuery({
+          limit,
+          offset,
+          where,
+        }).result;
       case "failed":
-        return status
-          ? useProposalsFailedQuery({ limit, offset, where: { status: { _eq: status } } }).result
-          : useProposalsFailedQuery({ limit, offset, where: { status: { _neq: "PROPOSAL_STATUS_INVALID" } } }).result;
+        return useProposalsFailedQuery({
+          limit,
+          offset,
+          where,
+        }).result;
       case "active":
       default:
-        return status
-          ? useProposalsActiveQuery({ limit, offset, where: { status: { _eq: status } } }).result
-          : useProposalsActiveQuery({ limit, offset, where: { status: { _neq: "PROPOSAL_STATUS_INVALID" } } }).result;
+        return useProposalsActiveQuery({
+          limit,
+          offset,
+          where,
+        }).result;
     }
   };
   const getProposal = (id: number) => {
@@ -118,46 +161,70 @@ export const useChainData = () => {
     const result = await useLazyBalanceQuery({ address }).load();
     return result;
   };
+  const searchProposalsAsync = async (searchString: string, limit: number, offset: number) => {
+    return await useLazyProposalsSearchQuery({
+      limit,
+      offset,
+      searchString,
+    }).load();
+  };
   const getProposalsAsync = async (
     order: "active" | "passed" | "rejected" | "failed" = "active",
     limit: number,
     offset: number,
     status?: string,
+    searchString?: string,
   ) => {
+    let where;
+    if (status) {
+      if (searchString) {
+        where = {
+          _and: [
+            { status: { _eq: status } },
+            { _or: [{ title: { _ilike: `%${searchString}%` } }, { description: { _ilike: `%${searchString}%` } }] },
+          ],
+        };
+      } else {
+        where = { status: { _eq: status } };
+      }
+    } else {
+      if (searchString) {
+        where = {
+          _and: [
+            { status: { _neq: "PROPOSAL_STATUS_INVALID" } },
+            { _or: [{ title: { _ilike: `%${searchString}%` } }, { description: { _ilike: `%${searchString}%` } }] },
+          ],
+        };
+      } else {
+        where = { status: { _neq: "PROPOSAL_STATUS_INVALID" } };
+      }
+    }
     switch (order) {
       case "passed":
-        return status
-          ? await useLazyProposalsPassedQuery({ limit, offset, where: { status: { _eq: status } } }).load()
-          : await useLazyProposalsPassedQuery({
-              limit,
-              offset,
-              where: { status: { _neq: "PROPOSAL_STATUS_INVALID" } },
-            }).load();
+        return await useLazyProposalsPassedQuery({
+          limit,
+          offset,
+          where,
+        }).load();
       case "rejected":
-        return status
-          ? await useLazyProposalsRejectedQuery({ limit, offset, where: { status: { _eq: status } } }).load()
-          : await useLazyProposalsRejectedQuery({
-              limit,
-              offset,
-              where: { status: { _neq: "PROPOSAL_STATUS_INVALID" } },
-            }).load();
+        return await useLazyProposalsRejectedQuery({
+          limit,
+          offset,
+          where,
+        }).load();
       case "failed":
-        return status
-          ? await useLazyProposalsFailedQuery({ limit, offset, where: { status: { _eq: status } } }).load()
-          : await useLazyProposalsFailedQuery({
-              limit,
-              offset,
-              where: { status: { _neq: "PROPOSAL_STATUS_INVALID" } },
-            }).load();
+        return await useLazyProposalsFailedQuery({
+          limit,
+          offset,
+          where,
+        }).load();
       case "active":
       default:
-        return status
-          ? await useLazyProposalsActiveQuery({ limit, offset, where: { status: { _eq: status } } }).load()
-          : await useLazyProposalsActiveQuery({
-              limit,
-              offset,
-              where: { status: { _neq: "PROPOSAL_STATUS_INVALID" } },
-            }).load();
+        return await useLazyProposalsActiveQuery({
+          limit,
+          offset,
+          where,
+        }).load();
     }
   };
   const getProposalAsync = async (id: number) => {
@@ -238,5 +305,7 @@ export const useChainData = () => {
     getVotesAsync,
     getAllVotesAsync,
     getVoteOptionAsync,
+    searchProposals,
+    searchProposalsAsync,
   };
 };
