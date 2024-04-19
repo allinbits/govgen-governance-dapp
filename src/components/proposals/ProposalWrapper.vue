@@ -25,6 +25,8 @@ import * as Utility from "@/utility/index";
 import CommonButton from "../ui/CommonButton.vue";
 import Breakdown from "@/components/proposals/Breakdown.vue";
 import ValidatorBreakdown from "./ValidatorBreakdown.vue";
+import { useTelemetry } from "@/composables/useTelemetry";
+
 import MarkdownParser from "@/components/common/MarkdownParser.vue";
 import ModalBox from "@/components/common/ModalBox.vue";
 import { VCodeBlock } from "@wdns/vue-code-block";
@@ -374,9 +376,13 @@ function isTabSelected(tabName: TabNames) {
   return tabSelected.value.toLowerCase() == tabName.toLowerCase();
 }
 
+const { logEvent } = useTelemetry();
+
 function showBreakdown(type: BreakdownType) {
   breakdownType.value = type;
   breakdownOffset.value = 0;
+  if (type === null) return;
+  logEvent(type === "voters" ? "Click Voters Breakdown" : "Click Validators Breakdown");
 }
 </script>
 
@@ -781,6 +787,7 @@ function showBreakdown(type: BreakdownType) {
         </div>
       </Transition>
     </div>
+    
     <ModalBox v-model="showJsonModal" title="JSON" @close="showJsonModal = false">
       <div v-if="proposal" class="p-4">
         <VCodeBlock :code="JSON.stringify(proposal, null, '\t')" prismjs />
