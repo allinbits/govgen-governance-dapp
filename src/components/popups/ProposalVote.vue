@@ -58,7 +58,7 @@ const resetVote = () => {
   Object.entries(voteWeighted).forEach((el) => (el[1].value = null));
 };
 
-const toogleModal = (dir: boolean) => {
+const toggleModal = (dir: boolean) => {
   isOpen.value = dir;
   displayState.value = "pending";
   resetVote();
@@ -135,7 +135,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
     <div>
       <div
         class="justify-center px-6 py-4 rounded link-gradient hover: text-dark text-300 text-center cursor-pointer"
-        @click="() => (logEvent('Click Popup ProposalVote'), toogleModal(true))"
+        @click="() => (logEvent('Click Popup ProposalVote'), toggleModal(true))"
       >
         {{ $t("components.ProposalVote.cta") }}
       </div>
@@ -218,7 +218,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
-                  @click="toogleModal(false)"
+                  @click="toggleModal(false)"
                 >
                   {{ $t("ui.actions.cancel") }}
                 </button>
@@ -259,7 +259,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
               }}</CommonButton>
               <button
                 class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
-                @click="toogleModal(false)"
+                @click="toggleModal(false)"
               >
                 {{ $t("ui.actions.done") }}
               </button>
@@ -282,7 +282,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 
             <button
               class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
-              @click="toogleModal(false)"
+              @click="toggleModal(false)"
             >
               {{ $t("ui.actions.done") }}
             </button>
