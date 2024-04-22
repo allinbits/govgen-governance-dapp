@@ -73,8 +73,9 @@ export const messages = {
       WalletConnect: {
         button: "Connect Wallet",
         cta: "Connect your wallet",
-        instruction: "You need to connect your wallet first to vote on proposals.",
+        ctaAddress: "Connect Address",
         balance: "Balance",
+        cancel: "Cancel",
         disconnect: "Disconnect wallet",
         connecting: "Connecting wallet",
         wait: "Please wait...",
@@ -82,6 +83,12 @@ export const messages = {
         retry: "Try again",
         failed: "Connection Failed",
         failedSub: "Was not able to connect to your wallet",
+        publicAddressDisclaimer:
+          "* Connecting public address doesn't connect to your wallet and is used only for CLI command generation.",
+        recommendedWallet: "We recommend connecting with address only",
+        otherWallet: "or connect your Wallet. Make sure you have a wallet browser extension enabled.",
+        enterAddress: "Enter your GovGen wallet address",
+        addressPlaceholder: "e.g. govgen32423488234934d2423...",
       },
       Breakdown: {
         moniker: "Moniker",
