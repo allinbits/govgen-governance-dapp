@@ -96,115 +96,119 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
     </div>
 
     <ModalWrap :visible="isOpen" :is-empty="true" @back="isOpen = false">
-      <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
-        <div v-show="displayState === 'pending'" class="flex flex-col gap-6 relative">
-          <span class="text-gradient font-termina text-700 text-center">{{
-            $t("components.ProposalDeposit.cta")
-          }}</span>
-          <div class="flex flex-col gap-10">
-            <div>
-              <div class="flex flex-col gap-10">
-                <p class="text-grey-100 text-center text-200">
-                  {{ formatAmount(totalDeposit, depositDenomDecimals) }} /
-                  {{ formatAmount(minDeposit, depositDenomDecimals) }} {{ $t("components.ProposalDeposit.act") }}
-                </p>
+      <div class="bg-grey-400 w-full rounded-md max-h-screen overflow-auto">
+        <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
+          <div v-show="displayState === 'pending'" class="flex flex-col gap-6 relative">
+            <span class="text-gradient font-termina text-700 text-center">{{
+              $t("components.ProposalDeposit.cta")
+            }}</span>
+            <div class="flex flex-col gap-10">
+              <div>
+                <div class="flex flex-col gap-10">
+                  <p class="text-grey-100 text-center text-200">
+                    {{ formatAmount(totalDeposit, depositDenomDecimals) }} /
+                    {{ formatAmount(minDeposit, depositDenomDecimals) }} {{ $t("components.ProposalDeposit.act") }}
+                  </p>
 
-                <form class="flex flex-col items-center gap-2">
-                  <UiInput
-                    v-model="depositAmount"
-                    type="number"
-                    placeholder="e.g. 50"
-                    :label="$t('components.ProposalDeposit.instructions')"
-                    :min="0"
-                    :max="Infinity"
-                    class="w-full justify-end"
-                  />
-                </form>
+                  <form class="flex flex-col items-center gap-2">
+                    <UiInput
+                      v-model="depositAmount"
+                      type="number"
+                      placeholder="e.g. 50"
+                      :label="$t('components.ProposalDeposit.instructions')"
+                      :min="0"
+                      :max="Infinity"
+                      class="w-full justify-end"
+                    />
+                  </form>
+                </div>
               </div>
-            </div>
 
-            <div class="flex flex-col gap-4">
-              <div v-show="(depositAmount ?? -1) > 0" class="flex flex-col gap-4">
-                <button
-                  class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
-                  @click="signDeposit(true)"
-                >
-                  {{ $t("ui.actions.cli") }}
-                </button>
-                <a
-                  href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
-                  target="_blank"
-                  class="text-center text-100 text-grey-100 underline"
-                >
-                  {{ $t("ui.actions.signTxSecurely") }}
-                </a>
+              <div class="flex flex-col gap-4">
+                <div v-show="(depositAmount ?? -1) > 0" class="flex flex-col gap-4">
+                  <button
+                    class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
+                    @click="signDeposit(true)"
+                  >
+                    {{ $t("ui.actions.cli") }}
+                  </button>
+                  <a
+                    href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
+                    target="_blank"
+                    class="text-center text-100 text-grey-100 underline"
+                  >
+                    {{ $t("ui.actions.signTxSecurely") }}
+                  </a>
+                  <button
+                    class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
+                    @click="signDeposit()"
+                  >
+                    {{ $t("ui.actions.confirm") }}
+                  </button>
+                </div>
+
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
-                  @click="signDeposit()"
+                  @click="toggleModal(false)"
                 >
-                  {{ $t("ui.actions.confirm") }}
+                  {{ $t("ui.actions.cancel") }}
                 </button>
               </div>
+            </div>
+          </div>
+          <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
+            <div class="flex flex-col items-center gap-4">
+              <span class="text-gradient font-termina text-700 text-center">{{
+                $t("components.ProposalVote.cta")
+              }}</span>
+              <span class="text-grey-100">{{ $t("ui.actions.clicta") }}</span>
+            </div>
 
+            <div class="relative">
               <button
-                class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
+                v-if="isClipboardSupported"
+                class="absolute top-4 right-4 text-200 hover:text-grey-50 duration-200"
+                @click="copy(cliDepositInput)"
+              >
+                <span v-show="copied">{{ $t("uit.actions.copied") }}</span>
+                <span v-show="!copied" class="flex gap-1">
+                  <Icon icon="copy" /><span>{{ $t("ui.actions.copy") }}</span>
+                </span>
+              </button>
+              <textarea
+                ref="CLIVote"
+                v-model="cliDepositInput"
+                readonly
+                class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
+              ></textarea>
+            </div>
+
+            <div class="flex gap-x-4 items-stretch">
+              <CommonButton class="w-full" @click="() => (displayState = 'pending')">{{
+                $t("ui.actions.back")
+              }}</CommonButton>
+              <button
+                class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
                 @click="toggleModal(false)"
               >
-                {{ $t("ui.actions.cancel") }}
+                {{ $t("ui.actions.done") }}
               </button>
             </div>
           </div>
-        </div>
-        <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
-          <div class="flex flex-col items-center gap-4">
-            <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
-            <span class="text-grey-100">{{ $t("ui.actions.clicta") }}</span>
-          </div>
+          <div v-show="displayState === 'deposited'">
+            <UiInfo :title="$t('components.ProposalDeposit.deposited')">
+              <div class="text-500 text-center font-semibold mb-8 w-full">
+                {{ depositAmount }} {{ depositDenomDisplay }}
+              </div>
+            </UiInfo>
 
-          <div class="relative">
             <button
-              v-if="isClipboardSupported"
-              class="absolute top-4 right-4 text-200 hover:text-grey-50 duration-200"
-              @click="copy(cliDepositInput)"
-            >
-              <span v-show="copied">{{ $t("uit.actions.copied") }}</span>
-              <span v-show="!copied" class="flex gap-1">
-                <Icon icon="copy" /><span>{{ $t("ui.actions.copy") }}</span>
-              </span>
-            </button>
-            <textarea
-              ref="CLIVote"
-              v-model="cliDepositInput"
-              readonly
-              class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
-            ></textarea>
-          </div>
-
-          <div class="flex gap-x-4 items-stretch">
-            <CommonButton class="w-full" @click="() => (displayState = 'pending')">{{
-              $t("ui.actions.back")
-            }}</CommonButton>
-            <button
-              class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
+              class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
               @click="toggleModal(false)"
             >
               {{ $t("ui.actions.done") }}
             </button>
           </div>
-        </div>
-        <div v-show="displayState === 'deposited'">
-          <UiInfo :title="$t('components.ProposalDeposit.deposited')">
-            <div class="text-500 text-center font-semibold mb-8 w-full">
-              {{ depositAmount }} {{ depositDenomDisplay }}
-            </div>
-          </UiInfo>
-
-          <button
-            class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
-            @click="toggleModal(false)"
-          >
-            {{ $t("ui.actions.done") }}
-          </button>
         </div>
       </div>
     </ModalWrap>

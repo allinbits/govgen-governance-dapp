@@ -26,9 +26,10 @@ import CommonButton from "../ui/CommonButton.vue";
 import Breakdown from "@/components/proposals/Breakdown.vue";
 import ValidatorBreakdown from "./ValidatorBreakdown.vue";
 import { useTelemetry } from "@/composables/useTelemetry";
+import ModalWrap from "@/components/common/ModalWrap.vue";
 
 import MarkdownParser from "@/components/common/MarkdownParser.vue";
-import ModalBox from "@/components/common/ModalBox.vue";
+import PopupBox from "@/components/popups/PopupBox.vue";
 import { VCodeBlock } from "@wdns/vue-code-block";
 
 const voteTypes = ["yes", "no", "veto", "abstain"] as const;
@@ -376,11 +377,13 @@ function isTabSelected(tabName: TabNames) {
   return tabSelected.value.toLowerCase() == tabName.toLowerCase();
 }
 
+const displayBreakdown = ref(false);
 const { logEvent } = useTelemetry();
-
 function showBreakdown(type: BreakdownType) {
   breakdownType.value = type;
   breakdownOffset.value = 0;
+  displayBreakdown.value = !displayBreakdown.value;
+
   if (type === null) return;
   logEvent(type === "voters" ? "Click Voters Breakdown" : "Click Validators Breakdown");
 }
@@ -706,79 +709,59 @@ function showBreakdown(type: BreakdownType) {
         </div>
 
         <div v-else-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
-          <template v-if="!breakdownType">
-            <!-- Voters Panel -->
-            <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
-              <!-- All Account Votes -->
-              <VotePanel
-                :voters="distinctVoters"
-                :denom="stakingDenomDisplay"
-                :precision="stakingDenomDecimals"
-                :vote-tallies="allVoteCounts"
-                :token-tallies="tokenTallies"
-                @on-breakdown="showBreakdown('voters')"
-              >
-                <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
-                <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
-              </VotePanel>
-              <!-- All Validator Votes -->
-              <VotePanel
-                :max="maxValidators"
-                :voters="votedValidators"
-                :denom="stakingDenomDisplay"
-                :precision="stakingDenomDecimals"
-                :vote-tallies="validatorVoteCounts"
-                :token-tallies="validatorTallies"
-                @on-breakdown="showBreakdown('validators')"
-              >
-                <template #header>{{ $t("proposalpage.labels.validators") }}</template>
-                <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
-              </VotePanel>
-            </div>
-
-            <!-- Treemap Panel-->
-            <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
-              <div class="text-light text-300 md:text-500 text-left mb-8">
-                {{ $t("proposalpage.labels.validatorQuota") }}
-              </div>
-              <div class="flex flex-row object-contain">
-                <template v-if="validatorVoteSum >= 1">
-                  <div
-                    v-for="voteType in voteTypes"
-                    :key="voteType"
-                    class="flex flex-row h-96 relative"
-                    :style="[`width: ${calculateWidthForTree(voteType)}%`]"
-                  >
-                    <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
-                  </div>
-                </template>
-                <div v-else class="text-grey-100 text-200 md:text-300">
-                  {{ $t("proposalpage.labels.noValidatorVotes") }}
-                </div>
-              </div>
-            </div>
-          </template>
-          <template v-else>
-            <CommonButton class="flex justify-between items-center gap-6 w-36" @click="showBreakdown(null)">
-              <Icon icon="arrowLeft" /><span>{{ $t("ui.buttons.back") }}</span>
-            </CommonButton>
-            <div class="font-termina text-800 font-semibold text-light pt-12">
-              {{ Utility.capitalizeFirstLetter(breakdownType) }}
-            </div>
-            <!--
-          <div class="flex flex-row gap-4">
-            <span>filter</span>
-            <span>filter</span>
-            <span>filter</span>
-            <span>filter</span>
+          <!-- Voters Panel -->
+          <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
+            <!-- All Account Votes -->
+            <VotePanel
+              :voters="distinctVoters"
+              :denom="stakingDenomDisplay"
+              :precision="stakingDenomDecimals"
+              :vote-tallies="allVoteCounts"
+              :token-tallies="tokenTallies"
+              @on-breakdown="showBreakdown('voters')"
+            >
+              <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
+              <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
+            </VotePanel>
+            <!-- All Validator Votes -->
+            <VotePanel
+              :max="maxValidators"
+              :voters="votedValidators"
+              :denom="stakingDenomDisplay"
+              :precision="stakingDenomDecimals"
+              :vote-tallies="validatorVoteCounts"
+              :token-tallies="validatorTallies"
+              @on-breakdown="showBreakdown('validators')"
+            >
+              <template #header>{{ $t("proposalpage.labels.validators") }}</template>
+              <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
+            </VotePanel>
           </div>
-          //-->
-            <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
-            <ValidatorBreakdown v-if="breakdownType == 'validators'" :validator-data="validatorsWithStakeAndVotes" />
-          </template>
+
+          <!-- Treemap Panel-->
+          <div class="flex flex-col bg-grey-300 rounded-md w-full p-10">
+            <div class="text-light text-300 md:text-500 text-left mb-8">
+              {{ $t("proposalpage.labels.validatorQuota") }}
+            </div>
+            <div class="flex flex-row object-contain">
+              <template v-if="validatorVoteSum >= 1">
+                <div
+                  v-for="voteType in voteTypes"
+                  :key="voteType"
+                  class="flex flex-row h-96 relative"
+                  :style="[`width: ${calculateWidthForTree(voteType)}%`]"
+                >
+                  <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
+                </div>
+              </template>
+              <div v-else class="text-grey-100 text-200 md:text-300">
+                {{ $t("proposalpage.labels.noValidatorVotes") }}
+              </div>
+            </div>
+          </div>
         </div>
-        <div v-else-if="isTabSelected('Discussions')" class="flex items-center justify-center w-full" >
-          <div  class="w-full lg:w-2/3">
+        <div v-else-if="isTabSelected('Discussions')" class="flex items-center justify-center w-full">
+          <div class="w-full lg:w-2/3">
             <GithubComments :term="termDiscussion" />
           </div>
         </div>
@@ -787,12 +770,26 @@ function showBreakdown(type: BreakdownType) {
         </div>
       </Transition>
     </div>
-    
-    <ModalBox v-model="showJsonModal" title="JSON" @close="showJsonModal = false">
+
+    <PopupBox :visible="showJsonModal" title="JSON" @close="showJsonModal = false">
       <div v-if="proposal" class="p-4">
         <VCodeBlock :code="JSON.stringify(proposal, null, '\t')" prismjs />
       </div>
-    </ModalBox>
+    </PopupBox>
+
+    <ModalWrap :visible="displayBreakdown">
+      <div class="bg-dark px-20 py-12 w-[90vw] md:max-w-[90rem] rounded-md">
+        <CommonButton class="flex justify-between items-center gap-6 w-36" @click="showBreakdown(null)">
+          <Icon icon="arrowLeft" /><span>{{ $t("ui.buttons.back") }}</span>
+        </CommonButton>
+        <div class="font-termina text-800 font-semibold text-light pt-12">
+          {{ Utility.capitalizeFirstLetter(breakdownType ?? "") }}
+        </div>
+
+        <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
+        <ValidatorBreakdown v-if="breakdownType == 'validators'" :validator-data="validatorsWithStakeAndVotes" />
+      </div>
+    </ModalWrap>
   </div>
 </template>
 
