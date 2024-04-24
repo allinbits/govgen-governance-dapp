@@ -80,6 +80,7 @@ const cancelConnect = () => {
   isOpen.value = false;
   isError.value = false;
   isAddressOnlyConnection.value = false;
+  publicAddress.value = "";
 };
 
 bus.on("open", () => {
@@ -180,9 +181,13 @@ const { logEvent } = useTelemetry();
               @input="isValidAddress = publicAddress.length == 45"
             />
             <div class="flex flex-col gap-4">
-              <ConnectButton class="justify-center" v-if="isValidAddress">
-                {{ $t("components.WalletConnect.ctaAddress") }}</ConnectButton
+              <ConnectButton
+                class="justify-center link-gradient"
+                v-if="isValidAddress"
+                @click="connectWallet(Wallets.addressOnly, publicAddress)"
               >
+                {{ $t("components.WalletConnect.ctaAddress") }}
+              </ConnectButton>
               <ConnectButton
                 class="justify-center"
                 @click="
