@@ -175,15 +175,15 @@ const { logEvent } = useTelemetry();
               {{ $t("components.WalletConnect.enterAddress") }}
             </div>
             <input
+              v-model="publicAddress"
               class="flex p-4 items-center self-stretch rounded-lg bg-grey-200 outline-none text-100 leading-4 placeholder-grey-100"
               :placeholder="$t('components.WalletConnect.addressPlaceholder')"
-              v-model="publicAddress"
               @input="isValidAddress = publicAddress.length == 45"
             />
             <div class="flex flex-col gap-4">
               <ConnectButton
-                class="justify-center link-gradient"
                 v-if="isValidAddress"
+                class="justify-center link-gradient"
                 @click="connectWallet(Wallets.addressOnly, publicAddress)"
               >
                 {{ $t("components.WalletConnect.ctaAddress") }}
