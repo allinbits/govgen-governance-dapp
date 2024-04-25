@@ -11,7 +11,7 @@ import UiInfo from "@/components/ui/UiInfo.vue";
 import Icon from "@/components/ui/Icon.vue";
 import CommonButton from "@/components/ui/CommonButton.vue";
 
-import { useWallet } from "@/composables/useWallet";
+import { useWallet, Wallets } from "@/composables/useWallet";
 import { useClipboard } from "@vueuse/core";
 import { useProposals } from "@/composables/useProposals";
 import { useTelemetry } from "@/composables/useTelemetry";
@@ -53,7 +53,7 @@ const toggleModal = (dir: boolean) => {
 
 const { logEvent } = useTelemetry();
 const { depositProposal } = useProposals();
-const { address } = useWallet();
+const { address, used } = useWallet();
 
 const signDeposit = async (isCLI = false) => {
   if (!depositAmount.value || depositAmount.value <= 0) return;
@@ -141,6 +141,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                   @click="signDeposit()"
+                  v-if="used != Wallets.addressOnly"
                 >
                   {{ $t("ui.actions.confirm") }}
                 </button>
