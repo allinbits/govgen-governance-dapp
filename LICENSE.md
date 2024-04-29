@@ -2,7 +2,9 @@ GNO NETWORK GENERAL PUBLIC LICENSE
 ==================================
 
 _Version 3, 22 April 2024_
+
 _Modified from the GNU AFFERO GENERAL PUBLIC LICENSE. GNU is not affiliated with GNO or NewTendermint, LLC._
+
 _Copyright (C) 2024 NewTendermint, LLC._
 
 ## Preamble
