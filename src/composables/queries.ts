@@ -32,6 +32,9 @@ import {
   ProposalsRejectedDocument,
   ProposalsRejectedQuery,
   ProposalsRejectedQueryVariables,
+  ProposalsSearchDocument,
+  ProposalsSearchQuery,
+  ProposalsSearchQueryVariables,
   StakingDocument,
   StakingQuery,
   StakingQueryVariables,
@@ -92,6 +95,17 @@ export const useProposalsActiveQuery = (
 ) => {
   return useQuery<ProposalsActiveQuery, ProposalsActiveQueryVariables>(
     ProposalsActiveDocument,
+    variables,
+    options ?? {},
+  );
+};
+
+export const useProposalsSearchQuery = (
+  variables: ProposalsSearchQueryVariables,
+  options?: UseQueryOptions<ProposalsSearchQuery, ProposalsSearchQueryVariables>,
+) => {
+  return useQuery<ProposalsSearchQuery, ProposalsSearchQueryVariables>(
+    ProposalsSearchDocument,
     variables,
     options ?? {},
   );
@@ -210,6 +224,17 @@ export const useLazyProposalsActiveQuery = (
 ) => {
   return useLazyQuery<ProposalsActiveQuery, ProposalsActiveQueryVariables>(
     ProposalsActiveDocument,
+    variables,
+    options ?? {},
+  );
+};
+
+export const useLazyProposalsSearchQuery = (
+  variables: ProposalsSearchQueryVariables,
+  options?: UseQueryOptions<ProposalsSearchQuery, ProposalsSearchQueryVariables>,
+) => {
+  return useLazyQuery<ProposalsSearchQuery, ProposalsSearchQueryVariables>(
+    ProposalsSearchDocument,
     variables,
     options ?? {},
   );

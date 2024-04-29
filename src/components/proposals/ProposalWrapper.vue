@@ -25,9 +25,13 @@ import * as Utility from "@/utility/index";
 import CommonButton from "../ui/CommonButton.vue";
 import Breakdown from "@/components/proposals/Breakdown.vue";
 import ValidatorBreakdown from "./ValidatorBreakdown.vue";
+import { useTelemetry } from "@/composables/useTelemetry";
+import { useTitle } from "@vueuse/core";
+
 import MarkdownParser from "@/components/common/MarkdownParser.vue";
 import ModalBox from "@/components/common/ModalBox.vue";
 import { VCodeBlock } from "@wdns/vue-code-block";
+import { onMounted } from "vue";
 
 const voteTypes = ["yes", "no", "veto", "abstain"] as const;
 type BreakdownType = "voters" | "validators" | null;
@@ -374,10 +378,17 @@ function isTabSelected(tabName: TabNames) {
   return tabSelected.value.toLowerCase() == tabName.toLowerCase();
 }
 
+const { logEvent } = useTelemetry();
+
 function showBreakdown(type: BreakdownType) {
   breakdownType.value = type;
   breakdownOffset.value = 0;
+  if (type === null) return;
+  logEvent(type === "voters" ? "Click Voters Breakdown" : "Click Validators Breakdown");
 }
+
+const title = useTitle();
+onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${proposal.value?.proposal[0].title}`));
 </script>
 
 <template>
@@ -771,8 +782,8 @@ function showBreakdown(type: BreakdownType) {
             <ValidatorBreakdown v-if="breakdownType == 'validators'" :validator-data="validatorsWithStakeAndVotes" />
           </template>
         </div>
-        <div v-else-if="isTabSelected('Discussions')" class="flex items-center justify-center w-full" >
-          <div  class="w-full lg:w-2/3">
+        <div v-else-if="isTabSelected('Discussions')" class="flex items-center justify-center w-full">
+          <div class="w-full lg:w-2/3">
             <GithubComments :term="termDiscussion" />
           </div>
         </div>
@@ -781,6 +792,7 @@ function showBreakdown(type: BreakdownType) {
         </div>
       </Transition>
     </div>
+
     <ModalBox v-model="showJsonModal" title="JSON" @close="showJsonModal = false">
       <div v-if="proposal" class="p-4">
         <VCodeBlock :code="JSON.stringify(proposal, null, '\t')" prismjs />

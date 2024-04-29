@@ -17,6 +17,7 @@ import UiInfo from "@/components/ui/UiInfo.vue";
 import { useWallet } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
 import { useClipboard } from "@vueuse/core";
+import { useTelemetry } from "@/composables/useTelemetry";
 
 interface Props {
   proposalId?: number;
@@ -70,6 +71,7 @@ const checkVoteWeighted = computed(
 
 const { voteProposal, voteWeightedProposal } = useProposals();
 const { address } = useWallet();
+const { logEvent } = useTelemetry();
 
 const signVote = async (isCLI = false) => {
   if (!props.proposalId) return;
@@ -121,6 +123,8 @@ const signVote = async (isCLI = false) => {
 
   cliVoteInput.value = (isCLI ? vote : "") as string;
   displayState.value = isCLI ? "CLI" : "voted";
+
+  logEvent("Sign Popup ProposalVote", { signOption: isCLI ? "CLI" : "GUI" });
 };
 
 const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
@@ -131,7 +135,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
     <div>
       <div
         class="justify-center px-6 py-4 rounded link-gradient hover: text-dark text-300 text-center cursor-pointer"
-        @click="toogleModal(true)"
+        @click="() => (logEvent('Click Popup ProposalVote'), toogleModal(true))"
       >
         {{ $t("components.ProposalVote.cta") }}
       </div>

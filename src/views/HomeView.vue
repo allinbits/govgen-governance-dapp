@@ -11,6 +11,7 @@ import { provideApolloClient } from "@vue/apollo-composable";
 import apolloClient from "@/apolloClient";
 
 import { useChainData } from "@/composables/useChainData";
+import { useTelemetry } from "@/composables/useTelemetry";
 
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
@@ -21,6 +22,13 @@ const { getProposals, getProposalsAsync } = useChainData();
 
 const proposals = getProposals("active", limit.value, offset.value);
 
+const searchString = computed(() => {
+  if (searchText.value.trim().length >= 1) {
+    return searchText.value.trim();
+  } else {
+    return undefined;
+  }
+});
 const sortToOrder = computed(() => {
   switch (activityFilterIndex.value) {
     default:
@@ -55,32 +63,46 @@ const filterToStatus = computed(() => {
 watch(filterToStatus, async (newType, oldType) => {
   if (newType !== oldType) {
     provideApolloClient(apolloClient);
-    if (newType != null) {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value, newType);
-      if (res) {
-        proposals.value = res;
-      }
-    } else {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value);
-      if (res) {
-        proposals.value = res;
-      }
+
+    const res = await getProposalsAsync(
+      sortToOrder.value,
+      limit.value,
+      offset.value,
+      newType ?? undefined,
+      searchString.value,
+    );
+    if (res) {
+      proposals.value = res;
+    }
+  }
+});
+watch(searchString, async (newSearch, oldSearch) => {
+  if (newSearch !== oldSearch) {
+    provideApolloClient(apolloClient);
+    const res = await getProposalsAsync(
+      sortToOrder.value,
+      limit.value,
+      offset.value,
+      filterToStatus.value ?? undefined,
+      searchString.value,
+    );
+    if (res) {
+      proposals.value = res;
     }
   }
 });
 watch(sortToOrder, async (newOrder, oldOrder) => {
   if (newOrder !== oldOrder) {
     provideApolloClient(apolloClient);
-    if (filterToStatus.value != null) {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value, filterToStatus.value);
-      if (res) {
-        proposals.value = res;
-      }
-    } else {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, offset.value);
-      if (res) {
-        proposals.value = res;
-      }
+    const res = await getProposalsAsync(
+      sortToOrder.value,
+      limit.value,
+      offset.value,
+      filterToStatus.value ?? undefined,
+      searchString.value,
+    );
+    if (res) {
+      proposals.value = res;
     }
   }
 });
@@ -92,7 +114,6 @@ const links = ref([
   { title: "Discord", url: "https://discord.com/invite/atomone", icon: "discord" },
   { title: "Github", url: "https://github.com/atomone-hub", icon: "github" },
 ]);
-
 const hasMore = computed(() => {
   return (proposals.value?.proposal_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
 });
@@ -108,26 +129,39 @@ watch(offset, async (newOffset, oldOffset) => {
   if (newOffset != oldOffset) {
     provideApolloClient(apolloClient);
     if (filterToStatus.value != null) {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset, filterToStatus.value);
+      const res = await getProposalsAsync(
+        sortToOrder.value,
+        limit.value,
+        newOffset,
+        filterToStatus.value,
+        searchString.value,
+      );
       if (res) {
         proposals.value = res;
       }
     } else {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset);
+      const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset, undefined, searchString.value);
       if (res) {
         proposals.value = res;
       }
     }
   }
 });
+
+const { logEvent } = useTelemetry();
+const typeFilter = ["All Proposals", "Deposit", "Voting", "Passed", "Rejected", "Failed"];
+const activityFilter = ["Active First", "Passed First", "Rejected First", "Failed First"];
+
 function setActivityFilterIndex(idx: number) {
   // Needs integration to filter proposals
   activityFilterIndex.value = idx;
+  logEvent("Select Prop Activity Filter", { filterActivityOption: typeFilter[idx] });
 }
 
 function setTypeFilterIndex(idx: number) {
   // Needs integration to filter proposals
   typeFilterIndex.value = idx;
+  logEvent("Select Prop Type Filter", { filterTypeOption: activityFilter[idx] });
 }
 
 function onSearchInput() {
@@ -148,13 +182,24 @@ function onSearchInput() {
         <!-- Chain Title -->
         <!-- Chain Links -->
         <div class="flex flex-row gap-6 text-grey-100 flex-wrap">
-          <a href="https://govgen.io" target="_blank" class="flex flex-row gap-2 hover:text-grey-50">
+          <a
+            href="https://govgen.io"
+            target="_blank"
+            class="flex flex-row gap-2 hover:text-grey-50"
+            @click="logEvent('Click Home Website')"
+          >
             <Icon icon="link" /><span>{{ $t("homepage.website") }}</span>
           </a>
           <span>|</span>
           <!-- Chain Socials -->
           <div class="flex flex-row gap-4 items-center justify-center">
-            <a v-for="(linkData, index) in links" :key="index" class="flex items-center" :href="linkData.url">
+            <a
+              v-for="(linkData, index) in links"
+              :key="index"
+              class="flex items-center"
+              :href="linkData.url"
+              @click="logEvent('Click Home Social', { socialOption: linkData.title })"
+            >
               <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
             </a>
           </div>
@@ -180,16 +225,11 @@ function onSearchInput() {
       <!-- Filters -->
       <div class="flex flex-col gap-4 w-full justify-start md:flex-row lg:items-center lg:justify-end">
         <!-- Select Type -->
-        <DropDown
-          v-model="typeFilterIndex"
-          :values="['All Proposals', 'Deposit', 'Voting', 'Passed', 'Rejected', 'Failed']"
-          class="w-full lg:w-fit"
-          @select="setTypeFilterIndex"
-        />
+        <DropDown v-model="typeFilterIndex" :values="typeFilter" class="w-full lg:w-fit" @select="setTypeFilterIndex" />
         <!-- Show 'x' First -->
         <DropDown
           v-model="activityFilterIndex"
-          :values="['Active First', 'Passed First', 'Rejected First', 'Failed First']"
+          :values="activityFilter"
           class="w-full lg:w-fit"
           @select="setActivityFilterIndex"
         />
