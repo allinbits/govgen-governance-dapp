@@ -1,3 +1,19 @@
+**Copyright (C) 2024 AllInBits Inc.**
+
+This program is free software: you can redistribute it and/or modify it under the terms of the 
+GNO Network General Public License as published by NewTendermint, LLC, either version 3 of
+the License, or (at your option) any later version published by NewTendermint, LLC.
+This program is distributed in the hope that it will be useful, but is provided as-is and WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+FOR A PARTICULAR PURPOSE. See the GNO Network General Public License for more 
+details.
+
+You should have received a copy of the GNO Network General Public License along with this 
+program. If not, see https://www.gno.land/licenses/.
+
+Attached below are the terms of the GNO Network General Public License ,Version 3.0 (a fork 
+of AGPL3.0).
+
 GNO NETWORK GENERAL PUBLIC LICENSE
 ==================================
 
