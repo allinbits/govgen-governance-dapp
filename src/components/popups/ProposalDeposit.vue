@@ -34,13 +34,21 @@ const depositAmount = ref<number | null>(null);
 const cliDepositInput = ref("");
 
 const depositDenomDecimals = computed(() => {
-  return chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom)[0].coinDecimals ?? 0;
+  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom);
+  if (currencies.length <= 0) {
+    return 0;
+  }
+
+  return currencies[0].coinDecimals ?? 0;
 });
 
 const depositDenomDisplay = computed(() => {
-  return (
-    chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom)[0].coinDenom ?? props.depositDenom
-  );
+  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom);
+  if (!currencies) {
+    return props.depositDenom;
+  }
+
+  return currencies[0].coinDenom ?? props.depositDenom;
 });
 
 const resetDeposit = () => (depositAmount.value = null);

@@ -334,13 +334,21 @@ const expectedResult = computed(() => {
 });
 
 const stakingDenomDisplay = computed(() => {
-  return (
-    chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value)[0]?.coinDenom ?? depositDenom.value
-  );
+  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value);
+  if (currencies.length <= 0) {
+    return depositDenom.value;
+  }
+
+  return currencies[0].coinDenom ?? depositDenom.value;
 });
 
 const stakingDenomDecimals = computed(() => {
-  return chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value)[0]?.coinDecimals ?? 0;
+  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value);
+  if (currencies.length <= 0) {
+    return 0;
+  }
+
+  return currencies[0].coinDecimals ?? 0;
 });
 
 function calculateWidthForTree(key: VoteTypes) {
