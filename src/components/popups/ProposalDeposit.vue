@@ -11,7 +11,7 @@ import UiInfo from "@/components/ui/UiInfo.vue";
 import Icon from "@/components/ui/Icon.vue";
 import CommonButton from "@/components/ui/CommonButton.vue";
 
-import { useWallet } from "@/composables/useWallet";
+import { useWallet, Wallets } from "@/composables/useWallet";
 import { useClipboard } from "@vueuse/core";
 import { useProposals } from "@/composables/useProposals";
 import { useTelemetry } from "@/composables/useTelemetry";
@@ -34,13 +34,21 @@ const depositAmount = ref<number | null>(null);
 const cliDepositInput = ref("");
 
 const depositDenomDecimals = computed(() => {
-  return chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom)[0].coinDecimals ?? 0;
+  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom);
+  if (currencies.length <= 0) {
+    return 0;
+  }
+
+  return currencies[0].coinDecimals ?? 0;
 });
 
 const depositDenomDisplay = computed(() => {
-  return (
-    chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom)[0].coinDenom ?? props.depositDenom
-  );
+  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom);
+  if (!currencies) {
+    return props.depositDenom;
+  }
+
+  return currencies[0].coinDenom ?? props.depositDenom;
 });
 
 const resetDeposit = () => (depositAmount.value = null);
@@ -53,7 +61,7 @@ const toggleModal = (dir: boolean) => {
 
 const { logEvent } = useTelemetry();
 const { depositProposal } = useProposals();
-const { address } = useWallet();
+const { address, used } = useWallet();
 
 const signDeposit = async (isCLI = false) => {
   if (!depositAmount.value || depositAmount.value <= 0) return;
@@ -150,6 +158,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                   @click="toggleModal(false)"
+                  v-if="used != Wallets.addressOnly"
                 >
                   {{ $t("ui.actions.cancel") }}
                 </button>

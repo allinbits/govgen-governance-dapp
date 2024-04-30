@@ -27,10 +27,12 @@ import Breakdown from "@/components/proposals/Breakdown.vue";
 import ValidatorBreakdown from "./ValidatorBreakdown.vue";
 import { useTelemetry } from "@/composables/useTelemetry";
 import ModalWrap from "@/components/common/ModalWrap.vue";
+import { useTitle } from "@vueuse/core";
 
 import MarkdownParser from "@/components/common/MarkdownParser.vue";
 import PopupBox from "@/components/popups/PopupBox.vue";
 import { VCodeBlock } from "@wdns/vue-code-block";
+import { onMounted } from "vue";
 
 const voteTypes = ["yes", "no", "veto", "abstain"] as const;
 type BreakdownType = "voters" | "validators" | null;
@@ -333,13 +335,21 @@ const expectedResult = computed(() => {
 });
 
 const stakingDenomDisplay = computed(() => {
-  return (
-    chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value)[0]?.coinDenom ?? depositDenom.value
-  );
+  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value);
+  if (currencies.length <= 0) {
+    return depositDenom.value;
+  }
+
+  return currencies[0].coinDenom ?? depositDenom.value;
 });
 
 const stakingDenomDecimals = computed(() => {
-  return chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value)[0]?.coinDecimals ?? 0;
+  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == depositDenom.value);
+  if (currencies.length <= 0) {
+    return 0;
+  }
+
+  return currencies[0].coinDecimals ?? 0;
 });
 
 function calculateWidthForTree(key: VoteTypes) {
@@ -387,6 +397,9 @@ function showBreakdown(type: BreakdownType) {
   if (type === null) return;
   logEvent(type === "voters" ? "Click Voters Breakdown" : "Click Validators Breakdown");
 }
+
+const title = useTitle();
+onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${proposal.value?.proposal[0].title}`));
 </script>
 
 <template>
