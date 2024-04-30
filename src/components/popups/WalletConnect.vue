@@ -11,11 +11,21 @@ const isOpen = ref(false);
 const isConnecting = ref(false);
 const isError = ref(false);
 const isSlowConnecting = ref(false);
+const isAddressOnlyConnection = ref(false);
+const isValidAddress = ref(false);
+const publicAddress = ref("");
 
 const { connect, signOut, address, loggedIn, keplr, leap, cosmostation } = useWallet();
 
-const connectState = computed(() => !isConnecting.value && !isOpen.value && !loggedIn.value && !isError.value);
-const selectState = computed(() => !isConnecting.value && isOpen.value && !loggedIn.value && !isError.value);
+const connectState = computed(
+  () => !isConnecting.value && !isOpen.value && !loggedIn.value && !isError.value && !isAddressOnlyConnection.value,
+);
+const selectState = computed(
+  () => !isConnecting.value && isOpen.value && !loggedIn.value && !isError.value && !isAddressOnlyConnection.value,
+);
+const addressState = computed(
+  () => !isConnecting.value && isOpen.value && !loggedIn.value && !isError.value && isAddressOnlyConnection.value,
+);
 const connectingState = computed(() => isConnecting.value && isOpen.value && !loggedIn.value && !isError.value);
 const connectedState = computed(() => !isConnecting.value && !isOpen.value && loggedIn.value && !isError.value);
 const viewState = computed(() => !isConnecting.value && isOpen.value && loggedIn.value && !isError.value);
@@ -23,7 +33,14 @@ const errorState = computed(() => isOpen.value && isError.value);
 
 const controller: Ref<AbortController | null> = ref(null);
 const chosenWallet: Ref<Wallets> = ref(Wallets.keplr);
+
 const connectWallet = async (walletType: Wallets, address?: string) => {
+  if (walletType == Wallets.addressOnly && !address) {
+    isAddressOnlyConnection.value = true;
+    return;
+  }
+
+  isAddressOnlyConnection.value = false;
   isError.value = false;
   isConnecting.value = true;
   isOpen.value = true;
@@ -55,13 +72,17 @@ const connectWallet = async (walletType: Wallets, address?: string) => {
     }
   }
 };
+
 const cancelConnect = () => {
   controller.value?.abort();
   isConnecting.value = false;
   isSlowConnecting.value = false;
   isOpen.value = false;
   isError.value = false;
+  isAddressOnlyConnection.value = false;
+  publicAddress.value = "";
 };
+
 bus.on("open", () => {
   isOpen.value = true;
 });
@@ -91,13 +112,32 @@ const { logEvent } = useTelemetry();
       <template v-if="selectState">
         <div class="absolute right-0 top-4 z-10">
           <div class="flex flex-col gap-6 px-8 py-6 bg-grey-300 rounded w-80 relative">
-            <Icon class="absolute top-3 right-4 cursor-pointer text-light" icon="close" @click="isOpen = false" />
+            <Icon
+              class="absolute top-3 right-4 cursor-pointer text-light"
+              icon="close"
+              @click="(isOpen = false), (isAddressOnlyConnection = false)"
+            />
             <div class="flex flex-col text-[white] text-500 font-semibold text-center">
               {{ $t("components.WalletConnect.cta") }}
             </div>
-            <div class="flex flex-col text-grey-100 text-300 font-medium text-center">
-              {{ $t("components.WalletConnect.instruction") }}
+            <div class="flex flex-col text-grey-100 text-200 font-medium text-center leading-5">
+              {{ $t("components.WalletConnect.recommendedWallet") }}
             </div>
+            <div class="buttons">
+              <ConnectButton @click="connectWallet(Wallets.addressOnly)">
+                <template #icon>
+                  <Icon icon="link" :size="1.4" class="mr-2" />
+                </template>
+                Public Address</ConnectButton
+              >
+            </div>
+            <span class="text-grey-100 text-100 text-center leading-4">
+              {{ $t("components.WalletConnect.publicAddressDisclaimer") }}
+            </span>
+            <hr class="text-grey-200" />
+            <span class="text-grey-100 text-100 text-center leading-4">
+              {{ $t("components.WalletConnect.otherWallet") }}
+            </span>
             <div class="buttons">
               <ConnectButton class="my-4" :disabled="!keplr" @click="connectWallet(Wallets.keplr)">
                 <template #icon>
@@ -113,6 +153,54 @@ const { logEvent } = useTelemetry();
                 >Cosmostation Wallet</ConnectButton
               >
             </div>
+          </div>
+        </div>
+      </template>
+
+      <template v-else-if="addressState">
+        <div class="absolute right-0 top-4">
+          <div class="flex flex-col px-8 py-4 pt-12 bg-grey-300 rounded w-80 relative gap-4">
+            <Icon
+              class="absolute top-3 right-4 cursor-pointer text-light"
+              icon="close"
+              @click="
+                isOpen = false;
+                isAddressOnlyConnection = false;
+              "
+            />
+            <div class="flex flex-col text-[white] text-500 font-semibold text-center">
+              {{ $t("components.WalletConnect.ctaAddress") }}
+            </div>
+            <div class="flex flex-col text-grey-100 text-200 font-medium text-center leading-5">
+              {{ $t("components.WalletConnect.enterAddress") }}
+            </div>
+            <input
+              v-model="publicAddress"
+              class="flex p-4 items-center self-stretch rounded-lg bg-grey-200 outline-none text-100 leading-4 placeholder-grey-100"
+              :placeholder="$t('components.WalletConnect.addressPlaceholder')"
+              @input="isValidAddress = publicAddress.length == 45"
+            />
+            <div class="flex flex-col gap-4">
+              <ConnectButton
+                v-if="isValidAddress"
+                class="justify-center link-gradient"
+                @click="connectWallet(Wallets.addressOnly, publicAddress)"
+              >
+                {{ $t("components.WalletConnect.ctaAddress") }}
+              </ConnectButton>
+              <ConnectButton
+                class="justify-center"
+                @click="
+                  isOpen = false;
+                  isAddressOnlyConnection = false;
+                "
+              >
+                {{ $t("components.WalletConnect.cancel") }}</ConnectButton
+              >
+            </div>
+            <span class="text-grey-100 text-100 text-center leading-4">
+              {{ $t("components.WalletConnect.publicAddressDisclaimer") }}
+            </span>
           </div>
         </div>
       </template>

@@ -14,7 +14,7 @@ import UiState from "@/components/ui/UiState.vue";
 import UiInput from "@/components/ui/UiInput.vue";
 import UiInfo from "@/components/ui/UiInfo.vue";
 
-import { useWallet } from "@/composables/useWallet";
+import { useWallet, Wallets } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
 import { useClipboard } from "@vueuse/core";
 import { useTelemetry } from "@/composables/useTelemetry";
@@ -70,7 +70,7 @@ const checkVoteWeighted = computed(
 );
 
 const { voteProposal, voteWeightedProposal } = useProposals();
-const { address } = useWallet();
+const { address, used } = useWallet();
 const { logEvent } = useTelemetry();
 
 const signVote = async (isCLI = false) => {
@@ -204,6 +204,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                   @click="signVote()"
+                  v-if="used != Wallets.addressOnly"
                 >
                   {{ $t("ui.actions.confirm") }}
                 </button>
