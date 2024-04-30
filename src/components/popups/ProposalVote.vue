@@ -209,6 +209,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                     {{ $t("ui.actions.signTxSecurely") }}
                   </a>
                   <button
+                    v-if="used != Wallets.addressOnly"
                     class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                     @click="signVote()"
                   >
@@ -219,7 +220,6 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
                   @click="toggleModal(false)"
-                  v-if="used != Wallets.addressOnly"
                 >
                   {{ $t("ui.actions.cancel") }}
                 </button>
