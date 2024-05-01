@@ -61,25 +61,30 @@ const validatorsWithStakeAndVotes = ref<
 >([]);
 
 watch(validators, async (valSet, _old) => {
-  validatorsWithStakeAndVotes.value = await Promise.all(
-    valSet.map(async (val) => {
-      if (val.validator.validator_info && val.validator.validator_info.self_delegate_address) {
-        const vp = await getVotingPower(val.validator.validator_info.self_delegate_address);
-        const votes = await getVotesAsync(val.validator.validator_info.self_delegate_address, props.proposalId);
-        if (votes && votes.proposal_vote.length > 0) {
-          return {
-            ...val,
-            voting_power: vp,
-            votes: votes.proposal_vote.filter((x) => x.height == votes.proposal_vote[0].height),
-          };
+  try {
+    validatorsWithStakeAndVotes.value = await Promise.all(
+      valSet.map(async (val) => {
+        if (val.validator.validator_info && val.validator.validator_info.self_delegate_address) {
+          const vp = await getVotingPower(val.validator.validator_info.self_delegate_address);
+          const votes = await getVotesAsync(val.validator.validator_info.self_delegate_address, props.proposalId);
+          if (votes && votes.proposal_vote.length > 0) {
+            return {
+              ...val,
+              voting_power: vp,
+              votes: votes.proposal_vote.filter((x) => x.height == votes.proposal_vote[0].height),
+            };
+          } else {
+            return { ...val, voting_power: vp, votes: [] };
+          }
         } else {
-          return { ...val, voting_power: vp, votes: [] };
+          return { ...val, voting_power: 0, votes: [] };
         }
-      } else {
-        return { ...val, voting_power: 0, votes: [] };
-      }
-    }),
-  );
+      }),
+    );
+  } catch (_e) {
+    bus.emit("error");
+    1;
+  }
 });
 
 const maxValidators = computed(() => {

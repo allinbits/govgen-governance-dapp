@@ -5,6 +5,7 @@ import MarkdownItMermaid from "@agoose77/markdown-it-mermaid";
 import { alertPlugin } from "markdown-it-github-alert";
 
 import DOMPurify from "dompurify";
+import { bus } from "@/bus";
 
 const md = markdownit({
   html: true,
@@ -19,15 +20,19 @@ const content = defineModel<string>();
 const trimmedContent = ref<string>("");
 
 async function parseData() {
-  if (!content.value) {
-    return "";
+  try {
+    if (!content.value) {
+      return "";
+    }
+
+    const htmlContent = props.limit
+      ? await md.render(content.value.slice(0, props.limit))
+      : await md.render(content.value);
+
+    trimmedContent.value = DOMPurify.sanitize(htmlContent);
+  } catch (_e) {
+    bus.emit("error");
   }
-
-  const htmlContent = props.limit
-    ? await md.render(content.value.slice(0, props.limit))
-    : await md.render(content.value);
-
-  trimmedContent.value = DOMPurify.sanitize(htmlContent);
 }
 
 const getClasses = computed(() => {

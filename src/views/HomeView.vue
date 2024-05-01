@@ -12,6 +12,7 @@ import apolloClient from "@/apolloClient";
 
 import { useChainData } from "@/composables/useChainData";
 import { useTelemetry } from "@/composables/useTelemetry";
+import { bus } from "@/bus";
 
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
@@ -63,46 +64,57 @@ const filterToStatus = computed(() => {
 watch(filterToStatus, async (newType, oldType) => {
   if (newType !== oldType) {
     provideApolloClient(apolloClient);
-
-    const res = await getProposalsAsync(
-      sortToOrder.value,
-      limit.value,
-      offset.value,
-      newType ?? undefined,
-      searchString.value,
-    );
-    if (res) {
-      proposals.value = res;
+    try {
+      const res = await getProposalsAsync(
+        sortToOrder.value,
+        limit.value,
+        offset.value,
+        newType ?? undefined,
+        searchString.value,
+      );
+      if (res) {
+        proposals.value = res;
+      }
+    } catch (_e) {
+      bus.emit("error");
     }
   }
 });
 watch(searchString, async (newSearch, oldSearch) => {
   if (newSearch !== oldSearch) {
     provideApolloClient(apolloClient);
-    const res = await getProposalsAsync(
-      sortToOrder.value,
-      limit.value,
-      offset.value,
-      filterToStatus.value ?? undefined,
-      searchString.value,
-    );
-    if (res) {
-      proposals.value = res;
+    try {
+      const res = await getProposalsAsync(
+        sortToOrder.value,
+        limit.value,
+        offset.value,
+        filterToStatus.value ?? undefined,
+        searchString.value,
+      );
+      if (res) {
+        proposals.value = res;
+      }
+    } catch (_e) {
+      bus.emit("error");
     }
   }
 });
 watch(sortToOrder, async (newOrder, oldOrder) => {
   if (newOrder !== oldOrder) {
     provideApolloClient(apolloClient);
-    const res = await getProposalsAsync(
-      sortToOrder.value,
-      limit.value,
-      offset.value,
-      filterToStatus.value ?? undefined,
-      searchString.value,
-    );
-    if (res) {
-      proposals.value = res;
+    try {
+      const res = await getProposalsAsync(
+        sortToOrder.value,
+        limit.value,
+        offset.value,
+        filterToStatus.value ?? undefined,
+        searchString.value,
+      );
+      if (res) {
+        proposals.value = res;
+      }
+    } catch (_e) {
+      bus.emit("error");
     }
   }
 });
@@ -128,22 +140,26 @@ function prev() {
 watch(offset, async (newOffset, oldOffset) => {
   if (newOffset != oldOffset) {
     provideApolloClient(apolloClient);
-    if (filterToStatus.value != null) {
-      const res = await getProposalsAsync(
-        sortToOrder.value,
-        limit.value,
-        newOffset,
-        filterToStatus.value,
-        searchString.value,
-      );
-      if (res) {
-        proposals.value = res;
+    try {
+      if (filterToStatus.value != null) {
+        const res = await getProposalsAsync(
+          sortToOrder.value,
+          limit.value,
+          newOffset,
+          filterToStatus.value,
+          searchString.value,
+        );
+        if (res) {
+          proposals.value = res;
+        }
+      } else {
+        const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset, undefined, searchString.value);
+        if (res) {
+          proposals.value = res;
+        }
       }
-    } else {
-      const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset, undefined, searchString.value);
-      if (res) {
-        proposals.value = res;
-      }
+    } catch (_e) {
+      bus.emit("error");
     }
   }
 });
