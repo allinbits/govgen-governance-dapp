@@ -58,7 +58,7 @@ const resetVote = () => {
   Object.entries(voteWeighted).forEach((el) => (el[1].value = null));
 };
 
-const toogleModal = (dir: boolean) => {
+const toggleModal = (dir: boolean) => {
   isOpen.value = dir;
   displayState.value = "pending";
   resetVote();
@@ -135,149 +135,159 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
     <div>
       <div
         class="justify-center px-6 py-4 rounded link-gradient hover: text-dark text-300 text-center cursor-pointer"
-        @click="() => (logEvent('Click Popup ProposalVote'), toogleModal(true))"
+        @click="() => (logEvent('Click Popup ProposalVote'), toggleModal(true))"
       >
         {{ $t("components.ProposalVote.cta") }}
       </div>
     </div>
 
     <ModalWrap :visible="isOpen" :is-empty="true" @back="isOpen = false">
-      <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
-        <div v-show="displayState === 'pending'" class="flex flex-col gap-6 relative">
-          <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
-          <UiSwitch id="voteType" v-model="tab" :options="tabOptions" class="flex w-2/3 mx-auto" @click="resetVote()" />
-          <div class="flex flex-col gap-10">
-            <div>
-              <Transition mode="out-in">
-                <div v-if="tab === 'Straight'" class="flex flex-col px-4">
-                  <span v-for="(vote, name, id) in voteList" :key="id" class="w-full">
-                    <UiState
-                      v-if="vote"
-                      v-model="voteStraight"
-                      type="radio"
-                      :value="name"
-                      :label="`Vote “${vote.label.toLocaleUpperCase()}”`"
-                      class="w-full"
-                    />
-                  </span>
-                </div>
-
-                <div v-else-if="tab === 'Weighted'" class="flex flex-col gap-10">
-                  <p class="text-grey-100 text-center text-200">
-                    {{ $t("components.ProposalVote.weightedInstructions") }}
-                  </p>
-
-                  <form class="flex flex-col items-center gap-2">
-                    <span v-for="(vote, key, id) in voteWeighted" :key="id" class="w-full">
-                      <UiInput
+      <div class="bg-grey-400 w-full rounded-md max-h-screen overflow-auto">
+        <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
+          <div v-show="displayState === 'pending'" class="flex flex-col gap-6 relative">
+            <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
+            <UiSwitch
+              id="voteType"
+              v-model="tab"
+              :options="tabOptions"
+              class="flex w-2/3 mx-auto"
+              @click="resetVote()"
+            />
+            <div class="flex flex-col gap-10">
+              <div>
+                <Transition mode="out-in">
+                  <div v-if="tab === 'Straight'" class="flex flex-col px-4">
+                    <span v-for="(vote, name, id) in voteList" :key="id" class="w-full">
+                      <UiState
                         v-if="vote"
-                        v-model="vote.value"
-                        type="number"
-                        placeholder="e.g. 0.25"
-                        :label="`Votes “${voteList[key]?.label}”`"
-                        variant="row"
-                        :min="0"
-                        :max="1"
-                        class="w-full justify-end"
+                        v-model="voteStraight"
+                        type="radio"
+                        :value="name"
+                        :label="`Vote “${vote.label.toLocaleUpperCase()}”`"
+                        class="w-full"
                       />
                     </span>
-                  </form>
-                </div>
-              </Transition>
-            </div>
+                  </div>
 
-            <div class="flex flex-col gap-4">
-              <div v-show="voteStraight || checkVoteWeighted" class="flex flex-col gap-4">
-                <button
-                  class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
-                  @click="signVote(true)"
-                >
-                  {{ $t("ui.actions.cli") }}
-                </button>
-                <a
-                  href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
-                  target="_blank"
-                  class="text-center text-100 text-grey-100 underline"
-                >
-                  {{ $t("ui.actions.signTxSecurely") }}
-                </a>
-                <button
-                  class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
-                  @click="signVote()"
-                  v-if="used != Wallets.addressOnly"
-                >
-                  {{ $t("ui.actions.confirm") }}
-                </button>
+                  <div v-else-if="tab === 'Weighted'" class="flex flex-col gap-10">
+                    <p class="text-grey-100 text-center text-200">
+                      {{ $t("components.ProposalVote.weightedInstructions") }}
+                    </p>
+
+                    <form class="flex flex-col items-center gap-2">
+                      <span v-for="(vote, key, id) in voteWeighted" :key="id" class="w-full">
+                        <UiInput
+                          v-if="vote"
+                          v-model="vote.value"
+                          type="number"
+                          placeholder="e.g. 0.25"
+                          :label="`Votes “${voteList[key]?.label}”`"
+                          variant="row"
+                          :min="0"
+                          :max="1"
+                          class="w-full justify-end"
+                        />
+                      </span>
+                    </form>
+                  </div>
+                </Transition>
               </div>
 
+              <div class="flex flex-col gap-4">
+                <div v-show="voteStraight || checkVoteWeighted" class="flex flex-col gap-4">
+                  <button
+                    class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
+                    @click="signVote(true)"
+                  >
+                    {{ $t("ui.actions.cli") }}
+                  </button>
+                  <a
+                    href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
+                    target="_blank"
+                    class="text-center text-100 text-grey-100 underline"
+                  >
+                    {{ $t("ui.actions.signTxSecurely") }}
+                  </a>
+                  <button
+                    v-if="used != Wallets.addressOnly"
+                    class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
+                    @click="signVote()"
+                  >
+                    {{ $t("ui.actions.confirm") }}
+                  </button>
+                </div>
+
+                <button
+                  class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
+                  @click="toggleModal(false)"
+                >
+                  {{ $t("ui.actions.cancel") }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
+            <div class="flex flex-col items-center gap-4">
+              <span class="text-gradient font-termina text-700 text-center">{{
+                $t("components.ProposalVote.cta")
+              }}</span>
+              <span class="text-grey-100">{{ $t("ui.actions.clicta") }}</span>
+            </div>
+
+            <div class="relative">
               <button
-                class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
-                @click="toogleModal(false)"
+                v-if="isClipboardSupported"
+                class="absolute top-4 right-4 text-200 flex gap-1 hover:text-grey-50 duration-200"
+                @click="copy(cliVoteInput)"
               >
-                {{ $t("ui.actions.cancel") }}
+                <span v-show="copied">{{ $t("ui.actions.copied") }}</span>
+                <span v-show="!copied" class="flex gap-1">
+                  <Icon icon="copy" /><span>{{ $t("ui.actions.copy") }}</span>
+                </span>
+              </button>
+              <textarea
+                ref="CLIVote"
+                v-model="cliVoteInput"
+                readonly
+                class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
+              ></textarea>
+            </div>
+
+            <div class="flex gap-x-4 items-stretch">
+              <CommonButton class="w-full" @click="() => (displayState = 'pending')">{{
+                $t("ui.actions.back")
+              }}</CommonButton>
+              <button
+                class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
+                @click="toggleModal(false)"
+              >
+                {{ $t("ui.actions.done") }}
               </button>
             </div>
           </div>
-        </div>
+          <div v-show="displayState === 'voted'">
+            <UiInfo :title="$t('components.ProposalVote.voted')">
+              <div class="text-500 text-center font-semibold mb-8 w-full">
+                <div v-if="voteStraight" :class="voteList && voteList[voteStraight]?.color">
+                  {{ voteList && voteList[voteStraight]?.label }}
+                </div>
 
-        <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
-          <div class="flex flex-col items-center gap-4">
-            <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
-            <span class="text-grey-100">{{ $t("ui.actions.clicta") }}</span>
-          </div>
+                <div v-if="checkVoteWeighted" class="flex flex-col">
+                  <span v-for="(vote, key, id) in voteList" :key="id" :class="vote?.color">
+                    {{ vote?.label.toLocaleUpperCase() }} {{ getVoteWeightedPercent(voteWeighted[key]?.value ?? 0) }}%
+                  </span>
+                </div>
+              </div>
+            </UiInfo>
 
-          <div class="relative">
             <button
-              v-if="isClipboardSupported"
-              class="absolute top-4 right-4 text-200 flex gap-1 hover:text-grey-50 duration-200"
-              @click="copy(cliVoteInput)"
-            >
-              <span v-show="copied">{{ $t("ui.actions.copied") }}</span>
-              <span v-show="!copied" class="flex gap-1">
-                <Icon icon="copy" /><span>{{ $t("ui.actions.copy") }}</span>
-              </span>
-            </button>
-            <textarea
-              ref="CLIVote"
-              v-model="cliVoteInput"
-              readonly
-              class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
-            ></textarea>
-          </div>
-
-          <div class="flex gap-x-4 items-stretch">
-            <CommonButton class="w-full" @click="() => (displayState = 'pending')">{{
-              $t("ui.actions.back")
-            }}</CommonButton>
-            <button
-              class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
-              @click="toogleModal(false)"
+              class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
+              @click="toggleModal(false)"
             >
               {{ $t("ui.actions.done") }}
             </button>
           </div>
-        </div>
-        <div v-show="displayState === 'voted'">
-          <UiInfo :title="$t('components.ProposalVote.voted')">
-            <div class="text-500 text-center font-semibold mb-8 w-full">
-              <div v-if="voteStraight" :class="voteList && voteList[voteStraight]?.color">
-                {{ voteList && voteList[voteStraight]?.label }}
-              </div>
-
-              <div v-if="checkVoteWeighted" class="flex flex-col">
-                <span v-for="(vote, key, id) in voteList" :key="id" :class="vote?.color">
-                  {{ vote?.label.toLocaleUpperCase() }} {{ getVoteWeightedPercent(voteWeighted[key]?.value ?? 0) }}%
-                </span>
-              </div>
-            </div>
-          </UiInfo>
-
-          <button
-            class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
-            @click="toogleModal(false)"
-          >
-            {{ $t("ui.actions.done") }}
-          </button>
         </div>
       </div>
     </ModalWrap>
