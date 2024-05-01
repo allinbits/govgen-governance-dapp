@@ -70,6 +70,11 @@ export const messages = {
       },
     },
     components: {
+      ErrorBox: {
+        title: "Error",
+        message: "Something went wrong...",
+        cta: "Please refresh",
+      },
       WalletConnect: {
         button: "Connect Wallet",
         cta: "Connect your wallet",
