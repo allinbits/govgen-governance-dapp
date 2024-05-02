@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ProposalWrapper from "@/components/proposals/ProposalWrapper.vue";
+import { bus } from "@/bus";
 import { useRoute } from "vue-router";
 import { useChainData } from "@/composables/useChainData";
 import { ref, watch } from "vue";
@@ -24,12 +25,15 @@ watch(proposal, async (newProp, _oldProp) => {
       proposal.value?.proposal[0].status == "PROPSOAL_STATUS_REJECTED"
     ) {
       provideApolloClient(apolloClient);
-      const hq = await getBlockHeightAsync(proposal.value.proposal[0].voting_end_time);
-      console.log("here");
-      if (hq) {
-        height.value = hq.block[0].height;
-      } else {
-        height.value = 0;
+      try {
+        const hq = await getBlockHeightAsync(proposal.value.proposal[0].voting_end_time);
+        if (hq) {
+          height.value = hq.block[0].height;
+        } else {
+          height.value = 0;
+        }
+      } catch (e) {
+        bus.emit("error");
       }
     } else {
       height.value = 0;

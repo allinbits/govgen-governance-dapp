@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { bus } from "@/bus";
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
 import { onMounted, ref } from "vue";
 
@@ -7,8 +8,12 @@ const count = ref(0);
 const { getDiscussionCommentCount } = useGithubDiscussions();
 
 onMounted(async () => {
-  const response = await getDiscussionCommentCount({ term: `Proposal #${props.proposal}` });
-  count.value = response.count;
+  try {
+    const response = await getDiscussionCommentCount({ term: `Proposal #${props.proposal}` });
+    count.value = response.count;
+  } catch (_e) {
+    bus.emit("error");
+  }
 });
 </script>
 
