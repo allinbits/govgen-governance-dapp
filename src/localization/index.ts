@@ -6,6 +6,7 @@ export const messages = {
         "Explore the Governance dApp—a seamlessly integrated interface empowering secure and efficient governance interactions with the GovGen chain. Engage in collaborative discussions and actively participate in the governance processes to shape the potential future of AtomOne.",
       proposalsHeader: "All Proposals",
       website: "Website",
+      createProposal: "Create Proposal",
     },
     voteOptions: {
       yes: "Yes",
@@ -17,6 +18,21 @@ export const messages = {
     proposalcreate: {
       transaction: "Transaction",
       back: "Back",
+      typeText: "Text",
+      typeParameterChange: "Parameter Change",
+      typeUpgrade: "Upgrade",
+      chooseType: "Choose Type",
+      title: "Proposal Title",
+      description: "Description",
+      index: "Index",
+      changes: "Changes",
+      addParameter: "Add Parameter",
+      blockHeight: "Block Height",
+      blockInfo: "Block Info",
+      upgradeName: "Upgrade Name",
+      proposalTypeParam: "Parameter Change Proposal",
+      proposalTypeUpgrade: "Upgrade Proposal",
+      proposalTypeText: "Text Proposal",
     },
     proposalpage: {
       badges: {
