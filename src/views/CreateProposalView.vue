@@ -32,7 +32,7 @@ const parameters = ref<ParameterType[]>([{ key: "", subspace: "", value: "" }]);
 
 const isAllValid = ref<boolean>(false);
 const isProcessing = ref<boolean>(false);
-const trx = ref<Partial<DeliverTxResponse> | undefined>({ code: 0 });
+const trx = ref<Partial<DeliverTxResponse> | undefined>(undefined);
 
 async function create() {
   isProcessing.value = true;
