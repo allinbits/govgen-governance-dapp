@@ -14,6 +14,10 @@ export const messages = {
       nwvShort: "Veto",
       abstain: "Abstain",
     },
+    proposalcreate: {
+      transaction: "Transaction",
+      back: "Back",
+    },
     proposalpage: {
       badges: {
         votingPeriod: "Voting Period",

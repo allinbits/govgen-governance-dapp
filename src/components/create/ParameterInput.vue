@@ -3,6 +3,7 @@ import { ref, watch } from "vue";
 import { defineModel } from "vue";
 
 const model = defineModel<{ key: string; value: string; subspace: string }>();
+const props = defineProps<{ disabled: boolean }>();
 
 const key = ref<string>("");
 const value = ref<string>("");
@@ -36,22 +37,25 @@ watch(subspace, async (newValue) => {
 <template>
   <div class="flex flex-col gap-6">
     <input
-      placeholder="key"
       v-model="key"
+      placeholder="key"
       type="text"
       class="p-4 bg-grey-400 rounded-md placeholder:text-grey-100 outline-none border border-grey-200 focus:border-grey-100"
+      :disabled="props.disabled"
     />
     <input
-      placeholder="value"
       v-model="value"
+      placeholder="value"
       type="text"
       class="p-4 bg-grey-400 rounded-md placeholder:text-grey-100 outline-none border border-grey-200 focus:border-grey-100"
+      :disabled="props.disabled"
     />
     <input
-      placeholder="subspace"
       v-model="subspace"
+      placeholder="subspace"
       type="text"
       class="p-4 bg-grey-400 rounded-md placeholder:text-grey-100 outline-none border border-grey-200 focus:border-grey-100"
+      :disabled="props.disabled"
     />
   </div>
 </template>
