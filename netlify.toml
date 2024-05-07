@@ -16,7 +16,7 @@
   [headers.values]
   Access-Control-Allow-Origin = '''
   https://app.govgen.io,
-  https://gh-discuss.devnet.govgen.dev/api/repo/categories'''
+  https://gh-discuss.devnet.govgen.dev'''
   Strict-Transport-Security = "max-age=31536000; includeSubDomains"
   Content-Security-Policy = "default-src 'self'; connect-src https://graphql.devnet.govgen.dev/v1/graphql https://gh-discuss.devnet.govgen.dev https://plausible.io/api/event"
   X-Frame-Options = "SAMEORIGIN"
