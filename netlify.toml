@@ -15,7 +15,7 @@
   for = "/*"
   [headers.values]
   Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-  Content-Security-Policy = "default-src 'self'; connect-src 'https://graphql.devnet.govgen.dev/v1/graphql'"
+  Content-Security-Policy = "default-src 'self'; connect-src https://graphql.devnet.govgen.dev/v1/graphql https://plausible.io/api/event"
   X-Frame-Options = "SAMEORIGIN"
   X-Content-Type-Options = "nosniff"
   Referrer-Policy = "strict-origin"
