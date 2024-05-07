@@ -27,7 +27,7 @@
   interest-cohort=(),
   accelerometer=(),
   autoplay=(),
-  camera=()
+  camera=(),
   autoplay=(),
   document-domain=(),
   encrypted-media=(),
