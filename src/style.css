@@ -311,6 +311,10 @@ pre[class*="language-"] {
   width: auto;
   z-index: 2;
 }
+
+.v-code-block--code:hover .v-code-block--code-copy-button {
+  opacity: 1;
+}
 .v-code-block--code-copy-button svg {
   height: 1rem;
   width: 1rem;
