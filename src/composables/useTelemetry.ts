@@ -218,8 +218,8 @@ function Plausible(defaults?: PlausibleInitOptions): {
  * COMPOSABLE: Plausible config
  */
 const plausible = Plausible({
-  domain: "app.govgen.io",
-  trackLocalhost: true,
+  domain: window.location.hostname,
+  trackLocalhost: false,
 });
 
 /***
