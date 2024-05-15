@@ -712,7 +712,6 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   <div class="grow w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.upgradePlan") }}</div>
                     <div class="text-light text-100">
-                      bla
                       <VCodeBlock
                         :code="JSON.stringify(proposal?.proposal[0].content.plan, null, '\t')"
                         prismjs
