@@ -29,6 +29,7 @@ export const useProposals = () => {
       }).finish(),
     };
   };
+
   const createUpgradePlanProposalContent = (proposal: SoftwareUpgradeProposal): EncodeObject => {
     return {
       typeUrl: "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal",
@@ -39,6 +40,7 @@ export const useProposals = () => {
       }).finish(),
     };
   };
+
   const createProposal = async (
     proposalMeta: Partial<MsgSubmitProposal>,
     proposal: EncodeObject,

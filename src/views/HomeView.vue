@@ -13,6 +13,9 @@ import apolloClient from "@/apolloClient";
 import { useChainData } from "@/composables/useChainData";
 import { useTelemetry } from "@/composables/useTelemetry";
 import { bus } from "@/bus";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
@@ -188,44 +191,55 @@ function onSearchInput() {
 
 <template>
   <div class="flex flex-col w-full pb-[72px]">
-    <!-- Chain Section -->
-    <div class="flex flex-col gap-8 pt-8 md:pt-[72px]">
-      <div class="flex gap-4">
-        <Icon icon="chain" class="aspect-square text-900" />
-        <div class="font-termina text-700 md:text-1000 font-semibold leading-[80px]">{{ $t("homepage.title") }}</div>
-      </div>
-      <div class="flex flex-col gap-8">
-        <!-- Chain Title -->
-        <!-- Chain Links -->
-        <div class="flex flex-row gap-6 text-grey-100 flex-wrap">
-          <a
-            href="https://govgen.io"
-            target="_blank"
-            class="flex flex-row gap-2 hover:text-grey-50"
-            @click="logEvent('Click Home Website')"
-          >
-            <Icon icon="link" /><span>{{ $t("homepage.website") }}</span>
-          </a>
-          <span>|</span>
-          <!-- Chain Socials -->
-          <div class="flex flex-row gap-4 items-center justify-center">
-            <a
-              v-for="(linkData, index) in links"
-              :key="index"
-              class="flex items-center"
-              :href="linkData.url"
-              @click="logEvent('Click Home Social', { socialOption: linkData.title })"
-            >
-              <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
-            </a>
-          </div>
+    <div class="flex flex-row pt-8 md:pt-[72px]">
+      <!-- Chain Section -->
+      <div class="flex flex-col gap-8 w-3/4">
+        <div class="flex gap-4">
+          <Icon icon="chain" class="aspect-square text-900" />
+          <div class="font-termina text-700 md:text-1000 font-semibold leading-[80px]">{{ $t("homepage.title") }}</div>
         </div>
-        <!-- Chain Description -->
-        <p
-          class="text-grey-100 text-300 lg:w-[656px] font-normal text-left text-pretty after:absolute after:block after:left-0 after:w-full after:bg-grey-300 after:h-px"
+        <div class="flex flex-col gap-8">
+          <!-- Chain Title -->
+          <!-- Chain Links -->
+          <div class="flex flex-row gap-6 text-grey-100 flex-wrap">
+            <a
+              href="https://govgen.io"
+              target="_blank"
+              class="flex flex-row gap-2 hover:text-grey-50"
+              @click="logEvent('Click Home Website')"
+            >
+              <Icon icon="link" /><span>{{ $t("homepage.website") }}</span>
+            </a>
+            <span>|</span>
+            <!-- Chain Socials -->
+            <div class="flex flex-row gap-4 items-center justify-center">
+              <a
+                v-for="(linkData, index) in links"
+                :key="index"
+                class="flex items-center"
+                :href="linkData.url"
+                @click="logEvent('Click Home Social', { socialOption: linkData.title })"
+              >
+                <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
+              </a>
+            </div>
+          </div>
+          <!-- Chain Description -->
+          <p
+            class="text-grey-100 text-300 lg:w-[656px] font-normal text-left text-pretty after:absolute after:block after:left-0 after:w-full after:bg-grey-300 after:h-px"
+          >
+            <span class="block pb-8 lg:pb-[72px]"> {{ $t("homepage.intro") }} </span>
+          </p>
+        </div>
+      </div>
+      <div class="w-1/4">
+        <div
+          class="flex items-center justify-center gap-4 px-6 py-4 rounded link-gradient text-dark text-center cursor-pointer w-full font-medium"
+          @click="router.push({ path: '/create' })"
         >
-          <span class="block pb-8 lg:pb-[72px]"> {{ $t("homepage.intro") }} </span>
-        </p>
+          <Icon icon="plus" class="font-medium text-400"></Icon>
+          <span class="text-300">{{ $t("homepage.createProposal") }}</span>
+        </div>
       </div>
     </div>
     <!-- Search Box, and Filters -->
