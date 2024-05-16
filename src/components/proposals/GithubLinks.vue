@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onMounted, ref, computed, reactive } from "vue";
-import DOMPurify from "dompurify";
+import { purifyHtml } from "../../utility/purify";
 import * as Utility from "@/utility/index";
 import CommonButton from "@/components/ui/CommonButton.vue";
 
@@ -159,7 +159,7 @@ onMounted(refresh);
             </a>
 
             <!-- eslint-disable vue/no-v-html -->
-            <div class="w-full flex-grow text-grey-100 text-300 h-20" v-html="DOMPurify.sanitize(linkInfo.body)" />
+            <div class="w-full flex-grow text-grey-100 text-300 h-20" v-html="purifyHtml(linkInfo.body)" />
             <!-- eslint-enable -->
             <div class="flex flex-row justify-between gap-2 text-xs text-gray-500 w-full mt-4">
               <a :href="linkInfo.author.url" target="_blank" class="text-grey-100 text-100 hover:opacity-50">

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref } from "vue";
-import DOMPurify from "dompurify";
+import { purifyHtml } from "../../utility/purify";
 
 import { useGithubDiscusser } from "@/composables/useGithubDiscusser";
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
@@ -150,7 +150,7 @@ onMounted(refresh);
 
           <!-- Comment Text -->
           <!-- eslint-disable vue/no-v-html -->
-          <div class="text-grey-100 w-full text-300 font-normal" v-html="DOMPurify.sanitize(comment.body)" />
+          <div class="text-grey-100 w-full text-300 font-normal" v-html="purifyHtml(comment.body)" />
           <!--eslint-enable-->
 
           <!-- Comment Footer -->

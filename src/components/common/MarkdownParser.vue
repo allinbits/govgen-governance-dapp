@@ -3,8 +3,8 @@ import { onMounted, ref, computed } from "vue";
 import markdownit from "markdown-it";
 import MarkdownItMermaid from "@agoose77/markdown-it-mermaid";
 import { alertPlugin } from "markdown-it-github-alert";
+import { purifyHtml } from "../../utility/purify";
 
-import DOMPurify from "dompurify";
 import { bus } from "@/bus";
 
 const md = markdownit({
@@ -29,7 +29,7 @@ async function parseData() {
       ? await md.render(content.value.slice(0, props.limit))
       : await md.render(content.value);
 
-    trimmedContent.value = DOMPurify.sanitize(htmlContent);
+    trimmedContent.value = purifyHtml(htmlContent);
   } catch (_e) {
     bus.emit("error");
   }
