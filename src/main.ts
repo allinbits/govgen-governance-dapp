@@ -1,4 +1,4 @@
-import { createApp, provide, h } from 'vue';
+import { createApp, provide, h } from "vue";
 import { DefaultApolloClient } from "@vue/apollo-composable";
 import "@/style.css";
 import App from "@/App.vue";
