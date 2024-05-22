@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import CreateProposalView from "@/views/CreateProposalView.vue";
 import ProposalView from "@/views/ProposalView.vue";
+import HistoryView from "@/views/HistoryView.vue";
 import { useTelemetry } from "@/composables/useTelemetry";
 
 const routerHistory = createWebHistory();
@@ -10,6 +11,7 @@ const routes = [
   { path: "/", component: HomeView },
   { path: "/create", component: CreateProposalView },
   { path: "/proposals/:id", component: ProposalView },
+  { path: "/history", component: HistoryView },
   // { path: "/design", component: DesignView },
 ];
 

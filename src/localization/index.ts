@@ -7,6 +7,10 @@ export const messages = {
       proposalsHeader: "All Proposals",
       website: "Website",
       createProposal: "Create Proposal",
+      viewHistory: "Voting History",
+    },
+    voteHistory: {
+      title: "Voting History",
     },
     voteOptions: {
       yes: "Yes",

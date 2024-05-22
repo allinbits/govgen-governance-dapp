@@ -240,6 +240,12 @@ function onSearchInput() {
           <Icon icon="plus" class="font-medium text-400"></Icon>
           <span class="text-300">{{ $t("homepage.createProposal") }}</span>
         </div>
+        <div
+          class="flex items-center justify-center gap-4 mt-6 px-6 py-4 rounded link-gradient text-dark text-center cursor-pointer w-full font-medium"
+          @click="router.push({ path: '/history' })"
+        >
+          <span class="text-300">{{ $t("homepage.viewHistory") }}</span>
+        </div>
       </div>
     </div>
     <!-- Search Box, and Filters -->
