@@ -18,3 +18,7 @@ export function purifyHtml(html: string) {
     ],
   });
 }
+
+export function purifyForLinks(html: string) {
+  return DOMPurify().sanitize(html, { ALLOWED_TAGS: ["a"] });
+}
