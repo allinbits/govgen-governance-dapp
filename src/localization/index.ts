@@ -11,6 +11,10 @@ export const messages = {
     },
     voteHistory: {
       title: "Voting History",
+      walletLbl: "Your wallet address",
+      walletCta: "Please connect your wallet or your wallet address to see your voting history",
+      activeHeader: "Active Proposals",
+      pastHeader: "Past Proposals",
     },
     voteOptions: {
       yes: "Yes",
