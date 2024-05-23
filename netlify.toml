@@ -10,3 +10,35 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Access-Control-Allow-Origin = '''
+  https://app.govgen.io,
+  https://gh-discuss.devnet.govgen.dev'''
+  Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+  Content-Security-Policy = "default-src 'self'; object-src 'none'; connect-src https://graphql.devnet.govgen.dev/v1/graphql https://gh-discuss.devnet.govgen.dev https://plausible.io/api/event"
+  X-Frame-Options = "SAMEORIGIN"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "strict-origin"
+  X-XSS-Protection = "1; mode=block"
+  Set-Cookie = '''
+  Secure, 
+  SameSite'''
+  permissions-policy = '''
+  interest-cohort=(),
+  accelerometer=(),
+  autoplay=(),
+  camera=(),
+  autoplay=(),
+  document-domain=(),
+  encrypted-media=(),
+  geolocation=(),
+  gyroscope=(),
+  magnetometer=(),
+  microphone=(),
+  midi=(),
+  payment=(),
+  usb=(),
+  xr-spatial-tracking=()'''
