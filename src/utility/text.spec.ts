@@ -64,11 +64,14 @@ test("Link Extraction", () => {
     <p>HTML links are defined with the a tag:</p>
     
     <a href="https://www.w3schools.com">This is a link</a>
+    <a href="javascript: void()">This is a link</a>
     
     </body>
     </html>
     
     
     `;
-  expect(TextUtils.getLinks(rawHtml)).toStrictEqual(["https://www.w3schools.com"]);
+
+  const result = TextUtils.getLinks(rawHtml);
+  expect(result).toStrictEqual(["https://www.w3schools.com"]);
 });
