@@ -33,7 +33,13 @@ watch(offset, async (newOffset, oldOffset) => {
 const history = getVoteHistory(props.address);
 
 const orderedProposals = computed(() => {
-  return proposals.value?.all_proposals;
+  return proposals.value?.all_proposals.map((x) => {
+    if (history.value) {
+      return { ...x, vote: history.value.proposal_vote.find((y) => y.proposal_id == x.id) };
+    } else {
+      return { ...x, vote: undefined };
+    }
+  });
 });
 </script>
 <template>
@@ -56,6 +62,9 @@ const orderedProposals = computed(() => {
         /></template>
         <template #number>#{{ proposal.id }}</template>
         <div>{{ proposal.title }}</div>
+        <div v-if="proposal.vote" class="text-light text-200 mt-6">
+          Voted: <span class="text-grey-100">{{ proposal.vote.height }}</span>
+        </div>
         <template #footer>
           <div class="flex flex-row text-200 text-grey-100 font-medium items-center justify-between w-full">
             <span></span>
