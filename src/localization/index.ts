@@ -22,6 +22,10 @@ export const messages = {
       nwv: "No with veto",
       nwvShort: "Veto",
       abstain: "Abstain",
+      VOTE_OPTION_YES: "Yes",
+      VOTE_OPTION_NO: "No",
+      VOTE_OPTION_ABSTAIN: "Abstain",
+      VOTE_OPTION_NO_WITH_VETO: "No With Veto",
     },
     proposalcreate: {
       transaction: "Transaction",
