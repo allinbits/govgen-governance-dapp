@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ProposalCard from "@/components/home/ProposalCard.vue";
 import CommentCount from "@/components/home/CommentCount.vue";
+import BlockTimestamp from "@/components/helper/BlockTimestamp.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
 import { PropStatus } from "@/types/proposals";
 import apolloClient from "@/apolloClient";
@@ -80,8 +81,10 @@ const orderedProposals = computed(() => {
     <div v-if="proposals">
       <template v-if="listView">
         <div class="flex flex-col w-full mt-12">
-          <div class="grid grid-cols-8 py-4 w-full text-grey-100 font-medium text-200">
-            <span>#</span>
+          <div
+            class="grid grid-cols-[repeat(8,minmax(40px,auto))] py-4 gap-y-4 gap-x-4 w-full text-grey-100 font-medium text-200 auto-cols-max"
+          >
+            <span class="w-[40px]">#</span>
             <span>Name</span>
             <span>Type</span>
             <span>Status</span>
@@ -89,53 +92,50 @@ const orderedProposals = computed(() => {
             <span>Deposited</span>
             <span>Vote Stake</span>
             <span class="text-right">Voted/Overridden</span>
-          </div>
 
-          <div
-            v-for="proposal in orderedProposals"
-            :key="proposal.id"
-            class="grid grid-cols-8 py-4 w-full text-200 text-grey-50"
-          >
-            <span>{{ proposal.id }}</span>
-            <span> {{ proposal.title }}</span>
-            <span> {{ proposal.proposal_type }}</span>
-            <span> {{ proposal.status }}</span>
-            <span>
-              <div v-if="proposal.vote.length > 0" class="flex flex-row gap-3">
-                <div
-                  v-for="vote in proposal.vote"
-                  :key="vote.option + vote.proposal_id"
-                  class="rounded-md text-grey-100 text-100 p-2 px-4 mt-4 font-normal"
-                  :class="{
-                    'bg-accent-100 text-grey-200': vote.option == 'VOTE_OPTION_YES',
-                    'bg-accent-200 text-grey-200': vote.option == 'VOTE_OPTION_NO_WITH_VETO',
-                    'bg-neg-200 text-grey-200': vote.option == 'VOTE_OPTION_NO',
-                    'bg-grey-100 text-light': vote.option == 'VOTE_OPTION_ABSTAIN',
-                  }"
-                >
-                  Voted {{ $t("voteOptions." + vote.option)
-                  }}<template v-if="Number(vote.weight) != 1">: {{ decToPerc(vote.weight, 0) }}%</template>
-                </div>
-              </div></span
-            >
-            <span>
-              <template
-                v-if="proposal.proposal_deposits.filter((x) => x.depositor_address == props.address).length > 0"
+            <template v-for="proposal in orderedProposals" :key="proposal.id">
+              <span class="w-[40px]">{{ proposal.id }}</span>
+              <span> {{ proposal.title }}</span>
+              <span> {{ $t("propType", proposal.content["@type"]) }}</span>
+              <span> {{ $t("propStatus." + proposal.status) }}</span>
+              <span class="flex flex-col gap-2">
+                <template v-if="proposal.vote.length > 0">
+                  <div
+                    v-for="vote in proposal.vote"
+                    :key="vote.option + vote.proposal_id"
+                    :class="{
+                      'text-accent-100': vote.option == 'VOTE_OPTION_YES',
+                      'text-accent-200': vote.option == 'VOTE_OPTION_NO_WITH_VETO',
+                      'text-neg-200': vote.option == 'VOTE_OPTION_NO',
+                      'text-grey-100': vote.option == 'VOTE_OPTION_ABSTAIN',
+                    }"
+                  >
+                    {{ $t("voteOptions." + vote.option)
+                    }}<template v-if="Number(vote.weight) != 1">: {{ decToPerc(vote.weight, 0) }}%</template>
+                  </div>
+                </template></span
               >
-                {{
-                  totalAmounts(
-                    proposal.proposal_deposits
-                      .filter((x) => x.depositor_address == address)
-                      .map((x) => x.amount)
-                      .flat(),
-                  )
-                }}
-              </template>
-              <template v-else> - </template>
-            </span>
-            <span></span>
-            <span v-if="proposal.vote.length > 0"> {{ proposal.vote[0].height }}</span>
-            <span v-else> - </span>
+              <span>
+                <template
+                  v-if="proposal.proposal_deposits.filter((x) => x.depositor_address == props.address).length > 0"
+                >
+                  {{
+                    totalAmounts(
+                      proposal.proposal_deposits
+                        .filter((x) => x.depositor_address == address)
+                        .map((x) => x.amount)
+                        .flat(),
+                    )
+                  }}
+                </template>
+                <template v-else> - </template>
+              </span>
+              <span></span>
+              <span v-if="proposal.vote.length > 0" class="text-right">
+                <BlockTimestamp :height="proposal.vote[0].height"></BlockTimestamp
+              ></span>
+              <span v-else class="text-right"> - </span>
+            </template>
           </div>
         </div>
       </template>

@@ -16,6 +16,7 @@ const documents = {
     "query AllVotes($proposalId: Int!, $propId: String!, $limit: Int!, $offset: Int!) {\n  proposal_vote(\n    limit: $limit\n    offset: $offset\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n    order_by: {height: desc, voter_address: desc}\n  ) {\n    height\n    is_valid\n    option\n    proposal_id\n    timestamp\n    voter_address\n    weight\n    block {\n      transactions(where: {messages: {_contains: [{proposal_id: $propId}]}}) {\n        height\n        hash\n        memo\n        success\n        messages\n      }\n    }\n  }\n  proposal_vote_aggregate(\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n  ) {\n    aggregate {\n      count\n    }\n  }\n}": types.AllVotesDocument,
     "query Balance($address: String!) {\n  action_account_balance(address: $address) {\n    coins\n  }\n}": types.BalanceDocument,
     "query BlockHeight($timestamp: timestamp!) {\n  block(where: {timestamp: {_gte: $timestamp}}, order_by: {height: asc}, limit: 1) {\n    timestamp\n    height\n  }\n}": types.BlockHeightDocument,
+    "query BlockTime($height: bigint) {\n  block(where: {height: {_lte: $height}}, order_by: {height: desc}, limit: 1) {\n    timestamp\n    height\n  }\n}": types.BlockTimeDocument,
     "query Delegated($address: String!, $height: Int) {\n  action_delegation_total(address: $address, height: $height) {\n    coins\n  }\n}": types.DelegatedDocument,
     "query Params {\n  gov_params {\n    tally_params\n    deposit_params\n    voting_params\n  }\n}": types.ParamsDocument,
     "query Proposal($id: Int!) {\n  proposal(where: {id: {_eq: $id}}) {\n    content\n    deposit_end_time\n    description\n    proposal_route\n    proposal_type\n    proposal_votes {\n      voter_address\n      option\n      weight\n      height\n    }\n    id\n    proposer_address\n    status\n    submit_time\n    title\n    voting_end_time\n    voting_start_time\n    proposal_tally_results(order_by: {height: desc}, limit: 1) {\n      abstain\n      height\n      no\n      no_with_veto\n      yes\n    }\n    proposal_deposits {\n      amount\n      depositor_address\n      proposal_id\n      timestamp\n    }\n  }\n}": types.ProposalDocument,
@@ -59,6 +60,10 @@ export function graphql(source: "query Balance($address: String!) {\n  action_ac
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "query BlockHeight($timestamp: timestamp!) {\n  block(where: {timestamp: {_gte: $timestamp}}, order_by: {height: asc}, limit: 1) {\n    timestamp\n    height\n  }\n}"): (typeof documents)["query BlockHeight($timestamp: timestamp!) {\n  block(where: {timestamp: {_gte: $timestamp}}, order_by: {height: asc}, limit: 1) {\n    timestamp\n    height\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query BlockTime($height: bigint) {\n  block(where: {height: {_lte: $height}}, order_by: {height: desc}, limit: 1) {\n    timestamp\n    height\n  }\n}"): (typeof documents)["query BlockTime($height: bigint) {\n  block(where: {height: {_lte: $height}}, order_by: {height: desc}, limit: 1) {\n    timestamp\n    height\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

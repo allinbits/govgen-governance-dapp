@@ -2,10 +2,12 @@ import {
   useAllVotesQuery,
   useBalanceQuery,
   useBlockHeightQuery,
+  useBlockTimeQuery,
   useDelegatedQuery,
   useLazyAllVotesQuery,
   useLazyBalanceQuery,
   useLazyBlockHeightQuery,
+  useLazyBlockTimeQuery,
   useLazyDelegatedQuery,
   useLazyParamsQuery,
   useLazyProposalQuery,
@@ -133,6 +135,10 @@ export const useChainData = () => {
     const { result } = useBlockHeightQuery({ timestamp });
     return result;
   };
+  const getBlockTime = (height: number) => {
+    const { result } = useBlockTimeQuery({ height });
+    return result;
+  };
   const getDelegated = (address: string, height?: number) => {
     const { result } = useDelegatedQuery({ address, height });
     return result;
@@ -251,6 +257,11 @@ export const useChainData = () => {
     const result = await useLazyBlockHeightQuery({ timestamp }).load();
     return result;
   };
+
+  const getBlockTimeAsync = async (height: number) => {
+    const result = useLazyBlockTimeQuery({ height }).load();
+    return result;
+  };
   const getDelegatedAsync = async (address: string, height?: number) => {
     const result = await useLazyDelegatedQuery({ address, height }).load();
     return result;
@@ -285,6 +296,7 @@ export const useChainData = () => {
     getProposalTallies,
     getStakingStatus,
     getBlockHeight,
+    getBlockTime,
     getDelegated,
     getValset,
     getValidators,
@@ -299,6 +311,7 @@ export const useChainData = () => {
     getProposalTalliesAsync,
     getStakingStatusAsync,
     getBlockHeightAsync,
+    getBlockTimeAsync,
     getDelegatedAsync,
     getValsetAsync,
     getValidatorsAsync,
