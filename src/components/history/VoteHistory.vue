@@ -51,6 +51,16 @@ const pastProposals = computed(() => {
       }
     });
 });
+const hasMore = computed(() => {
+  return (proposals.value?.proposal_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
+});
+function next() {
+  offset.value += limit.value;
+}
+
+function prev() {
+  offset.value = offset.value <= limit.value ? 0 : offset.value - limit.value;
+}
 </script>
 <template>
   <div class="flex flex-col w-full pb-[72px]">
@@ -66,5 +76,51 @@ const pastProposals = computed(() => {
       :proposals="pastProposals"
       :title="$t('voteHistory.pastHeader')"
     />
+
+    <div v-if="proposals" class="flex flex-row justify-end pt-12 gap-4">
+      <Icon
+        icon="Arrowleftend"
+        class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': offset > 0 }"
+        @click="
+          () => {
+            offset = 0;
+          }
+        "
+      />
+      <Icon
+        icon="Arrowleft"
+        class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': offset > 0 }"
+        @click="
+          () => {
+            if (offset > 0) {
+              prev();
+            }
+          }
+        "
+      />
+      <!-- Page Numbers -->
+      <Icon
+        icon="Arrowright"
+        class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
+        @click="
+          () => {
+            next();
+          }
+        "
+      />
+      <Icon
+        icon="Arrowrightend"
+        class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
+        @click="
+          () => {
+            offset = Math.floor((proposals?.proposal_aggregate.aggregate?.count ?? 0) / limit) * limit;
+          }
+        "
+      />
+    </div>
   </div>
 </template>

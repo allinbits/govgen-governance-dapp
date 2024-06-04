@@ -1,5 +1,3 @@
-import { PropStatus } from "@/types/proposals";
-
 export const messages = {
   en: {
     homepage: {
@@ -18,6 +16,16 @@ export const messages = {
       walletCta: "Please connect your wallet or your wallet address to see your voting history",
       activeHeader: "Active Proposals",
       pastHeader: "Past Proposals",
+      columns: {
+        name: "Name",
+        type: "Type",
+        status: "Status",
+        vote: "Vote",
+        voted: "Voted",
+        deposited: "Deposited",
+        stake: "Vote Stake",
+        voteTime: "Voted/Overridden",
+      },
     },
     voteOptions: {
       yes: "Yes",

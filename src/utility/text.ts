@@ -38,6 +38,9 @@ export function totalAmounts(amount: Coin[]): string {
       total = total + " + " + displayAmount + displayDenom;
     }
   }
+  if (total == "") {
+    total = "-";
+  }
   return total;
 }
 export function formatAmount(amount: string | number | undefined, precision: number) {

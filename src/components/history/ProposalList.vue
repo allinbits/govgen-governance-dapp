@@ -57,13 +57,13 @@ const props = defineProps<{
             class="grid grid-cols-[repeat(8,minmax(40px,auto))] py-4 gap-y-4 gap-x-4 w-full text-grey-100 font-medium text-200 auto-cols-max"
           >
             <span class="w-[40px]">#</span>
-            <span>Name</span>
-            <span>Type</span>
-            <span>Status</span>
-            <span>Vote</span>
-            <span>Deposited</span>
-            <span>Vote Stake</span>
-            <span class="text-right">Voted/Overridden</span>
+            <span>{{ $t("voteHistory.columns.name") }}</span>
+            <span>{{ $t("voteHistory.columns.type") }}</span>
+            <span>{{ $t("voteHistory.columns.status") }}</span>
+            <span>{{ $t("voteHistory.columns.vote") }}</span>
+            <span>{{ $t("voteHistory.columns.deposited") }}</span>
+            <span>{{ $t("voteHistory.columns.stake") }}</span>
+            <span class="text-right">{{ $t("voteHistory.columns.voteTime") }}</span>
 
             <template v-for="proposal in proposals" :key="proposal.id">
               <span class="w-[40px]">{{ proposal.id }}</span>
@@ -103,7 +103,7 @@ const props = defineProps<{
                 <template v-else> - </template>
               </span>
               <span v-if="proposal.vote.length > 0"
-                ><DelegatedTotal :address="address" :height="proposal.vote[0].height"></DelegatedTotal
+                ><DelegatedTotal :address="address" :timestamp="proposal.voting_end_time"></DelegatedTotal
               ></span>
               <span v-else> - </span>
               <span v-if="proposal.vote.length > 0" class="text-right">
@@ -124,7 +124,8 @@ const props = defineProps<{
             <template #number>#{{ proposal.id }}</template>
             <div>{{ proposal.title }}</div>
             <div v-if="proposal.vote.length > 0" class="text-light text-200 mt-6">
-              Voted: <span class="text-grey-100">{{ proposal.vote[0].height }}</span>
+              {{ $t("voteHistory.columns.voted") }}:
+              <span class="text-grey-100"><BlockTimestamp :height="proposal.vote[0].height"></BlockTimestamp></span>
             </div>
             <div v-if="proposal.vote.length > 0" class="flex flex-row gap-3">
               <div
@@ -138,7 +139,7 @@ const props = defineProps<{
                   'bg-grey-100 text-light': vote.option == 'VOTE_OPTION_ABSTAIN',
                 }"
               >
-                Voted {{ $t("voteOptions." + vote.option)
+                {{ $t("voteHistory.columns.voted") }} {{ $t("voteOptions." + vote.option)
                 }}<template v-if="Number(vote.weight) != 1">: {{ decToPerc(vote.weight, 0) }}%</template>
               </div>
             </div>
@@ -149,7 +150,7 @@ const props = defineProps<{
               <div
                 class="rounded-md text-light text-100 p-2 px-4 mt-2 font-normal bg-grey-200 flex flex-row justify-center items-end"
               >
-                Deposited
+                {{ $t("voteHistory.columns.deposited") }}
                 <Icon
                   icon="info"
                   class="aspect-square ml-2"
