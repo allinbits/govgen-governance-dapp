@@ -1,5 +1,5 @@
 import { Coin } from "@cosmjs/proto-signing";
-import chainConfig from "@/chain-config.json";
+import chainConfig from "../chain-config.json";
 import { purifyForLinks } from "./purify";
 
 export function capitalizeFirstLetter(text: string) {
