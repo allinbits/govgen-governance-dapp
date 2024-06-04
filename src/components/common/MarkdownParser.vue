@@ -4,7 +4,7 @@ import markdownit from "markdown-it";
 import MarkdownItMermaid from "@agoose77/markdown-it-mermaid";
 import { alertPlugin } from "markdown-it-github-alert";
 
-import DOMPurify from "dompurify";
+import * as Utility from "@/utility/index";
 import { bus } from "@/bus";
 
 const md = markdownit({
@@ -29,8 +29,10 @@ async function parseData() {
       ? await md.render(content.value.slice(0, props.limit))
       : await md.render(content.value);
 
-    trimmedContent.value = DOMPurify.sanitize(htmlContent);
+    trimmedContent.value = Utility.purifyHtml(htmlContent);
   } catch (_e) {
+    console.log("cool error bro");
+    console.log(_e);
     bus.emit("error");
   }
 }

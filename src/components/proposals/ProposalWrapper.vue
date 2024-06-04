@@ -681,7 +681,11 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.changes") }}</div>
                     <div class="text-light text-100">
-                      <VCodeBlock :code="JSON.stringify(proposal?.proposal[0].content.changes, null, '\t')" prismjs />
+                      <VCodeBlock
+                        :code="JSON.stringify(proposal?.proposal[0].content.changes, null, '\t')"
+                        prismjs
+                        :theme="false"
+                      />
                     </div>
                   </div>
                 </div>
@@ -708,7 +712,11 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   <div class="grow w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.upgradePlan") }}</div>
                     <div class="text-light text-100">
-                      <VCodeBlock :code="JSON.stringify(proposal?.proposal[0].content.plan, null, '\t')" prismjs />
+                      <VCodeBlock
+                        :code="JSON.stringify(proposal?.proposal[0].content.plan, null, '\t')"
+                        prismjs
+                        :theme="false"
+                      />
                     </div>
                   </div>
                 </div>
@@ -791,7 +799,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
 
     <PopupBox :visible="showJsonModal" title="JSON" @close="showJsonModal = false">
       <div v-if="proposal" class="p-4">
-        <VCodeBlock :code="JSON.stringify(proposal, null, '\t')" prismjs />
+        <VCodeBlock :code="JSON.stringify(proposal, null, '\t')" prismjs :theme="false" />
       </div>
     </PopupBox>
 
