@@ -15,6 +15,15 @@ export function purifyHtml(html: string) {
       "source",
       "textarea",
       "embed",
+      "label",
+      "select",
+      "button",
+      "fieldset",
+      "legend",
+      "datalist",
+      "output",
+      "option",
+      "optgroup",
     ],
   });
 }
