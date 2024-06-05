@@ -8,6 +8,9 @@ import {
   BlockHeightDocument,
   BlockHeightQuery,
   BlockHeightQueryVariables,
+  BlockTimeDocument,
+  BlockTimeQuery,
+  BlockTimeQueryVariables,
   DelegatedDocument,
   DelegatedQuery,
   DelegatedQueryVariables,
@@ -69,6 +72,12 @@ export const useBlockHeightQuery = (
   options?: UseQueryOptions<BlockHeightQuery, BlockHeightQueryVariables>,
 ) => {
   return useQuery<BlockHeightQuery, BlockHeightQueryVariables>(BlockHeightDocument, variables, options ?? {});
+};
+export const useBlockTimeQuery = (
+  variables: BlockTimeQueryVariables,
+  options?: UseQueryOptions<BlockTimeQuery, BlockTimeQueryVariables>,
+) => {
+  return useQuery<BlockTimeQuery, BlockTimeQueryVariables>(BlockTimeDocument, variables, options ?? {});
 };
 export const useDelegatedQuery = (
   variables: DelegatedQueryVariables,
@@ -198,6 +207,13 @@ export const useLazyBlockHeightQuery = (
   options?: UseQueryOptions<BlockHeightQuery, BlockHeightQueryVariables>,
 ) => {
   return useLazyQuery<BlockHeightQuery, BlockHeightQueryVariables>(BlockHeightDocument, variables, options ?? {});
+};
+
+export const useLazyBlockTimeQuery = (
+  variables: BlockTimeQueryVariables,
+  options?: UseQueryOptions<BlockTimeQuery, BlockTimeQueryVariables>,
+) => {
+  return useLazyQuery<BlockTimeQuery, BlockTimeQueryVariables>(BlockTimeDocument, variables, options ?? {});
 };
 export const useLazyDelegatedQuery = (
   variables: DelegatedQueryVariables,

@@ -7,6 +7,25 @@ export const messages = {
       proposalsHeader: "All Proposals",
       website: "Website",
       createProposal: "Create Proposal",
+      viewHistory: "Voting History",
+      viewProposals: "Proposals",
+    },
+    voteHistory: {
+      title: "Voting History",
+      walletLbl: "Your wallet address",
+      walletCta: "Please connect your wallet or your wallet address to see your voting history",
+      activeHeader: "Active Proposals",
+      pastHeader: "Past Proposals",
+      columns: {
+        name: "Name",
+        type: "Type",
+        status: "Status",
+        vote: "Vote",
+        voted: "Voted",
+        deposited: "Deposited",
+        stake: "Vote Stake",
+        voteTime: "Voted/Overridden",
+      },
     },
     voteOptions: {
       yes: "Yes",
@@ -14,6 +33,30 @@ export const messages = {
       nwv: "No with veto",
       nwvShort: "Veto",
       abstain: "Abstain",
+      VOTE_OPTION_YES: "Yes",
+      VOTE_OPTION_NO: "No",
+      VOTE_OPTION_ABSTAIN: "Abstain",
+      VOTE_OPTION_NO_WITH_VETO: "No With Veto",
+    },
+    propType: (ctx: string): string => {
+      switch (ctx) {
+        case "/cosmos.params.v1beta1.ParameterChangeProposal":
+          return "Param Change";
+        case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
+          return "Software Upgrade";
+        case "/govgen.gov.v1beta1.TextProposal":
+        default:
+          return "Text";
+      }
+    },
+    propStatus: {
+      PROPOSAL_STATUS_PASSED: "Passed",
+      PROPOSAL_STATUS_REJECTED: "Rejected",
+      PROPOSAL_STATUS_DEPOSIT_PERIOD: "Depositing",
+      PROPOSAL_STATUS_VOTING_PERIOD: "Ends in {days} days",
+      PROPOSAL_STATUS_FAILED: "Failed",
+      PROPOSAL_STATUS_INVALID: "Invalid",
+      PROPOSAL_STATUS_UNSPECIFIED: "Unspecified",
     },
     proposalcreate: {
       transaction: "Transaction",
