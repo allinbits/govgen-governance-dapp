@@ -1,9 +1,10 @@
 query VoteHistory($address: String!) {
-  proposal_vote(where: { voter_address: { _eq: $address} }) {
+  proposal_vote(where: {voter_address: {_eq: $address}, _and: {is_valid: {_eq: true}}}) {
     option
     weight
     height
     voter_address
     proposal_id
+    is_valid
   }
 }
