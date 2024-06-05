@@ -27,11 +27,6 @@ watch(height, async (newHeight, oldHeight) => {
   }
 });
 
-/*
-const displayStake = computed(() => {
-  return timestamp.value ? dayjs(timestamp.value.block[0].timestamp).format("MMMM D, YYYY h:mm A") : "-";
-});
-*/
 </script>
 <template>
   <span>{{ totalAmounts(delegated ?? []) }}</span>
