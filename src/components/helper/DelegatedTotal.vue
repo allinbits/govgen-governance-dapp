@@ -26,7 +26,6 @@ watch(height, async (newHeight, oldHeight) => {
     }
   }
 });
-
 </script>
 <template>
   <span>{{ totalAmounts(delegated ?? []) }}</span>
