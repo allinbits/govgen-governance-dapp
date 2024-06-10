@@ -41,7 +41,7 @@
     "markdown-it": "^14.1.0",
     "markdown-it-github-alert": "^1.0.6",
     "mitt": "^3.0.1",
-    "vite-plugin-node-polyfills": "^0.21.0",
+    "vite-plugin-node-polyfills": "^0.22.0",
     "vue": "^3.4.15",
     "vue-chartjs": "^5.3.0",
     "vue-i18n": "9",
