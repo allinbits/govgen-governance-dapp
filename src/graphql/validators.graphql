@@ -4,17 +4,15 @@ query Validators {
     jailed
     status
     validator_address
-    validator {
+    validator_info {
+      self_delegate_address    
       validator_descriptions {
         identity
         avatar_url
         details
         moniker
         website
-      }
-      validator_info {
-        self_delegate_address
-      }
+      }      
     }
   }
 }

@@ -33,6 +33,7 @@ watch(proposal, async (newProp, _oldProp) => {
           height.value = 0;
         }
       } catch (e) {
+        console.log(e);
         bus.emit("error");
       }
     } else {

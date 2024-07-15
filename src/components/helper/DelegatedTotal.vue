@@ -17,7 +17,9 @@ watch(height, async (newHeight, oldHeight) => {
     try {
       const dq = await getDelegatedAsync(address, newHeight.block[0].height);
       if (dq) {
-        delegated.value = dq.action_delegation_total?.coins as Coin[];
+        delegated.value = dq.staked_balances.map((x) => {
+          return x.amount;
+        });
       } else {
         delegated.value = [];
       }

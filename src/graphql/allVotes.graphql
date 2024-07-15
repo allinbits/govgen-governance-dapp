@@ -13,7 +13,7 @@ query AllVotes($proposalId: Int!, $propId: String!, $limit: Int!, $offset: Int!)
     voter_address
     weight
     block {
-      transactions(where: { messages: { _contains: [{ proposal_id: $propId }] } }) {
+      transaction: transactions(where: { messages: { _contains: [{ proposal_id: $propId }] } }) {
         height
         hash
         memo
