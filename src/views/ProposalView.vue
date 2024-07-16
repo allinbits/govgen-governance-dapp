@@ -22,7 +22,7 @@ watch(proposal, async (newProp, _oldProp) => {
   } else {
     if (
       proposal.value?.proposal[0].status == "PROPOSAL_STATUS_PASSED" ||
-      proposal.value?.proposal[0].status == "PROPSOAL_STATUS_REJECTED"
+      proposal.value?.proposal[0].status == "PROPOSAL_STATUS_REJECTED"
     ) {
       provideApolloClient(apolloClient);
       try {
