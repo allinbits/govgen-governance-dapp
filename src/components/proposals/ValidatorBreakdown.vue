@@ -34,7 +34,7 @@ const getTxHash = (vote: VotesQuery["proposal_vote"][0]) => {
   }
 };
 const getValidatorInfo = (address: string) => {
-  return props.validatorData.filter((x) => x.validator.validator_info?.self_delegate_address == address)[0].validator
+  return props.validatorData.filter((x) => x.validator_info?.self_delegate_address == address)[0].validator_info
     .validator_descriptions[0];
 };
 </script>
@@ -64,7 +64,7 @@ const getValidatorInfo = (address: string) => {
       </template>
       <template v-else>
         <div :key="validator.validator_address" class="grid grid-cols-5 py-4 w-full text-200 text-grey-50">
-          <span>{{ getValidatorInfo(validator.validator.validator_info?.self_delegate_address ?? "").moniker }}</span>
+          <span>{{ getValidatorInfo(validator.validator_info?.self_delegate_address ?? "").moniker }}</span>
           <span> - </span>
           <span>{{ $t("components.Breakdown.hasNotVoted") }}</span>
           <span>-</span>

@@ -47,10 +47,7 @@ const props = defineProps<{
   height: number;
 }>();
 const { getProposal, getParams, getProposalTallies, getStakingStatus, getVotesAsync, getVoteOption } = useChainData();
-const { validators, getVotingPower } = useValidators(
-  props.proposalId,
-  props.height != 0 ? props.height.toString() : undefined,
-);
+const { validators, getVotingPower } = useValidators(props.height != 0 ? props.height.toString() : undefined);
 const validatorsWithStakeAndVotes = ref<
   Array<
     (ValidatorsQuery["validator_status"][0] | ValSetQuery["proposal_validator_status_snapshot"][0]) & {
@@ -64,9 +61,9 @@ watch(validators, async (valSet, _old) => {
   try {
     validatorsWithStakeAndVotes.value = await Promise.all(
       valSet.map(async (val) => {
-        if (val.validator.validator_info && val.validator.validator_info.self_delegate_address) {
-          const vp = await getVotingPower(val.validator.validator_info.self_delegate_address);
-          const votes = await getVotesAsync(val.validator.validator_info.self_delegate_address, props.proposalId);
+        if (val.validator_info && val.validator_info.self_delegate_address) {
+          const vp = await getVotingPower(val.validator_info.self_delegate_address);
+          const votes = await getVotesAsync(val.validator_info.self_delegate_address, props.proposalId);
           if (votes && votes.proposal_vote.length > 0) {
             return {
               ...val,
@@ -191,7 +188,7 @@ function getValidatorVotes(voteType: VoteTypes) {
 
     data.push({
       name:
-        validatorsWithStakeAndVotes.value[i].validator.validator_descriptions[0].moniker ??
+        validatorsWithStakeAndVotes.value[i].validator_info.validator_descriptions[0].moniker ??
         validatorsWithStakeAndVotes.value[i].validator_address,
       value: tally[voteType],
     });

@@ -140,11 +140,20 @@ export const useChainData = () => {
     return result;
   };
   const getDelegated = (address: string, height?: number) => {
-    const { result } = useDelegatedQuery({ address, height });
-    return result;
+    if (height) {
+      const where = { _and: [{ height: { _lte: height } }, { delegator: { _eq: address } }] };
+      const { result } = useDelegatedQuery({ where });
+
+      return result;
+    } else {
+      const where = { delegator: { _eq: address } };
+      const { result } = useDelegatedQuery({ where });
+
+      return result;
+    }
   };
-  const getValset = (proposalId: number, height: string) => {
-    const { result } = useValsetQuery({ proposalId, height });
+  const getValset = (height: string) => {
+    const { result } = useValsetQuery({ height });
     return result;
   };
   const getValidators = () => {
@@ -263,11 +272,20 @@ export const useChainData = () => {
     return result;
   };
   const getDelegatedAsync = async (address: string, height?: number) => {
-    const result = await useLazyDelegatedQuery({ address, height }).load();
-    return result;
+    if (height) {
+      const where = { _and: [{ height: { _lte: height } }, { delegator: { _eq: address } }] };
+      const result = useLazyDelegatedQuery({ where }).load();
+
+      return result;
+    } else {
+      const where = { delegator: { _eq: address } };
+      const result = useLazyDelegatedQuery({ where }).load();
+
+      return result;
+    }
   };
-  const getValsetAsync = async (proposalId: number, height: string) => {
-    const result = await useLazyValsetQuery({ proposalId, height }).load();
+  const getValsetAsync = async (height: string) => {
+    const result = await useLazyValsetQuery({ height }).load();
     return result;
   };
   const getValidatorsAsync = async () => {

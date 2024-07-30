@@ -1,9 +1,7 @@
 query Staking {
-  staking_pool {
+  staking_pool(order_by: {height: desc_nulls_last}) {
     bonded_tokens
     height
     not_bonded_tokens
-    staked_not_bonded_tokens
-    unbonding_tokens
   }
 }
