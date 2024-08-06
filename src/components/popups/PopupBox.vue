@@ -7,7 +7,7 @@ const emits = defineEmits<{ (e: "close"): void }>();
 </script>
 <template>
   <ModalWrap :visible="visible" :is-empty="true" @back="emits('close')">
-    <div class="bg-grey-200 w-[90vw] md:max-w-[75vw] rounded-md">
+    <div class="bg-grey-200 w-[90vw] md:max-w-[75vw] rounded-md" id="popup-box">
       <div class="flex flex-row w-full bg-grey-400 p-6 rounded-tl-md rounded-tr-md justify-between items-center">
         <span>{{ props.title ?? "Popup" }}</span>
         <Icon icon="close" class="text-400 hover:opacity-50 cursor-pointer" @click="emits('close')" />
