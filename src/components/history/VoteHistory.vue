@@ -63,12 +63,13 @@ function prev() {
 }
 </script>
 <template>
-  <div class="flex flex-col w-full pb-[72px]">
+  <div class="flex flex-col w-full">
     <ProposalList
       v-if="activeProposals && activeProposals.length > 0"
       :address="address"
       :proposals="activeProposals"
       :title="$t('voteHistory.activeHeader')"
+      class="pb-[72px]"
     />
     <ProposalList
       v-if="pastProposals && pastProposals.length > 0"
@@ -107,7 +108,9 @@ function prev() {
         :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
         @click="
           () => {
-            next();
+            if (hasMore) {
+              next();
+            }
           }
         "
       />
@@ -117,7 +120,9 @@ function prev() {
         :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
         @click="
           () => {
-            offset = Math.floor((proposals?.proposal_aggregate.aggregate?.count ?? 0) / limit) * limit;
+            if (hasMore) {
+              offset = Math.floor((proposals?.proposal_aggregate.aggregate?.count ?? 0) / limit) * limit;
+            }
           }
         "
       />
