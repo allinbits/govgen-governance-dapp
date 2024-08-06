@@ -1,5 +1,5 @@
 query Balance($address: String!) {
-  action_account_balance: balances(where: {address: {_eq: $address}}) {
+  action_account_balance: balances(where: {address: {_eq: $address}}, order_by: {height: desc_nulls_last}, limit: 1) {
     coins
   }
 }

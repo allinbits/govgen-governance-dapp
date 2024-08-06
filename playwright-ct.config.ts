@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from "node:url";
 import vue from "@vitejs/plugin-vue";
 import graphql from "@rollup/plugin-graphql";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
-import { PluginOption } from 'vite';
+import { PluginOption } from "vite";
 
 /**
  * Read environment variables from file.
@@ -33,10 +33,9 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
-    
+
     ctPort: 3100,
     ctViteConfig: {
-
       plugins: [
         nodePolyfills({
           // Whether to polyfill specific globals.
