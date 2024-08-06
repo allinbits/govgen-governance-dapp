@@ -14,7 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "query AllVotes($proposalId: Int!, $propId: String!, $limit: Int!, $offset: Int!) {\n  proposal_vote(\n    limit: $limit\n    offset: $offset\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n    order_by: {height: desc, voter_address: desc}\n  ) {\n    height\n    is_valid\n    option\n    proposal_id\n    timestamp\n    voter_address\n    weight\n    block {\n      transactions: transactions(\n        where: {messages: {_contains: [{proposal_id: $propId}]}}\n      ) {\n        height\n        hash\n        memo\n        success\n        messages\n      }\n    }\n  }\n  proposal_vote_aggregate(\n    where: {_and: {proposal_id: {_eq: $proposalId}, is_valid: {_eq: true}}}\n  ) {\n    aggregate {\n      count\n    }\n  }\n}": types.AllVotesDocument,
-    "query Balance($address: String!) {\n  action_account_balance: balances(where: {address: {_eq: $address}}) {\n    coins\n  }\n}": types.BalanceDocument,
+    "query Balance($address: String!) {\n  action_account_balance: balances(\n    where: {address: {_eq: $address}}\n    order_by: {height: desc_nulls_last}\n    limit: 1\n  ) {\n    coins\n  }\n}": types.BalanceDocument,
     "query BlockHeight($timestamp: timestamp!) {\n  block(where: {timestamp: {_gte: $timestamp}}, order_by: {height: asc}, limit: 1) {\n    timestamp\n    height\n  }\n}": types.BlockHeightDocument,
     "query BlockTime($height: bigint) {\n  block(where: {height: {_lte: $height}}, order_by: {height: desc}, limit: 1) {\n    timestamp\n    height\n  }\n}": types.BlockTimeDocument,
     "query Delegated($where: staked_balances_bool_exp = {}) {\n  staked_balances(\n    distinct_on: validator\n    order_by: {validator: desc, height: desc_nulls_last}\n    where: $where\n  ) {\n    amount\n    height\n  }\n}": types.DelegatedDocument,
@@ -55,7 +55,7 @@ export function graphql(source: "query AllVotes($proposalId: Int!, $propId: Stri
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query Balance($address: String!) {\n  action_account_balance: balances(where: {address: {_eq: $address}}) {\n    coins\n  }\n}"): (typeof documents)["query Balance($address: String!) {\n  action_account_balance: balances(where: {address: {_eq: $address}}) {\n    coins\n  }\n}"];
+export function graphql(source: "query Balance($address: String!) {\n  action_account_balance: balances(\n    where: {address: {_eq: $address}}\n    order_by: {height: desc_nulls_last}\n    limit: 1\n  ) {\n    coins\n  }\n}"): (typeof documents)["query Balance($address: String!) {\n  action_account_balance: balances(\n    where: {address: {_eq: $address}}\n    order_by: {height: desc_nulls_last}\n    limit: 1\n  ) {\n    coins\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
