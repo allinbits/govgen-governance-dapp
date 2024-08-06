@@ -1,19 +1,7 @@
-# This is on `main` branch
-[context.production.environment]
-  VITE_REPO             = "allinbits/govgen-governance-discussions-test"
-  VITE_ENDPOINT         = "https://gh-discuss.govgen.io"
-  VITE_GRAPHQL_ENDPOINT = "https://graphql-mainnet.govgen.io/v1/graphql"
-
-# This is on `staging` branch
-[context.staging.environment]
-  VITE_REPO             = "allinbits/govgen-governance-discussions-test"
-  VITE_ENDPOINT         = "https://gh-discuss.devnet.govgen.dev"
-  VITE_GRAPHQL_ENDPOINT = "https://graphql-devnet.govgen.dev/v1/graphql"
-
 [context.deploy-preview.environment]
   VITE_REPO             = "allinbits/govgen-governance-discussions-test"
   VITE_ENDPOINT         = "https://gh-discuss.devnet.govgen.dev"
-  VITE_GRAPHQL_ENDPOINT = "https://graphql-mainnet.govgen.io/v1/graphql"
+  VITE_GRAPHQL_ENDPOINT = "https://graphql-devnet.govgen.dev/v1/graphql"
 
 [[redirects]]
   from = "/*"
@@ -25,6 +13,9 @@
   [headers.values]
   Access-Control-Allow-Origin = '''
   https://app.govgen.io,
+  https://app.govgen.dev,
+  https://staging.govgen.dev,
+  https://gh-discuss.govgen.io
   https://gh-discuss.devnet.govgen.dev
   https://githubusercontent.com
   https://avatars.githubusercontent.com
