@@ -21,7 +21,7 @@
   https://avatars.githubusercontent.com
   '''
   Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-  Content-Security-Policy = "default-src 'self'; object-src 'none'; img-src 'self' data: https:; connect-src https://graphql-mainnet.govgen.io/v1/graphql https://graphql-devnet.govgen.dev/v1/graphql https://gh-discuss.devnet.govgen.dev https://plausible.io/api/event githubusercontent.com *.githubusercontent.com"
+  # Content-Security-Policy = "default-src 'self'; object-src 'none'; img-src 'self' data: https:; connect-src https://graphql-mainnet.govgen.io/v1/graphql https://graphql-devnet.govgen.dev/v1/graphql https://gh-discuss.devnet.govgen.dev https://plausible.io/api/event githubusercontent.com *.githubusercontent.com"
   X-Frame-Options = "SAMEORIGIN"
   X-Content-Type-Options = "nosniff"
   Referrer-Policy = "strict-origin"
