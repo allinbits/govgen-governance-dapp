@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 import { bus } from "@/bus";
 
 import ModalWrap from "@/components/common/ModalWrap.vue";
 
-const isOpen = ref(false);
+const props = defineProps<{ isOpen?: boolean }>();
+const isOpen = ref(props.isOpen ?? false);
 
 const refresh = () => {
   window.location.reload();
@@ -18,7 +19,7 @@ bus.on("error", () => {
 <template>
   <div class="relative">
     <ModalWrap :visible="isOpen" :is-empty="true" @back="isOpen = false">
-      <div class="bg-grey-400 w-full rounded-md max-h-screen overflow-auto">
+      <div class="bg-grey-400 w-full rounded-md max-h-screen overflow-auto" id="popup-error-box">
         <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
           <div class="flex flex-col gap-6 relative">
             <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ErrorBox.title") }}</span>
