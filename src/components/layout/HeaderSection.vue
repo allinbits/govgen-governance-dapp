@@ -13,11 +13,11 @@ import WalletConnect from "@/components/popups/WalletConnect.vue";
         <router-link active-class="text-light" to="/history" class="text-300 py-4 hover:text-light text-grey-100">{{
           $t("homepage.viewHistory")
         }}</router-link>
-        <router-link
-          active-class="text-light"
-          to="https://commonwealth.im/atomone"
+        <a
+          target="_blank"
+          href="https://commonwealth.im/atomone"
           class="text-300 py-4 hover:text-light text-grey-100"
-          >{{ $t("homepage.viewForums") }}</router-link
+          >{{ $t("homepage.viewForums") }}</a
         >
       </div>
       <WalletConnect class="hidden md:block" />
