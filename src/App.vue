@@ -28,12 +28,11 @@ useGithubDiscussions().setup();
 <style>
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.4s;
-  transition-delay: 200ms;
+  transition: all 0.25s;
+  transition-delay: 100ms;
 }
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
-  filter: blur(0.6rem);
 }
 </style>
