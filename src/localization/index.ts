@@ -3,8 +3,9 @@ export const messages = {
     homepage: {
       title: "GovGen",
       intro:
-        "Explore the Governance dApp—a seamlessly integrated interface empowering secure and efficient governance interactions with the GovGen chain. Engage in collaborative discussions and actively participate in the governance processes to shape the potential future of AtomOne.",
+        "Explore the Governance dApp—a seamlessly integrated interface empowering secure and efficient governance interactions with the GovGen chain. Engage in collaborative discussions in the {0} and actively participate in the governance processes to shape the potential future of AtomOne.",
       proposalsHeader: "All Proposals",
+      forumLinkText: "forum",
       website: "Website",
       createProposal: "Create Proposal",
       viewHistory: "Voting History",
