@@ -11,7 +11,7 @@ const props = defineProps<{
   >;
 }>();
 
-const getTxHash = (vote: VotesQuery["proposal_vote"][0]) => {
+const getTxHash = (vote: VotesQuery["proposal_votes"][0]) => {
   if (vote.block && vote.block.transactions && vote.block.transactions.length > 0) {
     const transaction = vote.block.transactions.filter((tx) => {
       return (

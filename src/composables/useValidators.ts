@@ -8,8 +8,8 @@ export const useValidators = (height?: string) => {
   const validatorList = height ? getValset(height) : getValidators();
   const validators = computed(() => {
     if (validatorList.value) {
-      return "proposal_validator_status_snapshot" in validatorList.value
-        ? validatorList.value.proposal_validator_status_snapshot
+      return "proposal_validator_status_snapshots" in validatorList.value
+        ? validatorList.value.proposal_validator_status_snapshots
         : validatorList.value.validator_statuses;
     } else {
       return [];

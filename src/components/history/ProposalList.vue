@@ -17,7 +17,7 @@ const setList = (list: boolean) => {
 const props = defineProps<{
   title: string;
   address: string;
-  proposals: Array<ProposalsActiveQuery["all_proposals"][0] & { vote: VoteHistoryQuery["proposal_vote"] }>;
+  proposals: Array<ProposalsActiveQuery["all_proposals"][0] & { vote: VoteHistoryQuery["proposal_votes"] }>;
 }>();
 </script>
 <template>
