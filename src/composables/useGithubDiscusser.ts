@@ -1,8 +1,8 @@
-import { ref, computed } from "vue";
-import * as GithubTypes from "@/types/github/index";
 import { useConfig } from "@/composables/useConfig";
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
+import * as GithubTypes from "@/types/github/index";
 import * as Utility from "@/utility/index";
+import { computed, ref } from "vue";
 
 type ParsedComment = {
   id: string;
@@ -125,7 +125,7 @@ export function useGithubDiscusser(threadTitle: string) {
         (upvote?.users.totalCount ? upvote.users.totalCount : 0) +
         (downvote?.users.totalCount ? downvote?.users.totalCount : 0);
 
-      const voteRatio = totalVotes === 0 ? 0 : upvote?.users.totalCount ?? 0 / totalVotes;
+      const voteRatio = totalVotes === 0 ? 0 : (upvote?.users.totalCount ?? 0 / totalVotes);
       if (voteRatio < ratio.value) {
         continue;
       }
@@ -165,7 +165,7 @@ export function useGithubDiscusser(threadTitle: string) {
         (upvote?.users.totalCount ? upvote.users.totalCount : 0) +
         (downvote?.users.totalCount ? downvote?.users.totalCount : 0);
 
-      const voteRatio = totalVotes === 0 ? 0 : upvote?.users.totalCount ?? 0 / totalVotes;
+      const voteRatio = totalVotes === 0 ? 0 : (upvote?.users.totalCount ?? 0 / totalVotes);
       if (voteRatio < ratio.value) {
         continue;
       }
