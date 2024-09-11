@@ -9,7 +9,7 @@ export const messages = {
       createProposal: "Create Proposal",
       viewHistory: "Voting History",
       viewProposals: "Proposals",
-      viewForums: "Forums",
+      viewForums: "Forum",
     },
     voteHistory: {
       title: "Voting History",
