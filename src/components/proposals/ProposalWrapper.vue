@@ -14,7 +14,7 @@ import SimpleCard from "@/components/ui/SimpleCard.vue";
 import UiTabs from "@/components/ui/UiTabs.vue";
 import VotePanel from "@/components/proposals/VotePanel.vue";
 import Treemap from "@/components/proposals/Treemap.vue";
-import { ContextTypes } from "@/types/ui";
+import { ContextTypes, UiTabOption } from "@/types/ui";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import utc from "dayjs/plugin/utc";
@@ -207,7 +207,7 @@ const termLink = computed(() => `Link #${props.proposalId}`);
 const termDiscussion = computed(() => `Proposal #${props.proposalId}`);
 
 const tabSelected = ref<TabNames>("Info");
-const tabOptions = reactive<TabNames[]>(["Description", "Info", "Voters", "Discussions", "Links"]);
+const tabOptions = reactive<UiTabOption[]>([{ title: "Description" }, { title: "Info" }, { title: "Voters" }, { title: "Discussions", link: "https://commonwealth.im/govgen/proposal/" + props.proposalId }, { title: "Links", link: "https://commonwealth.im/govgen/proposal/" + props.proposalId }]);
 
 const breakdownType = ref<("validators" | "voters") | null>(null);
 const breakdownOffset = ref(0);
@@ -409,35 +409,33 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
     <div class="flex flex-row justify-between items-center">
       <div class="badges my-8 md:my-12">
         <template v-if="inVoting">
-          <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3"
-            >{{ $t("proposalpage.badges.votingPeriod") }}
+          <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">{{ $t("proposalpage.badges.votingPeriod")
+            }}
           </SimpleBadge>
           <SimpleBadge v-if="turnout < quorum" :type="ContextTypes.PLAIN" icon="warning">
-            {{ $t("proposalpage.badges.quorumPending") }}</SimpleBadge
-          >
+            {{ $t("proposalpage.badges.quorumPending") }}</SimpleBadge>
         </template>
         <template v-if="inDeposit">
           <SimpleBadge :type="ContextTypes.INFO" icon="progress" class="mr-3">{{
             $t("proposalpage.badges.depositPeriod")
-          }}</SimpleBadge>
+            }}</SimpleBadge>
           <SimpleBadge :type="ContextTypes.PLAIN" icon="warning">{{
             $t("proposalpage.badges.depositPending")
-          }}</SimpleBadge>
+            }}</SimpleBadge>
         </template>
         <SimpleBadge v-if="failed" :type="ContextTypes.FAIL" class="mr-3">{{
           $t("proposalpage.badges.depositFailed")
-        }}</SimpleBadge>
-        <SimpleBadge v-if="rejected" icon="close" :type="ContextTypes.FAIL" class="mr-3"
-          >{{ $t("proposalpage.badges.rejected") }}
+          }}</SimpleBadge>
+        <SimpleBadge v-if="rejected" icon="close" :type="ContextTypes.FAIL" class="mr-3">{{
+          $t("proposalpage.badges.rejected")
+          }}
         </SimpleBadge>
         <SimpleBadge v-if="passed" :type="ContextTypes.SUCCESS" class="mr-3">{{
           $t("proposalpage.badges.passed")
-        }}</SimpleBadge>
+          }}</SimpleBadge>
       </div>
-      <div
-        class="flex items-center text-300 text-grey-100 start-7 hover:opacity-50 hover:cursor-pointer"
-        @click="showJsonModal = true"
-      >
+      <div class="flex items-center text-300 text-grey-100 start-7 hover:opacity-50 hover:cursor-pointer"
+        @click="showJsonModal = true">
         <Icon icon="Curlybrackets" />&nbsp; JSON
       </div>
     </div>
@@ -496,15 +494,12 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
             <div class="link-gradient rounded h-2 w-2/12" />
           </div>
           <ProposalVote v-if="loggedIn" :proposal-id="proposal?.proposal[0].id" class="w-full" />
-          <div
-            v-else
+          <div v-else
             class="justify-center px-6 py-4 rounded link-gradient text-dark text-300 text-center cursor-pointer w-full"
-            @click="
-              () => {
-                bus.emit('open');
-              }
-            "
-          >
+            @click="() => {
+              bus.emit('open');
+            }
+              ">
             {{ $t("components.WalletConnect.button") }}
           </div>
         </SimpleCard>
@@ -515,22 +510,14 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="link-gradient rounded h-2 w-2/12" />
           </div>
-          <ProposalDeposit
-            v-if="loggedIn"
-            :proposal-id="proposal?.proposal[0].id"
-            :min-deposit="minDeposit"
-            :total-deposit="totalDeposit"
-            :deposit-denom="depositDenom"
-          />
-          <div
-            v-else
+          <ProposalDeposit v-if="loggedIn" :proposal-id="proposal?.proposal[0].id" :min-deposit="minDeposit"
+            :total-deposit="totalDeposit" :deposit-denom="depositDenom" />
+          <div v-else
             class="justify-center px-6 py-4 rounded link-gradient text-dark text-300 text-center cursor-pointer w-full"
-            @click="
-              () => {
-                bus.emit('open');
-              }
-            "
-          >
+            @click="() => {
+              bus.emit('open');
+            }
+              ">
             {{ $t("components.WalletConnect.button") }}
           </div>
         </SimpleCard>
@@ -634,10 +621,8 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                 <div class="text-light text-300 md:text-500 text-left mb-8 font-medium">
                   {{ $t("proposalpage.labels.messages") }}
                 </div>
-                <div
-                  v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
-                  class="flex w-full flex-wrap"
-                >
+                <div v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
+                  class="flex w-full flex-wrap">
                   <div class="grow w-full md:w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
                     <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.text") }}</div>
@@ -655,10 +640,8 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                     </div>
                   </div>
                 </div>
-                <div
-                  v-if="proposal?.proposal[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
-                  class="flex w-full flex-wrap flex-col md:flex-row"
-                >
+                <div v-if="proposal?.proposal[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
+                  class="flex w-full flex-wrap flex-col md:flex-row">
                   <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
                     <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.paramChange") }}</div>
@@ -678,18 +661,13 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.changes") }}</div>
                     <div class="text-light text-100">
-                      <VCodeBlock
-                        :code="JSON.stringify(proposal?.proposal[0].content.changes, null, '\t')"
-                        prismjs
-                        :theme="false"
-                      />
+                      <VCodeBlock :code="JSON.stringify(proposal?.proposal[0].content.changes, null, '\t')" prismjs
+                        :theme="false" />
                     </div>
                   </div>
                 </div>
-                <div
-                  v-if="proposal?.proposal[0].content['@type'] == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
-                  class="flex w-full flex-wrap"
-                >
+                <div v-if="proposal?.proposal[0].content['@type'] == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
+                  class="flex w-full flex-wrap">
                   <div class="grow w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposalType") }}</div>
                     <div class="text-light text-200 md:text-300">{{ $t("proposalpage.types.text") }}</div>
@@ -709,11 +687,8 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   <div class="grow w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.upgradePlan") }}</div>
                     <div class="text-light text-100">
-                      <VCodeBlock
-                        :code="JSON.stringify(proposal?.proposal[0].content.plan, null, '\t')"
-                        prismjs
-                        :theme="false"
-                      />
+                      <VCodeBlock :code="JSON.stringify(proposal?.proposal[0].content.plan, null, '\t')" prismjs
+                        :theme="false" />
                     </div>
                   </div>
                 </div>
@@ -735,27 +710,15 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
           <!-- Voters Panel -->
           <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
             <!-- All Account Votes -->
-            <VotePanel
-              :voters="distinctVoters"
-              :denom="stakingDenomDisplay"
-              :precision="stakingDenomDecimals"
-              :vote-tallies="allVoteCounts"
-              :token-tallies="tokenTallies"
-              @on-breakdown="showBreakdown('voters')"
-            >
+            <VotePanel :voters="distinctVoters" :denom="stakingDenomDisplay" :precision="stakingDenomDecimals"
+              :vote-tallies="allVoteCounts" :token-tallies="tokenTallies" @on-breakdown="showBreakdown('voters')">
               <template #header>{{ $t("proposalpage.labels.accountsAll") }}</template>
               <template #type>{{ $t("proposalpage.labels.accountsVoted") }}</template>
             </VotePanel>
             <!-- All Validator Votes -->
-            <VotePanel
-              :max="maxValidators"
-              :voters="votedValidators"
-              :denom="stakingDenomDisplay"
-              :precision="stakingDenomDecimals"
-              :vote-tallies="validatorVoteCounts"
-              :token-tallies="validatorTallies"
-              @on-breakdown="showBreakdown('validators')"
-            >
+            <VotePanel :max="maxValidators" :voters="votedValidators" :denom="stakingDenomDisplay"
+              :precision="stakingDenomDecimals" :vote-tallies="validatorVoteCounts" :token-tallies="validatorTallies"
+              @on-breakdown="showBreakdown('validators')">
               <template #header>{{ $t("proposalpage.labels.validators") }}</template>
               <template #type>{{ $t("proposalpage.labels.validatorsVoted") }}</template>
             </VotePanel>
@@ -768,12 +731,8 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
             </div>
             <div class="flex flex-row object-contain">
               <template v-if="validatorVoteSum >= 1">
-                <div
-                  v-for="voteType in voteTypes"
-                  :key="voteType"
-                  class="flex flex-row h-96 relative"
-                  :style="[`width: ${calculateWidthForTree(voteType)}%`]"
-                >
+                <div v-for="voteType in voteTypes" :key="voteType" class="flex flex-row h-96 relative"
+                  :style="[`width: ${calculateWidthForTree(voteType)}%`]">
                   <Treemap :data="getValidatorVotes(voteType)" :type="voteType" />
                 </div>
               </template>
@@ -821,6 +780,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
 .tab-leave-active {
   transition: all 0.4s;
 }
+
 .tab-enter-from,
 .tab-leave-to {
   opacity: 0;
