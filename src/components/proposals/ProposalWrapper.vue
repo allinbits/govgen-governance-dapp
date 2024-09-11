@@ -60,7 +60,7 @@ const validatorsWithStakeAndVotes = ref<
 watch(validators, async (valSet, _old) => {
   try {
     validatorsWithStakeAndVotes.value = await Promise.all(
-      valSet.map(async (val: any) => {
+      valSet.map(async (val) => {
         if (val.validator_info && val.validator_info.self_delegate_address) {
           const vp = await getVotingPower(val.validator_info.self_delegate_address);
           const votes = await getVotesAsync(val.validator_info.self_delegate_address, props.proposalId);
