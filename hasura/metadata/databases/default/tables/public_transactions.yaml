@@ -13,3 +13,21 @@ object_relationships:
 - name: block
   using:
     foreign_key_constraint_on: height
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - signatures
+    - gas_used
+    - gas_wanted
+    - height
+    - success
+    - fee
+    - logs
+    - messages
+    - signer_infos
+    - hash
+    - memo
+    - raw_log
+    filter: {}
+  role: anonymous

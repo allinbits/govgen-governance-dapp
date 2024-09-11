@@ -16,3 +16,12 @@ object_relationships:
 - name: validator_info
   using:
     foreign_key_constraint_on: validator_address
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - voting_power
+    - validator_address
+    filter: {}
+  role: anonymous

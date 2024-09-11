@@ -14,7 +14,10 @@ services:
     networks:
       - eclesia-indexer_default
     environment:
+      # whitelist of gql queries for security purpose
       HASURA_GRAPHQL_ENABLE_ALLOWLIST: "true"
+      # queries are send with x-hasura-role: anonymous
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: "anonymous"
       ## postgres database to store Hasura metadata
       HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/metadata-govgen-dapp
       ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs

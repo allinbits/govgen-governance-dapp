@@ -9,3 +9,12 @@ configuration:
     insert_one: insert_average_block_time_per_hour
     select_by_pk: average_block_time_per_hour
     update_by_pk: update_average_block_time_per_hour
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - one_row_id
+    - average_time
+    filter: {}
+  role: anonymous

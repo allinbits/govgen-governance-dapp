@@ -16,3 +16,12 @@ object_relationships:
 - name: block
   using:
     foreign_key_constraint_on: height
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - coins
+    - height
+    - address
+    filter: {}
+  role: anonymous

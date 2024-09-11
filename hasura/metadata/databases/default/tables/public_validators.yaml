@@ -39,3 +39,11 @@ array_relationships:
       table:
         name: staked_balances
         schema: public
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - consensus_address
+    - consensus_pubkey
+    filter: {}
+  role: anonymous

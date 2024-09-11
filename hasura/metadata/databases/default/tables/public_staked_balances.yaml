@@ -19,3 +19,13 @@ object_relationships:
 - name: validatorByValidator
   using:
     foreign_key_constraint_on: validator
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - amount
+    - height
+    - delegator
+    - validator
+    filter: {}
+  role: anonymous

@@ -48,3 +48,15 @@ array_relationships:
       table:
         name: validator_voting_powers
         schema: public
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - consensus_address
+    - max_change_rate
+    - max_rate
+    - operator_address
+    - self_delegate_address
+    filter: {}
+  role: anonymous

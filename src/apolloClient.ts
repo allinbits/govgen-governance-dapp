@@ -6,6 +6,10 @@ console.log("[DEBUG] env", import.meta.env);
 const httpLink = createHttpLink({
   // You should use an absolute URL here
   uri: import.meta.env.VITE_GRAPHQL_ENDPOINT ?? "https://graphql-devnet.govgen.dev/v1/graphql",
+
+  headers: {
+    "x-hasura-role": "anonymous",
+  },
 });
 
 // Cache implementation

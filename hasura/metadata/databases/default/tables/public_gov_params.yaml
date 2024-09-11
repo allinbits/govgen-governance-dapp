@@ -13,3 +13,13 @@ object_relationships:
 - name: block
   using:
     foreign_key_constraint_on: height
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - deposit_params
+    - tally_params
+    - voting_params
+    filter: {}
+  role: anonymous

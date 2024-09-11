@@ -70,3 +70,27 @@ computed_fields:
       name: rejected_first
       schema: public
   name: rejected_first_order
+select_permissions:
+- comment: ""
+  permission:
+    allow_aggregations: true
+    columns:
+    - id
+    - content
+    - description
+    - proposal_route
+    - proposal_type
+    - proposer_address
+    - status
+    - title
+    - deposit_end_time
+    - submit_time
+    - voting_end_time
+    - voting_start_time
+    computed_fields:
+    - active_first_order
+    - failed_first_order
+    - passed_first_order
+    - rejected_first_order
+    filter: {}
+  role: anonymous
