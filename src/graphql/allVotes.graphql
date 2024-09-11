@@ -1,5 +1,5 @@
 query AllVotes($proposalId: Int!, $propId: String!, $limit: Int!, $offset: Int!) {
-  proposal_vote(
+  proposal_votes(
     limit: $limit
     offset: $offset
     where: { _and: { proposal_id: { _eq: $proposalId }, is_valid: { _eq: true } } }
@@ -22,7 +22,7 @@ query AllVotes($proposalId: Int!, $propId: String!, $limit: Int!, $offset: Int!)
       }
     }
   }
-  proposal_vote_aggregate(where: { _and: { proposal_id: { _eq: $proposalId }, is_valid: { _eq: true } } }) {
+  proposal_votes_aggregate(where: { _and: { proposal_id: { _eq: $proposalId }, is_valid: { _eq: true } } }) {
     aggregate {
       count
     }

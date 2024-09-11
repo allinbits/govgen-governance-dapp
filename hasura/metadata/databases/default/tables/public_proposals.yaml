@@ -1,0 +1,72 @@
+table:
+  name: proposals
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_proposal
+    insert_one: insert_proposal
+    select_by_pk: proposal
+    update_by_pk: update_proposal
+object_relationships:
+- name: account
+  using:
+    foreign_key_constraint_on: proposer_address
+array_relationships:
+- name: proposal_deposits
+  using:
+    foreign_key_constraint_on:
+      column: proposal_id
+      table:
+        name: proposal_deposits
+        schema: public
+- name: proposal_staking_pool_snapshots
+  using:
+    foreign_key_constraint_on:
+      column: proposal_id
+      table:
+        name: proposal_staking_pool_snapshots
+        schema: public
+- name: proposal_tally_results
+  using:
+    foreign_key_constraint_on:
+      column: proposal_id
+      table:
+        name: proposal_tally_results
+        schema: public
+- name: proposal_validator_status_snapshots
+  using:
+    foreign_key_constraint_on:
+      column: proposal_id
+      table:
+        name: proposal_validator_status_snapshots
+        schema: public
+- name: proposal_votes
+  using:
+    foreign_key_constraint_on:
+      column: proposal_id
+      table:
+        name: proposal_votes
+        schema: public
+computed_fields:
+- definition:
+    function:
+      name: active_first
+      schema: public
+  name: active_first_order
+- definition:
+    function:
+      name: failed_first
+      schema: public
+  name: failed_first_order
+- definition:
+    function:
+      name: passed_first
+      schema: public
+  name: passed_first_order
+- definition:
+    function:
+      name: rejected_first
+      schema: public
+  name: rejected_first_order

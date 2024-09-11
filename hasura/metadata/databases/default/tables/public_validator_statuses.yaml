@@ -1,0 +1,18 @@
+table:
+  name: validator_statuses
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_validator_status
+    insert_one: insert_validator_status
+    select_by_pk: validator_status
+    update_by_pk: update_validator_status
+object_relationships:
+- name: block
+  using:
+    foreign_key_constraint_on: height
+- name: validator_info
+  using:
+    foreign_key_constraint_on: validator_address

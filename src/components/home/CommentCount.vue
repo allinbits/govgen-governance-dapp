@@ -11,8 +11,8 @@ onMounted(async () => {
   try {
     const response = await getDiscussionCommentCount({ term: `Proposal #${props.proposal}` });
     count.value = response.count;
-  } catch (_e) {
-    bus.emit("error");
+  } catch (e) {
+    bus.emit("error", e);
   }
 });
 </script>

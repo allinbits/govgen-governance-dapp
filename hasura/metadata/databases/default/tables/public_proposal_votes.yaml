@@ -1,0 +1,21 @@
+table:
+  name: proposal_votes
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_proposal_vote
+    insert_one: insert_proposal_vote
+    select_by_pk: proposal_vote
+    update_by_pk: update_proposal_vote
+object_relationships:
+- name: account
+  using:
+    foreign_key_constraint_on: voter_address
+- name: block
+  using:
+    foreign_key_constraint_on: height
+- name: proposal
+  using:
+    foreign_key_constraint_on: proposal_id

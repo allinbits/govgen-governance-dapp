@@ -24,7 +24,7 @@ watch(height, async (newHeight, oldHeight) => {
         delegated.value = [];
       }
     } catch (e) {
-      bus.emit("error");
+      bus.emit("error", e);
     }
   }
 });

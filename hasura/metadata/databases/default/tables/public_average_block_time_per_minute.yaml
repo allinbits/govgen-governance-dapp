@@ -1,0 +1,3 @@
+table:
+  name: average_block_time_per_minute
+  schema: public

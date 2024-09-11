@@ -1,0 +1,11 @@
+table:
+  name: average_block_time_per_hours
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_average_block_time_per_hour
+    insert_one: insert_average_block_time_per_hour
+    select_by_pk: average_block_time_per_hour
+    update_by_pk: update_average_block_time_per_hour

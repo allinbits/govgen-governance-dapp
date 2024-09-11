@@ -1,0 +1,18 @@
+table:
+  name: validator_descriptions
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_validator_description
+    insert_one: insert_validator_description
+    select_by_pk: validator_description
+    update_by_pk: update_validator_description
+object_relationships:
+- name: block
+  using:
+    foreign_key_constraint_on: height
+- name: validator_info
+  using:
+    foreign_key_constraint_on: validator_address

@@ -1,5 +1,7 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client/core";
 
+console.log("[DEBUG] env", import.meta.env);
+
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here

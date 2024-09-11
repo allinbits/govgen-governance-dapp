@@ -1,0 +1,18 @@
+table:
+  name: proposal_tally_results
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_proposal_tally_result
+    insert_one: insert_proposal_tally_result
+    select_by_pk: proposal_tally_result
+    update_by_pk: update_proposal_tally_result
+object_relationships:
+- name: block
+  using:
+    foreign_key_constraint_on: height
+- name: proposal
+  using:
+    foreign_key_constraint_on: proposal_id

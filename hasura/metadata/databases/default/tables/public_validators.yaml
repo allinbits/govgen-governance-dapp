@@ -1,0 +1,41 @@
+table:
+  name: validators
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_validator
+    insert_one: insert_validator
+    select_by_pk: validator
+    update_by_pk: update_validator
+object_relationships:
+- name: validator_info
+  using:
+    foreign_key_constraint_on:
+      column: consensus_address
+      table:
+        name: validator_infos
+        schema: public
+array_relationships:
+- name: blocks
+  using:
+    foreign_key_constraint_on:
+      column: proposer_address
+      table:
+        name: blocks
+        schema: public
+- name: proposal_validator_status_snapshots
+  using:
+    foreign_key_constraint_on:
+      column: validator_address
+      table:
+        name: proposal_validator_status_snapshots
+        schema: public
+- name: staked_balances
+  using:
+    foreign_key_constraint_on:
+      column: validator
+      table:
+        name: staked_balances
+        schema: public

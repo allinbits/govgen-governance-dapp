@@ -1,0 +1,18 @@
+table:
+  name: balances
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_balance
+    insert_one: insert_balance
+    select_by_pk: balance
+    update_by_pk: update_balance
+object_relationships:
+- name: account
+  using:
+    foreign_key_constraint_on: address
+- name: block
+  using:
+    foreign_key_constraint_on: height

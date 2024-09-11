@@ -1,5 +1,10 @@
 query ProposalsSearch($limit: Int!, $offset: Int!, $searchString: String!) {
-  all_proposals: proposal(order_by: { active_first_order: asc }, limit: $limit, offset: $offset, where: {_or: [{title: {_ilike: $searchString}},{description: {_ilike: $searchString}}]}) {
+  all_proposals: proposals(
+    order_by: { active_first_order: asc }
+    limit: $limit
+    offset: $offset
+    where: { _or: [{ title: { _ilike: $searchString } }, { description: { _ilike: $searchString } }] }
+  ) {
     content
     deposit_end_time
     description
@@ -21,7 +26,9 @@ query ProposalsSearch($limit: Int!, $offset: Int!, $searchString: String!) {
     voting_end_time
     voting_start_time
   }
-  proposal_aggregate(where: {_or: [{title: {_ilike: $searchString}},{description: {_ilike: $searchString}}]}) {
+  proposals_aggregate(
+    where: { _or: [{ title: { _ilike: $searchString } }, { description: { _ilike: $searchString } }] }
+  ) {
     aggregate {
       count
     }

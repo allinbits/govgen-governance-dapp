@@ -1,0 +1,11 @@
+table:
+  name: staking_pools
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_staking_pool
+    insert_one: insert_staking_pool
+    select_by_pk: staking_pool
+    update_by_pk: update_staking_pool
