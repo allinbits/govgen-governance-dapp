@@ -78,8 +78,8 @@ watch(filterToStatus, async (newType, oldType) => {
       if (res) {
         proposals.value = res;
       }
-    } catch (_e) {
-      bus.emit("error");
+    } catch (e) {
+      bus.emit("error", e);
     }
   }
 });
@@ -97,8 +97,8 @@ watch(searchString, async (newSearch, oldSearch) => {
       if (res) {
         proposals.value = res;
       }
-    } catch (_e) {
-      bus.emit("error");
+    } catch (e) {
+      bus.emit("error", e);
     }
   }
 });
@@ -116,8 +116,8 @@ watch(sortToOrder, async (newOrder, oldOrder) => {
       if (res) {
         proposals.value = res;
       }
-    } catch (_e) {
-      bus.emit("error");
+    } catch (e) {
+      bus.emit("error", e);
     }
   }
 });
@@ -130,7 +130,7 @@ const links = ref([
   { title: "Github", url: "https://github.com/atomone-hub", icon: "github" },
 ]);
 const hasMore = computed(() => {
-  return (proposals.value?.proposal_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
+  return (proposals.value?.proposals_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
 });
 function next() {
   offset.value += limit.value;
@@ -161,8 +161,8 @@ watch(offset, async (newOffset, oldOffset) => {
           proposals.value = res;
         }
       }
-    } catch (_e) {
-      bus.emit("error");
+    } catch (e) {
+      bus.emit("error", e);
     }
   }
 });
@@ -337,7 +337,7 @@ function onSearchInput() {
         :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
         @click="
           () => {
-            offset = Math.floor((proposals?.proposal_aggregate.aggregate?.count ?? 0) / limit) * limit;
+            offset = Math.floor((proposals?.proposals_aggregate.aggregate?.count ?? 0) / limit) * limit;
           }
         "
       />

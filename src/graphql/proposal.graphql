@@ -1,5 +1,5 @@
 query Proposal($id: Int!) {
-  proposal(where: { id: { _eq: $id } }) {
+  proposals(where: { id: { _eq: $id } }) {
     content
     deposit_end_time
     description
@@ -18,7 +18,7 @@ query Proposal($id: Int!) {
     title
     voting_end_time
     voting_start_time
-    proposal_tally_results(order_by: {height: desc}, limit: 1) {
+    proposal_tally_results(order_by: { height: desc }, limit: 1) {
       abstain
       height
       no

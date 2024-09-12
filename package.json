@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "NODE_ENV=dev vite",
     "queries": "npx graphql-code-generator -c codegen.ts",
     "build": "vue-tsc && vite build",
     "lint": "eslint -c .eslintrc.cjs \"./{tests,src}/**/*.{ts,js,tsx,vue,json}\" --no-error-on-unmatched-pattern --ignore-path .gitignore",

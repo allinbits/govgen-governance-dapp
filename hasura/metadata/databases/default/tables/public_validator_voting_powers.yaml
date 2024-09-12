@@ -1,0 +1,27 @@
+table:
+  name: validator_voting_powers
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_validator_voting_power
+    insert_one: insert_validator_voting_power
+    select_by_pk: validator_voting_power
+    update_by_pk: update_validator_voting_power
+object_relationships:
+- name: block
+  using:
+    foreign_key_constraint_on: height
+- name: validator_info
+  using:
+    foreign_key_constraint_on: validator_address
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - voting_power
+    - validator_address
+    filter: {}
+  role: anonymous

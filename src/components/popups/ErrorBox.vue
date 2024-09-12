@@ -11,7 +11,8 @@ const refresh = () => {
   window.location.reload();
 };
 
-bus.on("error", () => {
+bus.on("error", (msg) => {
+  console.error(msg);
   isOpen.value = true;
 });
 </script>

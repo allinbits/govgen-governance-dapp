@@ -1,0 +1,31 @@
+table:
+  name: staked_balances
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_staked_balance
+    insert_one: insert_staked_balance
+    select_by_pk: staked_balance
+    update_by_pk: update_staked_balance
+object_relationships:
+- name: account
+  using:
+    foreign_key_constraint_on: delegator
+- name: block
+  using:
+    foreign_key_constraint_on: height
+- name: validatorByValidator
+  using:
+    foreign_key_constraint_on: validator
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - amount
+    - height
+    - delegator
+    - validator
+    filter: {}
+  role: anonymous

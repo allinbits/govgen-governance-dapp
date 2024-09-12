@@ -30,10 +30,9 @@ async function parseData() {
       : await md.render(content.value);
 
     trimmedContent.value = Utility.purifyHtml(htmlContent);
-  } catch (_e) {
+  } catch (e) {
     console.log("cool error bro");
-    console.log(_e);
-    bus.emit("error");
+    bus.emit("error", e);
   }
 }
 

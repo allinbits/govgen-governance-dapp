@@ -1,5 +1,5 @@
 query ProposalTallies($id: Int!) {
-  proposal_tally_result(where: {proposal_id: {_eq: $id }}, order_by: {height: desc}, limit: 1) {
+  proposal_tally_results(where: { proposal_id: { _eq: $id } }, order_by: { height: desc }, limit: 1) {
     abstain
     no
     height

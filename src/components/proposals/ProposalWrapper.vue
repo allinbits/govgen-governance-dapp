@@ -50,9 +50,9 @@ const { getProposal, getParams, getProposalTallies, getStakingStatus, getVotesAs
 const { validators, getVotingPower } = useValidators(props.height != 0 ? props.height.toString() : undefined);
 const validatorsWithStakeAndVotes = ref<
   Array<
-    (ValidatorsQuery["validator_status"][0] | ValSetQuery["proposal_validator_status_snapshot"][0]) & {
+    (ValidatorsQuery["validator_statuses"][0] | ValSetQuery["proposal_validator_status_snapshots"][0]) & {
       voting_power: number;
-      votes: VotesQuery["proposal_vote"];
+      votes: VotesQuery["proposal_votes"];
     }
   >
 >([]);
@@ -64,11 +64,11 @@ watch(validators, async (valSet, _old) => {
         if (val.validator_info && val.validator_info.self_delegate_address) {
           const vp = await getVotingPower(val.validator_info.self_delegate_address);
           const votes = await getVotesAsync(val.validator_info.self_delegate_address, props.proposalId);
-          if (votes && votes.proposal_vote.length > 0) {
+          if (votes && votes.proposal_votes.length > 0) {
             return {
               ...val,
               voting_power: vp,
-              votes: votes.proposal_vote.filter((x) => x.height == votes.proposal_vote[0].height),
+              votes: votes.proposal_votes.filter((x) => x.height == votes.proposal_votes[0].height),
             };
           } else {
             return { ...val, voting_power: vp, votes: [] };
@@ -78,8 +78,8 @@ watch(validators, async (valSet, _old) => {
         }
       }),
     );
-  } catch (_e) {
-    bus.emit("error");
+  } catch (e) {
+    bus.emit("error", e);
     1;
   }
 });
@@ -214,27 +214,27 @@ const breakdownOffset = ref(0);
 
 const showJsonModal = ref(false);
 
-const inDeposit = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD");
-const inVoting = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_VOTING_PERIOD");
-const failed = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_FAILED");
-const rejected = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_REJECTED");
-const passed = computed(() => proposal.value?.proposal[0].status === "PROPOSAL_STATUS_PASSED");
+const inDeposit = computed(() => proposal.value?.proposals[0].status === "PROPOSAL_STATUS_DEPOSIT_PERIOD");
+const inVoting = computed(() => proposal.value?.proposals[0].status === "PROPOSAL_STATUS_VOTING_PERIOD");
+const failed = computed(() => proposal.value?.proposals[0].status === "PROPOSAL_STATUS_FAILED");
+const rejected = computed(() => proposal.value?.proposals[0].status === "PROPOSAL_STATUS_REJECTED");
+const passed = computed(() => proposal.value?.proposals[0].status === "PROPOSAL_STATUS_PASSED");
 
 const depositReducer = (sum: number, deposit: Partial<{ amount: Deposit["amount"] | null }>) => {
   return sum + (deposit.amount?.reduce((sum: number, amount) => sum + parseInt(amount?.amount ?? ""), 0) ?? 0);
 };
 
 const initialDeposit = computed(() => {
-  return proposal.value?.proposal[0].proposal_deposits
-    .filter((x) => x.depositor_address == proposal.value?.proposal[0].proposer_address)
+  return proposal.value?.proposals[0].proposal_deposits
+    .filter((x) => x.depositor_address == proposal.value?.proposals[0].proposer_address)
     .reduce(depositReducer, 0);
 });
 const distinctVoters = computed(() => {
-  let votes = proposal.value?.proposal[0].proposal_votes ?? [];
+  let votes = proposal.value?.proposals[0].proposal_votes ?? [];
   return new Set(votes.map((x) => x.voter_address)).size;
 });
 const totalDeposit = computed(() => {
-  return proposal.value?.proposal[0].proposal_deposits.reduce(depositReducer, 0) ?? 0;
+  return proposal.value?.proposals[0].proposal_deposits.reduce(depositReducer, 0) ?? 0;
 });
 const minDeposit = computed(() => {
   return params.value?.gov_params[0].deposit_params.min_deposit[0].amount;
@@ -269,42 +269,42 @@ const nwvCount = getVoteOption(props.proposalId, "VOTE_OPTION_NO_WITH_VETO");
 const abstainCount = getVoteOption(props.proposalId, "VOTE_OPTION_ABSTAIN");
 const allVoteCounts = computed(() => {
   return {
-    yes: yesCount.value?.proposal_vote_aggregate.aggregate?.count ?? 0,
-    no: noCount.value?.proposal_vote_aggregate.aggregate?.count ?? 0,
-    veto: nwvCount.value?.proposal_vote_aggregate.aggregate?.count ?? 0,
-    abstain: abstainCount.value?.proposal_vote_aggregate.aggregate?.count ?? 0,
+    yes: yesCount.value?.proposal_votes_aggregate.aggregate?.count ?? 0,
+    no: noCount.value?.proposal_votes_aggregate.aggregate?.count ?? 0,
+    veto: nwvCount.value?.proposal_votes_aggregate.aggregate?.count ?? 0,
+    abstain: abstainCount.value?.proposal_votes_aggregate.aggregate?.count ?? 0,
   };
 });
 const yesVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.yes ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_results[0]?.yes ?? "0");
 });
 
 const noVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.no ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_results[0]?.no ?? "0");
 });
 
 const nwvVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.no_with_veto ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_results[0]?.no_with_veto ?? "0");
 });
 
 const abstainVotes = computed(() => {
-  return parseFloat(proposalTallies.value?.proposal_tally_result[0]?.abstain ?? "0");
+  return parseFloat(proposalTallies.value?.proposal_tally_results[0]?.abstain ?? "0");
 });
 
 const yes = computed(() => {
-  return yesVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
+  return yesVotes.value / parseFloat(staking.value?.staking_pools[0]?.bonded_tokens ?? "0");
 });
 
 const no = computed(() => {
-  return noVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
+  return noVotes.value / parseFloat(staking.value?.staking_pools[0]?.bonded_tokens ?? "0");
 });
 
 const abstain = computed(() => {
-  return abstainVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
+  return abstainVotes.value / parseFloat(staking.value?.staking_pools[0]?.bonded_tokens ?? "0");
 });
 
 const nwv = computed(() => {
-  return nwvVotes.value / parseFloat(staking.value?.staking_pool[0]?.bonded_tokens ?? "0");
+  return nwvVotes.value / parseFloat(staking.value?.staking_pools[0]?.bonded_tokens ?? "0");
 });
 
 const turnout = computed(() => {
@@ -401,7 +401,7 @@ function showBreakdown(type: BreakdownType) {
 }
 
 const title = useTitle();
-onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${proposal.value?.proposal[0].title}`));
+onMounted(() => (title.value = `GovGen — #${proposal.value?.proposals[0].id} ${proposal.value?.proposals[0].title}`));
 </script>
 
 <template>
@@ -445,7 +445,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
     <div class="flex mb-12 flex-col md:flex-row">
       <div class="basic-details flex-grow md:pr-10">
         <h1 class="font-termina text-500 md:text-800 text-light mb-8 md:mb-16 pb-2">
-          #{{ proposal?.proposal[0].id }}: {{ proposal?.proposal[0].title }}
+          #{{ proposal?.proposals[0].id }}: {{ proposal?.proposals[0].title }}
         </h1>
         <div class="basic-stats flex flex-col sm:flex-row gap-y-6">
           <div class="quorum mr-[72px]">
@@ -490,12 +490,12 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
       <div class="cta w-full md:w-96 pt-6 md:pt-0">
         <SimpleCard v-if="inVoting">
           <div class="text-center text-light text-300 md:text-500 mt-8 md:mt-0">
-            {{ timeTo(proposal?.proposal[0].voting_end_time) }}
+            {{ timeTo(proposal?.proposals[0].voting_end_time) }}
           </div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="link-gradient rounded h-2 w-2/12" />
           </div>
-          <ProposalVote v-if="loggedIn" :proposal-id="proposal?.proposal[0].id" class="w-full" />
+          <ProposalVote v-if="loggedIn" :proposal-id="proposal?.proposals[0].id" class="w-full" />
           <div
             v-else
             class="justify-center px-6 py-4 rounded link-gradient text-dark text-300 text-center cursor-pointer w-full"
@@ -510,14 +510,14 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
         </SimpleCard>
         <SimpleCard v-if="inDeposit">
           <div class="text-center text-light text-300 md:text-500 mt-8 md:mt-0">
-            {{ timeTo(proposal?.proposal[0].deposit_end_time) }}
+            {{ timeTo(proposal?.proposals[0].deposit_end_time) }}
           </div>
           <div class="progress-bar w-full h-2 bg-grey-200 rounded my-6">
             <div class="link-gradient rounded h-2 w-2/12" />
           </div>
           <ProposalDeposit
             v-if="loggedIn"
-            :proposal-id="proposal?.proposal[0].id"
+            :proposal-id="proposal?.proposals[0].id"
             :min-deposit="minDeposit"
             :total-deposit="totalDeposit"
             :deposit-denom="depositDenom"
@@ -581,34 +581,36 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   <div class="w-full flex-2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.proposer") }}</div>
                     <div class="text-light text-200 md:text-300 break-words leading-normal">
-                      {{ proposal?.proposal[0].proposer_address }}
+                      {{ proposal?.proposals[0].proposer_address }}
                     </div>
                   </div>
                   <div class="grow w-full lg:w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingStart") }}</div>
                     <div class="text-light text-200 md:text-300">
                       {{
-                        inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_start_time).format("MMMM D, YYYY h:mm A")
+                        inDeposit ? "-" : dayjs(proposal?.proposals[0].voting_start_time).format("MMMM D, YYYY h:mm A")
                       }}
                     </div>
                   </div>
                   <div class="grow w-full lg:w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.votingEnd") }}</div>
                     <div class="text-light text-200 md:text-300">
-                      {{ inDeposit ? "-" : dayjs(proposal?.proposal[0].voting_end_time).format("MMMM D, YYYY h:mm A") }}
+                      {{
+                        inDeposit ? "-" : dayjs(proposal?.proposals[0].voting_end_time).format("MMMM D, YYYY h:mm A")
+                      }}
                     </div>
                   </div>
                   <div class="grow w-full lg:w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.submitTime") }}</div>
                     <div class="text-light text-200 md:text-300">
-                      {{ dayjs(proposal?.proposal[0].submit_time).format("MMMM D, YYYY h:mm A") }}
+                      {{ dayjs(proposal?.proposals[0].submit_time).format("MMMM D, YYYY h:mm A") }}
                     </div>
                   </div>
                   <div class="grow w-full lg:w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.depositEnd") }}</div>
                     <div class="text-light text-200 md:text-300">
                       {{
-                        inDeposit ? dayjs(proposal?.proposal[0].deposit_end_time).format("MMMM D, YYYY h:mm A") : "-"
+                        inDeposit ? dayjs(proposal?.proposals[0].deposit_end_time).format("MMMM D, YYYY h:mm A") : "-"
                       }}
                     </div>
                   </div>
@@ -635,7 +637,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   {{ $t("proposalpage.labels.messages") }}
                 </div>
                 <div
-                  v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
+                  v-if="proposal?.proposals[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
                   class="flex w-full flex-wrap"
                 >
                   <div class="grow w-full md:w-1/2 mb-10">
@@ -645,18 +647,18 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   <div class="grow w-full md:w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
                     <div class="text-light text-200 md:text-300">
-                      {{ proposal?.proposal[0].content.title }}
+                      {{ proposal?.proposals[0].content.title }}
                     </div>
                   </div>
                   <div class="w-full flex-2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
                     <div class="text-light text-200 md:text-300">
-                      {{ proposal?.proposal[0].content.description }}
+                      {{ proposal?.proposals[0].content.description }}
                     </div>
                   </div>
                 </div>
                 <div
-                  v-if="proposal?.proposal[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
+                  v-if="proposal?.proposals[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
                   class="flex w-full flex-wrap flex-col md:flex-row"
                 >
                   <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
@@ -666,20 +668,20 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
                     <div class="text-light text-200 md:text-300">
-                      {{ proposal?.proposal[0].content.title }}
+                      {{ proposal?.proposals[0].content.title }}
                     </div>
                   </div>
                   <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
                     <div class="text-light text-200 md:text-300">
-                      {{ proposal?.proposal[0].content.description }}
+                      {{ proposal?.proposals[0].content.description }}
                     </div>
                   </div>
                   <div class="grow w-full md:w-1/2 mb-10 md:pl-3 pr-0">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.changes") }}</div>
                     <div class="text-light text-100">
                       <VCodeBlock
-                        :code="JSON.stringify(proposal?.proposal[0].content.changes, null, '\t')"
+                        :code="JSON.stringify(proposal?.proposals[0].content.changes, null, '\t')"
                         prismjs
                         :theme="false"
                       />
@@ -687,7 +689,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   </div>
                 </div>
                 <div
-                  v-if="proposal?.proposal[0].content['@type'] == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
+                  v-if="proposal?.proposals[0].content['@type'] == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
                   class="flex w-full flex-wrap"
                 >
                   <div class="grow w-1/2 mb-10">
@@ -697,20 +699,20 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   <div class="grow w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.title") }}</div>
                     <div class="text-light text-200 md:text-300">
-                      {{ proposal?.proposal[0].content.title }}
+                      {{ proposal?.proposals[0].content.title }}
                     </div>
                   </div>
                   <div class="grow w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.description") }}</div>
                     <div class="text-light text-200 md:text-300">
-                      {{ proposal?.proposal[0].content.description }}
+                      {{ proposal?.proposals[0].content.description }}
                     </div>
                   </div>
                   <div class="grow w-1/2 mb-10">
                     <div class="text-grey-100 text-200 mb-2">{{ $t("proposalpage.labels.upgradePlan") }}</div>
                     <div class="text-light text-100">
                       <VCodeBlock
-                        :code="JSON.stringify(proposal?.proposal[0].content.plan, null, '\t')"
+                        :code="JSON.stringify(proposal?.proposals[0].content.plan, null, '\t')"
                         prismjs
                         :theme="false"
                       />
@@ -726,14 +728,14 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
           <div class="flex flex-col gap-8 p-10 bg-grey-400 rounded-md">
             <span>{{ $t("proposalpage.labels.proposalDescription") }}</span>
             <div v-if="proposal" class="text-grey-50">
-              <MarkdownParser v-model="proposal.proposal[0].description" />
+              <MarkdownParser v-model="proposal.proposals[0].description" />
             </div>
           </div>
         </div>
 
         <div v-else-if="isTabSelected('Voters')" class="flex flex-col w-full gap-6">
           <!-- Voters Panel -->
-          <div v-if="proposal && proposal.proposal[0]" class="flex flex-col lg:flex-row w-full gap-6">
+          <div v-if="proposal && proposal.proposals[0]" class="flex flex-col lg:flex-row w-full gap-6">
             <!-- All Account Votes -->
             <VotePanel
               :voters="distinctVoters"
@@ -809,7 +811,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
           {{ Utility.capitalizeFirstLetter(breakdownType ?? "") }}
         </div>
 
-        <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposal[0].id" />
+        <Breakdown v-if="proposal && breakdownType == 'voters'" :proposal-id="proposal.proposals[0].id" />
         <ValidatorBreakdown v-if="breakdownType == 'validators'" :validator-data="validatorsWithStakeAndVotes" />
       </div>
     </ModalWrap>

@@ -1,5 +1,5 @@
-query ProposalsPassed($limit: Int!, $offset: Int!, $where: proposal_bool_exp = {}) {
-  all_proposals: proposal(order_by: { passed_first_order: asc }, limit: $limit, offset: $offset, where: $where) {
+query ProposalsPassed($limit: Int!, $offset: Int!, $where: proposals_bool_exp = {}) {
+  all_proposals: proposals(order_by: { passed_first_order: asc }, limit: $limit, offset: $offset, where: $where) {
     content
     deposit_end_time
     description
@@ -21,7 +21,7 @@ query ProposalsPassed($limit: Int!, $offset: Int!, $where: proposal_bool_exp = {
     voting_end_time
     voting_start_time
   }
-  proposal_aggregate(where: $where) {
+  proposals_aggregate(where: $where) {
     aggregate {
       count
     }

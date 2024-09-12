@@ -1,0 +1,119 @@
+table:
+  name: blocks
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_block
+    insert_one: insert_block
+    select_by_pk: block
+    update_by_pk: update_block
+object_relationships:
+- name: validator
+  using:
+    foreign_key_constraint_on: proposer_address
+array_relationships:
+- name: balances
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: balances
+        schema: public
+- name: gov_params
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: gov_params
+        schema: public
+- name: proposal_deposits
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: proposal_deposits
+        schema: public
+- name: proposal_tally_results
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: proposal_tally_results
+        schema: public
+- name: proposal_votes
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: proposal_votes
+        schema: public
+- name: staked_balances
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: staked_balances
+        schema: public
+- name: supplies
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: supplies
+        schema: public
+- name: transactions
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: transactions
+        schema: public
+- name: validator_commissions
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: validator_commissions
+        schema: public
+- name: validator_descriptions
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: validator_descriptions
+        schema: public
+- name: validator_infos
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: validator_infos
+        schema: public
+- name: validator_statuses
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: validator_statuses
+        schema: public
+- name: validator_voting_powers
+  using:
+    foreign_key_constraint_on:
+      column: height
+      table:
+        name: validator_voting_powers
+        schema: public
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - total_gas
+    - num_txs
+    - hash
+    - proposer_address
+    - timestamp
+    filter: {}
+  role: anonymous

@@ -1,0 +1,62 @@
+table:
+  name: accounts
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_account
+    insert_one: insert_account
+    select_by_pk: account
+    update_by_pk: update_account
+array_relationships:
+- name: balances
+  using:
+    foreign_key_constraint_on:
+      column: address
+      table:
+        name: balances
+        schema: public
+- name: proposal_deposits
+  using:
+    foreign_key_constraint_on:
+      column: depositor_address
+      table:
+        name: proposal_deposits
+        schema: public
+- name: proposal_votes
+  using:
+    foreign_key_constraint_on:
+      column: voter_address
+      table:
+        name: proposal_votes
+        schema: public
+- name: proposals
+  using:
+    foreign_key_constraint_on:
+      column: proposer_address
+      table:
+        name: proposals
+        schema: public
+- name: staked_balances
+  using:
+    foreign_key_constraint_on:
+      column: delegator
+      table:
+        name: staked_balances
+        schema: public
+- name: validator_infos
+  using:
+    foreign_key_constraint_on:
+      column: self_delegate_address
+      table:
+        name: validator_infos
+        schema: public
+select_permissions:
+- comment: ""
+  permission:
+    allow_aggregations: true
+    columns:
+    - address
+    filter: {}
+  role: anonymous

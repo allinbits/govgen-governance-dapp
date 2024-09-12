@@ -1,0 +1,31 @@
+table:
+  name: proposal_validator_status_snapshots
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_proposal_validator_status_snapshot
+    insert_one: insert_proposal_validator_status_snapshot
+    select_by_pk: proposal_validator_status_snapshot
+    update_by_pk: update_proposal_validator_status_snapshot
+object_relationships:
+- name: proposal
+  using:
+    foreign_key_constraint_on: proposal_id
+- name: validator
+  using:
+    foreign_key_constraint_on: validator_address
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - voting_power
+    - jailed
+    - id
+    - proposal_id
+    - status
+    - validator_address
+    filter: {}
+  role: anonymous

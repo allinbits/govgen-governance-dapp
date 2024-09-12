@@ -1,5 +1,5 @@
 query Votes($address: String!, $proposalId: Int!, $propId: String!) {
-  proposal_vote(
+  proposal_votes(
     where: { proposal_id: { _eq: $proposalId }, voter_address: { _eq: $address } }
     order_by: { height: desc }
   ) {

@@ -1,8 +1,8 @@
-import { ref, computed } from "vue";
-import * as GithubTypes from "@/types/github/index";
 import { useConfig } from "@/composables/useConfig";
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
+import * as GithubTypes from "@/types/github/index";
 import * as Utility from "@/utility/index";
+import { computed, ref } from "vue";
 
 type ParsedComment = {
   id: string;

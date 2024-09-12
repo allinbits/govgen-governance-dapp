@@ -1,16 +1,16 @@
+import apolloClient from "@/apolloClient";
+import { provideApolloClient } from "@vue/apollo-composable";
 import { computed } from "vue";
 import { useChainData } from "./useChainData";
-import { provideApolloClient } from "@vue/apollo-composable";
-import apolloClient from "@/apolloClient";
 
 const { getValset, getDelegatedAsync, getValidators } = useChainData();
 export const useValidators = (height?: string) => {
   const validatorList = height ? getValset(height) : getValidators();
   const validators = computed(() => {
     if (validatorList.value) {
-      return "proposal_validator_status_snapshot" in validatorList.value
-        ? validatorList.value.proposal_validator_status_snapshot
-        : validatorList.value.validator_status;
+      return "proposal_validator_status_snapshots" in validatorList.value
+        ? validatorList.value.proposal_validator_status_snapshots
+        : validatorList.value.validator_statuses;
     } else {
       return [];
     }

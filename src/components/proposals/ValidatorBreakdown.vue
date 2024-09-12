@@ -4,14 +4,14 @@ import * as Utility from "@/utility/index";
 
 const props = defineProps<{
   validatorData: Array<
-    (ValidatorsQuery["validator_status"][0] | ValSetQuery["proposal_validator_status_snapshot"][0]) & {
+    (ValidatorsQuery["validator_statuses"][0] | ValSetQuery["proposal_validator_status_snapshots"][0]) & {
       voting_power: number;
-      votes: VotesQuery["proposal_vote"];
+      votes: VotesQuery["proposal_votes"];
     }
   >;
 }>();
 
-const getTxHash = (vote: VotesQuery["proposal_vote"][0]) => {
+const getTxHash = (vote: VotesQuery["proposal_votes"][0]) => {
   if (vote.block && vote.block.transactions && vote.block.transactions.length > 0) {
     const transaction = vote.block.transactions.filter((tx) => {
       return (

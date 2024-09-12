@@ -1,0 +1,19 @@
+table:
+  name: staking_params
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_staking_param
+    insert_one: insert_staking_param
+    select_by_pk: staking_param
+    update_by_pk: update_staking_param
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - params
+    filter: {}
+  role: anonymous

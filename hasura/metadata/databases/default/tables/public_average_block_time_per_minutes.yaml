@@ -1,0 +1,20 @@
+table:
+  name: average_block_time_per_minutes
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_average_block_time_per_minute
+    insert_one: insert_average_block_time_per_minute
+    select_by_pk: average_block_time_per_minute
+    update_by_pk: update_average_block_time_per_minute
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - one_row_id
+    - average_time
+    filter: {}
+  role: anonymous

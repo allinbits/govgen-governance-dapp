@@ -1,0 +1,28 @@
+table:
+  name: validator_commissions
+  schema: public
+configuration:
+  column_config: {}
+  custom_column_names: {}
+  custom_root_fields:
+    delete_by_pk: delete_validator_commission
+    insert_one: insert_validator_commission
+    select_by_pk: validator_commission
+    update_by_pk: update_validator_commission
+object_relationships:
+- name: block
+  using:
+    foreign_key_constraint_on: height
+- name: validator_info
+  using:
+    foreign_key_constraint_on: validator_address
+select_permissions:
+- comment: ""
+  permission:
+    columns:
+    - height
+    - min_self_delegation
+    - commission
+    - validator_address
+    filter: {}
+  role: anonymous
