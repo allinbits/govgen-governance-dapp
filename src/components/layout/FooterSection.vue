@@ -15,8 +15,13 @@ const links = [
       <span>{{ $t("components.FooterSection.cta") }}</span>
       <!-- Footer Social Links-->
       <div class="flex flex-row gap-4 justify-end">
-        <a v-for="(linkData, index) in links" :key="index" class="flex items-center" :href="linkData.url"
-          target="_blank">
+        <a
+          v-for="(linkData, index) in links"
+          :key="index"
+          class="flex items-center"
+          :href="linkData.url"
+          target="_blank"
+        >
           <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
         </a>
       </div>

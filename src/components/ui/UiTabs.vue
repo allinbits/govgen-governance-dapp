@@ -1,21 +1,48 @@
 <template>
-  <DropDown v-model="tabIdx" :values="options.map(x => x.title)" class="md:hidden" v-bind="$attrs" @select="(id: number) => {
-    changeTab(id);
-    logEvent('Click Tab', { tabOption: options[id].title });
-  }
-    " />
+  <DropDown
+    v-model="tabIdx"
+    :values="options.map((x) => x.title)"
+    class="md:hidden"
+    v-bind="$attrs"
+    @select="
+      (id: number) => {
+        changeTab(id);
+        logEvent('Click Tab', { tabOption: options[id].title });
+      }
+    "
+  />
 
   <div class="hidden md:flex flex-col w-full pt-12 relative" v-bind="$attrs">
-    <div ref="toggler" class="flex flex-row w-full gap-6 md:gap-12 relative" role="radiogroup" aria-label="Switch"
-      @mouseleave="changeTab(lastTab)">
+    <div
+      ref="toggler"
+      class="flex flex-row w-full gap-6 md:gap-12 relative"
+      role="radiogroup"
+      aria-label="Switch"
+      @mouseleave="changeTab(lastTab)"
+    >
       <!-- Tabs -->
-      <div v-for="(option, index) in options" :key="option.title" :ref="(el) => tabRefs.push(el as any)" class="z-2"
-        @mouseover="changeTab(index, false)">
-        <input v-bind="$attrs" :id="id + option.title" :name="id" :value="option.title" type="radio" class="hidden peer"
-          @click="changeTab(index)" />
-        <label ref="togglerOption" :for="id + option.title"
+      <div
+        v-for="(option, index) in options"
+        :key="option.title"
+        :ref="(el) => tabRefs.push(el as any)"
+        class="z-2"
+        @mouseover="changeTab(index, false)"
+      >
+        <input
+          v-bind="$attrs"
+          :id="id + option.title"
+          :name="id"
+          :value="option.title"
+          type="radio"
+          class="hidden peer"
+          @click="changeTab(index)"
+        />
+        <label
+          ref="togglerOption"
+          :for="id + option.title"
           class="flex text-grey-50 py-1.5 text-500 cursor-pointer peer-checked:text-light ease-in-out duration-300"
-          @click="logEvent('Click Tab', { tabOption: option.title })">
+          @click="logEvent('Click Tab', { tabOption: option.title })"
+        >
           {{ $t("ui.tabs." + option.title) }}
         </label>
       </div>
