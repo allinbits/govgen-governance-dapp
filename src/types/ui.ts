@@ -4,3 +4,7 @@ export enum ContextTypes {
   SUCCESS = "success",
   FAIL = "fail",
 }
+export type UiTabOption = {
+  title: string;
+  link?: string;
+};

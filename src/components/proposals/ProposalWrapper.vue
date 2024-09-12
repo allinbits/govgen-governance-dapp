@@ -14,7 +14,7 @@ import SimpleCard from "@/components/ui/SimpleCard.vue";
 import UiTabs from "@/components/ui/UiTabs.vue";
 import VotePanel from "@/components/proposals/VotePanel.vue";
 import Treemap from "@/components/proposals/Treemap.vue";
-import { ContextTypes } from "@/types/ui";
+import { ContextTypes, UiTabOption } from "@/types/ui";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import utc from "dayjs/plugin/utc";
@@ -207,7 +207,13 @@ const termLink = computed(() => `Link #${props.proposalId}`);
 const termDiscussion = computed(() => `Proposal #${props.proposalId}`);
 
 const tabSelected = ref<TabNames>("Info");
-const tabOptions = reactive<TabNames[]>(["Description", "Info", "Voters", "Discussions", "Links"]);
+const tabOptions = reactive<UiTabOption[]>([
+  { title: "Description" },
+  { title: "Info" },
+  { title: "Voters" },
+  { title: "Discussions", link: "https://commonwealth.im/govgen/proposal/" + props.proposalId },
+  { title: "Links", link: "https://commonwealth.im/govgen/proposal/" + props.proposalId },
+]);
 
 const breakdownType = ref<("validators" | "voters") | null>(null);
 const breakdownOffset = ref(0);
@@ -821,6 +827,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
 .tab-leave-active {
   transition: all 0.4s;
 }
+
 .tab-enter-from,
 .tab-leave-to {
   opacity: 0;

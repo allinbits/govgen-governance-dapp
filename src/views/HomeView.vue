@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
-
 import ProposalCard from "@/components/home/ProposalCard.vue";
 import CommentCount from "@/components/home/CommentCount.vue";
 import Search from "@/components/ui/Search.vue";
@@ -15,8 +14,8 @@ import { useTelemetry } from "@/composables/useTelemetry";
 import { bus } from "@/bus";
 import { useRouter } from "vue-router";
 
+const chain_id = import.meta.env.VITE_CHAIN_ID;
 const router = useRouter();
-
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
 const limit = ref(16);
@@ -128,6 +127,7 @@ const links = ref([
   { title: "Twitter", url: "https://twitter.com/_govgen", icon: "twitter" },
   { title: "Discord", url: "https://discord.com/invite/atomone", icon: "discord" },
   { title: "Github", url: "https://github.com/atomone-hub", icon: "github" },
+  { title: "Forum", url: "https://commonwealth.im/govgen", icon: "commonwealth" },
 ]);
 const hasMore = computed(() => {
   return (proposals.value?.proposal_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
@@ -218,6 +218,7 @@ function onSearchInput() {
                 :key="index"
                 class="flex items-center"
                 :href="linkData.url"
+                target="_blank"
                 @click="logEvent('Click Home Social', { socialOption: linkData.title })"
               >
                 <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
@@ -228,12 +229,17 @@ function onSearchInput() {
           <p
             class="text-grey-100 text-300 lg:w-[656px] font-normal text-left text-pretty after:absolute after:block after:left-0 after:w-full after:bg-grey-300 after:h-px"
           >
-            <span class="block pb-8 lg:pb-[72px]"> {{ $t("homepage.intro") }} </span>
+            <i18n-t keypath="homepage.intro" tag="span" class="block pb-8 lg:pb-[72px]">
+              <a href="https://commonwealth.im/govgen" class="text-light text-300" target="_blank">{{
+                $t("homepage.forumLinkText")
+              }}</a>
+            </i18n-t>
           </p>
         </div>
       </div>
       <div class="w-1/4">
         <div
+          v-if="chain_id != 'govgen-1'"
           class="flex items-center justify-center gap-4 px-6 py-4 rounded link-gradient text-dark text-center cursor-pointer w-full font-medium"
           @click="router.push({ path: '/create' })"
         >
@@ -271,10 +277,11 @@ function onSearchInput() {
       class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6 mt-[72px]"
     >
       <ProposalCard v-for="proposal in orderedProposals" :key="proposal.id" :link="'/proposals/' + proposal.id">
-        <template #header
-          ><ProposalStatus
+        <template #header>
+          <ProposalStatus
             :status="PropStatus[(proposal.status ?? 'PROPOSAL_STATUS_UNSPECIFIED') as keyof typeof PropStatus]"
-        /></template>
+          />
+        </template>
         <template #number>#{{ proposal.id }}</template>
         <div>{{ proposal.title }}</div>
         <template #footer>

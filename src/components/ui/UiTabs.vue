@@ -1,13 +1,13 @@
 <template>
   <DropDown
     v-model="tabIdx"
-    :values="options"
+    :values="options.map((x) => x.title)"
     class="md:hidden"
     v-bind="$attrs"
     @select="
       (id: number) => {
         changeTab(id);
-        logEvent('Click Tab', { tabOption: options[id] });
+        logEvent('Click Tab', { tabOption: options[id].title });
       }
     "
   />
@@ -23,27 +23,27 @@
       <!-- Tabs -->
       <div
         v-for="(option, index) in options"
-        :key="option"
+        :key="option.title"
         :ref="(el) => tabRefs.push(el as any)"
         class="z-2"
         @mouseover="changeTab(index, false)"
       >
         <input
           v-bind="$attrs"
-          :id="id + option"
+          :id="id + option.title"
           :name="id"
-          :value="option"
+          :value="option.title"
           type="radio"
           class="hidden peer"
           @click="changeTab(index)"
         />
         <label
           ref="togglerOption"
-          :for="id + option"
+          :for="id + option.title"
           class="flex text-grey-50 py-1.5 text-500 cursor-pointer peer-checked:text-light ease-in-out duration-300"
-          @click="logEvent('Click Tab', { tabOption: option })"
+          @click="logEvent('Click Tab', { tabOption: option.title })"
         >
-          {{ $t("ui.tabs." + option) }}
+          {{ $t("ui.tabs." + option.title) }}
         </label>
       </div>
     </div>
@@ -58,11 +58,12 @@
 import { ref, onMounted } from "vue";
 import DropDown from "./DropDown.vue";
 import { useTelemetry } from "@/composables/useTelemetry";
+import { UiTabOption } from "@/types/ui";
 
 type Props = {
   modelValue?: string | number;
   id: string;
-  options: string[];
+  options: UiTabOption[];
 };
 
 const tabSelected = defineModel<string>();
@@ -75,9 +76,17 @@ const tabIdx = ref<number>(0);
 const props = withDefaults(defineProps<Props>(), { modelValue: undefined });
 function changeTab(idx: number = 0, isClicked = true) {
   tabIdx.value = idx;
+  console.log(props.options[tabIdx.value]);
+  console.log(isClicked);
   if (isClicked) {
-    tabSelected.value = props.options[tabIdx.value];
-    lastTab.value = idx;
+    const link = props.options[tabIdx.value].link;
+    console.log(link);
+    if (link) {
+      window.open(link, "_blank");
+    } else {
+      tabSelected.value = props.options[tabIdx.value].title;
+      lastTab.value = idx;
+    }
   }
   const el = tabRefs.value[tabIdx.value] as HTMLElement;
   if (!el || !line.value) {

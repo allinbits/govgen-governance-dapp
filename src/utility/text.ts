@@ -13,6 +13,9 @@ export function shorten(text: string) {
     return text.slice(0, 8) + "..." + text.slice(-8);
   }
 }
+export const toPlainObjectString = (obj: unknown) => {
+  return JSON.stringify(obj, (_key, value) => (typeof value === "bigint" ? value.toString() : value), "\t");
+};
 export function totalAmounts(amount: Coin[]): string {
   const amounts = new Map<string, bigint>();
   for (let i = 0; i < amount.length; i++) {

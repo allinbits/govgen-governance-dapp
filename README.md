@@ -6,9 +6,7 @@ Our goal with the GovGen governance dApp is to empower the community to effortle
 
 ## Usage
 
-**NOTE: The mainnet deployment is not live yet**
-
-You can visit the deployed dApp at [https://app.govgen.io/](https://app.govgen.io/) for mainnet (pending) or [https://app.govgen.dev/](https://app.govgen.dev/) for devnet.
+You can visit the deployed dApp at [https://app.govgen.io/](https://app.govgen.io/) for mainnet or [https://staging.govgen.dev/](https://staging.govgen.dev/) for devnet.
 
 The following is a showcase of the existing functionality.
 
@@ -26,7 +24,7 @@ In all the pages, there is a button at the top that allows you to connect your a
 
 ### Proposal page
 
-The page for a specific proposal (URL format: `https://app.govgen.io/proposals/XXX` or `https://app.govgen.dev/proposals/XXX` for mainnet and devnet respectively, where XXX is the id of the proposal) provides a view of all the proposal's details in a tabbed interface.
+The page for a specific proposal (URL format: `https://app.govgen.io/proposals/XXX` or `https://staging.govgen.dev/proposals/XXX` for mainnet and devnet respectively, where XXX is the id of the proposal) provides a view of all the proposal's details in a tabbed interface.
 
 There is a hero component that includes the title, status, turnout, necessary quorum, expected result, and current vote tallies. It also consists of a call-to-action to Vote or Deposit (depending on the proposal status).
 
@@ -35,8 +33,8 @@ Under the hero component, you will find the following tabs:
 - **Description** (default): Contains the proposal description (also renders markdown)
 - **Info**: Contains the general proposal information such as proposer address, submission time, initial and total deposit, voting start time/end time and deposit end time (if appropriate) along with the messages contained in the proposal.
 - **Voters**: Contains an in-depth analysis of how all accounts have voted and how validators have voted including a complete breakdown of unique votes.
-- **Discussions**: Contains the discussion for this specific proposal. The discussion is backed by GitHub discussions and requires authenticating with a GitHub account before you can participate and authorizing the Discusser app.
-- **Links**: Contains useful/helpful links provided by the community that add information and context relevant to the proposal. It also contains an upvote/downvote ratio slider that you can use to filter out downvoted links to your liking.
+- **Discussions**: Links to the discussion forums at [Commonwealth](https://commonwealth.im/govgen). Soon, you will be able to take part in the conversation directly from the Govgen dApp through integration with the Commonwealth API.
+- **Links**: Contains useful/helpful links provided by the community that add information and context relevant to the proposal. Links to the discussion forums at [Commonwealth](https://commonwealth.im/govgen). Soon, you will be able to add helpful links to the conversation directly from the Govgen dApp through integration with the Commonwealth API.
 
 ### Deposit popup
 

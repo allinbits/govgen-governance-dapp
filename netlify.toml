@@ -1,6 +1,9 @@
 [context.deploy-preview.environment]
   VITE_REPO             = "allinbits/govgen-governance-discussions-test"
   VITE_ENDPOINT         = "https://gh-discuss.devnet.govgen.dev"
+  VITE_CHAIN_ID         = "govgen-devnet-4"
+  VITE_RPC              = "https://rpc.govgen.dev"
+  VITE_API              = "https://api.govgen.dev"
   VITE_GRAPHQL_ENDPOINT = "https://graphql-devnet.govgen.dev/v1/graphql"
 
 [[redirects]]

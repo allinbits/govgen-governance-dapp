@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 import { bus } from "@/bus";
 
 import ModalWrap from "@/components/common/ModalWrap.vue";

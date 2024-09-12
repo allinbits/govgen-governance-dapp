@@ -7,11 +7,14 @@ import { DeliverTxResponse } from "@cosmjs/stargate";
 import { useRouter } from "vue-router";
 import { bus } from "@/bus";
 import { VCodeBlock } from "@wdns/vue-code-block";
+import { toPlainObjectString } from "@/utility";
+import { useWallet } from "@/composables/useWallet";
 
 type ParameterType = { key: string; subspace: string; value: string };
 
 const router = useRouter();
 
+const { loggedIn } = useWallet();
 const {
   createProposal,
   createTextProposalContent,
@@ -221,13 +224,14 @@ function clearProposal() {
         <CommonButton
           v-if="!isProcessing"
           :class="
-            isAllValid
+            isAllValid && loggedIn
               ? ['opacity-100', 'cursor-pointer']
               : ['opacity-50', 'cursor-default', 'hover:cursor-default', 'hover:text-light']
           "
-          @click="isAllValid ? create() : () => {}"
+          @click="loggedIn ? (isAllValid ? create() : () => {}) : bus.emit('open')"
         >
-          Create
+          <template v-if="loggedIn">{{ $t("proposalcreate.proposalCTA") }}</template>
+          <template v-else>{{ $t("proposalcreate.proposalWallet") }}</template>
         </CommonButton>
 
         <CommonButton v-else class="cursor-default" disabled>
@@ -240,7 +244,7 @@ function clearProposal() {
         ><Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}</CommonButton
       >
       <span class="text-700 font-termina font-semibold leading-[64px]">{{ $t("proposalcreate.transaction") }}</span>
-      <VCodeBlock :code="JSON.stringify(trx, null, '\t')" prismjs />
+      <VCodeBlock :code="toPlainObjectString(trx)" prismjs />
     </template>
   </div>
 </template>
