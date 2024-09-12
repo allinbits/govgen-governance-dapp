@@ -1,6 +1,5 @@
 import { Coin } from "@cosmjs/proto-signing";
-import devnet from "@/chain-govgen-devnet-4.json";
-import mainnet from "@/chain-govgen-1.json";
+import chainConfig from "@/chain-config.json";
 import { purifyForLinks } from "./purify";
 
 export function capitalizeFirstLetter(text: string) {
@@ -15,7 +14,7 @@ export function shorten(text: string) {
   }
 }
 export const toPlainObjectString = (obj: unknown) => {
-  return JSON.stringify(obj, (key, value) => (typeof value === "bigint" ? value.toString() : value), "\t");
+  return JSON.stringify(obj, (_key, value) => (typeof value === "bigint" ? value.toString() : value), "\t");
 };
 export function totalAmounts(amount: Coin[]): string {
   const amounts = new Map<string, bigint>();
