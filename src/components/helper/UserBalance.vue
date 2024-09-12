@@ -9,7 +9,7 @@ const { getBalance } = useChainData();
 const balances = getBalance(address);
 
 const balance = computed(() => {
-  let bal = balances.value?.action_account_balance[0].coins?.filter((x) => x.denom == denom)[0];
+  let bal = balances.value?.action_account_balance[0]?.coins?.filter((x) => x.denom == denom)[0];
   if (bal) {
     return bal;
   } else {

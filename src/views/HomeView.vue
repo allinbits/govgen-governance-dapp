@@ -14,6 +14,7 @@ import { useTelemetry } from "@/composables/useTelemetry";
 import { bus } from "@/bus";
 import { useRouter } from "vue-router";
 
+const chain_id = import.meta.env.VITE_CHAIN_ID;
 const router = useRouter();
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
@@ -238,6 +239,7 @@ function onSearchInput() {
       </div>
       <div class="w-1/4">
         <div
+          v-if="chain_id != 'govgen-1'"
           class="flex items-center justify-center gap-4 px-6 py-4 rounded link-gradient text-dark text-center cursor-pointer w-full font-medium"
           @click="router.push({ path: '/create' })"
         >
