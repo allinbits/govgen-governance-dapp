@@ -139,7 +139,7 @@ const useWalletInstance = () => {
       try {
         const client = await getSigningGovgenClient({ rpcEndpoint: chainInfo.rpc, signer: signer.value });
         const result = await client.signAndBroadcast(walletState.address.value, msgs, {
-          amount: [{ amount: "0", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }],
+          amount: [{ amount: "1000", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }],
           gas: "400000",
         });
         return result;
