@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ProposalCard from "@/components/home/ProposalCard.vue";
-import CommentCount from "@/components/home/CommentCount.vue";
+//import CommentCount from "@/components/home/CommentCount.vue";
 import DelegatedTotal from "@/components/helper/DelegatedTotal.vue";
 import BlockTimestamp from "@/components/helper/BlockTimestamp.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
@@ -102,13 +102,13 @@ const props = defineProps<{
                 </template>
                 <template v-else> - </template>
               </span>
-              <span v-if="proposal.vote.length > 0"
-                ><DelegatedTotal :address="address" :timestamp="proposal.voting_end_time"></DelegatedTotal
-              ></span>
+              <span v-if="proposal.vote.length > 0">
+                <DelegatedTotal :address="address" :timestamp="proposal.voting_end_time"></DelegatedTotal>
+              </span>
               <span v-else> - </span>
               <span v-if="proposal.vote.length > 0" class="text-right">
-                <BlockTimestamp :height="proposal.vote[0].height"></BlockTimestamp
-              ></span>
+                <BlockTimestamp :height="proposal.vote[0].height"></BlockTimestamp>
+              </span>
               <span v-else class="text-right"> - </span>
             </template>
           </div>
@@ -117,15 +117,18 @@ const props = defineProps<{
       <template v-else>
         <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 xl:gap-6 mt-12">
           <ProposalCard v-for="proposal in proposals" :key="proposal.id" :link="'/proposals/' + proposal.id">
-            <template #header
-              ><ProposalStatus
+            <template #header>
+              <ProposalStatus
                 :status="PropStatus[(proposal.status ?? 'PROPOSAL_STATUS_UNSPECIFIED') as keyof typeof PropStatus]"
-            /></template>
+              />
+            </template>
             <template #number>#{{ proposal.id }}</template>
             <div>{{ proposal.title }}</div>
             <div v-if="proposal.vote.length > 0" class="text-light text-200 mt-6">
               {{ $t("voteHistory.columns.voted") }}:
-              <span class="text-grey-100"><BlockTimestamp :height="proposal.vote[0].height"></BlockTimestamp></span>
+              <span class="text-grey-100">
+                <BlockTimestamp :height="proposal.vote[0].height"></BlockTimestamp>
+              </span>
             </div>
             <div v-if="proposal.vote.length > 0" class="flex flex-row gap-3">
               <div
@@ -175,10 +178,12 @@ const props = defineProps<{
                     <span>{{ proposal.proposal_votes_aggregate.aggregate?.count ?? 0 }}</span>
                   </div>
                   <!-- Comment Count -->
+                  <!--
                   <div class="flex flex-row items-center gap-1">
                     <Icon icon="comments" />
                     <CommentCount :proposal="proposal.id" />
                   </div>
+                  //-->
                 </div>
               </div>
             </template>
