@@ -78,6 +78,8 @@ export const messages = {
       proposalTypeParam: "Parameter Change Proposal",
       proposalTypeUpgrade: "Upgrade Proposal",
       proposalTypeText: "Text Proposal",
+      proposalCTA: "Create",
+      proposalWallet: "Connect Wallet",
     },
     proposalpage: {
       badges: {

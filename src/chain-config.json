@@ -1,8 +1,8 @@
 {
-  "rpc": "https://rpc.govgen.io/",
-  "rest": "https://api.govgen.io/",
-  "chainId": "govgen-1",
-  "chainName": "GovGen Mainnet",
+  "rpc": "https://rpc.govgen.dev/",
+  "rest": "https://api.govgen.dev/",
+  "chainId": "govgen-devnet-4",
+  "chainName": "GovGen Devnet",
   "bip44": {
     "coinType": 118
   },

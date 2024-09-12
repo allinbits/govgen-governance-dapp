@@ -11,6 +11,11 @@ export enum Wallets {
   cosmostation = "Cosmostation",
   addressOnly = "AddressOnly",
 }
+chainInfo.chainId = import.meta.env.VITE_CHAIN_ID;
+chainInfo.rpc = import.meta.env.VITE_RPC;
+chainInfo.rest = import.meta.env.VITE_API;
+chainInfo.chainName = (import.meta.env.VITE_CHAIN_ID as string).includes("devnet") ? "GovGen Devnet" : "GovGen Mainnet";
+
 export const getWalletHelp = (wallet: Wallets) => {
   switch (wallet) {
     case Wallets.keplr:
@@ -135,7 +140,7 @@ const useWalletInstance = () => {
         const client = await getSigningGovgenClient({ rpcEndpoint: chainInfo.rpc, signer: signer.value });
         const result = await client.signAndBroadcast(walletState.address.value, msgs, {
           amount: [{ amount: "0", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }],
-          gas: "200000",
+          gas: "400000",
         });
         return result;
       } catch (e) {
