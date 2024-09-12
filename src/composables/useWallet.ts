@@ -107,6 +107,12 @@ const useWalletInstance = () => {
               coinType: "" + chainInfo.bip44.coinType, // optional
             },
           });
+        } catch (e: unknown) {
+          if ((e as { code: number }).code != -32602) {
+            throw e;
+          }
+        }
+        try {
           walletState.address.value = (
             await (window.cosmostation as any).cosmos.request({
               method: "cos_requestAccount",
@@ -139,7 +145,7 @@ const useWalletInstance = () => {
       try {
         const client = await getSigningGovgenClient({ rpcEndpoint: chainInfo.rpc, signer: signer.value });
         const result = await client.signAndBroadcast(walletState.address.value, msgs, {
-          amount: [{ amount: "0", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }],
+          amount: [{ amount: "10000", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }],
           gas: "400000",
         });
         return result;

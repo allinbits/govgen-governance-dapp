@@ -40,6 +40,16 @@ const connectWallet = async (walletType: Wallets, address?: string) => {
     return;
   }
 
+  if (window.keplr) {
+    window.keplr.defaultOptions = {
+      sign: { preferNoSetFee: true, preferNoSetMemo: true, disableBalanceCheck: true },
+    };
+  }
+  if (window.leap) {
+    window.leap.defaultOptions = {
+      sign: { preferNoSetFee: true, preferNoSetMemo: true, disableBalanceCheck: true },
+    };
+  }
   isAddressOnlyConnection.value = false;
   isError.value = false;
   isConnecting.value = true;
@@ -128,8 +138,8 @@ const { logEvent } = useTelemetry();
                 <template #icon>
                   <Icon icon="link" :size="1.4" class="mr-2" />
                 </template>
-                Public Address</ConnectButton
-              >
+                Public Address
+              </ConnectButton>
             </div>
             <span class="text-grey-100 text-100 text-center leading-4">
               {{ $t("components.WalletConnect.publicAddressDisclaimer") }}
@@ -143,15 +153,15 @@ const { logEvent } = useTelemetry();
                 <template #icon>
                   <Icon icon="keplr" :size="1.4" class="mr-2" />
                 </template>
-                Keplr Wallet</ConnectButton
-              >
-              <ConnectButton class="my-4" :disabled="!leap" @click="connectWallet(Wallets.leap)"
-                ><Icon icon="leap" :size="1.1" class="mr-2 bg-dark p-1 rounded-sm" />Leap Wallet</ConnectButton
-              >
+                Keplr Wallet
+              </ConnectButton>
+              <ConnectButton class="my-4" :disabled="!leap" @click="connectWallet(Wallets.leap)">
+                <Icon icon="leap" :size="1.1" class="mr-2 bg-dark p-1 rounded-sm" />Leap Wallet
+              </ConnectButton>
               <ConnectButton class="my-4" :disabled="!cosmostation" @click="connectWallet(Wallets.cosmostation)">
                 <template #icon> <Icon icon="cosmostation" :size="1.1" class="mr-2 bg-dark p-1 rounded-sm" /> </template
-                >Cosmostation Wallet</ConnectButton
-              >
+                >Cosmostation Wallet
+              </ConnectButton>
             </div>
           </div>
         </div>
@@ -272,8 +282,9 @@ const { logEvent } = useTelemetry();
                 :href="getWalletHelp(chosenWallet)"
                 target="_blank"
                 class="text-100 flex my-2 justify-center items-center"
-                >{{ chosenWallet }} {{ $t("components.WalletConnect.trouble") }} <Icon icon="link" class="ml-2"
-              /></a>
+                >{{ chosenWallet }} {{ $t("components.WalletConnect.trouble") }}
+                <Icon icon="link" class="ml-2" />
+              </a>
             </div>
           </div>
         </div>
@@ -318,8 +329,9 @@ const { logEvent } = useTelemetry();
               :href="getWalletHelp(chosenWallet)"
               target="_blank"
               class="text-100 flex my-2 justify-center items-center"
-              >{{ chosenWallet }} {{ $t("components.WalletConnect.trouble") }} <Icon icon="link" class="ml-2"
-            /></a>
+              >{{ chosenWallet }} {{ $t("components.WalletConnect.trouble") }}
+              <Icon icon="link" class="ml-2" />
+            </a>
           </div>
         </div>
       </div>
@@ -332,6 +344,7 @@ const { logEvent } = useTelemetry();
 .fade-leave-active {
   transition: all 0.2s;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;

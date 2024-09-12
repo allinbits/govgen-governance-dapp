@@ -5,9 +5,11 @@ import HeaderSection from "@/components/layout/HeaderSection.vue";
 import ErrorBox from "@/components/popups/ErrorBox.vue";
 import FooterSection from "@/components/layout/FooterSection.vue";
 
+/*
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
 
 useGithubDiscussions().setup();
+*/
 </script>
 
 <template>
@@ -31,6 +33,7 @@ useGithubDiscussions().setup();
   transition: all 0.25s;
   transition-delay: 100ms;
 }
+
 .page-enter-from,
 .page-leave-to {
   opacity: 0;

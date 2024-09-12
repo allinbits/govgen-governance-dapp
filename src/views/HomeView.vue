@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import ProposalCard from "@/components/home/ProposalCard.vue";
-import CommentCount from "@/components/home/CommentCount.vue";
+//import CommentCount from "@/components/home/CommentCount.vue";
 import Search from "@/components/ui/Search.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
@@ -294,10 +294,12 @@ function onSearchInput() {
                 <span>{{ proposal.proposal_votes_aggregate.aggregate?.count ?? 0 }}</span>
               </div>
               <!-- Comment Count -->
+              <!--
               <div class="flex flex-row items-center gap-1">
                 <Icon icon="comments" />
                 <CommentCount :proposal="proposal.id" />
               </div>
+              //-->
             </div>
           </div>
         </template>

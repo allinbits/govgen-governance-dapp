@@ -2,8 +2,8 @@
 import { reactive, ref, computed, watch } from "vue";
 import { useChainData } from "@/composables/useChainData";
 import { useWallet } from "@/composables/useWallet";
-import GithubComments from "@/components/proposals/GithubComments.vue";
-import GithubLinks from "@/components/proposals/GithubLinks.vue";
+//import GithubComments from "@/components/proposals/GithubComments.vue";
+//import GithubLinks from "@/components/proposals/GithubLinks.vue";
 import { Deposit } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
 import ProposalVote from "@/components/popups/ProposalVote.vue";
 import ProposalDeposit from "@/components/popups/ProposalDeposit.vue";
@@ -203,8 +203,8 @@ const proposalTallies = getProposalTallies(props.proposalId);
 const params = getParams();
 const staking = getStakingStatus();
 
-const termLink = computed(() => `Link #${props.proposalId}`);
-const termDiscussion = computed(() => `Proposal #${props.proposalId}`);
+//const termLink = computed(() => `Link #${props.proposalId}`);
+//const termDiscussion = computed(() => `Proposal #${props.proposalId}`);
 
 const tabSelected = ref<TabNames>("Info");
 const tabOptions = reactive<UiTabOption[]>([
@@ -791,11 +791,11 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
         </div>
         <div v-else-if="isTabSelected('Discussions')" class="flex items-center justify-center w-full">
           <div class="w-full lg:w-2/3">
-            <GithubComments :term="termDiscussion" />
+            <!--<GithubComments :term="termDiscussion" />//-->
           </div>
         </div>
         <div v-else-if="isTabSelected('Links')" class="w-full">
-          <GithubLinks :term="termLink" />
+          <!--<GithubLinks :term="termLink" />//-->
         </div>
       </Transition>
     </div>
