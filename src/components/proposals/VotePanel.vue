@@ -28,10 +28,10 @@ const emits = defineEmits<{ (e: "onBreakdown"): void }>();
 const pcts = computed(() => {
   const sum = props.tokenTallies.yes + props.tokenTallies.no + props.tokenTallies.veto + props.tokenTallies.abstain;
   return {
-    yes: props.tokenTallies.yes / sum,
-    no: props.tokenTallies.no / sum,
-    veto: props.tokenTallies.veto / sum,
-    abstain: props.tokenTallies.abstain / sum,
+    yes: sum > 0 ? props.tokenTallies.yes / sum : 0,
+    no: sum > 0 ? props.tokenTallies.no / sum : 0,
+    veto: sum > 0 ? props.tokenTallies.veto / sum : 0,
+    abstain: sum > 0 ? props.tokenTallies.abstain / sum : 0,
   };
 });
 const totalVoteText = computed(() => {

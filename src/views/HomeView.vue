@@ -182,11 +182,6 @@ function setTypeFilterIndex(idx: number) {
   typeFilterIndex.value = idx;
   logEvent("Select Prop Type Filter", { filterTypeOption: activityFilter[idx] });
 }
-
-function onSearchInput() {
-  // Needs integration to filter proposals
-  console.log(searchText.value);
-}
 </script>
 
 <template>
@@ -254,7 +249,7 @@ function onSearchInput() {
     >
       <div class="flex flex-col gap-10 w-full lg:flex-row lg:items-center">
         <div class="font-termina text-500 lg:text-600 xl:text-700">{{ $t("homepage.proposalsHeader") }}</div>
-        <Search v-model="searchText" @input="onSearchInput">
+        <Search v-model="searchText">
           <Icon icon="search" />
         </Search>
       </div>

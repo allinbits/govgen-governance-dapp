@@ -18,7 +18,7 @@ const getTxHash = (vote: VotesQuery["proposal_vote"][0]) => {
         tx.messages.filter((msg: { [x: string]: string | number }) => {
           return (
             msg["voter"] == vote.voter_address &&
-            msg["proposal_id"] == vote.proposal_id &&
+            msg["proposalId"] == vote.proposal_id &&
             (msg["@type"] == "/govgen.gov.v1beta1.MsgVoteWeighted" || msg["@type"] == "/govgen.gov.v1beta1.MsgVote")
           );
         }).length > 0

@@ -11,6 +11,7 @@ const offset = ref<number>(0);
 const limit = ref<number>(10);
 
 const votes = getAllVotes(props.proposalId, limit.value, offset.value);
+console.log(votes);
 const hasMore = computed(() => {
   return (votes.value?.proposal_vote_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
 });
@@ -44,7 +45,7 @@ const getTxHash = (vote: AllVotesQuery["proposal_vote"][0]) => {
         tx.messages.filter((msg: { [x: string]: string | number }) => {
           return (
             msg["voter"] == vote.voter_address &&
-            msg["proposal_id"] == vote.proposal_id &&
+            msg["proposalId"] == vote.proposal_id &&
             (msg["@type"] == "/govgen.gov.v1beta1.MsgVoteWeighted" || msg["@type"] == "/govgen.gov.v1beta1.MsgVote")
           );
         }).length > 0
