@@ -5,7 +5,7 @@ This Privacy Policy (the “Policy”) governs your use of the website at https:
 
 If you do not want us to collect, use, or disclose your personal data in the ways described in this Policy, please do not use or otherwise interact with the Services, provide us with your personal data, or authorize any third party to make your personal data available to us. By using or interacting with the Services, you acknowledge that you understand that we may use your personal data as described in this Policy.
 
-Please note, as described in this Policy, we may receive your personal data from third parties that have not expressly told you that they will provide your personal data to us. If you have any questions about how we collect, use, protect, or disclose your personal data in connection with our platform, please contact us by email at [**legal@allinbits.com**](mailto:legal@allinbits.com).
+Please note, as described in this Policy, we may receive your personal data from third parties that have not expressly told you that they will provide your personal data to us. If you have any questions about how we collect, use, protect, or disclose your personal data in connection with our platform, please contact us by email at [**legal{'@'}allinbits.com**](mailto:legal{'@'}allinbits.com).
 
 **1. Scope and Applicability**
 
@@ -127,7 +127,7 @@ The Services may contain links to third-party websites and may redirect you to t
 
 We retain your personal data for as long as reasonably necessary to operate the Services, comply with legal obligations, and resolve disputes. However, blockchain data cannot be deleted due to its decentralized and immutable nature.
 
-If you would like to request that information we have about you be deleted, please contact us at legal@allinbits.com. Please note that certain data stored on public cryptographic blockchains cannot be deleted.
+If you would like to request that information we have about you be deleted, please contact us at legal{'@'}allinbits.com. Please note that certain data stored on public cryptographic blockchains cannot be deleted.
 
 **9. Your Choices and Rights**
 
@@ -165,7 +165,7 @@ We may update this Privacy Policy from time to time. When we update the Policy, 
 
 If you have any questions or concerns about this Privacy Policy, please contact us at:
 
-**Email:** legal@allinbits.com
+**Email:** legal{'@'}allinbits.com
 
 **Address:** All in Bits, Inc.
 
