@@ -395,6 +395,654 @@ export type Account_Updates = {
   where: Account_Bool_Exp;
 };
 
+/** columns and relationships of "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day = {
+  __typename?: 'average_block_time_per_day';
+  average_time: Scalars['numeric']['output'];
+  height: Scalars['bigint']['output'];
+  one_row_id: Scalars['Boolean']['output'];
+};
+
+/** aggregated selection of "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day_Aggregate = {
+  __typename?: 'average_block_time_per_day_aggregate';
+  aggregate?: Maybe<Average_Block_Time_Per_Day_Aggregate_Fields>;
+  nodes: Array<Average_Block_Time_Per_Day>;
+};
+
+/** aggregate fields of "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day_Aggregate_Fields = {
+  __typename?: 'average_block_time_per_day_aggregate_fields';
+  avg?: Maybe<Average_Block_Time_Per_Day_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Average_Block_Time_Per_Day_Max_Fields>;
+  min?: Maybe<Average_Block_Time_Per_Day_Min_Fields>;
+  stddev?: Maybe<Average_Block_Time_Per_Day_Stddev_Fields>;
+  stddev_pop?: Maybe<Average_Block_Time_Per_Day_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Average_Block_Time_Per_Day_Stddev_Samp_Fields>;
+  sum?: Maybe<Average_Block_Time_Per_Day_Sum_Fields>;
+  var_pop?: Maybe<Average_Block_Time_Per_Day_Var_Pop_Fields>;
+  var_samp?: Maybe<Average_Block_Time_Per_Day_Var_Samp_Fields>;
+  variance?: Maybe<Average_Block_Time_Per_Day_Variance_Fields>;
+};
+
+
+/** aggregate fields of "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Average_Block_Time_Per_Day_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate avg on columns */
+export type Average_Block_Time_Per_Day_Avg_Fields = {
+  __typename?: 'average_block_time_per_day_avg_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Boolean expression to filter rows from the table "average_block_time_per_day". All fields are combined with a logical 'AND'. */
+export type Average_Block_Time_Per_Day_Bool_Exp = {
+  _and?: InputMaybe<Array<Average_Block_Time_Per_Day_Bool_Exp>>;
+  _not?: InputMaybe<Average_Block_Time_Per_Day_Bool_Exp>;
+  _or?: InputMaybe<Array<Average_Block_Time_Per_Day_Bool_Exp>>;
+  average_time?: InputMaybe<Numeric_Comparison_Exp>;
+  height?: InputMaybe<Bigint_Comparison_Exp>;
+  one_row_id?: InputMaybe<Boolean_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "average_block_time_per_day" */
+export enum Average_Block_Time_Per_Day_Constraint {
+  /** unique or primary key constraint on columns "one_row_id" */
+  AverageBlockTimePerDayPkey = 'average_block_time_per_day_pkey'
+}
+
+/** input type for incrementing numeric columns in table "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day_Inc_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+};
+
+/** input type for inserting data into table "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day_Insert_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+  one_row_id?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate max on columns */
+export type Average_Block_Time_Per_Day_Max_Fields = {
+  __typename?: 'average_block_time_per_day_max_fields';
+  average_time?: Maybe<Scalars['numeric']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+};
+
+/** aggregate min on columns */
+export type Average_Block_Time_Per_Day_Min_Fields = {
+  __typename?: 'average_block_time_per_day_min_fields';
+  average_time?: Maybe<Scalars['numeric']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+};
+
+/** response of any mutation on the table "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day_Mutation_Response = {
+  __typename?: 'average_block_time_per_day_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Average_Block_Time_Per_Day>;
+};
+
+/** on_conflict condition type for table "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day_On_Conflict = {
+  constraint: Average_Block_Time_Per_Day_Constraint;
+  update_columns?: Array<Average_Block_Time_Per_Day_Update_Column>;
+  where?: InputMaybe<Average_Block_Time_Per_Day_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "average_block_time_per_day". */
+export type Average_Block_Time_Per_Day_Order_By = {
+  average_time?: InputMaybe<Order_By>;
+  height?: InputMaybe<Order_By>;
+  one_row_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: average_block_time_per_day */
+export type Average_Block_Time_Per_Day_Pk_Columns_Input = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+/** select columns of table "average_block_time_per_day" */
+export enum Average_Block_Time_Per_Day_Select_Column {
+  /** column name */
+  AverageTime = 'average_time',
+  /** column name */
+  Height = 'height',
+  /** column name */
+  OneRowId = 'one_row_id'
+}
+
+/** input type for updating data in table "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day_Set_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+  one_row_id?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type Average_Block_Time_Per_Day_Stddev_Fields = {
+  __typename?: 'average_block_time_per_day_stddev_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Average_Block_Time_Per_Day_Stddev_Pop_Fields = {
+  __typename?: 'average_block_time_per_day_stddev_pop_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Average_Block_Time_Per_Day_Stddev_Samp_Fields = {
+  __typename?: 'average_block_time_per_day_stddev_samp_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Streaming cursor of the table "average_block_time_per_day" */
+export type Average_Block_Time_Per_Day_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Average_Block_Time_Per_Day_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Average_Block_Time_Per_Day_Stream_Cursor_Value_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+  one_row_id?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Average_Block_Time_Per_Day_Sum_Fields = {
+  __typename?: 'average_block_time_per_day_sum_fields';
+  average_time?: Maybe<Scalars['numeric']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+};
+
+/** update columns of table "average_block_time_per_day" */
+export enum Average_Block_Time_Per_Day_Update_Column {
+  /** column name */
+  AverageTime = 'average_time',
+  /** column name */
+  Height = 'height',
+  /** column name */
+  OneRowId = 'one_row_id'
+}
+
+export type Average_Block_Time_Per_Day_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Average_Block_Time_Per_Day_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Average_Block_Time_Per_Day_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Average_Block_Time_Per_Day_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Average_Block_Time_Per_Day_Var_Pop_Fields = {
+  __typename?: 'average_block_time_per_day_var_pop_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate var_samp on columns */
+export type Average_Block_Time_Per_Day_Var_Samp_Fields = {
+  __typename?: 'average_block_time_per_day_var_samp_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate variance on columns */
+export type Average_Block_Time_Per_Day_Variance_Fields = {
+  __typename?: 'average_block_time_per_day_variance_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** columns and relationships of "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour = {
+  __typename?: 'average_block_time_per_hour';
+  average_time: Scalars['numeric']['output'];
+  height: Scalars['bigint']['output'];
+  one_row_id: Scalars['Boolean']['output'];
+};
+
+/** aggregated selection of "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour_Aggregate = {
+  __typename?: 'average_block_time_per_hour_aggregate';
+  aggregate?: Maybe<Average_Block_Time_Per_Hour_Aggregate_Fields>;
+  nodes: Array<Average_Block_Time_Per_Hour>;
+};
+
+/** aggregate fields of "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour_Aggregate_Fields = {
+  __typename?: 'average_block_time_per_hour_aggregate_fields';
+  avg?: Maybe<Average_Block_Time_Per_Hour_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Average_Block_Time_Per_Hour_Max_Fields>;
+  min?: Maybe<Average_Block_Time_Per_Hour_Min_Fields>;
+  stddev?: Maybe<Average_Block_Time_Per_Hour_Stddev_Fields>;
+  stddev_pop?: Maybe<Average_Block_Time_Per_Hour_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Average_Block_Time_Per_Hour_Stddev_Samp_Fields>;
+  sum?: Maybe<Average_Block_Time_Per_Hour_Sum_Fields>;
+  var_pop?: Maybe<Average_Block_Time_Per_Hour_Var_Pop_Fields>;
+  var_samp?: Maybe<Average_Block_Time_Per_Hour_Var_Samp_Fields>;
+  variance?: Maybe<Average_Block_Time_Per_Hour_Variance_Fields>;
+};
+
+
+/** aggregate fields of "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Average_Block_Time_Per_Hour_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate avg on columns */
+export type Average_Block_Time_Per_Hour_Avg_Fields = {
+  __typename?: 'average_block_time_per_hour_avg_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Boolean expression to filter rows from the table "average_block_time_per_hour". All fields are combined with a logical 'AND'. */
+export type Average_Block_Time_Per_Hour_Bool_Exp = {
+  _and?: InputMaybe<Array<Average_Block_Time_Per_Hour_Bool_Exp>>;
+  _not?: InputMaybe<Average_Block_Time_Per_Hour_Bool_Exp>;
+  _or?: InputMaybe<Array<Average_Block_Time_Per_Hour_Bool_Exp>>;
+  average_time?: InputMaybe<Numeric_Comparison_Exp>;
+  height?: InputMaybe<Bigint_Comparison_Exp>;
+  one_row_id?: InputMaybe<Boolean_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "average_block_time_per_hour" */
+export enum Average_Block_Time_Per_Hour_Constraint {
+  /** unique or primary key constraint on columns "one_row_id" */
+  AverageBlockTimePerHourPkey = 'average_block_time_per_hour_pkey'
+}
+
+/** input type for incrementing numeric columns in table "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour_Inc_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+};
+
+/** input type for inserting data into table "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour_Insert_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+  one_row_id?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate max on columns */
+export type Average_Block_Time_Per_Hour_Max_Fields = {
+  __typename?: 'average_block_time_per_hour_max_fields';
+  average_time?: Maybe<Scalars['numeric']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+};
+
+/** aggregate min on columns */
+export type Average_Block_Time_Per_Hour_Min_Fields = {
+  __typename?: 'average_block_time_per_hour_min_fields';
+  average_time?: Maybe<Scalars['numeric']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+};
+
+/** response of any mutation on the table "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour_Mutation_Response = {
+  __typename?: 'average_block_time_per_hour_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Average_Block_Time_Per_Hour>;
+};
+
+/** on_conflict condition type for table "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour_On_Conflict = {
+  constraint: Average_Block_Time_Per_Hour_Constraint;
+  update_columns?: Array<Average_Block_Time_Per_Hour_Update_Column>;
+  where?: InputMaybe<Average_Block_Time_Per_Hour_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "average_block_time_per_hour". */
+export type Average_Block_Time_Per_Hour_Order_By = {
+  average_time?: InputMaybe<Order_By>;
+  height?: InputMaybe<Order_By>;
+  one_row_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: average_block_time_per_hour */
+export type Average_Block_Time_Per_Hour_Pk_Columns_Input = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+/** select columns of table "average_block_time_per_hour" */
+export enum Average_Block_Time_Per_Hour_Select_Column {
+  /** column name */
+  AverageTime = 'average_time',
+  /** column name */
+  Height = 'height',
+  /** column name */
+  OneRowId = 'one_row_id'
+}
+
+/** input type for updating data in table "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour_Set_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+  one_row_id?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type Average_Block_Time_Per_Hour_Stddev_Fields = {
+  __typename?: 'average_block_time_per_hour_stddev_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Average_Block_Time_Per_Hour_Stddev_Pop_Fields = {
+  __typename?: 'average_block_time_per_hour_stddev_pop_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Average_Block_Time_Per_Hour_Stddev_Samp_Fields = {
+  __typename?: 'average_block_time_per_hour_stddev_samp_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Streaming cursor of the table "average_block_time_per_hour" */
+export type Average_Block_Time_Per_Hour_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Average_Block_Time_Per_Hour_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Average_Block_Time_Per_Hour_Stream_Cursor_Value_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+  one_row_id?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Average_Block_Time_Per_Hour_Sum_Fields = {
+  __typename?: 'average_block_time_per_hour_sum_fields';
+  average_time?: Maybe<Scalars['numeric']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+};
+
+/** update columns of table "average_block_time_per_hour" */
+export enum Average_Block_Time_Per_Hour_Update_Column {
+  /** column name */
+  AverageTime = 'average_time',
+  /** column name */
+  Height = 'height',
+  /** column name */
+  OneRowId = 'one_row_id'
+}
+
+export type Average_Block_Time_Per_Hour_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Average_Block_Time_Per_Hour_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Average_Block_Time_Per_Hour_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Average_Block_Time_Per_Hour_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Average_Block_Time_Per_Hour_Var_Pop_Fields = {
+  __typename?: 'average_block_time_per_hour_var_pop_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate var_samp on columns */
+export type Average_Block_Time_Per_Hour_Var_Samp_Fields = {
+  __typename?: 'average_block_time_per_hour_var_samp_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate variance on columns */
+export type Average_Block_Time_Per_Hour_Variance_Fields = {
+  __typename?: 'average_block_time_per_hour_variance_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** columns and relationships of "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute = {
+  __typename?: 'average_block_time_per_minute';
+  average_time: Scalars['numeric']['output'];
+  height: Scalars['bigint']['output'];
+  one_row_id: Scalars['Boolean']['output'];
+};
+
+/** aggregated selection of "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute_Aggregate = {
+  __typename?: 'average_block_time_per_minute_aggregate';
+  aggregate?: Maybe<Average_Block_Time_Per_Minute_Aggregate_Fields>;
+  nodes: Array<Average_Block_Time_Per_Minute>;
+};
+
+/** aggregate fields of "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute_Aggregate_Fields = {
+  __typename?: 'average_block_time_per_minute_aggregate_fields';
+  avg?: Maybe<Average_Block_Time_Per_Minute_Avg_Fields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<Average_Block_Time_Per_Minute_Max_Fields>;
+  min?: Maybe<Average_Block_Time_Per_Minute_Min_Fields>;
+  stddev?: Maybe<Average_Block_Time_Per_Minute_Stddev_Fields>;
+  stddev_pop?: Maybe<Average_Block_Time_Per_Minute_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Average_Block_Time_Per_Minute_Stddev_Samp_Fields>;
+  sum?: Maybe<Average_Block_Time_Per_Minute_Sum_Fields>;
+  var_pop?: Maybe<Average_Block_Time_Per_Minute_Var_Pop_Fields>;
+  var_samp?: Maybe<Average_Block_Time_Per_Minute_Var_Samp_Fields>;
+  variance?: Maybe<Average_Block_Time_Per_Minute_Variance_Fields>;
+};
+
+
+/** aggregate fields of "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Average_Block_Time_Per_Minute_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate avg on columns */
+export type Average_Block_Time_Per_Minute_Avg_Fields = {
+  __typename?: 'average_block_time_per_minute_avg_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Boolean expression to filter rows from the table "average_block_time_per_minute". All fields are combined with a logical 'AND'. */
+export type Average_Block_Time_Per_Minute_Bool_Exp = {
+  _and?: InputMaybe<Array<Average_Block_Time_Per_Minute_Bool_Exp>>;
+  _not?: InputMaybe<Average_Block_Time_Per_Minute_Bool_Exp>;
+  _or?: InputMaybe<Array<Average_Block_Time_Per_Minute_Bool_Exp>>;
+  average_time?: InputMaybe<Numeric_Comparison_Exp>;
+  height?: InputMaybe<Bigint_Comparison_Exp>;
+  one_row_id?: InputMaybe<Boolean_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "average_block_time_per_minute" */
+export enum Average_Block_Time_Per_Minute_Constraint {
+  /** unique or primary key constraint on columns "one_row_id" */
+  AverageBlockTimePerMinutePkey = 'average_block_time_per_minute_pkey'
+}
+
+/** input type for incrementing numeric columns in table "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute_Inc_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+};
+
+/** input type for inserting data into table "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute_Insert_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+  one_row_id?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate max on columns */
+export type Average_Block_Time_Per_Minute_Max_Fields = {
+  __typename?: 'average_block_time_per_minute_max_fields';
+  average_time?: Maybe<Scalars['numeric']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+};
+
+/** aggregate min on columns */
+export type Average_Block_Time_Per_Minute_Min_Fields = {
+  __typename?: 'average_block_time_per_minute_min_fields';
+  average_time?: Maybe<Scalars['numeric']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+};
+
+/** response of any mutation on the table "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute_Mutation_Response = {
+  __typename?: 'average_block_time_per_minute_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Average_Block_Time_Per_Minute>;
+};
+
+/** on_conflict condition type for table "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute_On_Conflict = {
+  constraint: Average_Block_Time_Per_Minute_Constraint;
+  update_columns?: Array<Average_Block_Time_Per_Minute_Update_Column>;
+  where?: InputMaybe<Average_Block_Time_Per_Minute_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "average_block_time_per_minute". */
+export type Average_Block_Time_Per_Minute_Order_By = {
+  average_time?: InputMaybe<Order_By>;
+  height?: InputMaybe<Order_By>;
+  one_row_id?: InputMaybe<Order_By>;
+};
+
+/** primary key columns input for table: average_block_time_per_minute */
+export type Average_Block_Time_Per_Minute_Pk_Columns_Input = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+/** select columns of table "average_block_time_per_minute" */
+export enum Average_Block_Time_Per_Minute_Select_Column {
+  /** column name */
+  AverageTime = 'average_time',
+  /** column name */
+  Height = 'height',
+  /** column name */
+  OneRowId = 'one_row_id'
+}
+
+/** input type for updating data in table "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute_Set_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+  one_row_id?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type Average_Block_Time_Per_Minute_Stddev_Fields = {
+  __typename?: 'average_block_time_per_minute_stddev_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Average_Block_Time_Per_Minute_Stddev_Pop_Fields = {
+  __typename?: 'average_block_time_per_minute_stddev_pop_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Average_Block_Time_Per_Minute_Stddev_Samp_Fields = {
+  __typename?: 'average_block_time_per_minute_stddev_samp_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** Streaming cursor of the table "average_block_time_per_minute" */
+export type Average_Block_Time_Per_Minute_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Average_Block_Time_Per_Minute_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Average_Block_Time_Per_Minute_Stream_Cursor_Value_Input = {
+  average_time?: InputMaybe<Scalars['numeric']['input']>;
+  height?: InputMaybe<Scalars['bigint']['input']>;
+  one_row_id?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** aggregate sum on columns */
+export type Average_Block_Time_Per_Minute_Sum_Fields = {
+  __typename?: 'average_block_time_per_minute_sum_fields';
+  average_time?: Maybe<Scalars['numeric']['output']>;
+  height?: Maybe<Scalars['bigint']['output']>;
+};
+
+/** update columns of table "average_block_time_per_minute" */
+export enum Average_Block_Time_Per_Minute_Update_Column {
+  /** column name */
+  AverageTime = 'average_time',
+  /** column name */
+  Height = 'height',
+  /** column name */
+  OneRowId = 'one_row_id'
+}
+
+export type Average_Block_Time_Per_Minute_Updates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<Average_Block_Time_Per_Minute_Inc_Input>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Average_Block_Time_Per_Minute_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Average_Block_Time_Per_Minute_Bool_Exp;
+};
+
+/** aggregate var_pop on columns */
+export type Average_Block_Time_Per_Minute_Var_Pop_Fields = {
+  __typename?: 'average_block_time_per_minute_var_pop_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate var_samp on columns */
+export type Average_Block_Time_Per_Minute_Var_Samp_Fields = {
+  __typename?: 'average_block_time_per_minute_var_samp_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
+/** aggregate variance on columns */
+export type Average_Block_Time_Per_Minute_Variance_Fields = {
+  __typename?: 'average_block_time_per_minute_variance_fields';
+  average_time?: Maybe<Scalars['Float']['output']>;
+  height?: Maybe<Scalars['Float']['output']>;
+};
+
 /** columns and relationships of "balances" */
 export type Balances = {
   __typename?: 'balances';
@@ -1859,6 +2507,114 @@ export type Jsonb_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['jsonb']['input']>>;
 };
 
+/** columns and relationships of "migrations" */
+export type Migrations = {
+  __typename?: 'migrations';
+  dt: Scalars['String']['output'];
+  module: Scalars['String']['output'];
+};
+
+/** aggregated selection of "migrations" */
+export type Migrations_Aggregate = {
+  __typename?: 'migrations_aggregate';
+  aggregate?: Maybe<Migrations_Aggregate_Fields>;
+  nodes: Array<Migrations>;
+};
+
+/** aggregate fields of "migrations" */
+export type Migrations_Aggregate_Fields = {
+  __typename?: 'migrations_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<Migrations_Max_Fields>;
+  min?: Maybe<Migrations_Min_Fields>;
+};
+
+
+/** aggregate fields of "migrations" */
+export type Migrations_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Migrations_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Boolean expression to filter rows from the table "migrations". All fields are combined with a logical 'AND'. */
+export type Migrations_Bool_Exp = {
+  _and?: InputMaybe<Array<Migrations_Bool_Exp>>;
+  _not?: InputMaybe<Migrations_Bool_Exp>;
+  _or?: InputMaybe<Array<Migrations_Bool_Exp>>;
+  dt?: InputMaybe<String_Comparison_Exp>;
+  module?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** input type for inserting data into table "migrations" */
+export type Migrations_Insert_Input = {
+  dt?: InputMaybe<Scalars['String']['input']>;
+  module?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate max on columns */
+export type Migrations_Max_Fields = {
+  __typename?: 'migrations_max_fields';
+  dt?: Maybe<Scalars['String']['output']>;
+  module?: Maybe<Scalars['String']['output']>;
+};
+
+/** aggregate min on columns */
+export type Migrations_Min_Fields = {
+  __typename?: 'migrations_min_fields';
+  dt?: Maybe<Scalars['String']['output']>;
+  module?: Maybe<Scalars['String']['output']>;
+};
+
+/** response of any mutation on the table "migrations" */
+export type Migrations_Mutation_Response = {
+  __typename?: 'migrations_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Migrations>;
+};
+
+/** Ordering options when selecting data from "migrations". */
+export type Migrations_Order_By = {
+  dt?: InputMaybe<Order_By>;
+  module?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "migrations" */
+export enum Migrations_Select_Column {
+  /** column name */
+  Dt = 'dt',
+  /** column name */
+  Module = 'module'
+}
+
+/** input type for updating data in table "migrations" */
+export type Migrations_Set_Input = {
+  dt?: InputMaybe<Scalars['String']['input']>;
+  module?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Streaming cursor of the table "migrations" */
+export type Migrations_Stream_Cursor_Input = {
+  /** Stream column input with initial value */
+  initial_value: Migrations_Stream_Cursor_Value_Input;
+  /** cursor ordering */
+  ordering?: InputMaybe<Cursor_Ordering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type Migrations_Stream_Cursor_Value_Input = {
+  dt?: InputMaybe<Scalars['String']['input']>;
+  module?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Migrations_Updates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<Migrations_Set_Input>;
+  /** filter the rows which have to be updated */
+  where: Migrations_Bool_Exp;
+};
+
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
@@ -1866,6 +2622,18 @@ export type Mutation_Root = {
   delete_account?: Maybe<Account_Mutation_Response>;
   /** delete single row from the table: "account" */
   delete_account_by_pk?: Maybe<Account>;
+  /** delete data from the table: "average_block_time_per_day" */
+  delete_average_block_time_per_day?: Maybe<Average_Block_Time_Per_Day_Mutation_Response>;
+  /** delete single row from the table: "average_block_time_per_day" */
+  delete_average_block_time_per_day_by_pk?: Maybe<Average_Block_Time_Per_Day>;
+  /** delete data from the table: "average_block_time_per_hour" */
+  delete_average_block_time_per_hour?: Maybe<Average_Block_Time_Per_Hour_Mutation_Response>;
+  /** delete single row from the table: "average_block_time_per_hour" */
+  delete_average_block_time_per_hour_by_pk?: Maybe<Average_Block_Time_Per_Hour>;
+  /** delete data from the table: "average_block_time_per_minute" */
+  delete_average_block_time_per_minute?: Maybe<Average_Block_Time_Per_Minute_Mutation_Response>;
+  /** delete single row from the table: "average_block_time_per_minute" */
+  delete_average_block_time_per_minute_by_pk?: Maybe<Average_Block_Time_Per_Minute>;
   /** delete data from the table: "balances" */
   delete_balances?: Maybe<Balances_Mutation_Response>;
   /** delete data from the table: "block" */
@@ -1874,6 +2642,8 @@ export type Mutation_Root = {
   delete_block_by_pk?: Maybe<Block>;
   /** delete data from the table: "gov_params" */
   delete_gov_params?: Maybe<Gov_Params_Mutation_Response>;
+  /** delete data from the table: "migrations" */
+  delete_migrations?: Maybe<Migrations_Mutation_Response>;
   /** delete data from the table: "proposal" */
   delete_proposal?: Maybe<Proposal_Mutation_Response>;
   /** delete single row from the table: "proposal" */
@@ -1918,6 +2688,18 @@ export type Mutation_Root = {
   insert_account?: Maybe<Account_Mutation_Response>;
   /** insert a single row into the table: "account" */
   insert_account_one?: Maybe<Account>;
+  /** insert data into the table: "average_block_time_per_day" */
+  insert_average_block_time_per_day?: Maybe<Average_Block_Time_Per_Day_Mutation_Response>;
+  /** insert a single row into the table: "average_block_time_per_day" */
+  insert_average_block_time_per_day_one?: Maybe<Average_Block_Time_Per_Day>;
+  /** insert data into the table: "average_block_time_per_hour" */
+  insert_average_block_time_per_hour?: Maybe<Average_Block_Time_Per_Hour_Mutation_Response>;
+  /** insert a single row into the table: "average_block_time_per_hour" */
+  insert_average_block_time_per_hour_one?: Maybe<Average_Block_Time_Per_Hour>;
+  /** insert data into the table: "average_block_time_per_minute" */
+  insert_average_block_time_per_minute?: Maybe<Average_Block_Time_Per_Minute_Mutation_Response>;
+  /** insert a single row into the table: "average_block_time_per_minute" */
+  insert_average_block_time_per_minute_one?: Maybe<Average_Block_Time_Per_Minute>;
   /** insert data into the table: "balances" */
   insert_balances?: Maybe<Balances_Mutation_Response>;
   /** insert a single row into the table: "balances" */
@@ -1930,6 +2712,10 @@ export type Mutation_Root = {
   insert_gov_params?: Maybe<Gov_Params_Mutation_Response>;
   /** insert a single row into the table: "gov_params" */
   insert_gov_params_one?: Maybe<Gov_Params>;
+  /** insert data into the table: "migrations" */
+  insert_migrations?: Maybe<Migrations_Mutation_Response>;
+  /** insert a single row into the table: "migrations" */
+  insert_migrations_one?: Maybe<Migrations>;
   /** insert data into the table: "proposal" */
   insert_proposal?: Maybe<Proposal_Mutation_Response>;
   /** insert data into the table: "proposal_deposit" */
@@ -2004,6 +2790,24 @@ export type Mutation_Root = {
   update_account_by_pk?: Maybe<Account>;
   /** update multiples rows of table: "account" */
   update_account_many?: Maybe<Array<Maybe<Account_Mutation_Response>>>;
+  /** update data of the table: "average_block_time_per_day" */
+  update_average_block_time_per_day?: Maybe<Average_Block_Time_Per_Day_Mutation_Response>;
+  /** update single row of the table: "average_block_time_per_day" */
+  update_average_block_time_per_day_by_pk?: Maybe<Average_Block_Time_Per_Day>;
+  /** update multiples rows of table: "average_block_time_per_day" */
+  update_average_block_time_per_day_many?: Maybe<Array<Maybe<Average_Block_Time_Per_Day_Mutation_Response>>>;
+  /** update data of the table: "average_block_time_per_hour" */
+  update_average_block_time_per_hour?: Maybe<Average_Block_Time_Per_Hour_Mutation_Response>;
+  /** update single row of the table: "average_block_time_per_hour" */
+  update_average_block_time_per_hour_by_pk?: Maybe<Average_Block_Time_Per_Hour>;
+  /** update multiples rows of table: "average_block_time_per_hour" */
+  update_average_block_time_per_hour_many?: Maybe<Array<Maybe<Average_Block_Time_Per_Hour_Mutation_Response>>>;
+  /** update data of the table: "average_block_time_per_minute" */
+  update_average_block_time_per_minute?: Maybe<Average_Block_Time_Per_Minute_Mutation_Response>;
+  /** update single row of the table: "average_block_time_per_minute" */
+  update_average_block_time_per_minute_by_pk?: Maybe<Average_Block_Time_Per_Minute>;
+  /** update multiples rows of table: "average_block_time_per_minute" */
+  update_average_block_time_per_minute_many?: Maybe<Array<Maybe<Average_Block_Time_Per_Minute_Mutation_Response>>>;
   /** update data of the table: "balances" */
   update_balances?: Maybe<Balances_Mutation_Response>;
   /** update multiples rows of table: "balances" */
@@ -2018,6 +2822,10 @@ export type Mutation_Root = {
   update_gov_params?: Maybe<Gov_Params_Mutation_Response>;
   /** update multiples rows of table: "gov_params" */
   update_gov_params_many?: Maybe<Array<Maybe<Gov_Params_Mutation_Response>>>;
+  /** update data of the table: "migrations" */
+  update_migrations?: Maybe<Migrations_Mutation_Response>;
+  /** update multiples rows of table: "migrations" */
+  update_migrations_many?: Maybe<Array<Maybe<Migrations_Mutation_Response>>>;
   /** update data of the table: "proposal" */
   update_proposal?: Maybe<Proposal_Mutation_Response>;
   /** update single row of the table: "proposal" */
@@ -2108,6 +2916,42 @@ export type Mutation_RootDelete_Account_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Average_Block_Time_Per_DayArgs = {
+  where: Average_Block_Time_Per_Day_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Average_Block_Time_Per_Day_By_PkArgs = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Average_Block_Time_Per_HourArgs = {
+  where: Average_Block_Time_Per_Hour_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Average_Block_Time_Per_Hour_By_PkArgs = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Average_Block_Time_Per_MinuteArgs = {
+  where: Average_Block_Time_Per_Minute_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Average_Block_Time_Per_Minute_By_PkArgs = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_BalancesArgs = {
   where: Balances_Bool_Exp;
 };
@@ -2128,6 +2972,12 @@ export type Mutation_RootDelete_Block_By_PkArgs = {
 /** mutation root */
 export type Mutation_RootDelete_Gov_ParamsArgs = {
   where: Gov_Params_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_MigrationsArgs = {
+  where: Migrations_Bool_Exp;
 };
 
 
@@ -2266,6 +3116,48 @@ export type Mutation_RootInsert_Account_OneArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Average_Block_Time_Per_DayArgs = {
+  objects: Array<Average_Block_Time_Per_Day_Insert_Input>;
+  on_conflict?: InputMaybe<Average_Block_Time_Per_Day_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Average_Block_Time_Per_Day_OneArgs = {
+  object: Average_Block_Time_Per_Day_Insert_Input;
+  on_conflict?: InputMaybe<Average_Block_Time_Per_Day_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Average_Block_Time_Per_HourArgs = {
+  objects: Array<Average_Block_Time_Per_Hour_Insert_Input>;
+  on_conflict?: InputMaybe<Average_Block_Time_Per_Hour_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Average_Block_Time_Per_Hour_OneArgs = {
+  object: Average_Block_Time_Per_Hour_Insert_Input;
+  on_conflict?: InputMaybe<Average_Block_Time_Per_Hour_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Average_Block_Time_Per_MinuteArgs = {
+  objects: Array<Average_Block_Time_Per_Minute_Insert_Input>;
+  on_conflict?: InputMaybe<Average_Block_Time_Per_Minute_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Average_Block_Time_Per_Minute_OneArgs = {
+  object: Average_Block_Time_Per_Minute_Insert_Input;
+  on_conflict?: InputMaybe<Average_Block_Time_Per_Minute_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_BalancesArgs = {
   objects: Array<Balances_Insert_Input>;
   on_conflict?: InputMaybe<Balances_On_Conflict>;
@@ -2302,6 +3194,18 @@ export type Mutation_RootInsert_Gov_ParamsArgs = {
 /** mutation root */
 export type Mutation_RootInsert_Gov_Params_OneArgs = {
   object: Gov_Params_Insert_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_MigrationsArgs = {
+  objects: Array<Migrations_Insert_Input>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Migrations_OneArgs = {
+  object: Migrations_Insert_Input;
 };
 
 
@@ -2544,6 +3448,72 @@ export type Mutation_RootUpdate_Account_ManyArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Average_Block_Time_Per_DayArgs = {
+  _inc?: InputMaybe<Average_Block_Time_Per_Day_Inc_Input>;
+  _set?: InputMaybe<Average_Block_Time_Per_Day_Set_Input>;
+  where: Average_Block_Time_Per_Day_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Average_Block_Time_Per_Day_By_PkArgs = {
+  _inc?: InputMaybe<Average_Block_Time_Per_Day_Inc_Input>;
+  _set?: InputMaybe<Average_Block_Time_Per_Day_Set_Input>;
+  pk_columns: Average_Block_Time_Per_Day_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Average_Block_Time_Per_Day_ManyArgs = {
+  updates: Array<Average_Block_Time_Per_Day_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Average_Block_Time_Per_HourArgs = {
+  _inc?: InputMaybe<Average_Block_Time_Per_Hour_Inc_Input>;
+  _set?: InputMaybe<Average_Block_Time_Per_Hour_Set_Input>;
+  where: Average_Block_Time_Per_Hour_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Average_Block_Time_Per_Hour_By_PkArgs = {
+  _inc?: InputMaybe<Average_Block_Time_Per_Hour_Inc_Input>;
+  _set?: InputMaybe<Average_Block_Time_Per_Hour_Set_Input>;
+  pk_columns: Average_Block_Time_Per_Hour_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Average_Block_Time_Per_Hour_ManyArgs = {
+  updates: Array<Average_Block_Time_Per_Hour_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Average_Block_Time_Per_MinuteArgs = {
+  _inc?: InputMaybe<Average_Block_Time_Per_Minute_Inc_Input>;
+  _set?: InputMaybe<Average_Block_Time_Per_Minute_Set_Input>;
+  where: Average_Block_Time_Per_Minute_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Average_Block_Time_Per_Minute_By_PkArgs = {
+  _inc?: InputMaybe<Average_Block_Time_Per_Minute_Inc_Input>;
+  _set?: InputMaybe<Average_Block_Time_Per_Minute_Set_Input>;
+  pk_columns: Average_Block_Time_Per_Minute_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Average_Block_Time_Per_Minute_ManyArgs = {
+  updates: Array<Average_Block_Time_Per_Minute_Updates>;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_BalancesArgs = {
   _inc?: InputMaybe<Balances_Inc_Input>;
   _set?: InputMaybe<Balances_Set_Input>;
@@ -2595,6 +3565,19 @@ export type Mutation_RootUpdate_Gov_ParamsArgs = {
 /** mutation root */
 export type Mutation_RootUpdate_Gov_Params_ManyArgs = {
   updates: Array<Gov_Params_Updates>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_MigrationsArgs = {
+  _set?: InputMaybe<Migrations_Set_Input>;
+  where: Migrations_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Migrations_ManyArgs = {
+  updates: Array<Migrations_Updates>;
 };
 
 
@@ -5427,6 +6410,24 @@ export type Query_Root = {
   account_aggregate: Account_Aggregate;
   /** fetch data from the table: "account" using primary key columns */
   account_by_pk?: Maybe<Account>;
+  /** fetch data from the table: "average_block_time_per_day" */
+  average_block_time_per_day: Array<Average_Block_Time_Per_Day>;
+  /** fetch aggregated fields from the table: "average_block_time_per_day" */
+  average_block_time_per_day_aggregate: Average_Block_Time_Per_Day_Aggregate;
+  /** fetch data from the table: "average_block_time_per_day" using primary key columns */
+  average_block_time_per_day_by_pk?: Maybe<Average_Block_Time_Per_Day>;
+  /** fetch data from the table: "average_block_time_per_hour" */
+  average_block_time_per_hour: Array<Average_Block_Time_Per_Hour>;
+  /** fetch aggregated fields from the table: "average_block_time_per_hour" */
+  average_block_time_per_hour_aggregate: Average_Block_Time_Per_Hour_Aggregate;
+  /** fetch data from the table: "average_block_time_per_hour" using primary key columns */
+  average_block_time_per_hour_by_pk?: Maybe<Average_Block_Time_Per_Hour>;
+  /** fetch data from the table: "average_block_time_per_minute" */
+  average_block_time_per_minute: Array<Average_Block_Time_Per_Minute>;
+  /** fetch aggregated fields from the table: "average_block_time_per_minute" */
+  average_block_time_per_minute_aggregate: Average_Block_Time_Per_Minute_Aggregate;
+  /** fetch data from the table: "average_block_time_per_minute" using primary key columns */
+  average_block_time_per_minute_by_pk?: Maybe<Average_Block_Time_Per_Minute>;
   /** An array relationship */
   balances: Array<Balances>;
   /** An aggregate relationship */
@@ -5441,6 +6442,10 @@ export type Query_Root = {
   gov_params: Array<Gov_Params>;
   /** An aggregate relationship */
   gov_params_aggregate: Gov_Params_Aggregate;
+  /** fetch data from the table: "migrations" */
+  migrations: Array<Migrations>;
+  /** fetch aggregated fields from the table: "migrations" */
+  migrations_aggregate: Migrations_Aggregate;
   /** fetch data from the table: "proposal" */
   proposal: Array<Proposal>;
   /** fetch aggregated fields from the table: "proposal" */
@@ -5541,6 +6546,75 @@ export type Query_RootAccount_By_PkArgs = {
 };
 
 
+export type Query_RootAverage_Block_Time_Per_DayArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Day_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Day_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Day_Bool_Exp>;
+};
+
+
+export type Query_RootAverage_Block_Time_Per_Day_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Day_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Day_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Day_Bool_Exp>;
+};
+
+
+export type Query_RootAverage_Block_Time_Per_Day_By_PkArgs = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+
+export type Query_RootAverage_Block_Time_Per_HourArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Hour_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Hour_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Hour_Bool_Exp>;
+};
+
+
+export type Query_RootAverage_Block_Time_Per_Hour_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Hour_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Hour_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Hour_Bool_Exp>;
+};
+
+
+export type Query_RootAverage_Block_Time_Per_Hour_By_PkArgs = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+
+export type Query_RootAverage_Block_Time_Per_MinuteArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Minute_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Minute_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Minute_Bool_Exp>;
+};
+
+
+export type Query_RootAverage_Block_Time_Per_Minute_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Minute_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Minute_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Minute_Bool_Exp>;
+};
+
+
+export type Query_RootAverage_Block_Time_Per_Minute_By_PkArgs = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+
 export type Query_RootBalancesArgs = {
   distinct_on?: InputMaybe<Array<Balances_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -5597,6 +6671,24 @@ export type Query_RootGov_Params_AggregateArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   order_by?: InputMaybe<Array<Gov_Params_Order_By>>;
   where?: InputMaybe<Gov_Params_Bool_Exp>;
+};
+
+
+export type Query_RootMigrationsArgs = {
+  distinct_on?: InputMaybe<Array<Migrations_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Migrations_Order_By>>;
+  where?: InputMaybe<Migrations_Bool_Exp>;
+};
+
+
+export type Query_RootMigrations_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Migrations_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Migrations_Order_By>>;
+  where?: InputMaybe<Migrations_Bool_Exp>;
 };
 
 
@@ -6637,6 +7729,30 @@ export type Subscription_Root = {
   account_by_pk?: Maybe<Account>;
   /** fetch data from the table in a streaming manner: "account" */
   account_stream: Array<Account>;
+  /** fetch data from the table: "average_block_time_per_day" */
+  average_block_time_per_day: Array<Average_Block_Time_Per_Day>;
+  /** fetch aggregated fields from the table: "average_block_time_per_day" */
+  average_block_time_per_day_aggregate: Average_Block_Time_Per_Day_Aggregate;
+  /** fetch data from the table: "average_block_time_per_day" using primary key columns */
+  average_block_time_per_day_by_pk?: Maybe<Average_Block_Time_Per_Day>;
+  /** fetch data from the table in a streaming manner: "average_block_time_per_day" */
+  average_block_time_per_day_stream: Array<Average_Block_Time_Per_Day>;
+  /** fetch data from the table: "average_block_time_per_hour" */
+  average_block_time_per_hour: Array<Average_Block_Time_Per_Hour>;
+  /** fetch aggregated fields from the table: "average_block_time_per_hour" */
+  average_block_time_per_hour_aggregate: Average_Block_Time_Per_Hour_Aggregate;
+  /** fetch data from the table: "average_block_time_per_hour" using primary key columns */
+  average_block_time_per_hour_by_pk?: Maybe<Average_Block_Time_Per_Hour>;
+  /** fetch data from the table in a streaming manner: "average_block_time_per_hour" */
+  average_block_time_per_hour_stream: Array<Average_Block_Time_Per_Hour>;
+  /** fetch data from the table: "average_block_time_per_minute" */
+  average_block_time_per_minute: Array<Average_Block_Time_Per_Minute>;
+  /** fetch aggregated fields from the table: "average_block_time_per_minute" */
+  average_block_time_per_minute_aggregate: Average_Block_Time_Per_Minute_Aggregate;
+  /** fetch data from the table: "average_block_time_per_minute" using primary key columns */
+  average_block_time_per_minute_by_pk?: Maybe<Average_Block_Time_Per_Minute>;
+  /** fetch data from the table in a streaming manner: "average_block_time_per_minute" */
+  average_block_time_per_minute_stream: Array<Average_Block_Time_Per_Minute>;
   /** An array relationship */
   balances: Array<Balances>;
   /** An aggregate relationship */
@@ -6657,6 +7773,12 @@ export type Subscription_Root = {
   gov_params_aggregate: Gov_Params_Aggregate;
   /** fetch data from the table in a streaming manner: "gov_params" */
   gov_params_stream: Array<Gov_Params>;
+  /** fetch data from the table: "migrations" */
+  migrations: Array<Migrations>;
+  /** fetch aggregated fields from the table: "migrations" */
+  migrations_aggregate: Migrations_Aggregate;
+  /** fetch data from the table in a streaming manner: "migrations" */
+  migrations_stream: Array<Migrations>;
   /** fetch data from the table: "proposal" */
   proposal: Array<Proposal>;
   /** fetch aggregated fields from the table: "proposal" */
@@ -6798,6 +7920,96 @@ export type Subscription_RootAccount_StreamArgs = {
 };
 
 
+export type Subscription_RootAverage_Block_Time_Per_DayArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Day_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Day_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Day_Bool_Exp>;
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_Day_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Day_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Day_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Day_Bool_Exp>;
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_Day_By_PkArgs = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_Day_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Average_Block_Time_Per_Day_Stream_Cursor_Input>>;
+  where?: InputMaybe<Average_Block_Time_Per_Day_Bool_Exp>;
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_HourArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Hour_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Hour_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Hour_Bool_Exp>;
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_Hour_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Hour_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Hour_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Hour_Bool_Exp>;
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_Hour_By_PkArgs = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_Hour_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Average_Block_Time_Per_Hour_Stream_Cursor_Input>>;
+  where?: InputMaybe<Average_Block_Time_Per_Hour_Bool_Exp>;
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_MinuteArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Minute_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Minute_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Minute_Bool_Exp>;
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_Minute_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Average_Block_Time_Per_Minute_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Average_Block_Time_Per_Minute_Order_By>>;
+  where?: InputMaybe<Average_Block_Time_Per_Minute_Bool_Exp>;
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_Minute_By_PkArgs = {
+  one_row_id: Scalars['Boolean']['input'];
+};
+
+
+export type Subscription_RootAverage_Block_Time_Per_Minute_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Average_Block_Time_Per_Minute_Stream_Cursor_Input>>;
+  where?: InputMaybe<Average_Block_Time_Per_Minute_Bool_Exp>;
+};
+
+
 export type Subscription_RootBalancesArgs = {
   distinct_on?: InputMaybe<Array<Balances_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -6875,6 +8087,31 @@ export type Subscription_RootGov_Params_StreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<Gov_Params_Stream_Cursor_Input>>;
   where?: InputMaybe<Gov_Params_Bool_Exp>;
+};
+
+
+export type Subscription_RootMigrationsArgs = {
+  distinct_on?: InputMaybe<Array<Migrations_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Migrations_Order_By>>;
+  where?: InputMaybe<Migrations_Bool_Exp>;
+};
+
+
+export type Subscription_RootMigrations_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Migrations_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<Migrations_Order_By>>;
+  where?: InputMaybe<Migrations_Bool_Exp>;
+};
+
+
+export type Subscription_RootMigrations_StreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<Migrations_Stream_Cursor_Input>>;
+  where?: InputMaybe<Migrations_Bool_Exp>;
 };
 
 
@@ -10093,7 +11330,6 @@ export type Validator_Voting_Power_Variance_Order_By = {
 
 export type AllVotesQueryVariables = Exact<{
   proposalId: Scalars['Int']['input'];
-  propId: Scalars['String']['input'];
   limit: Scalars['Int']['input'];
   offset: Scalars['Int']['input'];
 }>;
@@ -10235,7 +11471,7 @@ export type VotesQueryVariables = Exact<{
 export type VotesQuery = { __typename?: 'query_root', proposal_vote: Array<{ __typename?: 'proposal_vote', voter_address: string, option: string, height?: any | null, proposal_id: number, timestamp?: any | null, weight: string, block?: { __typename?: 'block', transactions: Array<{ __typename?: 'transaction', height: any, hash: string, memo?: string | null, success: boolean, messages: any }> } | null }> };
 
 
-export const AllVotesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllVotes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"proposalId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"propId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"proposal_vote"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_and"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"proposal_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"proposalId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"is_valid"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"BooleanValue","value":true}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"order_by"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"height"},"value":{"kind":"EnumValue","value":"desc"}},{"kind":"ObjectField","name":{"kind":"Name","value":"voter_address"},"value":{"kind":"EnumValue","value":"desc"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"is_valid"}},{"kind":"Field","name":{"kind":"Name","value":"option"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_id"}},{"kind":"Field","name":{"kind":"Name","value":"timestamp"}},{"kind":"Field","name":{"kind":"Name","value":"voter_address"}},{"kind":"Field","name":{"kind":"Name","value":"weight"}},{"kind":"Field","name":{"kind":"Name","value":"block"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"transactions"},"name":{"kind":"Name","value":"transactions"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"messages"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_contains"},"value":{"kind":"ListValue","values":[{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"proposal_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"propId"}}}]}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"memo"}},{"kind":"Field","name":{"kind":"Name","value":"success"}},{"kind":"Field","name":{"kind":"Name","value":"messages"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposal_vote_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_and"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"proposal_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"proposalId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"is_valid"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"BooleanValue","value":true}}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregate"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]} as unknown as DocumentNode<AllVotesQuery, AllVotesQueryVariables>;
+export const AllVotesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllVotes"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"proposalId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"proposal_vote"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}},{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_and"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"proposal_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"proposalId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"is_valid"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"BooleanValue","value":true}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"order_by"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"height"},"value":{"kind":"EnumValue","value":"desc"}},{"kind":"ObjectField","name":{"kind":"Name","value":"voter_address"},"value":{"kind":"EnumValue","value":"desc"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"is_valid"}},{"kind":"Field","name":{"kind":"Name","value":"option"}},{"kind":"Field","name":{"kind":"Name","value":"proposal_id"}},{"kind":"Field","name":{"kind":"Name","value":"timestamp"}},{"kind":"Field","name":{"kind":"Name","value":"voter_address"}},{"kind":"Field","name":{"kind":"Name","value":"weight"}},{"kind":"Field","name":{"kind":"Name","value":"block"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"transactions"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"messages"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_contains"},"value":{"kind":"ListValue","values":[{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"proposalId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"proposalId"}}}]}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"hash"}},{"kind":"Field","name":{"kind":"Name","value":"memo"}},{"kind":"Field","name":{"kind":"Name","value":"success"}},{"kind":"Field","name":{"kind":"Name","value":"messages"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"proposal_vote_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_and"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"proposal_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"proposalId"}}}]}},{"kind":"ObjectField","name":{"kind":"Name","value":"is_valid"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"BooleanValue","value":true}}]}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"aggregate"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]} as unknown as DocumentNode<AllVotesQuery, AllVotesQueryVariables>;
 export const BalanceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Balance"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"address"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"action_account_balance"},"name":{"kind":"Name","value":"balances"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"address"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"address"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"order_by"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"height"},"value":{"kind":"EnumValue","value":"desc_nulls_last"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"coins"}}]}}]}}]} as unknown as DocumentNode<BalanceQuery, BalanceQueryVariables>;
 export const BlockHeightDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BlockHeight"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"timestamp"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"timestamp"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"block"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"timestamp"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_gte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"timestamp"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"order_by"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"height"},"value":{"kind":"EnumValue","value":"asc"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timestamp"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]} as unknown as DocumentNode<BlockHeightQuery, BlockHeightQueryVariables>;
 export const BlockTimeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"BlockTime"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"height"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"bigint"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"block"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"height"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_lte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"height"}}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"order_by"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"height"},"value":{"kind":"EnumValue","value":"desc"}}]}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"timestamp"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]} as unknown as DocumentNode<BlockTimeQuery, BlockTimeQueryVariables>;
