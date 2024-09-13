@@ -1,3 +1,6 @@
+import privacyEn from "./privacy.en";
+import termsEn from "./terms.en";
+
 export const messages = {
   en: {
     homepage: {
@@ -14,9 +17,11 @@ export const messages = {
     },
     termspage: {
       title: "Terms of Service",
+      content: termsEn,
     },
     privacypage: {
       title: "Privacy Policy",
+      content: privacyEn,
     },
     voteHistory: {
       title: "Voting History",
