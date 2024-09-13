@@ -11,6 +11,7 @@ const offset = ref<number>(0);
 const limit = ref<number>(10);
 
 const votes = getAllVotes(props.proposalId, limit.value, offset.value);
+console.log(votes);
 const hasMore = computed(() => {
   return (votes.value?.proposal_vote_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
 });

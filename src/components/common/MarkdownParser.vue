@@ -31,7 +31,6 @@ async function parseData() {
 
     trimmedContent.value = Utility.purifyHtml(htmlContent);
   } catch (_e) {
-    console.log("cool error bro");
     console.log(_e);
     bus.emit("error");
   }

@@ -47,7 +47,6 @@ export const useProposals = () => {
     cli: boolean = false,
   ) => {
     if (cli) {
-      console.log("prop");
       //TODO : CommandBuilder + proposal JSON Generation
     } else {
       const SubmitProposal: EncodeObject = {

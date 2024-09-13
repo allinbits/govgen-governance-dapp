@@ -76,11 +76,8 @@ const tabIdx = ref<number>(0);
 const props = withDefaults(defineProps<Props>(), { modelValue: undefined });
 function changeTab(idx: number = 0, isClicked = true) {
   tabIdx.value = idx;
-  console.log(props.options[tabIdx.value]);
-  console.log(isClicked);
   if (isClicked) {
     const link = props.options[tabIdx.value].link;
-    console.log(link);
     if (link) {
       window.open(link, "_blank");
     } else {
