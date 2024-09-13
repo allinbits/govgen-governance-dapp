@@ -5,10 +5,14 @@ import CreateProposalView from "@/views/CreateProposalView.vue";
 import ProposalView from "@/views/ProposalView.vue";
 import HistoryView from "@/views/HistoryView.vue";
 import { useTelemetry } from "@/composables/useTelemetry";
+import TermsView from "@/views/TermsView.vue";
+import PrivacyView from "@/views/PrivacyView.vue";
 
 const routerHistory = createWebHistory();
 const routes = [
   { path: "/", component: HomeView },
+  { path: "/terms", component: TermsView },
+  { path: "/privacy", component: PrivacyView },
   { path: "/proposals/:id", component: ProposalView },
   { path: "/history", component: HistoryView },
   // { path: "/design", component: DesignView },

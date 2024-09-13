@@ -12,6 +12,12 @@ export const messages = {
       viewProposals: "Proposals",
       viewForums: "Forum",
     },
+    termspage: {
+      title: "Terms of Service",
+    },
+    privacypage: {
+      title: "Privacy Policy",
+    },
     voteHistory: {
       title: "Voting History",
       walletLbl: "Your wallet address",
