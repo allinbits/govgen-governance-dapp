@@ -34,17 +34,35 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      use: {
+        ...devices["Desktop Chrome"],
+        bypassCSP: true, // add this to disable cors
+        launchOptions: {
+          args: ["--disable-web-security"], // add this to disable cors
+        },
+      },
     },
 
     {
       name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
+      use: {
+        ...devices["Desktop Firefox"],
+        bypassCSP: true, // add this to disable cors
+        launchOptions: {
+          args: ["--disable-web-security"], // add this to disable cors
+        },
+      },
     },
 
     {
       name: "webkit",
-      use: { ...devices["Desktop Safari"] },
+      use: {
+        ...devices["Desktop Safari"],
+        bypassCSP: true, // add this to disable cors
+        launchOptions: {
+          args: ["--disable-web-security"], // add this to disable cors
+        },
+      },
     },
 
     /* Test against mobile viewports. */
