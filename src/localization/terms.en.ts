@@ -2,15 +2,15 @@ export default `
 **Last Updated: September 13, 2024**
 
 
-# **1.**  **Scope**
+# **1.**  **Scope**
 
-These Terms of Service (the “Terms”) govern your use of the GovGen Governance decentralized application (“GovGen dApp”), access to our web-hosted user interface located at https\://app\.govgen.io (the “Site”) and related tools, trademarks, intellectual property, services, and software provided by All in Bits, Inc., a Delaware corporation (the “operator,” “we,” or “us”). These Terms apply to all users of the GovGen dApp (collectively, the “Services”). For simplicity, the Site and our Services are collectively referred to as the “Interface.”
+These Terms of Service (the “Terms”) govern your use of the GovGen Governance decentralized application (“GovGen dApp”), access to our web-hosted user interface located at https://app.govgen.io (the “Site”) and related tools, trademarks, intellectual property, services, and software provided by All in Bits, Inc., a Delaware corporation (the “operator,” “we,” or “us”). These Terms apply to all users of the GovGen dApp (collectively, the “Services”). For simplicity, the Site and our Services are collectively referred to as the “Interface.”
 
 The Interface is intended to provide decentralized governance tools and a forum for user-generated content through which individuals and decentralized autonomous organizations (“**_DAOs_**”) and their members may conduct certain on-chain governance functionalities. Due to the decentralized nature of the Interface, we do not monitor or control all interactions. By using this Interface, you acknowledge that we are not responsible for any third-party actions or transactions that occur outside of our direct control. Certain services may only be available in specific jurisdictions, and nothing herein grants you access to services in jurisdictions where they are prohibited.
 
 The Interface does not include any outside websites or platforms linked to it. Such external platforms have their own terms of service, which govern transactions on those platforms. We disclaim any liability for transactions conducted outside the Interface.
 
-These Terms expressly cover your rights and obligations, and our disclaimers and limitations of legal liability,  relating to your use of, and access to, the Interface. By accessing or using the Interface, you agree to be bound by these Terms. Before using the Interface, make sure that you read and understand the accompanying [Privacy Policy](https://app.govgen.io/privacy).
+These Terms expressly cover your rights and obligations, and our disclaimers and limitations of legal liability,  relating to your use of, and access to, the Interface. By accessing or using the Interface, you agree to be bound by these Terms. Before using the Interface, make sure that you read and understand the accompanying [Privacy Policy](https://app.govgen.io/privacy).
 
 THESE TERMS SET FORTH THE LEGALLY BINDING TERMS AND CONDITIONS, YOUR RIGHTS AND OBLIGATIONS, OUR DISCLAIMERS AND LIMITATIONS OF LEGAL LIABILITY THAT GOVERN YOUR USE OF THE INTERFACE. BY SIGNING MESSAGE TO BE RECORDED ON-CHAIN THAT INCLUDES A LINK TO THESE TERMS ACCESSING OR USING THE INTERFACE, YOU ARE ACCEPTING THESE TERMS (ON BEHALF OF YOURSELF OR THE ENTITY THAT YOU REPRESENT), INCLUDING, WITHOUT LIMITATION, THE MANDATORY ARBITRATION PROVISION IN SECTION 17 AND WAIVER OF JURY TRIAL. IF YOU DO NOT AGREE WITH ALL OF THE PROVISIONS OF THESE TERMS, DO NOT ACCESS OR USE THE INTERFACE.
 
@@ -19,7 +19,7 @@ THESE TERMS SET FORTH THE LEGALLY BINDING TERMS AND CONDITIONS, YOUR RIGHTS AND 
 | **The Interface, Services and any other features offered or made available by us are not offered to U.S. Persons or Restricted Persons (each as further defined below), and any such use is prohibited. Any use of a virtual private network (VPN) or any other privacy or anonymization tools or techniques to circumvent, or attempt to circumvent, any restrictions that apply are prohibited.** WE RESERVE ALL RIGHTS TO TAKE ACTION AGAINST ANY PERSON VIOLATING, CIRCUMVENTING OR ATTEMPTING TO CIRCUMVENT SUCH RESTRICTIONS, INCLUDING LEGAL ACTION AND/OR TEMPORARILY OR PERMANENTLY RESTRICT ACCESS TO THE INTERFACE AND THE SERVICES.“**U.S. Person**” shall mean any natural person or legal entity who (i) resides, (ii) is located (iii) is incorporated, or (iv) has a registered office, in the United States of America.“**Restricted Person**” shall mean any natural person or legal entity who (i) resides, (ii) is located (iii) is incorporated, or (iv) has a registered office, in any Restricted Jurisdiction (as further defined in Section 2.3 below). |
 
 
-# **2.**  **The Interface**
+# **2.**  **The Interface**
 
 GovGen dApp is a decentralized governance platform allowing users to participate in the governance processes of decentralized autonomous organizations (DAOs) within the AtomOne Hub and Cosmos ecosystem. The dApp provides access to the decentralized network and enables users to submit proposals, vote on governance matters, and perform other governance-related actions. Participation in GovGen requires interaction with compatible wallet and blockchain transactions, including staking and voting. All transactions performed through the GovGen dApp are irreversible and publicly recorded on the blockchain.
 
@@ -31,9 +31,9 @@ The operator will never request your private keys, seed phrases, or recovery phr
 
 For enhanced security, users have the option to generate command-line interface (CLI) commands for executing transactions in an offline, air-gapped environment. This method allows users to create and sign transactions on a device that is not connected to the internet, significantly reducing the risk of unauthorized access, hacking, or malware attacks. Once the transaction is signed offline, it can be securely transmitted to the network using an internet-connected device. This adds an extra layer of protection when performing sensitive actions such as transferring funds or managing governance operations.
 
-It is crucial that users strictly follow best practices for secure transaction processing, including keeping private keys secure and ensuring that the air-gapped environment is free from vulnerabilities. Failure to adhere to these best practices could lead to compromised security, resulting in the loss of assets or unauthorized actions being taken on the user’s behalf.
+It is crucial that users strictly follow best practices for secure transaction processing, including keeping private keys secure and ensuring that the air-gapped environment is free from vulnerabilities. Failure to adhere to these best practices could lead to compromised security, resulting in the loss of assets or unauthorized actions being taken on the user's behalf.
 
-2. **Fees:** 
+2. **Fees:** 
 
 Using the Interface may also require that you pay a fee, such as gas charges on the blockchain, to perform a transaction. **You acknowledge and agree that the operator has no control over any such third-party transactions, the method of payment of such transactions, or any actual payments of transactions.** All fees are non-refundable, so you must ensure that you have a sufficient balance of the applicable cryptocurrency tokens stored at your protocol-compatible wallet address to complete any transaction on the blockchain or Interface before initiating such a transaction.
 
@@ -46,12 +46,12 @@ The Interface is continually evolving, with ongoing developments that include ad
 For features that involve open-source contributions, those contributions will be governed by separate open-source licenses, as appropriate. The operator is not responsible for third-party contributions, though it may integrate or collaborate with them to enhance the functionality of the Interface. You agree that it is your responsibility to stay informed about any updates to these Terms or features by periodically reviewing them on the Interface.
 
 
-# **3.**  **Your Permission to Use the Interface**
+# **3.**  **Your Permission to Use the Interface**
 
 Subject to these Terms, the operator grants you a non-transferable, limited right to use the Interface, provided you comply with these terms. This permission is personal to you and cannot be assigned or transferred to others. Each user must individually agree to these terms in order to access and use the Interface.
 
 
-# **4.**  **Conditions for Use of the Interface**
+# **4.**  **Conditions for Use of the Interface**
 
 Your permission to use the Interface is contingent upon the following conditions:
 
@@ -63,10 +63,10 @@ Your permission to use the Interface is contingent upon the following conditions
 
 - **Compliance:** You are required to adhere to the Acceptable Use and Content Standards at all times.
 
- 
+ 
 
 
-# **5.**  **Acceptable Use and Content Standards**
+# **5.**  **Acceptable Use and Content Standards**
 
 By using the Interface, you agree to adhere to the following conditions, ensuring your use of the GovGen dApp remains lawful, respectful, and does not compromise the integrity of the decentralized governance process:
 
@@ -98,7 +98,7 @@ By using the Interface, you agree to adhere to the following conditions, ensurin
 
    7. **Reverse Engineering:** You may not reverse engineer, decompile, or otherwise attempt to extract the source code of any part of the Interface.
 
-   8. **Prohibited Devices:** You may not use a modified device to access the Interface if the modification is contrary to the manufacturer’s software or hardware guidelines, including disabling hardware or software controls (“jailbreaking”).
+   8. **Prohibited Devices:** You may not use a modified device to access the Interface if the modification is contrary to the manufacturer's software or hardware guidelines, including disabling hardware or software controls (“jailbreaking”).
 
    9. **Encouraging Violations**: You may not encourage or assist anyone in violating these terms.
 
@@ -113,7 +113,7 @@ By using the Interface, you agree to adhere to the following conditions, ensurin
 
    3. **Solicitations:** You must not send advertisements, chain letters, or other unsolicited communications through the Interface, or use the Interface to gather addresses for distribution lists.
 
-   4. **Account and Wallet Use**: You may not use or try to use anyone else’s account on the Interface (or connect to anyone else’s wallet) without their specific permission.
+   4. **Account and Wallet Use**: You may not use or try to use anyone else's account on the Interface (or connect to anyone else's wallet) without their specific permission.
 
    5. **Username Trading**: You may not buy, sell, or otherwise trade usernames or other unique user or account identifiers on the Interface
 
@@ -142,11 +142,11 @@ By using the Interface, you agree to adhere to the following conditions, ensurin
    3. **Code of Conduct**: You may not engage in any conduct that violates the code of conduct established by the AtomOne Hub community. Violations of this code of conduct may result in the suspension or permanent loss of access to the Interface.
 
 
-# **6.**  **Enforcement**
+# **6.**  **Enforcement**
 
 The operator takes violations of these Terms, including those outlined in the Acceptable Use and Content Standards, seriously and may investigate any potential violations to the fullest extent permitted by law. If a violation is detected, the operator reserves the right to take any and all of the following actions:
 
-1. **Investigation and Cooperation with Authorities**: The operator may initiate investigations into any suspected violations of these Terms, including, but not limited to, illegal activities or actions that compromise the integrity of the Interface. The operator may also cooperate with law enforcement authorities to investigate and prosecute violations of the law and/or these Terms. This may include disclosing relevant information about your use of the Interface to law enforcement authorities as required by law or in the operator’s discretion.
+1. **Investigation and Cooperation with Authorities**: The operator may initiate investigations into any suspected violations of these Terms, including, but not limited to, illegal activities or actions that compromise the integrity of the Interface. The operator may also cooperate with law enforcement authorities to investigate and prosecute violations of the law and/or these Terms. This may include disclosing relevant information about your use of the Interface to law enforcement authorities as required by law or in the operator's discretion.
 
 2) **Content Moderation**: The operator reserves the right to change, redact, remove, or delete any content submitted to or appearing on the Interface that it deems to be in violation of these Terms, particularly those specified in the **Acceptable Use and Content Standards**. The operator may act without prior notice and at its sole discretion. Users are encouraged to report any content they believe to be in violation of these Terms immediately. The operator will review and, if necessary, take appropriate action to address reported violations.
 
@@ -156,12 +156,12 @@ The operator takes violations of these Terms, including those outlined in the Ac
 
 5. **Interface Availability**: The operator reserves the right, at any time and for any reason, to make the Interface unavailable, either temporarily or permanently, at its sole discretion and without prior notice. This includes, but is not limited to, taking the Interface offline for maintenance, upgrades, or to address security concerns.
 
-6) **User Reports**: If you believe another user has violated these Terms, you may contact the operator with details regarding the alleged violation. The operator will review your report and take appropriate action, which may include investigating the user’s conduct and enforcing the measures outlined in this section.
+6) **User Reports**: If you believe another user has violated these Terms, you may contact the operator with details regarding the alleged violation. The operator will review your report and take appropriate action, which may include investigating the user's conduct and enforcing the measures outlined in this section.
 
 7. **Liability for Violations**: If your use of the Interface results in any harm, damage, or liability to the operator or other users, you may be held liable for those damages, and the operator may take legal action to recover its losses.
 
 
-# **7.**  **Your Information**
+# **7.**  **Your Information**
 
 By using the Interface, you agree to the following responsibilities regarding the information you provide:
 
@@ -176,52 +176,52 @@ By using the Interface, you agree to the following responsibilities regarding th
 5. **Responsibility for Account Use**: You are fully responsible for all actions taken under your account, whether authorized or unauthorized. This includes any activities initiated through the Interface, such as proposals, votes, and other governance-related interactions. You acknowledge that failure to secure your account or disclose sensitive information (e.g., private keys, passwords) could result in unauthorized access and loss of assets. You will not hold the operator liable for any unauthorized actions resulting from your failure to secure your account credentials.
 
 
-# **8.**  **Know Your Customer**
+# **8.**  **Know Your Customer**
 
 You acknowledge that the operator and its partners may perform Know Your Customer (“KYC”) procedures on the information you provide, as required by internal policies and as required by applicable guidelines or regulations. You consent to such KYC procedures.
 
 You agree that this is a general requirement and in compliance with regulatory rules and guidance, and in no way creates or is deemed to be any form of recommendation or advice by the operator.
 
-The operator may in its sole and absolute discretion decline to accept any person’s request in anything, at any time, with no requirement for any reason or explanation; you agree that such decline(s), if any, shall not constitute an opinion, recommendation or investment, legal or tax advice by the operator.
+The operator may in its sole and absolute discretion decline to accept any person's request in anything, at any time, with no requirement for any reason or explanation; you agree that such decline(s), if any, shall not constitute an opinion, recommendation or investment, legal or tax advice by the operator.
 
 
-# **9.**  **Background Checks**
+# **9.**  **Background Checks**
 
 While the Interface emphasizes decentralized governance and privacy, certain roles within the ecosystem, such as validators or other key participants, may be subject to background checks in accordance with applicable laws, regulations, or internal policies. These background checks are conducted to ensure compliance with legal standards and to maintain the integrity of the network.
 
-1. **Consent to Background Checks**: You acknowledge and consent that the operator and/or its partners may perform background checks on users when required by law or regulation, particularly for those participants holding sensitive roles within the network. These checks are intended to confirm that a user’s identity does not appear on any criminal, terrorist, or sanctions watchlists, and that they are not associated with any foreign governments under sanctions or scrutiny.
+1. **Consent to Background Checks**: You acknowledge and consent that the operator and/or its partners may perform background checks on users when required by law or regulation, particularly for those participants holding sensitive roles within the network. These checks are intended to confirm that a user's identity does not appear on any criminal, terrorist, or sanctions watchlists, and that they are not associated with any foreign governments under sanctions or scrutiny.
 
 2. **Data Sources and Reliability**: The background check process relies on information obtained from a variety of regulatory, private, and public databases. While these sources are considered reliable, the operator cannot guarantee the accuracy or completeness of the information.
 
-3. **Sharing of Background Check Information**: Information gathered during background checks may be shared with the operator’s partners or relevant regulatory bodies, as necessary, to comply with legal or regulatory requirements.
+3. **Sharing of Background Check Information**: Information gathered during background checks may be shared with the operator's partners or relevant regulatory bodies, as necessary, to comply with legal or regulatory requirements.
 
 4. **Legal Obligations and Reporting**: The operator and its partners may have legal obligations under applicable laws, such as the USA PATRIOT Act or anti-money laundering regulations, to report suspicious activity. These obligations may require the operator to deny access to certain users based on background check results, including but not limited to individuals identified as high-risk or flagged under any relevant legal frameworks.
 
-5. **Right to Deny Access**: The operator reserves the right to deny access to any products, services, or features offered through the Interface based on the results of background checks. This may occur even if the information obtained is not fully accurate, complete, or truthful, in line with regulatory obligations and the operator’s risk management policies.
+5. **Right to Deny Access**: The operator reserves the right to deny access to any products, services, or features offered through the Interface based on the results of background checks. This may occur even if the information obtained is not fully accurate, complete, or truthful, in line with regulatory obligations and the operator's risk management policies.
 
 
-# **10.**  **Your Content**
+# **10.**  **Your Content**
 
 By submitting content to the Interface, you represent and warrant that you hold all necessary rights, licenses, and permissions to provide such content and that doing so does not infringe the intellectual property or other rights of any third party. You remain the sole owner of your content; however, by submitting content, you grant the operator and its affiliates a **perpetual, non-exclusive, transferable, royalty-free, worldwide license** to use, distribute, reproduce, and publicly display your content on the Interface, as well as for related purposes including promotion, analytics, and archives. This license will continue even after you remove your content from the Interface, to the extent necessary for compliance with legal obligations or for maintaining necessary backups and archives.
 
 You acknowledge and agree that the operator is not responsible for the misuse of your content by other users or third parties. Any interactions with your content by other users, including sharing or modifying it, are their responsibility under the terms of use, and the operator disclaims all liability related to such misuse.
 
-- **Operator’s Rights to Review or Modify Content**: The operator is not obligated to actively review, monitor, or edit any user-submitted content. However, we reserve the right to take down, obscure, or modify any content at our discretion, particularly if it violates these terms, infringes intellectual property rights, or is otherwise harmful or unlawful.
+- **Operator's Rights to Review or Modify Content**: The operator is not obligated to actively review, monitor, or edit any user-submitted content. However, we reserve the right to take down, obscure, or modify any content at our discretion, particularly if it violates these terms, infringes intellectual property rights, or is otherwise harmful or unlawful.
 
-- **No Transfer of Ownership**: Submitting content to the Interface does not transfer ownership rights over that content to the operator. Similarly, the operator’s intellectual property rights remain with the operator, and you do not obtain any ownership rights to the operator’s content, designs, code, trademarks, or other intellectual property, unless explicitly granted in a separate agreement.
+- **No Transfer of Ownership**: Submitting content to the Interface does not transfer ownership rights over that content to the operator. Similarly, the operator's intellectual property rights remain with the operator, and you do not obtain any ownership rights to the operator's content, designs, code, trademarks, or other intellectual property, unless explicitly granted in a separate agreement.
 
 - **Your Responsibility for Content**: You are solely responsible for the content you submit. You must ensure that your content is lawful and does not imply any false association, endorsement, or sponsorship by the operator. The operator is under no obligation to store, maintain, or provide copies of any content you submit to the Interface.
 
 - **License to Use Your Content**: While you retain ownership of your content, you grant the operator a worldwide, perpetual, irrevocable, royalty-free, sublicensable license to make your content available to other users of the Interface. This license permits the operator to copy, publish, analyze, and distribute your content as needed without further notification or compensation.
 
-- **Removal of Content**: If your content is removed from the Interface, either by you or by the operator, the operator’s license to that content will expire once the last copy is deleted from backups, caches, and other systems. However, any sublicenses you grant to other users or third parties, or that the operator grants to its partners, may continue beyond the removal of your content.
+- **Removal of Content**: If your content is removed from the Interface, either by you or by the operator, the operator's license to that content will expire once the last copy is deleted from backups, caches, and other systems. However, any sublicenses you grant to other users or third parties, or that the operator grants to its partners, may continue beyond the removal of your content.
 
 - **Misuse of Content by Others**: You acknowledge that other users or third parties may misuse the content you submit, potentially violating the terms on which you licensed it. The operator cannot and will not be held responsible for these violations or any resulting damages or consequences.
 
 - **Infringement of Intellectual Property**: The operator reserves the right to terminate, in its sole discretion, the accounts of any users who repeatedly infringe upon the intellectual property rights of others, whether related to content submitted to the Interface or other activities.
 
 
-# **11.**  **Our Content**
+# **11.**  **Our Content**
 
 Unless otherwise specified, the operator and/or its licensors own all intellectual property rights associated with the content made available on the Interface. This includes, but is not limited to, all product and service names, graphics, button icons, trademarks, service marks, logos, and any other materials presented on the Interface. Some images, videos, or other content displayed may be the property of third parties, in which case the operator uses them with proper authorization or under fair use principles. All intellectual property rights are reserved.
 
@@ -235,11 +235,11 @@ You **may not**:
 
 • Use any content from the Interface in any commercial context without express written permission from the operator or the applicable rights holder.
 
-**No Implied Licenses**:Nothing in these terms should be construed as granting you a license or right to use any of the operator’s intellectual property, except as expressly stated in this agreement. Unauthorized use of the operator’s intellectual property may result in legal consequences.
+**No Implied Licenses**:Nothing in these terms should be construed as granting you a license or right to use any of the operator's intellectual property, except as expressly stated in this agreement. Unauthorized use of the operator's intellectual property may result in legal consequences.
 
 **Open-Source Contributions**: For the avoidance of doubt, the restrictions in this section do not apply to any content or software that has been explicitly contributed by the operator to the open-source community under an open-source license. Any content or software released under such a license is governed by the specific terms of that open-source license, which may permit broader use, distribution, and modification than otherwise allowed under these terms.
 
- **12. Digital Millennium Copyright Act (DMCA) Compliance**
+ **12. Digital Millennium Copyright Act (DMCA) Compliance**
 
 If you are a copyright holder and believe that content on the Interface infringes upon a copyright that you own or control, you may submit a formal DMCA notification to our designated agent. The operator will respond promptly to valid DMCA claims and, if necessary, remove or disable access to the infringing content.
 
@@ -257,7 +257,7 @@ To submit a DMCA notification, your written communication must include the follo
 
 6. A statement that the information in the notification is accurate, and under penalty of perjury, that the complaining party is authorized to act on behalf of the copyright owner.
 
-Please direct all DMCA notifications to the operator’s designated agent:
+Please direct all DMCA notifications to the operator's designated agent:
 
 Carolyn Pehrson ACP # 153281
 
@@ -288,7 +288,7 @@ To submit a counter-notification, your written communication must include the fo
 Once a valid counter-notification is received, the operator may restore the removed material, unless the original complainant files a court action seeking to restrain you from engaging in the allegedly infringing activity.
 
 
-# **13.**  **Your Responsibility and Security**
+# **13.**  **Your Responsibility and Security**
 
 You agree to reimburse the operator for all costs, damages, and legal claims arising from your breach of these terms or the misuse of the Interface by others using your account. Both parties agree to promptly notify each other of any legal claims related to this agreement. Failure by the operator to notify you promptly does not absolve you of your responsibility, except where prompt notice could have mitigated the issue. You agree to allow the operator to assume the investigation, defense, and settlement of any legal claims at its discretion. The operator agrees not to enter any settlement that places you at fault or imposes obligations on you without your consent.
 
@@ -302,7 +302,7 @@ You agree to reimburse the operator for all costs, damages, and legal claims ari
 
 4) Access to your cryptocurrency tokens or assets may be interrupted, delayed, or terminated at any time, potentially affecting the value or execution of transactions. The operator assumes no liability for such disruptions. You bear full responsibility for ensuring the security of your private keys, seed phrases, and other sensitive wallet information. Loss of this information may result in permanent loss of access to your cryptocurrency assets, and the operator is not responsible for such losses.
 
-5. By using the Interface, you acknowledge the risks associated with cryptocurrency transactions, including hardware or software failure, internet connectivity issues, and network failures. The Interface may be suspended or terminated at the operator’s discretion, which could affect your access to your cryptocurrency assets.
+5. By using the Interface, you acknowledge the risks associated with cryptocurrency transactions, including hardware or software failure, internet connectivity issues, and network failures. The Interface may be suspended or terminated at the operator's discretion, which could affect your access to your cryptocurrency assets.
 
 6) **Links to Third-Party Services:** The Interface may contain links to external websites or services operated by third parties. The operator makes no representations or warranties about these external services, and your use of them may be governed by separate terms. The operator assumes no liability for content, services, or transactions conducted via third-party platforms.
 
@@ -323,7 +323,7 @@ You agree to reimburse the operator for all costs, damages, and legal claims ari
 14) **Use of Blockchain and Decentralized Services:** By using the Interface, you acknowledge the inherent risks of decentralized blockchain technology, including the irreversibility of transactions, potential software bugs or exploits, market volatility, and lack of recourse in the event of unauthorized access to your wallet. The operator is not liable for any losses or damages arising from these risks.
 
 
-# **15.**  **Limits on Liability / Indemnification**
+# **15.**  **Limits on Liability / Indemnification**
 
 1. To the fullest extent permitted by law, neither you nor the operator will be liable for any:
 
@@ -354,28 +354,28 @@ You agree to reimburse the operator for all costs, damages, and legal claims ari
 6) **California Residents**: If you are a resident of California, you hereby waive California Civil Code Section 1542, which states: “A general release does not extend to claims which the creditor does not know or suspect to exist in his or her favor at the time of executing the release, which, if known by him or her, must have materially affected his or her settlement with the debtor.”
 
 
-# **16.**  **Termination**
+# **16.**  **Termination**
 
 Either party may terminate this agreement at any time. Upon termination, your permission to use the Interface immediately ends. The following sections will survive termination: Sections 5, 6, 7, 10 , 13, 14, 15, 17, and 18.
 
 
-# **17.**  **Disputes, Binding Arbitration, Class Action Waiver**
+# **17.**  **Disputes, Binding Arbitration, Class Action Waiver**
 
 1. **On-Chain Governance Disputes**: Disputes specifically related to decentralized governance decisions within the AtomOne Hub shall be resolved through the on-chain governance mechanisms established by the community and governed by its consensus rules. These on-chain resolutions are final and binding as per the decentralized governance framework.
 
-2) **Governing Law**: These Terms will be governed by and construed in accordance with the laws of Delaware, without regard to its conflicts of law principles. This applies to all users of the Interface, regardless of location. By using the Interface, you agree that all disputes, regardless of your location or jurisdiction, shall be governed exclusively by Delaware law. 
+2) **Governing Law**: These Terms will be governed by and construed in accordance with the laws of Delaware, without regard to its conflicts of law principles. This applies to all users of the Interface, regardless of location. By using the Interface, you agree that all disputes, regardless of your location or jurisdiction, shall be governed exclusively by Delaware law. 
 
-3. **Binding Arbitration**: Both you and the operator agree that any disputes arising out of or relating to these Terms, the operator’s privacy policy, or your use of the Interface, including whether such a dispute is arbitrable, will be resolved by binding arbitration. You waive your right to bring a claim in court or to have a jury trial, regardless of your jurisdiction.
+3. **Binding Arbitration**: Both you and the operator agree that any disputes arising out of or relating to these Terms, the operator's privacy policy, or your use of the Interface, including whether such a dispute is arbitrable, will be resolved by binding arbitration. You waive your right to bring a claim in court or to have a jury trial, regardless of your jurisdiction.
 
 4) **Arbitration Process**:
 
-   1. Arbitration will be conducted in English and heard by one arbitrator under the rules of JAMS. The arbitration will follow JAMS’ Comprehensive Arbitration Rules and Procedures, with the Expedited Procedures applied, unless otherwise modified by these Terms. The JAMS rules can be accessed at[ https://www.jamsadr.com](https://www.jamsadr.com/).
+   1. Arbitration will be conducted in English and heard by one arbitrator under the rules of JAMS. The arbitration will follow JAMS' Comprehensive Arbitration Rules and Procedures, with the Expedited Procedures applied, unless otherwise modified by these Terms. The JAMS rules can be accessed at[ https://www.jamsadr.com](https://www.jamsadr.com/).
 
-   2. The arbitrator’s decision will be final and enforceable in any court of competent jurisdiction.
+   2. The arbitrator's decision will be final and enforceable in any court of competent jurisdiction.
 
 5. **Cost of Arbitration**: If you are unable to pay your share of the arbitration costs, the operator will consider a request to reimburse these costs, provided your claim is not deemed frivolous or brought for an improper purpose by the arbitrator.
 
-6) **Location of Arbitration**: The seat of arbitration will be Wilmington, Delaware, regardless of the user’s location. The arbitration may be conducted remotely to the extent permitted by the applicable arbitration rules.
+6) **Location of Arbitration**: The seat of arbitration will be Wilmington, Delaware, regardless of the user's location. The arbitration may be conducted remotely to the extent permitted by the applicable arbitration rules.
 
 7. **Confidentiality**: Both parties agree to maintain the confidentiality of the arbitration proceedings and any resulting award, except as required to prepare for or conduct the arbitration or as necessary to enforce any arbitration decision.
 
@@ -388,25 +388,25 @@ Either party may terminate this agreement at any time. Upon termination, your pe
 11. **Acknowledgement**: BY AGREEING TO ARBITRATION, YOU UNDERSTAND THAT YOU ARE IRREVOCABLY WAIVING YOUR RIGHT TO LITIGATE ANY DISPUTES IN COURT OR TO HAVE A JURY TRIAL. YOU FURTHER ACKNOWLEDGE THAT YOUR ABILITY TO ENGAGE IN DISCOVERY AND APPEAL RIGHTS MAY BE LIMITED IN ARBITRATION. YOU ACCEPT THESE RISKS BY AGREEING TO THESE TERMS.
 
 
-# **18.**  **General Terms**
+# **18.**  **General Terms**
 
 1. **Severability**: If any provision of these terms is found to be unenforceable or invalid, that provision shall be modified to the minimum extent necessary to make it enforceable. If modification is not possible, the provision shall be severed, and the remaining provisions will continue in full force and effect.
 
 2) **Assignment**: You may not transfer or assign any of your rights or obligations under these terms without prior written consent from the operator. The operator reserves the right to assign or transfer this agreement, in whole or in part, to any affiliate, successor, or entity that acquires control or assets of the operator. Any assignment or transfer made by you in violation of this provision will have no legal effect.
 
-3. **Waiver**: The operator’s failure to enforce any provision of these terms or to act with respect to a breach of these terms does not constitute a waiver of the operator’s rights to enforce any other provisions of these terms, nor does it waive the operator’s right to act with respect to similar or subsequent breaches.
+3. **Waiver**: The operator's failure to enforce any provision of these terms or to act with respect to a breach of these terms does not constitute a waiver of the operator's rights to enforce any other provisions of these terms, nor does it waive the operator's right to act with respect to similar or subsequent breaches.
 
 4) **Entire Agreement**: These terms, along with any documents or additional terms referenced herein or incorporated by reference, represent the entire agreement between you and the operator concerning the use of the Interface. This agreement supersedes any and all prior and contemporaneous oral or written agreements, discussions, and understandings regarding the subject matter. Any modifications to these terms must be made in writing and signed by both parties.
 
 
-# **19.**  **Contact**
+# **19.**  **Contact**
 
-You may contact the operator regarding any questions, concerns, or notices related to these terms by emailing the operator at legal\@allinbits.com. Any notices or communications sent to the operator under these terms should be directed to this email address.
+You may contact the operator regarding any questions, concerns, or notices related to these terms by emailing the operator at legal@allinbits.com. Any notices or communications sent to the operator under these terms should be directed to this email address.
 
 The operator may contact you regarding these terms or any matter related to your account through the email address you provide upon registration. Additionally, the operator may deliver notices by posting them on the homepage of the Interface, in your account page, or through other visible locations on the Interface as necessary.
 
 
-# **20.**  **Changes to the Terms**
+# **20.**  **Changes to the Terms**
 
 The operator reserves the right to update or modify these terms at any time in its sole discretion. Any changes will be communicated by posting the revised terms on the Interface, along with the date of the last update. In certain cases, the operator may provide additional notice through special announcements or alerts within the Interface.
 

@@ -1,7 +1,7 @@
 export default `
 **Last Updated: September 13, 2024**
 
-This Privacy Policy (the “Policy”) governs your use of the website at app\.govgen.io, the associated tools and services, and any public source code repository offered by the operator of this site (collectively, the “Services”). All in Bits (AiB), Inc., a Delaware corporation, operates the Services. AiB and its affiliates are referred to in this document as the “operator,” “we,” or “us.” The Services do not include outside websites or platforms which may be linked or interconnected to the Services. Such outside platforms may have their own privacy policy, which controls all transactions on such platforms.
+This Privacy Policy (the “Policy”) governs your use of the website at https://app.govgen.io, the associated tools and services, and any public source code repository offered by the operator of this site (collectively, the “Services”). All in Bits (AiB), Inc., a Delaware corporation, operates the Services. AiB and its affiliates are referred to in this document as the “operator,” “we,” or “us.” The Services do not include outside websites or platforms which may be linked or interconnected to the Services. Such outside platforms may have their own privacy policy, which controls all transactions on such platforms.
 
 If you do not want us to collect, use, or disclose your personal data in the ways described in this Policy, please do not use or otherwise interact with the Services, provide us with your personal data, or authorize any third party to make your personal data available to us. By using or interacting with the Services, you acknowledge that you understand that we may use your personal data as described in this Policy.
 
@@ -9,7 +9,7 @@ Please note, as described in this Policy, we may receive your personal data from
 
 **1. Scope and Applicability**
 
-This Privacy Policy explains how All in Bits, Inc. collects, uses, discloses, and protects your information when you access or use the GovGen Governance decentralized application (“GovGen dApp”) and related web-hosted user interface at app\.govgen.io (collectively, the “Interface”). By accessing or using the Interface, you consent to the collection and use of your information as described in this Privacy Policy.
+This Privacy Policy explains how All in Bits, Inc. collects, uses, discloses, and protects your information when you access or use the GovGen Governance decentralized application (“GovGen dApp”) and related web-hosted user interface at app.govgen.io (collectively, the “Interface”). By accessing or using the Interface, you consent to the collection and use of your information as described in this Privacy Policy.
 
 This Policy also describes how we handle both personally identifiable information (“Personal Information”) and non-personally identifiable information, and how we protect your privacy when using decentralized services. It applies to information collected through the Interface and related services provided by All in Bits, Inc.
 
@@ -19,9 +19,9 @@ Due to the decentralized nature of the Interface, certain information may be sha
 
 **2. Blockchain Technology and Immutable Data**
 
-Blockchain technology, also known as distributed ledger technology (DLT), is at the core of our business. Blockchains are decentralized and consist of digitally recorded data in a chain of packages called ‘blocks’. Once recorded, this data is immutable, meaning that it cannot be changed or deleted.
+Blockchain technology, also known as distributed ledger technology (DLT), is at the core of our business. Blockchains are decentralized and consist of digitally recorded data in a chain of packages called ‘blocks'. Once recorded, this data is immutable, meaning that it cannot be changed or deleted.
 
-Because of the decentralized nature of blockchain, this may impact your ability to exercise certain data protection rights such as your right to erasure (‘right to be forgotten’) or your right to object to or restrict the processing of your personal data.
+Because of the decentralized nature of blockchain, this may impact your ability to exercise certain data protection rights such as your right to erasure (‘right to be forgotten') or your right to object to or restrict the processing of your personal data.
 
 If your use of our services involves writing certain personal data onto the blockchain (e.g., wallet address or transaction data), this data may be public and permanently visible on the blockchain. While certain access rights may be revoked, it will not be possible to delete or change the data once it is recorded.
 
@@ -127,7 +127,7 @@ The Services may contain links to third-party websites and may redirect you to t
 
 We retain your personal data for as long as reasonably necessary to operate the Services, comply with legal obligations, and resolve disputes. However, blockchain data cannot be deleted due to its decentralized and immutable nature.
 
-If you would like to request that information we have about you be deleted, please contact us at legal\@allinbits.com. Please note that certain data stored on public cryptographic blockchains cannot be deleted.
+If you would like to request that information we have about you be deleted, please contact us at legal@allinbits.com. Please note that certain data stored on public cryptographic blockchains cannot be deleted.
 
 **9. Your Choices and Rights**
 
@@ -165,7 +165,7 @@ We may update this Privacy Policy from time to time. When we update the Policy, 
 
 If you have any questions or concerns about this Privacy Policy, please contact us at:
 
-**Email:** legal\@allinbits.com
+**Email:** legal@allinbits.com
 
 **Address:** All in Bits, Inc.
 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink } from "vue-router";
 
 const links = [
   { title: "Twitter", url: "https://twitter.com/_govgen", icon: "twitter" },
@@ -19,8 +19,13 @@ const links = [
       <div class="flex flex-row gap-4 justify-end">
         <RouterLink to="/terms" class="flex items-center hover:text-grey-50">Terms of Service</RouterLink> -
         <RouterLink to="/privacy" class="flex items-center hover:text-grey-50">Privacy Policy</RouterLink> -
-        <a v-for="(linkData, index) in links" :key="index" class="flex items-center" :href="linkData.url"
-          target="_blank">
+        <a
+          v-for="(linkData, index) in links"
+          :key="index"
+          class="flex items-center"
+          :href="linkData.url"
+          target="_blank"
+        >
           <Icon :icon="linkData.icon" class="hover:text-grey-50 hover:cursor-pointer" />
         </a>
       </div>
