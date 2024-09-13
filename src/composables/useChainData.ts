@@ -112,7 +112,7 @@ export const useChainData = () => {
     }
   };
   const getProposal = (id: number) => {
-    const { result } = useProposalQuery({ id }, { pollInterval: 5000 });
+    const { result } = useProposalQuery({ id }, { pollInterval: 10000 });
     return result;
   };
   const getParams = () => {
@@ -128,7 +128,7 @@ export const useChainData = () => {
     return result;
   };
   const getProposalTallies = (id: number) => {
-    const { result } = useProposalTalliesQuery({ id }, { pollInterval: 5000 });
+    const { result } = useProposalTalliesQuery({ id }, { pollInterval: 10000 });
     return result;
   };
   const getBlockHeight = (timestamp: string) => {

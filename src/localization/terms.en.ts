@@ -29,7 +29,7 @@ To use the GovGen Interface, you must connect a compatible third-party wallet (e
 
 The operator will never request your private keys, seed phrases, or recovery phrases. Any such request should be considered fraudulent and reported immediately. Failing to safeguard this information may result in the permanent loss of access to your wallet and digital assets.
 
-For enhanced security, users have the option to generate command-line interface (CLI) commands for executing transactions in an offline, air-gapped environment. This method allows users to create and sign transactions on a device that is not connected to the internet, significantly reducing the risk of unauthorized access, hacking, or malware attacks. Once the transaction is signed offline, it can be securely transmitted to the network using an internet-connected device. This adds an extra layer of protection when performing sensitive actions such as transferring funds or managing governance operations.
+For enhanced security, users have the option to [generate command-line interface (CLI)](https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md) commands for executing transactions in an offline, air-gapped environment. This method allows users to create and sign transactions on a device that is not connected to the internet, significantly reducing the risk of unauthorized access, hacking, or malware attacks. Once the transaction is signed offline, it can be securely transmitted to the network using an internet-connected device. This adds an extra layer of protection when performing sensitive actions such as transferring funds or managing governance operations.
 
 It is crucial that users strictly follow best practices for secure transaction processing, including keeping private keys secure and ensuring that the air-gapped environment is free from vulnerabilities. Failure to adhere to these best practices could lead to compromised security, resulting in the loss of assets or unauthorized actions being taken on the user's behalf.
 
@@ -37,7 +37,7 @@ It is crucial that users strictly follow best practices for secure transaction p
 
 Using the Interface may also require that you pay a fee, such as gas charges on the blockchain, to perform a transaction. **You acknowledge and agree that the operator has no control over any such third-party transactions, the method of payment of such transactions, or any actual payments of transactions.** All fees are non-refundable, so you must ensure that you have a sufficient balance of the applicable cryptocurrency tokens stored at your protocol-compatible wallet address to complete any transaction on the blockchain or Interface before initiating such a transaction.
 
-If you accept cryptocurrency or fiat payments from other users in the Interface, you bear all risk of loss from such transactions. Any payments made by you to other users are non-refundable, and the operator takes no responsibility for disputes arising between users related to such transactions.
+You bear all the risk of loss for transactions on the Interface..
 
 3. **Changes to the Interface**
 
