@@ -58,10 +58,6 @@ export default defineConfig({
       name: "webkit",
       use: {
         ...devices["Desktop Safari"],
-        bypassCSP: true, // add this to disable cors
-        launchOptions: {
-          args: ["--disable-web-security"], // add this to disable cors
-        },
       },
     },
 
