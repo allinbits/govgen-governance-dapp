@@ -24,6 +24,7 @@ jobs:
       run: pnpm build
     - name: Run Playwright tests
       run:
+        source .env.dev
         serve -s dist -l 8080 &
         pnpm exec playwright test
       env: 
