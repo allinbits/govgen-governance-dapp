@@ -9,13 +9,13 @@
   >
     <g clip-path="url(#clip0_234_14690)">
       <rect width="32" height="32" fill="none"></rect>
-      <g style="opacity: .5">
+      <g style="opacity: 0.5">
         <ellipse cx="16" cy="10.215" rx="9.645" ry="9.645" fill="#dddddd"></ellipse>
       </g>
-      <g style="opacity: .6">
+      <g style="opacity: 0.6">
         <ellipse cx="22.048" cy="21.775" rx="9.645" ry="9.645" fill="#aaaaaa"></ellipse>
       </g>
-      <g style="opacity: .8">
+      <g style="opacity: 0.8">
         <ellipse cx="9.552" cy="21.775" rx="9.645" ry="9.645" fill="#797979"></ellipse>
       </g>
     </g>
