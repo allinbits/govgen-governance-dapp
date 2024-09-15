@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ref, computed, Ref } from "vue";
 import chainInfo from "@/chain-config.json";
-import { EncodeObject, OfflineSigner } from "@cosmjs/proto-signing";
+import { EncodeObject, OfflineDirectSigner, OfflineSigner } from "@cosmjs/proto-signing";
 import { getSigningGovgenClient } from "@atomone/govgen-types/govgen/client";
 import { getOfflineSigner } from "@cosmostation/cosmos-client";
+import { OfflineAminoSigner } from "@keplr-wallet/types";
 
 export enum Wallets {
   keplr = "Keplr",
@@ -57,11 +58,13 @@ const useWalletInstance = () => {
         try {
           await window.keplr?.experimentalSuggestChain(chainInfo);
           await window.keplr?.enable(chainInfo.chainId);
-          if (window.getOfflineSigner) {
-            walletState.address.value = (await window.getOfflineSigner(chainInfo.chainId).getAccounts())[0].address;
+          if (window.getOfflineSignerOnlyAmino) {
+            walletState.address.value = (
+              await window.getOfflineSignerOnlyAmino(chainInfo.chainId).getAccounts()
+            )[0].address;
             walletState.loggedIn.value = true;
             walletState.used.value = Wallets.keplr;
-            signer.value = window.getOfflineSigner(chainInfo.chainId);
+            signer.value = window.getOfflineSignerOnlyAmino(chainInfo.chainId);
             if (signal?.aborted) {
               abortHandler();
             }
@@ -78,10 +81,12 @@ const useWalletInstance = () => {
         try {
           await window.leap?.experimentalSuggestChain(chainInfo);
           await window.leap?.enable(chainInfo.chainId);
-          walletState.address.value = (await window.leap.getOfflineSigner(chainInfo.chainId).getAccounts())[0].address;
+          walletState.address.value = (
+            await window.leap.getOfflineSignerOnlyAmino(chainInfo.chainId).getAccounts()
+          )[0].address;
           walletState.loggedIn.value = true;
           walletState.used.value = Wallets.leap;
-          signer.value = window.leap.getOfflineSigner(chainInfo.chainId);
+          signer.value = window.leap.getOfflineSignerOnlyAmino(chainInfo.chainId);
           if (signal?.aborted) {
             abortHandler();
           }
@@ -121,7 +126,13 @@ const useWalletInstance = () => {
           ).address;
           walletState.loggedIn.value = true;
           walletState.used.value = Wallets.cosmostation;
-          signer.value = (await getOfflineSigner(chainInfo.chainId)) as OfflineSigner; // Appears to be a re-declaration of OfflineSigner and TS cannot figure out they're the same.
+          const cosmostationSigner = (await getOfflineSigner(chainInfo.chainId)) as OfflineSigner;
+          if ((cosmostationSigner as OfflineDirectSigner).signDirect) {
+            const { signDirect: _signDirect, ...aminoSigner } = cosmostationSigner as OfflineDirectSigner;
+            signer.value = aminoSigner as OfflineAminoSigner;
+          } else {
+            signer.value = cosmostationSigner;
+          }
           if (signal?.aborted) {
             abortHandler();
           }
