@@ -191,6 +191,7 @@ export const messages = {
       ProposalVote: {
         cta: "Vote",
         voted: "You voted",
+        error: "Error",
         weightedInstructions: "Define weight for each of the voting options. The sum of weights must be equal to 1.",
       },
       ProposalDeposit: {

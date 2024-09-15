@@ -116,7 +116,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
           <div v-show="displayState === 'pending'" class="flex flex-col gap-6 relative">
             <span class="text-gradient font-termina text-700 text-center">{{
               $t("components.ProposalDeposit.cta")
-              }}</span>
+            }}</span>
             <div class="flex flex-col gap-10">
               <div>
                 <div class="flex flex-col gap-10">
@@ -157,8 +157,8 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                 </button>
               </div>
 
-              <div class="flex flex-col gap-4">
-                <div v-if="transacting" class="flex flex-col gap-4 items-center">
+              <div class="flex flex-col gap-4" v-if="transacting">
+                <div class="flex flex-col gap-4 items-center">
                   <Icon icon="loading" :size="2" />
                 </div>
               </div>
@@ -168,7 +168,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
             <div class="flex flex-col items-center gap-4">
               <span class="text-gradient font-termina text-700 text-center">{{
                 $t("components.ProposalVote.cta")
-                }}</span>
+              }}</span>
               <span class="text-grey-100">{{ $t("ui.actions.clicta") }}</span>
             </div>
 
@@ -187,7 +187,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
             <div class="flex gap-x-4 items-stretch">
               <CommonButton class="w-full" @click="() => (displayState = 'pending')">{{
                 $t("ui.actions.back")
-                }}</CommonButton>
+              }}</CommonButton>
               <button
                 class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
                 @click="toggleModal(false)">
