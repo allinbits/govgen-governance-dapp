@@ -537,7 +537,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
               }
             "
           >
-            {{  $t("components.ProposalDeposit.cta") }}
+            {{ $t("components.ProposalDeposit.cta") }}
           </div>
         </SimpleCard>
       </div>
