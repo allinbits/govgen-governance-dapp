@@ -197,6 +197,7 @@ export const messages = {
         cta: "Deposit",
         act: "deposited",
         deposited: "You deposited",
+        error: "Error",
         instructions: "Enter deposit amount",
       },
       VotePanel: {
