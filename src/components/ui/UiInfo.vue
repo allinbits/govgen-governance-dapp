@@ -33,7 +33,7 @@ const isCircled = computed<boolean>(() => props.circled || props.type === "succe
   <div class="text-center">
     <div v-if="props.type !== 'content'" class="flex justify-center mb-8">
       <div class="rounded-full flex justify-center p-4" :class="infoType">
-        <UiIcon :icon="ico" :size="isCircled ? 3.5 : 1" :gradient="type === 'warning'" />
+        <UiIcon :icon="ico" :size="isCircled ? 3.5 : 1" />
       </div>
     </div>
     <h1 class="text-500 font-semibold">{{ title }}</h1>

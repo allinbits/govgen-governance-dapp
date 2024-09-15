@@ -641,7 +641,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   {{ $t("proposalpage.labels.messages") }}
                 </div>
                 <div
-                  v-if="proposal?.proposal[0].content['@type'] == '/govgen.gov.v1beta1.TextProposal'"
+                  v-if="proposal?.proposal[0].proposal_type == '/govgen.gov.v1beta1.TextProposal'"
                   class="flex w-full flex-wrap"
                 >
                   <div class="grow w-full md:w-1/2 mb-10">
@@ -662,7 +662,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   </div>
                 </div>
                 <div
-                  v-if="proposal?.proposal[0].content['@type'] == '/cosmos.params.v1beta1.ParameterChangeProposal'"
+                  v-if="proposal?.proposal[0].proposal_type == '/cosmos.params.v1beta1.ParameterChangeProposal'"
                   class="flex w-full flex-wrap flex-col md:flex-row"
                 >
                   <div class="grow w-full md:w-1/2 mb-10 md:pr-3 pr-0">
@@ -693,7 +693,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
                   </div>
                 </div>
                 <div
-                  v-if="proposal?.proposal[0].content['@type'] == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
+                  v-if="proposal?.proposal[0].proposal_type == '/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal'"
                   class="flex w-full flex-wrap"
                 >
                   <div class="grow w-1/2 mb-10">

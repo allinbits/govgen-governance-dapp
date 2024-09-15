@@ -18,6 +18,8 @@ import { useWallet, Wallets } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
 import { useClipboard } from "@vueuse/core";
 import { useTelemetry } from "@/composables/useTelemetry";
+import { DeliverTxResponse } from "@atomone/govgen-types/types";
+import { toPlainObjectString } from "@/utility";
 
 interface Props {
   proposalId?: number;
@@ -26,12 +28,14 @@ const props = defineProps<Props>();
 
 const { t } = useI18n();
 const isOpen = ref(false);
-const displayState = ref<"voted" | "CLI" | "pending">("pending");
+const displayState = ref<"voted" | "CLI" | "pending" | "error">("pending");
 
 const tabOptions = reactive(["Straight", "Weighted"]);
 const tab = ref(tabOptions[0]);
 
+const errorMsg = ref<string>("");
 const cliVoteInput = ref("");
+const transacting = ref<boolean>(false);
 
 // Votes info
 const voteList: Partial<Record<VoteOption, { label: string; color: string }>> = {
@@ -118,11 +122,22 @@ const signVote = async (isCLI = false) => {
   }
 
   const voteProposalFunc = checkVoteWeighted.value ? voteWeightedProposal : voteProposal;
-  const vote = await (voteOptions && voteProposalFunc(voteOptions, isCLI));
-  //TODO: handle error and get result from chain
 
-  cliVoteInput.value = (isCLI ? vote : "") as string;
-  displayState.value = isCLI ? "CLI" : "voted";
+  try {
+    transacting.value = true;
+    const vote = await (voteOptions && voteProposalFunc(voteOptions, isCLI));
+    if ((vote as DeliverTxResponse).code !== 0) {
+      errorMsg.value = (vote as DeliverTxResponse).rawLog ?? toPlainObjectString(vote);
+      displayState.value = "error";
+    } else {
+      cliVoteInput.value = (isCLI ? vote : "") as string;
+      displayState.value = isCLI ? "CLI" : "voted";
+    }
+  } catch (e) {
+    console.log(e);
+    errorMsg.value = "" + e;
+    displayState.value = "error";
+  }
 
   logEvent("Sign Popup ProposalVote", { signOption: isCLI ? "CLI" : "GUI" });
 };
@@ -193,7 +208,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                 </Transition>
               </div>
 
-              <div class="flex flex-col gap-4">
+              <div v-if="!transacting" class="flex flex-col gap-4">
                 <div v-show="voteStraight || checkVoteWeighted" class="flex flex-col gap-4">
                   <button
                     class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
@@ -223,6 +238,12 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                 >
                   {{ $t("ui.actions.cancel") }}
                 </button>
+              </div>
+
+              <div v-if="transacting" class="flex flex-col gap-4">
+                <div class="flex flex-col gap-4 items-center">
+                  <Icon icon="loading" :size="2" />
+                </div>
               </div>
             </div>
           </div>
@@ -279,6 +300,24 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                   </span>
                 </div>
               </div>
+            </UiInfo>
+
+            <button
+              class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
+              @click="toggleModal(false)"
+            >
+              {{ $t("ui.actions.done") }}
+            </button>
+          </div>
+
+          <div v-show="displayState === 'error'">
+            <UiInfo :title="$t('components.ProposalVote.error')" type="warning" :circled="true">
+              <textarea
+                ref="error"
+                v-model="errorMsg"
+                readonly
+                class="w-full h-32 my-4 px-4 pb-4 pt-4 bg-grey-200 text-grey-50 rounded outline-none resize-none"
+              ></textarea>
             </UiInfo>
 
             <button

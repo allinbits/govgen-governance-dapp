@@ -16,7 +16,8 @@ import { useClipboard } from "@vueuse/core";
 import { useProposals } from "@/composables/useProposals";
 import { useTelemetry } from "@/composables/useTelemetry";
 
-import { formatAmount } from "@/utility";
+import { formatAmount, toPlainObjectString } from "@/utility";
+import { DeliverTxResponse } from "@atomone/govgen-types/types";
 
 interface Props {
   proposalId?: number;
@@ -27,12 +28,12 @@ interface Props {
 const props = defineProps<Props>();
 
 const isOpen = ref(false);
-const displayState = ref<"deposited" | "CLI" | "pending">("pending");
+const displayState = ref<"deposited" | "CLI" | "pending" | "error">("pending");
 
 const depositAmount = ref<number | null>(null);
-
+const errorMsg = ref<string>("");
 const cliDepositInput = ref("");
-
+const transacting = ref<boolean>(false);
 const depositDenomDecimals = computed(() => {
   const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom);
   if (currencies.length <= 0) {
@@ -77,13 +78,21 @@ const signDeposit = async (isCLI = false) => {
       },
     ],
   };
-
-  const depot = await depositProposal(depositOptions, isCLI);
-  //TODO: handle error and get result from chain
-
-  cliDepositInput.value = (isCLI ? depot : "") as string;
-  displayState.value = isCLI ? "CLI" : "deposited";
-
+  try {
+    transacting.value = true;
+    const depot = await depositProposal(depositOptions, isCLI);
+    if ((depot as DeliverTxResponse).code !== 0) {
+      errorMsg.value = (depot as DeliverTxResponse).rawLog ?? toPlainObjectString(depot);
+      displayState.value = "error";
+    } else {
+      cliDepositInput.value = (isCLI ? depot : "") as string;
+      displayState.value = isCLI ? "CLI" : "deposited";
+    }
+  } catch (e) {
+    console.log(e);
+    errorMsg.value = "" + e;
+    displayState.value = "error";
+  }
   logEvent("Sign Popup ProposalDeposit", {
     signOption: isCLI ? "CLI" : "GUI",
   });
@@ -132,7 +141,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                 </div>
               </div>
 
-              <div class="flex flex-col gap-4">
+              <div v-if="!transacting" class="flex flex-col gap-4">
                 <div v-show="(depositAmount ?? -1) > 0" class="flex flex-col gap-4">
                   <button
                     class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
@@ -162,6 +171,12 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                 >
                   {{ $t("ui.actions.cancel") }}
                 </button>
+              </div>
+
+              <div v-if="transacting" class="flex flex-col gap-4">
+                <div class="flex flex-col gap-4 items-center">
+                  <Icon icon="loading" :size="2" />
+                </div>
               </div>
             </div>
           </div>
@@ -209,6 +224,23 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
               <div class="text-500 text-center font-semibold mb-8 w-full">
                 {{ depositAmount }} {{ depositDenomDisplay }}
               </div>
+            </UiInfo>
+
+            <button
+              class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
+              @click="toggleModal(false)"
+            >
+              {{ $t("ui.actions.done") }}
+            </button>
+          </div>
+          <div v-show="displayState === 'error'">
+            <UiInfo :title="$t('components.ProposalDeposit.error')" type="warning" :circled="true">
+              <textarea
+                ref="error"
+                v-model="errorMsg"
+                readonly
+                class="w-full h-32 my-4 px-4 pb-4 pt-4 bg-grey-200 text-grey-50 rounded outline-none resize-none"
+              ></textarea>
             </UiInfo>
 
             <button
