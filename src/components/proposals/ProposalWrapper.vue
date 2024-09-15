@@ -511,7 +511,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
               }
             "
           >
-            {{ $t("components.WalletConnect.button") }}
+            {{ $t("components.ProposalVote.cta") }}
           </div>
         </SimpleCard>
         <SimpleCard v-if="inDeposit">
@@ -537,7 +537,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
               }
             "
           >
-            {{ $t("components.WalletConnect.button") }}
+            {{  $t("components.ProposalVote.cta") }}
           </div>
         </SimpleCard>
       </div>
