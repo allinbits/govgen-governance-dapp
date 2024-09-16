@@ -212,7 +212,7 @@ const tabOptions = reactive<UiTabOption[]>([
   { title: "Info" },
   { title: "Voters" },
   { title: "Discussions", link: "https://commonwealth.im/govgen/proposal/" + props.proposalId },
-  { title: "Links", link: "https://commonwealth.im/govgen/proposal/" + props.proposalId },
+  //   { title: "Links", link: "https://commonwealth.im/govgen/proposal/" + props.proposalId },
 ]);
 
 const breakdownType = ref<("validators" | "voters") | null>(null);
@@ -511,7 +511,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
               }
             "
           >
-            {{ $t("components.WalletConnect.button") }}
+            {{ $t("components.ProposalVote.cta") }}
           </div>
         </SimpleCard>
         <SimpleCard v-if="inDeposit">
@@ -537,7 +537,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
               }
             "
           >
-            {{ $t("components.WalletConnect.button") }}
+            {{ $t("components.ProposalDeposit.cta") }}
           </div>
         </SimpleCard>
       </div>
