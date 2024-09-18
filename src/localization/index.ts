@@ -1,5 +1,6 @@
 import privacyEn from "./privacy.en";
 import termsEn from "./terms.en";
+import faqEn from "./faq.en.json";
 
 export const messages = {
   en: {
@@ -13,11 +14,16 @@ export const messages = {
       createProposal: "Create Proposal",
       viewHistory: "Voting History",
       viewProposals: "Proposals",
+      viewFaq: "FAQ",
       viewForums: "Forum",
     },
     termspage: {
       title: "Terms of Service",
       content: termsEn,
+    },
+    faqPage: {
+      title: "FAQ",
+      content: faqEn,
     },
     privacypage: {
       title: "Privacy Policy",
