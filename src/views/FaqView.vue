@@ -5,8 +5,17 @@ import markdownit from "markdown-it";
 
 const { locale, messages } = useI18n();
 
+function isFaqPage(obj: unknown): obj is { content: Array<{ question: string; answer: string }> } {
+  return typeof obj === "object" && obj !== null && "content" in obj;
+}
+
 const faqContent = computed(() => {
-  return (messages.value[locale.value].faqPage as any).content;
+  const currentMessages = messages.value[locale.value];
+
+  if (isFaqPage(currentMessages.faqPage)) {
+    return currentMessages.faqPage.content;
+  }
+  return [];
 });
 
 const md = markdownit({
@@ -29,7 +38,7 @@ const md = markdownit({
     ></div>
 
     <div class="flex flex-row py-8 md:py-[72px]">
-      <p class="text-grey-100 text-400 lg:w-[800px] font-normal text-left text-pretty">
+      <p class="text-grey-100 text-400 lg:w-[px] font-normal text-left text-pretty">
         <span class="block pb-8 lg:pb-[72px]">
           <div v-for="(item, index) in faqContent" :key="index">
             <h2 class="text-light mb-6">{{ item.question }}</h2>
