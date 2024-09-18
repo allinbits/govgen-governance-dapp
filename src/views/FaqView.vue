@@ -42,7 +42,9 @@ const md = markdownit({
         <span class="block pb-8 lg:pb-[72px]">
           <div v-for="(item, index) in faqContent" :key="index">
             <h2 class="text-light mb-6">{{ item.question }}</h2>
+            <!-- eslint-disable vue/no-v-html -->
             <div class="mb-16 md" v-html="md.render(item.answer)"></div>
+            <!--eslint-enable-->
           </div>
         </span>
       </p>
