@@ -63,7 +63,7 @@ const getTxHash = (vote: AllVotesQuery["proposal_vote"][0]) => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full overflow-auto">
+  <div class="flex flex-col w-full">
     <div class="grid grid-cols-5 py-4 w-full text-grey-100 font-medium text-200">
       <span>{{ $t("components.Breakdown.voter") }}</span>
       <span>{{ $t("components.Breakdown.txHash") }}</span>
@@ -71,11 +71,8 @@ const getTxHash = (vote: AllVotesQuery["proposal_vote"][0]) => {
       <span>{{ $t("components.Breakdown.weight") }}</span>
       <span class="text-right">{{ $t("components.Breakdown.time") }}</span>
     </div>
-    <div
-      v-for="vote in filteredVotes"
-      :key="vote.voter_address + vote.option"
-      class="grid grid-cols-5 py-4 w-full text-200 text-grey-50"
-    >
+    <div v-for="vote in filteredVotes" :key="vote.voter_address + vote.option"
+      class="grid grid-cols-5 py-4 w-full text-200 text-grey-50">
       <span>{{ Utility.shorten(vote.voter_address) }}</span>
       <span>{{ getTxHash(vote) }}</span>
       <span>{{ vote.option.replace("VOTE_OPTION_", "") }}</span>
@@ -84,49 +81,29 @@ const getTxHash = (vote: AllVotesQuery["proposal_vote"][0]) => {
     </div>
 
     <div class="flex flex-row justify-end pt-12 gap-4">
-      <Icon
-        icon="Arrowleftend"
-        class="text-400 text-grey-100"
-        :class="{ 'text-light hover:opacity-75 cursor-pointer': offset > 0 }"
-        @click="
-          () => {
+      <Icon icon="Arrowleftend" class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': offset > 0 }" @click="() => {
             offset = 0;
           }
-        "
-      />
-      <Icon
-        icon="Arrowleft"
-        class="text-400 text-grey-100"
-        :class="{ 'text-light hover:opacity-75 cursor-pointer': offset > 0 }"
-        @click="
-          () => {
+          " />
+      <Icon icon="Arrowleft" class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': offset > 0 }" @click="() => {
             if (offset > 0) {
               prev();
             }
           }
-        "
-      />
+          " />
       <!-- Page Numbers -->
-      <Icon
-        icon="Arrowright"
-        class="text-400 text-grey-100"
-        :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
-        @click="
-          () => {
+      <Icon icon="Arrowright" class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }" @click="() => {
             next();
           }
-        "
-      />
-      <Icon
-        icon="Arrowrightend"
-        class="text-400 text-grey-100"
-        :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
-        @click="
-          () => {
+          " />
+      <Icon icon="Arrowrightend" class="text-400 text-grey-100"
+        :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }" @click="() => {
             offset = Math.floor((votes?.proposal_vote_aggregate.aggregate?.count ?? 0) / limit) * limit;
           }
-        "
-      />
+          " />
     </div>
   </div>
 </template>
