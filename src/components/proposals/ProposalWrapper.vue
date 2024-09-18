@@ -388,7 +388,8 @@ const timeTo = (dateString: string) => {
   const now = dayjs.utc();
   const to = dayjs.utc(dateString);
   const diff = dayjs.duration(to.diff(now));
-  return diff.format("D [d] : H [hr] : m [m] [left]");
+  const days = Math.floor(diff.asDays());
+  return days + " d : " + diff.format("H [hr] : m [m] [left]");
 };
 
 function isTabSelected(tabName: TabNames) {
