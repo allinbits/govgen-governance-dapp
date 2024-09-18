@@ -10,7 +10,7 @@ export const useValidators = (height?: string) => {
     if (validatorList.value) {
       return "proposal_validator_status_snapshot" in validatorList.value
         ? validatorList.value.proposal_validator_status_snapshot
-        : validatorList.value.validator_status;
+        : validatorList.value.block[0].validator_statuses;
     } else {
       return [];
     }
