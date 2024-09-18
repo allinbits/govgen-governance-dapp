@@ -45,6 +45,6 @@
   },
   {
     "question": "Is GovGen dApp open-source?",
-    "answer": "The dApp is created using Elesia - an open source, configurable governance platform for Cosmos chains, and the GovGen dApp is the first integration of this open source platform. "
+    "answer": "The dApp is created using Eclesia - an open source, configurable governance platform for Cosmos chains, and the GovGen dApp is the first integration of this open source platform. "
   }
 ]
