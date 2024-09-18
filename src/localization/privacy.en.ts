@@ -103,8 +103,6 @@ We may share your personal data with others under the following circumstances:
 
 2. **Third-Party Service Providers:** We engage vendors and service providers to perform functions on our behalf, including web hosting, KYC/AML services, and payment processing. These service providers are bound by confidentiality obligations and are prohibited from using your data for purposes other than providing services to us.
 
-   1. **Data analytics providers**: We use Plausible Analytics, a privacy-focused, cookie-free analytics tool. Plausible collects non-personally identifiable data about your interactions with our Services, such as pages visited, duration of visits, and referrers. This information is used solely to understand usage patterns and improve the Interface. No cookies are used, and no personal data is stored or shared
-
 3. **Legal Requirements and Protection:** We may share your personal data to comply with legal obligations, respond to legal processes, or protect our rights, privacy, safety, or property, as well as that of others, as required by law.
 
 4. **Business Transfers:** In the event of a business combination, merger, asset sale, or similar transaction, your personal data may be transferred to a successor entity.
