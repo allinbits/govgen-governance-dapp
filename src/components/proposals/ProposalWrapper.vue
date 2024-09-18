@@ -807,7 +807,7 @@ onMounted(() => (title.value = `GovGen — #${proposal.value?.proposal[0].id} ${
     </PopupBox>
 
     <ModalWrap :visible="displayBreakdown">
-      <div class="bg-dark px-20 py-12 w-[90vw] md:max-w-[90rem] rounded-md max-h-screen">
+      <div class="bg-dark px-20 py-12 w-[90vw] md:max-w-[90rem] rounded-md max-h-screen overflow-auto">
         <CommonButton class="flex justify-between items-center gap-6 w-36" @click="showBreakdown(null)">
           <Icon icon="arrowLeft" /><span>{{ $t("ui.buttons.back") }}</span>
         </CommonButton>
