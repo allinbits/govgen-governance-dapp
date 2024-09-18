@@ -40,7 +40,7 @@ const getValidatorInfo = (address: string) => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full">
+  <div class="flex flex-col w-full overflow-auto">
     <div class="grid grid-cols-5 py-4 w-full text-grey-100 font-medium text-200">
       <span>{{ $t("components.Breakdown.moniker") }}</span>
       <span>{{ $t("components.Breakdown.txHash") }}</span>
