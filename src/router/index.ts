@@ -4,6 +4,7 @@ import HomeView from "@/views/HomeView.vue";
 import CreateProposalView from "@/views/CreateProposalView.vue";
 import ProposalView from "@/views/ProposalView.vue";
 import HistoryView from "@/views/HistoryView.vue";
+import FaqView from "@/views/FaqView.vue";
 import { useTelemetry } from "@/composables/useTelemetry";
 import TermsView from "@/views/TermsView.vue";
 import PrivacyView from "@/views/PrivacyView.vue";
@@ -15,6 +16,7 @@ const routes = [
   { path: "/privacy", component: PrivacyView },
   { path: "/proposals/:id", component: ProposalView },
   { path: "/history", component: HistoryView },
+  { path: "/faq", component: FaqView },
   // { path: "/design", component: DesignView },
 ];
 if (import.meta.env.VITE_CHAIN_ID != "govgen-1") {

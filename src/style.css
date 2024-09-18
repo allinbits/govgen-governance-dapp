@@ -133,6 +133,12 @@ html {
     @apply font-interVar;
   }
 }
+
+.md {
+  a {
+    @apply underline;
+  }
+}
 /* 
 .markdown { 
   h1 {
