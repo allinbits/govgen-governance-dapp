@@ -33,7 +33,8 @@ Under the hero component, you will find the following tabs:
 - **Description** (default): Contains the proposal description (also renders markdown)
 - **Info**: Contains the general proposal information such as proposer address, submission time, initial and total deposit, voting start time/end time and deposit end time (if appropriate) along with the messages contained in the proposal.
 - **Voters**: Contains an in-depth analysis of how all accounts have voted and how validators have voted including a complete breakdown of unique votes.
-- **Discussions**: Links to the discussion forums at [Commonwealth](https://commonwealth.im/govgen). Soon, you will be able to take part in the conversation directly from the Govgen dApp through integration with the Commonwealth API.
+- **Discussions**: Links to the discussion forums at [Commonwealth](https://commonwealth.im/govgen).
+  -  WIP - Conversations will be integrated directly into the application as soon as Commonwealth API is available.
 - **Links**: Contains useful/helpful links provided by the community that add information and context relevant to the proposal. Links to the discussion forums at [Commonwealth](https://commonwealth.im/govgen). Soon, you will be able to add helpful links to the conversation directly from the Govgen dApp through integration with the Commonwealth API.
 
 ### Deposit popup
@@ -42,7 +43,7 @@ It allows you to add to a proposal's deposit to help push it into the voting per
 
 ### Voting popup
 
-Gives you te ability to vote on a proposal either with a single vote (YES/NO/NO WITH VETO/ABSTAIN) or a weighted vote with the weights you require for those 4 options. Like the deposit popup, you can then either generate the CLI command required to create and then sign the TX using the CLI or use your connected wallet to authorize and broadcast.
+Gives you the ability to vote on a proposal either with a single vote (YES/NO/NO WITH VETO/ABSTAIN) or a weighted vote with the weights you require for those 4 options. Like the deposit popup, you can then either generate the CLI command required to create and then sign the TX using the CLI or use your connected wallet to authorize and broadcast.
 
 ## Local deployment
 
