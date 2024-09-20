@@ -125,7 +125,7 @@ export function useGithubDiscusser(threadTitle: string) {
         (upvote?.users.totalCount ? upvote.users.totalCount : 0) +
         (downvote?.users.totalCount ? downvote?.users.totalCount : 0);
 
-      const voteRatio = totalVotes === 0 ? 0 : upvote?.users.totalCount ?? 0 / totalVotes;
+      const voteRatio = totalVotes === 0 ? 0 : (upvote?.users.totalCount ?? 0 / totalVotes);
       if (voteRatio < ratio.value) {
         continue;
       }
@@ -165,7 +165,7 @@ export function useGithubDiscusser(threadTitle: string) {
         (upvote?.users.totalCount ? upvote.users.totalCount : 0) +
         (downvote?.users.totalCount ? downvote?.users.totalCount : 0);
 
-      const voteRatio = totalVotes === 0 ? 0 : upvote?.users.totalCount ?? 0 / totalVotes;
+      const voteRatio = totalVotes === 0 ? 0 : (upvote?.users.totalCount ?? 0 / totalVotes);
       if (voteRatio < ratio.value) {
         continue;
       }

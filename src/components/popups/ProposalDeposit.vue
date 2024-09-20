@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
-import { MsgDeposit } from "@atomone/govgen-types/govgen/gov/v1beta1/tx";
+import { MsgDeposit } from "@atomone/govgen-types-amino/govgen/gov/v1beta1/tx";
 
 import chainConfig from "@/chain-config.json";
 
@@ -17,7 +17,7 @@ import { useProposals } from "@/composables/useProposals";
 import { useTelemetry } from "@/composables/useTelemetry";
 
 import { formatAmount, toPlainObjectString } from "@/utility";
-import { DeliverTxResponse } from "@atomone/govgen-types/types";
+import { DeliverTxResponse } from "@atomone/govgen-types-amino/varint";
 
 interface Props {
   proposalId?: number;

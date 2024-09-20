@@ -1,9 +1,14 @@
-import { TextProposal, VoteOption } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
-import { ParameterChangeProposal } from "@atomone/govgen-types/cosmos/params/v1beta1/params";
+import { TextProposal, VoteOption } from "@atomone/govgen-types-amino/govgen/gov/v1beta1/gov";
+import { ParameterChangeProposal } from "@atomone/govgen-types-amino/cosmos/params/v1beta1/params";
 import { useWallet } from "@/composables/useWallet";
-import { MsgDeposit, MsgSubmitProposal, MsgVote, MsgVoteWeighted } from "@atomone/govgen-types/govgen/gov/v1beta1/tx";
+import {
+  MsgDeposit,
+  MsgSubmitProposal,
+  MsgVote,
+  MsgVoteWeighted,
+} from "@atomone/govgen-types-amino/govgen/gov/v1beta1/tx";
 import { EncodeObject } from "@cosmjs/proto-signing";
-import { SoftwareUpgradeProposal } from "@atomone/govgen-types/cosmos/upgrade/v1beta1/upgrade";
+import { SoftwareUpgradeProposal } from "@atomone/govgen-types-amino/cosmos/upgrade/v1beta1/upgrade";
 import chainInfo from "@/chain-config.json";
 import CommandBuilder from "@/utility/commandBuilder";
 

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { ref, watch } from "vue";
-import { defineModel } from "vue";
 
 const model = defineModel<{ key: string; value: string; subspace: string }>();
 const props = defineProps<{ disabled: boolean }>();

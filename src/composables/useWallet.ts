@@ -2,7 +2,7 @@
 import { ref, computed, Ref } from "vue";
 import chainInfo from "@/chain-config.json";
 import { EncodeObject, OfflineDirectSigner, OfflineSigner } from "@cosmjs/proto-signing";
-import { getSigningGovgenClient } from "@atomone/govgen-types/govgen/client";
+import { getSigningGovgenClient } from "@atomone/govgen-types-amino/govgen/client";
 import { getOfflineSigner } from "@cosmostation/cosmos-client";
 import { OfflineAminoSigner } from "@keplr-wallet/types";
 

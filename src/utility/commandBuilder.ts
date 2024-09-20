@@ -1,4 +1,4 @@
-import { Coin } from "@atomone/govgen-types/cosmos/base/v1beta1/coin";
+import { Coin } from "@atomone/govgen-types-amino/cosmos/base/v1beta1/coin";
 
 export default class CommandBuilder {
   private command: string[];

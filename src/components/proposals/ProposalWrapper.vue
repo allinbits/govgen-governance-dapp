@@ -4,7 +4,7 @@ import { useChainData } from "@/composables/useChainData";
 import { useWallet } from "@/composables/useWallet";
 //import GithubComments from "@/components/proposals/GithubComments.vue";
 //import GithubLinks from "@/components/proposals/GithubLinks.vue";
-import { Deposit } from "@atomone/govgen-types/govgen/gov/v1beta1/gov";
+import { Deposit } from "@atomone/govgen-types-amino/govgen/gov/v1beta1/gov";
 import ProposalVote from "@/components/popups/ProposalVote.vue";
 import ProposalDeposit from "@/components/popups/ProposalDeposit.vue";
 import chainConfig from "@/chain-config.json";

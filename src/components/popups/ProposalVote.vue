@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, reactive } from "vue";
 
-import { MsgVote, MsgVoteWeighted } from "@atomone/govgen-types/govgen/gov/v1beta1/tx";
+import { MsgVote, MsgVoteWeighted } from "@atomone/govgen-types-amino/govgen/gov/v1beta1/tx";
 import { VoteOption } from "cosmjs-types/cosmos/gov/v1beta1/gov";
 
 import ModalWrap from "@/components/common/ModalWrap.vue";
@@ -18,7 +18,7 @@ import { useWallet, Wallets } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
 import { useClipboard } from "@vueuse/core";
 import { useTelemetry } from "@/composables/useTelemetry";
-import { DeliverTxResponse } from "@atomone/govgen-types/types";
+import { DeliverTxResponse } from "@atomone/govgen-types-amino/types";
 import { toPlainObjectString } from "@/utility";
 
 interface Props {
