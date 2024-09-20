@@ -72,7 +72,7 @@ const changeOption = (idx: string) => {
 
   if (el && state.tabsListPos && toggler.value) {
     toggler.value.style.setProperty("--mw", `${el.pos.width.toString()}px`);
-    toggler.value.style.setProperty("--tx", `${el.pos.left - state.tabsListPos?.left ?? 0}px`);
+    toggler.value.style.setProperty("--tx", `${el.pos.left - (state.tabsListPos?.left ?? 0)}px`);
   }
 };
 
@@ -99,6 +99,7 @@ onMounted(() => setBg());
   --mw: 0;
   --tx: 0;
 }
+
 .switcher::before {
   content: "";
   @apply absolute block visible h-px bottom-0.5 bg-light w-px rounded-full z-1 duration-300 ease-in-out;
