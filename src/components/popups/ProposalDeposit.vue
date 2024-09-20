@@ -17,7 +17,7 @@ import { useProposals } from "@/composables/useProposals";
 import { useTelemetry } from "@/composables/useTelemetry";
 
 import { formatAmount, toPlainObjectString } from "@/utility";
-import { DeliverTxResponse } from "@atomone/govgen-types-amino/varint";
+import { DeliverTxResponse } from "@atomone/govgen-types-amino/types";
 
 interface Props {
   proposalId?: number;

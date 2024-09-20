@@ -2,7 +2,7 @@
 import ModalWrap from "@/components/common/ModalWrap.vue";
 
 const props = defineProps<{ title?: string }>();
-const visible = defineModel<boolean>();
+const visible = defineModel<boolean>({ default: false });
 const emits = defineEmits<{ (e: "close"): void }>();
 </script>
 <template>
