@@ -42,7 +42,7 @@ export default class CommandBuilder {
     return this;
   }
   finish() {
-    this.command.push("-fees");
+    this.command.push("--fees");
     let feeString = "";
     for (let i = 0; i < this.fees.length; i++) {
       feeString = feeString + this.fees[i].amount + this.fees[i].denom;
@@ -56,7 +56,7 @@ export default class CommandBuilder {
     this.command.push(this.address);
     this.command.push("--chain-id");
     this.command.push(this.chainId);
-    this.command.push("--output-document");
+    this.command.push(">");
     this.command.push("tx.unsigned.json");
     return this.command.join(" ");
   }

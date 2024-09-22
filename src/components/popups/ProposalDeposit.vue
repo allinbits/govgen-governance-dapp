@@ -81,7 +81,7 @@ const signDeposit = async (isCLI = false) => {
   try {
     transacting.value = true;
     const depot = await depositProposal(depositOptions, isCLI);
-    if ((depot as DeliverTxResponse).code !== 0) {
+    if ((depot as DeliverTxResponse).code !== 0 && !isCLI) {
       errorMsg.value = (depot as DeliverTxResponse).rawLog ?? toPlainObjectString(depot);
       displayState.value = "error";
     } else {

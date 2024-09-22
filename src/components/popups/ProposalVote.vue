@@ -126,7 +126,7 @@ const signVote = async (isCLI = false) => {
   try {
     transacting.value = true;
     const vote = await (voteOptions && voteProposalFunc(voteOptions, isCLI));
-    if ((vote as DeliverTxResponse).code !== 0) {
+    if ((vote as DeliverTxResponse).code !== 0 && !isCLI) {
       errorMsg.value = (vote as DeliverTxResponse).rawLog ?? toPlainObjectString(vote);
       displayState.value = "error";
     } else {
