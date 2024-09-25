@@ -82,15 +82,18 @@ const signDeposit = async (isCLI = false) => {
     transacting.value = true;
     const depot = await depositProposal(depositOptions, isCLI);
     if ((depot as DeliverTxResponse).code !== 0 && !isCLI) {
+      transacting.value = false;
       errorMsg.value = (depot as DeliverTxResponse).rawLog ?? toPlainObjectString(depot);
       displayState.value = "error";
     } else {
+      transacting.value = false;
       cliDepositInput.value = (isCLI ? depot : "") as string;
       displayState.value = isCLI ? "CLI" : "deposited";
     }
   } catch (e) {
     console.log(e);
     errorMsg.value = "" + e;
+    transacting.value = false;
     displayState.value = "error";
   }
   logEvent("Sign Popup ProposalDeposit", {
