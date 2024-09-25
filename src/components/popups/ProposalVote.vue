@@ -127,15 +127,18 @@ const signVote = async (isCLI = false) => {
     transacting.value = true;
     const vote = await (voteOptions && voteProposalFunc(voteOptions, isCLI));
     if ((vote as DeliverTxResponse).code !== 0 && !isCLI) {
+      transacting.value = false;
       errorMsg.value = (vote as DeliverTxResponse).rawLog ?? toPlainObjectString(vote);
       displayState.value = "error";
     } else {
+      transacting.value = false;
       cliVoteInput.value = (isCLI ? vote : "") as string;
       displayState.value = isCLI ? "CLI" : "voted";
     }
   } catch (e) {
     console.log(e);
     errorMsg.value = "" + e;
+    transacting.value = false;
     displayState.value = "error";
   }
 
