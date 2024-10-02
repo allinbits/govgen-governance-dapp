@@ -11,7 +11,7 @@ const { getProposal, getBlockHeightAsync } = useChainData();
 
 const route = useRoute();
 const proposal = getProposal(parseInt(route.params.id as string));
-const height = ref<number | null>(null);
+const height = ref<number>(0);
 
 watch(proposal, async (newProp, _oldProp) => {
   if (
@@ -45,11 +45,8 @@ watch(proposal, async (newProp, _oldProp) => {
 
 <template>
   <div>
-    <ProposalWrapper
-      v-if="proposal?.proposal[0].id && height !== null"
-      :proposal-id="parseInt(route.params.id as string)"
-      :height="height"
-    />
+    <ProposalWrapper v-if="proposal?.proposal[0].id && height !== null"
+      :proposal-id="parseInt(route.params.id as string)" :height="height" />
     <div v-else class="text-400 text-grey-50 text-center mt-12 font-medium">
       {{ $t("proposalview.labels.unavailable") }}
     </div>
