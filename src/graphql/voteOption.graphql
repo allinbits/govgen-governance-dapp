@@ -1,7 +1,0 @@
-query VoteOption( $proposalId: Int!, $option: String!) {
-  proposal_vote_aggregate(where: {_and: {is_valid: {_eq: true}, proposal_id: {_eq: $proposalId}, option: {_eq: $option}}}) {
-    aggregate {
-      count
-    }
-  }
-}

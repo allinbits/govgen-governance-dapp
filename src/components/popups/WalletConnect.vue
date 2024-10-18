@@ -3,9 +3,7 @@ import { Wallets, useWallet, getWalletHelp } from "@/composables/useWallet";
 import ConnectButton from "@/components/ui/ConnectButton.vue";
 import { Ref, computed, ref } from "vue";
 import { shorten } from "@/utility";
-import UserBalance from "@/components/helper/UserBalance.vue";
 import { bus } from "@/bus";
-import { useTelemetry } from "@/composables/useTelemetry";
 
 const isOpen = ref(false);
 const isConnecting = ref(false);
@@ -96,8 +94,6 @@ const cancelConnect = () => {
 bus.on("open", () => {
   isOpen.value = true;
 });
-
-const { logEvent } = useTelemetry();
 </script>
 
 <template>
@@ -109,7 +105,6 @@ const { logEvent } = useTelemetry();
         @click="
           () => {
             isOpen = true;
-            logEvent('Click Header ConnectWallet');
           }
         "
       >
@@ -187,7 +182,7 @@ const { logEvent } = useTelemetry();
             <input
               v-model="publicAddress"
               class="flex p-4 items-center self-stretch rounded-lg bg-grey-200 outline-none text-100 leading-4 placeholder-grey-100"
-              :placeholder="$t('components.WalletConnect.addressPlaceholder')"
+              :placeholder="'components.WalletConnect.addressPlaceholder'"
               @input="isValidAddress = publicAddress.length == 45"
             />
             <div class="flex flex-col gap-4">
@@ -221,7 +216,6 @@ const { logEvent } = useTelemetry();
           <div class="bg-gradient w-10 h-10 rounded-full mr-3"></div>
           <div class="flex flex-col justify-around">
             <div class="text-light text-200">{{ shorten(address) }}</div>
-            <div class="text-100 text-grey-100"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
           </div>
         </div>
       </template>
@@ -238,7 +232,6 @@ const { logEvent } = useTelemetry();
               </div>
             </div>
             <div class="text-200 text-grey-100 pt-6 pb-2">{{ $t("components.WalletConnect.balance") }}</div>
-            <div class="text-300 text-light"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
             <div class="buttons">
               <ConnectButton
                 class="my-4 justify-center"

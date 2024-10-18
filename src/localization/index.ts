@@ -5,7 +5,7 @@ import faqEn from "./faq.en.json";
 export const messages = {
   en: {
     homepage: {
-      title: "GovGen",
+      title: "AtomOne Staking Portal",
       intro:
         "Explore the Governance dApp—a seamlessly integrated interface empowering secure and efficient governance interactions with the GovGen chain. Engage in collaborative discussions in the {0} and actively participate in the governance processes to shape the potential future of AtomOne.",
       proposalsHeader: "All Proposals",
@@ -193,6 +193,21 @@ export const messages = {
       },
       Search: {
         placeholder: "Search Proposal",
+      },
+      Delegate: {
+        cta: "Stake",
+        voted: "You staked",
+        error: "Error",
+      },
+      Redelegate: {
+        cta: "Redelegate",
+        voted: "You redelegated",
+        error: "Error",
+      },
+      Undelegate: {
+        cta: "Unstake",
+        voted: "You staked",
+        error: "Error",
       },
       ProposalVote: {
         cta: "Vote",

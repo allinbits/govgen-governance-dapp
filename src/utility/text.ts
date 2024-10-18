@@ -1,6 +1,5 @@
 import { Coin } from "@cosmjs/proto-signing";
 import chainConfig from "../chain-config.json";
-import { purifyForLinks } from "./purify";
 
 export function capitalizeFirstLetter(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1);
@@ -66,31 +65,4 @@ export function isLink(link: string) {
   return /^(https?):\/\/(([a-z\d]([a-z\d-]*[a-z\d])?\.)+[a-z]{2,}|localhost)(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(#[-a-z\d_]*)?$/i.test(
     link,
   );
-}
-
-/**
- * Extract all links from raw html
- *
- * @param rawHtml
- */
-export function getLinks(rawHtml: string): string[] {
-  const cleanedHtml = purifyForLinks(rawHtml);
-  const doc = document.createElement("html");
-  doc.innerHTML = cleanedHtml;
-  const links = doc.getElementsByTagName("a");
-  const urls: string[] = [];
-  for (let i = 0; i < links.length; i++) {
-    const link = links[i].getAttribute("href");
-    if (!link) {
-      continue;
-    }
-
-    if (!link.includes("http://") && !link.includes("https://")) {
-      continue;
-    }
-
-    urls.push(link);
-  }
-
-  return urls;
 }
