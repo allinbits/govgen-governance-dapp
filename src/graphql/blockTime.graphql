@@ -1,6 +1,0 @@
-query BlockTime($height: bigint) {
-  block(where: { height: { _lte: $height } }, order_by: { height: desc }, limit: 1) {
-    timestamp
-    height
-  }
-}

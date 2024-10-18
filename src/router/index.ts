@@ -1,27 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomeView from "@/views/HomeView.vue";
-import CreateProposalView from "@/views/CreateProposalView.vue";
-import ProposalView from "@/views/ProposalView.vue";
-import HistoryView from "@/views/HistoryView.vue";
-import FaqView from "@/views/FaqView.vue";
-import { useTelemetry } from "@/composables/useTelemetry";
-import TermsView from "@/views/TermsView.vue";
-import PrivacyView from "@/views/PrivacyView.vue";
-
 const routerHistory = createWebHistory();
-const routes = [
-  { path: "/", component: HomeView },
-  { path: "/terms", component: TermsView },
-  { path: "/privacy", component: PrivacyView },
-  { path: "/proposals/:id", component: ProposalView },
-  { path: "/history", component: HistoryView },
-  { path: "/faq", component: FaqView },
-  // { path: "/design", component: DesignView },
-];
-if (import.meta.env.VITE_CHAIN_ID != "govgen-1") {
-  routes.push({ path: "/create", component: CreateProposalView });
-}
+const routes = [{ path: "/", component: HomeView }];
 const router = createRouter({
   history: routerHistory,
   routes,
@@ -33,8 +14,5 @@ const router = createRouter({
     });
   },
 });
-
-const { logPageviews } = useTelemetry();
-logPageviews();
 
 export default router;

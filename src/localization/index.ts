@@ -5,7 +5,7 @@ import faqEn from "./faq.en.json";
 export const messages = {
   en: {
     homepage: {
-      title: "GovGen",
+      title: "AtomOne Staking Portal",
       intro:
         "Explore the Governance dApp—a seamlessly integrated interface empowering secure and efficient governance interactions with the GovGen chain. Engage in collaborative discussions in the {0} and actively participate in the governance processes to shape the potential future of AtomOne.",
       proposalsHeader: "All Proposals",
@@ -176,8 +176,8 @@ export const messages = {
           "* Connecting public address doesn't connect to your wallet and is used only for CLI command generation.",
         recommendedWallet: "We recommend connecting with address only",
         otherWallet: "or connect your Wallet. Make sure you have a wallet browser extension enabled.",
-        enterAddress: "Enter your GovGen wallet address",
-        addressPlaceholder: "e.g. govgen32423488234934d2423...",
+        enterAddress: "Enter your AtomOne wallet address",
+        addressPlaceholder: "e.g. atone1ad453f23bc2d...",
       },
       Breakdown: {
         moniker: "Moniker",
@@ -193,6 +193,27 @@ export const messages = {
       },
       Search: {
         placeholder: "Search Proposal",
+      },
+      Delegate: {
+        cta: "Stake",
+        delegated: "You staked",
+        error: "Error",
+      },
+      Claim: {
+        cta: "Claim Rewards",
+        ctamulti: "Claim All Rewards",
+        delegated: "Claimed Rewards",
+        error: "Error",
+      },
+      Redelegate: {
+        cta: "Redelegate",
+        redelegated: "You redelegated",
+        error: "Error",
+      },
+      Undelegate: {
+        cta: "Unstake",
+        undelegated: "You ubstaked",
+        error: "Error",
       },
       ProposalVote: {
         cta: "Vote",

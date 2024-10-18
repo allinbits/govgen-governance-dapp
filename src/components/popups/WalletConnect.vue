@@ -3,9 +3,7 @@ import { Wallets, useWallet, getWalletHelp } from "@/composables/useWallet";
 import ConnectButton from "@/components/ui/ConnectButton.vue";
 import { Ref, computed, ref } from "vue";
 import { shorten } from "@/utility";
-import UserBalance from "@/components/helper/UserBalance.vue";
 import { bus } from "@/bus";
-import { useTelemetry } from "@/composables/useTelemetry";
 
 const isOpen = ref(false);
 const isConnecting = ref(false);
@@ -96,8 +94,6 @@ const cancelConnect = () => {
 bus.on("open", () => {
   isOpen.value = true;
 });
-
-const { logEvent } = useTelemetry();
 </script>
 
 <template>
@@ -109,7 +105,6 @@ const { logEvent } = useTelemetry();
         @click="
           () => {
             isOpen = true;
-            logEvent('Click Header ConnectWallet');
           }
         "
       >
@@ -168,7 +163,7 @@ const { logEvent } = useTelemetry();
       </template>
 
       <template v-else-if="addressState">
-        <div class="absolute right-0 top-4">
+        <div class="absolute right-0 top-4 z-10">
           <div class="flex flex-col px-8 py-4 pt-12 bg-grey-300 rounded w-80 relative gap-4">
             <Icon
               class="absolute top-3 right-4 cursor-pointer text-light"
@@ -221,14 +216,13 @@ const { logEvent } = useTelemetry();
           <div class="bg-gradient w-10 h-10 rounded-full mr-3"></div>
           <div class="flex flex-col justify-around">
             <div class="text-light text-200">{{ shorten(address) }}</div>
-            <div class="text-100 text-grey-100"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
           </div>
         </div>
       </template>
 
       <!-- Normal signed in account extended -->
       <template v-else-if="viewState">
-        <div class="absolute right-0 top-4">
+        <div class="absolute right-0 top-4 z-10">
           <div class="flex flex-col px-8 py-4 pt-12 bg-grey-300 rounded w-80 relative">
             <Icon class="absolute top-3 right-4 cursor-pointer text-light" icon="close" @click="isOpen = false" />
             <div class="flex align-center items-stretch">
@@ -238,7 +232,6 @@ const { logEvent } = useTelemetry();
               </div>
             </div>
             <div class="text-200 text-grey-100 pt-6 pb-2">{{ $t("components.WalletConnect.balance") }}</div>
-            <div class="text-300 text-light"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
             <div class="buttons">
               <ConnectButton
                 class="my-4 justify-center"
@@ -256,7 +249,7 @@ const { logEvent } = useTelemetry();
 
       <!-- Connection in progress -->
       <template v-else-if="connectingState">
-        <div class="absolute right-0 top-4">
+        <div class="absolute right-0 top-4 z-10">
           <div class="flex flex-col px-8 py-4 pt-6 bg-grey-300 rounded w-80 relative align-center items-center">
             <Icon icon="loading" :size="3" />
 
@@ -293,7 +286,7 @@ const { logEvent } = useTelemetry();
 
     <!-- Connection failed -->
     <template v-if="errorState">
-      <div class="absolute right-0 top-4">
+      <div class="absolute right-0 top-4 z-10">
         <div class="flex flex-col px-8 py-4 pt-6 bg-grey-300 rounded w-80 relative align-center items-center">
           <Icon icon="close" :size="3" class="text-neg-200" />
 

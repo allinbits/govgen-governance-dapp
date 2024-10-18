@@ -1,6 +1,0 @@
-query Delegated( $where: staked_balances_bool_exp = {}) { 
-  staked_balances(distinct_on: validator, order_by: {validator: desc, height: desc_nulls_last},where: $where) {
-    amount
-    height
-  }
-}

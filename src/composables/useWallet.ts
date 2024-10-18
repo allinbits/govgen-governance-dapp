@@ -2,9 +2,10 @@
 import { ref, computed, Ref } from "vue";
 import chainInfo from "@/chain-config.json";
 import { EncodeObject, OfflineDirectSigner, OfflineSigner } from "@cosmjs/proto-signing";
-import { getSigningGovgenClient } from "@atomone/govgen-types-amino/govgen/client";
+
 import { getOfflineSigner } from "@cosmostation/cosmos-client";
 import { OfflineAminoSigner } from "@keplr-wallet/types";
+import { SigningStargateClient } from "@cosmjs/stargate";
 
 export enum Wallets {
   keplr = "Keplr",
@@ -12,10 +13,6 @@ export enum Wallets {
   cosmostation = "Cosmostation",
   addressOnly = "AddressOnly",
 }
-chainInfo.chainId = import.meta.env.VITE_CHAIN_ID;
-chainInfo.rpc = import.meta.env.VITE_RPC;
-chainInfo.rest = import.meta.env.VITE_API;
-chainInfo.chainName = (import.meta.env.VITE_CHAIN_ID as string).includes("devnet") ? "GovGen Devnet" : "GovGen Mainnet";
 
 export const getWalletHelp = (wallet: Wallets) => {
   switch (wallet) {
@@ -154,7 +151,7 @@ const useWalletInstance = () => {
   const sendTx = async (msgs: EncodeObject[]) => {
     if (signer.value) {
       try {
-        const client = await getSigningGovgenClient({ rpcEndpoint: chainInfo.rpc, signer: signer.value });
+        const client = await SigningStargateClient.connectWithSigner(chainInfo.rpc, signer.value);
         const result = await client.signAndBroadcast(walletState.address.value, msgs, {
           amount: [{ amount: "10000", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }],
           gas: "400000",
