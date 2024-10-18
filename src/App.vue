@@ -7,9 +7,9 @@ import FooterSection from "@/components/layout/FooterSection.vue";
 </script>
 
 <template>
-  <div class="w-full max-w-[90rem] px-6 md:px-14 lg:px-20 mx-auto">
+  <div class="w-full max-w-[90rem] px-6 md:px-14 lg:px-20 mx-auto min-h-screen">
     <HeaderSection />
-    <div class="flex flex-col w-full min-h-screen">
+    <div class="flex flex-col w-full">
       <ErrorBox />
       <Suspense>
         <RouterView />

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { RouterLink } from "vue-router";
-
 const links = [
   { title: "Twitter", url: "https://twitter.com/_govgen", icon: "twitter" },
   { title: "Discord", url: "https://discord.com/invite/atomone", icon: "discord" },
@@ -17,10 +15,6 @@ const links = [
       <span class="flex md:justify-end">{{ $t("components.FooterSection.cta") }}</span>
       <!-- Footer Social Links-->
       <div class="flex flex-col md:flex-row gap-4 justify-end">
-        <div class="flex gap-4">
-          <RouterLink to="/terms" class="flex items-center hover:text-grey-50">Terms of Service</RouterLink> -
-          <RouterLink to="/privacy" class="flex items-center hover:text-grey-50">Privacy Policy</RouterLink>
-        </div>
         <div class="flex gap-4">
           <a
             v-for="(linkData, index) in links"

@@ -98,7 +98,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
   <div class="relative">
     <div>
       <div
-        class="justify-center px-6 py-4 rounded link-gradient text-dark text-300 text-center cursor-pointer"
+        class="justify-center px-3 py-2 mr-2 rounded link-gradient text-dark text-200 text-center cursor-pointer"
         @click="() => toggleModal(true)"
       >
         {{ $t("components.Redelegate.cta") }}
@@ -142,7 +142,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                     {{ $t("ui.actions.cli") }}
                   </button>
                   <a
-                    href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
+                    href="https://github.com/atomone-hub/atom.one/blob/main/submit-tx-securely.md"
                     target="_blank"
                     class="text-center text-100 text-grey-100 underline"
                   >
@@ -174,7 +174,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
           </div>
           <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
             <div class="flex flex-col items-center gap-4">
-              <span class="text-gradient font-termina text-700 text-center">{{ "components.ProposalVote.cta" }}</span>
+              <span class="text-gradient font-termina text-700 text-center">{{ $t("components.Redelegate.cta") }}</span>
               <span class="text-grey-100">{{ $t("ui.actions.clicta") }}</span>
             </div>
 
@@ -199,7 +199,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 
             <div class="flex gap-x-4 items-stretch">
               <CommonButton class="w-full" @click="() => (displayState = 'pending')">{{
-                "ui.actions.back"
+                $t("ui.actions.back")
               }}</CommonButton>
               <button
                 class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"

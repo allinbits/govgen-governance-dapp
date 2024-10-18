@@ -2,13 +2,26 @@ import { MsgBeginRedelegate, MsgDelegate, MsgUndelegate } from "cosmjs-types/cos
 import { MsgWithdrawDelegatorReward } from "cosmjs-types/cosmos/distribution/v1beta1/tx";
 import { useWallet } from "@/composables/useWallet";
 import { EncodeObject } from "@cosmjs/proto-signing";
+import chainInfo from "@/chain-config.json";
+import CommandBuilder from "@/utility/commandBuilder";
 
 export const useValidators = () => {
   const { sendTx, address } = useWallet();
-
+  const fetchSequence = async () => {
+    const res = await fetch(`${chainInfo.rest}cosmos/auth/v1beta1/accounts/${address.value}`).then((response) =>
+      response.json(),
+    );
+    return parseInt(res.account.sequence);
+  };
   const collectReward = async (claim: Partial<MsgWithdrawDelegatorReward>, cli: boolean = false) => {
-    if (cli) {
-      //TODO : CommandBuilder + proposal JSON Generation
+    if (cli && claim.validatorAddress) {
+      const command = CommandBuilder.ClaimRewards(claim.validatorAddress)
+        .withChainId(chainInfo.chainId)
+        .withFees([{ amount: "5000", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }])
+        .withSigner(address.value)
+        .withSequence(await fetchSequence())
+        .finish();
+      return command;
     } else {
       const Claim: EncodeObject = {
         typeUrl: "/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
@@ -23,7 +36,12 @@ export const useValidators = () => {
   };
   const collectAllRewards = async (validators: string[], cli: boolean = false) => {
     if (cli) {
-      //TODO : CommandBuilder + proposal JSON Generation
+      const command = CommandBuilder.ClaimAllRewards()
+        .withChainId(chainInfo.chainId)
+        .withFees([{ amount: "5000", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }])
+        .withSequence(await fetchSequence())
+        .withSigner(address.value);
+      return command;
     } else {
       const claims: EncodeObject[] = [];
       for (let i = 0; i < validators.length; i++) {
@@ -41,8 +59,16 @@ export const useValidators = () => {
     }
   };
   const createDelegation = async (delegation: Partial<MsgDelegate>, cli: boolean = false) => {
-    if (cli) {
-      //TODO : CommandBuilder + proposal JSON Generation
+    if (cli && delegation.validatorAddress && delegation.amount) {
+      const command = CommandBuilder.Delegate()
+        .withChainId(chainInfo.chainId)
+        .withFees([{ amount: "5000", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }])
+        .withSequence(await fetchSequence())
+        .withSigner(address.value)
+        .addParam(delegation.validatorAddress)
+        .addAmountParam(delegation.amount)
+        .finish();
+      return command;
     } else {
       const Delegation: EncodeObject = {
         typeUrl: "/cosmos.staking.v1beta1.MsgDelegate",
@@ -57,8 +83,17 @@ export const useValidators = () => {
     }
   };
   const beginRedelegation = async (redelegation: Partial<MsgBeginRedelegate>, cli: boolean = false) => {
-    if (cli) {
-      //TODO : CommandBuilder + proposal JSON Generation
+    if (cli && redelegation.validatorDstAddress && redelegation.validatorSrcAddress && redelegation.amount) {
+      const command = CommandBuilder.Redelegate()
+        .withChainId(chainInfo.chainId)
+        .withFees([{ amount: "5000", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }])
+        .withSequence(await fetchSequence())
+        .withSigner(address.value)
+        .addParam(redelegation.validatorSrcAddress)
+        .addParam(redelegation.validatorDstAddress)
+        .addAmountParam(redelegation.amount)
+        .finish();
+      return command;
     } else {
       const Redelegation: EncodeObject = {
         typeUrl: "/cosmos.staking.v1beta1.MsgBeginRedelegate",
@@ -74,8 +109,16 @@ export const useValidators = () => {
     }
   };
   const createUndelegation = async (undelegation: Partial<MsgUndelegate>, cli: boolean = false) => {
-    if (cli) {
-      //TODO : CommandBuilder + proposal JSON Generation
+    if (cli && undelegation.validatorAddress && undelegation.amount) {
+      const command = CommandBuilder.Undelegate()
+        .withChainId(chainInfo.chainId)
+        .withFees([{ amount: "5000", denom: chainInfo.feeCurrencies[0].coinMinimalDenom }])
+        .withSequence(await fetchSequence())
+        .withSigner(address.value)
+        .addParam(undelegation.validatorAddress)
+        .addAmountParam(undelegation.amount)
+        .finish();
+      return command;
     } else {
       const Undelegation: EncodeObject = {
         typeUrl: "/cosmos.staking.v1beta1.MsgUndelegate",

@@ -1,94 +1,56 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-
-import { MsgDeposit } from "@atomone/govgen-types-amino/govgen/gov/v1beta1/tx";
-
-import chainConfig from "@/chain-config.json";
+import { ref } from "vue";
 
 import ModalWrap from "@/components/common/ModalWrap.vue";
-import UiInput from "@/components/ui/UiInput.vue";
 import UiInfo from "@/components/ui/UiInfo.vue";
 import Icon from "@/components/ui/Icon.vue";
 import CommonButton from "@/components/ui/CommonButton.vue";
 
 import { useWallet, Wallets } from "@/composables/useWallet";
 import { useClipboard } from "@vueuse/core";
-import { useProposals } from "@/composables/useProposals";
-import { useTelemetry } from "@/composables/useTelemetry";
+import { useValidators } from "@/composables/useValidators";
 
-import { formatAmount, toPlainObjectString } from "@/utility";
-import { DeliverTxResponse } from "@atomone/govgen-types-amino/types";
+import { toPlainObjectString } from "@/utility";
+import { DeliverTxResponse } from "@cosmjs/stargate";
 
 interface Props {
-  proposalId?: number;
-  minDeposit: number;
-  totalDeposit: number;
-  depositDenom: string;
+  validatorAddress: string[] | undefined;
 }
+
 const props = defineProps<Props>();
 
 const isOpen = ref(false);
-const displayState = ref<"deposited" | "CLI" | "pending" | "error">("pending");
+const displayState = ref<"claimed" | "CLI" | "pending" | "error">("pending");
 
-const depositAmount = ref<number | null>(null);
 const errorMsg = ref<string>("");
-const cliDepositInput = ref("");
+const cliClaimInput = ref("");
 const transacting = ref<boolean>(false);
-const depositDenomDecimals = computed(() => {
-  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom);
-  if (currencies.length <= 0) {
-    return 0;
-  }
-
-  return currencies[0].coinDecimals ?? 0;
-});
-
-const depositDenomDisplay = computed(() => {
-  const currencies = chainConfig.currencies.filter((x) => x.coinMinimalDenom == props.depositDenom);
-  if (!currencies) {
-    return props.depositDenom;
-  }
-
-  return currencies[0].coinDenom ?? props.depositDenom;
-});
-
-const resetDeposit = () => (depositAmount.value = null);
 
 const toggleModal = (dir: boolean) => {
   isOpen.value = dir;
   displayState.value = "pending";
-  resetDeposit();
 };
 
-const { logEvent } = useTelemetry();
-const { depositProposal } = useProposals();
-const { address, used } = useWallet();
+const { collectReward, collectAllRewards } = useValidators();
+const { used } = useWallet();
 
-const signDeposit = async (isCLI = false) => {
-  if (!depositAmount.value || depositAmount.value <= 0) return;
-  if (!props.proposalId) return;
+const signClaim = async (isCLI = false) => {
+  if (!props.validatorAddress) return;
 
-  const depositOptions: MsgDeposit = {
-    proposalId: BigInt(props.proposalId),
-    depositor: address.value,
-    amount: [
-      {
-        denom: props.depositDenom,
-        amount: (depositAmount.value * Math.pow(10, depositDenomDecimals.value))?.toString() ?? "",
-      },
-    ],
-  };
   try {
     transacting.value = true;
-    const depot = await depositProposal(depositOptions, isCLI);
+    const depot =
+      props.validatorAddress.length > 1
+        ? await collectAllRewards(props.validatorAddress, isCLI)
+        : await collectReward({ validatorAddress: props.validatorAddress[0] }, isCLI);
     if ((depot as DeliverTxResponse).code !== 0 && !isCLI) {
       transacting.value = false;
       errorMsg.value = (depot as DeliverTxResponse).rawLog ?? toPlainObjectString(depot);
       displayState.value = "error";
     } else {
       transacting.value = false;
-      cliDepositInput.value = (isCLI ? depot : "") as string;
-      displayState.value = isCLI ? "CLI" : "deposited";
+      cliClaimInput.value = (isCLI ? depot : "") as string;
+      displayState.value = isCLI ? "CLI" : "claimed";
     }
   } catch (e) {
     console.log(e);
@@ -96,9 +58,6 @@ const signDeposit = async (isCLI = false) => {
     transacting.value = false;
     displayState.value = "error";
   }
-  logEvent("Sign Popup ProposalDeposit", {
-    signOption: isCLI ? "CLI" : "GUI",
-  });
 };
 
 const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
@@ -108,10 +67,12 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
   <div class="relative">
     <div>
       <div
-        class="justify-center px-6 py-4 rounded link-gradient text-dark text-300 text-center cursor-pointer"
-        @click="() => (logEvent('Click Popup ProposalDeposit'), toggleModal(true))"
+        class="justify-center px-3 py-2 mr-2 rounded link-gradient text-dark text-200 text-center cursor-pointer"
+        @click="() => toggleModal(true)"
       >
-        {{ $t("components.ProposalDeposit.cta") }}
+        {{
+          validatorAddress && validatorAddress.length > 1 ? $t("components.Claim.ctamulti") : $t("components.Claim.cta")
+        }}
       </div>
     </div>
 
@@ -119,41 +80,18 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
       <div class="bg-grey-400 w-full rounded-md max-h-screen overflow-auto">
         <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
           <div v-show="displayState === 'pending'" class="flex flex-col gap-6 relative">
-            <span class="text-gradient font-termina text-700 text-center">{{
-              $t("components.ProposalDeposit.cta")
-            }}</span>
+            <span class="text-gradient font-termina text-700 text-center">{{ $t("components.Claim.cta") }}</span>
             <div class="flex flex-col gap-10">
-              <div>
-                <div class="flex flex-col gap-10">
-                  <p class="text-grey-100 text-center text-200">
-                    {{ formatAmount(totalDeposit, depositDenomDecimals) }} /
-                    {{ formatAmount(minDeposit, depositDenomDecimals) }} {{ $t("components.ProposalDeposit.act") }}
-                  </p>
-
-                  <form class="flex flex-col items-center gap-2">
-                    <UiInput
-                      v-model="depositAmount"
-                      type="number"
-                      placeholder="e.g. 50"
-                      :label="$t('components.ProposalDeposit.instructions')"
-                      :min="0"
-                      :max="Infinity"
-                      class="w-full justify-end"
-                    />
-                  </form>
-                </div>
-              </div>
-
               <div v-if="!transacting" class="flex flex-col gap-4">
-                <div v-show="(depositAmount ?? -1) > 0" class="flex flex-col gap-4">
+                <div class="flex flex-col gap-4">
                   <button
                     class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
-                    @click="signDeposit(true)"
+                    @click="signClaim(true)"
                   >
                     {{ $t("ui.actions.cli") }}
                   </button>
                   <a
-                    href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
+                    href="https://github.com/atomone-hub/atom.one/blob/main/submit-tx-securely.md"
                     target="_blank"
                     class="text-center text-100 text-grey-100 underline"
                   >
@@ -162,7 +100,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                   <button
                     v-if="used != Wallets.addressOnly"
                     class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
-                    @click="signDeposit()"
+                    @click="signClaim()"
                   >
                     {{ $t("ui.actions.confirm") }}
                   </button>
@@ -185,9 +123,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
           </div>
           <div v-show="displayState === 'CLI'" class="flex flex-col gap-10">
             <div class="flex flex-col items-center gap-4">
-              <span class="text-gradient font-termina text-700 text-center">{{
-                $t("components.ProposalVote.cta")
-              }}</span>
+              <span class="text-gradient font-termina text-700 text-center">{{ $t("components.Claim.cta") }}</span>
               <span class="text-grey-100">{{ $t("ui.actions.clicta") }}</span>
             </div>
 
@@ -195,16 +131,16 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
               <button
                 v-if="isClipboardSupported"
                 class="absolute top-4 right-4 text-200 hover:text-grey-50 duration-200"
-                @click="copy(cliDepositInput)"
+                @click="copy(cliClaimInput)"
               >
-                <span v-show="copied">{{ $t("uit.actions.copied") }}</span>
+                <span v-show="copied">{{ $t("ui.actions.copied") }}</span>
                 <span v-show="!copied" class="flex gap-1">
                   <Icon icon="copy" /><span>{{ $t("ui.actions.copy") }}</span>
                 </span>
               </button>
               <textarea
                 ref="CLIVote"
-                v-model="cliDepositInput"
+                v-model="cliClaimInput"
                 readonly
                 class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
               ></textarea>
@@ -222,11 +158,9 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
               </button>
             </div>
           </div>
-          <div v-show="displayState === 'deposited'">
-            <UiInfo :title="$t('components.ProposalDeposit.deposited')">
-              <div class="text-500 text-center font-semibold mb-8 w-full">
-                {{ depositAmount }} {{ depositDenomDisplay }}
-              </div>
+          <div v-show="displayState === 'claimed'">
+            <UiInfo :title="$t('components.Claim.claimed')">
+              <div class="text-500 text-center font-semibold mb-8 w-full"></div>
             </UiInfo>
 
             <button
@@ -237,7 +171,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
             </button>
           </div>
           <div v-show="displayState === 'error'">
-            <UiInfo :title="$t('components.ProposalDeposit.error')" type="warning" :circled="true">
+            <UiInfo :title="$t('components.Claim.error')" type="warning" :circled="true">
               <textarea
                 ref="error"
                 v-model="errorMsg"

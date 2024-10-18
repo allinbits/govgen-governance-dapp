@@ -1,32 +1,53 @@
-import { Coin } from "@atomone/govgen-types-amino/cosmos/base/v1beta1/coin";
+import { Coin } from "@atomone/atomone-types/cosmos/base/v1beta1/coin";
 
 export default class CommandBuilder {
   private command: string[];
   private address: string;
   private fees: Coin[];
   private chainId: string;
+  private sequence: number;
 
-  static Deposit() {
-    return new CommandBuilder("deposit");
+  static Delegate() {
+    const builder = new CommandBuilder("staking");
+    return builder.withAction("delegate");
   }
-  static Vote() {
-    return new CommandBuilder("vote");
+  static Redelegate() {
+    const builder = new CommandBuilder("staking");
+    return builder.withAction("redelegate");
   }
-  static WeightedVote() {
-    return new CommandBuilder("weighted-vote");
+  static Undelegate() {
+    const builder = new CommandBuilder("staking");
+    return builder.withAction("unbond");
   }
-  constructor(action: string) {
+  static ClaimRewards(validator: string) {
+    const builder = new CommandBuilder("distribution");
+    return builder.withAction("withdraw-rewards").addParam(validator);
+  }
+  static ClaimAllRewards() {
+    const builder = new CommandBuilder("distribution");
+    return builder.withAction("withdraw-all-rewards");
+  }
+
+  constructor(module: string) {
     this.command = [];
     this.address = "";
     this.fees = [];
     this.chainId = "";
-    this.command.push("govgend");
+    this.sequence = 0;
+    this.command.push("atomoned");
     this.command.push("tx");
-    this.command.push("gov");
+    this.command.push(module);
+  }
+  withAction(action: string) {
     this.command.push(action);
+    return this;
   }
   withChainId(chainId: string) {
     this.chainId = chainId;
+    return this;
+  }
+  withSequence(sequence: number) {
+    this.sequence = sequence;
     return this;
   }
   withSigner(address: string) {
@@ -39,6 +60,10 @@ export default class CommandBuilder {
   }
   addParam(param: string) {
     this.command.push(param);
+    return this;
+  }
+  addAmountParam(amount: Coin) {
+    this.command.push(amount.amount + amount.denom);
     return this;
   }
   finish() {
@@ -56,6 +81,10 @@ export default class CommandBuilder {
     this.command.push(this.address);
     this.command.push("--chain-id");
     this.command.push(this.chainId);
+    this.command.push("--gas");
+    this.command.push("auto");
+    this.command.push("--sequence");
+    this.command.push(this.sequence.toString());
     this.command.push(">");
     this.command.push("tx.unsigned.json");
     return this.command.join(" ");

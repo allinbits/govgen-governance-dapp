@@ -163,7 +163,7 @@ bus.on("open", () => {
       </template>
 
       <template v-else-if="addressState">
-        <div class="absolute right-0 top-4">
+        <div class="absolute right-0 top-4 z-10">
           <div class="flex flex-col px-8 py-4 pt-12 bg-grey-300 rounded w-80 relative gap-4">
             <Icon
               class="absolute top-3 right-4 cursor-pointer text-light"
@@ -182,7 +182,7 @@ bus.on("open", () => {
             <input
               v-model="publicAddress"
               class="flex p-4 items-center self-stretch rounded-lg bg-grey-200 outline-none text-100 leading-4 placeholder-grey-100"
-              :placeholder="'components.WalletConnect.addressPlaceholder'"
+              :placeholder="$t('components.WalletConnect.addressPlaceholder')"
               @input="isValidAddress = publicAddress.length == 45"
             />
             <div class="flex flex-col gap-4">
@@ -222,7 +222,7 @@ bus.on("open", () => {
 
       <!-- Normal signed in account extended -->
       <template v-else-if="viewState">
-        <div class="absolute right-0 top-4">
+        <div class="absolute right-0 top-4 z-10">
           <div class="flex flex-col px-8 py-4 pt-12 bg-grey-300 rounded w-80 relative">
             <Icon class="absolute top-3 right-4 cursor-pointer text-light" icon="close" @click="isOpen = false" />
             <div class="flex align-center items-stretch">
@@ -249,7 +249,7 @@ bus.on("open", () => {
 
       <!-- Connection in progress -->
       <template v-else-if="connectingState">
-        <div class="absolute right-0 top-4">
+        <div class="absolute right-0 top-4 z-10">
           <div class="flex flex-col px-8 py-4 pt-6 bg-grey-300 rounded w-80 relative align-center items-center">
             <Icon icon="loading" :size="3" />
 
@@ -286,7 +286,7 @@ bus.on("open", () => {
 
     <!-- Connection failed -->
     <template v-if="errorState">
-      <div class="absolute right-0 top-4">
+      <div class="absolute right-0 top-4 z-10">
         <div class="flex flex-col px-8 py-4 pt-6 bg-grey-300 rounded w-80 relative align-center items-center">
           <Icon icon="close" :size="3" class="text-neg-200" />
 
