@@ -45,7 +45,7 @@ const getTxHash = (vote: AllVotesQuery["proposal_vote"][0]) => {
           return (
             msg["voter"] == vote.voter_address &&
             msg["proposalId"] == vote.proposal_id &&
-            (msg["@type"] == "/govgen.gov.v1beta1.MsgVoteWeighted" || msg["@type"] == "/govgen.gov.v1beta1.MsgVote")
+            (msg["@type"] == "/atomone.gov.v1beta1.MsgVoteWeighted" || msg["@type"] == "/atomone.gov.v1beta1.MsgVote")
           );
         }).length > 0
       );

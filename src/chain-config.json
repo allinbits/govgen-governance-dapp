@@ -1,35 +1,35 @@
 {
-  "rpc": "https://rpc.govgen.dev/",
-  "rest": "https://api.govgen.dev/",
-  "chainId": "govgen-devnet-4",
-  "chainName": "GovGen Devnet",
+  "rpc": "https://atomone-rpc.allinbits.com/",
+  "rest": "https://atomone-api.allinbits.com/",
+  "chainId": "atomone-1",
+  "chainName": "AtomOne Mainnet",
   "bip44": {
     "coinType": 118
   },
   "bech32Config": {
-    "bech32PrefixAccAddr": "govgen",
-    "bech32PrefixAccPub": "govgenpub",
-    "bech32PrefixValAddr": "govgenvaloper",
-    "bech32PrefixValPub": "govgenvaloperpub",
-    "bech32PrefixConsAddr": "govgenvalcons",
-    "bech32PrefixConsPub": "govgenvalconspub"
+    "bech32PrefixAccAddr": "atone",
+    "bech32PrefixAccPub": "atonepub",
+    "bech32PrefixValAddr": "atonevaloper",
+    "bech32PrefixValPub": "atonevaloperpub",
+    "bech32PrefixConsAddr": "atonevalcons",
+    "bech32PrefixConsPub": "atonevalconspub"
   },
   "currencies": [
     {
-      "coinDenom": "GovGen",
-      "coinMinimalDenom": "ugovgen",
+      "coinDenom": "ATONE",
+      "coinMinimalDenom": "uatone",
       "coinDecimals": 6
     }
   ],
   "stakeCurrency": {
-    "coinDenom": "GovGen",
-    "coinMinimalDenom": "ugovgen",
+    "coinDenom": "ATONE",
+    "coinMinimalDenom": "uatone",
     "coinDecimals": 6
   },
   "feeCurrencies": [
     {
-      "coinDenom": "GovGen",
-      "coinMinimalDenom": "ugovgen",
+      "coinDenom": "ATONE",
+      "coinMinimalDenom": "uatone",
       "coinDecimals": 6
     }
   ]

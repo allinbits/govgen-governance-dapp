@@ -5,9 +5,9 @@ import faqEn from "./faq.en.json";
 export const messages = {
   en: {
     homepage: {
-      title: "GovGen",
+      title: "AtomOne",
       intro:
-        "Explore the Governance dApp—a seamlessly integrated interface empowering secure and efficient governance interactions with the GovGen chain. Engage in collaborative discussions in the {0} and actively participate in the governance processes to shape the potential future of AtomOne.",
+        "Explore the Governance dApp—a seamlessly integrated interface empowering secure and efficient governance interactions with the AtomOne chain.",
       proposalsHeader: "All Proposals",
       forumLinkText: "forum",
       website: "Website",
@@ -67,7 +67,7 @@ export const messages = {
           return "Param Change";
         case "/cosmos.upgrade.v1beta1.SoftwareUpgradeProposal":
           return "Software Upgrade";
-        case "/govgen.gov.v1beta1.TextProposal":
+        case "/ayomone.gov.v1beta1.TextProposal":
         default:
           return "Text";
       }
@@ -180,8 +180,8 @@ export const messages = {
           "* Connecting public address doesn't connect to your wallet and is used only for CLI command generation.",
         recommendedWallet: "We recommend connecting with address only",
         otherWallet: "or connect your Wallet. Make sure you have a wallet browser extension enabled.",
-        enterAddress: "Enter your GovGen wallet address",
-        addressPlaceholder: "e.g. govgen32423488234934d2423...",
+        enterAddress: "Enter your AtomOne wallet address",
+        addressPlaceholder: "e.g. atone32423488234934d2423...",
       },
       Breakdown: {
         moniker: "Moniker",

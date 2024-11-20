@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, reactive } from "vue";
 
-import { MsgVote, MsgVoteWeighted } from "@atomone/govgen-types-amino/govgen/gov/v1beta1/tx";
-import { VoteOption } from "cosmjs-types/cosmos/gov/v1beta1/gov";
-
+import { MsgVote, MsgVoteWeighted } from "@atomone/atomone-types/atomone/gov/v1/tx";
+import { VoteOption } from "@atomone/atomone-types/atomone/gov/v1/gov";
 import ModalWrap from "@/components/common/ModalWrap.vue";
 
 import { useI18n } from "vue-i18n";
@@ -18,7 +17,7 @@ import { useWallet, Wallets } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
 import { useClipboard } from "@vueuse/core";
 import { useTelemetry } from "@/composables/useTelemetry";
-import { DeliverTxResponse } from "@atomone/govgen-types-amino/types";
+import { DeliverTxResponse } from "@atomone/atomone-types/types";
 import { toPlainObjectString } from "@/utility";
 
 interface Props {
@@ -41,7 +40,6 @@ const transacting = ref<boolean>(false);
 const voteList: Partial<Record<VoteOption, { label: string; color: string }>> = {
   [VoteOption.VOTE_OPTION_YES]: { label: t("voteOptions.yes"), color: "text-accent-100" },
   [VoteOption.VOTE_OPTION_NO]: { label: t("voteOptions.no"), color: "text-neg-200" },
-  [VoteOption.VOTE_OPTION_NO_WITH_VETO]: { label: t("voteOptions.nwv"), color: "text-neg-200" },
   [VoteOption.VOTE_OPTION_ABSTAIN]: { label: t("voteOptions.abstain"), color: "text-grey-100" },
 };
 
@@ -50,7 +48,6 @@ const voteStraight = ref<VoteOption | null>();
 const voteWeighted = reactive<Partial<Record<VoteOption, { value: number | null }>>>({
   [VoteOption.VOTE_OPTION_YES]: { value: null },
   [VoteOption.VOTE_OPTION_NO]: { value: null },
-  [VoteOption.VOTE_OPTION_NO_WITH_VETO]: { value: null },
   [VoteOption.VOTE_OPTION_ABSTAIN]: { value: null },
 });
 
@@ -88,6 +85,7 @@ const signVote = async (isCLI = false) => {
     voteOptions = {
       proposalId: BigInt(props.proposalId),
       voter: address.value,
+      metadata: "",
       options: [
         {
           option: VoteOption.VOTE_OPTION_YES,
@@ -96,12 +94,6 @@ const signVote = async (isCLI = false) => {
         {
           option: VoteOption.VOTE_OPTION_NO,
           weight: (((voteWeighted[VoteOption.VOTE_OPTION_NO]?.value ?? -1) as number) * Math.pow(10, 18)).toString(),
-        },
-        {
-          option: VoteOption.VOTE_OPTION_NO_WITH_VETO,
-          weight: (
-            ((voteWeighted[VoteOption.VOTE_OPTION_NO_WITH_VETO]?.value ?? -1) as number) * Math.pow(10, 18)
-          ).toString(),
         },
         {
           option: VoteOption.VOTE_OPTION_ABSTAIN,
@@ -116,6 +108,7 @@ const signVote = async (isCLI = false) => {
     if (!voteStraight.value) return;
     voteOptions = {
       proposalId: BigInt(props.proposalId),
+      metadata: "",
       voter: address.value,
       option: +voteStraight.value,
     };
@@ -220,7 +213,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                     {{ $t("ui.actions.cli") }}
                   </button>
                   <a
-                    href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
+                    href="https://github.com/atomone-hub/atom.one/blob/main/submit-tx-securely.md"
                     target="_blank"
                     class="text-center text-100 text-grey-100 underline"
                   >

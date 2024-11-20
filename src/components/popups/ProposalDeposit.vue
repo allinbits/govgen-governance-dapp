@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 
-import { MsgDeposit } from "@atomone/govgen-types-amino/govgen/gov/v1beta1/tx";
+import { MsgDeposit } from "@atomone/atomone-types/atomone/gov/v1/tx";
 
 import chainConfig from "@/chain-config.json";
 
@@ -17,7 +17,7 @@ import { useProposals } from "@/composables/useProposals";
 import { useTelemetry } from "@/composables/useTelemetry";
 
 import { formatAmount, toPlainObjectString } from "@/utility";
-import { DeliverTxResponse } from "@atomone/govgen-types-amino/types";
+import { DeliverTxResponse } from "@atomone/atomone-types/types";
 
 interface Props {
   proposalId?: number;
@@ -153,7 +153,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
                     {{ $t("ui.actions.cli") }}
                   </button>
                   <a
-                    href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
+                    href="https://github.com/atomone-hub/atom.one/blob/main/submit-tx-securely.md"
                     target="_blank"
                     class="text-center text-100 text-grey-100 underline"
                   >

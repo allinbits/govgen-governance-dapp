@@ -37,6 +37,10 @@ export default <Config>{
       dark: "#0C0C0C",
       night: "#000000",
       darkblur: "#0009",
+      red: {
+        200: "#F9DBDB",
+        400: "#900909",
+      },
       grey: {
         50: "#9F9F9F",
         100: "#686868",

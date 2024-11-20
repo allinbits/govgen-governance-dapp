@@ -1,12 +1,12 @@
-# GovGen Governance dApp
+# AtomOne Governance dApp
 
-GovGen governance dApp is a platform facilitating web-based access to GovGen governance where users can seamlessly engage with proposals, view proposal statistics, participate in discussions as well as perform transactions to vote or deposit on proposals. Prioritizing security, GovGen encourages the use of CLI commands for interactions with the dApp, using your wallet of choice or a public address you can gain immediate access to GovGen's governance functionalities. 
+AtomOne governance dApp is a platform facilitating web-based access to AtomOne governance where users can seamlessly engage with proposals, view proposal statistics, participate in discussions as well as perform transactions to vote or deposit on proposals. Prioritizing security, AtomOne encourages the use of CLI commands for interactions with the dApp, using your wallet of choice or a public address you can gain immediate access to AtomOne's governance functionalities. 
 
-Our goal with the GovGen governance dApp is to empower the community to effortlessly participate in these types of processes by gauging community sentiment in regards to the potential outcome of AtomOne while making it more accessible to engage, regardless of their technical expertise or background.
+Our goal with the AtomOne governance dApp is to empower the community to effortlessly participate in these types of processes by gauging community sentiment in regards to the potential outcome of AtomOne while making it more accessible to engage, regardless of their technical expertise or background.
 
 ## Usage
 
-You can visit the deployed dApp at [https://app.govgen.io/](https://app.govgen.io/) for mainnet or [https://staging.govgen.dev/](https://staging.govgen.dev/) for devnet.
+You can visit the deployed dApp at [https://gov.atom.one/](https://gov.atom.one/).
 
 The following is a showcase of the existing functionality.
 
@@ -19,12 +19,12 @@ The default ordering is to show active proposals first (i.e. those in `VOTING` o
 There is also a dropdown control to filter by proposal status altogether as well as a search box to search proposals based on `Title` and `Description` content.
 
 In all the pages, there is a button at the top that allows you to connect your address in order to display balances or voting history as well as enable governance-related transactions. There are 2 possible options:
-- You can either simply supply your public govgen address with which the dApp can generate the appropriate CLI commands for voting and depositing txs signable by an offline computer as described [here](https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md). **RECOMMENDED**
+- You can either simply supply your public govgen address with which the dApp can generate the appropriate CLI commands for voting and depositing txs signable by an offline computer as described [here](https://github.com/atomone-hub/atom.one/blob/main/submit-tx-securely.md). **RECOMMENDED**
 - Or you can simply connect your Keplr/Leap/Cosmostation wallets and authorize and submit TXs through their familiar interface.
 
 ### Proposal page
 
-The page for a specific proposal (URL format: `https://app.govgen.io/proposals/XXX` or `https://staging.govgen.dev/proposals/XXX` for mainnet and devnet respectively, where XXX is the id of the proposal) provides a view of all the proposal's details in a tabbed interface.
+The page for a specific proposal (URL format: `https://gov.atom.one/proposals/XXX` where XXX is the id of the proposal) provides a view of all the proposal's details in a tabbed interface.
 
 There is a hero component that includes the title, status, turnout, necessary quorum, expected result, and current vote tallies. It also consists of a call-to-action to Vote or Deposit (depending on the proposal status).
 
@@ -71,6 +71,6 @@ pnpm dev
 
 ## Bugs & Feedback
 
-Please use [Github Issues](https://github.com/allinbits/govgen-governance-dapp/issues) to inform us of any bugs or issues you encounter and to request features and improvements.
+Please use [Github Issues](https://github.com/allinbits/atomone-governance-dapp/issues) to inform us of any bugs or issues you encounter and to request features and improvements.
 
 Thank you.

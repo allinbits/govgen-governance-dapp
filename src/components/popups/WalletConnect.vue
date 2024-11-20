@@ -221,7 +221,7 @@ const { logEvent } = useTelemetry();
           <div class="bg-gradient w-10 h-10 rounded-full mr-3"></div>
           <div class="flex flex-col justify-around">
             <div class="text-light text-200">{{ shorten(address) }}</div>
-            <div class="text-100 text-grey-100"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
+            <div class="text-100 text-grey-100"><UserBalance :address="address" :denom="'uatone'" /> ATONE</div>
           </div>
         </div>
       </template>
@@ -238,7 +238,7 @@ const { logEvent } = useTelemetry();
               </div>
             </div>
             <div class="text-200 text-grey-100 pt-6 pb-2">{{ $t("components.WalletConnect.balance") }}</div>
-            <div class="text-300 text-light"><UserBalance :address="address" :denom="'ugovgen'" /> govgen</div>
+            <div class="text-300 text-light"><UserBalance :address="address" :denom="'uatone'" /> ATONE</div>
             <div class="buttons">
               <ConnectButton
                 class="my-4 justify-center"

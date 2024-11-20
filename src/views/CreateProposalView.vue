@@ -46,7 +46,7 @@ async function create() {
 
   if (proposalType.value === "text") {
     const prop = createTextProposalContent(defaultProposal);
-    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "ugovgen" }] }, prop).catch((err) => {
+    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "uatone" }] }, prop).catch((err) => {
       console.error(err);
       return undefined;
     });
@@ -54,7 +54,7 @@ async function create() {
 
   if (proposalType.value === "param") {
     const prop = createParamChangeProposalContent({ ...defaultProposal, changes: parameters.value });
-    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "ugovgen" }] }, prop).catch((err) => {
+    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "uatone" }] }, prop).catch((err) => {
       console.error(err);
       return undefined;
     });
@@ -65,7 +65,7 @@ async function create() {
       ...defaultProposal,
       plan: { height: BigInt(blockHeight.value), info: blockInfo.value, name: upgradeName.value, time: undefined },
     });
-    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "ugovgen" }] }, prop).catch((err) => {
+    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "uatone" }] }, prop).catch((err) => {
       console.error(err);
       return undefined;
     });
@@ -131,9 +131,9 @@ function clearProposal() {
   <div class="flex flex-col items-center w-full pt-6 gap-8">
     <template v-if="!trx">
       <template v-if="typeof proposalType === 'undefined'">
-        <CommonButton class="flex items-center gap-6 self-start" @click="router.push({ path: '/' })"
-          ><Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}</CommonButton
-        >
+        <CommonButton class="flex items-center gap-6 self-start" @click="router.push({ path: '/' })">
+          <Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}
+        </CommonButton>
         <span class="text-700 font-termina font-semibold leading-[64px]">{{ $t("proposalcreate.chooseType") }}</span>
         <div class="flex flex-col gap-8">
           <CommonButton @click="proposalType = 'text'">{{ $t("proposalcreate.typeText") }}</CommonButton>
@@ -142,9 +142,9 @@ function clearProposal() {
         </div>
       </template>
       <template v-else>
-        <CommonButton class="flex items-center gap-6 self-start" @click="clearProposal"
-          ><Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}</CommonButton
-        >
+        <CommonButton class="flex items-center gap-6 self-start" @click="clearProposal">
+          <Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}
+        </CommonButton>
         <!-- Common Proposal -->
         <span v-if="proposalType === 'param'" class="text-700 font-termina font-semibold leading-[64px]">{{
           $t("proposalcreate.proposalTypeParam")
@@ -184,7 +184,9 @@ function clearProposal() {
             <div class="flex flex-col gap-6">
               <div class="flex flex-row w-full justify-between items-center">
                 <span class="text-200">{{ $t("proposalcreate.index") }} {{ index }}</span>
-                <CommonButton @click="delParameter(index)"><Icon icon="trash" /></CommonButton>
+                <CommonButton @click="delParameter(index)">
+                  <Icon icon="trash" />
+                </CommonButton>
               </div>
               <ParameterInput v-model="parameters[index]" :disabled="isProcessing" />
             </div>
@@ -240,9 +242,9 @@ function clearProposal() {
       </template>
     </template>
     <template v-else>
-      <CommonButton class="flex items-center gap-6 self-start" @click="router.push({ path: '/' })"
-        ><Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}</CommonButton
-      >
+      <CommonButton class="flex items-center gap-6 self-start" @click="router.push({ path: '/' })">
+        <Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}
+      </CommonButton>
       <span class="text-700 font-termina font-semibold leading-[64px]">{{ $t("proposalcreate.transaction") }}</span>
       <VCodeBlock :code="toPlainObjectString(trx)" prismjs />
     </template>
