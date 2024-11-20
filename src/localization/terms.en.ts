@@ -201,8 +201,8 @@ To submit a DMCA notification, your written communication must include the follo
 6. A statement that the information in the notification is accurate, and under penalty of perjury, that the complaining party is authorized to act on behalf of the copyright owner.
 
 Please direct all DMCA notifications to the operator's designated agent:  
-Carolyn Pehrson ACP \# 153281  
-3395 South Jones Blvd. \# 153  
+Carolyn Pehrson ACP # 153281  
+3395 South Jones Blvd. # 153  
 Las Vegas, NV 89146  
 Phone: 661-388-6953  
 Email: <legal{'@'}allinbits.com>

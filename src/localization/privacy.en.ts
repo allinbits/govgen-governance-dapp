@@ -119,7 +119,7 @@ We may update this Privacy Policy from time to time. When we update the Policy, 
 If you have any questions or concerns about this Privacy Policy, please contact us at:  
 **Email:** <legal{'@'}allinbits.com>
 **Address:** All in Bits, Inc.  
-3395 South Jones Blvd. \#153  
+3395 South Jones Blvd. #153  
 Las Vegas, NV 89146  
 **Phone:** 661-388-6953
 
