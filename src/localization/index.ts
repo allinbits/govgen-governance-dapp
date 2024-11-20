@@ -16,6 +16,10 @@ export const messages = {
       viewProposals: "Proposals",
       viewFaq: "FAQ",
       viewForums: "Forum",
+      viewAuditStatus: "View Audit Status",
+      security: "Security",
+      auditStatus:
+        "Your security is our priority! Click below to view this application's latest audit status and see how we’re working to keep you safe. We encourage you to check the audit status regularly before using the application to ensure you’re always up-to-date on our security measures.",
     },
     termspage: {
       title: "Terms of Service",
