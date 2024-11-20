@@ -2,10 +2,9 @@
 import { RouterLink } from "vue-router";
 
 const links = [
-  { title: "Twitter", url: "https://twitter.com/_govgen", icon: "twitter" },
+  { title: "Twitter", url: "https://twitter.com/_atomone", icon: "twitter" },
   { title: "Discord", url: "https://discord.com/invite/atomone", icon: "discord" },
   { title: "Github", url: "https://github.com/atomone-hub", icon: "github" },
-  { title: "Forum", url: "https://commonwealth.im/govgen", icon: "commonwealth" },
 ];
 </script>
 

@@ -46,7 +46,7 @@ async function create() {
 
   if (proposalType.value === "text") {
     const prop = createTextProposalContent(defaultProposal);
-    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "ugovgen" }] }, prop).catch((err) => {
+    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "uatone" }] }, prop).catch((err) => {
       console.error(err);
       return undefined;
     });
@@ -54,7 +54,7 @@ async function create() {
 
   if (proposalType.value === "param") {
     const prop = createParamChangeProposalContent({ ...defaultProposal, changes: parameters.value });
-    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "ugovgen" }] }, prop).catch((err) => {
+    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "uatone" }] }, prop).catch((err) => {
       console.error(err);
       return undefined;
     });
@@ -65,7 +65,7 @@ async function create() {
       ...defaultProposal,
       plan: { height: BigInt(blockHeight.value), info: blockInfo.value, name: upgradeName.value, time: undefined },
     });
-    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "ugovgen" }] }, prop).catch((err) => {
+    response = await createProposal({ initialDeposit: [{ amount: "100000", denom: "uatone" }] }, prop).catch((err) => {
       console.error(err);
       return undefined;
     });
@@ -131,9 +131,9 @@ function clearProposal() {
   <div class="flex flex-col items-center w-full pt-6 gap-8">
     <template v-if="!trx">
       <template v-if="typeof proposalType === 'undefined'">
-        <CommonButton class="flex items-center gap-6 self-start" @click="router.push({ path: '/' })"
-          ><Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}</CommonButton
-        >
+        <CommonButton class="flex items-center gap-6 self-start" @click="router.push({ path: '/' })">
+          <Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}
+        </CommonButton>
         <span class="text-700 font-termina font-semibold leading-[64px]">{{ $t("proposalcreate.chooseType") }}</span>
         <div class="flex flex-col gap-8">
           <CommonButton @click="proposalType = 'text'">{{ $t("proposalcreate.typeText") }}</CommonButton>
@@ -142,40 +142,30 @@ function clearProposal() {
         </div>
       </template>
       <template v-else>
-        <CommonButton class="flex items-center gap-6 self-start" @click="clearProposal"
-          ><Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}</CommonButton
-        >
+        <CommonButton class="flex items-center gap-6 self-start" @click="clearProposal">
+          <Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}
+        </CommonButton>
         <!-- Common Proposal -->
         <span v-if="proposalType === 'param'" class="text-700 font-termina font-semibold leading-[64px]">{{
           $t("proposalcreate.proposalTypeParam")
-        }}</span>
+          }}</span>
         <span v-else-if="proposalType === 'upgrade'" class="text-700 font-termina font-semibold leading-[64px]">{{
           $t("proposalcreate.proposalTypeUpgrade")
-        }}</span>
+          }}</span>
         <span v-else-if="proposalType === 'text'" class="text-700 font-termina font-semibold leading-[64px]">{{
           $t("proposalcreate.proposalTypeText")
-        }}</span>
+          }}</span>
         <div class="flex flex-col w-full md:w-1/2 gap-3">
           <span>{{ $t("proposalcreate.title") }}</span>
-          <input
-            v-model="title"
-            :placeholder="$t('proposalcreate.title')"
-            type="text"
+          <input v-model="title" :placeholder="$t('proposalcreate.title')" type="text"
             class="p-4 bg-grey-400 rounded-md placeholder:text-grey-100 outline-none border border-grey-200 focus:border-grey-100"
-            :disabled="isProcessing"
-            @input="validate"
-          />
+            :disabled="isProcessing" @input="validate" />
         </div>
         <div class="flex flex-col w-full md:w-1/2 gap-3">
           <span>{{ $t("proposalcreate.description") }}</span>
-          <textarea
-            v-model="description"
-            placeholder="Proposal Description"
-            type="text"
+          <textarea v-model="description" placeholder="Proposal Description" type="text"
             class="p-4 bg-grey-400 rounded-md placeholder:text-grey-100 h-48 outline-none border border-grey-200 focus:border-grey-100"
-            :disabled="isProcessing"
-            @input="validate"
-          ></textarea>
+            :disabled="isProcessing" @input="validate"></textarea>
         </div>
         <!-- Parameter Proposal -->
         <div v-if="proposalType === 'param'" class="flex flex-col w-full md:w-1/2 gap-6">
@@ -184,7 +174,9 @@ function clearProposal() {
             <div class="flex flex-col gap-6">
               <div class="flex flex-row w-full justify-between items-center">
                 <span class="text-200">{{ $t("proposalcreate.index") }} {{ index }}</span>
-                <CommonButton @click="delParameter(index)"><Icon icon="trash" /></CommonButton>
+                <CommonButton @click="delParameter(index)">
+                  <Icon icon="trash" />
+                </CommonButton>
               </div>
               <ParameterInput v-model="parameters[index]" :disabled="isProcessing" />
             </div>
@@ -194,42 +186,22 @@ function clearProposal() {
         <!-- Upgrade Proposal -->
         <div v-else-if="proposalType === 'upgrade'" class="flex flex-col w-full md:w-1/2 gap-3">
           <span>{{ $t("proposalcreate.blockHeight") }}</span>
-          <input
-            v-model="blockHeight"
-            :placeholder="$t('proposalcreate.blockHeight')"
-            type="number"
+          <input v-model="blockHeight" :placeholder="$t('proposalcreate.blockHeight')" type="number"
             class="p-4 bg-grey-400 rounded-md placeholder:text-grey-100 outline-none border border-grey-200 focus:border-grey-100"
-            :disabled="isProcessing"
-            @input="validate"
-          />
+            :disabled="isProcessing" @input="validate" />
           <span>{{ $t("proposalcreate.blockInfo") }}</span>
-          <input
-            v-model="blockInfo"
-            :placeholder="$t('proposalcreate.blockInfo')"
-            type="text"
+          <input v-model="blockInfo" :placeholder="$t('proposalcreate.blockInfo')" type="text"
             class="p-4 bg-grey-400 rounded-md placeholder:text-grey-100 outline-none border border-grey-200 focus:border-grey-100"
-            :disabled="isProcessing"
-            @input="validate"
-          />
+            :disabled="isProcessing" @input="validate" />
           <span>{{ $t("proposalcreate.upgradeName") }}</span>
-          <input
-            v-model="upgradeName"
-            :placeholder="$t('proposalcreate.upgradeName')"
-            type="text"
+          <input v-model="upgradeName" :placeholder="$t('proposalcreate.upgradeName')" type="text"
             class="p-4 bg-grey-400 rounded-md placeholder:text-grey-100 outline-none border border-grey-200 focus:border-grey-100"
-            :disabled="isProcessing"
-            @input="validate"
-          />
+            :disabled="isProcessing" @input="validate" />
         </div>
-        <CommonButton
-          v-if="!isProcessing"
-          :class="
-            isAllValid && loggedIn
-              ? ['opacity-100', 'cursor-pointer']
-              : ['opacity-50', 'cursor-default', 'hover:cursor-default', 'hover:text-light']
-          "
-          @click="loggedIn ? (isAllValid ? create() : () => {}) : bus.emit('open')"
-        >
+        <CommonButton v-if="!isProcessing" :class="isAllValid && loggedIn
+            ? ['opacity-100', 'cursor-pointer']
+            : ['opacity-50', 'cursor-default', 'hover:cursor-default', 'hover:text-light']
+          " @click="loggedIn ? (isAllValid ? create() : () => { }) : bus.emit('open')">
           <template v-if="loggedIn">{{ $t("proposalcreate.proposalCTA") }}</template>
           <template v-else>{{ $t("proposalcreate.proposalWallet") }}</template>
         </CommonButton>
@@ -240,9 +212,9 @@ function clearProposal() {
       </template>
     </template>
     <template v-else>
-      <CommonButton class="flex items-center gap-6 self-start" @click="router.push({ path: '/' })"
-        ><Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}</CommonButton
-      >
+      <CommonButton class="flex items-center gap-6 self-start" @click="router.push({ path: '/' })">
+        <Icon icon="Arrowleft" /> {{ $t("proposalcreate.back") }}
+      </CommonButton>
       <span class="text-700 font-termina font-semibold leading-[64px]">{{ $t("proposalcreate.transaction") }}</span>
       <VCodeBlock :code="toPlainObjectString(trx)" prismjs />
     </template>

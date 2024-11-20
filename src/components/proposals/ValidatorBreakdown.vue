@@ -19,7 +19,7 @@ const getTxHash = (vote: VotesQuery["proposal_vote"][0]) => {
           return (
             msg["voter"] == vote.voter_address &&
             msg["proposalId"] == vote.proposal_id &&
-            (msg["@type"] == "/govgen.gov.v1beta1.MsgVoteWeighted" || msg["@type"] == "/govgen.gov.v1beta1.MsgVote")
+            (msg["@type"] == "/atomone.gov.v1beta1.MsgVoteWeighted" || msg["@type"] == "/atomone.gov.v1beta1.MsgVote")
           );
         }).length > 0
       );
@@ -50,11 +50,8 @@ const getValidatorInfo = (address: string) => {
     </div>
     <template v-for="validator in validatorData">
       <template v-if="validator.votes.length > 0">
-        <div
-          v-for="vote in validator.votes"
-          :key="vote.voter_address + vote.option"
-          class="grid grid-cols-5 py-4 w-full text-200 text-grey-50"
-        >
+        <div v-for="vote in validator.votes" :key="vote.voter_address + vote.option"
+          class="grid grid-cols-5 py-4 w-full text-200 text-grey-50">
           <span>{{ getValidatorInfo(vote.voter_address).moniker }}</span>
           <span>{{ getTxHash(vote) }}</span>
           <span>{{ vote.option.replace("VOTE_OPTION_", "") }}</span>

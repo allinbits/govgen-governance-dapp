@@ -1,4 +1,4 @@
-import { Coin } from "@atomone/govgen-types-amino/cosmos/base/v1beta1/coin";
+import { Coin } from "@atomone/atomone-types/cosmos/base/v1beta1/coin";
 
 export default class CommandBuilder {
   private command: string[];
@@ -20,7 +20,7 @@ export default class CommandBuilder {
     this.address = "";
     this.fees = [];
     this.chainId = "";
-    this.command.push("govgend");
+    this.command.push("atomoned");
     this.command.push("tx");
     this.command.push("gov");
     this.command.push(action);

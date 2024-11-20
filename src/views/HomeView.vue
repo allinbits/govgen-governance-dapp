@@ -124,10 +124,9 @@ const orderedProposals = computed(() => {
   return proposals.value?.all_proposals;
 });
 const links = ref([
-  { title: "Twitter", url: "https://twitter.com/_govgen", icon: "twitter" },
+  { title: "Twitter", url: "https://twitter.com/_atomone", icon: "twitter" },
   { title: "Discord", url: "https://discord.com/invite/atomone", icon: "discord" },
   { title: "Github", url: "https://github.com/atomone-hub", icon: "github" },
-  { title: "Forum", url: "https://commonwealth.im/govgen", icon: "commonwealth" },
 ]);
 const hasMore = computed(() => {
   return (proposals.value?.proposal_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
@@ -190,7 +189,6 @@ function setTypeFilterIndex(idx: number) {
       <!-- Chain Section -->
       <div class="flex flex-col gap-8 w-3/4">
         <div class="flex gap-4">
-          <Icon icon="chain" class="aspect-square text-900" />
           <div class="font-termina text-700 md:text-1000 font-semibold leading-[80px]">{{ $t("homepage.title") }}</div>
         </div>
         <div class="flex flex-col gap-8">
@@ -198,7 +196,7 @@ function setTypeFilterIndex(idx: number) {
           <!-- Chain Links -->
           <div class="flex flex-row gap-6 text-grey-100 flex-wrap">
             <a
-              href="https://govgen.io"
+              href="https://atom.one"
               target="_blank"
               class="flex flex-row gap-2 hover:text-grey-50"
               @click="logEvent('Click Home Website')"
@@ -224,17 +222,13 @@ function setTypeFilterIndex(idx: number) {
           <p
             class="text-grey-100 text-300 lg:w-[656px] font-normal text-left text-pretty after:absolute after:block after:left-0 after:w-full after:bg-grey-300 after:h-px"
           >
-            <i18n-t keypath="homepage.intro" tag="span" class="block pb-8 lg:pb-[72px]">
-              <a href="https://commonwealth.im/govgen" class="text-light text-300" target="_blank">{{
-                $t("homepage.forumLinkText")
-              }}</a>
-            </i18n-t>
+            {{ $t("homepage.intro") }}
           </p>
         </div>
       </div>
       <div class="w-1/4">
         <div
-          v-if="chain_id != 'govgen-1'"
+          v-if="chain_id != 'atomone-1'"
           class="flex items-center justify-center gap-4 px-6 py-4 rounded link-gradient text-dark text-center cursor-pointer w-full font-medium"
           @click="router.push({ path: '/create' })"
         >

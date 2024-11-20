@@ -1,50 +1,46 @@
 [
   {
-    "question": "What is the GovGen dApp?",
-    "answer": "The Governance dApp is a seamlessly integrated interface empowering secure and efficient governance interactions with the GovGen chain. "
+    "question": "What is the AtomOne Governance dApp?",
+    "answer": "The Governance dApp is a seamlessly integrated interface empowering secure and efficient governance interactions with the AtomOne chain. "
   },
   {
-    "question": "What is the purpose of the GovGen dApp? ",
-    "answer": "The objective of the GovGen governance dApp is to ensure that users can easily participate in the governance process while engaging securely without compromising private keys."
+    "question": "What is the purpose of the AtomOne Governance dApp? ",
+    "answer": "The objective of the AtomOne Governance dApp is to ensure that users can easily participate in the governance process while engaging securely without compromising private keys."
   },
   {
-    "question": "How does the GovGen dApp encourage community engagement?",
+    "question": "How does the AtomOne Governance dApp encourage community engagement?",
     "answer": "The dApp integrates the Commonwealth discussion forum where users can engage in discussions around proposals, helping to foster informed decision-making."
   },
   {
-    "question": "Is the GovGen token transferable? ",
-    "answer": "The GOVGEN token is not transferable and is intended never to be transferable."
+    "question": "Is the ATONE token transferable? ",
+    "answer": "Yes."
   },
   {
-    "question": "Is there a monetary value to the GovGen token?",
-    "answer": "No. The GovGen token has no monetary value and is to be used for governance only in relation to the future AtomOne project."
+    "question": "Which wallets support AtomOne Governance dApp?",
+    "answer": "In addition to using the AtomOne CLI (recommended method of signing), users of the AtomOne Governance dApp are also able to vote by connecting any of their Keplr, Leap or Cosmostation wallets."
   },
   {
-    "question": "Which wallets support GovGen dApp?",
-    "answer": "In addition to using the GovGen CLI (recommended method of signing), users of the GovGen dApp are also able to vote by connecting any of their Keplr, Leap or Cosmostation wallets."
+    "question": "What is the safest way to interact with the AtomOne Governance dApp?",
+    "answer": "The AtomOne Governance dApp was built so that you are never asked to share a private key, any seed or recovery phrase. Users of the AtomOne Governance dApp are encouraged to follow the best practices for [signing and broadcasting transactions](https://github.com/atomone-hub/atom.one/blob/main/submit-tx-securely.md) by using the AtomOne CLI."
   },
   {
-    "question": "What is the safest way to interact with the GovGen dApp?",
-    "answer": "The GovGen governance dApp was built so that you are never asked to share a private key, any seed or recovery phrase. Users of the GovGen dApp are encouraged to follow the best practices for [signing and broadcasting transactions](https://github.com/tbruyelle/govgen-proposals/blob/tbruyelle/doc/submit-tx-securely/submit-tx-securely.md) by using the GovGen CLI."
+    "question": "What types of operations am I able to perform within the AtomOne Governance dApp today?",
+    "answer": "As an AtomOne Governance dApp user you will be able to check your ATONE balance, deposit tokens to existing proposals which are IN DEPOSIT PERIOD or vote on proposals which are IN VOTING PERIOD. The dApp also allows you to generate the necessary CLI commands and instructions for air-gapped signing and transmission of those TXs when not using a web wallet."
   },
   {
-    "question": "What types of operations am I able to perform within the GovGen dApp today?",
-    "answer": "As a GovGen dApp user you will be able to check your GovGen balance, deposit tokens to existing proposals which are IN DEPOSIT PERIOD or vote on proposals which are IN VOTING PERIOD. The dApp also allows you to generate the necessary CLI commands and instructions for air-gapped signing and transmission of those txs when not using a web wallet."
-  },
-  {
-    "question": "How does depositing GovGen tokens to existing proposals which are IN DEPOSIT PERIOD work?",
-    "answer": "Deposited tokens for proposals that don't reach the minimum deposit limit of 5000 GovGen for a proposal to move from **IN DEPOSIT PERIOD** to **IN VOTING PERIOD** are burned. If the proposal reaches the deposit limit and enters the voting period then the deposit is returned upon vote end."
+    "question": "How does depositing AtomOne tokens to existing proposals which are IN DEPOSIT PERIOD work?",
+    "answer": "Deposited tokens for proposals that don't reach the minimum deposit limit of 512 ATONE for a proposal to move from **IN DEPOSIT PERIOD** to **IN VOTING PERIOD** are burned. If the proposal reaches the deposit limit and enters the voting period then the deposit is returned upon vote end."
   },
   {
     "question": "How long is the voting period?",
-    "answer": "Proposals on GovGen have a voting period of 1 year which means that the deposits will be returned after this date. Please take this into consideration when depositing into a proposal as you will not be able to vote or perform any other actions with these tokens for the length of the voting period."
+    "answer": "Proposals on AtomOne have a voting period of 2 weeks which means that the deposits will be returned after this date. Please take this into consideration when depositing into a proposal as you will not be able to vote or perform any other actions with these tokens for the length of the voting period."
   },
   {
-    "question": "What is the future plan for the GovGen dApp?",
+    "question": "What is the future plan for the AtomOne Governance dApp?",
     "answer": "Future developments include tools for on-chain proposal creation, detailed governance graphs, and voting insights, along with individual voting history tracking. "
   },
   {
-    "question": "Is GovGen dApp open-source?",
-    "answer": "The dApp is created using Eclesia - an open source, configurable governance platform for Cosmos chains, and the GovGen dApp is the first integration of this open source platform. "
+    "question": "Is AtomOne Governance dApp open-source?",
+    "answer": "The dApp is created using Eclesia - an open source, configurable governance platform for Cosmos chains, and the AtomOne Governance dApp is the second integration of this open source platform."
   }
 ]

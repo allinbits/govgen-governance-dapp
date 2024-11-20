@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import AuditStatus from "@/components/warnings/AuditStatus.vue";
 import WalletConnect from "@/components/popups/WalletConnect.vue";
+
+const securityLink = "https://github.com/allinbits/security/";
 </script>
 
 <template>
@@ -17,15 +20,13 @@ import WalletConnect from "@/components/popups/WalletConnect.vue";
           <router-link active-class="text-light" to="/faq" class="text-300 py-4 hover:text-light text-grey-100">{{
             $t("homepage.viewFaq")
           }}</router-link>
-          <a
-            target="_blank"
-            href="https://commonwealth.im/govgen"
-            class="text-300 py-4 hover:text-light text-grey-100"
-            >{{ $t("homepage.viewForums") }}</a
-          >
+          <a :href="securityLink" target="_blank" class="hover:text-light text-grey-100 duration-200">{{
+            $t("homepage.security")
+          }}</a>
         </div>
       </div>
       <WalletConnect class="hidden md:block" />
     </nav>
+    <AuditStatus :link="securityLink" />
   </header>
 </template>

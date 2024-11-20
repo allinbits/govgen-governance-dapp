@@ -1,10 +1,8 @@
 [context.deploy-preview.environment]
-  VITE_REPO             = "allinbits/govgen-governance-discussions-test"
-  VITE_ENDPOINT         = "https://gh-discuss.devnet.govgen.dev"
-  VITE_CHAIN_ID         = "govgen-devnet-4"
-  VITE_RPC              = "https://rpc.govgen.dev"
-  VITE_API              = "https://api.govgen.dev"
-  VITE_GRAPHQL_ENDPOINT = "https://graphql-devnet.govgen.dev/v1/graphql"
+  VITE_GRAPHQL_ENDPOINT = "https://graphql-atomone-mainnet.allinbits.services/v1/graphql"
+  VITE_CHAIN_ID         = "atomone-1"
+  VITE_RPC              = "https://atomone-rpc.allinbits.com/"
+  VITE_API              = "https://atomone-api.allinbits.com/"
 
 [[redirects]]
   from = "/*"
@@ -15,21 +13,14 @@
   for = "/*"
   [headers.values]
   Access-Control-Allow-Origin = '''
-  https://app.govgen.io,
-  https://graphq-mainnet.govgen.io
-  https://gh-discuss.govgen.io
-
-
-  https://app.govgen.dev,
-  https://staging.govgen.dev,
-  https://graphq-devnet.govgen.dev
-  https://gh-discuss.devnet.govgen.dev
+  https://gov.atom.one,
+  https://graphql-atomone-mainnet.allinbits.services
 
   https://githubusercontent.com
   https://avatars.githubusercontent.com
   '''
   Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-  Content-Security-Policy = "default-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; img-src 'self' data: https:; connect-src https://graphql-mainnet.govgen.io/v1/graphql https://graphql-devnet.govgen.dev/v1/graphql https://rpc.govgen.io https://rpc.govgen.dev https://gh-discuss.devnet.govgen.dev https://plausible.io/api/event githubusercontent.com *.githubusercontent.com"
+  Content-Security-Policy = "default-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; img-src 'self' data: https:; connect-src https://graphql-atomone-mainnet.allinbits.services/v1/graphql https://atomone-rpc.allinbits.com https://plausible.io/api/event githubusercontent.com *.githubusercontent.com"
   X-Frame-Options = "SAMEORIGIN"
   X-Content-Type-Options = "nosniff"
   Referrer-Policy = "strict-origin"

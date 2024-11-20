@@ -1,5 +1,5 @@
 {
-  "name": "govgen-governance",
+  "name": "@eclesia/atomone-governance",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -49,7 +49,7 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@atomone/govgen-types-amino": "^0.2.5",
+    "@atomone/atomone-types": "^1.0.2",
     "@graphql-codegen/cli": "^5.0.2",
     "@graphql-codegen/typescript": "^4.0.6",
     "@graphql-codegen/typescript-operations": "^4.2.0",
@@ -90,7 +90,7 @@
   },
   "pnpm": {
     "overrides": {
-      "dompurify": "^3.1.4"
+      "dompurify": "3.1.6"
     }
   }
 }

@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, reactive } from "vue";
 
-import { MsgVote, MsgVoteWeighted } from "@atomone/govgen-types-amino/govgen/gov/v1beta1/tx";
-import { VoteOption } from "cosmjs-types/cosmos/gov/v1beta1/gov";
-
+import { MsgVote, MsgVoteWeighted } from "@atomone/atomone-types/atomone/gov/v1/tx";
+import { VoteOption } from "@atomone/atomone-types/atomone/gov/v1/gov";
 import ModalWrap from "@/components/common/ModalWrap.vue";
 
 import { useI18n } from "vue-i18n";
@@ -18,7 +17,7 @@ import { useWallet, Wallets } from "@/composables/useWallet";
 import { useProposals } from "@/composables/useProposals";
 import { useClipboard } from "@vueuse/core";
 import { useTelemetry } from "@/composables/useTelemetry";
-import { DeliverTxResponse } from "@atomone/govgen-types-amino/types";
+import { DeliverTxResponse } from "@atomone/atomone-types/types";
 import { toPlainObjectString } from "@/utility";
 
 interface Props {
@@ -41,7 +40,6 @@ const transacting = ref<boolean>(false);
 const voteList: Partial<Record<VoteOption, { label: string; color: string }>> = {
   [VoteOption.VOTE_OPTION_YES]: { label: t("voteOptions.yes"), color: "text-accent-100" },
   [VoteOption.VOTE_OPTION_NO]: { label: t("voteOptions.no"), color: "text-neg-200" },
-  [VoteOption.VOTE_OPTION_NO_WITH_VETO]: { label: t("voteOptions.nwv"), color: "text-neg-200" },
   [VoteOption.VOTE_OPTION_ABSTAIN]: { label: t("voteOptions.abstain"), color: "text-grey-100" },
 };
 
@@ -50,7 +48,6 @@ const voteStraight = ref<VoteOption | null>();
 const voteWeighted = reactive<Partial<Record<VoteOption, { value: number | null }>>>({
   [VoteOption.VOTE_OPTION_YES]: { value: null },
   [VoteOption.VOTE_OPTION_NO]: { value: null },
-  [VoteOption.VOTE_OPTION_NO_WITH_VETO]: { value: null },
   [VoteOption.VOTE_OPTION_ABSTAIN]: { value: null },
 });
 
@@ -88,6 +85,7 @@ const signVote = async (isCLI = false) => {
     voteOptions = {
       proposalId: BigInt(props.proposalId),
       voter: address.value,
+      metadata: "",
       options: [
         {
           option: VoteOption.VOTE_OPTION_YES,
@@ -96,12 +94,6 @@ const signVote = async (isCLI = false) => {
         {
           option: VoteOption.VOTE_OPTION_NO,
           weight: (((voteWeighted[VoteOption.VOTE_OPTION_NO]?.value ?? -1) as number) * Math.pow(10, 18)).toString(),
-        },
-        {
-          option: VoteOption.VOTE_OPTION_NO_WITH_VETO,
-          weight: (
-            ((voteWeighted[VoteOption.VOTE_OPTION_NO_WITH_VETO]?.value ?? -1) as number) * Math.pow(10, 18)
-          ).toString(),
         },
         {
           option: VoteOption.VOTE_OPTION_ABSTAIN,
@@ -116,6 +108,7 @@ const signVote = async (isCLI = false) => {
     if (!voteStraight.value) return;
     voteOptions = {
       proposalId: BigInt(props.proposalId),
+      metadata: "",
       voter: address.value,
       option: +voteStraight.value,
     };
@@ -151,10 +144,8 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 <template>
   <div class="relative">
     <div>
-      <div
-        class="justify-center px-6 py-4 rounded link-gradient hover: text-dark text-300 text-center cursor-pointer"
-        @click="() => (logEvent('Click Popup ProposalVote'), toggleModal(true))"
-      >
+      <div class="justify-center px-6 py-4 rounded link-gradient hover: text-dark text-300 text-center cursor-pointer"
+        @click="() => (logEvent('Click Popup ProposalVote'), toggleModal(true))">
         {{ $t("components.ProposalVote.cta") }}
       </div>
     </div>
@@ -164,26 +155,15 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
         <div class="px-10 py-12 bg-grey-400 rounded w-screen max-w-[25rem]">
           <div v-show="displayState === 'pending'" class="flex flex-col gap-6 relative">
             <span class="text-gradient font-termina text-700 text-center">{{ $t("components.ProposalVote.cta") }}</span>
-            <UiSwitch
-              id="voteType"
-              v-model="tab"
-              :options="tabOptions"
-              class="flex w-2/3 mx-auto"
-              @click="resetVote()"
-            />
+            <UiSwitch id="voteType" v-model="tab" :options="tabOptions" class="flex w-2/3 mx-auto"
+              @click="resetVote()" />
             <div class="flex flex-col gap-10">
               <div>
                 <Transition mode="out-in">
                   <div v-if="tab === 'Straight'" class="flex flex-col px-4">
                     <span v-for="(vote, name, id) in voteList" :key="id" class="w-full">
-                      <UiState
-                        v-if="vote"
-                        v-model="voteStraight"
-                        type="radio"
-                        :value="name"
-                        :label="`Vote “${vote.label.toLocaleUpperCase()}”`"
-                        class="w-full"
-                      />
+                      <UiState v-if="vote" v-model="voteStraight" type="radio" :value="name"
+                        :label="`Vote “${vote.label.toLocaleUpperCase()}”`" class="w-full" />
                     </span>
                   </div>
 
@@ -194,17 +174,9 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 
                     <form class="flex flex-col items-center gap-2">
                       <span v-for="(vote, key, id) in voteWeighted" :key="id" class="w-full">
-                        <UiInput
-                          v-if="vote"
-                          v-model="vote.value"
-                          type="number"
-                          placeholder="e.g. 0.25"
-                          :label="`Votes “${voteList[key]?.label}”`"
-                          variant="row"
-                          :min="0"
-                          :max="1"
-                          class="w-full justify-end"
-                        />
+                        <UiInput v-if="vote" v-model="vote.value" type="number" placeholder="e.g. 0.25"
+                          :label="`Votes “${voteList[key]?.label}”`" variant="row" :min="0" :max="1"
+                          class="w-full justify-end" />
                       </span>
                     </form>
                   </div>
@@ -213,32 +185,24 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 
               <div v-if="!transacting" class="flex flex-col gap-4">
                 <div v-show="voteStraight || checkVoteWeighted" class="flex flex-col gap-4">
-                  <button
-                    class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
-                    @click="signVote(true)"
-                  >
+                  <button class="px-6 py-4 rounded link-gradient text-dark text-300 text-center w-full"
+                    @click="signVote(true)">
                     {{ $t("ui.actions.cli") }}
                   </button>
-                  <a
-                    href="https://github.com/atomone-hub/govgen-proposals/blob/main/submit-tx-securely.md"
-                    target="_blank"
-                    class="text-center text-100 text-grey-100 underline"
-                  >
+                  <a href="https://github.com/atomone-hub/atom.one/blob/main/submit-tx-securely.md" target="_blank"
+                    class="text-center text-100 text-grey-100 underline">
                     {{ $t("ui.actions.signTxSecurely") }}
                   </a>
-                  <button
-                    v-if="used != Wallets.addressOnly"
+                  <button v-if="used != Wallets.addressOnly"
                     class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
-                    @click="signVote()"
-                  >
+                    @click="signVote()">
                     {{ $t("ui.actions.confirm") }}
                   </button>
                 </div>
 
                 <button
                   class="px-6 py-4 rounded text-light text-300 text-center w-full hover:opacity-50 duration-150 ease-in-out"
-                  @click="toggleModal(false)"
-                >
+                  @click="toggleModal(false)">
                   {{ $t("ui.actions.cancel") }}
                 </button>
               </div>
@@ -260,22 +224,16 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
             </div>
 
             <div class="relative">
-              <button
-                v-if="isClipboardSupported"
+              <button v-if="isClipboardSupported"
                 class="absolute top-4 right-4 text-200 flex gap-1 hover:text-grey-50 duration-200"
-                @click="copy(cliVoteInput)"
-              >
+                @click="copy(cliVoteInput)">
                 <span v-show="copied">{{ $t("ui.actions.copied") }}</span>
                 <span v-show="!copied" class="flex gap-1">
                   <Icon icon="copy" /><span>{{ $t("ui.actions.copy") }}</span>
                 </span>
               </button>
-              <textarea
-                ref="CLIVote"
-                v-model="cliVoteInput"
-                readonly
-                class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"
-              ></textarea>
+              <textarea ref="CLIVote" v-model="cliVoteInput" readonly
+                class="w-full h-64 px-4 pb-4 pt-12 bg-grey-200 text-grey-50 rounded outline-none resize-none"></textarea>
             </div>
 
             <div class="flex gap-x-4 items-stretch">
@@ -284,8 +242,7 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
               }}</CommonButton>
               <button
                 class="w-full text-light bg-grey-200 hover:bg-light hover:text-dark roudned transition-colors duration-200 rounded py-4 px-6"
-                @click="toggleModal(false)"
-              >
+                @click="toggleModal(false)">
                 {{ $t("ui.actions.done") }}
               </button>
             </div>
@@ -307,26 +264,20 @@ const { copy, copied, isSupported: isClipboardSupported } = useClipboard();
 
             <button
               class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
-              @click="toggleModal(false)"
-            >
+              @click="toggleModal(false)">
               {{ $t("ui.actions.done") }}
             </button>
           </div>
 
           <div v-show="displayState === 'error'">
             <UiInfo :title="$t('components.ProposalVote.error')" type="warning" :circled="true">
-              <textarea
-                ref="error"
-                v-model="errorMsg"
-                readonly
-                class="w-full h-32 my-4 px-4 pb-4 pt-4 bg-grey-200 text-grey-50 rounded outline-none resize-none"
-              ></textarea>
+              <textarea ref="error" v-model="errorMsg" readonly
+                class="w-full h-32 my-4 px-4 pb-4 pt-4 bg-grey-200 text-grey-50 rounded outline-none resize-none"></textarea>
             </UiInfo>
 
             <button
               class="px-6 py-4 rounded text-light text-300 text-center bg-grey-200 w-full hover:opacity-50 duration-150 ease-in-out"
-              @click="toggleModal(false)"
-            >
+              @click="toggleModal(false)">
               {{ $t("ui.actions.done") }}
             </button>
           </div>

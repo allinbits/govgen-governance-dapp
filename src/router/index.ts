@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomeView from "@/views/HomeView.vue";
-import CreateProposalView from "@/views/CreateProposalView.vue";
 import ProposalView from "@/views/ProposalView.vue";
 import HistoryView from "@/views/HistoryView.vue";
 import FaqView from "@/views/FaqView.vue";
@@ -19,9 +18,6 @@ const routes = [
   { path: "/faq", component: FaqView },
   // { path: "/design", component: DesignView },
 ];
-if (import.meta.env.VITE_CHAIN_ID != "govgen-1") {
-  routes.push({ path: "/create", component: CreateProposalView });
-}
 const router = createRouter({
   history: routerHistory,
   routes,
