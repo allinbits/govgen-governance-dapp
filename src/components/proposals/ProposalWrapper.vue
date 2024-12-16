@@ -330,10 +330,14 @@ const expectedResult = computed(() => {
   if (turnout.value < quorum.value) {
     return false;
   } else {
-    if (nwv.value > veto_threshold.value) {
-      return false;
+    if (no.value + nwv.value == 0) {
+      if (yes.value > 0) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
-      if (yes.value > threshold.value) {
+      if (yes.value / (no.value + nwv.value) > threshold.value) {
         return true;
       } else {
         return false;
