@@ -1,20 +1,12 @@
-import { createApp, provide, h } from "vue";
-import { DefaultApolloClient } from "@vue/apollo-composable";
+import { createApp } from "vue";
 import "@/style.css";
 import App from "@/App.vue";
 import router from "@/router";
 import IconVue from "@/components/ui/Icon.vue";
 import { createI18n } from "vue-i18n";
 import { messages } from "@/localization";
-import apolloClient from "./apolloClient";
 
-const app = createApp({
-  setup() {
-    provide(DefaultApolloClient, apolloClient);
-  },
-
-  render: () => h(App),
-});
+const app = createApp(App);
 const i18n = createI18n({
   legacy: false,
   locale: "en",

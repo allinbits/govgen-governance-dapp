@@ -6,24 +6,15 @@ import Search from "@/components/ui/Search.vue";
 import DropDown from "@/components/ui/DropDown.vue";
 import ProposalStatus from "@/components/ui/ProposalStatus.vue";
 import { PropStatus } from "@/types/proposals";
-import { provideApolloClient } from "@vue/apollo-composable";
-import apolloClient from "@/apolloClient";
-
-import { useChainData } from "@/composables/useChainData";
+import { proposals as staticProposals } from "@/data/proposals";
 import { useTelemetry } from "@/composables/useTelemetry";
-import { bus } from "@/bus";
-import { useRouter } from "vue-router";
 
-const chain_id = import.meta.env.VITE_CHAIN_ID;
-const router = useRouter();
 const typeFilterIndex = ref(0);
 const activityFilterIndex = ref(0);
 const limit = ref(16);
 const offset = ref(0);
 const searchText = ref("");
-const { getProposals, getProposalsAsync } = useChainData();
-
-const proposals = getProposals("active", limit.value, offset.value);
+const proposals = ref(staticProposals);
 
 const searchString = computed(() => {
   if (searchText.value.trim().length >= 1) {
@@ -63,65 +54,30 @@ const filterToStatus = computed(() => {
   }
 });
 
-watch(filterToStatus, async (newType, oldType) => {
-  if (newType !== oldType) {
-    provideApolloClient(apolloClient);
-    try {
-      const res = await getProposalsAsync(
-        sortToOrder.value,
-        limit.value,
-        offset.value,
-        newType ?? undefined,
-        searchString.value,
-      );
-      if (res) {
-        proposals.value = res;
-      }
-    } catch (_e) {
-      bus.emit("error");
-    }
-  }
+watch([filterToStatus, searchString, sortToOrder], (newValues, oldValues) => {
+  if (JSON.stringify(newValues) === JSON.stringify(oldValues)) return;
+  offset.value = 0;
+  proposals.value = filteredProposals.value;
 });
-watch(searchString, async (newSearch, oldSearch) => {
-  if (newSearch !== oldSearch) {
-    provideApolloClient(apolloClient);
-    try {
-      const res = await getProposalsAsync(
-        sortToOrder.value,
-        limit.value,
-        offset.value,
-        filterToStatus.value ?? undefined,
-        searchString.value,
-      );
-      if (res) {
-        proposals.value = res;
-      }
-    } catch (_e) {
-      bus.emit("error");
-    }
-  }
-});
-watch(sortToOrder, async (newOrder, oldOrder) => {
-  if (newOrder !== oldOrder) {
-    provideApolloClient(apolloClient);
-    try {
-      const res = await getProposalsAsync(
-        sortToOrder.value,
-        limit.value,
-        offset.value,
-        filterToStatus.value ?? undefined,
-        searchString.value,
-      );
-      if (res) {
-        proposals.value = res;
-      }
-    } catch (_e) {
-      bus.emit("error");
-    }
-  }
+const filteredProposals = computed(() => {
+  const filtered = staticProposals.filter((proposal) => {
+    const matchesStatus = !filterToStatus.value || proposal.status === filterToStatus.value;
+    const query = searchString.value?.toLowerCase();
+    const matchesSearch = !query || `${proposal.title} ${proposal.description}`.toLowerCase().includes(query);
+    return matchesStatus && matchesSearch;
+  });
+  return [...filtered].sort((a, b) => {
+    if (sortToOrder.value === "passed")
+      return Number(b.status === "PROPOSAL_STATUS_PASSED") - Number(a.status === "PROPOSAL_STATUS_PASSED");
+    if (sortToOrder.value === "rejected")
+      return Number(b.status === "PROPOSAL_STATUS_REJECTED") - Number(a.status === "PROPOSAL_STATUS_REJECTED");
+    if (sortToOrder.value === "failed")
+      return Number(b.status === "PROPOSAL_STATUS_FAILED") - Number(a.status === "PROPOSAL_STATUS_FAILED");
+    return b.id - a.id;
+  });
 });
 const orderedProposals = computed(() => {
-  return proposals.value?.all_proposals;
+  return filteredProposals.value.slice(offset.value, offset.value + limit.value);
 });
 const links = ref([
   { title: "Twitter", url: "https://twitter.com/_govgen", icon: "twitter" },
@@ -130,7 +86,7 @@ const links = ref([
   { title: "Forum", url: "https://commonwealth.im/govgen", icon: "commonwealth" },
 ]);
 const hasMore = computed(() => {
-  return (proposals.value?.proposal_aggregate.aggregate?.count ?? 0) > offset.value + limit.value;
+  return filteredProposals.value.length > offset.value + limit.value;
 });
 function next() {
   offset.value += limit.value;
@@ -140,32 +96,7 @@ function prev() {
   offset.value = offset.value <= limit.value ? 0 : offset.value - limit.value;
 }
 
-watch(offset, async (newOffset, oldOffset) => {
-  if (newOffset != oldOffset) {
-    provideApolloClient(apolloClient);
-    try {
-      if (filterToStatus.value != null) {
-        const res = await getProposalsAsync(
-          sortToOrder.value,
-          limit.value,
-          newOffset,
-          filterToStatus.value,
-          searchString.value,
-        );
-        if (res) {
-          proposals.value = res;
-        }
-      } else {
-        const res = await getProposalsAsync(sortToOrder.value, limit.value, newOffset, undefined, searchString.value);
-        if (res) {
-          proposals.value = res;
-        }
-      }
-    } catch (_e) {
-      bus.emit("error");
-    }
-  }
-});
+watch(offset, () => (proposals.value = filteredProposals.value));
 
 const { logEvent } = useTelemetry();
 const typeFilter = ["All Proposals", "Deposit", "Voting", "Passed", "Rejected", "Failed"];
@@ -232,16 +163,6 @@ function setTypeFilterIndex(idx: number) {
           </p>
         </div>
       </div>
-      <div class="w-1/4">
-        <div
-          v-if="chain_id != 'govgen-1'"
-          class="flex items-center justify-center gap-4 px-6 py-4 rounded link-gradient text-dark text-center cursor-pointer w-full font-medium"
-          @click="router.push({ path: '/create' })"
-        >
-          <Icon icon="plus" class="font-medium text-400"></Icon>
-          <span class="text-300">{{ $t("homepage.createProposal") }}</span>
-        </div>
-      </div>
     </div>
     <!-- Search Box, and Filters -->
     <div
@@ -286,7 +207,7 @@ function setTypeFilterIndex(idx: number) {
               <!-- Vote Count-->
               <div class="flex flex-row items-center gap-1">
                 <Icon icon="voters" />
-                <span>{{ proposal.proposal_votes_aggregate.aggregate?.count ?? 0 }}</span>
+                <span>{{ proposal.proposal_votes.length }}</span>
               </div>
               <!-- Comment Count -->
               <!--
@@ -341,7 +262,7 @@ function setTypeFilterIndex(idx: number) {
         :class="{ 'text-light hover:opacity-75 cursor-pointer': hasMore }"
         @click="
           () => {
-            offset = Math.floor((proposals?.proposal_aggregate.aggregate?.count ?? 0) / limit) * limit;
+            offset = Math.max(0, Math.floor((filteredProposals.length - 1) / limit) * limit);
           }
         "
       />

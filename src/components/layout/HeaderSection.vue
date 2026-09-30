@@ -14,9 +14,6 @@ const securityLink = "https://github.com/allinbits/security/";
           <router-link active-class="text-light" to="/" class="text-300 py-4 hover:text-light text-grey-100">{{
             $t("homepage.viewProposals")
           }}</router-link>
-          <router-link active-class="text-light" to="/history" class="text-300 py-4 hover:text-light text-grey-100">{{
-            $t("homepage.viewHistory")
-          }}</router-link>
           <router-link active-class="text-light" to="/faq" class="text-300 py-4 hover:text-light text-grey-100">{{
             $t("homepage.viewFaq")
           }}</router-link>

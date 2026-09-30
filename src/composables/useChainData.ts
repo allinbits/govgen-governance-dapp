@@ -1,10 +1,11 @@
+import { ref } from "vue";
+import { getStaticProposal, proposals as staticProposals } from "@/data/proposals";
 import {
   useAllVotesQuery,
   useBalanceQuery,
   useBlockHeightQuery,
   useBlockTimeQuery,
   useDelegatedQuery,
-  useLazyAllVotesQuery,
   useLazyBalanceQuery,
   useLazyBlockHeightQuery,
   useLazyBlockTimeQuery,
@@ -21,15 +22,11 @@ import {
   useLazyValidatorsQuery,
   useLazyValsetQuery,
   useLazyVoteHistoryQuery,
-  useLazyVoteOptionQuery,
   useLazyVotesQuery,
   useParamsQuery,
   useProposalQuery,
   useProposalTalliesQuery,
   useProposalsActiveQuery,
-  useProposalsFailedQuery,
-  useProposalsPassedQuery,
-  useProposalsRejectedQuery,
   useProposalsSearchQuery,
   useStakingQuery,
   useValidatorsQuery,
@@ -59,7 +56,18 @@ export const useChainData = () => {
     status?: string,
     searchString?: string,
   ) => {
-    let where;
+    void order;
+    const filtered = staticProposals.filter(
+      (proposal) =>
+        (!status || proposal.status === status) &&
+        (!searchString ||
+          `${proposal.title} ${proposal.description}`.toLowerCase().includes(searchString.toLowerCase())),
+    );
+    return ref({
+      all_proposals: filtered.slice(offset, offset + limit),
+      proposal_aggregate: { aggregate: { count: filtered.length } },
+    }) as unknown as ReturnType<typeof useProposalsActiveQuery>["result"];
+    /* let where;
     if (status) {
       if (searchString) {
         where = {
@@ -110,26 +118,40 @@ export const useChainData = () => {
           where,
         }).result;
     }
+    */
   };
   const getProposal = (id: number) => {
-    const { result } = useProposalQuery({ id }, { pollInterval: 10000 });
-    return result;
+    return ref({ proposal: getStaticProposal(id) ? [getStaticProposal(id)] : [] }) as unknown as ReturnType<
+      typeof useProposalQuery
+    >["result"];
   };
   const getParams = () => {
-    const { result } = useParamsQuery();
-    return result;
+    return ref({
+      gov_params: [
+        {
+          deposit_params: { min_deposit: [{ amount: "5000000000", denom: "ugovgen" }] },
+          tally_params: {
+            quorum: "0.334000000000000000",
+            threshold: "0.500000000000000000",
+            veto_threshold: "0.334000000000000000",
+          },
+        },
+      ],
+    }) as unknown as ReturnType<typeof useParamsQuery>["result"];
   };
   const getStakingStatus = () => {
-    const { result } = useStakingQuery();
-    return result;
+    return ref({ staking_pool: [{ bonded_tokens: "1000000000000" }] }) as unknown as ReturnType<
+      typeof useStakingQuery
+    >["result"];
   };
   const getVoteHistory = (address: string) => {
     const { result } = useVoteHistoryQuery({ address });
     return result;
   };
   const getProposalTallies = (id: number) => {
-    const { result } = useProposalTalliesQuery({ id }, { pollInterval: 10000 });
-    return result;
+    return ref({ proposal_tally_result: getStaticProposal(id)?.proposal_tally_results ?? [] }) as unknown as ReturnType<
+      typeof useProposalTalliesQuery
+    >["result"];
   };
   const getBlockHeight = (timestamp: string) => {
     const { result } = useBlockHeightQuery({ timestamp });
@@ -157,20 +179,28 @@ export const useChainData = () => {
     return result;
   };
   const getValidators = () => {
-    const { result } = useValidatorsQuery();
-    return result;
+    return ref({ block: [{ validator_statuses: [] }] }) as unknown as ReturnType<typeof useValidatorsQuery>["result"];
   };
   const getVotes = (address: string, proposalId: number) => {
-    const { result } = useVotesQuery({ address, proposalId, propId: String(proposalId) });
-    return result;
+    const proposal = getStaticProposal(proposalId);
+    return ref({
+      proposal_vote: proposal?.proposal_votes.filter((vote) => vote.voter_address === address) ?? [],
+    }) as unknown as ReturnType<typeof useVotesQuery>["result"];
   };
   const getAllVotes = (proposalId: number, limit: number, offset: number) => {
-    const { result } = useAllVotesQuery({ limit, offset, proposalId });
-    return result;
+    return ref({
+      proposal_vote: getStaticProposal(proposalId)?.proposal_votes.slice(offset, offset + limit) ?? [],
+      proposal_vote_aggregate: { aggregate: { count: getStaticProposal(proposalId)?.proposal_votes.length ?? 0 } },
+    }) as unknown as ReturnType<typeof useAllVotesQuery>["result"];
   };
   const getVoteOption = (proposalId: number, option: string) => {
-    const { result } = useVoteOptionQuery({ proposalId, option });
-    return result;
+    return ref({
+      proposal_vote_aggregate: {
+        aggregate: {
+          count: getStaticProposal(proposalId)?.proposal_votes.filter((vote) => vote.option === option).length ?? 0,
+        },
+      },
+    }) as unknown as ReturnType<typeof useVoteOptionQuery>["result"];
   };
   const getBalanceAsync = async (address: string) => {
     const result = await useLazyBalanceQuery({ address }).load();
@@ -298,12 +328,10 @@ export const useChainData = () => {
   };
 
   const getAllVotesAsync = async (proposalId: number, limit: number, offset: number) => {
-    const result = useLazyAllVotesQuery({ limit, offset, proposalId }).load();
-    return result;
+    return getAllVotes(proposalId, limit, offset).value;
   };
   const getVoteOptionAsync = async (proposalId: number, option: string) => {
-    const result = await useLazyVoteOptionQuery({ proposalId, option }).load();
-    return result;
+    return getVoteOption(proposalId, option).value;
   };
   return {
     getBalance,

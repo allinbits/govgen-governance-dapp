@@ -8,16 +8,14 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: 18
     - name: Install dependencies
-      run: npm install -g pnpm && pnpm install
-    - name: Install serve
-      run: npm install -g serve
+      run: npm install -g pnpm@8.15.9 && pnpm install --frozen-lockfile
     - name: Install Playwright Browsers
       run: pnpm exec playwright install --with-deps
     - name: Build
@@ -25,11 +23,12 @@ jobs:
     - name: Run Playwright tests
       run: |
         source .env.dev
-        serve -s dist -l 8080 &
+        pnpm dev --host 0.0.0.0 --port 8080 &
+        sleep 3
         pnpm exec playwright test
       env: 
         PLAYWRIGHT_TEST_BASE_URL: 'http://localhost:8080'
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       if: always()
       with:
         name: playwright-report

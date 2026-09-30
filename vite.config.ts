@@ -22,6 +22,8 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
       "~": fileURLToPath(new URL("./src", import.meta.url)),
+      // Mermaid 9 imports this legacy Cytoscape deep path, which Vite 5.4+ cannot resolve.
+      "cytoscape/dist/cytoscape.umd.js": "cytoscape",
     },
   },
   define: { __INTLIFY_JIT_COMPILATION__: true },

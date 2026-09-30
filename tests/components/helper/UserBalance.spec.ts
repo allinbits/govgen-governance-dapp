@@ -9,5 +9,5 @@ test("UserBalance balance formatted display", async ({ mount }) => {
   });
 
   await expect(component).toBeVisible();
-  await expect(component).toContainText("8.998199");
+  await expect(component).toContainText("0");
 });

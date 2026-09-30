@@ -5,7 +5,6 @@ import { Ref, computed, ref } from "vue";
 import { shorten } from "@/utility";
 import UserBalance from "@/components/helper/UserBalance.vue";
 import { bus } from "@/bus";
-import { useTelemetry } from "@/composables/useTelemetry";
 
 const isOpen = ref(false);
 const isConnecting = ref(false);
@@ -96,8 +95,6 @@ const cancelConnect = () => {
 bus.on("open", () => {
   isOpen.value = true;
 });
-
-const { logEvent } = useTelemetry();
 </script>
 
 <template>
@@ -105,13 +102,10 @@ const { logEvent } = useTelemetry();
     <!-- Normal signed out button -->
     <template v-if="connectState">
       <button
-        class="justify-center px-6 py-4 rounded bg-grey-400 text-300 text-center hover:bg-light hover:text-dark duration-200"
-        @click="
-          () => {
-            isOpen = true;
-            logEvent('Click Header ConnectWallet');
-          }
-        "
+        class="justify-center px-6 py-4 rounded bg-grey-400 text-grey-100 text-300 text-center opacity-60 cursor-not-allowed"
+        disabled
+        title="The atomone-1 chain is sunset. Wallet connections are disabled."
+        aria-label="Connect Wallet disabled because the atomone-1 chain is sunset"
       >
         {{ $t("components.WalletConnect.button") }}
       </button>

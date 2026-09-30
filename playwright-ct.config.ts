@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from "node:url";
 import vue from "@vitejs/plugin-vue";
 import graphql from "@rollup/plugin-graphql";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
-import { PluginOption } from "vite";
+import type { PluginOption } from "vite";
 
 /**
  * Read environment variables from file.

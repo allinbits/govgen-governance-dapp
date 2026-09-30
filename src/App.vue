@@ -4,6 +4,7 @@ import { RouterView } from "vue-router";
 import HeaderSection from "@/components/layout/HeaderSection.vue";
 import ErrorBox from "@/components/popups/ErrorBox.vue";
 import FooterSection from "@/components/layout/FooterSection.vue";
+import SunsetNotice from "@/components/warnings/SunsetNotice.vue";
 
 /*
 import { useGithubDiscussions } from "@/composables/useGithubDiscussions";
@@ -14,6 +15,7 @@ useGithubDiscussions().setup();
 
 <template>
   <div class="w-full max-w-[90rem] px-6 md:px-14 lg:px-20 mx-auto">
+    <SunsetNotice />
     <HeaderSection />
     <div class="flex flex-col w-full min-h-screen">
       <ErrorBox />

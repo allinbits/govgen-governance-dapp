@@ -1,0 +1,6285 @@
+{
+	"proposal": [
+		{
+			"__typename": "proposal",
+			"content": {
+				"title": "AtomOne Logo Selection Option #1",
+				"description": "### **Proposal: Community Voting for AtomOne Logo Selection Option \\#1**\n\nYou can find the proposed logo [here](https://images-platform.99static.com/Tst5YeHuNKcNRdJl47_VFSH3NiU=/filters:quality\\(100\\)/99designs-contests-attachments/153/153370/attachment_153370218)**.**\n\n**Summary:**\n\nThis governance proposal seeks to gauge GovGen’s community sentiment on a placeholder logo for AtomOne, selected from two design competitions held by All in Bits Inc. This logo will serve as a temporary symbol until the AtomOne community selects an official logo in the future.\n\nThis proposal does not establish the official AtomOne logo but should be viewed as a placeholder. Other community members are encouraged to submit alternative logo designs for consideration. It will be up to the GovGen community to select the preferred placeholder logo, and ultimately, the future AtomOne community to decide on the official branding.\n\nOur proposal is that the logo receiving the highest percentage of “YES”  within the GovGen governance community process by October 10, 2024, 23:59 UTC time will serve as the temporary logo for the AtomOne project. The placeholder will be used across all platforms until the future AtomOne community makes a final decision on an official logo.\n\nCommunity input is essential in ensuring that the selected placeholder logo resonates with AtomOne values of decentralization, collaboration, and innovation.\n\n**Here are the details of the proposal:**\n\n1. **Design Competitions Recap:** Several talented members of our community have submitted logo designs during the [AtomOne Logo Design Competition.](https://github.com/atomone-hub/assets/issues/3) Additionally, submissions were received from another competition held on [https://99designs.co.uk/](https://99designs.co.uk/). From these competitions, four logos were shortlisted. The GovGen community is now invited to review these options and vote on their preferred placeholder logo design for the AtomOne project.   \n2. **Voting Process:** The designs will be presented on-chain for voting, allowing each community member to express their opinion on which logo would best represent AtomOne. The logo with the highest percentage of YES votes will be selected as the official placeholder logo for the AtomOne project.  \n3. **Voting period:** In regards to measuring GovGen’s preference over the AtomOne temporary logo, this governance proposal proposes that the community sentiment be measured over a 10 days voting period, ending on October 10th, 2024, 23:59 UTC time.  \n4. **Community Priority:** This vote is crucial because the community’s voice is GovGen’s highest priority. AtomOne is designed as a decentralized project from the start, and therefore any decision, including branding should reflect the consensus of the community. Everyone is encouraged to participate and help contribute to the proposed visual identity of AtomOne.  \n5. **Next Steps:** Once the voting concludes, All in Bits, Inc. will assist with integrating the selected placeholder logo across all AtomOne platforms, including but not limited to websites, social media, documentation, explorers, and branding materials.\n\n---\n\n**Voting Options:**\n\n* Yes (You agree with/ like the proposed choice for the AtomOne logo)  \n* No (You do not agree with/ like the proposed choice for the AtomOne logo)  \n* Abstain (You neither agree or disagree with the proposed choice for the AtomOne logo)  \n* No With Veto (You believe that this proposal is spam) \n\n---\n\n**Conclusion:** This is a valuable opportunity for the GovGen community to contribute to the AtomOne’s branding and identity ongoing process. Your participation in this vote is essential to shaping the future of the AtomOne project.\n\n**Voting Timeline:**  \nThis current governance proposal is suggesting for the sentiment to be measured until October 10th 23:59 UTC time and the implementation of the temporary AtomOne proposed logo to take into account the vote results registered until this date, but the vote can continue on chain after this period so that it could capture a broader community sentiment.\n\n**Note:** This current proposal represents one option for the potential AtomOne future logo, from a series of initial four proposals put forward by All in Bits, Inc., as a contribution to the AtomOne future brand identity, but many other proposals can be be listed by any other community members anytime during the project’s lifespan. It is up to the AtomOne future governance community to take the lead and decide what their official logo will be once and if the AtomOne chain will go live."
+			},
+			"deposit_end_time": "2024-10-16T06:27:51.405",
+			"description": "### **Proposal: Community Voting for AtomOne Logo Selection Option \\#1**\n\nYou can find the proposed logo [here](https://images-platform.99static.com/Tst5YeHuNKcNRdJl47_VFSH3NiU=/filters:quality\\(100\\)/99designs-contests-attachments/153/153370/attachment_153370218)**.**\n\n**Summary:**\n\nThis governance proposal seeks to gauge GovGen’s community sentiment on a placeholder logo for AtomOne, selected from two design competitions held by All in Bits Inc. This logo will serve as a temporary symbol until the AtomOne community selects an official logo in the future.\n\nThis proposal does not establish the official AtomOne logo but should be viewed as a placeholder. Other community members are encouraged to submit alternative logo designs for consideration. It will be up to the GovGen community to select the preferred placeholder logo, and ultimately, the future AtomOne community to decide on the official branding.\n\nOur proposal is that the logo receiving the highest percentage of “YES”  within the GovGen governance community process by October 10, 2024, 23:59 UTC time will serve as the temporary logo for the AtomOne project. The placeholder will be used across all platforms until the future AtomOne community makes a final decision on an official logo.\n\nCommunity input is essential in ensuring that the selected placeholder logo resonates with AtomOne values of decentralization, collaboration, and innovation.\n\n**Here are the details of the proposal:**\n\n1. **Design Competitions Recap:** Several talented members of our community have submitted logo designs during the [AtomOne Logo Design Competition.](https://github.com/atomone-hub/assets/issues/3) Additionally, submissions were received from another competition held on [https://99designs.co.uk/](https://99designs.co.uk/). From these competitions, four logos were shortlisted. The GovGen community is now invited to review these options and vote on their preferred placeholder logo design for the AtomOne project.   \n2. **Voting Process:** The designs will be presented on-chain for voting, allowing each community member to express their opinion on which logo would best represent AtomOne. The logo with the highest percentage of YES votes will be selected as the official placeholder logo for the AtomOne project.  \n3. **Voting period:** In regards to measuring GovGen’s preference over the AtomOne temporary logo, this governance proposal proposes that the community sentiment be measured over a 10 days voting period, ending on October 10th, 2024, 23:59 UTC time.  \n4. **Community Priority:** This vote is crucial because the community’s voice is GovGen’s highest priority. AtomOne is designed as a decentralized project from the start, and therefore any decision, including branding should reflect the consensus of the community. Everyone is encouraged to participate and help contribute to the proposed visual identity of AtomOne.  \n5. **Next Steps:** Once the voting concludes, All in Bits, Inc. will assist with integrating the selected placeholder logo across all AtomOne platforms, including but not limited to websites, social media, documentation, explorers, and branding materials.\n\n---\n\n**Voting Options:**\n\n* Yes (You agree with/ like the proposed choice for the AtomOne logo)  \n* No (You do not agree with/ like the proposed choice for the AtomOne logo)  \n* Abstain (You neither agree or disagree with the proposed choice for the AtomOne logo)  \n* No With Veto (You believe that this proposal is spam) \n\n---\n\n**Conclusion:** This is a valuable opportunity for the GovGen community to contribute to the AtomOne’s branding and identity ongoing process. Your participation in this vote is essential to shaping the future of the AtomOne project.\n\n**Voting Timeline:**  \nThis current governance proposal is suggesting for the sentiment to be measured until October 10th 23:59 UTC time and the implementation of the temporary AtomOne proposed logo to take into account the vote results registered until this date, but the vote can continue on chain after this period so that it could capture a broader community sentiment.\n\n**Note:** This current proposal represents one option for the potential AtomOne future logo, from a series of initial four proposals put forward by All in Bits, Inc., as a contribution to the AtomOne future brand identity, but many other proposals can be be listed by any other community members anytime during the project’s lifespan. It is up to the AtomOne future governance community to take the lead and decide what their official logo will be once and if the AtomOne chain will go live.",
+			"proposal_route": "",
+			"proposal_type": "/govgen.gov.v1beta1.TextProposal",
+			"proposal_votes": [
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xsa9g2vdm9rnaqjvp4emzsvh6es5kejh35r66z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3577786
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cu5fc0l3ekgpeusystuf32s8yq24csylkl44fe",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3316641
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nt7xmnpy9d679u9w0k00ctakk5x67t8jal8t3d",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3577823
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12736ed7frh0uxwv2tm29qz8v30fe03kqx6qyfj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3287769
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ddkuq0ykaxqnxrrxnc46ltm78eeu4qtqsdxu6w",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3287842
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yk8anx9kam5ep6ajkwhvd9dy2wqrfkvurlaw83",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3287893
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12ag4k3sahlk369y724h75k6jpa8tjpjk69s0l8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3287950
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13eaa0az5pu6tlrssqqzr9l3qs6u9yvafg33zmn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3287991
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hv4rlv94dwwsj3z7l6muye6ndmup0htawlqfwt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3288541
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ykyk43nxapm48n60ft0sr8ndrg8deu9pu5w2ft",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3288544
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uznr6lmlyx66er4dvw54c7e25pyr0qg3tjsj97",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3288547
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dqf5rg4kccq558f29qa02wurmcmrapchdruygf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3288550
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gnf8cv4agsrth5ejt3runvlmmpsyz0ryz9mcxa",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3291429
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u0dr2ae9nu4j2ehkhjrxt0cc7usvugxzsvv2zh",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3291530
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18gcjgqkzxwatrnrhhykcr8k7emjcwjauk39mre",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3291853
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1up8pe9zptex7hs4k4z6gu2rz8m54yjm862whc6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292077
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tf3xcpumsqtzq99pz5zy6udn3q9vwkd608kfa7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292081
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gr2sqfe62mhkqf06cx8tkvl30xm727ln8nwp5x",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292086
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen166sljdvtfuld5cvpl0rtrjw0w5vvc3289qmtc8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292092
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14pf2zcep4vfng3aw0wvf45mz42a8mujw6sf5vl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292095
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1k35uzmcdpx05w0vsla2umr02cm99k9kxlnkwmm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292102
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen194px257lyndy5sldjkqqr2evxljd9ymelwtlll",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292143
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ac0jgy46wa3axh9yjgxgkqn48feqtken06qhk8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292146
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w5jcyzsvx9ucdx6wlqqlzcjdjgkdckyhyezs69",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292149
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14hetr0vtd8q4xvaqr0f5ztw4xk6muehzwh58aj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292152
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rta9aa5dzsr3kvcf2x8x8zeycd0yw4stkhy74y",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292157
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1850rdjq4sf488sad4qsj64sj2s8h53z0pwxvl7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292161
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen130umlsvuey3ss03p9pnmnww4mx3zta4sqm8eg6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292213
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1d27jtvp26d2ul4lwy6th9mqmwxvp68pj0v9sd2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292217
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cdtyy29mre322xxpt2yvmz75crs3pl5tkk8rst",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292220
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1n45t2sknp6gjj85f25sazprq7q8kyweq6v92sn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292234
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v6lpudgwn25zrc6vczhkrhjargnknwu3xh8t8z",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3292246
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j7x0wrj0dh57pmnxx07kp8nnxmgp29m5ykd7au",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3292267
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ey5aeyezjug2xzuswl9ahkhn0mycnrvznyjwu3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3292585
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xmgnwdpgslxstx0fv3mq23kqgwrrd35e7k7c40",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3293032
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1s5l57pnek4xdaclqmy9ms6m37fuqexmyfq2y6r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3294958
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ddg9tjkf0vmd3t2mdqpxk2pkk6zssvduhwnvds",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3294980
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10v28alfhslmnw7jmzwxl6pqxkffhwwmj5ferwa",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3294996
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17prz2ww2r89w8ds3nhjt32lf7rwu37en5wtezc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295003
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dkqem467z8l7vjktx7ldg93r82e056qseztzfm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295025
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pz0gys67zv6dl0g69dree3yees48plzu9du2xk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295041
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w64nk0hmjelradw68twzs8zngk253y3gu82a0r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295058
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fcygwdcfwdnt8gpuv0rr5j6llnexsw66zdg84g",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295071
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jujullnrumr8mplckscuxzfnzkspfm6lltf27t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295085
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1923utg7e27z6cztq7ky89hx5n5k0awkhl44dt0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295103
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen193d2qsuk25e9mx0quan2msl2y9fqtt0gcrk5x9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295120
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zsv6cvpd9y86hhxzatpgzu6ymxdeuc5nyamluu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295134
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19e4l3hnkzp0wzz2zmngpkqtdwt49zlgpcuyzxy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295148
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ntqjylqqzw4a22hhljxsmwd7vf3h4eq6rj2lsh",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295160
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hk4tzw5nqc43zt4aukxn5za5fmgk7qqqxtx9vc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295173
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hx0875zj5x9p5wlzzxsvttwmmue6ftclwxlrnx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295189
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1q6c0llnpz0m64g9dd3jwzdshr6ydy8v4lskxty",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3295201
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wlg3r97try92fgvvt5puntmekacwqjepvqkt49",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295204
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ngr5pfhr04rumnzz8vk7cmueat0au88yrvuy8k",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295222
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w8tt87vp9aqthy5jjfvkqf4xhk4vj945xf0yw7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295228
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1h033rs3na3faurz0n3qlmls52q04k4u42g5prg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295242
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16kmc5esy37tu6jpywhmgts889ukewwy594w9w8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295256
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c2cdrjflcsxvl434xxdzgzccugfgwdf0x5tszj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295266
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tkvkxz9fqrcd45zp3pxhtz7fhzmxgm5vhvz5w3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295270
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gmldc4msum7fer0mp3dq4u9k3wnemw8qz50q75",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295285
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16xgmc6y5ftx3zz67ykd2j42vu4qkv3ru28xl38",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295292
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16xgmc6y5ftx3zz67ykd2j42vu4qkv3ru28xl38",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295296
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qgs7r0t2djqzvf8u33mhcw7hqq2jfc5h5m72y0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295317
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14wu3a87vetcsh2t62rskm0886f2rtj2cwd44n2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295329
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ka3w345dawr0quc4uac9unv8x43yvfzw5zx9sj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295331
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15jx0v767zutpsjvwx4lwk7z28n8mzvd0d7503c",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295346
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18gxg34cp8r4gmsm5vgkaafg4fw4gzfur8lgv8x",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295363
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z692deslv3tgqcf7yjzu6l0x5p23jzw5e42ln5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295377
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fgngf5pka7m6u68zmdllds7gna7jttw0ynytmz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295400
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14wjel7svz58fhpzhfpdw2adl0wmk9vemjrwedk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295415
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kvqxv4pgmteqrwrcfj8j3g3vwhcg0zmuh2mhvc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295430
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j6a8uuun46csuggsrer5q5xspee704x95ls4vx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295434
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wqmkny5hu632yxv6u7ca634p3ewuxq0pp8ruuq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295445
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g238t79lec906hgnvpnyu4mywltl0kd6v97htg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295459
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18ywwgc84luq0u8evna62hasdeyagzenamdwzya",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295481
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1d7vzn0nh4t2cf6cta9qe68qpj6y58lams8rrda",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295490
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15lnq0udq33dg3aghgagxtswdyvjluuna7v4urn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295495
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rxhswdq9852jldxvfxs53x3aql9t927k009ps6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295508
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13q84zxycqx2m6kpslgsd835s2fxg0kv5uly0mm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295525
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uf0crlqn8xr4u9dg7ws58lqygmr2s56ta77eq5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295537
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18d2ge2rnttunzas75ygkjl5s8tvetevsjegd7c",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295540
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zsygz8es37kyfnhsg3xp59d43re4tjtqvam0ec",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295556
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pufy8qm4qsnxxapugc3l2vvmtpp0vk0s296d76",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295576
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen188pjlw6q8xtfhuzfgzstux8vg379na68ewaxm4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295591
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c0uv00l292ph9znzwt5w6uemur5n2kpg0fjy5z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295603
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r65lzzqauzca4ut8azectvv4dts8jy0h9wfap4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295616
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14yxypnruq07v300a0ga8xkl900vc3chkq4m6xx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295627
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uqs2uu4y2knl0gjk7uk0uxwd5ut4qgc9aasa70",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295651
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hna4ue4tszxzawa6me683u2pn25lmewgrr373v",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295661
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1y4m793g8n2sldvtnaxztl2usqqerhd99p89asj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295673
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g6lhftnmfh8rxg036facaa72jcypf6rtyw5aau",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295684
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xupjdffnax8tkuzypjqswhz906lhljg4m0au0g",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295698
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tuwwym47e68v2cg93j20esjc65hmejk7ru3sfl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295710
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ex7nd785vcg3nspssrpvkqfww4yht4q9yx8dn5",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3295733
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1d2cu9qgn9kuhne0ljtjpwzd08tjzcr360yzqsu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295735
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18rez2m9ffwuku0q4q8t5cjz4rpgku4vu6mgpv6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295758
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nzwgqfl9hxnzsh8dqx2ddzfkvmq5u4jes4k4ql",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295759
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j0qxu2ym2uxdatx9u236crh820c9lrg9tmqd7m",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295770
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lyjdqljxxvwtmfmqay5lsq5s2em5jqr44de3x6",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3295771
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1y5jjkfkxzwr7dackdn9d6cmxc9xvtzdhj8d2m2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295782
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vz73yxk594xlxeveu7muafzkynejjcgrp3w890",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295785
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16awp53yurhwyu6sl7tmr3jufjg6pttguqgerpv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295793
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1k25emq087mh24neaem4lksa36qn3cdg2alj34e",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295795
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen184xze0xvsngwgl3nmu8s6qrns02v0epnvq87dp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295806
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kahgd5qgy23w7djkc43ghpqg2uv52ds0j6jjl3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295819
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lu3nn4ml05h02hu2pncek40cu46fpdpj4v9ugn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295834
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mvc7vrpqctf8ezw4dylrmmy8d09fvlm2zxh962",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295836
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1adnktzkssw5e2lmqlvz8vykfyh9y3xm8lrw2p2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295845
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1l6zhscdzftcxwgrsdhgqy5sla6h0ddkh2pywvs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295879
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rlmkgp4htnlvfkcq9n6hpl702fdsr4q3et0qug",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295890
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lwnk6d7vuqhrma0q2vgcn5ezs5c4gtse4na6ye",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295901
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14lsul82j5rtac70pn3emxu8sfrtjlfxegc3gzx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295903
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nesuje39dmscqg5v3qrqpedg77f8qtq384qvjj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295913
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mg9cn5cyrm440qmz58f2l85yt87eah5w9am58p",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295921
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hjs6d86t6xxqzz3u98qwaxz0r4shetmeee9hfg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295935
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uwdat75n9mnammxl2c3r3yktu976kwfg4tt390",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295958
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1k5l4r4k0l22cg4qkeeej4rafuvlrnvtt2v5scx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3295975
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qdx4qw80x6mcdf3m9kmt9rrsw7dp4zjwjtl9ym",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296015
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mwg0ry0ppm8fyk2d5z69lxxd0fhedcxzecugpa",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296027
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g40swggry4fdejwcxn2u8v7dpwhh20athp8d4a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296045
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g40swggry4fdejwcxn2u8v7dpwhh20athp8d4a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296047
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g0g69xp3my0kvtxafrc58a4n3gym55ryvsp3y0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296062
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rwh605rfjpdgq9ep8q5mqla58e2zc2gw9099jz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296081
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xwr235zsy75qt00cu04ah2qn77eyv0ukpltmzm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296099
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17dadjkfqvxvnw46x2um0qy8fymryqycg4thkyk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296113
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1krhqzttr824dm3zus8fvy79sefxe78k9le5wgp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296537
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hysm2qek2l3s6usngrs7vzzcwfe4z6yd5c77u2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296554
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen168dzv6rzz7pmt8fg793exmmgm9nl2dhmaz5x8q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296566
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen102439ncpv4n9cd9nk0cfpvust4lrxfyznge8pp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3296578
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wf7sx6gwptrgex3jg2fpljzs298z4gxp2n5hn4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3297298
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x5nzh932dk7lf2344c25e7weu6ehfg07yw6xc4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3297919
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mzg5lw4kxx3m8zvgd8tzjdzy74g9s89sj5kchn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3298814
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yt4j3st7a32ywky0qzef8xga7dny47vtcswl5p",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3299063
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1d2wvj6nj78rfpr8yq2ken6arh9qkaml6ty69jr",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3299094
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xnvuycukuex5eae336u7umrhfea9xndrh0k8k2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3299281
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xcaxyvr8fl24f66sw8pnamdhdclwalv0w0x65n",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3299505
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ummhu3gjxq4rwpyk3622mh2mxhctkrnzphx5mr",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3299614
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12h2xk4j0z2ez8tk88sf02qy9jnfwx7sfrgf4r0",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3299975
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1efszecz9u6juydmx0zpae497vtgfjyy5y0athe",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3300041
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ks2z0xl2dczwlavfyk24v36xhl9jx3xgsvz3s5",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3300180
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen104tlrtp7642rgx5nhqnfrp3y943daepgw5tp57",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3300205
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1apmwl4yfghpd5vu2r0ysj2rme6uqnw68xdd4uq",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3300208
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vcafhyrzr5hmku4xcv7tnma4p4tammjuzdh92r",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3300221
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r8s7wpf98l5pu3zn2vqnchl9z0agnqyhel70pp",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3300230
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17rjl6mn9egrqqqqhef8z5gh6um7y6smkyaz6x2",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3300263
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wk5ke7q8m670tz493gmknrqhgmw6hnrh5vpadp",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3300294
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rmkmgc6vkc6vncgkmnqupr6hq3h6mqve77n2ry",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3300297
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tgnfvty6rttdal357erep303mrrfpp0d7knxe5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3300906
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c7ss9zh4s36upcc33ufseuh99985t0cvuzf8w5",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3301155
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1h4apf9dxp9zscmgjc802dd4jy62lnevah4qfv4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301215
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tg9f7xd9e4fw66y2y8srzzxys940ys2xmhmux0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301383
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen136nlcgv9uc50h0l2klnsst8rpkkd8vp7srsg68",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301584
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hdh5xna5h5sp7djfxr4vu4qkf7w6pswwlke422",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301692
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1um367805chm6eveueghcafevlh5zgks590gc0t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301761
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nneh3cdwx7ytp70h76gs5nsuaqxkm2e9yvd82v",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301802
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z9907gp0zwwdtendykh2pjesmaq8gqtvqhtkjj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301840
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mhz07kcrzkrxr6vm0uhjqcprazgmcsrnsnagtp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301841
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nj3yvl6v4uzft52ccz23jqn7403aen0mxea7ny",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301844
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mkw30y8cqgxvymv8njxfcjvq33krke5ghakxyf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301941
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17w5yftqfrsk004mpa5js620vycm5tta3rgcwxn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3301974
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xzdh38v4slstvvncc7kzsuu9uuymrxtephn2rf",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3302250
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1n80uafaqnqnju4j3la4vmdq5dy4fw9nyrmdj9v",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3302412
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zzq4fytzfflxlr73ll7xqkwkqgtv83nc0rppyf",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3302463
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zyvmr807h0ph5uq04gdflg5jsvphfdsnxj02zk",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3302595
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18hep38745h0rg24wtgem7sw69lp65t0t2z9pjy",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3303086
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ha24aj4etg9dnqfy058fdaj7urqtggft29mf8k",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3303089
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nq5p60vvhg6p2gkyyqyyycwnyn9l64k465xsyx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3303172
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen108rqwjaffph0lvdyd7fc7tpnrx4n8h4rf9eu3q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3303216
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rpc00f77qs693vrpux362sca3dtw0y87rlkpr0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3304417
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1umad62npu94c8jm3nyf40h0uqjkdreh0j9jnm2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3304662
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen132pa2qn0e4cs4h7wrq268pg9rjks8q263hqshx",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3304984
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p49w202zh9jtns40n7tlapv3evuzwd0j4uxkdf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3305414
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10t7880phz3rw6e2vuewzagfplzl9ka95qwh6g6",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3305643
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1da85gjhaupl8ae7ee66sw9zh585uu9j385czre",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3305972
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tvdl4e9lka08ngpwhywt3x2zlm3m68t39r3j0g",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3305979
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16evwm2pvj8s0g7lxy0us9ahgr2j0pdg7dgah8x",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3306038
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ku47rda802atptcgunlhv2pjnyktyzzntjhuaz",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3306057
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ykqfsmrw0uk4fcnycpp60a0cdg0xlsmchxlkfz",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3306066
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zpewufa0kyrfh37menttyraft3j3vzfy0kptmt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3306072
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1une72km0f89v3jche3je8k9c6wdg903m3xqgu2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3306109
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen167mlc0ya0hzp86s0h735cnjlf6re0nxj2ume8t",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3306553
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yws6lcdhmr8pd4w295dcluwnskzjyts8samck0",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3306985
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qvuruf34mxdymycjjtgwxpqyh3hrtfkkpfva0r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3307208
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v8w7lkn5m9und0f6zqz56vgg5hezkf8yjdal7z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3307411
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen155qfppr7pgxsn0n0kg4h5d3pqu9yx358k2845m",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3307607
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yke2u2ua563wy76gnhvne6e8mjwg0fsztwvsj5",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3307723
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17k8pf77rnn842spzsd2wrw8v5qrd63605q6ca3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3308238
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hdy3dydep5ykjpyfxase43tudu3qdtz0ul7k7s",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3309271
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uak3aga7arn282sf349ck92pf8uadycscfppht",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3309793
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lm25s78k6jpfq6kgg4lmd7hfukcyyrvxuuv074",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3310029
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p3qvyssf056epz799c64zcsaqeauku7uspykav",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3311899
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1phxzzqftrxyx6f84ge8xyzpy5mgns5cqa74nw9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3313942
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f2ha75vnuqq58uknkvx5dnznncl7z5u6re7sr4",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3313982
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen107n9frg37x024vjfkg3c9cx4etwgc5tsu06h66",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3313987
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1n3kr40wrtzpuwe8u8rxqkk6zrwdt5368xd02kc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3314236
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18n3vlcthxv5s2s4zgjdrjr5a6lw9e7tml88ncp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3315321
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x693aqslyv3znhltlfuqckwjq6nml5ur5q59h7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3315477
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x693aqslyv3znhltlfuqckwjq6nml5ur5q59h7",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3315491
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14u5edm9vz03ad9gr4npwcdu6j558pyuhde5m2g",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3315864
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1k876300wr3g4uglf6mrvpxjxx08zytg8yzaqzp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3316112
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kpel43ese325gprc9cmwm2nfqhhzx6tn72julg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3316890
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kflvsqe73egxyq5rpd30f04p4ltjnt7t8njcze",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3316919
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j6zza62npfpwxzdfqt528rr7tm8rwf4vw2cuvc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3316977
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1udvtd3c7lgqszvujtgrxakcvrznem29444aqw9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3317336
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dzdz6hwegce4p00z58jnufklzdmfcr5m7a90yz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3317441
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v5s42qmh7zy8l0y3nnnf76kfkltfsvr7m9rcwj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3317444
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xspr9c0e032zr8j4er79fw3vm85exsg257qgc9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3317447
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x9au3m6xwp6u3wrvl64jrxd9tdq5mwk8zsfeqf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3317451
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xn6ayqyefzckhfg7fnsd2sacq5ks09a3tl4m9t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3317454
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ft92z9xr8tyaa9n7ulsc3hkn09e5m9es9zc86l",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3317458
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c70rlhxyendd5v4djr7mstd4anakxj7at8n9qr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3317907
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15a2u46lq9q78plfa5ushmx03vzulxwt98ruzuh",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3318243
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1a6xqyhu6wdvsw7s4v5y5u6nq4qpkms285743zd",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3319459
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tdjqmtj9gk9a4k5j2xsdy7mls4z70q86vpravz",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3320115
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ls7y5sdq4nmecjr6ce9n7yhqnsr7t2hdmkmen0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3320164
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p454fm4rerxddn0uppen8hvckceylf7pxyv8g3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3321891
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pqlwlpy2yqhn5cre3kphgsndgldp4w3mrf3yrf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3322024
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dkjr3vey927m9r8cnlteg5cfzxqjxgxlzy03xg",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3323598
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ea70t23rmxtq3uvejztgzgdu4l6atvnvfrk95t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3324110
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t2xl92qmc6lppkn6ys4qryjzrj5jwhjwcfxuk3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3326123
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16qp4jdlrcl6afaqm43qawsaf57gxc7p8l9pdxv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3327234
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1y303hcydzerusgk7hex7tvsgrpku8uk462kj5u",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3331561
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t3ajryk6y5ljfk85yxhkut73f3ex0e42t5s0dy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3332415
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17jhanxwfdk44m6dfx86rg9kcyycclxt9s8xvh9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3334427
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1emvhlx9trk8yxxgzamkkw7ppdltrqgr4f59hv9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3334435
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12lv64jvwcd9wxeqvf5m4tmeg9zex4x97gah762",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3334440
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen104raryj9tvn308v9rv7sh80qy25wr8sjx0vg3w",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3334440
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jg9jwalc6597gj8tke927pe34x45qv4a256w3a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3334447
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hqz8gynuw92qwqqwneha43gk7v2ectgtl9dg6s",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3334565
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z6pqtr53tkde6xxypt7mhw8gse8ld4du3pj0dr",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3338188
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1px5ws844l7nd60tmwes7upvrqmjhnn30wvq432",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3339878
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17hkyrkexpzrd2u3erplve4z5am6e0yvhp7drjf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3343880
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16yf94eecl6h44l5w7zp75skh3rg0k4vexx5cd4",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3350509
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zvuyw9utsdp3w0mnrructw87p8sy8a3szwv0vk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3353078
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen147vde6np7pk8cmkfsjfcsrsgdxejfe56mgqasr",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3360846
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13gr0thxx6h5gtkhktzt2rn3ucvzajxkw0qzz83",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3362229
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1s43g8xes662vgs43gmca9za3qrfv5ztrc72f8v",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3364964
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t8zc0z9gzhajh0qxdtse8lnqfz9uh4gup7q35t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3367994
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12gzlanhpgmnc5rktqgclh6khhlse22jcdr6428",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3368146
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ud4p9cf427hh0aw4tyt02ghprsl7zjtpdrnf7r",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3369288
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pkveqqkmzsu0lw9206ju7rtzkevayvu430qn58",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3371543
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17nun6cg7a5xtu9fz2p8scxr7u9jmrf5v5d9t75",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3373253
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fsfmxf39qytl0jmpp6sntcj82f3ydrese273eg",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3376051
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ed7mufrwtrxkl5vt9p8p5sgv67n3k3yexuf5lf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3376087
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17lwems92rc9823pe3ntea8cc09ddehnx0z77t0",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3376115
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pxe4an9ljktfft2ctuascuu6yeu7xghqm8rs3n",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3376152
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yand4340vuf2w657zern44zmay7vtlfchhjfju",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3376184
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u7syp9ehmcr8c2qz5arhyxflujs0tnrl3496vf",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3376209
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fcfus4u2zt8nr4srvm0g9xzh39r6m6qv9xy9xw",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3376605
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1egemy4l9ykydgvk3zx76wpd2xw8j9tvpjhu23t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3376634
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hc7q7ykhtgmd3fpr7uaf392f6xj3wt0uppvszp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3376698
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1eeff63x97xzuzy0crushnmzru2g5anvxsq9h65",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3376753
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ff9tskaz9faad5ajg2sqhwmuk9nht3hywv7e33",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3376799
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13mlda5p2ycudyzuy2l0n4uru3ngh6zumft9w0s",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3376847
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18359mjlfkp5s9ev8tw798m8xcc8lrq0k785ntd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3376901
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nee2ds5dyzeygwjy78zhg4aqylw7f7shpw9fdp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377539
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nrhwzafmc2en3l8gmr23ua6fkqqsq7xnh5n5gy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377586
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z0a7mkpfsrxr5dnndv7eulgw8rgwm44txulgen",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3377623
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r49tsgeszltwy22q64fj0j3pfnx8umkaxx8eh8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377641
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16u765w8laghz8su5a80etnk9d8y9lp59nrsqdt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377678
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1n48mjrng87v22yw60r0uypapy45pu99u64qax0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377715
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17gc573m53qd9qled3he0lnl7c0ezwdn0yyqta9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377757
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1aq5v5jfxs7scuk5hea3lmakduj4pmqnn8pfrp2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377800
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c2z2amcy3y4f2nfaw2am3dypjd4w32h5t7uw2v",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377857
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g0yzjxumgvk9qm9qe58u6r6wg705wp84a88d34",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377910
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g4uujqnvy5hyf74pw94k4uhs8584s3vva2q8fy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3377995
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10wj7qced5fe3lfar9d2ausyy56ghz2yy844mj2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378041
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fm9v5g2qt0lsq3d7cj6gjmkdzmu0fzjpz2uqt0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378093
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1n7y9chl82ur6h4l36t003ljnj3v47gtzk47u8j",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378130
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c3ew6crry2ztg8chu43k7pjaxlxk0cw9w60vt4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378165
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qkhy62se5eddw9r7e3u95fs4uds2h5pcykmg4r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378202
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10adt72q3vnqsr8cazcpzjk2y5sg2ujw32fjpfs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378240
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18ejppr7em955n0zuuacnm6dnee8q4zsaeldr9l",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378276
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gfnnpxnn8l9f3zagaawqpsv9f7umyfrkxfz98p",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378302
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hgy73xjdvhrfdw3ep4pykwkrefrcnhg2ttt3kl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378306
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1luj2g2q8sdj2pxvg84cgmrkcaml6ln2urv7kvz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378346
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19vmk86xqdtlu2txyfjaw544mn2eueylmg3skfg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378353
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jgxlx40xd7qhldpnl400rwx847ycq7wkg2mn94",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378392
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hnw57pn3sdw6twd82mk4t26x2wx4l396cvfy87",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378405
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17lnlvc20vw9cjtdcy4nryg4nsvrd293ajhygf0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378448
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1upvpl9tzg7a9ltxzgyxvm97csmagerwvt7z4qp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378453
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19pentfeqdzqe4q0tq9rk9zpr3f96tqw984kukm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378494
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tks9cvg9l4qgsza0pgz5gxdc7smh7rljxy8rrr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378496
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13ag8g0dfumkrvzp92u7ydnnwhd038gmlafj32s",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378537
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gegd6ufdzp0xw2jlrvehnyk7mac0mtewljp2l5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378539
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15t85l4z4eyh65rr5p4vppssefnwcu4m0epqzr9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378587
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1927fudamnald9tf4d7lfxkt946094fsm2h4ex2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378632
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g206jm9q87xysrnhmt54f5jagdevhewjsnr89h",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378681
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v4u49xx4wlsvxuumaz6s4nkcjkgjjqf7kle3nc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378740
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r7aq9exlkzujxtrdhhd3dj3y55dksf49qgfquv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378799
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1k6pd9tjkq6nafh4djsw8yh4fl354cfz4helhkl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378835
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1a0hwqwtrn8ml8a74z2qrdsl0u22qlp9c2r3h6c",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378892
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kh9phdgdp9g5acep0pe8tpp3fndx6ylqgfywjm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3378924
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1juhj694swrap3rzv3gywrwlp3p25ur22l2kc7m",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379001
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ll2sg6pgwsutwk3y5y07dfqufcy09r09aruxy3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379044
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xsd5q5mz2qtdg0nmufkh059pjwtcp5tjvtsgu8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379085
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f44h33hw6xk3avat4cdlz60q0rkwqkrpl5g9fd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379134
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lc768hprx57p9vzgwv8tmafp4up8na8zrxkmyq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379171
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j9x9mh5u0fqvg4mymycph73vx3pq474xafkmlx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379214
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1afw8q6tv8tvsjkymwdn0qfp3w3qslsl6l2cqa3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379262
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mu2u8h2vyq5637n5tsnmeyu0v4kef2alggrqrf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379304
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pf9c5lr0uwqj8pw7cajcskn38v9nq7p26c7jkh",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379330
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen160jvgcaukewnf34f65a7mptaam8mw6u0dp2mle",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379359
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tpvxmq7wpy2rc0nu85gmema7h377hxq99macl9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379385
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dj087srggdh95rwgtsyd7a6manetex35ajj7m3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379414
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1q7qc3qsrg6mq8hqjqasvp5cqe9gmr7pml3lxw8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379474
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lpqcuf9ppz85mceq894nx26tsryvvz4n4uj5pn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379507
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1e6gs2e2g68rrexm947x3pv7k8mrgf5qhsjcwyn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379554
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18ex3xlw4pucrhexw9uhxmjg4s64yguctqawpvq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379649
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uj600a9m4kktrj8rvwv0567nng6se5uppdlyre",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379696
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nsqza0an3j9xr9dv22kvk7q4a884652avkygfm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379715
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen137ql8974tdawz9mnef8qgml5tzm24k575ufktj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379752
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18ghfgh69ackutwc7axfduf6ppxp42npwjktpqr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379787
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19syfqglchx05dy9ufaeda04lmqp4n2urrkfpg3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379817
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14waeuzyfwwcdwm2a59vy38msjhnjl6x2q22hup",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379848
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z9pwgk8d4m8lmdhm3ruew77q8xgymf3h8c694q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379880
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gh9mk3mf7hatpsxmyjys67wlwp28869l42599k",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3379913
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ecsuj0q572jr0dhu29q9njtnmw03hyu7qp76yx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3382900
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1smknl4uf89ef84kg020ff7ask7l0sxz3dpct2w",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383063
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t5wmu8x093ac6xsvqdm2v95a3ekk7fsr2q2dkz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3383065
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uk77p6he26undp9wjjav6ygtu53kswl6juyh2w",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383129
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gy2ne7m62uer4h5s4e7xlfq7aeem5zpwm76lrn",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383178
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ek4as5w4tnqas2qqwfvp0fx2qe9tnj4jrg6mm5",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383213
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hspkfnzexvn4drk9dlfpg8n0ppw8sxsljtzejw",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383243
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ra9563z5tn2lmqhydt2atrgzftk2d7ume8u0xa",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383271
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1y2rfrgh374gd40gj0yusjasw2paaysahppf4jp",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383299
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wsp0x6g3sm6vf496flgejnk90j5pawg23dtfvm",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383326
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1djgcdzrtprv30pljmg7nfee7pk9sy9m62hlpdw",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383354
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f7r6sja4x5hjvp6a7g9lypd94x2nvf9flyr2tg",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383381
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tlk9d3w3tkpustelgzlej7yaya3csjc0fznf2k",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3383408
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gc55cr8hyeu7wffwq0fw4ta0xpf39w0x82crhy",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3384775
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12l0ns2c834uuq4q7wh4yh748sel8fgammffpyg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3386230
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1a83amga6xnd8ngagvsnnma4u3fv9naqqmtj8us",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3386943
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1njzv533xy0w6ww26etynya3vuxc6g3py56uzh5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3387465
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ptwcxrgvpuzaxsdh2vxn0z5l47ph74zfaelhfz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3387674
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10fm6kym6ktjfylst0svk2kkae7rd724usewm5t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3387908
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gc42qsdlmhsdgkgu98dmwznq23eadphtc3tp5r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3387964
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1s33h2tfauzsvdapd2uavlvufpgpjaguaj6ruhr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3388024
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19maqgjzj5x8dngjvfyqcl342ushul6erwsu9gp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3388070
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen102mlyl4ay4qpqrly67fzj08pdmuxnz4rnaezwm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3388125
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lpuamle9upg8xztkdq2ctru2wvuukr9re7fysz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3388181
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1aympg8znel6p9zlq7hk8d9tl70pgs3vnhyxrf8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3388221
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rsxk522vywtgpv3uasl0f5fmg4zh83xapxvhgp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3388266
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fg4q69f7yf3vc8pmtghptxhgctnrvh6rpyj374",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3388304
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mw6k8ul079uat6c0smwtzjqnly2nl2qr6qjtsm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3388346
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12r7zfwhq804zc5u8net9l2ww6aly5jn5qp24ll",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389341
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w63yt2fja872xnd0yayg7cfxfd4pjzpxkglu0s",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389403
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17kyd8gy6x0rjlf2swjq9jck7m9uav9rgqvzq4t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389460
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yg0yswdw0r9tf5zt0a93rlsv3y7duswt0n67gc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389515
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kvm2p5xt9xgfx0gtv3thdzvm9cswjlv539339z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389566
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tu89rckvfcqvuz6pwz3467azz0gzkdfu7jdvv9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389658
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ug69uv7dlkdf8lg3mcn05azgpll8y0ekynfzgk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389705
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vvpke3ju3xuwrfpqzf65ytep5aw5hafx4lc5q3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389748
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1auyfmxesuzx8zpp9xxu5zp60u67clxcy346r89",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389788
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wszwa984f2qwx08mdq29u8j0hlv73s6993pce0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389830
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12cq746u8mm6katyrv8zheejhts5mpjhzzuwl8j",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389882
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cellr4peut556lvu7szaqg5nk7umetyzdc27q0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389928
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kwkt0qa9a7tcxaqqgyvflmpmhh7vtr39knacf7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3389971
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kja08f5uhz6njg8jnlkqskqsr2gz59awz39x3w",
+					"option": "VOTE_OPTION_NO_WITH_VETO",
+					"weight": "1",
+					"height": 3389996
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pnvj4x44azgmm68k9txm47qj4u939pk32u3ln4",
+					"option": "VOTE_OPTION_NO_WITH_VETO",
+					"weight": "1",
+					"height": 3389996
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1a4fc0nrc5fld6t8fuwf7cvdhyj52l3alshrmyp",
+					"option": "VOTE_OPTION_NO_WITH_VETO",
+					"weight": "1",
+					"height": 3389996
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1539qxfq3v7eh47qfeekxvzfj25wmc8s9yln7xm",
+					"option": "VOTE_OPTION_NO_WITH_VETO",
+					"weight": "1",
+					"height": 3389996
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15nxgf7gu3katvy4082g938qwuy6xf0fdk3sjcr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390012
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12vl3nyg4l5n57hte03vexr7e7pw4mgyk86c899",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390055
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pnnhr8kp667wda0fgka3p85ddf4rxkm4gy5vzm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390102
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w5y78vhg6eupuvxjqcrd228yzh05rhaldvdezx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390146
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nflmlfnhza6xr4tncnx5k9vgtgvjkvvthald9x",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390462
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1n6am7q4gle3vw0lqqzel2yh9m2ym3pfhfze5r9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390499
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tm7vvzn8pfg7nxat5ss8qwajhgv4m33lqpmc44",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390537
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13k3a5008lckys7t9pfzx5x88dq32mshnr64azx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390572
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen196709avptlg0yweudm9ah9664srdslcx4q6zh8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390611
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1znwj766fkuxcje3qlgdwze04cp5mll4uze67wp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390647
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kqx8f04v9d6zgzwfz6arvettax3pz4ewt5fpqt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390686
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z4u04mep5hu8y67hpw33mf3dw07pw90k44vhfc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390728
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1chf4gpsp3k08r27w0674uwvvaztt2txm7a3p0j",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390764
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17srv8ule7lumuz488w9cnh0p2ypkc7tvh2pgvl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390811
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xumhalcph6mxkucfq6apqwhj8wl4jj5cj0fan3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3390881
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xe0c9l6yl73p4y58hv4jtt3h3j9ezd3uhykh4g",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3392725
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14edza73w8wa0ucp9jagdjngecmalj83ky848d3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3392779
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v5r6e5rzn4crc2nj0erfr23tfm6wyh3350jqc2",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3392960
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z9sqadx73ddrfy7phfr6p0jxq7ap2h5dwnmug4",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3395522
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lfnhfumkghshexewar7kvmc7ff63sz0jvrwz2p",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3397632
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ew4m8ys8rc8g0gdh82med5vszar4ygeyzhaptn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3398196
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p7gyng5y74pvrfdnlg2h7yr7vmfs9r6gthw4z6",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3399825
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ql5d08k8tmhs6mc6pgu6k69tf5e0e6hxth8hzl",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3399865
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jp2c9j2ap28cd7ftzlw2ngf3tfyktzlyksf6me",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3405833
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r0ghv5k4g0xcved3v3f7u8fug5l77rk5rkrdsj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3411421
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ndx3zhn04535dsj3fc2x9fm0fjn0etnyg0xm4x",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3411493
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vq97vj6hsrvg8569eclpnpsvs6nk7jll6gfw9n",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3412677
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r3sglnjc34q2l0nf2rl2dh6slum564mml8askw",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3412754
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1e8yhhl8amglg25w3kkekm84fzn2yppyu5zce8s",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3412800
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen150pycew3s0kk08ftv8k2wyvwd765affks34cct",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3412835
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mn8q62zn97zekxa9j4dgax6j7l6jcxvsn9dfn7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3412887
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w76s26lztn7gnazrwdwf4ptq0y3ezfnvuw5sn6",
+					"option": "VOTE_OPTION_NO_WITH_VETO",
+					"weight": "1",
+					"height": 3423916
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1h788098wpl2nwzmg86aelszc92gpk3ptlucy8q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3430523
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dxlzv3nym93x72t6d5rtaqzre7skke3nqgfs3g",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3431247
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1htr84ep3rr7vwkaldqqv7jvpgnd6keke4ahyup",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3433223
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1sn2hpzc7d3jq74d5ctsp402qeqvjs4qxgtuqm8",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434225
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1k75lydjhc6w5fv658fe5rfakmgwfmf9753yyc7",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434286
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10zeuka7zgx0cmtxvy7vfvtm8jujvd8mglp96pl",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434294
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1d8vusyn695vunwn3c7qnxnfpxm4jx97zze9zcg",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434315
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16ek80ucpuxw74sky5rt6980mx73zhtgadhqgjl",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434320
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1my2wdhgz7a5g8v459xj8zj43z2a0zfhftj8vrk",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434329
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13ch5w5r0xxks9ucjpj7yl2aez5us2tsecnatjc",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434336
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yraur02haqhqq6y4uthgwd0824akv0pmspkmlm",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434343
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gr2gcfkjk0ydd2wdt0xe0y29ukekllxz0rve8q",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434350
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1l0mjxhhwwhz6sytx5yjz85shjhynd8uwey5rwm",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434358
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1usspyh3md0ayn4jqf9kuxkavv0hm0dthwg098k",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434366
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14ypy02ptwdva50czsv2ekhctpw30ateegwmf5x",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434373
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r9j5tyj3dah7prg0nnvjrmlykj860reqrsg4jp",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434381
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nntn6sujrat478mevvkundanqh5yydhar3s65g",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434407
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12ljll8k5yy6u30hkc2vt5q08nj5a9mchqd96sp",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434414
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15mhc90h6evw3nev9qh7njrvcq4us7vc9fp8ykf",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434422
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vn2vual9guhww5lfax0n2u76jg794ces5flc0r",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434430
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uu4v6j5fzqkl5lf73q47aju9gagvlapp2vat4d",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434436
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17l6579gyw9pqldyd5wfaawaxzfgcu6899u7hmf",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434445
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16qgsd6zgpdffluvufj7pes66rqnedy76gf2est",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434453
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dq67gyserpk588dz3y8nz2tuvnlh5jkgpg9da3",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434460
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15jdc0u3vg75zlas7p42ny720g0lyrcd25vqxzj",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434467
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10up7v6786c9jv0uupmgdhzyvtph3jecp7efstn",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434473
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kr3fa3jcew6jzlh2lsemk49dwkc9kvglfazsym",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434480
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jrgp2thts0tdnqgzkq6hrma0hcz84sdk7425vt",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434487
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gzpz9v9sr2l6jcz766gahmy8us0zxv58enrcms",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434496
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1efr6jckr26s4ta2xkrnq4fgf6vt7837r7zjkyq",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434503
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18sgscxfneg0sntu5j38g6k8jw34p7sku670qfj",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434511
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19gm2tqgrr0apu9uckxpegm39xsld37qggan5d2",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434519
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen180mpzq8hrskl592ks9pzctecgmv7l0fafc5fp0",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434527
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1k09np3wlw7nlhr00dffmzla3h9erh0j75dq8fn",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434536
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1njyyd5xhct9f0tjp3ptzpra4hf3rtk6z5gqv07",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434546
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1msvv9jaqgwppaq2edx84crytqlvg986jmeahn5",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434558
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10lkj97253uv7e45h4n8qhujn63drkggxhezccd",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434569
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dpgfwfs4ypaa09ugwcrx7zrrkceptte88774se",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434577
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1460353gnzdpmzeevywtskmg95amh2re9hpfkyh",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434587
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1taapk8m5783jnqe890ne6qt5k8m6eh3sqvva44",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434594
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1sswp8lmlg2lg53u38x2psueh88ymf2amgkptr6",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434602
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10dnser39h6wh69kah74plk8l269ag6uhzsaa06",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434610
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12ud9rj09x9393kftsazw2e99c3yqel29k8p76h",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434619
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1q3wunm23wywnu0q34a073zcqlzm9z284x6puqq",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434627
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nrphyked2ae4fxxlk2guy5rxpqzq5kp8kc4sk3",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434636
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1l7gtr0wtdx5rxyvnthf84hnla3elv4hyhvlqe4",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3434644
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nttcpz9ycawxmr8nwccz6nhyt8vmnxfffhwawg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3436237
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zplzr49u54m7lswhjpvdk29078yqptaa6gxf4r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3436253
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1evyv0l9cr7lp8g2glz62auk092wl35sskfetdz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3436267
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17ywuykchadlqx237s3zap3udrx2792vgr6sq7p",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3436279
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u2a44uy0krm8tn9k302h32xpx620lmr9nqyr9v",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3436296
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13z7nmnwfgzgty3rhskr9zunstp0lnk5rmh5qlj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3436326
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uufylkhjgv2jhtyr9ukanlrc3h2kalylpexc0s",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3439667
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1q52t7djt7gvnaeg3mdrx7stq6lat0fcyh4mu5g",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3439675
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19frvek60qkhax7uekw5wm5na66l03jay9gl7k2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3439680
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wxvmss7xe4rmuc4mtrlthv74evtfnmcw0xlk40",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3440502
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14k4dtdafuc0fwctkrrdd9jqqcjpj2l479xpg9a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3440897
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ms4w5swfu5c0stk7nzwvsawtakhsglyqkstgmy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3442702
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dmtvu88r6s4szwuzgyuewxuxd5cmnlgrrjsale",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3442733
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c8pmkswtujq5lezwers8z3t3el4rkrnav0u46t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3443605
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w9g8jda6lgnzpsv9f5nr98jvktr0mwga9lcrlr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3443943
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cm6nqqnn65r7dc0x83u27v65ez2y6gm9xjmnpp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3454310
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1s7p8qqe7ucs23nmnld3p746hsk25aujt9p27dw",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3458156
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kacj7uutqqq6pwndf79j36krwq22rctjp4u2ch",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3458176
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1edu5sfe26mcx2lm3andplnjdwn4v4yfggt0g7v",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3458209
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10ns0fg7jaueaz9x2x43fu86a5es6fx9tklst8n",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3458245
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g5eme48375ace4f6xkqhy6djad6q3g4k0prdx6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3458294
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18e47wxp8eep2czf5ppscykk0g9g4se00ez5uhx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3458318
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cws2ktsx5edvv9vnge8mj983h76vz4tx89xknx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3463299
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r09jchesfxucdfyayftkdyw8akkx5ly6scy70y",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3472602
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wg0uj0ngn6r6atrgf57h288gkwj64y4mgpksrh",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3472632
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lk72h6jz38rj58tr4v9y0pxgvfj2syjree9cd2",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3479400
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17aj77rmqug878y3kceva493mcujj6w7pzjmwjl",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3484605
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u4vmpf0efyn7tjhms3nek25vkkzfaqtrux7c28",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3486000
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1e9xkater59sg4g3tz0a9yvqery0erpsqm0pndp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3491060
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j3r03dpsv7v0hrgtnxxmnvnf94h2zwu6nfgart",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3493887
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fc5p3n0mlm2tk9dar55n9astmxs4p5jkh26c58",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3493946
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13nnp438pzfcehqdf4kuguwq6h5q8phatet9f99",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3493993
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j28m906upylzey4rghxs4ytww40tsewjrj0wt6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3494010
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14aw43q28gs6h0668s97lm27trqw7zllgjehfrx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3494039
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17fre6650n0xvyjaklxeeuezeak08dw5wrywfv0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3494064
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wnvup0sewd8veqxh8ctlculhqrzvxszd5v4cy3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3494082
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wn4esy5w5fk25t0e6ah8evyltzhrq8hv77q8x3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3494102
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gzpt2l59rzlnppa250s5kvtx2eu6q9gdj0epvl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3499379
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17p0fcu7dj6p2xkw8cwhtrpslgkzflhd6kkucpl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3500717
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ceyprzn4y8n4lmm5zs3m9pgeejfmt72gt56z8c",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3500998
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hk38pmr663m5achae0as20zzp27uxj3ysca8zf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3504633
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mfq9n8ghfxga047m97wuvzp5t8t7ujxrd95uar",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3511935
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10q8z93hgpnl4h0fxjye58erz4gp66v3qfw020d",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3511938
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gnasfq4qq9kuwphp7ytq50pg6f4pzqs47exvwd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3511951
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cthyr8req6svmza3euykd2sf5pzse6z2s0tl0z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3511954
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f8qxs3n4pstp3ddfzt7773w9wl3c6c049ty3sd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3511965
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lx2zuc7ls0rw0jf89y9366fg7w5l9clg280dd3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3511968
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cthsqrpuyv5w9a2k3nuq3nedvsqtztffcdj03v",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3538968
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1l2fkcwjq5x6mr2zggnu39h4uldnyfcxv7t7767",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3540293
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f3sak44pkjzhhh2zjrdawufqpgdmqdd537tjr9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3542177
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1404zxd8qq40wgv2hrzsxak82f9phydeyajsvax",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3542188
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dp3qeqpvgfkh7c07vn64m0kj7pps64ztaptdmz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3542200
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18th8893fqa7m5h3dpk05v4wnv23n2ss2xuu4wj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3542210
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1507d5wmyxudatl9458z4khrvujqzg7enzmtj60",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3542232
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f8hyy5mtw00sfu75j8sgvd3h028evlnlgya3g4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3543202
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gxzpkykqhhkrm0ep48aw8q2s8czsuwklkxwr4z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3543745
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gp674enk6ldw3728qqavn0dse5uxsun3rwzlzq",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3544452
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uxwu82vavuzqye30s5we9fmr4pg6znmk3dr2ly",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3544464
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen176e47zlleye0xm7n45qdayff55f06lw2zhnfmq",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3544637
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gg030hct6389x7y6xn3fkf34nnzyt5ydhxkj9h",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3544730
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mx28fnw6jcmv64kx22t7qtx6q9mpyuspg44m9x",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3544782
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mpvhwqv7l3lazkjmm0qtqnk304fe4jm9jaxk0t",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3544836
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen187wc852fwkqkfck435lykne5h250v23hs900gl",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3544946
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1znlpq42mqaq0gvur2vdg6f5jn64d7jrfg6erar",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3544982
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12zxcgrjypmp0j3qqe8g4tzaayte549gjyu5jr9",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3545017
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yyesd8derjqufhwptnlcadad3gsp5w0269643q",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3545063
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qda29dqsah7hdkz9478z72hqxz4n945gc3wacs",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3545096
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16j04rux4r6glhda6hunltlcnc04adc9w46720j",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3545128
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1k0vjuz7jtex0rggzc7rgqh5uyswyckat4f5wy9",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3545190
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14p63ecw27qutrmx8stsuc7mq9d5he7j26chdhy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3545483
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z972vzn799yg76ryr2e29qeduacsrn07mee8u2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3546897
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fswa3ztr6alj2nps9v7klwrlcsuwqravatl566",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3547688
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vm8fy28ntwsalqf6gmguqf6qx8qtkwgc8505hs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3549031
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13sdqfpxsal48xlmspyg2dzteyqu04dvesrs43a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550102
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1agqxzl2r9rn6xhpjlsn3g0xf55ap687vtk9ese",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550106
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19uga3gpvacvlyuv2mf027n4xqrv4tssesmtue7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550115
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p6s3nqc8rr02j5n9qhtmt7zkf4ur2j0vlk0ntp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550122
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wd0867jyazkkuepypfsupnunygv38cg8m2yyyp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550127
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kzyz6wyvt6maafq3ajy30ed9gxv9etwqgpkcdl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550130
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen147vq8se2xg7nq566udrn6gz2pz9y88m72xf7xa",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550133
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tk9ecdjc59ek3r3dsqe83026jxvtlr0kxjtq4z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550137
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen185fkw70ntyc0vlvrf30grsxurfw2d7cpfam4xp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550140
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1h4x2tx4679zjv77uet0x6e6v33dc8l82q33snx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3550144
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lktjhnzkpkz3ehrg8psvmwhafg56kfssvdrtzs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3551321
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wk30uz6drwuz7vkjrml5jthn0c0m3yhdc66fnn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3553199
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1eu8yvaa7vt6uxn8kav9mcsahw4m4jwu4v3fc0l",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3553645
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z3dvpke5pq3752pum6x4zd2fyfjz69p0m9k4tn",
+					"option": "VOTE_OPTION_NO_WITH_VETO",
+					"weight": "1",
+					"height": 3561173
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1l5fl0x0mz0euezyyww846ufs4znlw9cy6njt7z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3563387
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ezz9vww05ylh6zmkmwnrfwslf3tkwmwdpgpuhk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3563411
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xz2f8xlhzfuujzdtp7nt7wx4svf7cmk54978k0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3565706
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ct2rwage4sjz02uma3cf38xkf5r5ec0jrmjgc3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3571274
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14ygdu4jvlz4tfj6f0kmazepdczhkzgmdrv995c",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3571718
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u832ltjexq2r4e4tvhu64krrw4d3csprhnzf80",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3573022
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ztzx3rrlzuxdhz84vgkatpa58jya2k4v7ljast",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3575405
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ddefwgwems0u53w78mczqkz86gqx3uc88gjsyq",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3576411
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hcy8x5su6kfkz533v5fdg5ypcmsn60ph3vpyfn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3577144
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dccah0jhwal4yyxh7fh5dzm73kf7r2ee54mz4c",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3577224
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ugs6t3rsj9rq6c7clqwraunrur7nvqn3ekhk72",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3577726
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jj8dj4gkg54mz4vreckq37g8fadkyucqynppxm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3578650
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen185nrk8k78vaps29m5rsfhpgyajqpr7zs5g5ays",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3578695
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c97nrl5shghs9re60dnghxh50vf6kf5r7e8g4j",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3578796
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yzj930htyyrcyfghru0yugr5fwcn4n8kgamh55",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3578801
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1a8tzx7kl4scp6hkd860fwj4n5p28y2pyzkx67g",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3578909
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1crjqtksyhpcp8mmzql9qn2swgm4anewra6vuue",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579197
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lpydjayu48ztgdnvmnsxr8capr4p6z3u83vy2f",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579236
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lz3h6yp0k8khmuqf0r388sk0drtsf2plsqlvur",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579296
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen139mgnmdzvgsje0t4mfyn8htq3sj2xku2p9n02q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579300
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen139mgnmdzvgsje0t4mfyn8htq3sj2xku2p9n02q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579315
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rcty3se5m8ll66wtfuxsgekaf2xsgd2ls35xuy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579319
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1sqawrkskx9wezx47vygf3nm2szqrhh2atnuy74",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579376
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1n9wl97cms52tkhc2j40mmktgew0e08awvqsrd2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579381
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u8pad9dtjk5v36sgyj862hehqmfyuuky5mk3tn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579565
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p6763cacd9xxznfy9ynn3wf6mdp6hgrkftjpr7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579668
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jdven2lq8nk6n5qzy2xnrylnf4kzwyrmhf4pcv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3579780
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1h0qwpv0l2spu7h988dvh92q0v08gkkwsgmvdmf",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3580107
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lq7342y2wx48crkpljde0u8kj5cnclvgdgtvmd",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3580248
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen105ytzzer2c6h63tfy9cu8x6sajclzzax8t85et",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3580285
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1frwewwrswegyuxsz800zeaqesq5k678x0ddl6p",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3580316
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1y2yzand67lhdgvl3q0wgc7gzyp7xw63ump4hxz",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3580518
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wkvcfyu9pk3w37lgj8fguhj6cqcwjd057pymqt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3580644
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14sdw06zu7d6wpemvjzd5l8k02hxzpkq4nvery3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3580936
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen129vfqxfauw4656qsm3kecj2vpdk68r8rkmg9r6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3581492
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1q2glzcjnxu8r3usulev7uqr0kq2md6k0ckpurq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3581596
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10pvy7aw3fy52m4ux6lewxp7lrjq9rf9hdqhlg6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3581799
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14yzqd0mn0gsttacz45japvu604t6423sw3nlgn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3581842
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x0w0qqpysz4q5v6tv0fpay4nnrm3m2jusnzmk0",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3582003
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gzy0f2ggfjk6mrlv96nlur6awqdm2hd58meva3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3582051
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1n76k463ds6vccle556p0x4y3q0ths862u0fpag",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3582051
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mu2x8s8rrmssj9hyktgjfqq4wge89m57grn529",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3582209
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12ugjpkl8a4setvjlwlsvadsqp8akmwyup0ta0z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3582482
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen150jkrlp53fqrj4kmzpk9pzk5geutekm66kgtn5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3583458
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19xmylmagyekwc89e9sugz7nlvkml08hf4kqlwq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3356789
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19xmylmagyekwc89e9sugz7nlvkml08hf4kqlwq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3584061
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18dlqfzy8d79zkd9zrdtzfsgzcnxvyc7m302lph",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3584275
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17x2ry75hddumjswr2gr7hwfle7hdtneds9xhty",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3585085
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lntxy0dls0yrr880rurqtpu4c4vad3499stz4d",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3585592
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pnpuagdgmqgvxnww36gyxq0zqskr03h0luywkc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3585930
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qmy00quvngdv9pgcdg47u2la2lwt4k6v9vtuwy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3585961
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1de88sp2h3955ktrjgnm0jkhy8dttsgdzd2xr09",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3586170
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qx80qjwrr65t3fevk0qvuxckxlcvxyea0fxh0z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3586600
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1l0zae9n2dejpk6ays9v4zc8vqmtpnk8ff5nky8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3587211
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17gn2gfg44j0k9qzrnepzyrv92yehjdsqlf3fyk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3587457
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15qp9mghesvgz6vp4me4j8rude24u4tgtramcpz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3587781
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1n5ycs4kv846zsku07xm29ltkyg2fs8xy8lmk8r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3589090
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lcx2cs6rpuw5hmypr2g48xxtjs5vfgz6eswlsw",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3593257
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ugmyqw3ac3te7969r2ppt0my545k68jzhqjqr0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3593316
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ngyw07zntza7sawnep0has2ek8vjuu4qzjmcmx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3594775
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rtp6uvss6f43nftgsjsu0j4qzy9e4x79urtr9l",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3594873
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g8m7uusm3tdw4t59w72r7a4v3lt6zsy6psn0yx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3596413
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tkycyv6lt7aedr828q0fdxh26vp7dtfucyq4sd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3597367
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hq6nvm6l8k7g655jymfsrxx53am2vrq3f9csme",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3600387
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1q54r5lvtl25kyq4797xn0cgt5dd7lqa6m08dqx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3601115
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen184vnnwy3j4zmsjrml28y8heq47uhq8ary5w3v3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3601390
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen145qeyagmxssejkv4s9yfcg57u66ey67wp9he55",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3601395
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mpxsmgcptzq676eqpst27ulm4ymuqeds3s788m",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3601805
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10xzjakjllexm22qjdn7n5u7ldrr0p7fj6j8vk2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3601967
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pszxqfv2qez5d8j0xh6svjdcpm7zltc5yxvxf6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3603843
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12y6pegl79qfpazwymgd0kawr0wqtrw69vqnpnz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3603857
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f42sahh96unaq9xx287sd55pvvqvcycwn3pgzl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3605680
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zxwmywas5066v9up90yefap6p2pgvwazh5mmv0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3608843
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rql3752ywrpvjpdc3qp0aa8ngsdun6c9a5npvf",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3608928
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zet60uwssm6plh40eu9kl95a4krlw2g3p3q4gm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3609068
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10m0txts3uhpv7t52pmcfmujmxyh45df09vwcqd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3609188
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1sewdn0wv0pdt6ukga5gd9mwcmq97als837ak5t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3609247
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10m0txts3uhpv7t52pmcfmujmxyh45df09vwcqd",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3609431
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1a00d0sxenfgtmqmvvgcpw0mk6nfzrgmv509gzz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3609503
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gzx2zuylmnctxrhqndlsujlhtu20vgj384h7g9",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3609633
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12xmtyeutmgzxwge2rpz2vszl98wmaa3q5fwedr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3610072
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1a2uxptt0ev8ay47l8qextfjprkwz5rm46wh4ue",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3610126
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z9tc2ln0cak4p4v3xld567gd4rrpxmdr2j7eks",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3613038
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zluxy5mr94y9s837sq6t8ffqhnl2a4nhd3l5nf",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3614196
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wr8pdqarf933zf6glwt022fhaz8l0tv635rn3a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3614434
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tvdkf7wx9m7pu9ag3h0klum9tysy80m64h3et2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3621843
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1d3ua265kjjn0hu0lnuc06nyp58cl99nqd3kx7n",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3622850
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen198jcce905ww0gmgpl77w5av44cy8w5zcrytrn5",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3631141
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen185svu5mzamk24uvt5u8nvpl840cnl53yw4vgtn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3633074
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen185svu5mzamk24uvt5u8nvpl840cnl53yw4vgtn",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3633083
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1e0ezcfng2d9l56jpmcnjdhkm8qpqrcv0t73c63",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3636414
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wqgn4gv0wm2p8fyxdzavqurv92ehntw5cf00hp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3636441
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rnnuk7rmjwj3ep97s5d0w5ek5che53ekckhyt7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3652831
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17ayju7p2d0zvl4h46hntupruvg64sjrrjuvatd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3654743
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1al7sglgvkmhhvdzp26hayzgjw0c308e8r5mgtv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3657441
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ajpl0xq2t8yuqgsvk469ckg2w3f26465l0xh0q",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3662113
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hkc2u40wv5ndmnsh7le88z2wzh0ek0nknlvwc4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3664866
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p2peta3lrhuvez6fux4zh0q7vn064t78553e2m",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3664952
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19wsl7r5a3xt22f9kj6x506s28gmy3lc54zj4cl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3664992
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ukt60nf5c49ad6whknervju6nc2777a53vczn3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3665318
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gkzxfdr5l60eq93cjf6avn20ua4kwj4ke88z0y",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668381
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g34ku44v9km56avtj68a04znqpavcjh9p9vvum",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668429
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jcf3tmtpfuqlastkf2mgelgfnx2534c4ln4rrs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668468
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p7dejmpstk65tt332lfprnmncstzweu4kshtnv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668490
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1csf6tuccxlg3umy8sahsd49rzh3hwpfj322ldu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668511
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cf26mpdua2egceug29rynp3auqvjsfvzjksk53",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668536
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g3n76k87napv0ytmh3hl4jn8vykmsyqa4c2ujd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668557
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen152u8su3595yl0lzamgqnqujzym20egfscx0cjt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668586
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uj3gnku6jwk9e4gelatnsc48c6xh0rjvdw9wr5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668617
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zh6zalur2m4qnutnephcmy4k2a574leg7thuy4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3668749
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lzur8qtktkwc9a4k83qua79q0vwy5xv2lqp7uv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3670256
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r3e85pyr95zfxepycdysld0naq6vflqa789ymc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3672627
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ke7ljlvf29njcyewhl3vy2w7lam8sg0wx2qcsn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3672648
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gj3s5plvqal4wvgkec92kuqenn6exnr7xhc425",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3678455
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zd3n9dngts8r7am6sq4te4x48khwsrtq8eqsja",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3680967
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14agkftt077s0rzqelgcucqytpg5hv0tcvvuszc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3681006
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10maww4mrlj23atuckhljzdt3zfwu7040nmw4uw",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3681477
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1r6dzah3k2xts5a50d8jjwg70h3px5a47ts0y5p",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3682148
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fum4mhhv7xhvxtk06mru35zz7vgf5twy98phff",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3687993
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19cgvxl47q4wedgkks6dlqgf59ecgdcnr2m9n6t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3691452
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen177zjj4huq9cjsagtpc7k02jlz4s2j364akqval",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3695784
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1smy988kjlaf0p5z0c4axmcdlftk2ufka5tlv4l",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3702208
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18urfzsj9xtd8753w3gp480aslunup32hnswq9l",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3715105
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10mutswqjh463y9g2nyl7pey06u2rgnja3nuakc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3716712
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ca4xkvngk4nvf0ayqkfysdzvtxdadwga4nvlvq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3719720
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14azyjsw5h9pk9fvkl20z3hjy6xjhvdn3dftdfx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3723101
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1995thtfe5gs47wrrjg9gsq0xs0udq3lr8yk7z8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3723441
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1995thtfe5gs47wrrjg9gsq0xs0udq3lr8yk7z8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3723473
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x6dc0rwuvr7fxdwsnyarw6gafddycvcjlmwe6z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3732604
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lajgfqw7wsdgphuxgrhfc4f5wt29f83mvf0kk0",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3740750
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uh42jvujjdc5pd88m5pa05m70004grrax62sz5",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3741965
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ayw8wd7q3an47y63vhhw4fcfr3fhkpu3p5apyg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3771875
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uyxdrqyktqfzgz4mjrj88eewg5298u54lt65pv",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3786544
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zt82eh53462psv74f4fse8wnul3l7dq5e9p2jq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3788627
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zt82eh53462psv74f4fse8wnul3l7dq5e9p2jq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3788632
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zdhn4j72d5fruxsgv6gplp3fh29xe0gxxaa8rf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3799871
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cxrr8e8ac76llvd5vfcjnap7jd0nnnej7tnnn4",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3799883
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dlwqwzggptdvx9rewhca2axz64klpzw6yf7ent",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3802372
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen185z0nnqavqehf0caljsqh7hgjljwq7c7ls3k9w",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3809900
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1alfwfk3axaw2uw0hn3h79xsyjfamv33z2kn94z",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3823194
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen196knuj9suju45dwvzam2a4sn0hda06un98l2yn",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3828307
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pkyu9nmtwysqanzywwhvkexr54yuyvymq0syua",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3828788
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18n8s344fyxjevxzzqgx024gjmansdfgtdrlhcr",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3833559
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10awy3rp0688yp6s5s2zl3h7qrq0hfymdh6f926",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3837299
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cw4dgpr52nv2sc9nu9fhe9n7ytrerj53meddds",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3849335
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1sdeujcqaqm4pywr788xa6tpeaqkuap2utmlwkk",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3853895
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen153tygrav43qu04srgzc27d9mvdx29nratvhz6g",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3862498
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dyztaknsgq79t7etvtjkardclvcxhvc7kndelh",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3874169
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1krkgnwrrtwaycgxupk5384k2nyskxteqtafuxy",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3881644
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f9dge7nrtrlxg24qekrwk24nxzmzlapp2hajw9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3888118
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jnfnp0kt9pymsvp4vfr04f3f60e86u5l8mzkzs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3888249
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1a5yhmewlvqe828jnt5lhc6jw98c6g7pamkhfl6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3894904
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rvdv9962s2pdvgwj0nknfyj5q7vx2f9ucmrgu9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3895255
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pjlyqfvqcuj75r7hz9uvcasc7tcyzavngg4yqn",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 3895310
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ra7dmu2lqshkdnkx5l0kra38ftw3qenkcxqmhw",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 3895374
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19xkh4p2fermyf9m4dmr0gt8rmhmp9zg8z8j9yt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3899219
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1l2jph2tk82ma799cv2veakx9wsy0rlxgnxakcp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3903974
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zgw5vm7du564vr5wcs0322wl94wxqm228nx28a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3927785
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zgw5vm7du564vr5wcs0322wl94wxqm228nx28a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3927836
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cme8knfyqlyvsjd0ra6et6qe0kh80pv9vgf2ju",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3976786
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w8nv8dfp67gsd443sxtsvjuh2lv2vwpsujy8nf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3989419
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19nltn52mt272ddvld42a57zdgpdcnz2chdutxx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4002765
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1clpqr4nrk4khgkxj78fcwwh6dl3uw4epdjwfvc",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 4008117
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18ldra9xuy00hleuww37z25q7unqyrefl5qujw0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4010538
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f38tu4jcg2s8eweum54qe76vv49m30ruzdh7ul",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4033374
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gnf74u7n4tky926ln2u5s50srzr5hnu5rk8k9x",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4048799
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hkfep9t6hd7n84stek4rcp9jycezc0puzvtvnp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4056420
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13exwxhzkvjqs525ep8t4wkss5svelyaney8wmr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4089957
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dfg7jytutzzpa4hehgeegw8gydjnww8h9n22mu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4063479
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w6dpa2l2fc3v2rc9dpuhqg4lt6ykvlqgcksjre",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 4064206
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16ars5rflyxqkfamdfs96fj6ncz27xuvw4ndgk6",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 4064640
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1q0eqcuhass46zzqws269w3u86pqcf9ck26nvjn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4089979
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jgfmpq3c9p2gxt02m7cy8tpen820n9c2pm7mq8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4129251
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10u6d2t2wjuga5pdt82jkzhympc0fm7nmrnnps6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 3622105
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10u6d2t2wjuga5pdt82jkzhympc0fm7nmrnnps6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4017159
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10u6d2t2wjuga5pdt82jkzhympc0fm7nmrnnps6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4147171
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10u6d2t2wjuga5pdt82jkzhympc0fm7nmrnnps6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4177600
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vplkdel3nx4zeyfm0kqms63kv2ntjjmcq4uxea",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4180211
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qxkysemk47lwxeafgz6dadlrzg0wn2yzr464sf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4181176
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wqacdjhy6crtspekr2krflk7qqykr2mxt0run0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4206521
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10u6d2t2wjuga5pdt82jkzhympc0fm7nmrnnps6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4210983
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x4lhyg8l0u65q7cjrmp0xjfefpc3u2zcvn6szs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4232274
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10u6d2t2wjuga5pdt82jkzhympc0fm7nmrnnps6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4234261
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16zjm5hww9f5h62cjcvt5kr9mqret4ujyg6ca2a",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4238165
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rlfezq7fedawqp6w7p0vmyq42a9kcpmacvp9f5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4265358
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xl5j5egqm63nnxluxtz6v7k7vxwp57lcfm5u6z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4283794
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wh7gz82szkpm6ckhysajjjtpjr2vka4aptllkg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4283817
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16350kvdurnfxhngkzajp2jz3pm23h4ldzgkuf4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4287848
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19l89y5rtjuknr8qmc76h55kwvr4yhk7hkrsvvr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4299575
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gdndye7h4zrfwvldl7wudy37t9h9slec4mzv5u",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4302386
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1y0dy3kpzn5dvnff9fzljwfpklpucay4c4xrye6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4311428
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xmdq3khx9v9wgtr6ttynavh576tpam96u7wx9r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4317070
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vkad6g92aqtyfyz8uw77ce886h9s2e5qevsx92",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4317158
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18p5wlzvvhn24k0w3h8zsasudehch43eze30zpz",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4318757
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14juh0q8g4yh3cj0jjsyl589j0kv5elkpdvumj3",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4318801
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15rq3zupuyeh3vkv745uxg7u3qcnw2h55jwlev5",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4318881
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1aenrp6mh2mrv2e6caddvjvuq5ere3htcqrpl0t",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4318931
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15dkf76llum3fmguar2gkmn3mazr7ym6gwxnlmn",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4319156
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18x675nrj20he7s0z3kqw97kl2n2ty9wg232ur8",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4319182
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tzgr3pyhtpzuw2he9hf2a64xtmcntq60h6avqy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4325696
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1juhp2m0gzp2zufdje2hj9gaehphasl6u4wgzp3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4327111
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rq5hr6vyexs9c3nyjdjggda7kelwg9jtc96x8u",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4332234
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1s67dxfqx2wnhjpd4w27dw9cn734fa4l0lwwzva",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4333893
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xjvhpmflhue38mc8j75gqj2h0fds9guxsmxzac",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4337829
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rtsce8m32ah3fnp9lu5ut9mjkczd7wl6dnag6p",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4345120
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1urqqv76gkxwdwnhjy8hsz54xkjmh8mdwfd23rx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4361279
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x4lhyg8l0u65q7cjrmp0xjfefpc3u2zcvn6szs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4373371
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f48dwj5fptfdhxud687yt99ew4n0nyqr5vy4v5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4375743
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jut5qhrgx55704w4hdjk5zs2cv23ntrtcjg7n7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4379794
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x2f7g56zzu2pkqma5vr3gdz4plad6q2amtv3ha",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4408395
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1flrfc8kzcp0wu75hemzqe4t45wpktegmsxdxdf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4408525
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14a23mwqz0v3km7lsh020gudg42nmv68p9j9xwq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4408550
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lutl0967h2wxnxn28mk5v0wctruy48w7ldns8j",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4408626
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ydgfy54c638dnv5dqcl453azum29ezsnx680xq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4417706
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gqqd6eeedgjtrp83v8zn3c8wgdm29medtxsrdt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4417923
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ukacr8082lu35zuzh37qkdzq5tle78fhvk8qxj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4418237
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vury55t9gex5ncypukprnm33sda0cdskhzemqv",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 4481263
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mjjkydj5m5yjude8fnhkz6ng4zthrqs32yhrqv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4510233
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yjanfn3atg7g25xvruup3zh9mz4we8y55zhka8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4523639
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qjgfqfkp9ensge44wp0t3tt4tclcwyx83e9hya",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4523681
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1us9xy042mqtj3xsnu40qez2j7wg88h2qd49g5a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4523710
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ntuj6wqhyhmp88vglda9q2ekr59w4fu2l8uhw4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4523743
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lajgfqw7wsdgphuxgrhfc4f5wt29f83mvf0kk0",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 4614056
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xw24v52sw468z8qan7vt9vhzt9qegu4ydzw2yk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4614821
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v5rlvj5fvx6lhtw6aneey73mvr280kr3cqm5cx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4619976
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1khu2n6nc83gyfz7ww0t5hdr3kangv8tt4enszt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4642152
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16m8qclzfeqkl63dux2lc2sfdnxs43q5rhuy692",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4683950
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10h9663c0ty5mjrt86ppevnm2r8x47tw4x7supl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4683981
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13ajzcxlyeq5z6a4s3vg805gueuhz69kmfzyvqy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4683995
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mvdc057nuluhtscuwmncuxtptw62hu0vdlzxvd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4684003
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen179msu5nqa6afrdafue60x68d0p773xfd2fv2v7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4684016
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wpremt09w5y738lhem0fwvqxhqx3p82mksj2dq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4684029
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pec4e67nev2323el4g08sjl7pkjam465afthfm",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4684042
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12ks357k4ngmd5aarg7h9s056mse06cx5ncugx6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4684061
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nvhpkksppeewv7meeqstnv0fy5mxztcqaa5mxh",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4684072
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vqmcvycmg202clnx8ev9rjgz7hwtw2ms9ah8pw",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4684082
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen174tapg9gcmsh4qe6tc4nlrzjuwt90xw8rn848z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4684090
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1y303hcydzerusgk7hex7tvsgrpku8uk462kj5u",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4731921
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1sjha5vm6hgk056fyxz5v54sjcks4zq65umwq5f",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4735554
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ahsgwdj3g8ca6dn7kwhtu029spg9jgx8hjut96",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4766271
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16ndy7gfrfxz7yk06wl3cxd9glsyv3mx6p29qsp",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4768624
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1g40azuphrjghwc2ahls69z5y5h0jvc0sulcmeq",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4768645
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15dmfyl40qeque77jrkkft7tf2cpj7ycmf9zdr3",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4768670
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u7dkan7d2aaap6rxm45amhyn284lkre8x7lksz",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4768720
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xwpxfpm5rr3a0zsrrf76t72vxaa0ywxxy5gq32",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4768751
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ga67sv87aq6257muhcp8vyd8jj895wrfsg7qke",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4846969
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p7pfjma0njjsv66frucq4sl5sxjrngpwjv0wc0",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4896234
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hcquchvkr7r65flyflcf6rvjpz7xq02tal2h8j",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 4898851
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1984ucd9z0k0920qzfznqaaktt4rajhx64uzctu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4903282
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16fyu6usmm0pf3v7jsc7ucf4ruvh8us49x5qn5s",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4926645
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v70hkntq0p6ms90c9te0whkuzph05q4ghtmvnr",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4932750
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14lultfckehtszvzw4ehu0apvsr77afvy03xz80",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4949204
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14lultfckehtszvzw4ehu0apvsr77afvy03xz80",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4949232
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12y0a0nttq3a2vp3kf0hvt2xw0kd8entkumzrwl",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 4712856
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12y0a0nttq3a2vp3kf0hvt2xw0kd8entkumzrwl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4952443
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c4f37lt3dzrrgy6dccmcu9amnudg2aet8hy540",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4959045
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14lultfckehtszvzw4ehu0apvsr77afvy03xz80",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4962074
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1nd7t7xmgk99y0we7semezataneuxz0mde3fpnn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4971554
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wf2sz3y6ngh42jdn35tduad9ayhnf8pakkeks9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5034529
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15v4alt5cvcd90a6fev6nxgdlup2xw5zn5mgvk2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5034550
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vayl7wdmqfl9sqpl4sydhcf90ylx7hfxcq66m3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5072093
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1d9cw93zjqz6w2c5n2jd79u4c4xay623vfrr5v5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5085315
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10f40kgtmuxd82y8g2lcdjdywyh38lxrzpxprc9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5108416
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f95dmun7ldnyzymrja6qjy063nfug0kzgltfky",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5109874
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10l0kgzx4n88u6z7r79twca9yp26wnerwuu4572",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5249206
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xuwl7x8htyl26t7pe3l0x6auj3j9jwd260tgya",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 5253516
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wm8cj9mtzernlazyyh32spdjs2jla5l2xdkpfq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5258791
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zrm9t7dwtkgnphvy6x2qmrss0sm20nwwgr0cdu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5259274
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xg9fnquzgfzg486h04qmntfrm64xufh4shjs4m",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5260939
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1aczjkrrcqg3a0fye89vl7k3wj0w4kzqldzxmyl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5262187
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rlkdml7dpuedpmkxhval5qlqzp9hxfpufyglep",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5263620
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lkd42ljwpm02qmqr2c6z6v6glydvhj4x57zsfh",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5268987
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jkdqeuc55k3rzvsxksack6xhn0exgzh3zvdqh8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5273808
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tkycyv6lt7aedr828q0fdxh26vp7dtfucyq4sd",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5284799
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kjc4ytvqm86lp8mr75mqs7mlxwlqyetc0mqfkh",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 5296416
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rs7grusea6ht4xerzle04f3ngcedtkk7p7fdl9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5304939
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen140y6yym2j0mc6pj235wq7qjttw63lyq3ahlx50",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5304971
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f06zgfejgn50r2r093x6vpgldgx7j6nsy4fppc",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5304994
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17wvmzcm97u0pdudfx63khnc79tkg6fd48k7zwv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305030
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hevq3eqveswqyy5trwhe8fwcg8v8w0jhehtcz2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305045
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lwqxwx258urwwt5xlsggjztvr6nsp04mulqtj3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305065
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dsgh78v73ctppga642tushvlk2qlq5sf4u5e6k",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305080
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen170qtj0q9nfzn9ypzmg5fyq5qxvj298duxqmxpt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305097
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wegmfw7cwhcxja8wyxl59gg2e88e52gjkctxcf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305108
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18srml3mtvn78cl2wzsx6nj5vgnpuz64am2nzap",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305117
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1492gguu7e04e3qydtkx8e7m8m59pxcu5p4vyl7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305716
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1yax5krhe4vdjzfgz3s7nrxdhahxem5ltr37fl4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305737
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1m8w9j436jrzgxg4jde4em7gvqthe9wzsxmz50k",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305750
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19zw2hk8yh2s0y6e2h3628szvwz6s696dmkkcrl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5305785
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1m0w9p6wpvlslmtucg6uvumpcxu3exvkwdccdnk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307600
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1s50ls0e9pn8l7mh3d3np84ujn0yf6mkn78vln3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307609
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16v6yt2xyxejk6yzxu8eywdx56mrjrpesj2xg86",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307622
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13ts32smqq8aqqr0844y96hwrmm9kzf062c5hnu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307636
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1aes3n6fxyylt02wuj6dsc3wd4tlez75tvltml9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307659
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1w3l3sf3kau0cplqzdtwmzajdz0txp77jfnk6d5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307707
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1er765kcq6g80zwfx4czsruh3d6l30fd3dhcwy8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307725
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pcekmll5xygh5g5wsrv2tmeq3yjvlag3nyw2s3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307735
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17khddhty3acc2r08m02k7m600x5y3gpfhw3u09",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307747
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen149tu9dhw9x6jseeetn30yf53p2qnzyhzdyyq9x",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307759
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19fhacuwm8sxwvs5q92meras04s6zulu5pufr2d",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307780
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19l4dhvdetjfumalm5c8ruuhrayx8je53kvjznp",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307793
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13fkatdnv0g7val8sdk2ggphdaqdluk3n7dshzs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307810
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z6rrff7au83g8a5x24c4xs7p0jzd9gnfd9zrvv",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307822
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19stc76r82u394sasuxhlcwjgtu4r4vusne407p",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307846
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1s4wy8n47dv92wf58hz22v6h6agcp2427w6zhw7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307858
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13zq65axxks8ngpxt9pn7crgg8j4ah4yyr60620",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307896
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gz8hzzcw7cj7tzqz0l96u4azzugsgqmddp9jj4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307904
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1qng4qcyn9fp5rgf45s98pzh7g0z3u04qe58qs7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307914
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1q29ltpzg906agpqnywrr6pj9eynvjrsypaz92x",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307955
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1q29ltpzg906agpqnywrr6pj9eynvjrsypaz92x",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5307974
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cm3fg3276mtuvqpcn2q9jesn9q69tzcfhgsaad",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5333792
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uvjzl78r65c4sxe9pamdqswascslknf5epesfy",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5337951
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14yq6js8kee2uqjkmmusf4wt00r2mj3judc0c2r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5338651
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j2y96fk2maxz4j4g586xvx66y2axe230vyau9q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 4408406
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j2y96fk2maxz4j4g586xvx66y2axe230vyau9q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5341299
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j2y96fk2maxz4j4g586xvx66y2axe230vyau9q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5341344
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x2f7g56zzu2pkqma5vr3gdz4plad6q2amtv3ha",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5341382
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14a23mwqz0v3km7lsh020gudg42nmv68p9j9xwq",
+					"option": "VOTE_OPTION_NO_WITH_VETO",
+					"weight": "1",
+					"height": 4408535
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14a23mwqz0v3km7lsh020gudg42nmv68p9j9xwq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5341396
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u2r5lns2p60xhjhzshfk8rre0wjdf8acd4q0dg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5341409
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cwhmd2m86tamzmhzz45yhnh7szqxzyqc3s2vya",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5341426
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1h4j8r3wzf5lkkvvdnu9fulh7qpqpwu6u4lcrf3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5341444
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15p4sgn2f9stleraduyhr9aw6ksq59zg686dvjt",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5341475
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1c46e2pylgk94ehnfm7wtx8gkl9w42lpj6zyw6c",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5344203
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ugmyqw3ac3te7969r2ppt0my545k68jzhqjqr0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5350638
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rmvvhwnyh744c52k87tfgkepfr06frpkgc5k9y",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5350791
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1psxgymvlca9w876c2dkw6yddxecmwuualvwwyk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5363782
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18yssmltlyd2ajd7vlpuum22n8jr7gmdpx4kwg0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5415412
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rqwmmvvee4x7uzazdzq6wk6url3n93u3zhjv7d",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5441572
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t902u6z8hespaefp56pvqvnrjl5kjtqfk6kdp7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5442309
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dv5hvw782l622nd2s5548654fjk4508jwrc7l6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5446592
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15xcwvmu9yhmtafqam78v0yp02l5y2jclsrsmt0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5458600
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hys43qstpwxt802n79rp8lq83xrhhgpam23qn2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5464779
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mjc7c0l37aw6gy4g9tvua8vcvpnqu9cp7ujh49",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5464884
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen155gygt2awt09mczg5um5q4uxkvcvh7ht2ejh46",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5464932
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10tw7c8g3grscle4cpnknwfnex4aynja3xep2qy",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 5509428
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lauydg9sg2gp73gmgwuyrmege8ueem6c8eefqg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5538285
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18t980er03tr8rzv24xswufqzldrf69t3z494qw",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 5552324
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17gxvxvest77n9v4j5nspqfhkferknjcpgkg29c",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5552463
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16pyqdev493dszr786lp38d39mncf9ljr4am3rd",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 5569282
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18t980er03tr8rzv24xswufqzldrf69t3z494qw",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5569408
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1pj0vu2yg5v2luskggp5ldm9pdrpeh8zl2zq64t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5569450
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jtustv4ghy997d6catge3mgklszkvve62wpxp6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5772429
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1czphxhe7wux2fuycx94ukxv5e8we4lecapu5gf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5778927
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19j2hd230c3hw6ds843yu8akc0xgvdvyulg7008",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5810460
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z024vgu2v80dv0gg64aawnz8kynh3apusy9qdw",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 5827242
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wjgzwwrdelmz6t6dglhx84e96vkwptt2u9vnep",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5857792
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ltf3pnfg85p92qd85xhcgg8n74p2hm74pqgprz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5857806
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v4pauzyfcv5p7v3v366v05kpwyv5x9909rut5a",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5857816
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1e359lxpgfecty7qhtuzwhg8qzyen484ger09fs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5857825
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gmnxkp5d83v0zj5zlp8f904dmklgxzum7p8e54",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5857837
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1uvg8jakqcsgyurevk26zthmlvsjlfzzvgzwk6h",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5857850
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1rsl5pw5rsgjqsu8m9s7tz0lt93azeghp856mk4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5857898
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u7xj5hwhnl0hy9nha46uh97kg33vu26s25dnhz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5870036
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1y57250sz2sr5yqzyemxt8jlk7jq6ss9rdruu7v",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 5891172
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1gjh6atlq7xypygs7ga32r75kjpey09m9rw80da",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 6101973
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dfg7jytutzzpa4hehgeegw8gydjnww8h9n22mu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6502206
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dfg7jytutzzpa4hehgeegw8gydjnww8h9n22mu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6502199
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dfg7jytutzzpa4hehgeegw8gydjnww8h9n22mu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6502215
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dfg7jytutzzpa4hehgeegw8gydjnww8h9n22mu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6502236
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t902u6z8hespaefp56pvqvnrjl5kjtqfk6kdp7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6592423
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jrhhhkypmppgcj73ptzm0zn3dnsj2823gw6elw",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 6677846
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen152j4tzz32v4t4s3e6znafz6hv0v76sqt52jlqu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6779430
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x9c7zu7n3xlunxg6p9k6g7e8qtwx05nt4xyksw",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 6782978
+				}
+			],
+			"id": 6,
+			"proposer_address": "govgen15hmqrc245kryaehxlch7scl9d9znxa58c088sn",
+			"status": "PROPOSAL_STATUS_PASSED",
+			"submit_time": "2024-10-02T06:27:51.405",
+			"title": "AtomOne Logo Selection Option #1",
+			"voting_end_time": "2025-10-02T06:27:51.405",
+			"voting_start_time": "2024-10-02T06:27:51.405",
+			"proposal_tally_results": [
+				{
+					"__typename": "proposal_tally_result",
+					"abstain": "36451431180",
+					"height": 6899300,
+					"no": "28443813026",
+					"no_with_veto": "412614321",
+					"yes": "4265504032013"
+				}
+			],
+			"proposal_deposits": [
+				{
+					"__typename": "proposal_deposit",
+					"amount": [
+						{
+							"denom": "ugovgen",
+							"amount": " 5000000000"
+						}
+					],
+					"depositor_address": "govgen15hmqrc245kryaehxlch7scl9d9znxa58c088sn",
+					"proposal_id": 6,
+					"timestamp": "2024-10-02T06:27:51.405962"
+				}
+			]
+		}
+	]
+}

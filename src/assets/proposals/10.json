@@ -1,0 +1,538 @@
+{
+	"proposal": [
+		{
+			"__typename": "proposal",
+			"content": {
+				"title": "Govgen chain sunset",
+				"description": "# Proposal\n\nThis proposal aims to gather community sentiment on sunsetting the Govgen\nchain.\n\nIt is generally believed that Govgen has successfully served its purpose in\nguiding community decisions about AtomOne's development. With AtomOne now live,\nthere is a case to be made that Govgen no longer serves a function—it's time to\nrelease its allocated resources.\n\n# Schedule\n\nWe propose stopping the Govgen chain at height [6900000](https://www.mintscan.io/govgen/block/6900000),\nwhich will occur on May 30th at the end of the month.\n\n# Consensus\n\nSince Govgen's voting period is one year, there is a need to establish\ncommunity consensus to determine whether this proposal should be accepted\nbefore May 30th. Although the chain is currently active it lacks utility and is\nmerely consuming resources. Since validators are the only interested parties,\nthe proposal is to proceed with the chain shutdown at the proposed block heigh\nwithout considering quorum.\n\nTherefore, we propose that if the proposal passes by May 29th 12pm UTC with a\nsimple majority—when the voting power of \"Yes\" votes exceeds \"No\" votes, then\nit is to be considered that sentiment consensus has been met and that the\ncommunity is in agreement for the GovGen chain to be sunset.\n\nIf this happens, that validators are advised to shut down their machines at\nblock height 6900000.\n\n# Governance votes\n\nThe following items summarize the voting options and what it means for this\nproposal:\n\nYES - You agree that the Govgen chain should be stopped at the end of the\nmonth.\n\nNO - You disagree that the Govgen chain should be stopped.\n\nABSTAIN - You wish to contribute to the quorum but you formally decline to vote\neither for or against the proposal.\n"
+			},
+			"deposit_end_time": "2025-05-22T16:21:26.672",
+			"description": "# Proposal\n\nThis proposal aims to gather community sentiment on sunsetting the Govgen\nchain.\n\nIt is generally believed that Govgen has successfully served its purpose in\nguiding community decisions about AtomOne's development. With AtomOne now live,\nthere is a case to be made that Govgen no longer serves a function—it's time to\nrelease its allocated resources.\n\n# Schedule\n\nWe propose stopping the Govgen chain at height [6900000](https://www.mintscan.io/govgen/block/6900000),\nwhich will occur on May 30th at the end of the month.\n\n# Consensus\n\nSince Govgen's voting period is one year, there is a need to establish\ncommunity consensus to determine whether this proposal should be accepted\nbefore May 30th. Although the chain is currently active it lacks utility and is\nmerely consuming resources. Since validators are the only interested parties,\nthe proposal is to proceed with the chain shutdown at the proposed block heigh\nwithout considering quorum.\n\nTherefore, we propose that if the proposal passes by May 29th 12pm UTC with a\nsimple majority—when the voting power of \"Yes\" votes exceeds \"No\" votes, then\nit is to be considered that sentiment consensus has been met and that the\ncommunity is in agreement for the GovGen chain to be sunset.\n\nIf this happens, that validators are advised to shut down their machines at\nblock height 6900000.\n\n# Governance votes\n\nThe following items summarize the voting options and what it means for this\nproposal:\n\nYES - You agree that the Govgen chain should be stopped at the end of the\nmonth.\n\nNO - You disagree that the Govgen chain should be stopped.\n\nABSTAIN - You wish to contribute to the quorum but you formally decline to vote\neither for or against the proposal.\n",
+			"proposal_route": "",
+			"proposal_type": "/govgen.gov.v1beta1.TextProposal",
+			"proposal_votes": [
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16ars5rflyxqkfamdfs96fj6ncz27xuvw4ndgk6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6578785
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1d9cw93zjqz6w2c5n2jd79u4c4xay623vfrr5v5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6580842
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xl5j5egqm63nnxluxtz6v7k7vxwp57lcfm5u6z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6580908
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zyvmr807h0ph5uq04gdflg5jsvphfdsnxj02zk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6581361
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ulskjvjmggnveyjdraz29a3gtf2hzefv70qc7w",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6581373
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1z0a7mkpfsrxr5dnndv7eulgw8rgwm44txulgen",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6582164
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen12h2xk4j0z2ez8tk88sf02qy9jnfwx7sfrgf4r0",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6582332
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t2q23fd9w0r028tz24ukwm3ns8sm6jprelf4ca",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6582549
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ehkfl7palwrh6w2hhr2yfrgrq8jetgucpqstvj",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6582748
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1p454fm4rerxddn0uppen8hvckceylf7pxyv8g3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6583641
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen100kwgdyssd08nuz24guznr9eyy2p8enjrrqpla",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6583642
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1kp8wl9t99azqdf8qnhjku606wtzna04rwyk5v9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6583991
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hm2ylh3zfeql5kaducqhfrwepwluwc3k932leq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6584929
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1lktjhnzkpkz3ehrg8psvmwhafg56kfssvdrtzs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6591725
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t902u6z8hespaefp56pvqvnrjl5kjtqfk6kdp7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6592399
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17hkyrkexpzrd2u3erplve4z5am6e0yvhp7drjf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6600047
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1758vjtngu4ccpl3vd9lsf4pk8cevpuc8gfv2wf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6600413
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ummhu3gjxq4rwpyk3622mh2mxhctkrnzphx5mr",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6602222
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1h4apf9dxp9zscmgjc802dd4jy62lnevah4qfv4",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6609721
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen19cgvxl47q4wedgkks6dlqgf59ecgdcnr2m9n6t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6610416
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x2f7g56zzu2pkqma5vr3gdz4plad6q2amtv3ha",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6617441
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14a23mwqz0v3km7lsh020gudg42nmv68p9j9xwq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6617462
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1flrfc8kzcp0wu75hemzqe4t45wpktegmsxdxdf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6617478
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j2y96fk2maxz4j4g586xvx66y2axe230vyau9q",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6617484
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13fkqqvfdqleu8ulzm8snu6kvezgvljcfr6xvva",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6619160
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen14juh0q8g4yh3cj0jjsyl589j0kv5elkpdvumj3",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6624961
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen18p5wlzvvhn24k0w3h8zsasudehch43eze30zpz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6625050
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1aenrp6mh2mrv2e6caddvjvuq5ere3htcqrpl0t",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6625123
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x4lhyg8l0u65q7cjrmp0xjfefpc3u2zcvn6szs",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6625159
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15rq3zupuyeh3vkv745uxg7u3qcnw2h55jwlev5",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6625178
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1htr84ep3rr7vwkaldqqv7jvpgnd6keke4ahyup",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6625188
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen15dkf76llum3fmguar2gkmn3mazr7ym6gwxnlmn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6625306
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1j7x0wrj0dh57pmnxx07kp8nnxmgp29m5ykd7au",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6631240
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v6lpudgwn25zrc6vczhkrhjargnknwu3xh8t8z",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6631260
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1u0dr2ae9nu4j2ehkhjrxt0cc7usvugxzsvv2zh",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6636014
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mhnd9g3zcc8k9yh5lccjc9jtc2zk4w7nldhe7r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6637545
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zvuyw9utsdp3w0mnrructw87p8sy8a3szwv0vk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6646076
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dv5hvw782l622nd2s5548654fjk4508jwrc7l6",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6648248
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zdhn4j72d5fruxsgv6gplp3fh29xe0gxxaa8rf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6663041
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1zdhn4j72d5fruxsgv6gplp3fh29xe0gxxaa8rf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6663117
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wlh0f94r6c4y5nwsqlxd2384jmxlljst9zlpxe",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6673158
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1fvpj4kfk49s6her9fmak4dykz447vlx3gcr7zk",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6673306
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1jrhhhkypmppgcj73ptzm0zn3dnsj2823gw6elw",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6677791
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ga67sv87aq6257muhcp8vyd8jj895wrfsg7qke",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6681063
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1cw4dgpr52nv2sc9nu9fhe9n7ytrerj53meddds",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6707286
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t5wmu8x093ac6xsvqdm2v95a3ekk7fsr2q2dkz",
+					"option": "VOTE_OPTION_ABSTAIN",
+					"weight": "1",
+					"height": 6718717
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f38tu4jcg2s8eweum54qe76vv49m30ruzdh7ul",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6575971
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1f38tu4jcg2s8eweum54qe76vv49m30ruzdh7ul",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6722142
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen16m8qclzfeqkl63dux2lc2sfdnxs43q5rhuy692",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6722456
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10h9663c0ty5mjrt86ppevnm2r8x47tw4x7supl",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6722467
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1tdjqmtj9gk9a4k5j2xsdy7mls4z70q86vpravz",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6738657
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1dkjr3vey927m9r8cnlteg5cfzxqjxgxlzy03xg",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6744906
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1wm8cj9mtzernlazyyh32spdjs2jla5l2xdkpfq",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6745799
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1mhnd9g3zcc8k9yh5lccjc9jtc2zk4w7nldhe7r",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6752603
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen13nwv9d4swmn90rvrmnmscshm5utecul988j3ut",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6767192
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1smknl4uf89ef84kg020ff7ask7l0sxz3dpct2w",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6769129
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen152j4tzz32v4t4s3e6znafz6hv0v76sqt52jlqu",
+					"option": "VOTE_OPTION_NO",
+					"weight": "1",
+					"height": 6772900
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t2q23fd9w0r028tz24ukwm3ns8sm6jprelf4ca",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6782739
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1x9c7zu7n3xlunxg6p9k6g7e8qtwx05nt4xyksw",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6782943
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1hk38pmr663m5achae0as20zzp27uxj3ysca8zf",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6785306
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen198fvmyxqty44k4e3rh6002dy7qn68sjunhfut9",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6792640
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1xjvhpmflhue38mc8j75gqj2h0fds9guxsmxzac",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6792991
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen17mggn4znyeyg25wd7498qxl7r2jhgue8pcjjat",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6795308
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1t902u6z8hespaefp56pvqvnrjl5kjtqfk6kdp7",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6833279
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1ac0jgy46wa3axh9yjgxgkqn48feqtken06qhk8",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6848607
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1vkad6g92aqtyfyz8uw77ce886h9s2e5qevsx92",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6858884
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10v57yht87z40ku03d8xz429uxnnvp8haqduqhu",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6860069
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1md0t8yy2mytryrj7gpufy257hrp9azedtgm7xn",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6871268
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen10xzjakjllexm22qjdn7n5u7ldrr0p7fj6j8vk2",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6879750
+				},
+				{
+					"__typename": "proposal_vote",
+					"voter_address": "govgen1v5rlvj5fvx6lhtw6aneey73mvr280kr3cqm5cx",
+					"option": "VOTE_OPTION_YES",
+					"weight": "1",
+					"height": 6882124
+				}
+			],
+			"id": 10,
+			"proposer_address": "govgen1ehkfl7palwrh6w2hhr2yfrgrq8jetgucpqstvj",
+			"status": "PROPOSAL_STATUS_PASSED",
+			"submit_time": "2025-05-08T16:21:26.672",
+			"title": "Govgen chain sunset",
+			"voting_end_time": "2026-05-08T16:21:26.672",
+			"voting_start_time": "2025-05-08T16:21:26.672",
+			"proposal_tally_results": [
+				{
+					"__typename": "proposal_tally_result",
+					"abstain": "112878013",
+					"height": 6899300,
+					"no": "300216571",
+					"no_with_veto": "0",
+					"yes": "502336384636"
+				}
+			],
+			"proposal_deposits": [
+				{
+					"__typename": "proposal_deposit",
+					"amount": [
+						{
+							"denom": "ugovgen",
+							"amount": " 5000000000"
+						}
+					],
+					"depositor_address": "govgen1ehkfl7palwrh6w2hhr2yfrgrq8jetgucpqstvj",
+					"proposal_id": 10,
+					"timestamp": "2025-05-08T16:21:26.672109"
+				}
+			]
+		}
+	]
+}
